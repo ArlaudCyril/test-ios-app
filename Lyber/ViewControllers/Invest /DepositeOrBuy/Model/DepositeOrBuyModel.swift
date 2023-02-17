@@ -1,0 +1,38 @@
+//
+//  DepositeOrBuyModel.swift
+//  Lyber
+//
+//  Created by sonam's Mac on 13/06/22.
+//
+
+import Foundation
+import UIKit
+
+struct buyDepositeModel {
+    var icon : UIImage
+    var svgUrl : String?
+    var iconBackgroundColor : UIColor
+    var name : String
+    var subName : String
+    var rightBtnName : String
+}
+
+enum bottomPopUp{
+    case DepositeBuy
+    case PayWith
+    case withdrawExchange
+    case withdrawTo
+    case withdrawAll
+    case InvestInStrategiesOrAsset
+    case investWithStrategies
+//    case withdrawDepositBuySellExchange
+    case AssetDetailPagePopUp
+    case frequency
+    case changeProfile
+}
+
+enum confirmationPopUp{
+    case Buy
+    case Sell
+    case Withdraw
+}

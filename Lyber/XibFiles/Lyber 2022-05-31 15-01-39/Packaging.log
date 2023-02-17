@@ -1,0 +1,769 @@
+2022-05-31 09:31:33 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7ff95f7aecb0; archive(resolved)="<IDEArchive: 0x7ff95f23d3d0>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	Chain (14, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7ff95f7aecb0; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x7ff969bbbcc0; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff969a96bb0; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff95f2ebb50; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff95d07e1a0; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff95d771c30; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff968823b30; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff95d4fd1b0; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff95d7566f0; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x7ff94ad98b60; teamID='GFSZHD28XL', teamName='GAURAV NEGI', teamType='Individual', username='info@henceforthsolutions.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7ff95f65d250; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="(null)">
+	<IDEDistributionContext: 0x7ff95d76c590; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="(null)">
+	<IDEDistributionContext: 0x7ff95d752d70; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="(null)">
+	<IDEDistributionContext: 0x7ff958da38b0; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x7ff94c012a80>", team="(null)">
+	<IDEDistributionContext: 0x7ff969959270; archive = "<IDEArchive: 0x7ff95f23d3d0>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x7ff95f7aecb0>
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionCreateDestRootStep
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionCopyItemStep
+2022-05-31 09:31:33 +0000  Running /usr/bin/ditto '-V' '/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app'
+2022-05-31 09:31:33 +0000  >>> Copying /Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app 
+2022-05-31 09:31:33 +0000  copying file ./_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  24807 bytes for ./_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./AtypText-SemiboldItalic.ttf ... 
+2022-05-31 09:31:33 +0000  319056 bytes for ./AtypText-SemiboldItalic.ttf
+copying file ./AtypText-Thin.ttf ... 
+2022-05-31 09:31:33 +0000  302600 bytes for ./AtypText-Thin.ttf
+copying file ./Mabry Pro Bold.otf ... 
+2022-05-31 09:31:33 +0000  205072 bytes for ./Mabry Pro Bold.otf
+2022-05-31 09:31:33 +0000  copying file ./AtypDisplay-Regular.ttf ... 
+2022-05-31 09:31:33 +0000  313420 bytes for ./AtypDisplay-Regular.ttf
+copying file ./AtypText-LightItalic.ttf ... 
+2022-05-31 09:31:33 +0000  313672 bytes for ./AtypText-LightItalic.ttf
+copying file ./AtypDisplay-Italic.ttf ... 
+2022-05-31 09:31:33 +0000  320764 bytes for ./AtypDisplay-Italic.ttf
+copying file ./Mabry Pro Black.otf ... 
+2022-05-31 09:31:33 +0000  202612 bytes for ./Mabry Pro Black.otf
+copying file ./Mabry Pro Medium Italic.otf ... 
+2022-05-31 09:31:33 +0000  200496 bytes for ./Mabry Pro Medium Italic.otf
+copying file ./AtypDisplay-ThinItalic.ttf ... 
+311932 bytes for ./AtypDisplay-ThinItalic.ttf
+copying file ./AtypText-Light.ttf ... 
+2022-05-31 09:31:33 +0000  306392 bytes for ./AtypText-Light.ttf
+copying file ./EmailAddressXib.nib ... 
+2022-05-31 09:31:33 +0000  5174 bytes for ./EmailAddressXib.nib
+copying file ./Mabry Pro Medium.otf ... 
+201656 bytes for ./Mabry Pro Medium.otf
+copying file ./AtypRegularVariable.ttf ... 
+2022-05-31 09:31:33 +0000  223240 bytes for ./AtypRegularVariable.ttf
+copying file ./VerificationEmailXib.nib ... 
+2022-05-31 09:31:33 +0000  6683 bytes for ./VerificationEmailXib.nib
+copying file ./AtypDisplay-BoldItalic.ttf ... 
+2022-05-31 09:31:33 +0000  323668 bytes for ./AtypDisplay-BoldItalic.ttf
+2022-05-31 09:31:33 +0000  copying file ./AtypText-Bold.ttf ... 
+314412 bytes for ./AtypText-Bold.ttf
+copying file ./AtypDisplay-LightItalic.ttf ... 
+2022-05-31 09:31:33 +0000  314356 bytes for ./AtypDisplay-LightItalic.ttf
+copying file ./Mabry Pro Light Italic.otf ... 
+2022-05-31 09:31:33 +0000  199180 bytes for ./Mabry Pro Light Italic.otf
+copying file ./AtypDisplay-Thin.ttf ... 
+2022-05-31 09:31:33 +0000  303572 bytes for ./AtypDisplay-Thin.ttf
+copying file ./AtypDisplay-SemiboldItalic.ttf ... 
+319728 bytes for ./AtypDisplay-SemiboldItalic.ttf
+copying file ./Portfolio.storyboardc/ou3-um-Tdx-view-xZK-zQ-RT4.nib ... 
+2022-05-31 09:31:33 +0000  10452 bytes for ./Portfolio.storyboardc/ou3-um-Tdx-view-xZK-zQ-RT4.nib
+copying file ./Portfolio.storyboardc/InvestMethodBottomVC.nib ... 
+2022-05-31 09:31:33 +0000  1082 bytes for ./Portfolio.storyboardc/InvestMethodBottomVC.nib
+copying file ./Portfolio.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib ... 
+2022-05-31 09:31:33 +0000  15630 bytes for ./Portfolio.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib
+copying file ./Portfolio.storyboardc/e9E-lt-i8j-view-fdF-bP-RZg.nib ... 
+2022-05-31 09:31:33 +0000  8398 bytes for ./Portfolio.storyboardc/e9E-lt-i8j-view-fdF-bP-RZg.nib
+copying file ./Portfolio.storyboardc/checkAccountCompletedVC.nib ... 
+2022-05-31 09:31:33 +0000  1112 bytes for ./Portfolio.storyboardc/checkAccountCompletedVC.nib
+2022-05-31 09:31:33 +0000  copying file ./Portfolio.storyboardc/PersonalDataVC.nib ... 
+2022-05-31 09:31:33 +0000  1016 bytes for ./Portfolio.storyboardc/PersonalDataVC.nib
+copying file ./Portfolio.storyboardc/Info.plist ... 
+2022-05-31 09:31:33 +0000  255 bytes for ./Portfolio.storyboardc/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./AtypDisplay-Light.ttf ... 
+2022-05-31 09:31:33 +0000  307384 bytes for ./AtypDisplay-Light.ttf
+copying file ./AtypText-Medium.ttf ... 
+2022-05-31 09:31:33 +0000  313052 bytes for ./AtypText-Medium.ttf
+2022-05-31 09:31:33 +0000  copying file ./AtypDisplay-Bold.ttf ... 
+317128 bytes for ./AtypDisplay-Bold.ttf
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/VgN-ie-SCA-view-DU3-nU-wJT.nib ... 
+2022-05-31 09:31:33 +0000  44739 bytes for ./Base.lproj/Main.storyboardc/VgN-ie-SCA-view-DU3-nU-wJT.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/EducationStrategyVC.nib ... 
+2022-05-31 09:31:33 +0000  1026 bytes for ./Base.lproj/Main.storyboardc/EducationStrategyVC.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/7rI-fk-bTS-view-zsh-1G-Dv9.nib ... 
+2022-05-31 09:31:33 +0000  11604 bytes for ./Base.lproj/Main.storyboardc/7rI-fk-bTS-view-zsh-1G-Dv9.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/strategyVC.nib ... 
+2022-05-31 09:31:33 +0000  1008 bytes for ./Base.lproj/Main.storyboardc/strategyVC.nib
+copying file ./Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib ... 
+2022-05-31 09:31:33 +0000  5889 bytes for ./Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/EnterPhoneVC.nib ... 
+2022-05-31 09:31:33 +0000  1090 bytes for ./Base.lproj/Main.storyboardc/EnterPhoneVC.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/LQv-A3-jiR-view-L3x-gl-cSZ.nib ... 
+2022-05-31 09:31:33 +0000  7253 bytes for ./Base.lproj/Main.storyboardc/LQv-A3-jiR-view-L3x-gl-cSZ.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/Info.plist ... 
+2022-05-31 09:31:33 +0000  417 bytes for ./Base.lproj/Main.storyboardc/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/LoginVC.nib ... 
+2022-05-31 09:31:33 +0000  1079 bytes for ./Base.lproj/Main.storyboardc/LoginVC.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/Main.storyboardc/UINavigationController-pUK-Bp-7Fg.nib ... 
+2022-05-31 09:31:33 +0000  1759 bytes for ./Base.lproj/Main.storyboardc/UINavigationController-pUK-Bp-7Fg.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib ... 
+2022-05-31 09:31:33 +0000  2757 bytes for ./Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib ... 
+2022-05-31 09:31:33 +0000  896 bytes for ./Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib
+2022-05-31 09:31:33 +0000  copying file ./Base.lproj/LaunchScreen.storyboardc/Info.plist ... 
+2022-05-31 09:31:33 +0000  258 bytes for ./Base.lproj/LaunchScreen.storyboardc/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./AtypDisplay-Semibold.ttf ... 
+2022-05-31 09:31:33 +0000  314280 bytes for ./AtypDisplay-Semibold.ttf
+2022-05-31 09:31:33 +0000  copying file ./AtypText-Semibold.ttf ... 
+313148 bytes for ./AtypText-Semibold.ttf
+2022-05-31 09:31:33 +0000  copying file ./Assets.car ... 
+2022-05-31 09:31:33 +0000  4525904 bytes for ./Assets.car
+2022-05-31 09:31:33 +0000  copying file ./Mabry Pro.otf ... 
+203248 bytes for ./Mabry Pro.otf
+copying file ./Mabry Pro Bold Italic.otf ... 
+204852 bytes for ./Mabry Pro Bold Italic.otf
+copying file ./AtypText-MediumItalic.ttf ... 
+2022-05-31 09:31:33 +0000  318452 bytes for ./AtypText-MediumItalic.ttf
+copying file ./AtypText-Italic.ttf ... 
+2022-05-31 09:31:33 +0000  319608 bytes for ./AtypText-Italic.ttf
+copying file ./personalDataXib.nib ... 
+8606 bytes for ./personalDataXib.nib
+2022-05-31 09:31:33 +0000  copying file ./AtypDisplay-Medium.ttf ... 
+312528 bytes for ./AtypDisplay-Medium.ttf
+copying file ./InvestmentExperienceXib.nib ... 
+2022-05-31 09:31:33 +0000  11381 bytes for ./InvestmentExperienceXib.nib
+copying file ./Mabry Pro Black Italic.otf ... 
+201924 bytes for ./Mabry Pro Black Italic.otf
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/SwiftyJSON.framework/SwiftyJSON ... 
+2022-05-31 09:31:33 +0000  1041728 bytes for ./Frameworks/SwiftyJSON.framework/SwiftyJSON
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/SwiftyJSON.framework/Info.plist ... 
+742 bytes for ./Frameworks/SwiftyJSON.framework/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYWebImage.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/YYWebImage.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYWebImage.framework/YYWebImage ... 
+2022-05-31 09:31:33 +0000  961424 bytes for ./Frameworks/YYWebImage.framework/YYWebImage
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYWebImage.framework/Info.plist ... 
+2022-05-31 09:31:33 +0000  742 bytes for ./Frameworks/YYWebImage.framework/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYCache.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/YYCache.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYCache.framework/YYCache ... 
+2022-05-31 09:31:33 +0000  614416 bytes for ./Frameworks/YYCache.framework/YYCache
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYCache.framework/Info.plist ... 
+736 bytes for ./Frameworks/YYCache.framework/Info.plist
+copying file ./Frameworks/SwiftEntryKit.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/SwiftEntryKit.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/SwiftEntryKit.framework/SwiftEntryKit ... 
+2022-05-31 09:31:33 +0000  4849808 bytes for ./Frameworks/SwiftEntryKit.framework/SwiftEntryKit
+copying file ./Frameworks/SwiftEntryKit.framework/Info.plist ... 
+2022-05-31 09:31:33 +0000  748 bytes for ./Frameworks/SwiftEntryKit.framework/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/OTPFieldView.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/OTPFieldView.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/OTPFieldView.framework/OTPFieldView ... 
+2022-05-31 09:31:33 +0000  444544 bytes for ./Frameworks/OTPFieldView.framework/OTPFieldView
+copying file ./Frameworks/OTPFieldView.framework/Info.plist ... 
+2022-05-31 09:31:33 +0000  747 bytes for ./Frameworks/OTPFieldView.framework/Info.plist
+copying file ./Frameworks/YYImage.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/YYImage.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYImage.framework/YYImage ... 
+2022-05-31 09:31:33 +0000  779024 bytes for ./Frameworks/YYImage.framework/YYImage
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/YYImage.framework/Info.plist ... 
+2022-05-31 09:31:33 +0000  736 bytes for ./Frameworks/YYImage.framework/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/IQKeyboardManagerSwift.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/IQKeyboardManagerSwift.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift ... 
+2022-05-31 09:31:33 +0000  2691440 bytes for ./Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift
+copying file ./Frameworks/IQKeyboardManagerSwift.framework/Info.plist ... 
+2022-05-31 09:31:33 +0000  768 bytes for ./Frameworks/IQKeyboardManagerSwift.framework/Info.plist
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/Alamofire.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:33 +0000  1798 bytes for ./Frameworks/Alamofire.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:33 +0000  copying file ./Frameworks/Alamofire.framework/Alamofire ... 
+2022-05-31 09:31:33 +0000  8686000 bytes for ./Frameworks/Alamofire.framework/Alamofire
+copying file ./Frameworks/Alamofire.framework/Info.plist ... 
+2022-05-31 09:31:33 +0000  741 bytes for ./Frameworks/Alamofire.framework/Info.plist
+copying file ./Lyber.momd/Lyber.mom ... 
+2022-05-31 09:31:33 +0000  1580 bytes for ./Lyber.momd/Lyber.mom
+copying file ./Lyber.momd/VersionInfo.plist ... 
+2022-05-31 09:31:33 +0000  195 bytes for ./Lyber.momd/VersionInfo.plist
+copying file ./Lyber.momd/Lyber.omo ... 
+2022-05-31 09:31:33 +0000  2680 bytes for ./Lyber.momd/Lyber.omo
+2022-05-31 09:31:33 +0000  copying file ./embedded.mobileprovision ... 
+2022-05-31 09:31:33 +0000  41417 bytes for ./embedded.mobileprovision
+copying file ./AtypText-Regular.ttf ... 
+2022-05-31 09:31:33 +0000  312308 bytes for ./AtypText-Regular.ttf
+2022-05-31 09:31:33 +0000  copying file ./addressXib.nib ... 
+7733 bytes for ./addressXib.nib
+copying file ./AtypText-BoldItalic.ttf ... 
+2022-05-31 09:31:33 +0000  322232 bytes for ./AtypText-BoldItalic.ttf
+2022-05-31 09:31:33 +0000  copying file ./Info.plist ... 
+1811 bytes for ./Info.plist
+copying file ./AtypDisplay-MediumItalic.ttf ... 
+2022-05-31 09:31:33 +0000  319044 bytes for ./AtypDisplay-MediumItalic.ttf
+2022-05-31 09:31:33 +0000  copying file ./Mabry Pro Light.otf ... 
+199908 bytes for ./Mabry Pro Light.otf
+copying file ./PkgInfo ... 
+2022-05-31 09:31:33 +0000  8 bytes for ./PkgInfo
+copying file ./Mabry Pro Italic.otf ... 
+2022-05-31 09:31:33 +0000  202472 bytes for ./Mabry Pro Italic.otf
+2022-05-31 09:31:33 +0000  copying file ./Lyber ... 
+2022-05-31 09:31:33 +0000  2028096 bytes for ./Lyber
+copying file ./AtypText-ThinItalic.ttf ... 
+2022-05-31 09:31:33 +0000  311656 bytes for ./AtypText-ThinItalic.ttf
+2022-05-31 09:31:33 +0000  /usr/bin/ditto exited with 0
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionEmbedProfileStep
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff94eac32e0; bundleID='org.cocoapods.Alamofire', path='<DVTFilePath:0x7ff9689d94e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f616820; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a8d0c0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.Alamofire', executablePath='<DVTFilePath:0x7ff95f4c8770:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework/Alamofire'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff94ea74900; bundleID='org.cocoapods.IQKeyboardManagerSwift', path='<DVTFilePath:0x7ff9689da180:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95b1e06b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95d3e4c80; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.IQKeyboardManagerSwift', executablePath='<DVTFilePath:0x7ff94aa237f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff94d8dc310; bundleID='org.cocoapods.OTPFieldView', path='<DVTFilePath:0x7ff9689dcb30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699be5f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff94ca8f070; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.OTPFieldView', executablePath='<DVTFilePath:0x7ff969abd3f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff94eacfc80; bundleID='org.cocoapods.SwiftEntryKit', path='<DVTFilePath:0x7ff9689df2d0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969ac8ef0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95f624940; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftEntryKit', executablePath='<DVTFilePath:0x7ff969ab1e30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff95f254d20; bundleID='org.cocoapods.SwiftyJSON', path='<DVTFilePath:0x7ff9689e1ac0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f52dce0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9699b8ba0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftyJSON', executablePath='<DVTFilePath:0x7ff969ab23f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff94d8db7e0; bundleID='org.cocoapods.YYCache', path='<DVTFilePath:0x7ff9689e42a0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f62caa0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a974e0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYCache', executablePath='<DVTFilePath:0x7ff95f652080:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework/YYCache'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff94d8dbda0; bundleID='org.cocoapods.YYImage', path='<DVTFilePath:0x7ff9689e69e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f6f4910; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969aacc90; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYImage', executablePath='<DVTFilePath:0x7ff9689eaab0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework/YYImage'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping profile for item: <IDEDistributionItem: 0x7ff94ead0f20; bundleID='org.cocoapods.YYWebImage', path='<DVTFilePath:0x7ff9689e9100:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699a74c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a970d0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYWebImage', executablePath='<DVTFilePath:0x7ff9699a8f80:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionInfoPlistStep
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/Alamofire.framework/Alamofire' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/Alamofire.framework/Alamofire'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYCache.framework/YYCache' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYCache.framework/YYCache'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYImage.framework/YYImage' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYImage.framework/YYImage'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Lyber' '-r' '-keep_cs' '-o' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Lyber'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip exited with 0
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionSymbolsStep
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionAppThinningStep
+2022-05-31 09:31:33 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionArchThinningStep
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/Alamofire.framework/Alamofire' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "Alamofire" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "IQKeyboardManagerSwift" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "OTPFieldView" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "SwiftEntryKit" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "SwiftyJSON" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYCache.framework/YYCache' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "YYCache" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYImage.framework/YYImage' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "YYImage" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "YYWebImage" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Running /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Lyber' '-verify_arch' 'arm64e'
+2022-05-31 09:31:33 +0000  /Applications/Xcode 13.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2022-05-31 09:31:33 +0000  Skipping architecture thinning for item "Lyber" because arch "arm64e" wasn't found
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionODRStep
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionStripXattrsStep
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff94eac32e0; bundleID='org.cocoapods.Alamofire', path='<DVTFilePath:0x7ff9689d94e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f616820; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff94c88cf40; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.Alamofire', executablePath='<DVTFilePath:0x7ff95f4c8770:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework/Alamofire'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff94ea74900; bundleID='org.cocoapods.IQKeyboardManagerSwift', path='<DVTFilePath:0x7ff9689da180:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95b1e06b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9699ae390; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.IQKeyboardManagerSwift', executablePath='<DVTFilePath:0x7ff94aa237f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff94d8dc310; bundleID='org.cocoapods.OTPFieldView', path='<DVTFilePath:0x7ff9689dcb30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699be5f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff968ffddf0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.OTPFieldView', executablePath='<DVTFilePath:0x7ff969abd3f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff94eacfc80; bundleID='org.cocoapods.SwiftEntryKit', path='<DVTFilePath:0x7ff9689df2d0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969ac8ef0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a7d060; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftEntryKit', executablePath='<DVTFilePath:0x7ff969ab1e30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff95f254d20; bundleID='org.cocoapods.SwiftyJSON', path='<DVTFilePath:0x7ff9689e1ac0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f52dce0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a7d060; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftyJSON', executablePath='<DVTFilePath:0x7ff969ab23f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff94d8db7e0; bundleID='org.cocoapods.YYCache', path='<DVTFilePath:0x7ff9689e42a0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f62caa0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a7d060; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYCache', executablePath='<DVTFilePath:0x7ff95f652080:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework/YYCache'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff94d8dbda0; bundleID='org.cocoapods.YYImage', path='<DVTFilePath:0x7ff9689e69e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f6f4910; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a7d060; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYImage', executablePath='<DVTFilePath:0x7ff9689eaab0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework/YYImage'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x7ff94ead0f20; bundleID='org.cocoapods.YYWebImage', path='<DVTFilePath:0x7ff9689e9100:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699a74c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a7d060; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYWebImage', executablePath='<DVTFilePath:0x7ff9699a8f80:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage'>', hardenedRuntime='0'>'>
+2022-05-31 09:31:33 +0000  Running /usr/bin/xattr '-crs' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app'
+2022-05-31 09:31:33 +0000  /usr/bin/xattr exited with 0
+2022-05-31 09:31:33 +0000  Processing step: IDEDistributionCodesignStep
+2022-05-31 09:31:33 +0000  Entitlements for <IDEDistributionItem: 0x7ff94eac32e0; bundleID='org.cocoapods.Alamofire', path='<DVTFilePath:0x7ff9689d94e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f616820; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff94ac7b390; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.Alamofire', executablePath='<DVTFilePath:0x7ff95f4c8770:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework/Alamofire'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:33 +0000  Entitlements for <IDEDistributionItem: 0x7ff94eac32e0; bundleID='org.cocoapods.Alamofire', path='<DVTFilePath:0x7ff9689d94e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f616820; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95d6224b0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.Alamofire', executablePath='<DVTFilePath:0x7ff95f4c8770:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework/Alamofire'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:33 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff94eac32e0; bundleID='org.cocoapods.Alamofire', path='<DVTFilePath:0x7ff9689d94e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f616820; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff968b359b0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.Alamofire', executablePath='<DVTFilePath:0x7ff95f4c8770:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/Alamofire.framework/Alamofire'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~oj5tpa
+2022-05-31 09:31:33 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~oj5tpa' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/Alamofire.framework'
+2022-05-31 09:31:33 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/Alamofire.framework: replacing existing signature
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/Alamofire.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.Alamofire]
+2022-05-31 09:31:34 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94ea74900; bundleID='org.cocoapods.IQKeyboardManagerSwift', path='<DVTFilePath:0x7ff9689da180:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95b1e06b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff94f404360; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.IQKeyboardManagerSwift', executablePath='<DVTFilePath:0x7ff94aa237f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94ea74900; bundleID='org.cocoapods.IQKeyboardManagerSwift', path='<DVTFilePath:0x7ff9689da180:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95b1e06b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9699b5c90; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.IQKeyboardManagerSwift', executablePath='<DVTFilePath:0x7ff94aa237f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:34 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff94ea74900; bundleID='org.cocoapods.IQKeyboardManagerSwift', path='<DVTFilePath:0x7ff9689da180:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95b1e06b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a9e6a0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.IQKeyboardManagerSwift', executablePath='<DVTFilePath:0x7ff94aa237f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~tuRfKN
+2022-05-31 09:31:34 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~tuRfKN' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework'
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework: replacing existing signature
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.IQKeyboardManagerSwift]
+2022-05-31 09:31:34 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94d8dc310; bundleID='org.cocoapods.OTPFieldView', path='<DVTFilePath:0x7ff9689dcb30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699be5f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff94f404360; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.OTPFieldView', executablePath='<DVTFilePath:0x7ff969abd3f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94d8dc310; bundleID='org.cocoapods.OTPFieldView', path='<DVTFilePath:0x7ff9689dcb30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699be5f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9699b5c90; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.OTPFieldView', executablePath='<DVTFilePath:0x7ff969abd3f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:34 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff94d8dc310; bundleID='org.cocoapods.OTPFieldView', path='<DVTFilePath:0x7ff9689dcb30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699be5f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff969a8b070; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.OTPFieldView', executablePath='<DVTFilePath:0x7ff969abd3f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~qaEQo2
+2022-05-31 09:31:34 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~qaEQo2' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/OTPFieldView.framework'
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/OTPFieldView.framework: replacing existing signature
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/OTPFieldView.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.OTPFieldView]
+2022-05-31 09:31:34 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94eacfc80; bundleID='org.cocoapods.SwiftEntryKit', path='<DVTFilePath:0x7ff9689df2d0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969ac8ef0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff94ac7b390; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftEntryKit', executablePath='<DVTFilePath:0x7ff969ab1e30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94eacfc80; bundleID='org.cocoapods.SwiftEntryKit', path='<DVTFilePath:0x7ff9689df2d0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969ac8ef0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9699b5c90; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftEntryKit', executablePath='<DVTFilePath:0x7ff969ab1e30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:34 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff94eacfc80; bundleID='org.cocoapods.SwiftEntryKit', path='<DVTFilePath:0x7ff9689df2d0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969ac8ef0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95f606f80; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftEntryKit', executablePath='<DVTFilePath:0x7ff969ab1e30:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~a2J4cs
+2022-05-31 09:31:34 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~a2J4cs' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftEntryKit.framework'
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftEntryKit.framework: replacing existing signature
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftEntryKit.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.SwiftEntryKit]
+2022-05-31 09:31:34 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff95f254d20; bundleID='org.cocoapods.SwiftyJSON', path='<DVTFilePath:0x7ff9689e1ac0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f52dce0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9594ee1f0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftyJSON', executablePath='<DVTFilePath:0x7ff969ab23f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff95f254d20; bundleID='org.cocoapods.SwiftyJSON', path='<DVTFilePath:0x7ff9689e1ac0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f52dce0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95f606f80; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftyJSON', executablePath='<DVTFilePath:0x7ff969ab23f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:34 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff95f254d20; bundleID='org.cocoapods.SwiftyJSON', path='<DVTFilePath:0x7ff9689e1ac0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f52dce0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff96b55b230; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.SwiftyJSON', executablePath='<DVTFilePath:0x7ff969ab23f0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~JODDv5
+2022-05-31 09:31:34 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~JODDv5' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftyJSON.framework'
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftyJSON.framework: replacing existing signature
+2022-05-31 09:31:34 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftyJSON.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.SwiftyJSON]
+2022-05-31 09:31:34 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94d8db7e0; bundleID='org.cocoapods.YYCache', path='<DVTFilePath:0x7ff9689e42a0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f62caa0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff94ac7b390; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYCache', executablePath='<DVTFilePath:0x7ff95f652080:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework/YYCache'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:34 +0000  Entitlements for <IDEDistributionItem: 0x7ff94d8db7e0; bundleID='org.cocoapods.YYCache', path='<DVTFilePath:0x7ff9689e42a0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f62caa0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9699b5c90; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYCache', executablePath='<DVTFilePath:0x7ff95f652080:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework/YYCache'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:34 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff94d8db7e0; bundleID='org.cocoapods.YYCache', path='<DVTFilePath:0x7ff9689e42a0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f62caa0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95f606f80; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYCache', executablePath='<DVTFilePath:0x7ff95f652080:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYCache.framework/YYCache'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~bzwZ6Q
+2022-05-31 09:31:34 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~bzwZ6Q' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYCache.framework'
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYCache.framework: replacing existing signature
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYCache.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.YYCache]
+2022-05-31 09:31:35 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:35 +0000  Entitlements for <IDEDistributionItem: 0x7ff94d8dbda0; bundleID='org.cocoapods.YYImage', path='<DVTFilePath:0x7ff9689e69e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f6f4910; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9594ee1f0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYImage', executablePath='<DVTFilePath:0x7ff9689eaab0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework/YYImage'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:35 +0000  Entitlements for <IDEDistributionItem: 0x7ff94d8dbda0; bundleID='org.cocoapods.YYImage', path='<DVTFilePath:0x7ff9689e69e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f6f4910; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95d6224b0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYImage', executablePath='<DVTFilePath:0x7ff9689eaab0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework/YYImage'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:35 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff94d8dbda0; bundleID='org.cocoapods.YYImage', path='<DVTFilePath:0x7ff9689e69e0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff95f6f4910; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff958dfb100; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYImage', executablePath='<DVTFilePath:0x7ff9689eaab0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYImage.framework/YYImage'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~Xy1MPe
+2022-05-31 09:31:35 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~Xy1MPe' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYImage.framework'
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYImage.framework: replacing existing signature
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYImage.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.YYImage]
+2022-05-31 09:31:35 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:35 +0000  Entitlements for <IDEDistributionItem: 0x7ff94ead0f20; bundleID='org.cocoapods.YYWebImage', path='<DVTFilePath:0x7ff9689e9100:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699a74c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9594ee1f0; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYWebImage', executablePath='<DVTFilePath:0x7ff9699a8f80:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage'>', hardenedRuntime='0'>'>: {
+}
+2022-05-31 09:31:35 +0000  Entitlements for <IDEDistributionItem: 0x7ff94ead0f20; bundleID='org.cocoapods.YYWebImage', path='<DVTFilePath:0x7ff9689e9100:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699a74c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95f606f80; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYWebImage', executablePath='<DVTFilePath:0x7ff9699a8f80:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage'>', hardenedRuntime='0'>'> are: {
+}
+2022-05-31 09:31:35 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff94ead0f20; bundleID='org.cocoapods.YYWebImage', path='<DVTFilePath:0x7ff9689e9100:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff9699a74c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff96b55b230; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='(null)', teamID='GFSZHD28XL', identifier='org.cocoapods.YYWebImage', executablePath='<DVTFilePath:0x7ff9699a8f80:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~1AoY0a
+2022-05-31 09:31:35 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~1AoY0a' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYWebImage.framework'
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYWebImage.framework: replacing existing signature
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYWebImage.framework: signed bundle with Mach-O universal (arm64) [org.cocoapods.YYWebImage]
+2022-05-31 09:31:35 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:35 +0000  Entitlements for <IDEDistributionItem: 0x7ff95f3f4530; bundleID='com.henceforth.Lyber', path='<DVTFilePath:0x7ff9689bd4c0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969a581b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff9699b5c90; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='{
+    "application-identifier" = "GFSZHD28XL.com.henceforth.Lyber";
+    "com.apple.developer.team-identifier" = GFSZHD28XL;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "GFSZHD28XL.com.henceforth.Lyber"
+    );
+}', teamID='GFSZHD28XL', identifier='com.henceforth.Lyber', executablePath='<DVTFilePath:0x7ff968dd1350:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Lyber'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "GFSZHD28XL.com.henceforth.Lyber";
+    "com.apple.developer.team-identifier" = GFSZHD28XL;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "GFSZHD28XL.com.henceforth.Lyber"
+    );
+}
+2022-05-31 09:31:35 +0000  Entitlements for <IDEDistributionItem: 0x7ff95f3f4530; bundleID='com.henceforth.Lyber', path='<DVTFilePath:0x7ff9689bd4c0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969a581b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95f5acd70; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='{
+    "application-identifier" = "GFSZHD28XL.com.henceforth.Lyber";
+    "com.apple.developer.team-identifier" = GFSZHD28XL;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "GFSZHD28XL.com.henceforth.Lyber"
+    );
+}', teamID='GFSZHD28XL', identifier='com.henceforth.Lyber', executablePath='<DVTFilePath:0x7ff968dd1350:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Lyber'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "GFSZHD28XL.com.henceforth.Lyber";
+    "com.apple.developer.team-identifier" = GFSZHD28XL;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "GFSZHD28XL.com.henceforth.Lyber"
+    );
+}
+2022-05-31 09:31:35 +0000  Writing entitlements for <IDEDistributionItem: 0x7ff95f3f4530; bundleID='com.henceforth.Lyber', path='<DVTFilePath:0x7ff9689bd4c0:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x7ff969a581b0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7ff95f5acb40; name='Apple Development: GAURAV NEGI (2D34MFT467)', hash='6A658059C3D1915FB64A8850C7D2D21591EA8B18', serialNumber='116C1AD1D10E19B62859B70225CDFD1F', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2022-03-25 07:08:47 +0000''>', entitlements='{
+    "application-identifier" = "GFSZHD28XL.com.henceforth.Lyber";
+    "com.apple.developer.team-identifier" = GFSZHD28XL;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "GFSZHD28XL.com.henceforth.Lyber"
+    );
+}', teamID='GFSZHD28XL', identifier='com.henceforth.Lyber', executablePath='<DVTFilePath:0x7ff968dd1350:'/Users/mac7/Library/Developer/Xcode/Archives/2022-05-31/Lyber 31-05-22, 3.00 PM.xcarchive/Products/Applications/Lyber.app/Lyber'>', hardenedRuntime='0'>'> to: /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~8db8po
+2022-05-31 09:31:35 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '6A658059C3D1915FB64A8850C7D2D21591EA8B18' '--entitlements' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/entitlements~~~8db8po' '--preserve-metadata=identifier,flags,runtime' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app'
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app: replacing existing signature
+2022-05-31 09:31:35 +0000  /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app: signed app bundle with Mach-O thin (arm64) [com.henceforth.Lyber]
+2022-05-31 09:31:35 +0000  /usr/bin/codesign exited with 0
+2022-05-31 09:31:35 +0000  Processing step: IDEDistributionZipODRItemStep
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2022-05-31 09:31:35 +0000  Processing step: IDEDistributionCreateIPAStep
+2022-05-31 09:31:35 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root' '/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Packages/Lyber.ipa'
+2022-05-31 09:31:35 +0000  >>> Copying /var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root 
+2022-05-31 09:31:35 +0000  copying file ./Payload/Lyber.app/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:35 +0000  24807 bytes for ./Payload/Lyber.app/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/AtypText-SemiboldItalic.ttf ... 
+2022-05-31 09:31:35 +0000  319056 bytes for ./Payload/Lyber.app/AtypText-SemiboldItalic.ttf
+copying file ./Payload/Lyber.app/AtypText-Thin.ttf ... 
+2022-05-31 09:31:35 +0000  302600 bytes for ./Payload/Lyber.app/AtypText-Thin.ttf
+copying file ./Payload/Lyber.app/Mabry Pro Bold.otf ... 
+2022-05-31 09:31:35 +0000  205072 bytes for ./Payload/Lyber.app/Mabry Pro Bold.otf
+copying file ./Payload/Lyber.app/AtypDisplay-Regular.ttf ... 
+2022-05-31 09:31:35 +0000  313420 bytes for ./Payload/Lyber.app/AtypDisplay-Regular.ttf
+copying file ./Payload/Lyber.app/AtypText-LightItalic.ttf ... 
+2022-05-31 09:31:36 +0000  313672 bytes for ./Payload/Lyber.app/AtypText-LightItalic.ttf
+copying file ./Payload/Lyber.app/AtypDisplay-Italic.ttf ... 
+2022-05-31 09:31:36 +0000  320764 bytes for ./Payload/Lyber.app/AtypDisplay-Italic.ttf
+copying file ./Payload/Lyber.app/Mabry Pro Black.otf ... 
+2022-05-31 09:31:36 +0000  202612 bytes for ./Payload/Lyber.app/Mabry Pro Black.otf
+copying file ./Payload/Lyber.app/Mabry Pro Medium Italic.otf ... 
+2022-05-31 09:31:36 +0000  200496 bytes for ./Payload/Lyber.app/Mabry Pro Medium Italic.otf
+copying file ./Payload/Lyber.app/AtypDisplay-ThinItalic.ttf ... 
+2022-05-31 09:31:36 +0000  311932 bytes for ./Payload/Lyber.app/AtypDisplay-ThinItalic.ttf
+copying file ./Payload/Lyber.app/AtypText-Light.ttf ... 
+2022-05-31 09:31:36 +0000  306392 bytes for ./Payload/Lyber.app/AtypText-Light.ttf
+copying file ./Payload/Lyber.app/EmailAddressXib.nib ... 
+2022-05-31 09:31:36 +0000  5174 bytes for ./Payload/Lyber.app/EmailAddressXib.nib
+copying file ./Payload/Lyber.app/Mabry Pro Medium.otf ... 
+2022-05-31 09:31:36 +0000  201656 bytes for ./Payload/Lyber.app/Mabry Pro Medium.otf
+copying file ./Payload/Lyber.app/AtypRegularVariable.ttf ... 
+2022-05-31 09:31:36 +0000  223240 bytes for ./Payload/Lyber.app/AtypRegularVariable.ttf
+copying file ./Payload/Lyber.app/VerificationEmailXib.nib ... 
+2022-05-31 09:31:36 +0000  6683 bytes for ./Payload/Lyber.app/VerificationEmailXib.nib
+copying file ./Payload/Lyber.app/AtypDisplay-BoldItalic.ttf ... 
+2022-05-31 09:31:36 +0000  323668 bytes for ./Payload/Lyber.app/AtypDisplay-BoldItalic.ttf
+copying file ./Payload/Lyber.app/AtypText-Bold.ttf ... 
+2022-05-31 09:31:36 +0000  314412 bytes for ./Payload/Lyber.app/AtypText-Bold.ttf
+copying file ./Payload/Lyber.app/AtypDisplay-LightItalic.ttf ... 
+2022-05-31 09:31:36 +0000  314356 bytes for ./Payload/Lyber.app/AtypDisplay-LightItalic.ttf
+copying file ./Payload/Lyber.app/Mabry Pro Light Italic.otf ... 
+2022-05-31 09:31:36 +0000  199180 bytes for ./Payload/Lyber.app/Mabry Pro Light Italic.otf
+copying file ./Payload/Lyber.app/AtypDisplay-Thin.ttf ... 
+2022-05-31 09:31:36 +0000  303572 bytes for ./Payload/Lyber.app/AtypDisplay-Thin.ttf
+copying file ./Payload/Lyber.app/AtypDisplay-SemiboldItalic.ttf ... 
+2022-05-31 09:31:36 +0000  319728 bytes for ./Payload/Lyber.app/AtypDisplay-SemiboldItalic.ttf
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Portfolio.storyboardc/ou3-um-Tdx-view-xZK-zQ-RT4.nib ... 
+2022-05-31 09:31:36 +0000  10452 bytes for ./Payload/Lyber.app/Portfolio.storyboardc/ou3-um-Tdx-view-xZK-zQ-RT4.nib
+copying file ./Payload/Lyber.app/Portfolio.storyboardc/InvestMethodBottomVC.nib ... 
+2022-05-31 09:31:36 +0000  1082 bytes for ./Payload/Lyber.app/Portfolio.storyboardc/InvestMethodBottomVC.nib
+copying file ./Payload/Lyber.app/Portfolio.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib ... 
+2022-05-31 09:31:36 +0000  15630 bytes for ./Payload/Lyber.app/Portfolio.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib
+copying file ./Payload/Lyber.app/Portfolio.storyboardc/e9E-lt-i8j-view-fdF-bP-RZg.nib ... 
+2022-05-31 09:31:36 +0000  8398 bytes for ./Payload/Lyber.app/Portfolio.storyboardc/e9E-lt-i8j-view-fdF-bP-RZg.nib
+copying file ./Payload/Lyber.app/Portfolio.storyboardc/checkAccountCompletedVC.nib ... 
+2022-05-31 09:31:36 +0000  1112 bytes for ./Payload/Lyber.app/Portfolio.storyboardc/checkAccountCompletedVC.nib
+copying file ./Payload/Lyber.app/Portfolio.storyboardc/PersonalDataVC.nib ... 
+2022-05-31 09:31:36 +0000  1016 bytes for ./Payload/Lyber.app/Portfolio.storyboardc/PersonalDataVC.nib
+copying file ./Payload/Lyber.app/Portfolio.storyboardc/Info.plist ... 
+2022-05-31 09:31:36 +0000  255 bytes for ./Payload/Lyber.app/Portfolio.storyboardc/Info.plist
+copying file ./Payload/Lyber.app/AtypDisplay-Light.ttf ... 
+2022-05-31 09:31:36 +0000  307384 bytes for ./Payload/Lyber.app/AtypDisplay-Light.ttf
+copying file ./Payload/Lyber.app/AtypText-Medium.ttf ... 
+2022-05-31 09:31:36 +0000  313052 bytes for ./Payload/Lyber.app/AtypText-Medium.ttf
+copying file ./Payload/Lyber.app/AtypDisplay-Bold.ttf ... 
+2022-05-31 09:31:36 +0000  317128 bytes for ./Payload/Lyber.app/AtypDisplay-Bold.ttf
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/VgN-ie-SCA-view-DU3-nU-wJT.nib ... 
+2022-05-31 09:31:36 +0000  44739 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/VgN-ie-SCA-view-DU3-nU-wJT.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/EducationStrategyVC.nib ... 
+2022-05-31 09:31:36 +0000  1026 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/EducationStrategyVC.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/7rI-fk-bTS-view-zsh-1G-Dv9.nib ... 
+2022-05-31 09:31:36 +0000  11604 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/7rI-fk-bTS-view-zsh-1G-Dv9.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/strategyVC.nib ... 
+2022-05-31 09:31:36 +0000  1008 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/strategyVC.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib ... 
+2022-05-31 09:31:36 +0000  5889 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/EnterPhoneVC.nib ... 
+2022-05-31 09:31:36 +0000  1090 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/EnterPhoneVC.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/LQv-A3-jiR-view-L3x-gl-cSZ.nib ... 
+2022-05-31 09:31:36 +0000  7253 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/LQv-A3-jiR-view-L3x-gl-cSZ.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/Info.plist ... 
+2022-05-31 09:31:36 +0000  417 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/Info.plist
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/LoginVC.nib ... 
+2022-05-31 09:31:36 +0000  1079 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/LoginVC.nib
+copying file ./Payload/Lyber.app/Base.lproj/Main.storyboardc/UINavigationController-pUK-Bp-7Fg.nib ... 
+2022-05-31 09:31:36 +0000  1759 bytes for ./Payload/Lyber.app/Base.lproj/Main.storyboardc/UINavigationController-pUK-Bp-7Fg.nib
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib ... 
+2022-05-31 09:31:36 +0000  2757 bytes for ./Payload/Lyber.app/Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib
+copying file ./Payload/Lyber.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib ... 
+2022-05-31 09:31:36 +0000  896 bytes for ./Payload/Lyber.app/Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib
+copying file ./Payload/Lyber.app/Base.lproj/LaunchScreen.storyboardc/Info.plist ... 
+258 bytes for ./Payload/Lyber.app/Base.lproj/LaunchScreen.storyboardc/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/AtypDisplay-Semibold.ttf ... 
+2022-05-31 09:31:36 +0000  314280 bytes for ./Payload/Lyber.app/AtypDisplay-Semibold.ttf
+copying file ./Payload/Lyber.app/AtypText-Semibold.ttf ... 
+2022-05-31 09:31:36 +0000  313148 bytes for ./Payload/Lyber.app/AtypText-Semibold.ttf
+copying file ./Payload/Lyber.app/Assets.car ... 
+2022-05-31 09:31:36 +0000  4525904 bytes for ./Payload/Lyber.app/Assets.car
+copying file ./Payload/Lyber.app/Mabry Pro.otf ... 
+2022-05-31 09:31:36 +0000  203248 bytes for ./Payload/Lyber.app/Mabry Pro.otf
+copying file ./Payload/Lyber.app/Mabry Pro Bold Italic.otf ... 
+2022-05-31 09:31:36 +0000  204852 bytes for ./Payload/Lyber.app/Mabry Pro Bold Italic.otf
+copying file ./Payload/Lyber.app/AtypText-MediumItalic.ttf ... 
+2022-05-31 09:31:36 +0000  318452 bytes for ./Payload/Lyber.app/AtypText-MediumItalic.ttf
+copying file ./Payload/Lyber.app/AtypText-Italic.ttf ... 
+2022-05-31 09:31:36 +0000  319608 bytes for ./Payload/Lyber.app/AtypText-Italic.ttf
+copying file ./Payload/Lyber.app/personalDataXib.nib ... 
+2022-05-31 09:31:36 +0000  8606 bytes for ./Payload/Lyber.app/personalDataXib.nib
+copying file ./Payload/Lyber.app/AtypDisplay-Medium.ttf ... 
+2022-05-31 09:31:36 +0000  312528 bytes for ./Payload/Lyber.app/AtypDisplay-Medium.ttf
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/InvestmentExperienceXib.nib ... 
+2022-05-31 09:31:36 +0000  11381 bytes for ./Payload/Lyber.app/InvestmentExperienceXib.nib
+copying file ./Payload/Lyber.app/Mabry Pro Black Italic.otf ... 
+2022-05-31 09:31:36 +0000  201924 bytes for ./Payload/Lyber.app/Mabry Pro Black Italic.otf
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:36 +0000  1798 bytes for ./Payload/Lyber.app/Frameworks/SwiftyJSON.framework/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON ... 
+2022-05-31 09:31:36 +0000  361760 bytes for ./Payload/Lyber.app/Frameworks/SwiftyJSON.framework/SwiftyJSON
+copying file ./Payload/Lyber.app/Frameworks/SwiftyJSON.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  742 bytes for ./Payload/Lyber.app/Frameworks/SwiftyJSON.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/YYWebImage.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:36 +0000  1798 bytes for ./Payload/Lyber.app/Frameworks/YYWebImage.framework/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage ... 
+2022-05-31 09:31:36 +0000  314640 bytes for ./Payload/Lyber.app/Frameworks/YYWebImage.framework/YYWebImage
+copying file ./Payload/Lyber.app/Frameworks/YYWebImage.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  742 bytes for ./Payload/Lyber.app/Frameworks/YYWebImage.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/YYCache.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:36 +0000  1798 bytes for ./Payload/Lyber.app/Frameworks/YYCache.framework/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/Frameworks/YYCache.framework/YYCache ... 
+2022-05-31 09:31:36 +0000  216496 bytes for ./Payload/Lyber.app/Frameworks/YYCache.framework/YYCache
+copying file ./Payload/Lyber.app/Frameworks/YYCache.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  736 bytes for ./Payload/Lyber.app/Frameworks/YYCache.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:36 +0000  1798 bytes for ./Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit ... 
+2022-05-31 09:31:36 +0000  1415568 bytes for ./Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/SwiftEntryKit
+copying file ./Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  748 bytes for ./Payload/Lyber.app/Frameworks/SwiftEntryKit.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/OTPFieldView.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:36 +0000  1798 bytes for ./Payload/Lyber.app/Frameworks/OTPFieldView.framework/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView ... 
+2022-05-31 09:31:36 +0000  179376 bytes for ./Payload/Lyber.app/Frameworks/OTPFieldView.framework/OTPFieldView
+copying file ./Payload/Lyber.app/Frameworks/OTPFieldView.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  747 bytes for ./Payload/Lyber.app/Frameworks/OTPFieldView.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/YYImage.framework/_CodeSignature/CodeResources ... 
+1798 bytes for ./Payload/Lyber.app/Frameworks/YYImage.framework/_CodeSignature/CodeResources
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/YYImage.framework/YYImage ... 
+2022-05-31 09:31:36 +0000  264960 bytes for ./Payload/Lyber.app/Frameworks/YYImage.framework/YYImage
+copying file ./Payload/Lyber.app/Frameworks/YYImage.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  736 bytes for ./Payload/Lyber.app/Frameworks/YYImage.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:36 +0000  1798 bytes for ./Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift ... 
+2022-05-31 09:31:36 +0000  866624 bytes for ./Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/IQKeyboardManagerSwift
+copying file ./Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  768 bytes for ./Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Frameworks/Alamofire.framework/_CodeSignature/CodeResources ... 
+2022-05-31 09:31:36 +0000  1798 bytes for ./Payload/Lyber.app/Frameworks/Alamofire.framework/_CodeSignature/CodeResources
+copying file ./Payload/Lyber.app/Frameworks/Alamofire.framework/Alamofire ... 
+2022-05-31 09:31:36 +0000  3011840 bytes for ./Payload/Lyber.app/Frameworks/Alamofire.framework/Alamofire
+copying file ./Payload/Lyber.app/Frameworks/Alamofire.framework/Info.plist ... 
+2022-05-31 09:31:36 +0000  741 bytes for ./Payload/Lyber.app/Frameworks/Alamofire.framework/Info.plist
+2022-05-31 09:31:36 +0000  copying file ./Payload/Lyber.app/Lyber.momd/Lyber.mom ... 
+2022-05-31 09:31:36 +0000  1580 bytes for ./Payload/Lyber.app/Lyber.momd/Lyber.mom
+copying file ./Payload/Lyber.app/Lyber.momd/VersionInfo.plist ... 
+2022-05-31 09:31:36 +0000  195 bytes for ./Payload/Lyber.app/Lyber.momd/VersionInfo.plist
+copying file ./Payload/Lyber.app/Lyber.momd/Lyber.omo ... 
+2022-05-31 09:31:36 +0000  2680 bytes for ./Payload/Lyber.app/Lyber.momd/Lyber.omo
+copying file ./Payload/Lyber.app/embedded.mobileprovision ... 
+2022-05-31 09:31:36 +0000  41417 bytes for ./Payload/Lyber.app/embedded.mobileprovision
+copying file ./Payload/Lyber.app/AtypText-Regular.ttf ... 
+2022-05-31 09:31:36 +0000  312308 bytes for ./Payload/Lyber.app/AtypText-Regular.ttf
+copying file ./Payload/Lyber.app/addressXib.nib ... 
+2022-05-31 09:31:36 +0000  7733 bytes for ./Payload/Lyber.app/addressXib.nib
+copying file ./Payload/Lyber.app/AtypText-BoldItalic.ttf ... 
+2022-05-31 09:31:36 +0000  322232 bytes for ./Payload/Lyber.app/AtypText-BoldItalic.ttf
+copying file ./Payload/Lyber.app/Info.plist ... 
+2022-05-31 09:31:36 +0000  1811 bytes for ./Payload/Lyber.app/Info.plist
+copying file ./Payload/Lyber.app/AtypDisplay-MediumItalic.ttf ... 
+2022-05-31 09:31:36 +0000  319044 bytes for ./Payload/Lyber.app/AtypDisplay-MediumItalic.ttf
+copying file ./Payload/Lyber.app/Mabry Pro Light.otf ... 
+2022-05-31 09:31:36 +0000  199908 bytes for ./Payload/Lyber.app/Mabry Pro Light.otf
+copying file ./Payload/Lyber.app/PkgInfo ... 
+2022-05-31 09:31:36 +0000  8 bytes for ./Payload/Lyber.app/PkgInfo
+copying file ./Payload/Lyber.app/Mabry Pro Italic.otf ... 
+2022-05-31 09:31:36 +0000  202472 bytes for ./Payload/Lyber.app/Mabry Pro Italic.otf
+copying file ./Payload/Lyber.app/Lyber ... 
+2022-05-31 09:31:36 +0000  360384 bytes for ./Payload/Lyber.app/Lyber
+copying file ./Payload/Lyber.app/AtypText-ThinItalic.ttf ... 
+2022-05-31 09:31:36 +0000  311656 bytes for ./Payload/Lyber.app/AtypText-ThinItalic.ttf
+2022-05-31 09:31:36 +0000  /usr/bin/ditto exited with 0
+2022-05-31 09:31:36 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2022-05-31 09:31:36 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2022-05-31 09:31:36 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff9688dc6c0:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftyJSON.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff95d2ad7c0:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/IQKeyboardManagerSwift.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff95d25d190:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/SwiftEntryKit.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff958bbe660:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYCache.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff95f4a8d30:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYImage.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff95f1997e0:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/YYWebImage.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff95f490ad0:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/Alamofire.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff95f4a81b0:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app/Frameworks/OTPFieldView.framework'>
+2022-05-31 09:31:36 +0000  IDEDistributionItem init <DVTFilePath:0x7ff958d0acd0:'/var/folders/3m/zn27315x33sfd6l7s8_sgn800000gn/T/XcodeDistPipeline.~~~McBIRc/Root/Payload/Lyber.app'>
+2022-05-31 09:31:36 +0000  Processing step: IDEDistributionCreateManifestStep

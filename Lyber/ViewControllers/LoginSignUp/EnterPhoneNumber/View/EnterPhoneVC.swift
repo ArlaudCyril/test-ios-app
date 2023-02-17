@@ -1,0 +1,456 @@
+//
+//  EnterPhoneVC.swift
+//  Lyber
+//
+//  Created by sonam's Mac on 26/05/22.
+//
+
+import UIKit
+import IQKeyboardManagerSwift
+import JWTDecode
+import BigNum
+import CryptoKit
+
+class EnterPhoneVC: UIViewController {
+    //MARK: - Variables
+    var verifyPin = false
+    var enterPhoneVM = EnterPhoneVM()
+    var phoneNumber = String() ,password = String(), countryCode = "+33", enteredPin = String(),isLogin : Bool = false
+    var currentPage : Int? = 0
+    var indicatorView : [UIView]!
+    var indicatorViewsWidth : [NSLayoutConstraint]!
+    
+    //MARK: - IB OUTLETS
+    @IBOutlet var headerVw: HeaderView!
+    //    @IBOutlet var backBtn: UIButton!
+    @IBOutlet var collView: UICollectionView!
+    @IBOutlet var nextBtnView: UIView!
+    @IBOutlet var nextButton: PurpleButton!
+    @IBOutlet var stackViewBottomConst: NSLayoutConstraint!
+    @IBOutlet var collViewBtmconst: NSLayoutConstraint!
+    @IBOutlet var viewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var viewTopConst: NSLayoutConstraint!
+    
+    @IBOutlet var indicator1: UIView!
+    @IBOutlet var indicator2: UIView!
+    @IBOutlet var indicator3: UIView!
+    @IBOutlet var indicator4: UIView!
+    @IBOutlet var indicator5: UIView!
+    @IBOutlet var indicatorViewsWidth1: NSLayoutConstraint!
+    @IBOutlet var indicatorViewsWidth2: NSLayoutConstraint!
+    @IBOutlet var indicatorViewsWidth3: NSLayoutConstraint!
+    @IBOutlet var indicatorViewsWidth4: NSLayoutConstraint!
+    @IBOutlet var indicatorViewsWidth5: NSLayoutConstraint!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        
+        do {
+            var token = try decode(jwt: userData.shared.accessToken)
+        } catch {
+            print(error)
+        }
+        
+        setUpUI()
+        if verifyPin == true{
+            self.headerVw.backBtn.isHidden = true
+            DispatchQueue.main.async {
+                let indexPath = NSIndexPath(item: 3, section: 0)
+                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+            }
+            
+        }
+        if userData.shared.is_push_enabled == 0 && userData.shared.logInPinSet != 0{
+            DispatchQueue.main.async {
+                let indexPath = NSIndexPath(item: 4, section: 0)
+                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+            }
+        }else if userData.shared.isPhoneVerified == true{
+            DispatchQueue.main.async {
+                let indexPath = NSIndexPath(item: 2, section: 0)
+                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+//MARK: - SetUpUI
+extension EnterPhoneVC{
+    func setUpUI(){
+        //        self.hideKeyboardWhenTappedAround()
+        self.headerVw.headerLbl.isHidden = true
+        self.collView.delegate = self
+        self.collView.dataSource = self
+        indicatorView = [indicator1,indicator2,indicator3,indicator4,indicator5]
+        indicatorViewsWidth = [indicatorViewsWidth1,indicatorViewsWidth2,indicatorViewsWidth3,indicatorViewsWidth4,indicatorViewsWidth5]
+        self.collView.layer.cornerRadius = 32
+        self.collView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        self.setIndicatorViews()
+        self.nextButton.setTitle(L10n.Next.description, for: .normal)
+        self.headerVw.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
+    }
+}
+
+//MARK: - TABLE VIEW DELEGATE AND DATA SOURCE METHODS
+extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.item == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enterNumberCVC", for: indexPath as IndexPath) as! enterNumberCVC
+            cell.controller = self
+            cell.setUpUI()
+            
+            if currentPage == 0{
+                DispatchQueue.main.async {
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+                }
+            }else{
+                cell.endEditing(true)
+            }
+            return cell
+        }else if indexPath.item == 1{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OtpCVC", for: indexPath as IndexPath) as! OtpCVC
+            cell.setUpUI(countryCode: self.countryCode, phoneNumber: self.phoneNumber)
+            cell.controller = self
+            cell.otpFieldDelegate = {[]otp in
+                self.OtpVerified(otpValue : otp)
+            }
+            if currentPage == 1{
+                cell.timer.invalidate()
+                cell.hitTimer()
+                DispatchQueue.main.async {
+                    cell.Tf1.becomeFirstResponder()
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+                }
+            }else{
+                cell.timer.invalidate()
+                cell.endEditing(true)
+            }
+            return cell
+        }else if indexPath.item == 2{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "createPinCVC", for: indexPath as IndexPath) as! createPinCVC
+            cell.setUpUI()
+            cell.configureWithData()
+            cell.pinCreatedDelegate = {[]pin in
+                self.enteredPin = pin
+                self.GotoNextIndex()
+            }
+            if currentPage == 2{
+                DispatchQueue.main.async {
+                    cell.pinTF1.becomeFirstResponder()
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                }
+            }else{
+                cell.endEditing(true)
+            }
+            return cell
+        }else if indexPath.item == 3{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmPinCVC", for: indexPath as IndexPath) as! ConfirmPinCVC
+            cell.setUpUI(verifyPin : verifyPin)
+            cell.pinConfirmDelegate = {[]pin in
+                if self.verifyPin == true{
+                    if userData.shared.logInPinSet != Int(pin){
+                        CommonFunction.toster(Constants.AlertMessages.enterCorrectPin)
+                    }else{
+                        if userData.shared.isIdentityVerified == true{
+                            let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                            let navController = UINavigationController(rootViewController: vc)
+                            navController.modalPresentationStyle = .fullScreen
+                            navController.navigationBar.isHidden = true
+                            self.present(navController, animated: true, completion: nil)
+                        }else if userData.shared.isAccountCreated == true{
+                            let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                            let navController = UINavigationController(rootViewController: vc)
+                            navController.modalPresentationStyle = .fullScreen
+                            navController.navigationBar.isHidden = true
+                            self.present(navController, animated: true, completion: nil)
+                        }
+                    }
+                }else{
+                    if self.enteredPin != pin{
+                        CommonFunction.toster(Constants.AlertMessages.enterCorrectPin)
+                    }else{
+                        self.setLoginPin(enteredPin: pin)
+                    }
+                }
+            }
+            
+            if currentPage == 3{
+                DispatchQueue.main.async {
+                    cell.pinTF1.becomeFirstResponder()
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                }
+            }else{
+                cell.endEditing(true)
+            }
+            return cell
+        }else if indexPath.item == 4{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enableNotificationCVC", for: indexPath as IndexPath) as! enableNotificationCVC
+            cell.setUpUI()
+            cell.delegate = self
+            //            cell.enableNotificationCallBack = {[] in
+            //
+            //            }
+            return cell
+        }else{
+            return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collView.layer.bounds.width, height: collView.layer.bounds.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
+        return 0
+    }
+    
+}
+
+//MARK: - objective functions
+extension EnterPhoneVC{
+    @objc func backBtnAct(){
+        if self.currentPage ?? 0 == 0 || self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
+            userData.shared.deleteData()
+            CommonFunction.logout()
+            //            self.navigationController?.popToRootViewController(animated: true)
+            //            self.dismiss(animated: true, completion: nil)
+            //            self.navigationController?.popViewController(animated: true)
+        }else{
+            let indexPath = NSIndexPath(item: (currentPage ?? 0) - 1, section: 0)
+            self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+        }
+    }
+    
+    @objc func nextBtnAct(){
+        self.checkValidationOnPhoneNumber()
+        //        collView.reloadData()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]as? NSValue)?.cgRectValue{
+//                     self.stackViewBottomConst.constant = keyboardSize.height + 12
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        stackViewBottomConst.constant = 12
+    }
+}
+
+//MARK: - SCROLLVIEW DELEGATES FUNTION
+extension EnterPhoneVC{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let value = (scrollView.contentOffset.x + scrollView.frame.width/2)/scrollView.frame.width
+        if Int(value) != self.currentPage{
+            self.currentPage = (Int(value))
+            self.setIndicatorViews()
+        }
+        collView.reloadData()
+    }
+}
+
+//MARK: - OTHER FUNCTION
+extension EnterPhoneVC{
+    
+    func GotoNextIndex(){
+        let indexPath = NSIndexPath(item: (self.currentPage ?? 0) + 1, section: 0)
+        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+    }
+    
+    func setIndicatorViews(){
+        for (num,vw) in indicatorView.enumerated(){
+            vw.layer.cornerRadius = 2
+            if num == self.currentPage{
+                vw.backgroundColor = UIColor.PurpleColor
+                self.indicatorViewsWidth[num].constant = 32
+            }else{
+                vw.backgroundColor = UIColor.PurpleColor.withAlphaComponent(0.2)
+                self.indicatorViewsWidth[num].constant = 4
+            }
+            if self.currentPage ?? 0 >= 1{
+                if self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
+                    self.headerVw.backBtn.setImage(UIImage(), for: .normal)
+                    CommonUI.setUpButton(btn: self.headerVw.backBtn, text: L10n.LogOut.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
+                    self.headerVw.backBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.LogOut.description), for: .normal)
+                }else{
+                    self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
+                    self.headerVw.backBtn.setAttributedTitle(CommonFunction.removeUnderlineString(str: ""), for: .normal)
+                    self.headerVw.backBtn.setTitle("", for: .normal)
+                }
+                
+                self.nextBtnView.isHidden = true
+            }else{
+                self.headerVw.backBtn.setImage(Assets.close.image(), for: .normal)
+                self.nextBtnView.isHidden = false
+            }
+        }
+    }
+    
+    func checkValidationOnPhoneNumber(){
+        if phoneNumber == ""{
+            CommonFunction.toster(Constants.AlertMessages.enterPhoneNumber)
+        }else if phoneNumber.count < 7 {
+            CommonFunction.toster(Constants.AlertMessages.enterValidPhoneNumber)
+        }else{
+            if self.isLogin == false{
+                self.nextButton.isUserInteractionEnabled = false
+                self.nextButton.showLoading()
+                self.enterPhoneVM.SignUpApi(phoneNumber: self.phoneNumber, countryCode: self.countryCode, completion: { [weak self] response in
+                    self?.nextButton.hideLoading()
+                    self?.nextButton.isUserInteractionEnabled = true
+                    if let response = response{
+                        userData.shared.accessToken = response.data?.token ?? ""
+                        userData.shared.phone_no = Int(self?.phoneNumber ?? "") ?? 0
+                        userData.shared.time = Date()
+                        userData.shared.dataSave()
+                        self?.nextBtnView.isHidden = true
+                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 1, section: 0)
+                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+                    }
+                })
+            }else if self.isLogin == true{
+                if self.password == ""{
+                    CommonFunction.toster(Constants.AlertMessages.enterPassword)
+                }else{
+                    self.nextButton.isUserInteractionEnabled = false
+                    self.nextButton.showLoading()
+                    self.enterPhoneVM.logInWithPhoneChallengeApi(phoneNumber: self.phoneNumber, countryCode: self.countryCode, completion: { [weak self] response in
+                        self?.nextButton.hideLoading()
+                        self?.nextButton.isUserInteractionEnabled = true
+                        if let response = response{
+                            userData.shared.accessToken = response.data?.token ?? ""
+                            userData.shared.dataSave()
+                            let serverPublicKey = BigNum.init(response.data?.b ?? "")!
+                            let salt = BigNum.init(response.data?.salt ?? "")!
+                            let configuration = SRPConfiguration<SHA512>(.N2048)
+                            let client = SRPClient(configuration: configuration)
+                            let clientKeys = client.generateKeys()
+                            let spk = SRPKey(serverPublicKey)
+                            
+                            do{
+                                let clientSharedSecret = try client.calculateSharedSecret(username: self?.phoneNumber ?? "", password: self?.password ?? "", salt: salt.bytes, clientKeys: clientKeys, serverPublicKey: spk)
+                                let clientProof = client.calculateSimpleClientProof(clientPublicKey: clientKeys.public, serverPublicKey: spk, sharedSecret: clientSharedSecret)
+                                EnterPhoneVM().logInApi(A: BigNum(bytes: clientKeys.public.bytes).dec, M1: BigNum(bytes: clientProof).dec, method: "srp", completion: {[weak self] response in
+                                    if let response = response{
+                                        userData.shared.is_push_enabled = 1
+                                        userData.shared.isIdentityVerified = true
+                                        userData.shared.accessToken = response.data?.accessToken ?? ""
+                                        userData.shared.refreshToken = response.data?.refreshToken ?? ""
+                                        userData.shared.time = Date()
+                                        userData.shared.dataSave()
+                                        self?.nextBtnView.isHidden = true
+                                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 2, section: 0)
+                                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+                                        //                                    let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                                        //                                    self?.navigationController?.pushViewController(vc, animated: true)
+                                    }
+                                })
+                            }catch{
+                                print("error")
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    func OtpVerified(otpValue : String){
+        enterPhoneVM.enterOTPApi(otp: otpValue, completion: {[weak self]response in
+            if let response = response{
+                print(response)
+                userData.shared.isPhoneVerified = true
+                userData.shared.dataSave()
+                
+                if userData.shared.logInPinSet == 0{
+                    self?.GotoNextIndex()
+                }else {
+                    if userData.shared.isIdentityVerified == true{
+                        let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                        let nav = UINavigationController(rootViewController: vc)
+                        nav.modalPresentationStyle = .fullScreen
+                        nav.navigationBar.isHidden = true
+                        self?.present(nav, animated: true, completion: nil)
+                    }else if userData.shared.is_push_enabled == 1 || userData.shared.is_push_enabled == 2{
+                        userData.shared.isAccountCreated = true
+                        userData.shared.dataSave()
+                        let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 3, section: 0)
+                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+                    }
+                }
+            }
+        })
+    }
+    
+    
+    func setLoginPin(enteredPin : String){
+        //        enterPhoneVM.setLoginPinApi(Pin: enteredPin, completion: {[weak self]response in
+        //            if let response = response{
+        //                print(response)
+        userData.shared.logInPinSet = Int(enteredPin) ?? 0
+        userData.shared.dataSave()
+        
+        if isLogin{
+            let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            self.showActiveFaceIdAlert()
+        }
+        //            }
+        //        })
+    }
+    
+    func showActiveFaceIdAlert(){
+        let alert = UIAlertController(title: L10n.ActivateFaceID.description, message: L10n.AccessLyberFaceID.description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: L10n.Decline.description, style: .default, handler: {(action : UIAlertAction) in
+            //            self.enterPhoneVM.enableFaceIdApi(enable: 0, completion: {[]response in
+            //                if let response = response{
+            //                    print(response)
+            self.GotoNextIndex()
+            //                }
+            //            })
+        }))
+        alert.addAction(UIAlertAction(title: L10n.Activate.description, style: .default, handler: {_ in
+            //            self.enterPhoneVM.enableFaceIdApi(enable: 1, completion: {[]response in
+            //                if let response = response{
+            //                    print(response)
+            self.GotoNextIndex()
+            //                }
+            //            })
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+}

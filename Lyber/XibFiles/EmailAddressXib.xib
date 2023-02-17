@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="emailAddressCVC" id="iN0-l3-epB" customClass="emailAddressCVC" customModule="Lyber" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="217"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-aY-Bwx">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="197"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAi-uz-p76">
+                            <rect key="frame" x="24" y="0.0" width="366" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UH6-jq-gDJ">
+                            <rect key="frame" x="24" y="24.5" width="366" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Uft-Qs-3h9">
+                            <rect key="frame" x="24" y="69" width="366" height="128"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atV-p6-qO5">
+                                    <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Yy-cB-as8">
+                                            <rect key="frame" x="12" y="0.0" width="342" height="56"/>
+                                            <color key="tintColor" name="Purple#35126D"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                    <color key="value" name="TFplaceholderColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textField>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="3Yy-cB-as8" firstAttribute="top" secondItem="atV-p6-qO5" secondAttribute="top" id="4Ye-eP-zmm"/>
+                                        <constraint firstAttribute="bottom" secondItem="3Yy-cB-as8" secondAttribute="bottom" id="JS7-2o-R7l"/>
+                                        <constraint firstAttribute="height" constant="56" id="QI9-Va-jEl"/>
+                                        <constraint firstItem="3Yy-cB-as8" firstAttribute="leading" secondItem="atV-p6-qO5" secondAttribute="leading" constant="12" id="eVa-aR-fa1"/>
+                                        <constraint firstAttribute="trailing" secondItem="3Yy-cB-as8" secondAttribute="trailing" constant="12" id="msk-YV-AYy"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuB-RA-sYg">
+                                    <rect key="frame" x="0.0" y="72" width="366" height="56"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KyO-68-mcZ">
+                                            <rect key="frame" x="12" y="0.0" width="310" height="56"/>
+                                            <color key="tintColor" name="Purple#35126D"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                                    <color key="value" name="TFplaceholderColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFV-cA-zMC">
+                                            <rect key="frame" x="322" y="0.0" width="44" height="56"/>
+                                            <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="visibility_off"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="NFV-cA-zMC" secondAttribute="bottom" id="0k6-Dl-cX6"/>
+                                        <constraint firstItem="KyO-68-mcZ" firstAttribute="leading" secondItem="BuB-RA-sYg" secondAttribute="leading" constant="12" id="Qh4-OV-euF"/>
+                                        <constraint firstAttribute="trailing" secondItem="NFV-cA-zMC" secondAttribute="trailing" id="VeF-4l-Kt6"/>
+                                        <constraint firstItem="NFV-cA-zMC" firstAttribute="top" secondItem="BuB-RA-sYg" secondAttribute="top" id="gKp-Ob-Dqb"/>
+                                        <constraint firstItem="KyO-68-mcZ" firstAttribute="top" secondItem="BuB-RA-sYg" secondAttribute="top" id="jcz-7R-AZ8"/>
+                                        <constraint firstAttribute="bottom" secondItem="KyO-68-mcZ" secondAttribute="bottom" id="qvV-hu-khl"/>
+                                        <constraint firstAttribute="height" constant="56" id="r8e-rx-JFe"/>
+                                        <constraint firstItem="NFV-cA-zMC" firstAttribute="leading" secondItem="KyO-68-mcZ" secondAttribute="trailing" id="teB-fK-fqm"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="YAi-uz-p76" firstAttribute="top" secondItem="mR5-aY-Bwx" secondAttribute="top" id="9FM-WN-SPx"/>
+                        <constraint firstItem="Uft-Qs-3h9" firstAttribute="top" secondItem="UH6-jq-gDJ" secondAttribute="bottom" constant="24" id="A2M-bh-eT2"/>
+                        <constraint firstItem="UH6-jq-gDJ" firstAttribute="top" secondItem="YAi-uz-p76" secondAttribute="bottom" constant="4" id="Axk-4g-1fd"/>
+                        <constraint firstItem="UH6-jq-gDJ" firstAttribute="trailing" secondItem="YAi-uz-p76" secondAttribute="trailing" id="B7m-XW-fv9"/>
+                        <constraint firstAttribute="bottom" secondItem="Uft-Qs-3h9" secondAttribute="bottom" id="IqK-Au-OZM"/>
+                        <constraint firstItem="Uft-Qs-3h9" firstAttribute="trailing" secondItem="YAi-uz-p76" secondAttribute="trailing" id="JRZ-eN-QZP"/>
+                        <constraint firstItem="YAi-uz-p76" firstAttribute="leading" secondItem="mR5-aY-Bwx" secondAttribute="leading" constant="24" id="QfF-Oq-Q0p"/>
+                        <constraint firstItem="UH6-jq-gDJ" firstAttribute="leading" secondItem="YAi-uz-p76" secondAttribute="leading" id="RA5-am-TDW"/>
+                        <constraint firstItem="Uft-Qs-3h9" firstAttribute="leading" secondItem="YAi-uz-p76" secondAttribute="leading" id="gqY-ZP-Pi8"/>
+                        <constraint firstAttribute="trailing" secondItem="YAi-uz-p76" secondAttribute="trailing" constant="24" id="sOa-wN-qKx"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mR5-aY-Bwx" secondAttribute="trailing" id="N8c-hk-QJK"/>
+                <constraint firstItem="mR5-aY-Bwx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cFr-rj-Iej"/>
+                <constraint firstItem="mR5-aY-Bwx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dGc-f4-FIs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="emailAddressDescLbl" destination="UH6-jq-gDJ" id="klA-BX-VSt"/>
+                <outlet property="emailAddresslbl" destination="YAi-uz-p76" id="1gi-87-f3g"/>
+                <outlet property="emailTF" destination="3Yy-cB-as8" id="302-8L-U42"/>
+                <outlet property="enterEmailVw" destination="atV-p6-qO5" id="vlV-cn-ENN"/>
+                <outlet property="eyeBtn" destination="NFV-cA-zMC" id="Jw0-Qc-8CA"/>
+                <outlet property="passwordTF" destination="KyO-68-mcZ" id="VAu-SC-X0R"/>
+                <outlet property="passwordVw" destination="BuB-RA-sYg" id="ehY-BV-bdx"/>
+            </connections>
+            <point key="canvasLocation" x="311.59420289855075" y="234.70982142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="visibility_off" width="20" height="20"/>
+        <namedColor name="Purple#35126D">
+            <color red="0.20784313725490197" green="0.070588235294117646" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TFplaceholderColor">
+            <color red="0.62352941176470589" green="0.59607843137254901" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
