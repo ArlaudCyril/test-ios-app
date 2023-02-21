@@ -24,6 +24,14 @@ class InvestmentStrategyTVC: UITableViewCell {
     @IBOutlet var strategyTypeLbl: UILabel!
     @IBOutlet var selectStrategyBtn: UIButton!
     @IBOutlet var riskLbl: UILabel!
+    @IBOutlet var riskIcon: UIImageView!
+    @IBOutlet var yieldLbl: UILabel!
+    @IBOutlet var yieldIcon: UIImageView!
+    @IBOutlet var amountLbl: UILabel!
+    @IBOutlet var amountIcon: UIImageView!
+    @IBOutlet var frequenceLbl: UILabel!
+    @IBOutlet var frequenceIcon: UIImageView!
+    
     @IBOutlet var progressVw: MultiProgressView!
     
     @IBOutlet var collView: UICollectionView!
@@ -43,12 +51,22 @@ class InvestmentStrategyTVC: UITableViewCell {
 extension InvestmentStrategyTVC{
     func setUpCell(data : Strategy?){
         investmentStrategyAssets = data?.bundle ?? []
+        
+        riskLbl.isHidden = true
+        riskIcon.isHidden = true
+        yieldLbl.isHidden = true
+        yieldIcon.isHidden = true
+        amountIcon.isHidden = true
+        amountLbl.isHidden = true
+        frequenceIcon.isHidden = true
+        frequenceLbl.isHidden = true
+        
         CommonUI.setUpViewBorder(vw: strategyVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.greyColor.cgColor)
         CommonUI.setUpLbl(lbl: self.strategyTypeLbl, text: data?.name ?? "", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-         
         
-        /*CommonUI.setUpLbl(lbl: self.riskLbl, text: L10n.RiskLow.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))*/
         /*self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.RiskLow.description, secondStr: data?.risk ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)*/
+         
+         
         collView.delegate = self
         collView.dataSource = self
         progressVw.delegate = self
@@ -75,6 +93,39 @@ extension InvestmentStrategyTVC{
             selectStrategyBtn.setImage(Assets.radio_unselect.image(), for: .normal)
         }
         
+        //MARK: - Active strategy
+        if(data?.activeStrategy != nil)
+        {
+            CommonUI.setUpLbl(lbl: self.amountLbl, text: String(data?.activeStrategy?.amount ?? 0), textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.frequenceLbl, text: data?.activeStrategy?.frequency, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+            amountIcon.isHidden = false
+            amountLbl.isHidden = false
+            frequenceIcon.isHidden = false
+            frequenceLbl.isHidden = false
+        }
+        
+        //MARK: - Default strategy
+        if(data?.risk != nil && data?.expectedYield != nil)
+        {
+            CommonUI.setUpLbl(lbl: self.riskLbl, text: data?.risk, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.yieldLbl, text: data?.expectedYield, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+            riskIcon.isHidden = false
+            riskLbl.isHidden = false
+            yieldIcon.isHidden = false
+            yieldLbl.isHidden = false
+            
+            if(data?.activeStrategy == nil)
+            {
+                /*let constraints = [
+                    riskLbl.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
+                    riskIcon.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+                    yieldLbl.widthAnchor.constraint(equalToConstant: 100),
+                    yieldIcon.heightAnchor.constraint(equalTo: view.widthAnchor)
+                ]
+                NSLayoutConstraint.activate(constraints)*/
+            }
+                
+        }
     }
 }
 
@@ -131,6 +182,6 @@ extension InvestmentStrategyTVC{
         
 //        let height = collViw.collectionViewLayout.collectionViewContentSize.height
         let height = CGFloat((20*((self.investmentStrategyAssets.count+1)/2)) + 12*(self.investmentStrategyAssets.count/2))
-        collViewHeightConst.constant = height
+        //collViewHeightConst.constant = height  à voir car enlevé
     }
 }

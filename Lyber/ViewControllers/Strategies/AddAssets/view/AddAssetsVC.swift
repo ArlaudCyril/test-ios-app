@@ -29,16 +29,6 @@ class AddAssetsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-//        CommonFunction.showLoader(self.view)
-//        callGetAssetsApi()
-        self.tblView.es.startPullToRefresh()
-//        self.coinsData = []
-//        self.pageNumber  = 1
-//        self.apiHitOnce = false
-//        self.apiHitting = false
-//        self.canPaginate = true
-//        self.callGetAssetsApi()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,8 +60,9 @@ extension AddAssetsVC{
             self.apiHitOnce = false
             self.apiHitting = false
             self.canPaginate = true
-            self.callGetAssetsApi()
+            
         }
+        self.callGetAssetsApi()
         self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
     @objc func fireTimer(){
@@ -80,7 +71,6 @@ extension AddAssetsVC{
         self.apiHitting = false
         self.canPaginate = true
         self.tblView.tableFooterView?.isHidden = true
-        self.callGetAssetsApi(isEmpty: true)
     }
 }
 
@@ -158,7 +148,7 @@ extension AddAssetsVC: UITableViewDelegate , UITableViewDataSource{
         if self.apiHitOnce == true {
             if  indexPath.row == (coinsData.count-7) && canPaginate && apiHitting == false {
 //                self.showSpinnerOnTableFooter()
-//                self.callGetAssetsApi()
+//
             }
         }
     }

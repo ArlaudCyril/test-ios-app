@@ -548,14 +548,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F398086B-A72C-4A9F-B2B8-26F1FDBAFDC2 - 2193bfba79e8d467"
+                  uuid = "F398086B-A72C-4A9F-B2B8-26F1FDBAFDC2 - fac69e6555c686c2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Lyber.AddStrategyVM.addStrategyApi(strategyName: Swift.String, assets: Swift.Array&lt;Swift.Optional&lt;Lyber.AllAssetsData&gt;&gt;, allocation: Swift.Array&lt;Swift.Int&gt;, completion: (Swift.Optional&lt;Lyber.SuccessAPI&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "Lyber"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jiliearn/Documents/ios-app-master/Lyber/ViewControllers/Strategies/AddStrategy/View%20Modal/AddStrategyVM.swift"
+                  urlString = "file:///Users/jiliearn/Documents/ios-app/Lyber/ViewControllers/Strategies/AddStrategy/View%20Modal/AddStrategyVM.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "25"
@@ -563,14 +563,14 @@
                   offsetFromSymbolStart = "1428">
                </Location>
                <Location
-                  uuid = "F398086B-A72C-4A9F-B2B8-26F1FDBAFDC2 - 1109cad9028c55a1"
+                  uuid = "F398086B-A72C-4A9F-B2B8-26F1FDBAFDC2 - ca5ceb062ea2074a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Lyber.SuccessAPI) -&gt; () in Lyber.AddStrategyVM.addStrategyApi(strategyName: Swift.String, assets: Swift.Array&lt;Swift.Optional&lt;Lyber.AllAssetsData&gt;&gt;, allocation: Swift.Array&lt;Swift.Int&gt;, completion: (Swift.Optional&lt;Lyber.SuccessAPI&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "Lyber"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jiliearn/Documents/ios-app-master/Lyber/ViewControllers/Strategies/AddStrategy/View%20Modal/AddStrategyVM.swift"
+                  urlString = "file:///Users/jiliearn/Documents/ios-app/Lyber/ViewControllers/Strategies/AddStrategy/View%20Modal/AddStrategyVM.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "26"
@@ -578,6 +578,38 @@
                   offsetFromSymbolStart = "176">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98FA4B6F-D19A-41B1-85E2-A87B4EC2BED1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "setUpCell(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3FEE60F4-95B5-4E58-939E-AC984180E057"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "setUpCell(data:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

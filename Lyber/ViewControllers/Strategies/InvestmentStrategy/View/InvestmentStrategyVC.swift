@@ -54,6 +54,8 @@ extension InvestmentStrategyVC{
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.chooseStrategyBtn.addTarget(self, action: #selector(chooseStrategyBtnAct), for: .touchUpInside)
         self.buildOwnStrategyBtn.addTarget(self, action: #selector(buildOwnStrategyBtnAct), for: .touchUpInside)
+        
+        
     }
 }
 

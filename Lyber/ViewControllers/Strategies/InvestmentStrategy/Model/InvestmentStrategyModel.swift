@@ -25,6 +25,12 @@ struct InvestmentStrategiesAPI: Codable {
     let data: [Strategy]?
 }
 
+struct StrategyActive: Codable{
+    var amount : Int?
+    var frequency : String?
+}
+    
+
 // MARK: - Strategy
 struct Strategy: Codable {
     
@@ -32,6 +38,9 @@ struct Strategy: Codable {
     let bundle: [InvestmentStrategyAsset]?
     var isSelected : Bool? = false
     let isOwnStrategy : Int? // to define logically with ownerUuid
+    let activeStrategy : StrategyActive?
+    let risk : String?
+    let expectedYield : String?
               
     /*let id, status, risk: String?
     let yield: Int?
