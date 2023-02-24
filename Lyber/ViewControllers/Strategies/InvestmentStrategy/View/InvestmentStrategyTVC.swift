@@ -65,20 +65,25 @@ extension InvestmentStrategyTVC{
         self.progressVw.lineCap = .round
         for i in 0...((investmentStrategyAssets.count) - 1){
             DispatchQueue.main.async {
-                self.progressVw.setProgress(section: i, to: (Float(data?.bundle?[i].share ?? 0))/100)
+                self.progressVw.setProgress(section: i, to: (Float(data?.bundle[i].share ?? 0))/100)
             }
+        }
+        
+        
+        if data?.activeStrategy != nil{
+            selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
+            selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
+        }
+        else{
+            selectStrategyBtn.backgroundColor = UIColor.systemBackground
         }
         
         
         if data?.isSelected == true{
             strategyVw.layer.backgroundColor = UIColor.LightPurple.cgColor
             strategyVw.layer.borderColor = UIColor.PurpleColor.cgColor
+            selectStrategyBtn.backgroundColor = UIColor.LightPurple
             
-        }
-        
-        if data?.activeStrategy != nil{
-            selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
-            selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
         }
         
         //MARK: - Default strategy and Active strategy

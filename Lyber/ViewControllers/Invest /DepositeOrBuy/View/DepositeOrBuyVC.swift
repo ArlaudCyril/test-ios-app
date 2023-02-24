@@ -54,6 +54,7 @@ class DepositeOrBuyVC: UIViewController {
         buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.DeleteStrategy.description, subName: "", rightBtnName: "")
     ]
     
+    var strategy : Strategy = Strategy()
     var assetPagePopUpData : [buyDepositeModel] = []
     var popupType  : bottomPopUp = .DepositeBuy
     var depositeCallback : ((_ index : Int)->())?
@@ -243,6 +244,10 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 
             }else if indexPath.row == 2{
                 self.dismiss(animated: true, completion: nil)
+                
+            }else if indexPath.row == 3{
+                self.investmentStrategyController?.pauseStragegy(strategy: self.strategy)
+                self.dismiss(animated: true, completion: nil)
             }
         case .investWithStrategiesInactive: // TODO
             if indexPath.row == 0{
@@ -266,6 +271,10 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.portfolioHomeController?.present(nav, animated: true, completion: nil)
                 
             }else if indexPath.row == 2{
+                self.dismiss(animated: true, completion: nil)
+            }
+            else if indexPath.row == 3{
+                self.investmentStrategyController?.deleteStrategy(strategy: self.strategy)
                 self.dismiss(animated: true, completion: nil)
             }
         case .withdrawTo:                                                                   //Withdraw to

@@ -31,4 +31,33 @@ class InvestmentStrategyVM{
             CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
+    
+    func deleteStrategyApi(strategyName:String, completion: @escaping ( (SuccessAPI?) -> Void )){
+        var params : [String : Any] = [:]
+        
+        params = [Constants.ApiKeys.strategy_name : strategyName]
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            completion(response)
+            CommonFunctions.hideLoader()
+        }, onFailure: { reload, error in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+    }
+    
+    func pauseStrategyApi(strategyName:String, ownerUuid:String, completion: @escaping ( (SuccessAPI?) -> Void )){
+        var params : [String : Any] = [:]
+        
+        params = [Constants.ApiKeys.strategy_name : strategyName,
+                  Constants.ApiKeys.owner_uuid : ownerUuid]
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            completion(response)
+            CommonFunctions.hideLoader()
+        }, onFailure: { reload, error in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+    }
 }

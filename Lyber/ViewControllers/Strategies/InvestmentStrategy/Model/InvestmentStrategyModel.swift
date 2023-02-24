@@ -35,13 +35,22 @@ struct StrategyActive: Codable{
 struct Strategy: Codable {
     
     let name, ownerUuid: String? //name, ID of the owner of the strategy
-    let bundle: [InvestmentStrategyAsset]?
+    let bundle: [InvestmentStrategyAsset]
     var isSelected : Bool? = false
     let isOwnStrategy : Int? // to define logically with ownerUuid
-    let activeStrategy : StrategyActive?
+    var activeStrategy : StrategyActive?
     let risk : String?
     let expectedYield : String?
               
+    init() {
+        self.name = ""
+        self.expectedYield = ""
+        self.bundle = []
+        self.risk = ""
+        self.activeStrategy = nil
+        self.isOwnStrategy = nil
+        self.ownerUuid = ""
+    }
     /*let id, status, risk: String?
     let yield: Int?
     let createdAt: String?
@@ -71,8 +80,9 @@ struct Strategy: Codable {
 // MARK: - InvestmentStrategyAsset
 struct InvestmentStrategyAsset: Codable {
     
-    let asset, assetID: String? //assetID : to define, asset : id : name
-    let share: Int?
+    let asset: String
+    let assetID: String? //assetID : to define, asset : id : name
+    let share: Int
    
     /*let id, assetID: String?
     let allocation: Int?

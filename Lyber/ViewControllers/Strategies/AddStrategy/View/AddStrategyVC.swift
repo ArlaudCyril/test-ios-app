@@ -210,6 +210,14 @@ extension AddStrategyVC{
         }
     }
     
+    func getStrategy(strategy: Strategy){
+        //TODO: - récupérer un AllAssetsData à partir d'un Strategy
+        for _ in 0...((strategy.bundle.count) - 1){
+            
+            //self.assetsData.append(<#T##newElement: AllAssetsData?##AllAssetsData?#>)
+        }
+    }
+    
 }
 
 // MARK: - TABLE VIEW OBSERVER

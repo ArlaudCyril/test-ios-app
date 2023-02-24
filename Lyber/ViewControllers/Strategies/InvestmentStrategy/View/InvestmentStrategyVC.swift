@@ -77,12 +77,8 @@ extension InvestmentStrategyVC : UITableViewDelegate,UITableViewDataSource{
                 invstStrategyData[i].isSelected = false
             }
         }
-       if(invstStrategyData[indexPath.row].activeStrategy != nil){
-           showModal(active : true)
-       }else{
-           showModal(active: false)
-       }
-        
+       
+        showModal(strategy: invstStrategyData[indexPath.row])
         tableView.reloadData()
     }
 }
@@ -154,15 +150,16 @@ extension InvestmentStrategyVC{
     //MARK: - Other functions
 extension InvestmentStrategyVC{
         
-    func showModal(active : Bool){
+    func showModal(strategy : Strategy){
         let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-        if(active == true)
+        if(strategy.activeStrategy != nil)
         {
             vc.popupType = .investWithStrategiesActive
         }
         else{
             vc.popupType = .investWithStrategiesInactive
         }
+        vc.strategy = strategy
         vc.investmentStrategyController = self
         self.present(vc, animated: true, completion: nil)
     }
@@ -181,5 +178,34 @@ extension InvestmentStrategyVC{
             invstStrategyData[i].isSelected = false
         }
         self.tblView.reloadData()
+    }
+    
+    func deleteStrategy(strategy : Strategy){
+        self.investmentStrategyVM.deleteStrategyApi(strategyName: strategy.name ?? "", completion: {[]response in
+            if response != nil{
+                for i in 0...(self.invstStrategyData.count - 1){
+                    if(self.invstStrategyData[i].name == strategy.name && self.invstStrategyData[i].ownerUuid == strategy.ownerUuid){
+                        self.invstStrategyData.remove(at: i)
+                        break
+                    }
+                }
+                self.tblView.reloadData()
+            }
+        })
+    
+    }
+    
+    func pauseStragegy(strategy: Strategy){
+        self.investmentStrategyVM.pauseStrategyApi(strategyName: strategy.name ?? "", ownerUuid: strategy.ownerUuid ?? "", completion: {[]response in
+            if response != nil{
+              
+                for i in 0...(self.invstStrategyData.count - 1){
+                    if(self.invstStrategyData[i].name == strategy.name && self.invstStrategyData[i].ownerUuid == strategy.ownerUuid){
+                        self.invstStrategyData[i].activeStrategy = nil
+                    }
+                }
+                self.tblView.reloadData()
+            }
+        })
     }
 }

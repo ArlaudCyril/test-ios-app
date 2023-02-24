@@ -117,6 +117,7 @@ struct Constants{
         static let exchange_to_amount = "exchange_to_amount"
         static let bundle = "bundle"
         static let share = "share"
+        static let owner_uuid = "ownerUuid"
         
         //MARK: - assets keys
         static let order = "order"
@@ -269,6 +270,7 @@ struct Constants{
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"
         static let strategyServiceStrategy = "strategy-service/strategy"
+        static let strategyServiceActiveStrategy = "strategy-service/active-strategy"
     }
 
     struct Language {

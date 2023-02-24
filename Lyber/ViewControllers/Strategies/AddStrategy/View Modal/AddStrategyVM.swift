@@ -16,10 +16,10 @@ class AddStrategyVM{
             assetData[Constants.ApiKeys.asset] = assets[i]?.id
             assetData[Constants.ApiKeys.share] = allocation[i]
             bundle.append(assetData)
-            
-            params = [Constants.ApiKeys.strategy_name : strategyName,
-                      Constants.ApiKeys.bundle : bundle]
         }
+        params = [Constants.ApiKeys.strategy_name : strategyName,
+                  Constants.ApiKeys.bundle : bundle]
+        
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)

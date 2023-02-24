@@ -19,7 +19,7 @@ extension InvestmentStrategyCVC{
         self.coinView.layer.cornerRadius = 2
         self.coinView.backgroundColor = strategyColor
         //UIColor.PurpleColor.withAlphaComponent(CGFloat((data?.allocation ?? 0))/100)
-        CommonUI.setUpLbl(lbl: self.coinNameLbl, text: data?.asset?.uppercased() ?? "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.coinNameLbl, text: data?.asset.uppercased(), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpButton(btn: percentageBtn, text: "\(data?.share ?? 0)%", textcolor: UIColor.grey36323C, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
     }
 }
