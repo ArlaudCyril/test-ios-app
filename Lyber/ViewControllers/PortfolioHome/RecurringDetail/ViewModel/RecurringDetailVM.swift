@@ -13,7 +13,7 @@ class RecurringDetailVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GetString, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -23,7 +23,7 @@ class RecurringDetailVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

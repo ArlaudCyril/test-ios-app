@@ -54,7 +54,7 @@ extension PortfolioHomeTVC{
         
         
         CommonUI.setUpLbl(lbl: portfolioLbl, text: L10n.Portfolio.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunction.formattedCurrency(from: totalPortfolio ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         
         
         self.profilePic.yy_setImage(with: URL(string: "\(ApiEnvironment.ImageUrl)\(userData.shared.profile_image)"), placeholder: UIImage(named: "profile"))
@@ -73,7 +73,7 @@ extension PortfolioHomeTVC{
     }
     
     fileprivate func extractedFunc(_ graphValues: [ChartDataEntry],_ graphColor : UIColor) {
-        CommonFunction.drawDetailChart(with: graphValues, on: chartView, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
+        CommonFunctions.drawDetailChart(with: graphValues, on: chartView, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
     }
     
     func playVideo(){
@@ -155,9 +155,9 @@ extension PortfolioHomeTVC{
             self.customMarkerView.contentView.isHidden = false
         }
         
-        customMarkerView.graphLbl.text = "\(CommonFunction.formattedCurrency(from: yValue))€"
-        customMarkerView.bottomEuroLbl.text = "\(CommonFunction.formattedCurrency(from: yValue))€"
-        customMarkerView.dateTimeLbl.text = "\(CommonFunction.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
-        customMarkerView.bottomDateLbl.text = "\(CommonFunction.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
+        customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
+        customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
+        customMarkerView.dateTimeLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
+        customMarkerView.bottomDateLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
     }
 }

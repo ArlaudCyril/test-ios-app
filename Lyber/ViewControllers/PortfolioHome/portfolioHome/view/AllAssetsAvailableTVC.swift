@@ -36,7 +36,7 @@ extension AllAssetsAvailableTVC{
         coinCollView.dataSource = self
         setLayout()
         CommonUI.setUpButton(btn: viewAllBtn, text: L10n.ViewAll.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        viewAllBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.ViewAll.description), for: .normal)
+        viewAllBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.ViewAll.description), for: .normal)
         viewAllBtn.addTarget(self, action: #selector(viewAllBtnAct), for: .touchUpInside)
     }
     

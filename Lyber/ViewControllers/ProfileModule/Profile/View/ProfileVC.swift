@@ -178,9 +178,9 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
                 let vc = CryptoAddressBookVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else if indexPath.row == 2{
-                CommonFunction.showLoader(self.view)
+                CommonFunctions.showLoader(self.view)
                 ChangePinVM().sendOtpApi(completion: {[]response in
-                    CommonFunction.hideLoader(self.view)
+                    CommonFunctions.hideLoader(self.view)
                     if let response = response{
                         print(response)
                         let vc = ChangePinVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
@@ -263,9 +263,9 @@ extension ProfileVC{
     }
     
     func getPersonalDataApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         ProfileVM().getProfileDataApi(completion: {[]response in
-            CommonFunction.hideLoader(self.view)
+            CommonFunctions.hideLoader(self.view)
             if let response = response{
                 self.nameLbl.text = "\(response.data?.firstName ?? "") \(response.data?.lastName ?? "")"
                 self.emailLbl.text = response.data?.email ?? ""

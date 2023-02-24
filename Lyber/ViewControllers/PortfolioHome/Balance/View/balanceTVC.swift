@@ -46,11 +46,11 @@ extension balanceTVC{
         }else if data?.type == 3{               //withdraw
             self.boughtLbl.text = L10n.Withdrawal.description
             self.euroLbl.text = "-\(data?.amount ?? 0.0)€"
-            self.noOfCoinLbl.text = "\(CommonFunction.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
+            self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
         }else if data?.type == 4{                   //bought
             self.boughtLbl.text = L10n.Bought.description
             self.euroLbl.text = "+\(data?.amount ?? 0.0)€"
-            self.noOfCoinLbl.text = "\(CommonFunction.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
+            self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
         }
     }
 }

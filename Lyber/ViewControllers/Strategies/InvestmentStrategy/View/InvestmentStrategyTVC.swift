@@ -12,14 +12,9 @@ var strategyColor : [UIColor] = [UIColor(named: "purple_800") ?? UIColor(),UICol
 
 class InvestmentStrategyTVC: UITableViewCell {
     //MARK: - Variables
-//    var coinsData : [DifferentCoinsModel] = [
-//        DifferentCoinsModel(coinColor: UIColor.PurpleColor.withAlphaComponent(1), coinName: "USDC", percentage: "40%"),
-//        DifferentCoinsModel(coinColor: UIColor.PurpleColor.withAlphaComponent(0.8), coinName: "ETH", percentage: "30%"),
-//        DifferentCoinsModel(coinColor: UIColor.PurpleColor.withAlphaComponent(0.5), coinName: "BTC", percentage: "20%"),
-//        DifferentCoinsModel(coinColor: UIColor.PurpleColor.withAlphaComponent(0.2), coinName: "SOL", percentage: "10%"),]
     var investmentStrategyAssets : [InvestmentStrategyAsset] = []
     
-    //MARK:- IB OUTLETS
+    //MARK: - IB OUTLETS
     @IBOutlet var strategyVw: UIView!
     @IBOutlet var strategyTypeLbl: UILabel!
     @IBOutlet var selectStrategyBtn: UIButton!
@@ -31,6 +26,10 @@ class InvestmentStrategyTVC: UITableViewCell {
     @IBOutlet var amountIcon: UIImageView!
     @IBOutlet var frequenceLbl: UILabel!
     @IBOutlet var frequenceIcon: UIImageView!
+    @IBOutlet var informationsView: UIView!
+    @IBOutlet var defaultStrategyView: UIView!
+    @IBOutlet var activeStrategyView: UIView!
+    @IBOutlet var informationViewHeightConst: NSLayoutConstraint!
     
     @IBOutlet var progressVw: MultiProgressView!
     
@@ -41,31 +40,19 @@ class InvestmentStrategyTVC: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-
 }
 
 extension InvestmentStrategyTVC{
     func setUpCell(data : Strategy?){
         investmentStrategyAssets = data?.bundle ?? []
         
-        riskLbl.isHidden = true
-        riskIcon.isHidden = true
-        yieldLbl.isHidden = true
-        yieldIcon.isHidden = true
-        amountIcon.isHidden = true
-        amountLbl.isHidden = true
-        frequenceIcon.isHidden = true
-        frequenceLbl.isHidden = true
+        var informationHeight = 0
+        defaultStrategyView.isHidden = true
+        activeStrategyView.isHidden = true
+        informationsView.isHidden = true
         
         CommonUI.setUpViewBorder(vw: strategyVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.greyColor.cgColor)
         CommonUI.setUpLbl(lbl: self.strategyTypeLbl, text: data?.name ?? "", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-        
-        /*self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.RiskLow.description, secondStr: data?.risk ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)*/
-         
          
         collView.delegate = self
         collView.dataSource = self
@@ -77,55 +64,52 @@ extension InvestmentStrategyTVC{
         self.progressVw.cornerRadius = 4
         self.progressVw.lineCap = .round
         for i in 0...((investmentStrategyAssets.count) - 1){
-//            DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 self.progressVw.setProgress(section: i, to: (Float(data?.bundle?[i].share ?? 0))/100)
-//            }
+            }
         }
         
         
         if data?.isSelected == true{
             strategyVw.layer.backgroundColor = UIColor.LightPurple.cgColor
             strategyVw.layer.borderColor = UIColor.PurpleColor.cgColor
-            selectStrategyBtn.setImage(Assets.radio_select.image(), for: .normal)
-        }else{
-            strategyVw.layer.backgroundColor = UIColor.whiteColor.cgColor
-            strategyVw.layer.borderColor = UIColor.greyColor.cgColor
-            selectStrategyBtn.setImage(Assets.radio_unselect.image(), for: .normal)
-        }
-        
-        //MARK: - Active strategy
-        if(data?.activeStrategy != nil)
-        {
-            CommonUI.setUpLbl(lbl: self.amountLbl, text: String(data?.activeStrategy?.amount ?? 0), textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-            CommonUI.setUpLbl(lbl: self.frequenceLbl, text: data?.activeStrategy?.frequency, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-            amountIcon.isHidden = false
-            amountLbl.isHidden = false
-            frequenceIcon.isHidden = false
-            frequenceLbl.isHidden = false
-        }
-        
-        //MARK: - Default strategy
-        if(data?.risk != nil && data?.expectedYield != nil)
-        {
-            CommonUI.setUpLbl(lbl: self.riskLbl, text: data?.risk, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-            CommonUI.setUpLbl(lbl: self.yieldLbl, text: data?.expectedYield, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-            riskIcon.isHidden = false
-            riskLbl.isHidden = false
-            yieldIcon.isHidden = false
-            yieldLbl.isHidden = false
             
-            if(data?.activeStrategy == nil)
-            {
-                /*let constraints = [
-                    riskLbl.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                    riskIcon.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
-                    yieldLbl.widthAnchor.constraint(equalToConstant: 100),
-                    yieldIcon.heightAnchor.constraint(equalTo: view.widthAnchor)
-                ]
-                NSLayoutConstraint.activate(constraints)*/
-            }
-                
         }
+        
+        if data?.activeStrategy != nil{
+            selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
+            selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
+        }
+        
+        //MARK: - Default strategy and Active strategy
+        if(data?.activeStrategy != nil || (data?.risk != nil && data?.expectedYield != nil))
+        {
+            informationsView.isHidden = false
+            
+            //Default strategy
+            if(data?.risk != nil && data?.expectedYield != nil)
+            {
+                informationHeight += 50
+                self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Risk.description, secondStr: data?.risk?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Yield.description, secondStr: data?.expectedYield?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                defaultStrategyView.isHidden = false
+                    
+            }
+            
+            //Active strategy
+            if(data?.activeStrategy != nil)
+            {
+                informationHeight += 50
+                self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Frequency.description, secondStr: CommonFunctions.frequenceMapper(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                
+                self.amountLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Amount.description, secondStr: String(data?.activeStrategy?.amount ?? 0)+"€", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                
+                activeStrategyView.isHidden = false
+            }
+        }
+        informationViewHeightConst.constant = CGFloat(informationHeight)
+        
+        
     }
 }
 
@@ -138,13 +122,10 @@ extension InvestmentStrategyTVC: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InvestmentStrategyCVC", for: indexPath as IndexPath) as! InvestmentStrategyCVC
-        cell.configureWithData(data : investmentStrategyAssets[indexPath.row],strategyColor : strategyColor[indexPath.row])
+        cell.configureWithData(data : investmentStrategyAssets[indexPath.row],strategyColor : self.selectorStrategyColor(position : indexPath.row, totalNumber : investmentStrategyAssets.count))
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: ((collView.layer.bounds.width)/2) , height: (collView.layer.bounds.height))
-//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -161,10 +142,9 @@ extension InvestmentStrategyTVC : MultiProgressViewDelegate, MultiProgressViewDa
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
         let sectionView = ProgressViewSection()
         DispatchQueue.main.async {
-            sectionView.backgroundColor = strategyColor[section]
+            sectionView.backgroundColor = self.selectorStrategyColor(position : section, totalNumber : self.investmentStrategyAssets.count)
         }
        
-//        UIColor.PurpleColor.withAlphaComponent(CGFloat((investmentStrategyAssets[section].allocation ?? 0))/100)//coinsData[section].coinColor
         return sectionView
     }
     
@@ -179,9 +159,120 @@ extension InvestmentStrategyTVC{
         layout.minimumInteritemSpacing = 12
         layout.minimumLineSpacing = 12
         collView.collectionViewLayout = layout
-        
-//        let height = collViw.collectionViewLayout.collectionViewContentSize.height
+
         let height = CGFloat((20*((self.investmentStrategyAssets.count+1)/2)) + 12*(self.investmentStrategyAssets.count/2))
-        //collViewHeightConst.constant = height  à voir car enlevé
+        collViewHeightConst.constant = height
+        
+    }
+    
+    func selectorStrategyColor(position : Int, totalNumber : Int) -> UIColor{
+        if(totalNumber > 8)
+        {
+            let percentage = Double(position) / Double(totalNumber)
+            let color = UIColor(named: "purple_800")?.lighter(componentDelta: CGFloat(percentage)) ?? UIColor()
+            return color
+        }
+        else
+        {
+            switch totalNumber {
+            case 1:
+                return UIColor(named: "purple_600") ?? UIColor()
+            case 2:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                }
+            case 3:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                }
+            case 4:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                }
+            case 5:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+            case 6:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                case 4:
+                    return UIColor(named: "purple_100") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+            case 7:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_300") ?? UIColor()
+                case 4:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                case 5:
+                    return UIColor(named: "purple_100") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+            case 8:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_500") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 4:
+                    return UIColor(named: "purple_300") ?? UIColor()
+                case 5:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                case 6:
+                    return UIColor(named: "purple_100") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+                
+            default:
+                return UIColor(named: "purple_400") ?? UIColor()
+            }
+        }
+        
     }
 }

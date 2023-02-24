@@ -194,9 +194,9 @@ extension RecurringDetailVC{
     }
     
     func callInvestmentDetail(id : String){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         self.recurringDetailVM.getRecurringDetailApi(id: id, completion: {response in
-            CommonFunction.hideLoader(self.view)
+            CommonFunctions.hideLoader(self.view)
             if let response = response {
                 self.investmentData = response
                 self.setUpData()

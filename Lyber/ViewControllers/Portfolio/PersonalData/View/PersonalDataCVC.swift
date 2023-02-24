@@ -86,7 +86,7 @@ extension PersonalDataCVC{
         self.lastNameTF.text = data?.last_name ?? ""
         self.birthPlaceTF.text = data?.birth_place ?? ""
         self.specifiedUSPersonLbl.text = data?.specifiedUSPerson == true ? L10n.Yes.description : L10n.No.description
-        self.birthDateBtn.setTitle(CommonFunction.getDateFormat(date: data?.dob ?? "", format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", rqrdFormat: "dd MMM yyyy"), for: .normal)
+        self.birthDateBtn.setTitle(CommonFunctions.getDateFormat(date: data?.dob ?? "", format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", rqrdFormat: "dd MMM yyyy"), for: .normal)
         self.birthCountryLbl.text = countryName(from: data?.birth_country ?? "")
         self.NationalityLbl.text = countryName(from: data?.birth_country ?? "")
         
@@ -94,7 +94,7 @@ extension PersonalDataCVC{
         self.controller?.lastName = self.lastNameTF.text ?? ""
         self.controller?.birthPlace = self.birthPlaceTF.text ?? ""
         self.controller?.isUsPerson = self.specifiedUSPersonLbl.text ?? ""
-        self.controller?.birthDate = CommonFunction.getDateFormat(date: data?.dob ?? "", format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", rqrdFormat: "yyyy-mm-dd")
+        self.controller?.birthDate = CommonFunctions.getDateFormat(date: data?.dob ?? "", format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", rqrdFormat: "yyyy-mm-dd")
         self.controller?.birthCountry = data?.birth_country ?? ""
         self.controller?.nationality = data?.nationality ?? ""
         

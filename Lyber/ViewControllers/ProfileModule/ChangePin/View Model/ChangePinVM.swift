@@ -10,10 +10,10 @@ class ChangePinVM{
     func sendOtpApi(completion: @escaping ( (SuccessAPI?) -> Void )){
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userPinOtp, withParameters: [:], ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -21,10 +21,10 @@ class ChangePinVM{
         let params: [String : Any] = [Constants.ApiKeys.otp : otp]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userPinVerifyPhone, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -32,10 +32,10 @@ class ChangePinVM{
         let params: [String : Any] = [Constants.ApiKeys.newPin : Pin]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userPin, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PUT, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

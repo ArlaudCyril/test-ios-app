@@ -18,7 +18,7 @@ class KYCVerificationVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -30,7 +30,7 @@ class KYCVerificationVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

@@ -39,7 +39,7 @@ extension EmailLoginCVC{
         self.passwordTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         self.passwordTF.delegate = self
         CommonUI.setUpButton(btn: self.loginByPhoneBtn, text: L10n.LoginByPhone.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        self.loginByPhoneBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.LoginByPhone.description ), for: .normal)
+        self.loginByPhoneBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.LoginByPhone.description ), for: .normal)
 //        if controller?.isLogin == true{
 //            self.loginByEmailBtn.isHidden = false
 //            self.enterNumberLbl.text = L10n.HappyToSeeYouBack.description

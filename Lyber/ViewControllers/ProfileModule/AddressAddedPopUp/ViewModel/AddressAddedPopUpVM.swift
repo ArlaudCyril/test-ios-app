@@ -31,7 +31,7 @@ class AddressAddedPopUpVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -41,7 +41,7 @@ class AddressAddedPopUpVM{
             completion(response)
         }, onFailure: { reload, error in
 //            completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -51,7 +51,7 @@ class AddressAddedPopUpVM{
             completion(response)
         }, onFailure: { reload, error in
 //            completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     

@@ -301,19 +301,19 @@ extension PersonalDataVC{
     
     func checkPersonalDataValidation(){
         if self.firstName.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            CommonFunction.toster(Constants.AlertMessages.enterFirstName)
+            CommonFunctions.toster(Constants.AlertMessages.enterFirstName)
         }else if self.lastName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterLastName)
+            CommonFunctions.toster(Constants.AlertMessages.enterLastName)
         }else if self.birthPlace == ""{
-            CommonFunction.toster(Constants.AlertMessages.selectBirthPlace)
+            CommonFunctions.toster(Constants.AlertMessages.selectBirthPlace)
         }else if self.birthDate == ""{
-            CommonFunction.toster(Constants.AlertMessages.selectBirthDate)
+            CommonFunctions.toster(Constants.AlertMessages.selectBirthDate)
         }else if self.birthCountry == ""{
-            CommonFunction.toster(Constants.AlertMessages.selectBirthCountry)
+            CommonFunctions.toster(Constants.AlertMessages.selectBirthCountry)
         }else if self.nationality == ""{
-            CommonFunction.toster(Constants.AlertMessages.selectNationality)
+            CommonFunctions.toster(Constants.AlertMessages.selectNationality)
         }else if self.isUsPerson == ""{
-            CommonFunction.toster(Constants.AlertMessages.selectAreYouUSCitizen)
+            CommonFunctions.toster(Constants.AlertMessages.selectAreYouUSCitizen)
         }else{
 //            GotoNextIndex()
             personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, isUsPerson: isUsPerson)
@@ -334,13 +334,13 @@ extension PersonalDataVC{
     
     func checkEmailAddressValidation(){
         if self.email.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            CommonFunction.toster(Constants.AlertMessages.enterEmail)
+            CommonFunctions.toster(Constants.AlertMessages.enterEmail)
         }else if email.isValidEmail() == false{
-            CommonFunction.toster(Constants.AlertMessages.enterValidEmail)
+            CommonFunctions.toster(Constants.AlertMessages.enterValidEmail)
         }else if self.emailPassword == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterPassword)
+            CommonFunctions.toster(Constants.AlertMessages.enterPassword)
         }else if emailPassword.count < 8{
-            CommonFunction.toster(Constants.AlertMessages.enterValidPassword)
+            CommonFunctions.toster(Constants.AlertMessages.enterValidPassword)
         }else{
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
@@ -358,9 +358,9 @@ extension PersonalDataVC{
         do {
             let token = try decode(jwt: userData.shared.accessToken)
             print(token)
-            CommonFunction.showLoader(self.view)
+            CommonFunctions.showLoader(self.view)
             personalDataVM.checkEmailVerificationApi(uuid: ((token["sub"]).rawValue as! String) , completion: {[self]response in
-                CommonFunction.hideLoader(self.view)
+                CommonFunctions.hideLoader(self.view)
 //                if let response = response{
                     print(response)
                     userData.shared.personalDataStepComplete = 3
@@ -413,19 +413,19 @@ extension PersonalDataVC{
     
     func checkAdddressValidation(){
         if self.streetNumber.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            CommonFunction.toster(Constants.AlertMessages.enterStreetNumber)
+            CommonFunctions.toster(Constants.AlertMessages.enterStreetNumber)
         }else if self.buildingFloor.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterBuildingFloor)
+            CommonFunctions.toster(Constants.AlertMessages.enterBuildingFloor)
         }else if self.CityName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterCity)
+            CommonFunctions.toster(Constants.AlertMessages.enterCity)
         }else if self.stateName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterState)
+            CommonFunctions.toster(Constants.AlertMessages.enterState)
         }else if self.zipCode.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterZipcode)
+            CommonFunctions.toster(Constants.AlertMessages.enterZipcode)
         }else if self.zipCode.count < 5{
-            CommonFunction.toster(Constants.AlertMessages.enterValidZipcode)
+            CommonFunctions.toster(Constants.AlertMessages.enterValidZipcode)
         }else if self.CountryName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterCountry)
+            CommonFunctions.toster(Constants.AlertMessages.enterCountry)
         }else{
 //            GotoNextIndex()
             personalData = personalDataStruct(streetNumber: streetNumber, buildingFloor: buildingFloor, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName, investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, personalAssets: personalAssets)
@@ -446,15 +446,15 @@ extension PersonalDataVC{
     
     func checkInvestmentExperienceValidation(){
         if self.investmentExp == ""{
-            CommonFunction.toster(Constants.AlertMessages.chooseInvestmentExp)
+            CommonFunctions.toster(Constants.AlertMessages.chooseInvestmentExp)
         }else if self.sourceOfIncome == ""{
-            CommonFunction.toster(Constants.AlertMessages.chooseSourceOfIncome)
+            CommonFunctions.toster(Constants.AlertMessages.chooseSourceOfIncome)
         }else if self.workIndustry == ""{
-            CommonFunction.toster(Constants.AlertMessages.chooseWorkIndustry)
+            CommonFunctions.toster(Constants.AlertMessages.chooseWorkIndustry)
         }else if self.annualIncome == ""{
-            CommonFunction.toster(Constants.AlertMessages.chooseAnnualIncome)
+            CommonFunctions.toster(Constants.AlertMessages.chooseAnnualIncome)
         }else if self.personalAssets == ""{
-            CommonFunction.toster(Constants.AlertMessages.pleaseSelectPersonalAssets)
+            CommonFunctions.toster(Constants.AlertMessages.pleaseSelectPersonalAssets)
         }else{
             personalData = personalDataStruct(investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, personalAssets: personalAssets)
             self.nextButton.showLoading()
@@ -491,9 +491,9 @@ extension PersonalDataVC{
     func callGetDataApi(){
         if isEditData == true{
             self.view.isUserInteractionEnabled = false
-            CommonFunction.showLoader(self.view)
+            CommonFunctions.showLoader(self.view)
             personalDataVM.getPersonalDataApi(completion: {[weak self] response in
-                CommonFunction.hideLoader(self?.view ?? UIView())
+                CommonFunctions.hideLoader(self?.view ?? UIView())
                 self?.view.isUserInteractionEnabled = true
                 if let response = response{
                     print(response)

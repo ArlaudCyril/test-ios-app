@@ -46,7 +46,7 @@ extension ProfilePaymentTVC{
         CommonUI.setUpLbl(lbl: bicLbl, text: L10n.BICNumber.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: bicNumberLbl, text: userData.shared.bic, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpButton(btn: addPaymentBtn, text: L10n.AddPaymentMethod.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        addPaymentBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.AddPaymentMethod.description), for: .normal)
+        addPaymentBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.AddPaymentMethod.description), for: .normal)
         addPaymentBtn.addTarget(self, action: #selector(addPaymentBtnAction), for: .touchUpInside)
         
         stackView.layer.cornerRadius = 16

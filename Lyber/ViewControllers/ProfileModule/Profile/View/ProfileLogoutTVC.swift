@@ -27,7 +27,7 @@ class ProfileLogoutTVC: UITableViewCell {
 extension ProfileLogoutTVC{
     func setUpCell(){
         CommonUI.setUpButton(btn: logOutBtn, text: L10n.LogOut.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        logOutBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.LogOut.description), for: .normal)
+        logOutBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.LogOut.description), for: .normal)
         logOutBtn.addTarget(self, action: #selector(logOutAct), for: .touchUpInside)
         
     }
@@ -35,7 +35,7 @@ extension ProfileLogoutTVC{
     @objc func logOutAct(){
         let alert = UIAlertController(title: Constants.AlertMessages.logOut, message: Constants.AlertMessages.sureLogOut, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Constants.AlertMessages.logOut, style: .destructive, handler: { (action: UIAlertAction!) in
-            CommonFunction.logout()
+            CommonFunctions.logout()
 //            userData.shared.deleteData()
 //            self.controller?.navigationController?.popToViewController(ofClass: LoginVC.self)
             

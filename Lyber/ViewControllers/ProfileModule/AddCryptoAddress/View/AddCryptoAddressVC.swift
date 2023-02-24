@@ -373,18 +373,18 @@ extension AddCryptoAddressVC{
     
     func checkValidation(completion : @escaping (()->()) ){
         if addressNameTF.text == ""{
-            CommonFunction.toster(Constants.AlertMessages.PleaseEnterYourAddressName)
+            CommonFunctions.toster(Constants.AlertMessages.PleaseEnterYourAddressName)
         }else if networkValueLbl.text == ""{
-            CommonFunction.toster(Constants.AlertMessages.PleaseSelectYourNetwork)
+            CommonFunctions.toster(Constants.AlertMessages.PleaseSelectYourNetwork)
         }else if addressTF.text == ""{
-            CommonFunction.toster(Constants.AlertMessages.PleaseEnterOrScanAnAddress)
+            CommonFunctions.toster(Constants.AlertMessages.PleaseEnterOrScanAnAddress)
         }else if checkAddressFormatvalidation() == false{
 //            completion()
         }else if exchangeVw.isHidden{
             completion()
         }else if exchangeVw.isHidden == false{
             if ExchangeTF.text == ""{
-                CommonFunction.toster(Constants.AlertMessages.PleaseSelectYourExchange)
+                CommonFunctions.toster(Constants.AlertMessages.PleaseSelectYourExchange)
             }else{
                 completion()
             }

@@ -13,10 +13,10 @@ class SelectedProfileVM{
        
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.upload, withParameters: [:], ofType: ImageUploadApi.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithImage, img: [ProfilePic], imageParamater: ["file"], headerPresent: true)
     }
     
@@ -26,10 +26,10 @@ class SelectedProfileVM{
                                       Constants.ApiKeys.profile_pic_type : ProfileType?.rawValue ?? ""]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.user, withParameters: params, ofType: profileUpdateApi.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PUTWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

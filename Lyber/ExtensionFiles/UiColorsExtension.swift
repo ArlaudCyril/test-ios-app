@@ -99,4 +99,48 @@ extension UIColor{
             return UIColor(named: "Color#FFF2D9") ?? UIColor.green
         }
     }
+    
+    private func makeColor(componentDelta: CGFloat) -> UIColor {
+            var red: CGFloat = 0
+            var blue: CGFloat = 0
+            var green: CGFloat = 0
+            var alpha: CGFloat = 0
+            
+            // Extract r,g,b,a components from the
+            // current UIColor
+            getRed(
+                &red,
+                green: &green,
+                blue: &blue,
+                alpha: &alpha
+            )
+            
+            // Create a new UIColor modifying each component
+            // by componentDelta, making the new UIColor either
+            // lighter or darker.
+            return UIColor(
+                red: add(componentDelta, toComponent: red),
+                green: add(componentDelta, toComponent: green),
+                blue: add(componentDelta, toComponent: blue),
+                alpha: alpha
+            )
+    }
+    
+    private func add(_ value: CGFloat, toComponent: CGFloat) -> CGFloat {
+        return max(0, min(1, toComponent + value))
+    }
+    
+    
+    func lighter(componentDelta: CGFloat = 0.1) -> UIColor {
+        return makeColor(componentDelta: componentDelta)
+    }
+    
+    static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
 }

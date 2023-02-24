@@ -49,6 +49,12 @@ enum Assets : String{
     case resources_one
     case resources_two
     case resources_three
+    case flash
+    case pencil
+    case coins
+    case pause
+    case trash
+    case recurrent
     
     //Invest Money
     case invest_single_assets

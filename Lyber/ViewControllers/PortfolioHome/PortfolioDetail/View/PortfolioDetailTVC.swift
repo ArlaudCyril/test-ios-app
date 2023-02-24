@@ -85,15 +85,15 @@ extension PortfolioDetailTVC{
         }
         
         CommonUI.setUpLbl(lbl: priceLbl, text: L10n.price.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunction.formattedCurrency(from: self.chartLastPoint ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: self.chartLastPoint ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: percentageLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
         if (assetData?.priceChangePercentage24H ?? 0) < 0{
             percentageLbl.textColor = UIColor.RedDF5A43
-            self.percentageLbl.text = "▼ \(CommonFunction.formattedCurrency(from: assetData?.priceChangePercentage24H ?? 0))% (\(CommonFunction.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
+            self.percentageLbl.text = "▼ \(CommonFunctions.formattedCurrency(from: assetData?.priceChangePercentage24H ?? 0))% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
         }else{
             percentageLbl.textColor = UIColor.GreenColor
-            self.percentageLbl.text = "▲ \(CommonFunction.formattedCurrency(from: assetData?.priceChangePercentage24H ?? 0))% (\(CommonFunction.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
+            self.percentageLbl.text = "▲ \(CommonFunctions.formattedCurrency(from: assetData?.priceChangePercentage24H ?? 0))% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
         }
         
         self.collView.layer.cornerRadius = 12
@@ -115,7 +115,7 @@ extension PortfolioDetailTVC{
         var arr : [Date] = []
         var datesArr : [String] = []
         for i in 0..<count{
-            let required = CommonFunction.getDate(date: modifiedDate)
+            let required = CommonFunctions.getDate(date: modifiedDate)
             datesArr.append(required)
             arr.append(modifiedDate )
             if timeFrame == "1h"{
@@ -140,7 +140,7 @@ extension PortfolioDetailTVC{
     
     
     fileprivate func extractedFunc(_ graphValues: [ChartDataEntry],_ graphColor : UIColor) {
-        CommonFunction.drawDetailChart(with: graphValues, on: chartView, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
+        CommonFunctions.drawDetailChart(with: graphValues, on: chartView, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
     }
 }
 
@@ -275,8 +275,8 @@ extension PortfolioDetailTVC{
             customMarkerView.topBubble.isHidden = true
         }
         print(yValue)
-        customMarkerView.graphLbl.text = "\(CommonFunction.formattedCurrency(from: yValue))€"
-        customMarkerView.bottomEuroLbl.text = "\(CommonFunction.formattedCurrency(from: yValue))€"
+        customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
+        customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
 
         for (index,_) in stride(from: 0, through: (self.dateTimeArr.count)-1, by: 1).enumerated(){
             if self.dateTimeArr[index].index == Int(xValue){
@@ -311,7 +311,7 @@ extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
                         let value = Double(price ?? "")
                         DispatchQueue.main.async {
                             if value  != 0{
-                                self?.euroLbl.text = "\(CommonFunction.formattedCurrency(from: value ))€"
+                                self?.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: value ))€"
                             }
                         }
                     }

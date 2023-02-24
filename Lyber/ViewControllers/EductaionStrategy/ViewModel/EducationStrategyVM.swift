@@ -13,10 +13,10 @@ class EducationStrategyVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestEducation, withParameters: [:], ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
 //            CommonFunction.toster(response.message ?? "")
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

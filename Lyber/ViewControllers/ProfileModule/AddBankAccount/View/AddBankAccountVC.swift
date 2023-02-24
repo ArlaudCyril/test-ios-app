@@ -96,9 +96,9 @@ extension AddBankAccountVC{
     
     @objc func addBtnAct(){
         if self.ibanTF.text == ""{
-            CommonFunction.toster("Please enter the IBAN Number")
+            CommonFunctions.toster("Please enter the IBAN Number")
         }else if bicTF.text == ""{
-            CommonFunction.toster("Please enter the BIC Number")
+            CommonFunctions.toster("Please enter the BIC Number")
         }else{
             self.addBtn.showLoading()
             AddBankAccountVM().addBankAccountApi(iban: self.ibanTF.text ?? "", bic: self.bicTF.text ?? "", completion: {[weak self]response in

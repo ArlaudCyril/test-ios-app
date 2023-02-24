@@ -14,10 +14,10 @@ class EnterWalletAddressVM{
                                        Constants.ApiKeys.wallet_address : walletAddress]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userWithdrawCrypto, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -25,10 +25,10 @@ class EnterWalletAddressVM{
         let params : [String : Any] = [Constants.ApiKeys.amount : amount]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.treezorWithdrawFiat, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

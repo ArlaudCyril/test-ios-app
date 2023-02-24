@@ -208,7 +208,7 @@ extension PortfolioHomeVC{
 //MARK: - Other functions
 extension PortfolioHomeVC{
     func callMyAssetsApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         PortfolioHomeVM().getMyAssetsApi(completion: {[weak self]response in
             if let response = response{
                 totalEuroAvailable = response.total_euros_available ?? 0
@@ -226,7 +226,7 @@ extension PortfolioHomeVC{
     }
     
     func callRecurringInvestmentApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         PortfolioHomeVM().getRecurringInvestmentApi(completion: {[weak self]response in
             if let response = response{
                 self?.recurringInvestmentData = response.investments ?? []
@@ -243,10 +243,10 @@ extension PortfolioHomeVC{
     
     func getTotalAvailableAssetsApi(){
         self.allAvailableAssets = []
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         AllAssetsVM().getAllAssetsApi( keyword: "", completion: {[]response in
             if let response = response {
-                CommonFunction.hideLoader(self.view )
+                CommonFunctions.hideLoader(self.view )
                 for i in 0..<6{
                     self.allAvailableAssets.append(response.data[i])
                 }

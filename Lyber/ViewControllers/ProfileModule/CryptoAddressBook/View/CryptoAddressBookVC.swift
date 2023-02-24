@@ -163,7 +163,7 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
     
     @objc func addNewAddressBtnAct(){
         if userData.shared.enableWhiteListing == false {
-            CommonFunction.toster(Constants.AlertMessages.PleaseEnableWhitelistingAddress)
+            CommonFunctions.toster(Constants.AlertMessages.PleaseEnableWhitelistingAddress)
         }else{
             let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
             self.navigationController?.pushViewController(vc, animated: true)

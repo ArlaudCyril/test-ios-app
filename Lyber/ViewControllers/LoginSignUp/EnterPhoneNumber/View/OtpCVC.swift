@@ -106,9 +106,9 @@ extension OtpCVC{
 //        self.resendCodeBtn.setTitleColor(UIColor.SecondarytextColor, for: .normal)
 //        resendCodeBtn.setTitle("\(L10n.resendCodeWillBeSend.description)00:\(time)", for:.normal)
 //        self.hitTimer()
-        CommonFunction.showLoader(self.controller?.view ?? UIView())
+        CommonFunctions.showLoader(self.controller?.view ?? UIView())
         self.controller?.enterPhoneVM.resendOtpCodeApi(completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.controller?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.controller?.view ?? UIView())
             if let _ = response{
                 self?.time = 30
                 self?.resendCodeBtn.setTitleColor(UIColor.SecondarytextColor, for: .normal)

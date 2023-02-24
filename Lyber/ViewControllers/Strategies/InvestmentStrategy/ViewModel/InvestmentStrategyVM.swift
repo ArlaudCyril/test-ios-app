@@ -12,11 +12,11 @@ class InvestmentStrategyVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.investmentStrategies, withParameters:["type":"all"], ofType: InvestmentStrategiesAPI.self, onSuccess: { response in
             completion(response)
             print("success api correct")
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
             print("error api not correct")
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -25,10 +25,10 @@ class InvestmentStrategyVM{
                                        Constants.ApiKeys.investment_strategy_id : strategyId]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestmentStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

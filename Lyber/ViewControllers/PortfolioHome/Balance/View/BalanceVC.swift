@@ -57,13 +57,13 @@ extension BalanceVC{
         CommonUI.setUpLbl(lbl: self.balanceLbl, text: L10n.Balance.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.coinNameLbl, text: "\(myAsset?.name ?? "") (\(myAsset?.symbol?.uppercased() ?? ""))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: self.coinLbl, text: "\(CommonFunction.getTwoDecimalValue(number: (myAsset?.total_balance ?? 0.0))) \(myAsset?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunction.getTwoDecimalValue(number: ((myAsset?.total_balance ?? 0.0)*(myAsset?.currentPrice ?? 0.0))))€", textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.coinLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: (myAsset?.total_balance ?? 0.0))) \(myAsset?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: ((myAsset?.total_balance ?? 0.0)*(myAsset?.currentPrice ?? 0.0))))€", textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         
         self.earningVw.layer.cornerRadius = 12
         CommonUI.setUpLbl(lbl: self.totalEarningLbl, text: L10n.TotalEarnings.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: self.NoOfEuroLbl, text: "0.00€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunction.getTwoDecimalValue(number: (myAsset?.total_balance ?? 0.0))) \(myAsset?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: (myAsset?.total_balance ?? 0.0))) \(myAsset?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
         self.percentageVw.layer.cornerRadius = 12
         CommonUI.setUpLbl(lbl: self.roiLbl, text: L10n.ROI.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
@@ -199,9 +199,9 @@ extension BalanceVC{
 //MARK: - Other functions
 extension BalanceVC{
     func getTransactionData(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         BalanceVM().getTransactionsApi(assetID: myAsset?.symbol?.uppercased() ?? "", completion: {[weak self] response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             if let response = response{
                 print(response)
                 if response.transactions?.count == 0{

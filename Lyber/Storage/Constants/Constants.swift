@@ -105,7 +105,6 @@ struct Constants{
         static let asset_symbol = "asset_symbol"
         static let asset_id = "asset_id"
         static let asset_name = "asset_name"
-        static let allocation = "allocation"
         static let strategy_name = "strategyName"
         static let amount = "amount"
         static let asset_amount = "asset_amount"
@@ -116,6 +115,8 @@ struct Constants{
         static let exchange_to = "exchange_to"
         static let exchange_from_amount = "exchange_from_amount"
         static let exchange_to_amount = "exchange_to_amount"
+        static let bundle = "bundle"
+        static let share = "share"
         
         //MARK: - assets keys
         static let order = "order"

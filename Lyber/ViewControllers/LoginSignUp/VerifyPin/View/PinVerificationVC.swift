@@ -104,7 +104,7 @@ extension PinVerificationVC{
                     
                     
                 }else{
-                    CommonFunction.toster(Constants.AlertMessages.enterCorrectPin)
+                    CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
                 }
             }
             break

@@ -41,8 +41,8 @@ extension AddAssetsTVC{
         
         CommonUI.setUpLbl(lbl: self.coinFullNameLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.coinNamelbl, text: data?.id?.uppercased() ?? "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunction.formattedCurrency(from: Double(data?.lastPrice ?? "")))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.percentageLbl, text: "\(CommonFunction.formattedCurrency(from: Double(data?.change ?? "")))%", textColor: (Double(data?.change ?? "") ?? 0)<0 ? UIColor.RedDF5A43 : UIColor.GreenColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: Double(data?.lastPrice ?? "")))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.percentageLbl, text: "\(CommonFunctions.formattedCurrency(from: Double(data?.change ?? "")))%", textColor: (Double(data?.change ?? "") ?? 0)<0 ? UIColor.RedDF5A43 : UIColor.GreenColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
         for coin in coinDetailData{
             if data?.id == coin.id{
                 self.coinImg.sd_setImage(with: URL(string: coin.image ?? ""))

@@ -49,7 +49,7 @@ extension SearchAssetVC{
     
     @objc func searchTextChange(){
         self.searchAssetVM.getAssetsApi(searchText: searchTF.text ?? "",completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             if let response = response{
                 self?.allAssets = []
                 self?.allAssets = response
@@ -83,7 +83,7 @@ extension SearchAssetVC: UITableViewDelegate, UITableViewDataSource{
 extension SearchAssetVC: UITextFieldDelegate{
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         self.searchAssetVM.getAssetsApi(searchText: searchTF.text ?? "",completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             if let response = response{
                 self?.allAssets = []
                 self?.allAssets = response
@@ -97,9 +97,9 @@ extension SearchAssetVC: UITextFieldDelegate{
 //MARK: - Other functions
 extension SearchAssetVC{
     func callAssetsApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         self.searchAssetVM.getAssetsApi(searchText: "", completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             if let response = response{
                 self?.allAssets = response
                 self?.tblView.reloadData()

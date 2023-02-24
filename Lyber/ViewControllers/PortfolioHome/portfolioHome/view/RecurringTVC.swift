@@ -42,7 +42,7 @@ extension RecurringTVC{
         CommonUI.setUpLbl(lbl: self.timeLbl, text: data?.frequency?.rawValue ?? "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.paymentLbl, text: "Upcoming payment: 29 July", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         let euroAmount = data?.userInvestmentStrategyID != nil ? data?.amount ?? 0 : data?.assetAmount ?? 0
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunction.formattedCurrency(from: (euroAmount)))€", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: (euroAmount)))€", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         if index == 0{
             recurringVw.layer.cornerRadius = 16

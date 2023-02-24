@@ -128,11 +128,11 @@ extension EmailLoginVC{
 extension EmailLoginVC{
     func checkValidationOnEmail(){
         if self.email.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            CommonFunction.toster(Constants.AlertMessages.enterEmail)
+            CommonFunctions.toster(Constants.AlertMessages.enterEmail)
         }else if email.isValidEmail() == false{
-            CommonFunction.toster(Constants.AlertMessages.enterValidEmail)
+            CommonFunctions.toster(Constants.AlertMessages.enterValidEmail)
         }else if password.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            CommonFunction.toster(Constants.AlertMessages.enterPassword)
+            CommonFunctions.toster(Constants.AlertMessages.enterPassword)
         }else{
             self.nextButton.showLoading()
             EnterPhoneVM().logInChallengeApi(email: self.email, completion: { [weak self] response in

@@ -48,7 +48,7 @@ extension VerificationEmailCVC{
         CommonUI.setUpLbl(lbl: self.openGmailLbl, text: L10n.OpenGmail.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpButton(btn: self.resendEmailBtn, text: L10n.ResendEmail.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryPro(Size.Large.sizeValue()))
         self.resendEmailBtn.addTarget(self, action: #selector(resendBtnAct), for: .touchUpInside)
-        self.resendEmailBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.ResendEmail.description), for: .normal)
+        self.resendEmailBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.ResendEmail.description), for: .normal)
         
         
         let openAppleMailTap = UITapGestureRecognizer(target: self, action: #selector(openAppleMailTapped(sender:)))

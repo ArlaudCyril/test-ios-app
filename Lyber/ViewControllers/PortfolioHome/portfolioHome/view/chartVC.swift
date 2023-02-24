@@ -35,7 +35,7 @@ class chartVC: UIViewController {
     
     
     func extractedFunc(_ graphValues: [ChartDataEntry],_ graphColor : UIColor) {
-        CommonFunction.drawDetailChart(with: graphValues, on: chartVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
+        CommonFunctions.drawDetailChart(with: graphValues, on: chartVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
     }
 
 
@@ -50,10 +50,10 @@ extension chartVC: ChartViewDelegate{
         self.customMarkerView.center = CGPoint(x: highlight.xPx, y: highlight.yPx)
         customMarkerView.isHidden = false
         
-        customMarkerView.graphLbl.text = "\(CommonFunction.formattedCurrency(from: highlight.y))€"
-        customMarkerView.bottomEuroLbl.text = "\(CommonFunction.formattedCurrency(from: highlight.y))€"
-        customMarkerView.dateTimeLbl.text = "\(CommonFunction.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
-        customMarkerView.bottomDateLbl.text = "\(CommonFunction.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
+        customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: highlight.y))€"
+        customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: highlight.y))€"
+        customMarkerView.dateTimeLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
+        customMarkerView.bottomDateLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

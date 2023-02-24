@@ -90,7 +90,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             cell.setUpUI(verifyPin : verifyPin)
             cell.pinConfirmDelegate = {[]pin in
                 if self.enteredPin != pin{
-                    CommonFunction.toster(Constants.AlertMessages.enterCorrectPin)
+                    CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
                 }else{
                     self.setNewLoginPin(enteredPin: pin)
                 }

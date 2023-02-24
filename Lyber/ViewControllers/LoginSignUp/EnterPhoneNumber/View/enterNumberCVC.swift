@@ -47,7 +47,7 @@ extension enterNumberCVC{
         self.passwordTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         self.passwordTF.delegate = self
         CommonUI.setUpButton(btn: self.loginByEmailBtn, text: L10n.LoginByEmail.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        self.loginByEmailBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.LoginByEmail.description ), for: .normal)
+        self.loginByEmailBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.LoginByEmail.description ), for: .normal)
         if controller?.isLogin == true{
             self.loginByEmailBtn.isHidden = false
             self.enterNumberLbl.text = L10n.HappyToSeeYouBack.description

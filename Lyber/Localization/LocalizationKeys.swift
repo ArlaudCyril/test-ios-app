@@ -85,9 +85,7 @@ enum L10n {
     case MyOwnStrategy
     case LearnMore
     case Yield
-    case RiskLow
-    case RiskMedium
-    case RiskHigh
+    case Risk
     case ChooseThisStrategy
     case Safe
     case Indermediate
@@ -563,7 +561,7 @@ extension L10n: CustomStringConvertible{
         case .SaveMyStrategy:
             return L10n.tr("Save my strategy")
         case .YourStrategyReadyToBeSaved:
-            return L10n.tr("Your stratégy is ready to be saved.")
+            return L10n.tr("Your strategy is ready to be saved.")
         case .asset:
             return L10n.tr("asset")
         case .assets:
@@ -590,12 +588,8 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Learn more ...")
         case .Yield:
             return L10n.tr("Yield: ")
-        case .RiskLow:
+        case .Risk:
             return L10n.tr("Risk: ")
-        case .RiskMedium:
-            return L10n.tr("Risk: Medium")
-        case .RiskHigh:
-            return L10n.tr("Risk: High")
         case .ChooseThisStrategy:
             return L10n.tr("Choose this strategy")
         case .Safe:
@@ -952,9 +946,9 @@ extension L10n: CustomStringConvertible{
         case .ConfirmDeposit:
             return L10n.tr("Confirm deposit")
         case .Amount:
-            return L10n.tr("Amount")
+            return L10n.tr("Amount: ")
         case .Frequency:
-            return L10n.tr("Frequency")
+            return L10n.tr("Frequency: ")
         case .Payment:
             return L10n.tr("Payment")
         case .Buy:

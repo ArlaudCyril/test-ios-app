@@ -124,9 +124,9 @@ extension CryptoDepositeVC{
     }
     
     func callCoinInfoApi(assetName: String){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         PortfolioDetailVM().getCoinInfoApi(Asset: assetName, completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 //            vc.assetsData = response
             vc.strategyType = .singleCoin

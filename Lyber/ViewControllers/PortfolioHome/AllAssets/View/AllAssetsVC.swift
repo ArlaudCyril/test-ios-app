@@ -238,7 +238,7 @@ extension AllAssetsVC{
             self.tblView.tableHeaderView?.isHidden = true
             self.tblView.es.stopPullToRefresh()
             self.tblView.tableFooterView?.isHidden = true
-            CommonFunction.hideLoader(self.view)
+            CommonFunctions.hideLoader(self.view)
 //            DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
                 self.tblView.reloadData()
 //            })

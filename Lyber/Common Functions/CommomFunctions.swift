@@ -20,7 +20,7 @@ class EntryAttributeWrapper {
     }
 }
 
-class CommonFunction{
+class CommonFunctions{
     var attributes = EKAttributes()
     
     static func toster(_ txt : String){
@@ -273,6 +273,7 @@ class CommonFunction{
         return password.evaluate(with: checkpass)
     }
 
+    //MARK: - String
     
     static func underlineString(str: String) -> (NSAttributedString){
         let myAttribute = [ NSAttributedString.Key.underlineStyle : NSUnderlineStyle.thick.rawValue]
@@ -286,6 +287,7 @@ class CommonFunction{
         myString.removeAttribute(NSAttributedString.Key.underlineStyle, range: NSRange(location: 0, length: myString.length))
         return myString
     }
+    
     
     static func getDateFormat(date: String, format: String, rqrdFormat: String) -> String {
         
@@ -389,4 +391,19 @@ class CommonFunction{
         print(resultString)
         return resultString
     }
+    
+    //MARK: - Mapper
+    static func frequenceMapper(frequence : String?)->(String){
+        switch frequence {
+        case "1d":
+            return "Daily"
+        case "1w":
+            return "Weekly"
+        case "1m":
+            return "Monthly"
+        default:
+            return ""
+        }
+    }
+
 }

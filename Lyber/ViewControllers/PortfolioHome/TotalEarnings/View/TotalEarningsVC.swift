@@ -91,7 +91,7 @@ extension TotalEarningsVC{
     }
     
     fileprivate func extractedFunc(_ graphValues: [ChartDataEntry],_ graphColor : UIColor) {
-        CommonFunction.drawDetailChart(with: graphValues, on: chartView, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
+        CommonFunctions.drawDetailChart(with: graphValues, on: chartView, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
     }
 }
 
@@ -206,9 +206,9 @@ extension TotalEarningsVC: ChartViewDelegate{
 //MARK: - Other functions
 extension TotalEarningsVC{
     func callMyAssetsApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         PortfolioHomeVM().getMyAssetsApi(completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             if let response = response{
                 self?.assetsData = response.assets ?? []
                 self?.tblview.reloadData()
@@ -228,9 +228,9 @@ extension TotalEarningsVC{
 //            self.customMarkerView.contentView.isHidden = false
         }
         self.customMarkerView.contentView.isHidden = false
-        customMarkerView.graphLbl.text = "\(CommonFunction.formattedCurrency(from: yValue))€"
-        customMarkerView.bottomEuroLbl.text = "\(CommonFunction.formattedCurrency(from: yValue))€"
-        customMarkerView.dateTimeLbl.text = "\(CommonFunction.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
-        customMarkerView.bottomDateLbl.text = "\(CommonFunction.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
+        customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
+        customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
+        customMarkerView.dateTimeLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
+        customMarkerView.bottomDateLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
     }
 }

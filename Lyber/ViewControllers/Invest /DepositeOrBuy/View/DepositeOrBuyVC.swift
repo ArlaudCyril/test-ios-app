@@ -40,11 +40,18 @@ class DepositeOrBuyVC: UIViewController {
         buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.InvestInSingleAsset.description, subName: L10n.ChooseAmong80DifferentAssets.description, rightBtnName: "")
     ]
     
-    var investWithStrategiesData: [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.OneTimeInvestment.description, subName: L10n.ExecuteStrategySingleTime.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.AdjustInvestment.description, subName: L10n.ChangeFrequencyAmount.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.TailorStrategy.description, subName: L10n.ChangeAssetRepartition.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.PauseStrategy.description, subName: "", rightBtnName: "")
+    var investWithStrategiesActiveData: [buyDepositeModel] = [
+        buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.OneTimeInvestment.description, subName: L10n.ExecuteStrategySingleTime.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.pencil.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.AdjustInvestment.description, subName: L10n.ChangeFrequencyAmount.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.TailorStrategy.description, subName: L10n.ChangeAssetRepartition.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.pause.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.PauseStrategy.description, subName: "", rightBtnName: "")
+    ]
+    
+    var investWithStrategiesInactiveData: [buyDepositeModel] = [
+        buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.OneTimeInvestment.description, subName: L10n.ExecuteStrategySingleTime.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.recurrent.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.RecurrentInvestment.description, subName: L10n.ExecuteStrategyRegularBasis.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.TailorStrategy.description, subName: L10n.ChangeAssetRepartition.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.DeleteStrategy.description, subName: "", rightBtnName: "")
     ]
     
     var assetPagePopUpData : [buyDepositeModel] = []
@@ -97,7 +104,7 @@ extension DepositeOrBuyVC{
             self.withdrawToAccountData.insert(buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: L10n.AddBankAccount.description, subName: L10n.LimitedTo1000€PerWeek.description, rightBtnName: ""), at: ((self.connectedAccountAddress.count ) + 1))
         }else if popupType == .InvestInStrategiesOrAsset{
             self.depositeOrSingularBuyLbl.text = L10n.InvestInStrategiesOrSingleAsset.description
-        }else if popupType == .investWithStrategies{
+        }else if(popupType == .investWithStrategiesActive || popupType == .investWithStrategiesInactive){
             self.depositeOrSingularBuyLbl.text = L10n.investWithStrategies.description
         }else if popupType == .withdrawAll{
             self.depositeOrSingularBuyLbl.text = L10n.WithdrawTo.description
@@ -134,8 +141,10 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             return paymentMethodData.count
         }else if popupType == .withdrawExchange{
             return withdrawExchangedata.count
-        }else if popupType == .investWithStrategies{
-            return investWithStrategiesData.count
+        }else if popupType == .investWithStrategiesActive{
+            return investWithStrategiesActiveData.count
+        }else if popupType == .investWithStrategiesInactive{
+            return investWithStrategiesInactiveData.count
         }else if popupType == .withdrawTo{
             return withdrawToAccountData.count
         }else if popupType == .InvestInStrategiesOrAsset{
@@ -157,8 +166,10 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             cell.setUpCellData(data: paymentMethodData[indexPath.row])
         }else if popupType == .withdrawExchange{
             cell.setUpCellData(data: withdrawExchangedata[indexPath.row])
-        }else if popupType == .investWithStrategies{
-            cell.setUpCellData(data: investWithStrategiesData[indexPath.row])
+        }else if popupType == .investWithStrategiesActive{
+            cell.setUpCellData(data: investWithStrategiesActiveData[indexPath.row])
+        }else if popupType == .investWithStrategiesInactive{
+            cell.setUpCellData(data: investWithStrategiesInactiveData[indexPath.row])
         }else if popupType == .withdrawTo{
             cell.setUpCellData(data: withdrawToAccountData[indexPath.row])
         }else if popupType == .InvestInStrategiesOrAsset{
@@ -209,7 +220,31 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             }else if indexPath.row == 3{
                 self.dismiss(animated: true, completion: nil)
             }
-        case .investWithStrategies: // TODO
+        case .investWithStrategiesActive: // TODO
+            if indexPath.row == 0{
+                self.dismiss(animated: true, completion: nil)
+                let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                nav.navigationBar.isHidden = true
+                if indexPath.row == 0{
+                    vc.screenType = .withdraw
+                }else if indexPath.row == 1{
+                    vc.screenType = .exchange
+                }
+                self.portfolioHomeController?.present(nav, animated: true, completion: nil)
+                
+            }else if indexPath.row == 1{
+                let vc = PaymentFundsVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                nav.navigationBar.isHidden = true
+                self.portfolioHomeController?.present(nav, animated: true, completion: nil)
+                
+            }else if indexPath.row == 2{
+                self.dismiss(animated: true, completion: nil)
+            }
+        case .investWithStrategiesInactive: // TODO
             if indexPath.row == 0{
                 self.dismiss(animated: true, completion: nil)
                 let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
@@ -309,10 +344,18 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 //MARK: - objective functions
 extension DepositeOrBuyVC{
     @objc func cancelBtnAct(){
+        if(self.popupType == .investWithStrategiesActive || self.popupType == .investWithStrategiesInactive)
+        {
+            self.investmentStrategyController?.deselectAllStrategies()
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func dismissBottomView(){
+        if(self.popupType == .investWithStrategiesActive || self.popupType == .investWithStrategiesInactive)
+        {
+            self.investmentStrategyController?.deselectAllStrategies()
+        }
         self.dismiss(animated: true, completion: nil)
     }
 }

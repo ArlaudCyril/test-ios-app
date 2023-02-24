@@ -65,7 +65,7 @@ extension AddressAddedPopUpVC{
             self.addressOriginView.isHidden = true
         }
         CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: cryptoAddressAdded?.exchange ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunction.getCurrentDate(requiredFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getCurrentDate(requiredFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpButton(btn: self.confirmBtn, text: L10n.Confirm.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpButton(btn: self.editBtn, text: L10n.Edit.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -81,13 +81,13 @@ extension AddressAddedPopUpVC{
             
         }else if popUpType == .detailAddress{
             self.confirmBtn.setTitle(L10n.Delete.description, for: .normal)
-            CommonFunction.showLoader(self.bottomView)
+            CommonFunctions.showLoader(self.bottomView)
             addressAddedPopUpVM.getAddressDetailApi(addressId: self.addressId, completion: {[weak self]response in
-                CommonFunction.hideLoader(self?.bottomView ?? UIView())
+                CommonFunctions.hideLoader(self?.bottomView ?? UIView())
                 self?.cryptoAddressAdded = cryptoAddressModel(addressName: response?.name ?? "", network: response?.network ?? "", address: response?.address ?? "", origin: response?.origin ?? "", exchange: response?.exchange ?? "", logo: response?.logo ?? "")
                 self?.headerView.headerLbl.text = response?.name ?? ""
                 self?.networkNameLbl.text = response?.network ?? ""
-                self?.dateLbl.text = CommonFunction.getDateFromUnixInterval(timeResult: Double(response?.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy")
+                self?.dateLbl.text = CommonFunctions.getDateFromUnixInterval(timeResult: Double(response?.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy")
                 if response?.exchange == nil || response?.exchange == nil{
                     self?.addressOriginView.isHidden = true
                 }else{

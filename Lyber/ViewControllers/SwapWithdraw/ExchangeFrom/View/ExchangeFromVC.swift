@@ -46,7 +46,7 @@ extension ExchangeFromVC{
         CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: L10n.ExchangeFrom.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.lyberPortfolioLbl, text: L10n.LyberPortfolio.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allportfolioLbl, text: L10n.AllMyPortfolio.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunction.formattedCurrency(from: totalPortfolio))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         if screenType == .exchange{
             self.allPortfolioVw.isHidden = true
@@ -106,9 +106,9 @@ extension ExchangeFromVC{
 //MARK: - Other functions
 extension ExchangeFromVC{
     func callMyAssetsApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         PortfolioHomeVM().getMyAssetsApi(completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             if let response = response{
                 self?.assetsData = response.assets ?? []
                 self?.tblView.reloadData()

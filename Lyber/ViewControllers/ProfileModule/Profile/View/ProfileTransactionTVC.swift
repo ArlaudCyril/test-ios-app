@@ -41,7 +41,7 @@ extension ProfileTransactionTVC{
     func setUpCell(data : Transaction?,row : Int,lastIndex : Int){
         CommonUI.setUpLbl(lbl: transactionTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: euroLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: dateLbl, text: CommonFunction.getDateFromUnixInterval(timeResult: Double(data?.createdAt ?? "") ?? 0, requiredFormat: "dd/MM/yyyy"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: dateLbl, text: CommonFunctions.getDateFromUnixInterval(timeResult: Double(data?.createdAt ?? "") ?? 0, requiredFormat: "dd/MM/yyyy"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: noOfCoinLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         if data?.type == 1{  //exchange
@@ -55,17 +55,17 @@ extension ProfileTransactionTVC{
             self.coinImg.image = Assets.withdraw.image()
             self.transactionTypeLbl.text = L10n.Withdrawal.description
             self.euroLbl.text = "-\(data?.amount ?? 0.0)€"
-            self.noOfCoinLbl.text = "\(CommonFunction.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
+            self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
         }else if data?.type == 4{     //bought
             self.coinImg.image = Assets.money_deposit.image()
             self.transactionTypeLbl.text = "\(L10n.Bought.description) \(data?.assetID ?? "")"
             self.euroLbl.text = "+\(data?.amount ?? 0.0)€"
-            self.noOfCoinLbl.text = "\(CommonFunction.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
+            self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
         }
         
         
         CommonUI.setUpButton(btn: viewAllBtn, text: L10n.ViewAll.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        viewAllBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.ViewAll.description), for: .normal)
+        viewAllBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.ViewAll.description), for: .normal)
         viewAllBtn.addTarget(self, action: #selector(viewAllBtnAction), for: .touchUpInside)
         
         if row == 0{

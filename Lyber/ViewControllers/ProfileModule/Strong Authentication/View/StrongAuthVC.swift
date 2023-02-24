@@ -87,9 +87,9 @@ extension StrongAuthVC{
     @objc func smsSwitchBtnAct(sender : UISwitch){
         if sender.isOn == true{
             print("on")
-            CommonFunction.showLoader(self.view)
+            CommonFunctions.showLoader(self.view)
             strongAuthVM.strongAuthApi(enable: sender.isOn, completion: {[weak self]response in
-                CommonFunction.hideLoader(self?.view ?? UIView())
+                CommonFunctions.hideLoader(self?.view ?? UIView())
                 if let response = response{
                     let vc = StrongAuthOTPVerifyVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                     vc.strongAuthCallback = {

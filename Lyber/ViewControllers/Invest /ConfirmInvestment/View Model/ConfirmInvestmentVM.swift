@@ -21,10 +21,10 @@ class ConfirmInvestmentVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.investOnAsset, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -34,10 +34,10 @@ class ConfirmInvestmentVM{
                                        Constants.ApiKeys.frequency : frequency.uppercased()]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestOnStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -48,10 +48,10 @@ class ConfirmInvestmentVM{
                                        Constants.ApiKeys.exchange_to_amount : String(exchangeToAmount)]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSwapCrypto, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -63,10 +63,10 @@ class ConfirmInvestmentVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSellCrypto, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

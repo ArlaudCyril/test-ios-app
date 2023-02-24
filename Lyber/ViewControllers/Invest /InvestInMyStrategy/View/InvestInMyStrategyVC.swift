@@ -110,7 +110,7 @@ extension InvestInMyStrategyVC{
         self.BalanceView.backgroundColor = UIColor.greyColor
         self.BalanceView.layer.cornerRadius = 12
         CommonUI.setUpLbl(lbl: self.balanceLbl, text: "Balance: ", textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.totalBalanceLbl, text: "\(CommonFunction.formattedCurrency(from: totalEuroAvailable ?? 0))€", textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalBalanceLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroAvailable ?? 0))€", textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
         amountTF.font = UIFont.AtypDisplayMedium(60.0)
         //        amountTF.inputView = UIView()
@@ -274,7 +274,7 @@ extension InvestInMyStrategyVC {
             goToConfirmInvestment()
         }else if strategyType == .withdraw {
             if totalEuroInvested > maxEuroWithdraw{
-                CommonFunction.toster("you don't have enough coins to withdraw")
+                CommonFunctions.toster("you don't have enough coins to withdraw")
             }else{
                 let vc = EnterWalletAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 vc.fromCoinsData = fromCoinData
@@ -301,7 +301,7 @@ extension InvestInMyStrategyVC {
         }else{
             if self.frequencyVw.isHidden == false{
                 if selectedFrequency == ""{
-                    CommonFunction.toster(L10n.pleaseSelectFrequency.description)
+                    CommonFunctions.toster(L10n.pleaseSelectFrequency.description)
                 }else{
                     self.goToConfirmInvestment()
                 }
@@ -312,10 +312,10 @@ extension InvestInMyStrategyVC {
     }
     
     @objc func selectCard(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         CryptoAddressBookVM().getWhiteListingAddressApi(searchText: "", completion: {[weak self]response in
             if let response = response{
-                CommonFunction.hideLoader(self?.view ?? UIView())
+                CommonFunctions.hideLoader(self?.view ?? UIView())
                 let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                 if self?.strategyType == .withdraw{
                     vc.popupType = .withdrawTo
@@ -365,7 +365,7 @@ extension InvestInMyStrategyVC {
                 self?.exchangeData = exchangeFromModel(exchangeFromCoin: self?.fromCoinnameLbl.text ?? "", exchangeFromCoinImg: self?.fromCoinImg.image ?? UIImage(), exchangeToCoin: self?.ToCoinNameLbl.text ?? "", exchangeToCoinImg: self?.ToCoinImg.image ?? UIImage())
             })
             self?.ToCoinNameLbl.text = coinData?.symbol?.uppercased()
-            self?.secondCoinPrice = CommonFunction.getTwoDecimalValue(number: (coinData?.currentPrice ?? 0.0))
+            self?.secondCoinPrice = CommonFunctions.getTwoDecimalValue(number: (coinData?.currentPrice ?? 0.0))
             
             
         }
@@ -559,7 +559,7 @@ extension InvestInMyStrategyVC {
                 enteredText = "\(MaxCoin)"
                 noOfCoins(value: enteredText)
             }else{
-                enteredText = "\(CommonFunction.getTwoDecimalValue(number: totalEuroAvailable ?? (assetsData?.total_balance ?? 0)))"
+                enteredText = "\(CommonFunctions.getTwoDecimalValue(number: totalEuroAvailable ?? (assetsData?.total_balance ?? 0)))"
                 noOfCoins(value: enteredText)
             }
         }else if strategyType == .withdraw{
@@ -568,15 +568,15 @@ extension InvestInMyStrategyVC {
                 noOfCoins(value: enteredText)
             }else{
                 if self.fromCoinData?.totalBalance == 0 || self.fromCoinData?.totalBalance == nil{
-                    enteredText = "\(CommonFunction.getTwoDecimalValue(number: ((assetsData?.total_balance ?? 0)*(assetsData?.currentPrice ?? 0))))"
+                    enteredText = "\(CommonFunctions.getTwoDecimalValue(number: ((assetsData?.total_balance ?? 0)*(assetsData?.currentPrice ?? 0))))"
                 }else{
-                    enteredText = "\(CommonFunction.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))))"
+                    enteredText = "\(CommonFunctions.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))))"
                 }
                 noOfCoins(value: enteredText)
             }
             
         }else if strategyType == .Exchange{
-            enteredText = "\(CommonFunction.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? (self.assetsData?.total_balance ?? 0)))))"
+            enteredText = "\(CommonFunctions.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? (self.assetsData?.total_balance ?? 0)))))"
             noOfCoins(value: enteredText)
         }
         
@@ -589,10 +589,10 @@ extension InvestInMyStrategyVC {
     
     
     func getAddedWalletAddress(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         CryptoAddressBookVM().getWhiteListingAddressApi(searchText: "", completion: {[weak self]response in
             if let response = response{
-                CommonFunction.hideLoader(self?.view ?? UIView())
+                CommonFunctions.hideLoader(self?.view ?? UIView())
                 if (response.count ?? 0) > 0{
                     self?.creditCardLbl.text = response.addresses?[0].address ?? ""
                     self?.creditCardNumberLbl.text = response.addresses?[0].name ?? ""
@@ -613,7 +613,7 @@ extension InvestInMyStrategyVC {
                let vc = BuySellPopUpVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                vc.popUpType = .Sell
                vc.assetData = self?.assetsData
-               vc.coinInvest = "\(CommonFunction.formattedCurrency(from: self?.totalEuroInvested))"
+               vc.coinInvest = "\(CommonFunctions.formattedCurrency(from: self?.totalEuroInvested))"
                self?.present(vc, animated: true, completion: nil)
            }
        })
@@ -627,41 +627,41 @@ extension InvestInMyStrategyVC {
         if strategyType == .Exchange{
             if exchangeCoinToEuro == false{
                 amountTF.text = "\(value)\(self.exchangeData?.exchangeFromCoin ?? "")"
-                let coinPrice = CommonFunction.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
+                let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
                 totalEuroInvested = Double(value) ?? 0.0
                 
                 let totalEuro = ((Double(value) ?? 0.0)*(coinPrice))
                 //                CommonFunction.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(coinPrice)))
-                totalNoOfCoinsInvest = CommonFunction.getTwoDecimalValue(number: (totalEuro*(1/secondCoinPrice)))
+                totalNoOfCoinsInvest = CommonFunctions.getTwoDecimalValue(number: (totalEuro*(1/secondCoinPrice)))
                 self.noOfCoinLbl.text = "\(totalNoOfCoinsInvest) \(self.exchangeData?.exchangeToCoin ?? "")"
             }else{
                 amountTF.text = "\(value)\(self.exchangeData?.exchangeToCoin ?? "")"
-                let coinPrice = CommonFunction.getTwoDecimalValue(number: (secondCoinPrice))
+                let coinPrice = CommonFunctions.getTwoDecimalValue(number: (secondCoinPrice))
                 totalEuroInvested = Double(value) ?? 0.0
                 let totalEuro = ((Double(value) ?? 0.0)*(coinPrice))
                 //                CommonFunction.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(coinPrice)))
                 
                 totalNoOfCoinsInvest =
 //                (totalEuro*(1/(self.assetsData?.currentPrice ?? 0.0)))
-                                CommonFunction.getTwoDecimalValue(number: (totalEuro*(1/(self.assetsData?.currentPrice ?? 0.0))))
+                                CommonFunctions.getTwoDecimalValue(number: (totalEuro*(1/(self.assetsData?.currentPrice ?? 0.0))))
                 self.noOfCoinLbl.text = "\(totalNoOfCoinsInvest) \(self.exchangeData?.exchangeFromCoin ?? "")"
             }
         }else{
             if exchangeCoinToEuro == false{
-                    amountTF.text = "\(CommonFunction.numberFormat(from: Double(value)))€"
-                    let coinPrice = CommonFunction.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
+                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value)))€"
+                    let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
                     totalEuroInvested = Double(value) ?? 0.0
                     totalNoOfCoinsInvest =
 //                ((Double(value) ?? 0.0)*(1/coinPrice))
-                                    CommonFunction.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(1/coinPrice)))
+                                    CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(1/coinPrice)))
                     
-                    self.noOfCoinLbl.text = "\(CommonFunction.getTwoDecimalValue(number: totalNoOfCoinsInvest)) \(self.assetsData?.symbol?.uppercased() ?? (self.fromCoinData?.assetID ?? ""))"
+                    self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: totalNoOfCoinsInvest)) \(self.assetsData?.symbol?.uppercased() ?? (self.fromCoinData?.assetID ?? ""))"
             }else{
-                amountTF.text = "\(CommonFunction.numberFormat(from: Double(value)))\(self.assetsData?.symbol?.uppercased() ?? (self.fromCoinData?.assetID ?? ""))"
-                let coinPrice = CommonFunction.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
+                amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value)))\(self.assetsData?.symbol?.uppercased() ?? (self.fromCoinData?.assetID ?? ""))"
+                let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
                 totalEuroInvested =
 //                ((Double(value) ?? 0.0)*(coinPrice))
-                CommonFunction.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(coinPrice)))
+                CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(coinPrice)))
                 
                 totalNoOfCoinsInvest = Double(value) ?? 0.0
                 self.noOfCoinLbl.text = "\(totalEuroInvested)€"
@@ -672,13 +672,13 @@ extension InvestInMyStrategyVC {
     func goToConfirmInvestment(){
         if strategyType == .singleCoin || strategyType == .ownStrategy{
             if totalEuroInvested > (totalEuroAvailable ?? 0){
-                CommonFunction.toster("you don't have enough balance to invest")
+                CommonFunctions.toster("you don't have enough balance to invest")
             }else{
                 self.goToPreviewINvest()
             }
         }else if strategyType == .Exchange{
             if totalEuroInvested > maxCoinExchange {
-                CommonFunction.toster("you don't have enough coins to exchange")
+                CommonFunctions.toster("you don't have enough coins to exchange")
             }else{
                 self.goToPreviewINvest()
             }
@@ -709,23 +709,23 @@ extension InvestInMyStrategyVC {
     }
     
     func maximumMoneyInvest(){
-        let coinPrice = CommonFunction.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
-        print(CommonFunction.getTwoDecimalValue(number: ((totalEuroAvailable ?? 0)*(1/coinPrice))))
-        MaxCoin = CommonFunction.getTwoDecimalValue(number: ((totalEuroAvailable ?? 0)*(1/coinPrice)))
+        let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
+        print(CommonFunctions.getTwoDecimalValue(number: ((totalEuroAvailable ?? 0)*(1/coinPrice))))
+        MaxCoin = CommonFunctions.getTwoDecimalValue(number: ((totalEuroAvailable ?? 0)*(1/coinPrice)))
     }
     
     func maxMoneyWithdraw(){
         if self.fromCoinData?.totalBalance == 0 || self.fromCoinData?.totalBalance == nil{
-            maxEuroWithdraw = (CommonFunction.getTwoDecimalValue(number: ((assetsData?.total_balance ?? 0)*(assetsData?.currentPrice ?? 0))))
+            maxEuroWithdraw = (CommonFunctions.getTwoDecimalValue(number: ((assetsData?.total_balance ?? 0)*(assetsData?.currentPrice ?? 0))))
         }else{
-            maxEuroWithdraw = (CommonFunction.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))))
+            maxEuroWithdraw = (CommonFunctions.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))))
         }
-        let coinPrice = CommonFunction.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
-        maxCoinWithdraw = CommonFunction.getTwoDecimalValue(number: ((maxEuroWithdraw)*(1/coinPrice)))
+        let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
+        maxCoinWithdraw = CommonFunctions.getTwoDecimalValue(number: ((maxEuroWithdraw)*(1/coinPrice)))
         
     }
     func MaxMoneyExchange(){
-        maxCoinExchange = (CommonFunction.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? (self.assetsData?.total_balance ?? 0)))))
+        maxCoinExchange = (CommonFunctions.getTwoDecimalValue(number: ((fromCoinData?.totalBalance ?? (self.assetsData?.total_balance ?? 0)))))
     }
 }
 

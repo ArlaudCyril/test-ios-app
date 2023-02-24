@@ -13,10 +13,10 @@ class BalanceVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userTransactions, withParameters: params, ofType: TransactionsAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

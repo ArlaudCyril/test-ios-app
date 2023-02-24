@@ -56,10 +56,10 @@ class PersonalDataVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetUserInfo, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -79,10 +79,10 @@ class PersonalDataVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetUserAddress, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -100,10 +100,10 @@ class PersonalDataVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestmentExperience, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -113,10 +113,10 @@ class PersonalDataVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userPersonal_info, withParameters: [:], ofType: UserPersonalData.self, onSuccess: { response in
             completion(response)
-            CommonFunction.hideLoader()
+            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -137,7 +137,7 @@ class PersonalDataVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
@@ -157,7 +157,7 @@ class PersonalDataVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

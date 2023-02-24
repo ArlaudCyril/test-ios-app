@@ -108,7 +108,7 @@ class ApiHandler: NSObject {
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                             if dict[Constants.ApiKeys.error_description].stringValue == "you are not authorized to perform this action." || dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
-                                CommonFunction.logout()
+                                CommonFunctions.logout()
                                 userData.shared.deleteData()
                             }
                             if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.message].stringValue != ""{
@@ -176,7 +176,7 @@ class ApiHandler: NSObject {
                             let dict = JSON(response.data ?? Data())
                             if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                                 if dict[Constants.ApiKeys.error].stringValue == "you are not authorized to perform this action." || dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
-                                    CommonFunction.logout()
+                                    CommonFunctions.logout()
                                     userData.shared.deleteData()
                                 }
                                 if dict[Constants.ApiKeys.error].stringValue != ""{
@@ -235,7 +235,7 @@ class ApiHandler: NSObject {
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                             if dict[Constants.ApiKeys.error_description].stringValue == "you are not authorized to perform this action." || dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
-                                CommonFunction.logout()
+                                CommonFunctions.logout()
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
@@ -313,7 +313,7 @@ class ApiHandler: NSObject {
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                             if dict[Constants.ApiKeys.error_description].stringValue == "you are not authorized to perform this action."{
-                                CommonFunction.logout()
+                                CommonFunctions.logout()
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
@@ -406,7 +406,7 @@ class ApiHandler: NSObject {
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                             if dict[Constants.ApiKeys.error_description].stringValue == "you are not authorized to perform this action."{
-                                CommonFunction.logout()
+                                CommonFunctions.logout()
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
@@ -466,7 +466,7 @@ class ApiHandler: NSObject {
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                             if dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
-                                CommonFunction.logout()
+                                CommonFunctions.logout()
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
@@ -520,7 +520,7 @@ class ApiHandler: NSObject {
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                             if dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
-                                CommonFunction.logout()
+                                CommonFunctions.logout()
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
@@ -597,7 +597,7 @@ class ApiHandler: NSObject {
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
                             if dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
-                                CommonFunction.logout()
+                                CommonFunctions.logout()
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)

@@ -178,7 +178,7 @@ extension PortfolioDetailVC{
 //MARK: - Other functions
 extension PortfolioDetailVC{
     func callCoinInfoApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         portfolioDetailVM.getCoinInfoApi(Asset: assetName, completion: {[self]response in
             
             self.emptyView.isHidden = true
@@ -205,14 +205,14 @@ extension PortfolioDetailVC{
             self.chartData = response?.data
             self.tblView.reloadData()
 //            }
-            CommonFunction.hideLoader(self.view )
+            CommonFunctions.hideLoader(self.view )
         })
     }
     
     func callResoucesApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         portfolioDetailVM.getAssetsNewsApi(id: self.assetName, completion: {[self]response in
-            CommonFunction.hideLoader(self.view)
+            CommonFunctions.hideLoader(self.view)
             self.resoucesData = response?.data ?? []
             self.tblView.reloadData()
         })

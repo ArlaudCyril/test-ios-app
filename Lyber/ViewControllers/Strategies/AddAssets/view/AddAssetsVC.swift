@@ -201,7 +201,7 @@ extension AddAssetsVC{
             self.tblView.es.stopPullToRefresh()
             self.tblView.tableFooterView?.isHidden = true
             self.tblView.tableHeaderView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tblView.bounds.width, height: CGFloat(0)))
-            CommonFunction.hideLoader(self.view)
+            CommonFunctions.hideLoader(self.view)
             self.tblView.reloadData()
         })
     }

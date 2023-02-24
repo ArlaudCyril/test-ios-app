@@ -29,10 +29,10 @@ class KYCVerificationVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpUI()
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         kycVerificationVM.getKYCStatus(completion: { data in
             self.handleKYCStatusData(data:data )
-            CommonFunction.hideLoader(self.view)
+            CommonFunctions.hideLoader(self.view)
         })
     }
 }

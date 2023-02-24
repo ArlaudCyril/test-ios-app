@@ -24,7 +24,6 @@ class InvestmentStrategyVC: UIViewController {
     @IBOutlet var tblViewHeightConst: NSLayoutConstraint!
     @IBOutlet var buildOwnStrategyBtn: UIButton!
     @IBOutlet var bottomView: UIView!
-    @IBOutlet var chooseStrategyBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +45,11 @@ extension InvestmentStrategyVC{
         CommonUI.setUpButton(btn: buildOwnStrategyBtn, text: L10n.BuildMyOwnStrategy.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         CommonUI.setUpViewBorder(vw: bottomView, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        CommonUI.setUpButton(btn: chooseStrategyBtn, text: L10n.ChooseThisStrategy.description, textcolor: UIColor.white, backgroundColor: UIColor.TFplaceholderColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-        
+       
         self.tblView.delegate = self
         self.tblView.dataSource = self
         
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
-        self.chooseStrategyBtn.addTarget(self, action: #selector(chooseStrategyBtnAct), for: .touchUpInside)
         self.buildOwnStrategyBtn.addTarget(self, action: #selector(buildOwnStrategyBtnAct), for: .touchUpInside)
         
         
@@ -73,22 +70,18 @@ extension InvestmentStrategyVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedStrategy = indexPath.row
+       
         invstStrategyData[indexPath.row].isSelected = !(invstStrategyData[indexPath.row].isSelected ?? false)
         for i in 0...(invstStrategyData.count - 1){
-            if invstStrategyData[i].name == invstStrategyData[indexPath.row].name{
-                
-            }else{
+            if invstStrategyData[i].name != invstStrategyData[indexPath.row].name{
                 invstStrategyData[i].isSelected = false
             }
         }
-        if invstStrategyData[indexPath.row].isSelected == true {
-            self.chooseStrategyBtn.backgroundColor = UIColor.PurpleColor
-            self.chooseStrategyBtn.isUserInteractionEnabled = true
-        }else{
-            self.chooseStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
-            self.chooseStrategyBtn.isUserInteractionEnabled = false
-        }
-        showModal()
+       if(invstStrategyData[indexPath.row].activeStrategy != nil){
+           showModal(active : true)
+       }else{
+           showModal(active: false)
+       }
         
         tableView.reloadData()
     }
@@ -109,7 +102,7 @@ extension InvestmentStrategyVC{
         
     }
     
-    @objc func chooseStrategyBtnAct(){
+    /*@objc func chooseStrategyBtnAct(){
         print((invstStrategyData[selectedStrategy].isOwnStrategy == 1) ? 1 : 0)
         investmentStrategyVM.chooseStrategyApi(isOwnStrategy: invstStrategyData[selectedStrategy].isOwnStrategy ?? 0, strategyId: invstStrategyData[selectedStrategy].name ?? "", completion: {[]response in
             if let response = response{
@@ -122,7 +115,7 @@ extension InvestmentStrategyVC{
                 self.present(nav, animated: true, completion: nil)
             }
         })
-    }
+    }*/
     
     @objc func buildOwnStrategyBtnAct(){
         let vc = AddStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
@@ -133,48 +126,60 @@ extension InvestmentStrategyVC{
     }
 }
 
-//MARK: - Other functions
+// MARK: - TABLE VIEW OBSERVER
 extension InvestmentStrategyVC{
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        callGetStrategies()
+        setUpUI()
+        self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        self.tblView.reloadData()
+    }
     
-    func showModal(){
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tblView.removeObserver(self, forKeyPath: "contentSize")
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let obj = object as? UITableView {
+            if obj == self.tblView && keyPath == "contentSize" {
+                if let newSize = change?[NSKeyValueChangeKey.newKey] as? CGSize {
+                    self.tblViewHeightConst.constant = newSize.height
+                }
+            }
+        }
+    }
+}
+    //MARK: - Other functions
+extension InvestmentStrategyVC{
+        
+    func showModal(active : Bool){
         let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-        vc.popupType = .investWithStrategies
+        if(active == true)
+        {
+            vc.popupType = .investWithStrategiesActive
+        }
+        else{
+            vc.popupType = .investWithStrategiesInactive
+        }
         vc.investmentStrategyController = self
         self.present(vc, animated: true, completion: nil)
     }
     
     func callGetStrategies(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         self.investmentStrategyVM.getInvestmentStrategiesApi(completion: {[weak self]response in
-            CommonFunction.hideLoader(self?.view ?? UIView())
+            CommonFunctions.hideLoader(self?.view ?? UIView())
             self?.invstStrategyData = response?.data ?? []
             self?.tblView.reloadData()
         })
     }
-}
-
-// MARK: - TABLE VIEW OBSERVER
-extension InvestmentStrategyVC{
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-        callGetStrategies()
-        setUpUI()
-      self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-      self.tblView.reloadData()
-    }
-      
-    override func viewWillDisappear(_ animated: Bool) {
-      super.viewWillDisappear(animated)
-      self.tblView.removeObserver(self, forKeyPath: "contentSize")
-    }
-      
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-      if let obj = object as? UITableView {
-          if obj == self.tblView && keyPath == "contentSize" {
-            if let newSize = change?[NSKeyValueChangeKey.newKey] as? CGSize {
-              self.tblViewHeightConst.constant = newSize.height
-            }
-          }
-      }
+    
+    func deselectAllStrategies(){
+        for i in 0...(invstStrategyData.count - 1){
+            invstStrategyData[i].isSelected = false
+        }
+        self.tblView.reloadData()
     }
 }

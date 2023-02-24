@@ -91,19 +91,19 @@ extension TransactionVC{
 //MARK: - objective functions
 extension TransactionVC{
     func callTransactionApi(){
-        CommonFunction.showLoader(self.view)
+        CommonFunctions.showLoader(self.view)
         transactionVM.getAllTransactionsApi(completion: {[]response in
-            CommonFunction.hideLoader(self.view)
+            CommonFunctions.hideLoader(self.view)
             if let response = response{
                 print(response)
                 self.transactionData = response.transactions ?? []
                 
-                let datesArray = self.transactionData.compactMap { CommonFunction.getDateFromUnixInterval(timeResult: Double($0.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy") } // return array of date
+                let datesArray = self.transactionData.compactMap { CommonFunctions.getDateFromUnixInterval(timeResult: Double($0.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy") } // return array of date
                 print("datesArray",datesArray)
                 var dic = [String:[Transaction]]() // Your required result
                 datesArray.forEach {
                     let dateKey = $0
-                    let filterArray = self.transactionData.filter { CommonFunction.getDateFromUnixInterval(timeResult: Double($0.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy") == dateKey }
+                    let filterArray = self.transactionData.filter { CommonFunctions.getDateFromUnixInterval(timeResult: Double($0.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy") == dateKey }
                     dic[$0] = filterArray
                 }
                 print("dic is ",dic)

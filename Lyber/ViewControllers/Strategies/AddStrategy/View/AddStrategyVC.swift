@@ -104,10 +104,13 @@ extension AddStrategyVC{
         alert.addTextField { (textField) in
             textField.placeholder = "Enter your strategy name"
         }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: {_ in
+            
+        }))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
             if textField?.text?.isEmpty ?? true{
-                CommonFunction.toster("Please enter Strategy name")
+                CommonFunctions.toster("Please enter Strategy name")
             }else{
                 self.addStrategyVM.addStrategyApi(strategyName: textField?.text ?? "" ,assets: self.assetsData,allocation : self.allocation, completion: {[]response in
                     if let response = response{
@@ -115,9 +118,6 @@ extension AddStrategyVC{
                     }
                 })
             }
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: {_ in
-            
         }))
         self.present(alert, animated: true, completion: nil)
     }

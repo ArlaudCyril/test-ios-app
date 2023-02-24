@@ -56,8 +56,8 @@ extension AnalyticsTVC{
     }
     
     fileprivate func extractedFunc(_ graphValues: [ChartDataEntry],_ graphColor : UIColor) {
-        CommonFunction.drawChart(with: graphValues, on: earningGraphVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
-        CommonFunction.drawChart(with: graphValues, on: yieldGraphVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
+        CommonFunctions.drawChart(with: graphValues, on: earningGraphVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
+        CommonFunctions.drawChart(with: graphValues, on: yieldGraphVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
     }
 }
 

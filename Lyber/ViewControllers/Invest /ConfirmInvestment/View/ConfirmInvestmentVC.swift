@@ -75,13 +75,13 @@ extension ConfirmInvestmentVC{
         CommonUI.setUpLbl(lbl: self.totalLbl, text: L10n.Total.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: L10n.Allocation.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(CommonFunction.formattedCurrency(from : self.assetData?.currentPrice ?? 0.0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroAmountLbl, text: "\(CommonFunction.formattedCurrency(from: totalEuroInvested))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(CommonFunctions.formattedCurrency(from : self.assetData?.currentPrice ?? 0.0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroAmountLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.frequencyNameLbl, text: frequency, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.paymentCardLbl, text: "Mastercard ···· 0103", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroBuyLbl, text: "99,92€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLyberFeeLBl, text: "0.08€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunction.formattedCurrency(from: (totalEuroInvested)+(0.08)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunctions.formattedCurrency(from: (totalEuroInvested)+(0.08)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: bottomVw, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
         self.bottomVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
@@ -109,7 +109,7 @@ extension ConfirmInvestmentVC{
             self.coinPriceVw.isHidden = false
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
-            self.noOfEuroInvested.text = "\(CommonFunction.formattedCurrency(from: totalCoinsInvested))"
+            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalCoinsInvested))"
             self.coinImg.yy_setImage(with: URL(string: self.assetData?.image ?? ""), options: .progressiveBlur)
             if frequency == ""{
                 self.frequencyVw.isHidden = true
@@ -124,7 +124,7 @@ extension ConfirmInvestmentVC{
                     self.progressBar.setProgress(section: i, to: (Float(self.coinsData[i].share ?? 0))/100)
                 }
             }
-            self.noOfEuroInvested.text = "\(CommonFunction.formattedCurrency(from: totalEuroInvested))€"
+            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€"
         }else if InvestmentType == .deposit{
             self.coinPriceVw.isHidden = true
             self.allocationView.isHidden = true

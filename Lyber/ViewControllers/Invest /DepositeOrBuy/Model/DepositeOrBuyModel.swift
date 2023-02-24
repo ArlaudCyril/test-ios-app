@@ -24,7 +24,8 @@ enum bottomPopUp{
     case withdrawTo
     case withdrawAll
     case InvestInStrategiesOrAsset
-    case investWithStrategies
+    case investWithStrategiesActive
+    case investWithStrategiesInactive
 //    case withdrawDepositBuySellExchange
     case AssetDetailPagePopUp
     case frequency

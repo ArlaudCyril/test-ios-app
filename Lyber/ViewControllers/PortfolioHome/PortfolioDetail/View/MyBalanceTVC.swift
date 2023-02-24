@@ -41,8 +41,8 @@ extension MyBalanceTVC{
         
         CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 //        self.coinTypeLbl.text = assetData?.name ?? ""
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunction.formattedCurrency(from: ((assetData?.total_balance ?? 0.0)*(assetData?.currentPrice ?? 0.0))))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunction.formattedCurrency(from: (assetData?.total_balance ?? 0.0))) \(assetData?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: ((assetData?.total_balance ?? 0.0)*(assetData?.currentPrice ?? 0.0))))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunctions.formattedCurrency(from: (assetData?.total_balance ?? 0.0))) \(assetData?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.percentageLbl.isHidden = true
         for coin in coinDetailData{

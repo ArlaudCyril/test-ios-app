@@ -176,7 +176,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             cell.pinConfirmDelegate = {[]pin in
                 if self.verifyPin == true{
                     if userData.shared.logInPinSet != Int(pin){
-                        CommonFunction.toster(Constants.AlertMessages.enterCorrectPin)
+                        CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
                     }else{
                         if userData.shared.isIdentityVerified == true{
                             let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
@@ -194,7 +194,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                     }
                 }else{
                     if self.enteredPin != pin{
-                        CommonFunction.toster(Constants.AlertMessages.enterCorrectPin)
+                        CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
                     }else{
                         self.setLoginPin(enteredPin: pin)
                     }
@@ -241,7 +241,7 @@ extension EnterPhoneVC{
     @objc func backBtnAct(){
         if self.currentPage ?? 0 == 0 || self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
             userData.shared.deleteData()
-            CommonFunction.logout()
+            CommonFunctions.logout()
             //            self.navigationController?.popToRootViewController(animated: true)
             //            self.dismiss(animated: true, completion: nil)
             //            self.navigationController?.popViewController(animated: true)
@@ -301,10 +301,10 @@ extension EnterPhoneVC{
                 if self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
                     self.headerVw.backBtn.setImage(UIImage(), for: .normal)
                     CommonUI.setUpButton(btn: self.headerVw.backBtn, text: L10n.LogOut.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
-                    self.headerVw.backBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.LogOut.description), for: .normal)
+                    self.headerVw.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.LogOut.description), for: .normal)
                 }else{
                     self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
-                    self.headerVw.backBtn.setAttributedTitle(CommonFunction.removeUnderlineString(str: ""), for: .normal)
+                    self.headerVw.backBtn.setAttributedTitle(CommonFunctions.removeUnderlineString(str: ""), for: .normal)
                     self.headerVw.backBtn.setTitle("", for: .normal)
                 }
                 
@@ -318,9 +318,9 @@ extension EnterPhoneVC{
     
     func checkValidationOnPhoneNumber(){
         if phoneNumber == ""{
-            CommonFunction.toster(Constants.AlertMessages.enterPhoneNumber)
+            CommonFunctions.toster(Constants.AlertMessages.enterPhoneNumber)
         }else if phoneNumber.count < 7 {
-            CommonFunction.toster(Constants.AlertMessages.enterValidPhoneNumber)
+            CommonFunctions.toster(Constants.AlertMessages.enterValidPhoneNumber)
         }else{
             if self.isLogin == false{
                 self.nextButton.isUserInteractionEnabled = false
@@ -340,7 +340,7 @@ extension EnterPhoneVC{
                 })
             }else if self.isLogin == true{
                 if self.password == ""{
-                    CommonFunction.toster(Constants.AlertMessages.enterPassword)
+                    CommonFunctions.toster(Constants.AlertMessages.enterPassword)
                 }else{
                     self.nextButton.isUserInteractionEnabled = false
                     self.nextButton.showLoading()

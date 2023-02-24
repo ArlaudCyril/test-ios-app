@@ -17,7 +17,7 @@ class SearchAssetVM{
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
-            CommonFunction.toster(error)
+            CommonFunctions.toster(error)
         }, method: .GetString, img: nil, imageParamater: nil, headerPresent: true)
     }
 }
