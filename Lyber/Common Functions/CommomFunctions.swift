@@ -421,5 +421,116 @@ class CommonFunctions{
             return ""
         }
     }
+    
+    static func selectorStrategyColor(position : Int, totalNumber : Int) -> UIColor{
+        if(totalNumber > 8)
+        {
+            let percentage = Double(position) / Double(totalNumber)
+            let color = UIColor(named: "purple_800")?.lighter(componentDelta: CGFloat(percentage)) ?? UIColor()
+            return color
+        }
+        else
+        {
+            switch totalNumber {
+            case 1:
+                return UIColor(named: "purple_600") ?? UIColor()
+            case 2:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                }
+            case 3:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                }
+            case 4:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                }
+            case 5:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+            case 6:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                case 4:
+                    return UIColor(named: "purple_100") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+            case 7:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_300") ?? UIColor()
+                case 4:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                case 5:
+                    return UIColor(named: "purple_100") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+            case 8:
+                switch position{
+                case 0:
+                    return UIColor(named: "purple_800") ?? UIColor()
+                case 1:
+                    return UIColor(named: "purple_600") ?? UIColor()
+                case 2:
+                    return UIColor(named: "purple_500") ?? UIColor()
+                case 3:
+                    return UIColor(named: "purple_400") ?? UIColor()
+                case 4:
+                    return UIColor(named: "purple_300") ?? UIColor()
+                case 5:
+                    return UIColor(named: "purple_200") ?? UIColor()
+                case 6:
+                    return UIColor(named: "purple_100") ?? UIColor()
+                default:
+                    return UIColor(named: "purple_00") ?? UIColor()
+                }
+                
+            default:
+                return UIColor(named: "purple_400") ?? UIColor()
+            }
+        }
+        
+    }
 
 }

@@ -69,21 +69,26 @@ extension InvestmentStrategyTVC{
             }
         }
         
-        
-        if data?.activeStrategy != nil{
-            selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
-            selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
-        }
-        else{
-            selectStrategyBtn.backgroundColor = UIColor.systemBackground
-        }
-        
-        
         if data?.isSelected == true{
             strategyVw.layer.backgroundColor = UIColor.LightPurple.cgColor
             strategyVw.layer.borderColor = UIColor.PurpleColor.cgColor
-            selectStrategyBtn.backgroundColor = UIColor.LightPurple
             
+            if data?.activeStrategy != nil{
+                selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
+                selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
+            }
+            else{
+                selectStrategyBtn.backgroundColor = UIColor.LightPurple
+            }
+            
+        }else{
+            if data?.activeStrategy != nil{
+                selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
+                selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
+            }
+            else{
+                selectStrategyBtn.backgroundColor = UIColor.systemBackground
+            }
         }
         
         //MARK: - Default strategy and Active strategy
@@ -127,7 +132,7 @@ extension InvestmentStrategyTVC: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InvestmentStrategyCVC", for: indexPath as IndexPath) as! InvestmentStrategyCVC
-        cell.configureWithData(data : investmentStrategyAssets[indexPath.row],strategyColor : self.selectorStrategyColor(position : indexPath.row, totalNumber : investmentStrategyAssets.count))
+        cell.configureWithData(data : investmentStrategyAssets[indexPath.row],strategyColor : CommonFunctions.selectorStrategyColor(position : indexPath.row, totalNumber : investmentStrategyAssets.count))
         return cell
     }
     
@@ -147,7 +152,7 @@ extension InvestmentStrategyTVC : MultiProgressViewDelegate, MultiProgressViewDa
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
         let sectionView = ProgressViewSection()
         DispatchQueue.main.async {
-            sectionView.backgroundColor = self.selectorStrategyColor(position : section, totalNumber : self.investmentStrategyAssets.count)
+            sectionView.backgroundColor = CommonFunctions.selectorStrategyColor(position : section, totalNumber : self.investmentStrategyAssets.count)
         }
        
         return sectionView
@@ -170,114 +175,4 @@ extension InvestmentStrategyTVC{
         
     }
     
-    func selectorStrategyColor(position : Int, totalNumber : Int) -> UIColor{
-        if(totalNumber > 8)
-        {
-            let percentage = Double(position) / Double(totalNumber)
-            let color = UIColor(named: "purple_800")?.lighter(componentDelta: CGFloat(percentage)) ?? UIColor()
-            return color
-        }
-        else
-        {
-            switch totalNumber {
-            case 1:
-                return UIColor(named: "purple_600") ?? UIColor()
-            case 2:
-                switch position{
-                case 0:
-                    return UIColor(named: "purple_600") ?? UIColor()
-                default:
-                    return UIColor(named: "purple_400") ?? UIColor()
-                }
-            case 3:
-                switch position{
-                case 0:
-                    return UIColor(named: "purple_600") ?? UIColor()
-                case 1:
-                    return UIColor(named: "purple_400") ?? UIColor()
-                default:
-                    return UIColor(named: "purple_200") ?? UIColor()
-                }
-            case 4:
-                switch position{
-                case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
-                case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
-                case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
-                default:
-                    return UIColor(named: "purple_200") ?? UIColor()
-                }
-            case 5:
-                switch position{
-                case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
-                case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
-                case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
-                case 3:
-                    return UIColor(named: "purple_200") ?? UIColor()
-                default:
-                    return UIColor(named: "purple_00") ?? UIColor()
-                }
-            case 6:
-                switch position{
-                case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
-                case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
-                case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
-                case 3:
-                    return UIColor(named: "purple_200") ?? UIColor()
-                case 4:
-                    return UIColor(named: "purple_100") ?? UIColor()
-                default:
-                    return UIColor(named: "purple_00") ?? UIColor()
-                }
-            case 7:
-                switch position{
-                case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
-                case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
-                case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
-                case 3:
-                    return UIColor(named: "purple_300") ?? UIColor()
-                case 4:
-                    return UIColor(named: "purple_200") ?? UIColor()
-                case 5:
-                    return UIColor(named: "purple_100") ?? UIColor()
-                default:
-                    return UIColor(named: "purple_00") ?? UIColor()
-                }
-            case 8:
-                switch position{
-                case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
-                case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
-                case 2:
-                    return UIColor(named: "purple_500") ?? UIColor()
-                case 3:
-                    return UIColor(named: "purple_400") ?? UIColor()
-                case 4:
-                    return UIColor(named: "purple_300") ?? UIColor()
-                case 5:
-                    return UIColor(named: "purple_200") ?? UIColor()
-                case 6:
-                    return UIColor(named: "purple_100") ?? UIColor()
-                default:
-                    return UIColor(named: "purple_00") ?? UIColor()
-                }
-                
-            default:
-                return UIColor(named: "purple_400") ?? UIColor()
-            }
-        }
-        
-    }
 }

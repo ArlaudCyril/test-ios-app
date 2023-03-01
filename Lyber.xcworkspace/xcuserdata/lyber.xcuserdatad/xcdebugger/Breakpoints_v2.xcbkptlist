@@ -862,8 +862,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "setLayout()"
             landmarkType = "7">
          </BreakpointContent>
@@ -926,8 +926,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "progressView(_:viewForSection:)"
             landmarkType = "7">
             <Locations>
@@ -967,38 +967,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6ACA29B6-91A7-4443-892C-3348D16C9262"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "selectorStrategyColor(position:totalNumber:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "72DE004D-92F1-417B-B295-BD9CA7338401"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "selectorStrategyColor(position:totalNumber:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4E0BD87B-E522-49F5-8A21-839DF83AFE16"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1006,8 +974,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1022,8 +990,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1038,8 +1006,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1086,8 +1054,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "deselectAllStrategies()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1102,8 +1070,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1368,7 +1336,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "40887BF8-3455-4EF2-8CC8-64D98FD8CD98"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lyber/Api Files/Api Handler.swift"
@@ -1486,8 +1454,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "deleteStrategy(strategy:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1502,8 +1470,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1534,8 +1502,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "306"
-            endingLineNumber = "306"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1550,8 +1518,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1566,8 +1534,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1582,8 +1550,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1598,8 +1566,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1614,8 +1582,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1630,8 +1598,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1646,8 +1614,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "tailorStrategy(strategy:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1662,8 +1630,8 @@
             filePath = "Lyber/ViewControllers/Strategies/AddStrategy/View/AddStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "getStrategy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2001,6 +1969,246 @@
             startingLineNumber = "45"
             endingLineNumber = "45"
             landmarkName = "editActiveStrategyApi(strategyName:amount:frequency:ownerUuid:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B4A0659-BEB6-4058-AE78-8D3ED3471C7C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "setUpCell(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C568DDA-603C-4215-8FE0-9B77DD908245"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE31075D-BF49-4562-AF42-64649E93254F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "observeValue(forKeyPath:of:change:context:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F6DC2A5-D513-45F8-8941-D9E781830685"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F7F488F-289C-4558-B9FD-37059E4EC2E7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C5445AB-381A-4CFF-94C1-581E27CF5C38"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "callGetStrategies()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6272450B-124A-4F0E-9047-4BFF5F6A9E5A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /DepositeOrBuy/View/DepositeOrBuyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
+            landmarkName = "observeValue(forKeyPath:of:change:context:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6272450B-124A-4F0E-9047-4BFF5F6A9E5A - c6ff0997f87d0cdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.DepositeOrBuyVC.observeValue(forKeyPath: Swift.Optional&lt;Swift.String&gt;, of: Swift.Optional&lt;Any&gt;, change: Swift.Optional&lt;Swift.Dictionary&lt;__C.NSKeyValueChangeKey, Any&gt;&gt;, context: Swift.Optional&lt;Swift.UnsafeMutableRawPointer&gt;) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/ios-app-master/Lyber/ViewControllers/Invest%20/DepositeOrBuy/View/DepositeOrBuyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "397"
+                  endingLineNumber = "397"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "6272450B-124A-4F0E-9047-4BFF5F6A9E5A - c6ff0997f87d0cdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.DepositeOrBuyVC.observeValue(forKeyPath: Swift.Optional&lt;Swift.String&gt;, of: Swift.Optional&lt;Any&gt;, change: Swift.Optional&lt;Swift.Dictionary&lt;__C.NSKeyValueChangeKey, Any&gt;&gt;, context: Swift.Optional&lt;Swift.UnsafeMutableRawPointer&gt;) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/ios-app-master/Lyber/ViewControllers/Invest%20/DepositeOrBuy/View/DepositeOrBuyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "397"
+                  endingLineNumber = "397"
+                  offsetFromSymbolStart = "296">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71CE9D51-093E-4B58-9405-1B62F885B866"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /DepositeOrBuy/View/DepositeOrBuyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
+            landmarkName = "dismissBottomView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62B90FAE-1328-4F9B-937F-85660A72FD6B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /DepositeOrBuy/View/DepositeOrBuyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "cancelBtnAct()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4D4BEC1-260F-4BD2-BCA1-6D3F5022EBE9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /DepositeOrBuy/View/DepositeOrBuyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "viewWillDisappear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "99616BBB-EEFF-4E41-854A-C1A9C11DA080"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /DepositeOrBuy/View/DepositeOrBuyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF871AB6-F74B-4262-8873-103D84B81A94"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /DepositeOrBuy/View/DepositeOrBuyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70650F1F-D5F6-444E-9900-A65F3C600593"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /DepositeOrBuy/View/DepositeOrBuyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

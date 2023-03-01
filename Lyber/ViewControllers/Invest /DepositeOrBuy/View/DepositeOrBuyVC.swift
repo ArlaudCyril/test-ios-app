@@ -74,13 +74,13 @@ class DepositeOrBuyVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        
     }
 }
 
 //MARK: - SetUpUI
 extension DepositeOrBuyVC{
     func setUpUI(){
+        
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
@@ -127,9 +127,9 @@ extension DepositeOrBuyVC{
             }
         }
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissBottomView))
+        let tap = UILongPressGestureRecognizer(target: self, action: #selector(dismissBottomView))
+        tap.minimumPressDuration = 0.01
         self.outerView.addGestureRecognizer(tap)
-        
     }
 }
 
@@ -373,19 +373,7 @@ extension DepositeOrBuyVC{
 }
 
 //MARK: - Other functions
-extension DepositeOrBuyVC{
-    func callGetWalletAddressList(){
-//        CommonFunction.showLoader(self.view)
-//        CryptoAddressBookVM().getWhiteListingAddressApi(completion: {[weak self]response in
-//            if let response = response{
-//                CommonFunction.hideLoader(self?.view ?? UIView())
-        
-//            }
-            self.tblView.reloadData()
-            
-//        })
-    }
-}
+
 
 
 // MARK: - TABLE VIEW OBSERVER
@@ -415,4 +403,5 @@ extension DepositeOrBuyVC{
           }
       }
     }
+
 }

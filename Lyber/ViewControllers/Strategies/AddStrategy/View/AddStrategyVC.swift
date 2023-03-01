@@ -247,7 +247,8 @@ extension AddStrategyVC{
     }
     
     func saveTailoringStrategy(){
-        let alert = UIAlertController(title: "Build Strategy", message: "Enter your strategy name", preferredStyle: .alert)
+        //MARK: - Waiting backend for the possibility of changing the name of the strategy
+        /*let alert = UIAlertController(title: "Build Strategy", message: "Enter your strategy name", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.text = self.tailoringStrategy?.name!
             if(self.tailoringStrategy?.publicType != nil){
@@ -292,7 +293,36 @@ extension AddStrategyVC{
                 }
             }
         }))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)*/
+
+        //MARK: - Waiting solution
+        if(self.tailoringStrategy?.publicType != nil){
+
+            let strategy = self.createStrategy(strategyName: (tailoringStrategy?.name)! + " (Copy)")
+            //Public strategy, we just add this strategy to our list
+            self.addStrategyVM.addStrategyApi(strategy: strategy, completion: {[]response in
+                if response != nil{
+                    self.investmentStrategyController?.invstStrategyData.append(strategy)
+                    self.investmentStrategyController?.tblView.reloadData()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        }
+        else{
+            let strategy = self.modifyStrategy(strategyName: (tailoringStrategy?.name)!, tailoringStrategy: self.tailoringStrategy!)
+            self.addStrategyVM.tailorStrategyApi(newStrategy: strategy, completion: {[]response in
+                if response != nil{
+                    for i in 0...((self.investmentStrategyController?.invstStrategyData.count ?? 0) - 1) {
+                        if(self.investmentStrategyController?.invstStrategyData[i].name == self.tailoringStrategy?.name)
+                        {
+                            self.investmentStrategyController?.invstStrategyData[i] = strategy
+                        }
+                    }
+                    self.investmentStrategyController?.tblView.reloadData()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        }
     }
     
     func getStrategy(){

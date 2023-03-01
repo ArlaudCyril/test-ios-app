@@ -158,7 +158,7 @@ extension ConfirmInvestmentVC: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InvestMoneyCVC", for: indexPath as IndexPath) as! InvestMoneyCVC
-        cell.configureWithData(data : coinsData[indexPath.row], strategyColor: strategyColor[indexPath.row])
+        cell.configureWithData(data : coinsData[indexPath.row], strategyColor: CommonFunctions.selectorStrategyColor(position : indexPath.row, totalNumber : coinsData.count))
         return cell
     }
     
@@ -263,8 +263,7 @@ extension ConfirmInvestmentVC : MultiProgressViewDelegate, MultiProgressViewData
     
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
         let sectionView = ProgressViewSection()
-        sectionView.backgroundColor = strategyColor[section]
-//        UIColor.PurpleColor.withAlphaComponent(CGFloat((coinsData[section].allocation ?? 0))/100)
+        sectionView.backgroundColor = CommonFunctions.selectorStrategyColor(position : section, totalNumber : coinsData.count)
         return sectionView
     }
     

@@ -10,6 +10,7 @@ import UIKit
 class InvestmentStrategyVC: UIViewController {
     //MARK: - Variables
     var investmentStrategyVM = InvestmentStrategyVM()
+    var investmentStrategyTVC = InvestmentStrategyTVC()
     var isEducationStrategy : Bool = false
     var invstStrategyData : [Strategy] = []
     var selectedStrategy : Int!
@@ -24,6 +25,9 @@ class InvestmentStrategyVC: UIViewController {
     @IBOutlet var tblViewHeightConst: NSLayoutConstraint!
     @IBOutlet var buildOwnStrategyBtn: UIButton!
     @IBOutlet var bottomView: UIView!
+    @IBOutlet var scrollView: UIScrollView!
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +55,6 @@ extension InvestmentStrategyVC{
         
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.buildOwnStrategyBtn.addTarget(self, action: #selector(buildOwnStrategyBtnAct), for: .touchUpInside)
-        
-        
     }
 }
 
@@ -69,8 +71,11 @@ extension InvestmentStrategyVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedStrategy = indexPath.row
+        let yCell = tableView.cellForRow(at: indexPath)?.frame.minY ?? 0
        
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: yCell), animated: true)
+        selectedStrategy = indexPath.row
+        
         invstStrategyData[indexPath.row].isSelected = !(invstStrategyData[indexPath.row].isSelected ?? false)
         for i in 0...(invstStrategyData.count - 1){
             if invstStrategyData[i].name != invstStrategyData[indexPath.row].name{
@@ -98,20 +103,6 @@ extension InvestmentStrategyVC{
         
     }
     
-    /*@objc func chooseStrategyBtnAct(){
-        print((invstStrategyData[selectedStrategy].isOwnStrategy == 1) ? 1 : 0)
-        investmentStrategyVM.chooseStrategyApi(isOwnStrategy: invstStrategyData[selectedStrategy].isOwnStrategy ?? 0, strategyId: invstStrategyData[selectedStrategy].name ?? "", completion: {[]response in
-            if let response = response{
-                print(response)
-                let vc = InvestMoneyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-                vc.strategyData = self.invstStrategyData[self.selectedStrategy]
-                let nav = UINavigationController(rootViewController: vc)
-                nav.modalPresentationStyle = .fullScreen
-                nav.navigationBar.isHidden = true
-                self.present(nav, animated: true, completion: nil)
-            }
-        })
-    }*/
     
     @objc func buildOwnStrategyBtnAct(){
         let vc = AddStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
@@ -127,10 +118,10 @@ extension InvestmentStrategyVC{
 extension InvestmentStrategyVC{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        callGetStrategies()
-        setUpUI()
+        self.callGetStrategies()
+        self.setUpUI()
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-        self.tblView.reloadData()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -909,7 +909,7 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-xC-3H6">
-                                                                                    <rect key="frame" x="16" y="16" width="334" height="21"/>
+                                                                                    <rect key="frame" x="16" y="16" width="334" height="20.5"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1025,6 +1025,7 @@
                         <outlet property="buildOwnStrategyBtn" destination="nwP-My-QNr" id="zpz-yD-RS6"/>
                         <outlet property="headerView" destination="ZDG-z1-a3K" id="rn4-7G-cnW"/>
                         <outlet property="investmentStratgyLbl" destination="cgL-nU-gOt" id="NwZ-g1-LWV"/>
+                        <outlet property="scrollView" destination="vCd-Zg-zYe" id="K9A-c2-ruE"/>
                         <outlet property="strategyDescLbl" destination="cAg-3y-Icj" id="3KP-Aq-l3k"/>
                         <outlet property="tblView" destination="af1-Cu-M0p" id="QkO-rX-9Wf"/>
                         <outlet property="tblViewHeightConst" destination="ibP-Hw-yBA" id="aYI-t0-TP7"/>
