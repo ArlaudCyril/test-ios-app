@@ -8,12 +8,12 @@
 import Foundation
 
 struct Storage{
-    static var currencies : [AssetDetailData?] = []
+    static var currencies : [AssetBaseData?] = []
     
     /*init(currencies: [AssetDetailData?]) {
         self.currencies = currencies
     }*/
-    static func getCurrency(asset : AllAssetsData?) -> AssetDetailData? {
+    static func getCurrency(asset : priceServiceResume?) -> AssetBaseData? {
         print(Storage.currencies)
         for currency in Storage.currencies {
             if(currency?.id == asset?.id)

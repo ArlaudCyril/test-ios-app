@@ -10,11 +10,13 @@ import UIKit
 class AddStrategyVC: UIViewController {
     //MARK: - Variables
     var addStrategyVM = AddStrategyVM()
-//    var newAsset : coinsModel?
-    //var assetsData : [Trending?] = []
-    var assetsData : [AllAssetsData?] = []
+    var addAssetsVC = AddAssetsVC()
+    var assetsData : [priceServiceResume?] = []
     var totalAllocationPercentage = 0
     var allocation : [Int] = []
+    var tailoring : Bool?
+    var tailoringStrategy : Strategy?
+    var investmentStrategyController : InvestmentStrategyVC?
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var buildMyOwnStrategyLbl: UILabel!
@@ -62,6 +64,8 @@ extension AddStrategyVC{
         self.addAnAssetBtn.addTarget(self, action: #selector(addAssetBtnAct), for: .touchUpInside)
         self.saveMyStrategyBtn.addTarget(self, action: #selector(saveStrategyBtnAct), for: .touchUpInside)
         handleAllocationPercentageView()
+        
+       
     }
 }
 
@@ -77,6 +81,25 @@ extension AddStrategyVC : UITableViewDelegate,UITableViewDataSource{
         cell.controller = self
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
+   
+
+        let action = UIContextualAction(style: .destructive, title: NSLocalizedString("Delete", comment: "Delete"),
+            handler: { (action, view, completionHandler) in
+            // Update data source when user taps action
+            self.assetsData.remove(at: indexPath.row)
+            self.allocation.remove(at: indexPath.row)
+            self.handleAllocationPercentageView()
+            self.noOfAssetsLbl.text =  "\(self.assetsData.count) \(L10n.assets.description)"
+            completionHandler(true)
+          })
+      action.backgroundColor = .red
+      let configuration = UISwipeActionsConfiguration(actions: [action])
+        
+      return configuration
+
     }
 }
 
@@ -100,26 +123,13 @@ extension AddStrategyVC{
     }
     
     @objc func saveStrategyBtnAct(){
-        let alert = UIAlertController(title: "Build Strategy", message: "Enter your strategy name", preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.placeholder = "Enter your strategy name"
+        if(self.tailoringStrategy != nil){
+            saveTailoringStrategy()
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: {_ in
-            
-        }))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0]
-            if textField?.text?.isEmpty ?? true{
-                CommonFunctions.toster("Please enter Strategy name")
-            }else{
-                self.addStrategyVM.addStrategyApi(strategyName: textField?.text ?? "" ,assets: self.assetsData,allocation : self.allocation, completion: {[]response in
-                    if let response = response{
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                })
-            }
-        }))
-        self.present(alert, animated: true, completion: nil)
+        else{
+            saveStrategy()
+        }
+        
     }
 }
 
@@ -164,7 +174,7 @@ extension AddStrategyVC{
         self.tblView.reloadData()
     }
     
-    func handleAllocationPercentage(asset : AllAssetsData?){
+    func handleAllocationPercentage(asset : priceServiceResume?){
         var nbAuto = 0
         var percentageTotalManual = 0
         var percentageRemaining = 100
@@ -210,12 +220,133 @@ extension AddStrategyVC{
         }
     }
     
-    func getStrategy(strategy: Strategy){
-        //TODO: - récupérer un AllAssetsData à partir d'un Strategy
-        for _ in 0...((strategy.bundle.count) - 1){
-            
-            //self.assetsData.append(<#T##newElement: AllAssetsData?##AllAssetsData?#>)
+    func saveStrategy(){
+        let alert = UIAlertController(title: "Build Strategy", message: "Enter your strategy name", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter your strategy name"
         }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: {_ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if textField?.text?.isEmpty ?? true{
+                CommonFunctions.toster("Please enter Strategy name")
+            }else{
+                let strategy = self.createStrategy(strategyName: textField?.text ?? "")
+                self.addStrategyVM.addStrategyApi(strategy: strategy, completion: {[]response in
+                    if response != nil{
+                        self.investmentStrategyController?.invstStrategyData.append(strategy)
+                        self.investmentStrategyController?.tblView.reloadData()
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func saveTailoringStrategy(){
+        let alert = UIAlertController(title: "Build Strategy", message: "Enter your strategy name", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = self.tailoringStrategy?.name!
+            if(self.tailoringStrategy?.publicType != nil){
+                textField.text! += " (Copy)"
+            }
+            
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: {_ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            if textField?.text?.isEmpty ?? true{
+                CommonFunctions.toster("Please enter Strategy name")
+            }else{
+                if(self.tailoringStrategy?.publicType != nil){
+                    let strategyName = (textField?.text ?? "")
+                    let strategy = self.createStrategy(strategyName: strategyName)
+                    //Public strategy, we just add this strategy to our list
+                    self.addStrategyVM.addStrategyApi(strategy: strategy, completion: {[]response in
+                        if response != nil{
+                            self.investmentStrategyController?.invstStrategyData.append(strategy)
+                            self.investmentStrategyController?.tblView.reloadData()
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
+                }
+                else{
+                    let strategy = self.modifyStrategy(strategyName: textField?.text ?? "", tailoringStrategy: self.tailoringStrategy!)
+                    self.addStrategyVM.tailorStrategyApi(newStrategy: strategy, completion: {[]response in
+                        if response != nil{
+                            for i in 0...((self.investmentStrategyController?.invstStrategyData.count ?? 0) - 1) {
+                                if(self.investmentStrategyController?.invstStrategyData[i].name == self.tailoringStrategy?.name)
+                                {
+                                    self.investmentStrategyController?.invstStrategyData[i] = strategy
+                                }
+                            }
+                            self.investmentStrategyController?.tblView.reloadData()
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
+                }
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func getStrategy(){
+        //TODO: - récupérer un AllAssetsData à partir d'un Strategy
+        print(self.addAssetsVC.coinsData)
+        
+        //MARK: - Loading resume cryptocurrencies
+        self.addAssetsVC.addAssetsVM.getAllAssetsApi(order: "volume_desc", completion: {[]response in
+            if let response = response {
+                self.addAssetsVC.coinsData.removeAll()
+                self.addAssetsVC.coinsData.append(contentsOf: response.data )
+                for i in 0...((self.tailoringStrategy?.bundle.count ?? 0) - 1){
+                    self.allocation.append(self.tailoringStrategy?.bundle[i].share ?? 0)
+                    for asset in  self.addAssetsVC.coinsData{
+                        if(asset.id == self.tailoringStrategy?.bundle[i].asset)
+                        {
+                            self.assetsData.append(asset)
+                        }
+                    }
+                }
+                if(self.tblView != nil)
+                {
+                    self.tblView.reloadData()
+                    self.handleAllocationPercentageView()
+                }
+            }
+        })
+        
+    }
+            
+    func createStrategy(strategyName:String) -> Strategy{
+        var bundle = [InvestmentStrategyAsset]()
+        
+        for i in 0...(self.assetsData.count - 1){
+            let assetData = InvestmentStrategyAsset(asset: self.assetsData[i]?.id ?? "", share: self.allocation[i])
+            bundle.append(assetData)
+        }
+        
+        return Strategy(name: strategyName, bundle: bundle)
+    }
+    
+    func modifyStrategy(strategyName: String, tailoringStrategy: Strategy)-> Strategy
+    {
+        var bundle = [InvestmentStrategyAsset]()
+        
+        
+        for i in 0...(self.assetsData.count - 1){
+            let assetData = InvestmentStrategyAsset(asset: self.assetsData[i]?.id ?? "", share: self.allocation[i])
+            bundle.append(assetData)
+        }
+        
+        let newStrategy = Strategy(name: strategyName, bundle: bundle, strategy: tailoringStrategy)
+        
+        return newStrategy
     }
     
 }

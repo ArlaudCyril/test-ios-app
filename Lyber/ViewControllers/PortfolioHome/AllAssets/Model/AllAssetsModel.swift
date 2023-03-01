@@ -20,24 +20,26 @@ enum coinType : String{
     case Stable = "stable_coins"
 }
 
-// MARK: - AllAssetsAPI
-struct AllAssetsAPI: Codable {
-    let data: [AllAssetsData]
+// MARK: - PriceServiceResumeAPI
+struct priceServiceResumeAPI: Codable {
+    let data: [priceServiceResume]
 }
 
-// MARK: - Datum
-struct AllAssetsData: Codable {
-    let id, lastPrice, change, squiggleURL : String?
+// MARK: - PriceServiceResume
+struct priceServiceResume: Codable {
+    let id : String
+    let lastPrice, change, squiggleURL : String?
     var isAuto : Bool?
 }
 
+
 // MARK: - AssetDetailAPI
-struct AssetDetailAPI: Codable {
-    let data: [AssetDetailData]?
+struct AssetBaseAPI: Codable {
+    let data: [AssetBaseData]?
 }
 
-// MARK: - Datum
-struct AssetDetailData: Codable {
+// MARK: - AssetDetailData
+struct AssetBaseData: Codable {
     let id, fullName: String?
     let image: String?
     let isUIActive, isTradeActive, isDepositActive, isWithdrawalActive: Bool?

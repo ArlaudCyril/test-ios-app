@@ -909,7 +909,7 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-xC-3H6">
-                                                                                    <rect key="frame" x="16" y="16" width="175" height="20.5"/>
+                                                                                    <rect key="frame" x="16" y="16" width="334" height="21"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -919,11 +919,11 @@
                                                                             <constraints>
                                                                                 <constraint firstItem="kg6-xC-3H6" firstAttribute="leading" secondItem="OWP-jK-igd" secondAttribute="leading" constant="16" id="1D7-HY-wZR"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="v4H-To-bZD" secondAttribute="trailing" constant="16" id="6iF-fn-zFx"/>
-                                                                                <constraint firstItem="v4H-To-bZD" firstAttribute="leading" secondItem="kg6-xC-3H6" secondAttribute="trailing" constant="131" id="8d7-72-D5G"/>
                                                                                 <constraint firstItem="j1S-K9-PPl" firstAttribute="top" secondItem="OWP-jK-igd" secondAttribute="top" constant="54" id="9FV-72-HNE"/>
                                                                                 <constraint firstItem="v4H-To-bZD" firstAttribute="centerY" secondItem="kg6-xC-3H6" secondAttribute="centerY" id="HW0-qr-tc1"/>
                                                                                 <constraint firstItem="j1S-K9-PPl" firstAttribute="top" secondItem="kg6-xC-3H6" secondAttribute="bottom" constant="17.5" id="NzJ-Cc-bQn"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="j1S-K9-PPl" secondAttribute="bottom" id="Uur-Ca-7nQ"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="kg6-xC-3H6" secondAttribute="trailing" constant="16" id="bhO-kb-AfC"/>
                                                                                 <constraint firstItem="kg6-xC-3H6" firstAttribute="top" secondItem="OWP-jK-igd" secondAttribute="top" constant="16" id="lgy-VD-Myd"/>
                                                                                 <constraint firstItem="j1S-K9-PPl" firstAttribute="leading" secondItem="OWP-jK-igd" secondAttribute="leading" constant="16" id="q3B-XN-XTE"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="j1S-K9-PPl" secondAttribute="trailing" constant="16" id="soc-EB-t9z"/>

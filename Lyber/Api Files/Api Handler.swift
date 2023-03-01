@@ -31,6 +31,7 @@ enum ApiMethod {
     case DELETE
     case DELETEWithJSON
     case PUTWithJSON
+    case PATCHWithJSON
 }
 
 
@@ -136,7 +137,7 @@ class ApiHandler: NSObject {
                 }
             }
             
-        }else if method == .PostWithJSON || method == .PUTWithJSON || method == .DELETEWithJSON{
+        }else if method == .PostWithJSON || method == .PUTWithJSON || method == .DELETEWithJSON || method == .PATCHWithJSON{
             
             let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
             
@@ -150,6 +151,8 @@ class ApiHandler: NSObject {
                 request.httpMethod = "POST"
             }else if method == .PUTWithJSON{
                 request.httpMethod = "PUT"
+            }else if method == .PATCHWithJSON{
+                    request.httpMethod = "PATCH"
             }else{
                 request.httpMethod = "DELETE"
             }

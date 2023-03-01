@@ -10,7 +10,7 @@ import UIKit
 class AllAssetsAvailableTVC: UITableViewCell {
     //MARK: - Variables
     var controller : PortfolioHomeVC?
-    var allAssetsAvailable : [AllAssetsData] = []
+    var allAssetsAvailable : [priceServiceResume] = []
     //MARK: - IB OUTLETS
     @IBOutlet var coinCollView: UICollectionView!
     @IBOutlet var viewAll: UIView!

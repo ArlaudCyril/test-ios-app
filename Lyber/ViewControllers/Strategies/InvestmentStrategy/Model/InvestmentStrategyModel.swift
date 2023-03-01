@@ -25,11 +25,10 @@ struct InvestmentStrategiesAPI: Codable {
     let data: [Strategy]?
 }
 
-struct StrategyActive: Codable{
-    var amount : Int?
-    var frequency : String?
+// MARK: - StrategyAPI
+struct StrategyAPI: Codable {
+    let data: Strategy?
 }
-    
 
 // MARK: - Strategy
 struct Strategy: Codable {
@@ -41,6 +40,7 @@ struct Strategy: Codable {
     var activeStrategy : StrategyActive?
     let risk : String?
     let expectedYield : String?
+    let publicType : String?
               
     init() {
         self.name = ""
@@ -50,54 +50,47 @@ struct Strategy: Codable {
         self.activeStrategy = nil
         self.isOwnStrategy = nil
         self.ownerUuid = ""
+        self.publicType = nil
     }
-    /*let id, status, risk: String?
-    let yield: Int?
-    let createdAt: String?
-    let updatedAt: String?
-    let v: Int?
-    let investmentStrategyAssets: [InvestmentStrategyAsset]?
-    let investmentStrategyID: String?
-    let isOwnStrategy, isChosen: Int?
-    let userID: String?
+    init(name: String, bundle: [InvestmentStrategyAsset])
+    {
+        self.name = name
+        self.expectedYield = ""
+        self.bundle = bundle
+        self.risk = ""
+        self.activeStrategy = nil
+        self.isOwnStrategy = nil
+        self.ownerUuid = ""
+        self.publicType = nil
+    }
     
-
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case status, risk, yield
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case v = "__v"
-        case investmentStrategyAssets = "investment_strategy_assets"
-        case investmentStrategyID = "investment_strategy_id"
-        case isOwnStrategy = "is_own_strategy"
-        case isChosen = "is_chosen"
-        case userID = "user_id"
-        case isSelected = "isSelected"
-    }*/
+    init(name: String, bundle: [InvestmentStrategyAsset], strategy: Strategy) {
+        self.name = name
+        self.expectedYield = ""
+        self.bundle = bundle
+        self.risk = ""
+        self.activeStrategy = strategy.activeStrategy
+        self.isOwnStrategy = strategy.isOwnStrategy
+        self.ownerUuid = strategy.ownerUuid
+        self.publicType = nil
+    }
+  
 }
 
 // MARK: - InvestmentStrategyAsset
 struct InvestmentStrategyAsset: Codable {
-    
-    let asset: String
-    let assetID: String? //assetID : to define, asset : id : name
+    let asset: String //asset : id : name
+    let assetID: String? //assetID : to define,
     let share: Int
-   
-    /*let id, assetID: String?
-    let allocation: Int?
-    let createdAt: String?
-    let updatedAt: String?
-    let investmentStrategyID: String?
-    let v: Int?
+    
+    init(asset: String, share: Int) {
+        self.asset = asset
+        self.share = share
+        self.assetID = ""
+    }
+}
 
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case assetID = "asset_id"
-        case allocation
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case investmentStrategyID = "investment_strategy_id"
-        case v = "__v"
-    }*/
+struct StrategyActive: Codable{
+    var amount : Int?
+    var frequency : String?
 }

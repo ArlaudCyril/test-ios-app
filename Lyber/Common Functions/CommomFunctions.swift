@@ -392,15 +392,31 @@ class CommonFunctions{
         return resultString
     }
     
-    //MARK: - Mapper
-    static func frequenceMapper(frequence : String?)->(String){
+    //MARK: - Decoder
+    static func frequenceDecoder(frequence : String?)->(String){
         switch frequence {
         case "1d":
-            return "Daily"
+            return L10n.Daily.description
         case "1w":
-            return "Weekly"
+            return L10n.Weekly.description
         case "1m":
-            return "Monthly"
+            return L10n.Monthly.description
+        default:
+            return ""
+        }
+    }
+    
+    //MARK: - Encoder
+    static func frequenceEncoder(frequence : String?)->(String){
+        switch frequence {
+        case L10n.Once.description:
+            return "1d"
+        case L10n.Daily.description:
+            return "1d"
+        case L10n.Weekly.description:
+            return "1w"
+        case L10n.Monthly.description:
+            return "1m"
         default:
             return ""
         }

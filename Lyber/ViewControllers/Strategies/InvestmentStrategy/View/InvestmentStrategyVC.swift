@@ -115,6 +115,7 @@ extension InvestmentStrategyVC{
     
     @objc func buildOwnStrategyBtnAct(){
         let vc = AddStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
+        vc.investmentStrategyController = self
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         nav.navigationBar.isHidden = true
@@ -207,5 +208,14 @@ extension InvestmentStrategyVC{
                 self.tblView.reloadData()
             }
         })
+    }
+    
+    func tailorStrategy(strategy: Strategy){
+        let vc = AddStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
+        vc.investmentStrategyController = self
+        vc.tailoringStrategy = strategy
+        vc.tailoring = true
+        vc.getStrategy()
+        self.present(vc, animated: true, completion: nil)
     }
 }

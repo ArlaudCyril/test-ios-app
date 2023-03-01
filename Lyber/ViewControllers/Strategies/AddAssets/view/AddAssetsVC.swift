@@ -13,9 +13,9 @@ class AddAssetsVC: UIViewController {
     var addAssetsVM = AddAssetsVM()
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     //var AssetsAddDataCallback : ((Trending?)->())?
-    var AssetsAddDataCallback : ((AllAssetsData?)->())?
+    var AssetsAddDataCallback : ((priceServiceResume?)->())?
     var coinsType : [String] = [L10n.Trending.description,L10n.TopGainers.description,L10n.TopLoosers.description,L10n.Stable.description]
-    var coinsData : [AllAssetsData] = []
+    var coinsData : [priceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
     var timer = Timer()
     //MARK: - IB OUTLETS
@@ -62,7 +62,10 @@ extension AddAssetsVC{
             self.canPaginate = true
             
         }
-        self.callGetAssetsApi()
+        if(self.coinsData.count == 0){
+            self.callGetAssetsApi()
+        }
+        
         self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
     @objc func fireTimer(){
@@ -174,7 +177,7 @@ extension AddAssetsVC{
         self.tblView.tableFooterView = spinner
         self.tblView.tableFooterView?.isHidden = false
     }
-    
+    //TODO: - Call this function in addStrategy
     func callGetAssetsApi(isEmpty : Bool = false){
         var order = String()
         if self.selectedCoinsType == .Trending{

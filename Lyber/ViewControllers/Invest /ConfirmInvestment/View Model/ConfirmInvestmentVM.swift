@@ -28,17 +28,32 @@ class ConfirmInvestmentVM{
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
-    func investOnStrategyApi(strategyId : String ,amount : Double,frequency: String,completion: @escaping ( (SuccessAPI?) -> Void )){
-        let params : [String : Any] = [Constants.ApiKeys.user_investment_strategy_id : strategyId,
+    func activateStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
+        let params : [String : Any] = [Constants.ApiKeys.strategy_name : strategyName,
                                        Constants.ApiKeys.amount : amount,
-                                       Constants.ApiKeys.frequency : frequency.uppercased()]
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestOnStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+                                       Constants.ApiKeys.frequency : CommonFunctions.frequenceEncoder(frequence: frequency),
+                                       Constants.ApiKeys.owner_uuid : ownerUuid]
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+    }
+    
+    func editActiveStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
+        let params : [String : Any] = [Constants.ApiKeys.strategy_name : strategyName,
+                                       Constants.ApiKeys.amount : amount,
+                                       Constants.ApiKeys.frequency : CommonFunctions.frequenceEncoder(frequence: frequency),
+                                       Constants.ApiKeys.owner_uuid : ownerUuid]
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            completion(response)
+            CommonFunctions.hideLoader()
+        }, onFailure: { reload, error in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerPresent: true)
     }
     
     func exchangeCryptoApi(exchangeFrom : String ,exchangeTo : String,exchangeFromAmount : Double,exchangeToAmount: Double,completion: @escaping ( (SuccessAPI?) -> Void )){

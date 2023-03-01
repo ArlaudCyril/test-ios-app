@@ -14,7 +14,7 @@ class ConfirmInvestmentVC: UIViewController {
     var assetData : Trending?,strategyData : Strategy?
     var totalCoinsInvested = Double(),totalEuroInvested = Double(),exchangeFrom = String(),exchangeTo = String()
     var frequency = String()
-    var InvestmentType : InvestStrategyModel = .ownStrategy
+    var InvestmentType : InvestStrategyModel = .activateStrategy
     var coinsData : [InvestmentStrategyAsset] = []
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
@@ -116,7 +116,7 @@ extension ConfirmInvestmentVC{
             }else{
                 self.frequencyVw.isHidden = false
             }
-        }else if InvestmentType == .ownStrategy{
+        }else if (InvestmentType == .activateStrategy || InvestmentType == .editActiveStrategy){
             self.coinPriceVw.isHidden = true
             self.allocationView.isHidden = false
             for i in 0...(coinsData.count - 1){
@@ -209,13 +209,26 @@ extension ConfirmInvestmentVC{
                     self?.present(vc, animated: true, completion: nil)
                 }
             })
-        }else if InvestmentType == .ownStrategy{
+        }else if InvestmentType == .activateStrategy{
             self.confirmInvestmentBtn.showLoading()
-            confirmInvestmentVM.investOnStrategyApi(strategyId: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, completion: {[weak self]response in
+            confirmInvestmentVM.activateStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, ownerUuid: strategyData?.ownerUuid ?? "",completion: {[weak self]response in
                 self?.confirmInvestmentBtn.hideLoading()
                 if let response = response{
                     print(response)
-                    let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                    let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
+                    let nav = UINavigationController(rootViewController: vc)
+                    nav.modalPresentationStyle = .fullScreen
+                    nav.navigationBar.isHidden = true
+                    self?.present(nav, animated: true, completion: nil)
+                }
+            })
+        }else if InvestmentType == .editActiveStrategy{
+            self.confirmInvestmentBtn.showLoading()
+            confirmInvestmentVM.editActiveStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, ownerUuid: strategyData?.ownerUuid ?? "",completion: {[weak self]response in
+                self?.confirmInvestmentBtn.hideLoading()
+                if let response = response{
+                    print(response)
+                    let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
                     let nav = UINavigationController(rootViewController: vc)
                     nav.modalPresentationStyle = .fullScreen
                     nav.navigationBar.isHidden = true

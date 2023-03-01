@@ -7,19 +7,18 @@
 
 import Foundation
 class AddStrategyVM{
-    func addStrategyApi(strategyName:String,assets : [AllAssetsData?],allocation : [Int],completion: @escaping ( (SuccessAPI?) -> Void )){
+    func addStrategyApi(strategy:Strategy,completion: @escaping ( (SuccessAPI?) -> Void )){
         var bundle = [[String : Any]]()
         var assetData : [String : Any] = [:]
         var params : [String : Any] = [:]
         
-        for i in 0...(assets.count - 1){
-            assetData[Constants.ApiKeys.asset] = assets[i]?.id
-            assetData[Constants.ApiKeys.share] = allocation[i]
+        for i in 0...(strategy.bundle.count - 1){
+            assetData[Constants.ApiKeys.asset] = strategy.bundle[i].asset
+            assetData[Constants.ApiKeys.share] = strategy.bundle[i].share
             bundle.append(assetData)
         }
-        params = [Constants.ApiKeys.strategy_name : strategyName,
+        params = [Constants.ApiKeys.strategy_name : strategy.name ?? "",
                   Constants.ApiKeys.bundle : bundle]
-        
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
@@ -28,5 +27,40 @@ class AddStrategyVM{
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+    }
+    
+    func tailorStrategyApi(newStrategy:Strategy,completion: @escaping ( (SuccessAPI?) -> Void )){
+        var bundle = [[String : Any]]()
+        var assetData : [String : Any] = [:]
+        var params : [String : Any] = [:]
+        
+        for i in 0...(newStrategy.bundle.count - 1){
+            assetData[Constants.ApiKeys.asset] = newStrategy.bundle[i].asset
+            assetData[Constants.ApiKeys.share] = newStrategy.bundle[i].share
+            bundle.append(assetData)
+        }
+        params = [Constants.ApiKeys.strategy_name : newStrategy.name ?? "",
+                  Constants.ApiKeys.bundle : bundle]
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            completion(response)
+            CommonFunctions.hideLoader()
+        }, onFailure: { reload, error in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+    }
+    
+    func getCoinInfoApi(Asset : String,completion: @escaping ( (AssetBaseAPI?) -> Void )){
+        
+        let params : [String : Any] = [Constants.ApiKeys.id : Asset]
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assetServiceAsset, withParameters: params, ofType: AssetBaseAPI.self, onSuccess: { response in
+            print(response)
+            completion(response)
+        }, onFailure: { reload, error in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
     }
 }

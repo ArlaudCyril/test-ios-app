@@ -32,7 +32,7 @@ class AboutTVC: UITableViewCell, ExpandableLabelDelegate {
 
 //MARK: - SetUpUI
 extension AboutTVC{
-    func setUpCell(assetData : PortfolioDetailAPI?){
+    func setUpCell(assetData : AssetDetailApi?){
         self.descvw.layer.cornerRadius = 16
         if !isExpand {
             DispatchQueue.main.async {

@@ -7,15 +7,15 @@
 
 import UIKit
 
-var totalEuroAvailable : Double?
+var totalEuroAvailable : Double? = 100
 var totalPortfolio : Double = 25.0
-var coinDetailData : [AssetDetailData] = []
+var coinDetailData : [AssetBaseData] = []
 class PortfolioHomeVC: notSwipeGesture {
     //MARK: - IB OUTLETS
     var headerData : [String] = [L10n.MyAssets.description,L10n.MyAssets.description,L10n.Analytics.description,L10n.RecurringInvestment.description,L10n.AllAssetsAvailable.description]
     var assetsData : [Asset] = []
     var recurringInvestmentData : [Investment] = []
-    var allAvailableAssets : [AllAssetsData] = []
+    var allAvailableAssets : [priceServiceResume] = []
     
     var noRecurringInvestment = false
     let group = DispatchGroup()

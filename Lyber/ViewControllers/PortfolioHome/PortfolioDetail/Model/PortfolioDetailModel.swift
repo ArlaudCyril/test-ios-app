@@ -78,12 +78,12 @@ struct newsData: Codable {
 }
 
 // MARK: - PortfolioDetailAPI
-struct PortfolioDetailAPI: Codable {
-    let data: PortfolioDetailData?
+struct AssetDetailApi: Codable {
+    let data: AssetDetailData?
 }
 
 // MARK: - DataClass
-struct PortfolioDetailData: Codable {
+struct AssetDetailData: Codable {
     let circulatingSupply: String
     let isUIActive, isDepositActive, isWithdrawalActive: Bool?
     let volume24H: String?

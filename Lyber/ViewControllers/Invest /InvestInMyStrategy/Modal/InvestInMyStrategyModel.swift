@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 enum InvestStrategyModel{
     case singleCoin
-    case ownStrategy
+    case activateStrategy
     case deposit
     case Exchange
     case withdraw
     case withdrawEuro
     case anotherWallet
     case sell
+    case editActiveStrategy
 }
 
 struct exchangeFromModel{

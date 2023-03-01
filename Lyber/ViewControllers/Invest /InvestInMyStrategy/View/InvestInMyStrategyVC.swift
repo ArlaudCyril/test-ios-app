@@ -10,7 +10,7 @@ import IQKeyboardManagerSwift
 
 class InvestInMyStrategyVC: UIViewController {
     //MARK: - Variables
-    var strategyType : InvestStrategyModel = .ownStrategy
+    var strategyType : InvestStrategyModel = .activateStrategy
     var fromCoinData : Asset?
     var enteredText : String = ""
     var isFloatTyped : Bool = false
@@ -94,6 +94,7 @@ class InvestInMyStrategyVC: UIViewController {
 //MARK: - SetUpUI
 extension InvestInMyStrategyVC{
     func setUpUI(){
+        self.strategyCoinsData = self.strategyData?.bundle ?? []
         self.rightExchangeBtn.layer.cornerRadius = 8
         self.maximumBtn.isHidden = true
         self.rightExchangeBtn.isHidden = true
@@ -175,10 +176,26 @@ extension InvestInMyStrategyVC{
             self.noOfCoinLbl.text = "0.0 \(self.assetsData?.symbol?.uppercased() ?? "")"
             self.frequencyLbl.text = "\(L10n.AddAFrequency.description) (Optional)"
             self.maximumMoneyInvest()
-        }else if strategyType == .ownStrategy{
+        }else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy){
             self.exchangeView.isHidden = true
             self.coinsLbl.isHidden = false
             self.noOfCoinVw.isHidden = true
+            if(strategyData?.activeStrategy != nil)
+            {//we take the informations of the active strategy
+                self.selectedFrequency = CommonFunctions.frequenceDecoder(frequence: strategyData?.activeStrategy?.frequency)
+                self.frequencyLbl.text = CommonFunctions.frequenceDecoder(frequence: strategyData?.activeStrategy?.frequency)
+                self.frequencyVw.backgroundColor = UIColor.greyColor
+                self.frequencyLbl.textColor = UIColor.ThirdTextColor
+                self.frequencyDropDown.image = Assets.drop_down.image()
+                self.frequencyImg.image = Assets.calendar_black.image()
+                
+                amountTF.text = "\(strategyData?.activeStrategy?.amount ?? 0)€"
+                totalEuroInvested = Double(strategyData?.activeStrategy?.amount ?? 0)
+                
+                self.previewMyInvest.backgroundColor = UIColor.PurpleColor
+                self.previewMyInvest.isUserInteractionEnabled = true
+            }
+            
             var totalCoins : String = ""
             for index in 0...(strategyCoinsData.count - 1){
                 if totalCoins == ""{
@@ -262,7 +279,7 @@ extension InvestInMyStrategyVC{
 //MARK: - objective functions
 extension InvestInMyStrategyVC {
     @objc func cancelBtnAct(){
-        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .singleCoin || strategyType == .ownStrategy || strategyType == .sell || strategyType == .withdrawEuro{
+        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .singleCoin || strategyType == .activateStrategy || strategyType == .editActiveStrategy || strategyType == .sell || strategyType == .withdrawEuro{
             self.navigationController?.popViewController(animated: true)
         }else{
             self.dismiss(animated: true, completion: nil)
@@ -670,7 +687,7 @@ extension InvestInMyStrategyVC {
     }
     
     func goToConfirmInvestment(){
-        if strategyType == .singleCoin || strategyType == .ownStrategy{
+        if strategyType == .singleCoin || strategyType == .activateStrategy || strategyType == .editActiveStrategy{
             if totalEuroInvested > (totalEuroAvailable ?? 0){
                 CommonFunctions.toster("you don't have enough balance to invest")
             }else{
@@ -696,8 +713,10 @@ extension InvestInMyStrategyVC {
         vc.strategyData = self.strategyData
         if strategyType == .singleCoin{
             vc.InvestmentType = .singleCoin
-        }else if strategyType == .ownStrategy{
-            vc.InvestmentType = .ownStrategy
+        }else if strategyType == .activateStrategy{
+            vc.InvestmentType = .activateStrategy
+        }else if strategyType == .editActiveStrategy{
+                vc.InvestmentType = .editActiveStrategy
         }else if strategyType == .deposit{
             vc.InvestmentType = .deposit
         }else if strategyType == .Exchange{

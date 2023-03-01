@@ -8,11 +8,11 @@
 import Foundation
 class PortfolioDetailVM{
 //    var controller : AllAssetsVC?
-    func getCoinInfoApi(Asset : String,completion: @escaping ( (PortfolioDetailAPI?) -> Void )){
+    func getCoinInfoApi(Asset : String,completion: @escaping ( (AssetDetailApi?) -> Void )){
         
         let params : [String : Any] = [Constants.ApiKeys.id : Asset]
         
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assetServiceAsset, withParameters: params, ofType: PortfolioDetailAPI.self, onSuccess: { response in
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assetServiceAsset, withParameters: params, ofType: AssetDetailApi.self, onSuccess: { response in
             print(response)
             completion(response)
         }, onFailure: { reload, error in

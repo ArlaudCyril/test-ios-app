@@ -105,7 +105,7 @@ extension InvestmentStrategyTVC{
             if(data?.activeStrategy != nil)
             {
                 informationHeight += 50
-                self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Frequency.description, secondStr: CommonFunctions.frequenceMapper(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Frequency.description, secondStr: CommonFunctions.frequenceDecoder(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 
                 self.amountLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Amount.description, secondStr: String(data?.activeStrategy?.amount ?? 0)+"€", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 

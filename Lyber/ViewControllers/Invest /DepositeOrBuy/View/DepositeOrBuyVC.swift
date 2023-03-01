@@ -236,13 +236,15 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.portfolioHomeController?.present(nav, animated: true, completion: nil)
                 
             }else if indexPath.row == 1{
-                let vc = PaymentFundsVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                let nav = UINavigationController(rootViewController: vc)
-                nav.modalPresentationStyle = .fullScreen
-                nav.navigationBar.isHidden = true
-                self.portfolioHomeController?.present(nav, animated: true, completion: nil)
+                let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                vc.strategyData = self.strategy
+                vc.strategyType = .editActiveStrategy
+                self.dismiss(animated: true, completion: nil)
+                self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
+                
                 
             }else if indexPath.row == 2{
+                self.investmentStrategyController?.tailorStrategy(strategy: self.strategy)
                 self.dismiss(animated: true, completion: nil)
                 
             }else if indexPath.row == 3{
@@ -264,13 +266,14 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.portfolioHomeController?.present(nav, animated: true, completion: nil)
                 
             }else if indexPath.row == 1{
-                let vc = PaymentFundsVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                let nav = UINavigationController(rootViewController: vc)
-                nav.modalPresentationStyle = .fullScreen
-                nav.navigationBar.isHidden = true
-                self.portfolioHomeController?.present(nav, animated: true, completion: nil)
+                let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                vc.strategyData = self.strategy
+                vc.strategyType = .activateStrategy
+                self.dismiss(animated: true, completion: nil)
+                self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
             }else if indexPath.row == 2{
+                self.investmentStrategyController?.tailorStrategy(strategy: self.strategy)
                 self.dismiss(animated: true, completion: nil)
             }
             else if indexPath.row == 3{

@@ -16,10 +16,10 @@ class AllAssetsVC: swipeGesture {
     var coinSelectedCallback : ((_ coinData : Trending?)->())?
     var coinsType : [String] = [L10n.Trending.description,L10n.TopGainers.description,L10n.TopLoosers.description,L10n.Stable.description]
     
-    var coinsData : [AllAssetsData] = []
-    var originalData : [AllAssetsData] = []
-    var filteredData : [AssetDetailData] = []
-    var filterCoin : [AllAssetsData] = []
+    var coinsData : [priceServiceResume] = []
+    var originalData : [priceServiceResume] = []
+    var filteredData : [AssetBaseData] = []
+    var filterCoin : [priceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
     var timer = Timer()
     //MARK: - IB OUTLETS

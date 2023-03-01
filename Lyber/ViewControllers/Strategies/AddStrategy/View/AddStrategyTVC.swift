@@ -39,9 +39,9 @@ class AddStrategyTVC: UITableViewCell {
 
 //Mark:- SetUpUI
 extension AddStrategyTVC{
-    func setUpCell(data: AllAssetsData?,index : Int, allocation: Int){
+    func setUpCell(data: priceServiceResume?,index : Int, allocation: Int){
         //get all informations of the currency
-        let currencyDetail : AssetDetailData? = Storage.getCurrency(asset : data)
+        let currencyDetail : AssetBaseData? = Storage.getCurrency(asset : data)
         
         self.coinImg.layer.cornerRadius = self.coinImg.bounds.height/2
         self.coinImg.sd_setImage(with: URL(string: currencyDetail?.image ?? ""))

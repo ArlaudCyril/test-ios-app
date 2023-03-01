@@ -109,7 +109,6 @@ struct Constants{
         static let amount = "amount"
         static let asset_amount = "asset_amount"
         static let frequency = "frequency"
-        static let user_investment_strategy_id = "user_investment_strategy_id"
         static let wallet_address = "wallet_address"
         static let exchange_from = "exchange_from"
         static let exchange_to = "exchange_to"
@@ -200,7 +199,6 @@ struct Constants{
         
         static let userInvestmentStrategy = "user/investment-strategy"
         static let investOnAsset = "user/invest-on-asset"
-        static let userInvestOnStrategy = "user/invest-on-strategy"
         static let userWithdrawCrypto = "user/withdraw-crypto"
         static let userSwapCrypto = "user/swap-crypto"
         
@@ -271,6 +269,7 @@ struct Constants{
         static let investmentStrategies = "strategy-service/strategies"
         static let strategyServiceStrategy = "strategy-service/strategy"
         static let strategyServiceActiveStrategy = "strategy-service/active-strategy"
+       
     }
 
     struct Language {

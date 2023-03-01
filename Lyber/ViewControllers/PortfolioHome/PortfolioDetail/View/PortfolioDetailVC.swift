@@ -11,7 +11,7 @@ class PortfolioDetailVC: swipeGesture {
     //MARK: - VARIABLES
     var headerData : [String] = [L10n.MyBalance.description,L10n.MyBalance.description,L10n.Infos.description,L10n.About.description,L10n.Resources.description]
     var assetData : Trending?
-    var portfolioDetailData : PortfolioDetailAPI?
+    var assetDetailData : AssetDetailApi?
     var assetName : String = ""
     var infoData : [InfoModel] = [
         InfoModel(name: L10n.MarketCap.description, value: "72 083 593 181,6€"),
@@ -108,7 +108,7 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
         }else if indexPath.section == 3{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutTVC")as! AboutTVC
             cell.controller = self
-            cell.setUpCell(assetData : portfolioDetailData)
+            cell.setUpCell(assetData : assetDetailData)
             return cell
         }else if indexPath.section == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ResourcesTVC")as! ResourcesTVC
@@ -182,7 +182,7 @@ extension PortfolioDetailVC{
         portfolioDetailVM.getCoinInfoApi(Asset: assetName, completion: {[self]response in
             
             self.emptyView.isHidden = true
-            self.portfolioDetailData = response
+            self.assetDetailData = response
             if((response) != nil)
             {
                 self.infoData[0].value = "\(response?.data?.marketCap ?? "")€"

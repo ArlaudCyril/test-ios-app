@@ -9,7 +9,7 @@ import Foundation
 
 class AddAssetsVM{
     var controller : AddAssetsVC?
-    func getAllAssetsApi(order : String,completion: @escaping ( (AllAssetsAPI?) -> Void )){
+    func getAllAssetsApi(order : String,completion: @escaping ( (priceServiceResumeAPI?) -> Void )){
         
         let params : [String : Any] = [Constants.ApiKeys.order : order,
                                        Constants.ApiKeys.page : self.controller?.pageNumber ?? 0,
@@ -21,7 +21,7 @@ class AddAssetsVM{
             self.controller?.pageNumber = controller!.pageNumber + 1
         }
         
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.priceServiceResume, withParameters: params, ofType: AllAssetsAPI.self, onSuccess: { response in
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.priceServiceResume, withParameters: params, ofType: priceServiceResumeAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
