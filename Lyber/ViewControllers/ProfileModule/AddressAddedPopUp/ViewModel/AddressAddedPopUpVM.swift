@@ -32,7 +32,7 @@ class AddressAddedPopUpVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getAddressDetailApi(addressId: String,completion: @escaping ( (Address?) -> Void )){
@@ -42,7 +42,7 @@ class AddressAddedPopUpVM{
         }, onFailure: { reload, error in
 //            completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func deleteAddressApi(addressId: String,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -52,7 +52,7 @@ class AddressAddedPopUpVM{
         }, onFailure: { reload, error in
 //            completion(nil)
             CommonFunctions.toster(error)
-        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     

@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 import CoreGraphics
 
-class QRCodeScanVC: UIViewController {
+class QRCodeScanVC: ViewController {
     //MARK: - Variables
     var getQRString : ((String)->())?
     var avCaptureSession: AVCaptureSession!
@@ -39,12 +39,8 @@ class QRCodeScanVC: UIViewController {
             avCaptureSession.stopRunning()
         }
     }
-    
-}
-
-//MARK: - SetUpUI
-extension QRCodeScanVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         
         avCaptureSession = AVCaptureSession()

@@ -47,7 +47,7 @@ extension MyAssetsTVC{
         CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: data?.name ?? "Bitcoin", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: ((data?.totalBalance ?? 0.0)*(data?.euroAmount ?? 0.0))))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunctions.formattedCurrency(from: data?.totalBalance ?? 0.0)) \(data?.assetID ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: "FIAT Wallet", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: CommonFunctions.localisation(key: "FIAT_WALLET"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
         
         
         
@@ -63,7 +63,7 @@ extension MyAssetsTVC{
             flatVw.isHidden = false
             flatWalletVw.isHidden = false
         }else {
-            assetsView.layer.cornerRadius = 0
+            assetsView.layer.cornerRadius = 16
         }
         
         let singleAssetTap = UITapGestureRecognizer(target: self, action: #selector(singleAssetTapped))

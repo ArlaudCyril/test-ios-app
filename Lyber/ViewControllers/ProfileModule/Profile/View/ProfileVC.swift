@@ -8,20 +8,14 @@
 import UIKit
 import ExpandableLabel
 import NVActivityIndicatorView
-class ProfileVC: UIViewController {
+class ProfileVC: ViewController {
     //MARK: - Variables
     var imagePicker = UIImagePickerController(),selectedProfile : SelectedProfileVC?
-    var headerData = [L10n.Transaction.description,L10n.PaymentMethod.description,L10n.Account.description,L10n.Security.description,""]
+	var headerData : [String] = []
     var transactionData : [Transaction] = []
-    var paymentData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.CreditCard.description, subName: "***0103", rightBtnName: "")
-    ]
-    var AccountData : [SecurityModel] = [SecurityModel(name: L10n.Notifications.description, desc: "")]
-    var securityData : [SecurityModel] = [
-        SecurityModel(name: L10n.StrongAuthentification.description, desc: L10n.Disabled.description),
-        SecurityModel(name: L10n.CryptoAdressBook.description, desc: "\(L10n.Whitelisting.description) \(L10n.Disabled.description)"),
-        SecurityModel(name: L10n.ChangePin.description, desc: ""),
-        SecurityModel(name: L10n.FaceID.description, desc: "")]
+    var paymentData : [buyDepositeModel] = []
+    var AccountData : [SecurityModel] = []
+    var securityData : [SecurityModel] = []
 
     var faceIdEnable = 0
     //MARK: - IB OUTLETS
@@ -37,29 +31,38 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        getPersonalDataApi()
         self.callTransactionApi()
     }
-}
 
-//MARK: - SetUpUI
-extension ProfileVC{
     
-    func setUpUI(){
-        
-//        var activityIndicator : NVActivityIndicatorView!
-//        let frames = CGRect(x: self.profileOuterVw.bounds.height/2 - 30, y: self.profileOuterVw.bounds.height/2 - 30, width: 60, height: 60)
-//         activityIndicator = NVActivityIndicatorView(frame: frames)
-//        activityIndicator.type = .ballScale // add your type
-//        activityIndicator.color = UIColor.LightPurple // add your color
+    override func setUpUI(){
 
-//        self.profileOuterVw.addSubview(activityIndicator) // or use  webView.addSubview(activityIndicator)
-//        activityIndicator.startAnimating()
+		//Writings
+		self.headerData = [CommonFunctions.localisation(key: "TRANSACTION"),CommonFunctions.localisation(key: "PAYMENT_METHOD"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
+		self.paymentData = [
+			buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "")
+		]
+		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "NOTIFICATIONS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: "")]
+		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "DISABLED")),
+			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
+			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
+			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: "")]
         
-        
-        
+		if userData.shared.enableWhiteListing{
+			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "ENABLED"))"
+		}else{
+			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"
+		}
+		if userData.shared.strongAuthVerified {
+			self.securityData[0].desc = CommonFunctions.localisation(key: "ENABLED")
+		}else{
+			self.securityData[0].desc = CommonFunctions.localisation(key: "DISABLED")
+		}
+		
+		
+		//Views
         self.headerView.headerLbl.isHidden = true
-        CommonUI.setUpLbl(lbl: nameLbl, text: userData.shared.name, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: nameLbl, text: userData.shared.firstname, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: emailLbl, text: userData.shared.email, textColor: UIColor.grey877E95 , font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.profileOuterVw.layer.cornerRadius = self.profileOuterVw.layer.bounds.height/2
@@ -69,17 +72,21 @@ extension ProfileVC{
         tblView.delegate = self
         tblView.dataSource = self
         
-        if userData.shared.enableWhiteListing{
-            self.securityData[1].desc = "\(L10n.Whitelisting.description) \(L10n.enabled.description)"
-        }else{
-            self.securityData[1].desc = "\(L10n.Whitelisting.description) \(L10n.disabled.description)"
-        }
-        if userData.shared.strongAuthVerified {
-            self.securityData[0].desc = L10n.Enabled.description
-        }else{
-            self.securityData[0].desc = L10n.Disabled.description
-        }
-        
+       
+		self.nameLbl.text = "\(userData.shared.firstname) \(userData.shared.lastname)"
+		self.emailLbl.text = userData.shared.email
+		
+		//self.profilePic.yy_setImage(with: URL(string: userData.shared.profile_image), placeholder: UIImage(named: "profile"))
+		
+		if userData.shared.profilePicType == "DEFAULT"{
+			self.profilePic.contentMode = .scaleAspectFit
+			self.profilePic.image = self.profilePic.image?.roundedImageWithBorder(width: 18, color: UIColor.clear)
+		}else{
+			self.profilePic.contentMode = .scaleAspectFill
+		}
+		
+		//Interactions
+		
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(profileTapped))
         self.profileOuterVw.addGestureRecognizer(profileTap)
@@ -158,17 +165,18 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 4 ? 20 : 60
-//        if section == 4{
-//            return 20
-//        }else{
-//            return 80
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 && indexPath.row == 0{
-            let vc = NotificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-            self.navigationController?.pushViewController(vc, animated: true)
+        if indexPath.section == 2{
+			if(indexPath.row == 0){
+				let vc = NotificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				self.navigationController?.pushViewController(vc, animated: true)
+			}else if(indexPath.row == 1){
+				let vc = LanguageVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				self.navigationController?.pushViewController(vc, animated: true)
+			}
+            
         }
         if indexPath.section == 3{
             if indexPath.row == 0{
@@ -206,13 +214,13 @@ extension ProfileVC{
         vc.frequencySelectedCallback = {[weak self] value in
             print(value)
             self?.dismiss(animated: true, completion: nil)
-            if value == L10n.Camera.description{
+            if value == CommonFunctions.localisation(key: "CAMERA"){
                 guard UIImagePickerController.isSourceTypeAvailable(.camera) else{ return}
                 self?.selectImageFrom(.camera)
-            }else if value == L10n.SelectFromGallery.description{
+            }else if value == CommonFunctions.localisation(key: "SELECT_FROM_GALLERY"){
                 guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else{ return}
                 self?.selectImageFrom(.photoLibrary)
-            }else if value == L10n.SetDefaultPictures.description{
+            }else if value == CommonFunctions.localisation(key: "SET_DEFAULT_PICTURES"){
                 let vc = DefaultPictureVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
@@ -258,26 +266,6 @@ extension ProfileVC{
                 print(response)
                 self.transactionData = response.transactions ?? []
                 self.tblView.reloadData()
-            }
-        })
-    }
-    
-    func getPersonalDataApi(){
-        CommonFunctions.showLoader(self.view)
-        ProfileVM().getProfileDataApi(completion: {[]response in
-            CommonFunctions.hideLoader(self.view)
-            if let response = response{
-                self.nameLbl.text = "\(response.data?.firstName ?? "") \(response.data?.lastName ?? "")"
-                self.emailLbl.text = response.data?.email ?? ""
-                self.profilePic.yy_setImage(with: URL(string: response.data?.profilePic ?? ""), placeholder: UIImage(named: "profile"))
-        //        self.profilePic.image = self.profilePic.image?.roundedImageWithBorder(width: 18, color: UIColor.clear)
-                if userData.shared.profilePicType == "DEFAULT"{
-                    self.profilePic.contentMode = .scaleAspectFit
-                    self.profilePic.image = self.profilePic.image?.roundedImageWithBorder(width: 18, color: UIColor.clear)
-                }else{
-                    self.profilePic.contentMode = .scaleAspectFill
-                }
-                
             }
         })
     }

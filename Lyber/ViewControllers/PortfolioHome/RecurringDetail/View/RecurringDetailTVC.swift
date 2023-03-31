@@ -28,7 +28,7 @@ class RecurringDetailTVC: UITableViewCell {
 
 extension RecurringDetailTVC{
     func configureWithData(data : History?){
-        CommonUI.setUpLbl(lbl: self.boughtLbl, text: L10n.Bought.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.boughtLbl, text: CommonFunctions.localisation(key: "BOUGHT"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: data?.amount ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.coinLbl, text: "\(CommonFunctions.formattedCurrency(from: data?.assetAmount ?? 0)) \(data?.assetID ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))

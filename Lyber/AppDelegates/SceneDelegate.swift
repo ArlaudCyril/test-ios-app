@@ -8,6 +8,7 @@
 import UIKit
 import Branch
 import SocketIO
+import JWTDecode
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -94,64 +95,109 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate{
     func checkInitialAppSetup(){
-        
         userData.shared.getData()
-        
-        if let diff = Calendar.current.dateComponents([.day], from: userData.shared.time ?? Date(), to: Date()).day, diff > 30 {
-            print("times greater then 30 days")
-            let  vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-            let navController = UINavigationController(rootViewController: vc)
-            navController.navigationBar.isHidden = true
-            window?.rootViewController = navController
-            window?.makeKeyAndVisible()
-        }else{
-            print("Today")
-            if userData.shared.logInPinSet != 0{
-                //            let vc = chartVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-                //            let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                //
-                let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-                let navController = UINavigationController(rootViewController: vc)
-                navController.navigationBar.isHidden = true
-                window?.rootViewController = navController
-                window?.makeKeyAndVisible()
-            }else if userData.shared.isPhoneVerified == true{
-                let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-                let navController = UINavigationController(rootViewController: vc)
-                navController.navigationBar.isHidden = true
-                window?.rootViewController = navController
-                window?.makeKeyAndVisible()
-            }
-        }
-        
-        
-        //        if userData.shared.refreshToken != ""{
-        //            if let diff = Calendar.current.dateComponents([.day], from: userData.shared.time ?? Date(), to: Date()).hour, diff > 30 {
-        //                print(diff)
-        //                let  vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-        //                let navController = UINavigationController(rootViewController: vc)
-        //                navController.navigationBar.isHidden = true
-        //                window?.rootViewController = navController
-        //                window?.makeKeyAndVisible()
-        //            }
-        //        }else {
-        if userData.shared.logInPinSet != 0{
-            //            let vc = chartVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-            //            let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            //
-            let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-            let navController = UINavigationController(rootViewController: vc)
-            navController.navigationBar.isHidden = true
-            window?.rootViewController = navController
-            window?.makeKeyAndVisible()
-        }else if userData.shared.isPhoneVerified == true{
-            let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-            let navController = UINavigationController(rootViewController: vc)
-            navController.navigationBar.isHidden = true
-            window?.rootViewController = navController
-            window?.makeKeyAndVisible()
-        }
+		if(userData.shared.userToken != ""){
+			loadingProfileApi()
+		}else{
+			if(Bundle.main.preferredLocalizations.first == "fr")
+			{
+				userData.shared.language = "fr"
+			}else{
+				userData.shared.language = "en"
+			}
+			userData.shared.dataSave()
+			controllerDelegate()
+		} 
     }
-    
-    //    }
+	
+	func loadingProfileApi(){
+		ProfileVM().getProfileDataApi(completion: {[]response in
+			if let response = response{
+				//handle language
+				if(response.data?.language == ""){
+					if(Bundle.main.preferredLocalizations.first == "fr")
+					{
+						userData.shared.language = "fr"
+					}else{
+						userData.shared.language = "en"
+					}
+				}else{
+					userData.shared.language = response.data?.language?.lowercased() ?? ""
+				}
+				userData.shared.firstname = response.data?.firstName ?? ""
+				userData.shared.lastname = response.data?.lastName ?? ""
+				userData.shared.has2FA = response.data?.has2FA ?? false
+				userData.shared.type2FA = response.data?.type2FA ?? "none"
+				userData.shared.phone_no = response.data?.phoneNo ?? ""
+				userData.shared.email = response.data?.email ?? ""
+				//userData.shared.profile_image = response.data?.profilePic ?? ""
+				userData.shared.scope2FALogin = response.data?.scope2FA?.login ?? false
+				userData.shared.scope2FAWhiteListing =  response.data?.scope2FA?.whitelisting ?? false
+				userData.shared.scope2FAWithdrawal = response.data?.scope2FA?.withdrawal ?? false
+				
+				userData.shared.dataSave()
+				
+				self.controllerDelegate()
+			}
+		})
+	}
+	
+	func controllerDelegate(){
+		let path = Bundle.main.path(forResource: userData.shared.language, ofType: "lproj")!
+		GlobalVariables.bundle = Bundle(path: path)!
+		if(userData.shared.refreshToken == ""){
+			let  vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+			let navController = UINavigationController(rootViewController: vc)
+			navController.navigationBar.isHidden = true
+			window?.rootViewController = navController
+			window?.makeKeyAndVisible()
+		}else{
+			do {
+				let refreshToken = try decode(jwt: userData.shared.refreshToken)
+				print(refreshToken)
+				let exp = refreshToken.body["exp"]
+				if (NSDate().timeIntervalSince1970 > exp as! Double) {
+					print("Refresh token expired")
+					let  vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+					let navController = UINavigationController(rootViewController: vc)
+					navController.navigationBar.isHidden = true
+					window?.rootViewController = navController
+					window?.makeKeyAndVisible()
+				}else{
+					print("Refresh token not expired")
+					if userData.shared.logInPinSet != 0{
+						let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+						let navController = UINavigationController(rootViewController: vc)
+						navController.navigationBar.isHidden = true
+						window?.rootViewController = navController
+						window?.makeKeyAndVisible()
+					}else if userData.shared.isPhoneVerified == true{
+						let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+						let navController = UINavigationController(rootViewController: vc)
+						navController.navigationBar.isHidden = true
+						window?.rootViewController = navController
+						window?.makeKeyAndVisible()
+					}
+				}
+				
+				if userData.shared.logInPinSet != 0{
+					let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+					let navController = UINavigationController(rootViewController: vc)
+					navController.navigationBar.isHidden = true
+					window?.rootViewController = navController
+					window?.makeKeyAndVisible()
+				}else if userData.shared.isPhoneVerified == true{
+					let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+					let navController = UINavigationController(rootViewController: vc)
+					navController.navigationBar.isHidden = true
+					window?.rootViewController = navController
+					window?.makeKeyAndVisible()
+				}
+			} catch {
+				print(error)
+				
+			}
+		}
+		
+	}
 }

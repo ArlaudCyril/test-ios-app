@@ -70,7 +70,7 @@ class SocketIOManager: NSObject {
 extension SocketIOManager{
     
     func validUser(){
-        let params : [String: Any] = [SocketKey.token : userData.shared.accessToken]
+        let params : [String: Any] = [SocketKey.token : userData.shared.userToken]
         socket.emit(SocketNames.validuser , params)
         print("*********************")
         print("Emitter:     validuser")

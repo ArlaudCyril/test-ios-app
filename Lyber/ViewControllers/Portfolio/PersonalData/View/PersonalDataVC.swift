@@ -9,7 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import JWTDecode
 
-class PersonalDataVC: UIViewController {
+class PersonalDataVC: ViewController {
     //MARK: - Variables
     var personalDataVM = PersonalDataVM()
     var fromLoginScreen = false
@@ -56,12 +56,11 @@ class PersonalDataVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         goToStep()
     }
-}
 
 
-//MARK: - SetUpUI
-extension PersonalDataVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.hideKeyboardWhenTappedAround()
         indicatorView = [indicator1,indicator2,indicator3,indicator4,indicator5]
         indicatorViewsWidth = [indicatorViewsWidth1,indicatorViewsWidth2,indicatorViewsWidth3,indicatorViewsWidth4,indicatorViewsWidth5]
@@ -73,11 +72,10 @@ extension PersonalDataVC{
         self.setIndicatorViews()
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        self.nextButton.setTitle(L10n.Next.description, for: .normal)
+        self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
         self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         goToStep()
         
     }
@@ -108,12 +106,14 @@ extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             return cell
         }else if indexPath.item == 2{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerificationEmailCVC", for: indexPath as IndexPath) as! VerificationEmailCVC
-            cell.setUpCell()
             cell.controller = self
-            cell.openAppleMailCallBack = {
-                self.checkEmailVerification()
+            cell.setUpCell()
+            cell.verificationEmailCallBack = {[]otp in
+                self.checkEmailVerification(code : otp)
             }
+            
             return cell
+
         }else if indexPath.item == 3{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addressCVC", for: indexPath as IndexPath) as! addressCVC
             cell.controller = self
@@ -172,7 +172,7 @@ extension PersonalDataVC{
             }else if currentPage == 1{
                 checkEmailAddressValidation()
             }else if currentPage == 2{
-                checkEmailVerification()
+                
             }else if currentPage == 3{
                 checkAdddressValidation()
             }else if currentPage == 4{
@@ -180,19 +180,6 @@ extension PersonalDataVC{
             }else{
                 GotoNextIndex()
            }
-//        userData.shared.isPersonalInfoFilled = true
-//        userData.shared.dataSave()
-//        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]as? NSValue)?.cgRectValue{
-//            self.stackViewBottomConst.constant = keyboardSize.height
-//        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-//        stackViewBottomConst.constant = 0
     }
 }
 
@@ -265,6 +252,11 @@ extension PersonalDataVC{
         self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
     }
     
+    func GotoPreviousIndex(){
+        let indexPath = NSIndexPath(item: (self.currentPage ) - 1, section: 0)
+        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+    }
+    
     func setIndicatorViews(){
         for (num,vw) in indicatorView.enumerated(){
             vw.layer.cornerRadius = 2
@@ -277,25 +269,16 @@ extension PersonalDataVC{
             }
             if self.currentPage == 2{
                 self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
-                self.nextButton.setTitle("Email Verified", for: .normal)
+                self.nextButton.isHidden = true
             }else{
-                self.nextButton.setTitle(L10n.Next.description, for: .normal)
+                self.nextButton.isHidden = false
+                self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
                 self.headerView.backBtn.setImage(Assets.close.image(), for: .normal)
                 if self.currentPage == 4{
-                    self.nextButton.setTitle(L10n.SendtoLyber.description, for: .normal)
+                    self.nextButton.setTitle(CommonFunctions.localisation(key: "SEND_TO_LYBER"), for: .normal)
                 }
             }
         
-//            if self.currentPage == 4{
-//                self.nextButton.setTitle(L10n.SendtoLyber.description, for: .normal)
-//            }else{
-//                self.nextButton.setTitle(L10n.Next.description, for: .normal)
-//            }
-//
-//            if self.currentPage == 2{
-////                self.nextBtnView.isHidden = true
-//
-//            }
         }
     }
     
@@ -305,7 +288,7 @@ extension PersonalDataVC{
         }else if self.lastName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterLastName)
         }else if self.birthPlace == ""{
-            CommonFunctions.toster(Constants.AlertMessages.selectBirthPlace)
+            CommonFunctions.toster(Constants.AlertMessages.enterBirthPlace)
         }else if self.birthDate == ""{
             CommonFunctions.toster(Constants.AlertMessages.selectBirthDate)
         }else if self.birthCountry == ""{
@@ -316,7 +299,7 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.selectAreYouUSCitizen)
         }else{
 //            GotoNextIndex()
-            personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, isUsPerson: isUsPerson)
+			personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, isUsPerson: isUsPerson, language: userData.shared.language)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.personalDataApi(profile_info_step : 1,personalData: personalData, completion: {[weak self]response in
@@ -346,6 +329,8 @@ extension PersonalDataVC{
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.sendVerificationEmailApi(email: self.email,password : self.emailPassword, completion: {[weak self]response in
                 self?.nextButton.hideLoading()
+				userData.shared.email = self?.email ?? ""
+				userData.shared.dataSave()
                 self?.nextButton.isUserInteractionEnabled = true
                 if response != nil{
                     self?.GotoNextIndex()
@@ -354,61 +339,22 @@ extension PersonalDataVC{
         }
     }
     
-    func checkEmailVerification(){
-        do {
-            let token = try decode(jwt: userData.shared.accessToken)
-            print(token)
-            CommonFunctions.showLoader(self.view)
-            personalDataVM.checkEmailVerificationApi(uuid: ((token["sub"]).rawValue as! String) , completion: {[self]response in
-                CommonFunctions.hideLoader(self.view)
-//                if let response = response{
+    func checkEmailVerification(code: String?){
+        CommonFunctions.showLoader(self.view)
+        personalDataVM.checkEmailVerificationApi(code: code , completion: {[self]response in
+            CommonFunctions.hideLoader(self.view)
+            if (response != nil){
+                
                     print(response)
                     userData.shared.personalDataStepComplete = 3
                     userData.shared.dataSave()
                     self.GotoNextIndex()
-//                }
-            })
-        } catch {
-            print(error)
-        }
-//        CommonFunction.showLoader(self.view)
-//        personalDataVM.checkEmailVerificationApi(uuid: (token["uuid"] as! Claim).rawValue ?? "", completion: {[self]response in
-//            CommonFunction.hideLoader(self.view)
-//            if let response = response{
-//                print(response)
-//                if fromLoginScreen == true{
-//                    if userData.shared.personalDataStepComplete == 3{
-//                        DispatchQueue.main.async {
-//                            self.GotoNextIndex()
-//                        }
-//
-//                    }else if userData.shared.personalDataStepComplete == 4{
-//                        DispatchQueue.main.async {
-//                        let indexPath = NSIndexPath(item: 4, section: 0)
-//                        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-//                        }
-//                    }else if userData.shared.personalDataStepComplete == 5 && userData.shared.step == 2{
-//                       print("heredmfkd")
-//                        DispatchQueue.main.async {
-//                            let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//                            let navVC = UINavigationController(rootViewController: vc)
-//                            UIApplication.shared.windows[0].rootViewController = navVC
-//                            navVC.navigationController?.popToRootViewController(animated: true)
-//                            navVC.setNavigationBarHidden(true , animated: true)
-//                        }
-//                    }else if userData.shared.step == 4{
-//                        DispatchQueue.main.async {
-//                        let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//                        self.navigationController?.pushViewController(vc, animated: true)
-//                        }
-//                    }
-//                }else{
-//                    userData.shared.personalDataStepComplete = 3
-//                    userData.shared.dataSave()
-//                    self.GotoNextIndex()
-//                }
-//            }
-//        })
+            }else{
+                CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+            }
+            
+        })
+        
     }
     
     func checkAdddressValidation(){
@@ -459,7 +405,7 @@ extension PersonalDataVC{
             personalData = personalDataStruct(investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, personalAssets: personalAssets)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
-            personalDataVM.setInvestmentExperienceApi(profile_info_step : 5,personalData: personalData, completion: {[weak self]response in
+			personalDataVM.setInvestmentExperienceApi(profile_info_step : 5,personalData: personalData, completion: {[weak self]response in
                 if let response = response{
                     print(response)
                     self?.personalDataVM.finishRegistrationApi(completion: {[weak self]response in
@@ -468,7 +414,8 @@ extension PersonalDataVC{
                         if let response = response{
                             userData.shared.isPersonalInfoFilled = true
                             userData.shared.time = Date()
-                            userData.shared.accessToken = response.data?.access_token ?? ""
+                            GlobalVariables.isRegistering = false
+                            userData.shared.userToken = response.data?.access_token ?? ""
                             userData.shared.refreshToken = response.data?.refresh_token ?? ""
                             userData.shared.dataSave()
                             //                            userData.shared.fromPersonalData(response)

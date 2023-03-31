@@ -7,7 +7,7 @@
 
 import UIKit
 
-class calenderVC: UIViewController {
+class calenderVC: ViewController {
     //MARK: - Variables
     var dateCallBack : ((String,String)->())?
     //MARK: - IB OUTLETS
@@ -25,21 +25,21 @@ class calenderVC: UIViewController {
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
     }
-}
 
-//MARK: - SetUpUI
-extension calenderVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.dateView.layer.cornerRadius = 10
         self.dateView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,]
         datePicker.tintColor = UIColor.PurpleColor
-        CommonUI.setUpLbl(lbl: self.dateofBirthLbl, text: L10n.SelectBirthDate.description,textColor: UIColor.whiteColor, font: UIFont.AtypDisplayMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.dateofBirthLbl, text: CommonFunctions.localisation(key: "SELECT_BIRTH_DATE"),textColor: UIColor.whiteColor, font: UIFont.AtypDisplayMedium(Size.XLarge.sizeValue()))
         self.datePicker.datePickerMode = .date
         self.datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
-        self.doneBtn.setTitle(L10n.Done.description, for: .normal)
+        self.doneBtn.setTitle(CommonFunctions.localisation(key: "DONE"), for: .normal)
         self.doneBtn.addTarget(self, action: #selector(doneAct), for: .touchUpInside)
         
-        CommonUI.setUpButton(btn: cancelBtn, text: L10n.Cancel.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpButton(btn: cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         self.cancelBtn.addTarget(self, action: #selector(cancelAct), for: .touchUpInside)
     }
     

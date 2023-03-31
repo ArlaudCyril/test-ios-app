@@ -11,7 +11,7 @@ import SVGKit
 import Alamofire
 import IQKeyboardManagerSwift
 
-class AddCryptoAddressVC: UIViewController {
+class AddCryptoAddressVC: ViewController {
     var addSelectedCoinAddress = false
     var assetData : Trending?
     var dropDown = DropDown(),exchangeDropDowm = DropDown()
@@ -74,28 +74,28 @@ class AddCryptoAddressVC: UIViewController {
             setData()
         }
     }
-}
 
-//MARK: - SetUpUI
-extension AddCryptoAddressVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         IQKeyboardManager.shared.enableAutoToolbar = true
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
         
-        CommonUI.setUpLbl(lbl: self.addCryptoAddressLbl, text: L10n.AddACryptoAdress.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addressNameLbl, text: L10n.AdressName.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.networkLbl, text: L10n.Network.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addressLbl, text: L10n.Address.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.originLbl, text: L10n.Origin.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.selectExchangeLbl, text: L10n.SelectExchange.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addCryptoAddressLbl, text: CommonFunctions.localisation(key: "ADD_CRYPTO_ADRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressNameLbl, text: CommonFunctions.localisation(key: "ADRESS_NAME"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "ADDRESS"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.originLbl, text: CommonFunctions.localisation(key: "ORIGIN"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.selectExchangeLbl, text: CommonFunctions.localisation(key: "SELECT_EXCHANGE"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         
         self.addressNameTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         self.networkImgLblView.isHidden = true
         CommonUI.setUpLbl(lbl: self.networkValueLbl, text: "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.networkChooseLbl, text: L10n.Choose.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.networkChooseLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: self.addressErrorLbl, text: L10n.enterValidAddress.description, textColor: UIColor.red, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressErrorLbl, text: CommonFunctions.localisation(key: "ENTER_VALID_ADDRESS"), textColor: UIColor.red, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.addressErrorLbl.isHidden = true
         self.addressTF.delegate = self
         self.addressTF.font = UIFont.MabryPro(Size.Medium.sizeValue())
@@ -110,17 +110,17 @@ extension AddCryptoAddressVC{
         selectOrigin(selectBtn: self.exchangeRadioBtn, unSelectBtn: self.walletRadioBtn, selectView: self.exchangeView, unSelectView: self.walletView)
         selectedOrigin = exchangeLbl
         
-        CommonUI.setUpLbl(lbl: self.exchangeLbl, text: L10n.Exchange.description, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.walletLbl, text: L10n.Wallet.description, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.exchangeLbl, text: CommonFunctions.localisation(key: "EXCHANGE"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.walletLbl, text: CommonFunctions.localisation(key: "WALLET"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.noteView, radius: 16, borderWidth: 0, borderColor: UIColor.borderColor.cgColor, backgroundColor: UIColor.ColorFFF2D9)
-        CommonUI.setUpLbl(lbl: self.noteLbl, text: L10n.ImportantNote.description, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        self.noteLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.ImportantNote.description, secondStr: L10n.yourNoteGoesHere.description, firstFont: UIFont.MabryProMedium(Size.Small.sizeValue()), secondFont: UIFont.MabryPro(Size.Small.sizeValue()), firstColor: UIColor.grey36323C, secondColor: UIColor.grey36323C)
-        CommonUI.setUpButton(btn: self.addAddressBtn, text: L10n.AddAdress.description, textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.noteLbl, text: CommonFunctions.localisation(key: "IMPORTANT_NOTE"), textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        self.noteLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "IMPORTANT_NOTE"), secondStr: CommonFunctions.localisation(key: "YOUR_NOTE_GOES_HERE"), firstFont: UIFont.MabryProMedium(Size.Small.sizeValue()), secondFont: UIFont.MabryPro(Size.Small.sizeValue()), firstColor: UIColor.grey36323C, secondColor: UIColor.grey36323C)
+        CommonUI.setUpButton(btn: self.addAddressBtn, text: CommonFunctions.localisation(key: "ADD_ADRESS"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         if addSelectedCoinAddress == true{
             self.addCryptoAddressLbl.text = "Add a \(self.assetData?.name ?? "") address"
-            self.addAddressBtn.setTitle(L10n.AddAndUseThisAdress.description, for: .normal)
+            self.addAddressBtn.setTitle(CommonFunctions.localisation(key: "ADD_USE_ADRESS"), for: .normal)
         }
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
@@ -170,7 +170,7 @@ extension AddCryptoAddressVC{
     }
     
     func setData(){
-        self.addCryptoAddressLbl.text = L10n.EditCryptoAdress.description
+        self.addCryptoAddressLbl.text = CommonFunctions.localisation(key: "EDIT_CRYPTO_ADRESS")
         self.addressNameTF.text = cryptoAddress?.addressName ?? ""
         self.networkChooseView.isHidden = true
         self.networkImgLblView.isHidden = false
@@ -178,7 +178,7 @@ extension AddCryptoAddressVC{
         self.selectedNetworkImg = cryptoAddress?.logo ?? ""
         self.networkValueLbl.text = cryptoAddress?.network ?? ""
         self.addressTF.text = cryptoAddress?.address ?? ""
-        self.addAddressBtn.setTitle(L10n.EditAdress.description, for: .normal)
+        self.addAddressBtn.setTitle(CommonFunctions.localisation(key: "EDIT_ADRESS"), for: .normal)
 //        let str = (cryptoAddress?.network ?? "").components(separatedBy: " (")
         self.selectedNetworkId = cryptoAddress?.network ?? ""
         if cryptoAddress?.origin == "WALLET"{

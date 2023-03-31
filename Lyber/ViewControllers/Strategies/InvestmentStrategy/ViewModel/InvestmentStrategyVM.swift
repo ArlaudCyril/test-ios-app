@@ -17,7 +17,7 @@ class InvestmentStrategyVM{
             completion(nil)
             print("error api not correct")
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func chooseStrategyApi(isOwnStrategy : Int ,strategyId : String,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -29,7 +29,7 @@ class InvestmentStrategyVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func deleteStrategyApi(strategyName:String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -43,7 +43,7 @@ class InvestmentStrategyVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func pauseStrategyApi(strategyName:String, ownerUuid:String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -58,6 +58,6 @@ class InvestmentStrategyVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

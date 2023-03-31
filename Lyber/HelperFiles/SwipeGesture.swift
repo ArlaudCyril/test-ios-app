@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class swipeGesture : UIViewController, UIGestureRecognizerDelegate{
+class swipeGesture : ViewController, UIGestureRecognizerDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,7 +28,7 @@ class swipeGesture : UIViewController, UIGestureRecognizerDelegate{
     }
 }
 
-class notSwipeGesture: UIViewController, UIGestureRecognizerDelegate{
+class notSwipeGesture: ViewController, UIGestureRecognizerDelegate{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         swipeToPop()

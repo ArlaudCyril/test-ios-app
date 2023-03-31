@@ -27,6 +27,6 @@ class NoTransactionTVC: UITableViewCell {
 extension NoTransactionTVC{
     func setUpCell(){
         self.noTransactionVw.layer.cornerRadius = 16
-        CommonUI.setUpLbl(lbl: self.notransactionLbl, text: "No Transactions", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.notransactionLbl, text: CommonFunctions.localisation(key: "NO_TRANSACTION"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
     }
 }

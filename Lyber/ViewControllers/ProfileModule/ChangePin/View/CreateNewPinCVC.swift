@@ -20,16 +20,16 @@ class CreateNewPinCVC: UICollectionViewCell {
     @IBOutlet var pinTF2: otpTextField!
     @IBOutlet var pinTF3: otpTextField!
     @IBOutlet var pinTF4: otpTextField!
-}
 
-//MARK: - SetUpUI
-extension CreateNewPinCVC{
+
+	//MARK: - SetUpUI
+
     func setUpUI(){
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         enterDigitCounts = 0
-        CommonUI.setUpLbl(lbl: createPinLbl, text: L10n.CreatePIN.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: secureAccountLbl, text: L10n.fourDigitCode.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: secureAccountLbl, text: L10n.fourDigitCode.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: createPinLbl, text: CommonFunctions.localisation(key: "CREATE_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: secureAccountLbl, text: CommonFunctions.localisation(key: "FOUR_DIGIT_CODE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: secureAccountLbl, text: CommonFunctions.localisation(key: "FOUR_DIGIT_CODE"), lineSpacing: 6, textAlignment: .left)
         let pins : [otpTextField] = [pinTF1,pinTF2,pinTF3,pinTF4]
         for pin in pins{
             pin.delegate = self

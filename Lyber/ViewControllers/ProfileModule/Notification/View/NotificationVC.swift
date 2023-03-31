@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotificationVC: UIViewController {
+class NotificationVC: ViewController {
 
     //MARK: - Variables
     var headerData : [String] = ["TODAY","YESTERDAY"]
@@ -20,15 +20,10 @@ class NotificationVC: UIViewController {
         setUpUI()
         
     }
-    
 
-
-}
-
-//MARK: - SetUpUI
-extension NotificationVC{
-    func setUpUI(){
-        CommonUI.setUpLbl(lbl: self.notificationLbl, text: L10n.Notifications.description, textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Large.sizeValue()))
+	//MARK: - SetUpUI
+    override func setUpUI(){
+        CommonUI.setUpLbl(lbl: self.notificationLbl, text: CommonFunctions.localisation(key: "NOTIFICATIONS"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Large.sizeValue()))
         self.tblView.delegate = self
         self.tblView.dataSource = self
         

@@ -12,7 +12,7 @@ var totalPortfolio : Double = 25.0
 var coinDetailData : [AssetBaseData] = []
 class PortfolioHomeVC: notSwipeGesture {
     //MARK: - IB OUTLETS
-    var headerData : [String] = [L10n.MyAssets.description,L10n.MyAssets.description,L10n.Analytics.description,L10n.RecurringInvestment.description,L10n.AllAssetsAvailable.description]
+    var headerData : [String] = []
     var assetsData : [Asset] = []
     var recurringInvestmentData : [Investment] = []
     var allAvailableAssets : [priceServiceResume] = []
@@ -28,31 +28,26 @@ class PortfolioHomeVC: notSwipeGesture {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAllAssetsDetail()
-//        self.threeDotBtn.backgroundColor = .PurpleColor
-//        self.callMyAssetsApi()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpUI()
-//        group.enter()
-//        self.callMyAssetsApi()
-//        group.enter()
-//        self.callRecurringInvestmentApi()
-//        group.enter()
         self.getTotalAvailableAssetsApi()
        
-//        Activelabel
+
         
     }
-}
 
-//MARK: - SetUpUI
-extension PortfolioHomeVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+    override func setUpUI(){
+		self.headerData = [CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "ANALYTICS"),CommonFunctions.localisation(key: "RECURRING_INVESTMENT"),CommonFunctions.localisation(key: "ALL_ASSETS_AVAILABLE")]
+		
+		
         self.tblView.delegate = self
         self.tblView.dataSource = self
-        CommonUI.setUpButton(btn: investMoneyBtn, text: L10n.InvestMoney.description, textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpButton(btn: investMoneyBtn, text: CommonFunctions.localisation(key: "INVEST_MONEY"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         self.threeDotBtn.layer.cornerRadius = 16
         self.investMoneyBtn.addTarget(self, action: #selector(investMoneyBtnAct), for: .touchUpInside)
         self.threeDotBtn.addTarget(self, action: #selector(threeDotBtnAct), for: .touchUpInside)
@@ -94,7 +89,8 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
             CommonUI.setUpLbl(lbl: cell.coinTypeLbl, text: "Bitcoin", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: cell.euroLbl, text: "987€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: cell.noOfCoinLbl, text: "5 BTC", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-            CommonUI.setUpLbl(lbl: cell.flatWalletLbl, text: "FIAT Wallet", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
+            CommonUI.setUpLbl(lbl: cell.flatWalletLbl, text: CommonFunctions.localisation(key: "FIAT_WALLET"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
+			cell.assetsView.layer.cornerRadius = 16
 //            cell.setUpCell(data: assetsData[indexPath.row],index : indexPath.row,lastIndex: assetsData.count - 1)
             cell.setEuroAmount(totalAmount: totalEuroAvailable ?? 0)
             cell.controller = self

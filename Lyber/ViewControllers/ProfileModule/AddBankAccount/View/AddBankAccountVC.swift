@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddBankAccountVC: UIViewController {
+class AddBankAccountVC: ViewController {
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var addBankAccountLbl: UILabel!
@@ -22,18 +22,17 @@ class AddBankAccountVC: UIViewController {
         setUpUI()
         
     }
-}
 
-//MARK: - SetUpUI
-extension AddBankAccountVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.headerView.headerLbl.isHidden  = true
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
-        CommonUI.setUpLbl(lbl: addBankAccountLbl, text: L10n.AddBankAccount.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: addBankAccountLbl, text: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpViewBorder(vw: self.ibanNumberVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.bicView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
-        CommonUI.setUpTextField(textfield: ibanTF, placeholder: L10n.IBANumber.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: bicTF, placeholder: L10n.BICNumber.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: ibanTF, placeholder: CommonFunctions.localisation(key: "IBAN_NUMBER"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: bicTF, placeholder: CommonFunctions.localisation(key: "BIC_NUMBER"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         let tfs = [ibanTF,bicTF]
         for tf in tfs{
@@ -41,7 +40,7 @@ extension AddBankAccountVC{
             tf?.textColor = UIColor.Purple35126D
             tf?.tintColor = UIColor.Purple35126D
         }
-        self.addBtn.setTitle(L10n.Add.description, for: .normal)
+        self.addBtn.setTitle(CommonFunctions.localisation(key: "ADD"), for: .normal)
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.addBtn.addTarget(self, action: #selector(addBtnAct), for: .touchUpInside)

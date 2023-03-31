@@ -8,7 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class EnterWalletAddressVC: UIViewController {
+class EnterWalletAddressVC: ViewController {
     //MARK: - Variables
     var fromCoinsData : Asset?
     var assetData : Trending?
@@ -24,21 +24,17 @@ class EnterWalletAddressVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-    
 
+	//MARK: - SetUpUI
 
-}
-
-//MARK: - SetUpUI
-extension EnterWalletAddressVC{
-    func setUpUI(){
+    override func setUpUI(){
         IQKeyboardManager.shared.enableAutoToolbar = true
         self.backBtn.layer.cornerRadius = 12
         CommonUI.setUpLbl(lbl: enterWalletAddressLbl, text: "Wallet Address", textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpViewBorder(vw: self.addressView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpTextField(textfield: addressTF, placeholder: "Enter Wallet Address", font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
-        self.withdrawBtn.setTitle(L10n.Withdraw.description, for: .normal)
+        self.withdrawBtn.setTitle(CommonFunctions.localisation(key: "WITHDRAW"), for: .normal)
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.withdrawBtn.addTarget(self, action: #selector(withdrawBtnAct), for: .touchUpInside)
     }

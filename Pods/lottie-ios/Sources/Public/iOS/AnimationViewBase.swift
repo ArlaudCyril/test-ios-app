@@ -55,12 +55,12 @@ public class AnimationViewBase: UIView {
     NotificationCenter.default.addObserver(
       self,
       selector: #selector(animationWillEnterForeground),
-      name: UIApplication.willEnterForegroundNotification,
+	  name: UIApplication.willEnterForegroundNotification,
       object: nil)
     NotificationCenter.default.addObserver(
       self,
       selector: #selector(animationWillMoveToBackground),
-      name: UIApplication.didEnterBackgroundNotification,
+	  name: UIApplication.didEnterBackgroundNotification,
       object: nil)
   }
 

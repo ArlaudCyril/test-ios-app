@@ -38,9 +38,9 @@ struct Strategy: Codable {
     var isSelected : Bool? = false
     let isOwnStrategy : Int? // to define logically with ownerUuid
     var activeStrategy : StrategyActive?
-    let risk : String?
-    let expectedYield : String?
-    let publicType : String?
+    var risk : String?
+    var expectedYield : String?
+    var publicType : String?
               
     init() {
         self.name = ""

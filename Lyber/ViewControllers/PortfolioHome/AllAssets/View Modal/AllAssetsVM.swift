@@ -15,7 +15,7 @@ class AllAssetsVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getAllAssetsNewApi(completion: @escaping ( (TrendingCoinsAPI?) -> Void )){
@@ -26,7 +26,7 @@ class AllAssetsVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getAllAssetsDetailApi(completion: @escaping ( ([AssetBaseData]?) -> Void )){
@@ -38,7 +38,7 @@ class AllAssetsVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
 }

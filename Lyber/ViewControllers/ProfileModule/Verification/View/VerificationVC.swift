@@ -1,0 +1,188 @@
+//
+//  OtpCVC.swift
+//  Lyber
+//
+//  Created by sonam's Mac on 26/05/22.
+//
+import Foundation
+import UIKit
+import IQKeyboardManagerSwift
+import SwiftUI
+
+final class VerificationVC: ViewController,MyTextFieldDelegate {
+    //MARK: - Variables
+    var typeVerification : String?
+    
+    
+    //MARK: - IB OUTLETS
+    @IBOutlet var containerView: UIView!
+    
+    @IBOutlet var verificationLbl: UILabel!
+    @IBOutlet var enterCodeLbl: UILabel!
+
+    @IBOutlet var Tf1: otpTextField!
+    @IBOutlet var Tf2: otpTextField!
+    @IBOutlet var Tf3: otpTextField!
+    @IBOutlet var Tf4: otpTextField!
+    @IBOutlet var Tf5: otpTextField!
+    @IBOutlet var Tf6: otpTextField!
+    @IBOutlet var backBtn: UIButton!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setUpUI()
+        Tf1.becomeFirstResponder()
+    }
+
+
+
+	//MARK: - SetUpUI
+    override func setUpUI(){
+//        IQKeyboardManager.shared.enableAutoToolbar = false
+        switch typeVerification {
+            case "otp":
+                fallthrough
+            case "otpValidation":
+                CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            case "phone":
+                CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_SMS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            case "email":
+                CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_EMAIL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            default:
+                print("Unsupported 2FA method")
+        }
+        containerView.layer.cornerRadius = 32;
+        containerView.layer.masksToBounds = true
+        
+        CommonUI.setUpLbl(lbl: verificationLbl, text: CommonFunctions.localisation(key: "VERIFICATION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+
+        let tfs : [otpTextField] = [Tf1,Tf2,Tf3, Tf4, Tf5, Tf6]
+        for tf in tfs {
+            tf.delegate = self
+            tf.otpDelegate = self
+            tf.font = UIFont.MabryProMedium(Size.Large.sizeValue())
+            CommonUI.setUpViewBorder(vw: tf, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor)
+        }
+        CommonUI.setUpButton(btn: backBtn, text: CommonFunctions.localisation(key: "BACK"), textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        
+        
+    }
+
+}
+
+//MARK: - Text Field Delegates
+extension VerificationVC: UITextFieldDelegate{
+    
+    func textFieldDidDelete(_ tf: UITextField) {
+        switch tf {
+        case Tf1:
+            Tf1.resignFirstResponder()
+        case Tf2:
+            Tf1.becomeFirstResponder()
+        case Tf3:
+            Tf2.becomeFirstResponder()
+        case Tf4:
+            Tf3.becomeFirstResponder()
+        case Tf5:
+            Tf4.becomeFirstResponder()
+        case Tf6:
+            Tf5.becomeFirstResponder()
+            
+        default:
+            print("error")
+        }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+            let maxLength = 1
+            if string.count == 1{
+                textField.text = string
+                if Tf1 == textField{
+                    Tf2.becomeFirstResponder()
+                }else if Tf2 == textField{
+                    Tf3.becomeFirstResponder()
+                }else if Tf3 == textField{
+                    Tf4.becomeFirstResponder()
+                }else if Tf4 == textField{
+                    Tf5.becomeFirstResponder()
+                }else if Tf5 == textField{
+                    Tf6.becomeFirstResponder()
+                }else if Tf6 == textField{
+                    Tf6.resignFirstResponder()
+                }
+                if Tf1.text != "" && Tf2.text != "" && Tf3.text != "" && Tf4.text != "" && Tf5.text != "" && Tf6.text != ""{
+
+                    self.verifyCode(code: "\(Tf1.text ?? "")\(Tf2.text ?? "")\(Tf3.text ?? "")\(Tf4.text ?? "")\(Tf5.text ?? "")\(Tf6.text ?? "")")
+                }
+            }
+
+        return newString.length <= maxLength
+    }
+}
+
+//MARK: - Other functions
+extension VerificationVC{
+
+    @objc func backBtnAct(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func verifyCode(code: String)
+    {
+        if(self.typeVerification == "otpValidation"){
+            VerificationVM().TwoFAOtpApi(code: code, type2FA: "otp", completion: {[]response in
+                if response != nil{
+                    let vc = StrongAuthVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                    userData.shared.has2FA = true
+                    userData.shared.type2FA = "otp"
+                    userData.shared.dataSave()
+                    self.present(vc, animated: true, completion: nil)
+                }
+            })
+        }else{
+            VerificationVM().verify2FAApi(code: code, completion: {[]response in
+                if response != nil{
+                    userData.shared.isPhoneVerified = true
+                    userData.shared.userToken = response?.data?.accessToken ?? ""
+                    userData.shared.refreshToken = response?.data?.refreshToken ?? ""
+                    userData.shared.time = Date()
+                    userData.shared.dataSave()
+                    let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+                    self.navigationController?.pushViewController(vc, animated: true)
+
+                }
+            })
+        }
+        
+    }
+
+}
+
+//MARK: - Preview
+/*struct GoogleAuthenticatorVerificationVC_Preview: PreviewProvider{
+    static var previews: some View{
+        GoogleAuthenticatorVerificationVCRep()
+    }
+}
+
+struct GoogleAuthenticatorVerificationVCRep: ViewControllerRepresentable {
+    func makeViewController(context: Context) -> VerificationVC {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "GoogleAuthenticatorVerificationVC") as? VerificationVC else{
+            fatalError("Cannot load ViewController")
+        }
+        return vc
+
+    }
+    
+    func updateViewController(_ ViewController: VerificationVC, context: Context) {
+        
+    }
+}*/
+

@@ -11,9 +11,10 @@ import BigNum
 import CryptoKit
 import SwiftySRP
 
-class EmailLoginVC: UIViewController {
+class EmailLoginVC: ViewController {
     //MARK: - Variables
-    var email = String() ,password = String()
+    var email = String() ,password = String(), enteredPin = String(),isLogin : Bool = false
+    var currentPage : Int? = 0
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var collView: UICollectionView!
@@ -21,6 +22,8 @@ class EmailLoginVC: UIViewController {
     @IBOutlet var nextButton: PurpleButton!
     @IBOutlet var stackViewBottomConst: NSLayoutConstraint!
     
+    var indicatorView : [UIView]!
+    var indicatorViewsWidth : [NSLayoutConstraint]!
     @IBOutlet var indicator1: UIView!
     @IBOutlet var indicator2: UIView!
     @IBOutlet var indicator3: UIView!
@@ -36,30 +39,27 @@ class EmailLoginVC: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         setUpUI()
-        
     }
-}
-//MARK: - SetUpUI
-extension EmailLoginVC{
-    func setUpUI(){
-        //        self.hideKeyboardWhenTappedAround()
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
         self.collView.delegate = self
         self.collView.dataSource = self
-//        indicatorView = [indicator1,indicator2,indicator3,indicator4,indicator5]
-//        indicatorViewsWidth = [indicatorViewsWidth1,indicatorViewsWidth2,indicatorViewsWidth3,indicatorViewsWidth4,indicatorViewsWidth5]
         self.collView.layer.cornerRadius = 32
         self.collView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-//        self.setIndicatorViews()
-        self.nextButton.setTitle(L10n.Next.description, for: .normal)
+        self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
         
+        indicatorView = [indicator1,indicator2,indicator3,indicator4,indicator5]
+        indicatorViewsWidth = [indicatorViewsWidth1,indicatorViewsWidth2,indicatorViewsWidth3,indicatorViewsWidth4,indicatorViewsWidth5]
+        self.setIndicatorViews()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        
+        collView.reloadData()
     }
 }
 
@@ -67,7 +67,7 @@ extension EmailLoginVC{
 extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,7 +75,57 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmailLoginCVC", for: indexPath as IndexPath) as! EmailLoginCVC
             cell.controller = self
             cell.setUpUI()
-            IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+            if currentPage == 0{
+                DispatchQueue.main.async {
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+                }
+            }else{
+                cell.endEditing(true)
+            }
+            return cell
+        
+        }else if indexPath.item == 1{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "createPinCVC", for: indexPath as IndexPath) as! createPinCVC
+            cell.setUpUI()
+            cell.configureWithData()
+            cell.pinCreatedDelegate = {[]pin in
+                self.enteredPin = pin
+                self.GotoNextIndex()
+            }
+            if currentPage == 1{
+                DispatchQueue.main.async {
+                    cell.pinTF1.becomeFirstResponder()
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                }
+            }else{
+                cell.endEditing(true)
+            }
+            return cell
+        }else if indexPath.item == 2{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmPinCVC", for: indexPath as IndexPath) as! ConfirmPinCVC
+            cell.setUpUI(verifyPin : true)
+            cell.pinConfirmDelegate = {[]pin in
+                
+                if self.enteredPin != pin{
+                    CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+                }else{
+                    self.setLoginPin(enteredPin: pin)
+                }
+            }
+            
+            if currentPage == 2{
+                DispatchQueue.main.async {
+                    cell.pinTF1.becomeFirstResponder()
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                }
+            }else{
+                cell.endEditing(true)
+            }
+            return cell
+        }else if indexPath.item == 3{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enableNotificationCVC", for: indexPath as IndexPath) as! enableNotificationCVC
+            cell.setUpUI()
+            cell.delegate = self
             return cell
         }else{
             return UICollectionViewCell()
@@ -110,7 +160,6 @@ extension EmailLoginVC{
     
     @objc func nextBtnAct(){
         self.checkValidationOnEmail()
-        //        collView.reloadData()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -138,8 +187,7 @@ extension EmailLoginVC{
             EnterPhoneVM().logInChallengeApi(email: self.email, completion: { [weak self] response in
                 self?.nextButton.hideLoading()
                 if let response = response{
-//                    userData.shared.fromSignUpData(response)
-                    userData.shared.accessToken = response.data?.token ?? ""
+                    userData.shared.userToken = response.data?.token ?? ""
                     userData.shared.dataSave()
                     let serverPublicKey = BigNum.init(response.data?.b ?? "")!
                     let salt = BigNum.init(response.data?.salt ?? "")!
@@ -153,17 +201,19 @@ extension EmailLoginVC{
                         let clientProof = client.calculateSimpleClientProof(clientPublicKey: clientKeys.public, serverPublicKey: spk, sharedSecret: clientSharedSecret)
                         EnterPhoneVM().logInApi(A: BigNum(bytes: clientKeys.public.bytes).dec, M1: BigNum(bytes: clientProof).dec, method: "srp", completion: {[weak self] response in
                             if let response = response{
-                                userData.shared.is_push_enabled = 1
-                                userData.shared.isIdentityVerified = true
-                                userData.shared.accessToken = response.data?.accessToken ?? ""
-                                userData.shared.refreshToken = response.data?.refreshToken ?? ""
-                                userData.shared.time = Date()
-                                userData.shared.dataSave()
-//                                let vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                                let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//                                vc.fromLoginScreen = true
-//                                vc.email = self?.email ?? ""
-                                self?.navigationController?.pushViewController(vc, animated: true)
+                                if(response.data?.accessToken != nil){
+                                    userData.shared.userToken = response.data?.accessToken ?? ""
+                                    userData.shared.refreshToken = response.data?.refreshToken ?? ""
+                                    userData.shared.time = Date()
+                                    userData.shared.dataSave()
+                                    self?.nextBtnView.isHidden = true
+                                    let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 1, section: 0)
+                                    self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+                                }else{
+                                    let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                                    vc.typeVerification = response.data?.type2FA
+                                    self?.navigationController?.pushViewController(vc, animated: true)
+                                }
                             }
                         })
                     }catch{
@@ -172,13 +222,93 @@ extension EmailLoginVC{
                 }
             })
         }
-            
-//                    let vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//                    vc.fromLoginScreen = true
-//                    vc.email = response.user?.email ?? ""
-//                    self?.navigationController?.pushViewController(vc, animated: true)
-//                }
-            
-        
+    }
+    func setLoginPin(enteredPin : String){
+        userData.shared.logInPinSet = Int(enteredPin) ?? 0
+        userData.shared.dataSave()
+        self.showActiveFaceIdAlert()
+    }
+    
+    func showActiveFaceIdAlert(){
+        let alert = UIAlertController(title: CommonFunctions.localisation(key: "ACTIVATE_FACE_ID"), message: CommonFunctions.localisation(key: "ACCESS_LYBER_FACE_ID"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "DECLINE"), style: .default, handler: {(action : UIAlertAction) in
+            //            self.enterPhoneVM.enableFaceIdApi(enable: 0, completion: {[]response in
+            //                if let response = response{
+            //                    print(response)
+            if userData.shared.isAccountCreated{
+				if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
+					let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+					self.navigationController?.pushViewController(vc, animated: true)
+				}else{
+					let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+					self.navigationController?.pushViewController(vc, animated: true)
+				}
+				
+            }else{
+                self.GotoNextIndex()
+            }
+            //                }
+            //            })
+        }))
+        alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "ACTIVATE"), style: .default, handler: {_ in
+            //            self.enterPhoneVM.enableFaceIdApi(enable: 1, completion: {[]response in
+            //                if let response = response{
+            //                    print(response)
+            if userData.shared.isAccountCreated{
+                let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                self.GotoNextIndex()
+            }
+            //                }
+            //            })
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func GotoNextIndex(){
+        let indexPath = NSIndexPath(item: (self.currentPage ?? 0) + 1, section: 0)
+        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+    }
+    
+    func setIndicatorViews(){
+        for (num,vw) in indicatorView.enumerated(){
+            vw.layer.cornerRadius = 2
+            if num == self.currentPage{
+                vw.backgroundColor = UIColor.PurpleColor
+                self.indicatorViewsWidth[num].constant = 32
+            }else{
+                vw.backgroundColor = UIColor.PurpleColor.withAlphaComponent(0.2)
+                self.indicatorViewsWidth[num].constant = 4
+            }
+            if self.currentPage ?? 0 >= 1{
+                if self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
+                    self.headerView.backBtn.setImage(UIImage(), for: .normal)
+                    CommonUI.setUpButton(btn: self.headerView.backBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
+                    self.headerView.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOG_OUT")), for: .normal)
+                }else{
+                    self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
+                    self.headerView.backBtn.setAttributedTitle(CommonFunctions.removeUnderlineString(str: ""), for: .normal)
+                    self.headerView.backBtn.setTitle("", for: .normal)
+                }
+                
+                self.nextBtnView.isHidden = true
+            }else{
+                self.headerView.backBtn.setImage(Assets.close.image(), for: .normal)
+                self.nextBtnView.isHidden = false
+            }
+        }
+    }
+}
+
+//MARK: - SCROLLVIEW DELEGATES FUNTION
+extension EmailLoginVC{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let value = (scrollView.contentOffset.x + scrollView.frame.width/2)/scrollView.frame.width
+        if Int(value) != self.currentPage{
+            self.currentPage = (Int(value))
+            self.setIndicatorViews()
+        }
+        collView.reloadData()
     }
 }

@@ -193,7 +193,7 @@ open class AnimatedSwitch: AnimatedControl {
   // MARK: Private
 
   private func updateAccessibilityLabel() {
-    accessibilityValue = _isOn ? NSLocalizedString("On", comment: "On") : NSLocalizedString("Off", comment: "Off")
+    accessibilityValue = _isOn ? NSLocalizedString("ON", comment: "On") : NSLocalizedString("OFF", comment: "Off")
   }
 
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConfirmationVC: UIViewController {
+class ConfirmationVC: ViewController {
     var controller : EnterWalletAddressVC?
     var confirmationType : confirmationPopUp?
     var coinInvest : String?
@@ -27,11 +27,11 @@ class ConfirmationVC: UIViewController {
         setUpUI()
         
     }
-}
 
-//MARK: - SetUpUI
-extension ConfirmationVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.navigationController?.navigationBar.isHidden = true
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]

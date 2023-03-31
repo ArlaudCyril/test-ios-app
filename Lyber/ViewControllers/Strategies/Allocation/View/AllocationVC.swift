@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllocationVC: UIViewController {
+class AllocationVC: ViewController {
     //MARK: - Variables
     var pickerData = ["5%","10%","15%","20%","25%","30%","35%","40%","45%","50%","55%","60%","65%","70%","75%","80%","85%","90%","95%","100%"]
     var allocationSelected : String!
@@ -30,17 +30,17 @@ class AllocationVC: UIViewController {
         super.viewWillAppear(animated)
         setUpUI()
     }
-}
 
-//MARK: - SetUpUI
-extension AllocationVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         allocationVw.layer.cornerRadius = 32
         allocationVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.allocationLbl, text: L10n.Allocation.description, textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.coinNameLbl, text: L10n.Bitcoin.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        self.setAllocationBtn.setTitle(L10n.SetThisAllocation.description, for: .normal)
+        CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.coinNameLbl, text: CommonFunctions.localisation(key: "BITCOIN"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        self.setAllocationBtn.setTitle(CommonFunctions.localisation(key: "SET_THIS_ALLOCATION"), for: .normal)
         pickerVw.delegate = self
         pickerVw.dataSource = self
         for i in 0...(pickerData.count - 1){

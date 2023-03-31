@@ -49,11 +49,11 @@ extension AddStrategyTVC{
         CommonUI.setUpLbl(lbl: self.coinNameLbl, text: currencyDetail?.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: (data?.lastPrice ?? "0.00")+" €", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: (data?.change ?? "0.00")+" %", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.allocationLbl, text: L10n.Allocation.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
        
         if(data?.isAuto == true)
         {
-            self.autoPercentageLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Auto.description, secondStr: " (\(allocation) %)", firstFont: UIFont.MabryPro(Size.XLarge.sizeValue()), secondFont: UIFont.MabryPro(Size.XLarge.sizeValue()), firstColor: UIColor.primaryTextcolor, secondColor: UIColor.SecondarytextColor)
+            self.autoPercentageLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "AUTO"), secondStr: " (\(allocation) %)", firstFont: UIFont.MabryPro(Size.XLarge.sizeValue()), secondFont: UIFont.MabryPro(Size.XLarge.sizeValue()), firstColor: UIColor.primaryTextcolor, secondColor: UIColor.SecondarytextColor)
         }
         else{
             CommonUI.setUpLbl(lbl: self.autoPercentageLbl, text: " \(allocation) %", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
@@ -75,8 +75,12 @@ extension AddStrategyTVC{
     @objc func selectAllocation(){
         let vc = AllocationVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
         self.controller?.present(vc, animated: true, completion: nil)
-//        vc.allocationSelected = self.controller?.assetsData[self.percentageView.tag ]?.autoPercentage ?? ""
-        vc.allocationSelected = "\(self.controller?.allocation[self.percentageView.tag] ?? 0)%"
+		if(self.controller?.allocation[self.percentageView.tag] == 0){
+			vc.allocationSelected = "5%"
+		}else{
+			vc.allocationSelected = "\(self.controller?.allocation[self.percentageView.tag] ?? 0)%"
+		}
+        
         
         vc.allocationCallBack = { [weak self] allocation in
             self?.controller?.allocation[self?.percentageView.tag ?? 0] = Int(allocation.replacingOccurrences(of: "%", with: "")) ?? 0

@@ -28,6 +28,6 @@ class HeaderView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        CommonUI.setUpLbl(lbl: self.headerLbl, text: L10n.enterEmail.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.headerLbl, text: CommonFunctions.localisation(key: "ALERT_EMAIL"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
     }
 }

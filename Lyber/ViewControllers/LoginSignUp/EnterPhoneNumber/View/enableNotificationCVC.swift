@@ -10,7 +10,7 @@ import UIKit
 class enableNotificationCVC: UICollectionViewCell {
     //MARK: - Variables
     var enterPhoneVM = EnterPhoneVM()
-    var delegate : EnterPhoneVC?
+    var delegate : ViewController?
     var enableNotificationCallBack : (()->())?
     //MARK:- IB OUTLETS
     @IBOutlet var enableNotifiLbl: UILabel!
@@ -22,12 +22,12 @@ class enableNotificationCVC: UICollectionViewCell {
 
 extension enableNotificationCVC{
     func setUpUI(){
-        CommonUI.setUpLbl(lbl: enableNotifiLbl, text: L10n.EnableNotifications.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: enableNotifyDescLbl, text: L10n.dontMissAnyUpdate.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: enableNotifyDescLbl, text: L10n.dontMissAnyUpdate.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: enableNotifiLbl, text: CommonFunctions.localisation(key: "ENABLE_NOTIFICATIONS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: enableNotifyDescLbl, text: CommonFunctions.localisation(key: "DONT_MISS_ANY_UPDATE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: enableNotifyDescLbl, text: CommonFunctions.localisation(key: "DONT_MISS_ANY_UPDATE"), lineSpacing: 6, textAlignment: .left)
         
-        self.activateBtn.setTitle(L10n.Activate.description, for: .normal)
-        CommonUI.setUpButton(btn: self.askMeLater, text: L10n.AskMeLater.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        self.activateBtn.setTitle(CommonFunctions.localisation(key: "ACTIVATE"), for: .normal)
+        CommonUI.setUpButton(btn: self.askMeLater, text: CommonFunctions.localisation(key: "ASK_ME_LATER"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         
         self.activateBtn.addTarget(self, action: #selector(activateBtnAct), for: .touchUpInside)
         self.askMeLater.addTarget(self, action: #selector(askMeLaterAct), for: .touchUpInside)
@@ -49,21 +49,20 @@ extension enableNotificationCVC{
     }
     
     func enableNotification(enable : Int){
-//        if enable == 1{
-//            self.activateBtn.showLoading()
-//            self.activateBtn.isUserInteractionEnabled = false
-//        }
-//        self.delegate?.enterPhoneVM.enableNotificationApi(enable: enable, completion: {[weak self]response in
-//            self?.activateBtn.hideLoading()
-//            self?.activateBtn.isUserInteractionEnabled = true
-//            if let response = response{
-//                print(response)
-                userData.shared.is_push_enabled = enable
-                userData.shared.isAccountCreated = true
-                userData.shared.dataSave()
-                let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                self.delegate?.navigationController?.pushViewController(vc, animated: true)
-//            }
-//        })
+        userData.shared.isAccountCreated = true
+        userData.shared.dataSave()
+        
+        CommonFunctions.enableNotifications(enable: enable)
+        
+        var vc : ViewController = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        if(GlobalVariables.isRegistering == true)
+        {
+            vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        }
+        let navController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .fullScreen
+        navController.navigationBar.isHidden = true
+        self.delegate?.present(navController, animated: true, completion: nil)
+        
     }
 }

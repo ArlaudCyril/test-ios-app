@@ -2,7 +2,7 @@
 //  PortfolioHomeVM.swift
 //  Lyber
 //
-//  Created by sonam's Mac on 25/07/22.
+//  Created by sonam's Mac on 2/07/22.
 //
 
 import Foundation
@@ -16,7 +16,7 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GetString, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getRecurringInvestmentApi(completion: @escaping ( (RecurringInvestmentAPI?) -> Void )){
@@ -27,7 +27,7 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GetString, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getAllAvailableAssetsApi(order : String,completion: @escaping ( (TrendingCoinsAPI?) -> Void )){
@@ -40,6 +40,6 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 }

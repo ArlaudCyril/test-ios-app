@@ -17,12 +17,10 @@ class EductaionStrategyCVC: UICollectionViewCell {
     @IBOutlet var descLbl: UILabel!
     @IBOutlet var subDescLbl: UILabel!
     
-}
 
-extension EductaionStrategyCVC{
+
+
     func setUpUI(){
-        
-        
         
     }
     

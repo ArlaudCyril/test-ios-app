@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
+        <attribute name="accessToken" optional="YES" attributeType="String"/>
+        <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="bic" optional="YES" attributeType="String"/>
+        <attribute name="countryCode" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="enableWhiteListing" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="extraSecurity" optional="YES" attributeType="String"/>
+        <attribute name="faceIdEnabled" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String"/>
+        <attribute name="has2FA" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="iban" optional="YES" attributeType="String"/>
+        <attribute name="is_push_enabled" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isAccountCreated" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isEducationStrategyRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isIdentityVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPersonalInfoFilled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isPhoneVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="lastname" optional="YES" attributeType="String"/>
+        <attribute name="logInPinSet" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="personalDataStepComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="phone_no" optional="YES" attributeType="String"/>
+        <attribute name="profile_image" optional="YES" attributeType="String"/>
+        <attribute name="profilePicType" optional="YES" attributeType="String"/>
+        <attribute name="refreshToken" optional="YES" attributeType="String"/>
+        <attribute name="registrationToken" optional="YES" attributeType="String"/>
+        <attribute name="scope2FALogin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="scope2FAWhiteListing" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="scope2FAWithdrawal" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="step" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="strongAuthVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="type2FA" optional="YES" attributeType="String"/>
+    </entity>
+</model>

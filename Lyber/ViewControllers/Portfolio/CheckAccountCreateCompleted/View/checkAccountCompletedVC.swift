@@ -7,14 +7,14 @@
 
 import UIKit
 
-class checkAccountCompletedVC: UIViewController {
+class checkAccountCompletedVC: ViewController {
     //MARK: - Variables
     var openFromLink = false
     var tableData : [AccountCompletedModel] =
-    [AccountCompletedModel(index: 1, text: L10n.CreateAnAccount.description, isCompleted: true, isPending: false, rightIcon: Assets.right_arrow_grey.image()),
-     AccountCompletedModel(index: 2, text: L10n.FillPersonalData.description, isCompleted: false, isPending: true, rightIcon: Assets.right_arrow_grey.image()),
-     AccountCompletedModel(index: 3, text: L10n.VerifyYourIdentity.description, isCompleted: false, isPending: false, rightIcon: Assets.right_arrow_grey.image()),
-//     AccountCompletedModel(index: 4, text: L10n.MakeYourFirstInvesment.description, isCompleted: false, isPending: false, rightIcon: Assets.right_arrow_grey.image())
+    [AccountCompletedModel(index: 1, text: CommonFunctions.localisation(key: "CREATE_AN_ACCOUNT"), isCompleted: true, isPending: false, rightIcon: Assets.right_arrow_grey.image()),
+     AccountCompletedModel(index: 2, text: CommonFunctions.localisation(key: "FILL_PERSONAL_DATA"), isCompleted: false, isPending: true, rightIcon: Assets.right_arrow_grey.image()),
+     AccountCompletedModel(index: 3, text: CommonFunctions.localisation(key: "VERIFY_YOUR_IDENTITY"), isCompleted: false, isPending: false, rightIcon: Assets.right_arrow_grey.image()),
+//     AccountCompletedModel(index: 4, text: CommonFunctions.localisation(key: "MAKE_YOUR_FIRST_INVESTMENT"), isCompleted: false, isPending: false, rightIcon: Assets.right_arrow_grey.image())
     ]
     //MARK:- IB OUTLETS
     @IBOutlet var portfolioLbl: UILabel!
@@ -50,12 +50,11 @@ class checkAccountCompletedVC: UIViewController {
        
     }
 
-}
 
-//MARK: - SetUpUI
-extension checkAccountCompletedVC{
-    func setUpUI(){
-        CommonUI.setUpLbl(lbl: self.portfolioLbl, text: L10n.Portfolio.description, textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
+        CommonUI.setUpLbl(lbl: self.portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "0.00€", textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.extraLarge.sizeValue()))
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.width/2
         
@@ -65,8 +64,8 @@ extension checkAccountCompletedVC{
         self.progressView.layer.cornerRadius = 4
         self.progressView.layer.sublayers![1].cornerRadius = 4
         self.progressView.subviews[1].clipsToBounds = true
-        CommonUI.setUpLbl(lbl: self.completeYourAccountLbl, text: L10n.completeAccountToStartInvesting.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.Header.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.stepcompletedLbl, text: "1/3 \(L10n.stepCompleted.description)", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.completeYourAccountLbl, text: CommonFunctions.localisation(key: "COMPLETE_ACCOUNT_TO_START_INVESTING"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.stepcompletedLbl, text: "1/3 \(CommonFunctions.localisation(key: "STEP_COMPLETED"))", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
         self.tblView.layer.cornerRadius = 16
         tblView.delegate = self
@@ -125,7 +124,6 @@ extension checkAccountCompletedVC: UITableViewDelegate, UITableViewDataSource{
 //MARK: - Other functions
 extension checkAccountCompletedVC{
     func checkAccountInfoCompleted(){
-        userData.shared.getData()
         if userData.shared.isAccountCreated{
             self.tableData[0].isCompleted = true
             self.tableData[0].isPending = false
@@ -135,7 +133,7 @@ extension checkAccountCompletedVC{
             self.tableData[1].isPending = false
             self.tableData[2].isPending = true
             self.progressView.progress = 2/3
-            self.stepcompletedLbl.text = "2/3 \(L10n.stepCompleted.description)"
+            self.stepcompletedLbl.text = "2/3 \(CommonFunctions.localisation(key: "STEP_COMPLETED"))"
         }
         if userData.shared.isIdentityVerified{
             self.tableData[2].isCompleted = true

@@ -32,7 +32,6 @@ enum L10n {
     case Decline
     case AskMeLater
     case dontMissAnyUpdate
-    case NotNow
     
     //MARK: - education Strategy
     case DiversifiedStrategy
@@ -48,7 +47,6 @@ enum L10n {
     case BuildMyOwnStrategy
     case AddManyAssetsAsYouWish
     case AddAnAsset
-    case SauvegarderMaStratégie
     case VousDevezAjouter
     case Trending
     case TopGainers
@@ -58,15 +56,7 @@ enum L10n {
     case BTC
     case Ether
     case ETH
-    case Dogecoin
-    case DOGE
-    case Solana
-    case SOL
     case USDC
-    case ADA
-    case LUNA
-    case XND
-    case MATIC
     case ViewAllAvailableAssets
     case Allocation
     case Auto
@@ -75,21 +65,14 @@ enum L10n {
     case asset
     case assets
     case AllAssets
-    case Proportion
-    case SetThisProportion
     case SetThisAllocation
     case yourAllocationIsGreaterThan
     case yourAllocationIslessThan
     case InvestmentStrategies
     case strategiesAreThereToHelpYou
-    case MyOwnStrategy
-    case LearnMore
     case Yield
     case Risk
-    case ChooseThisStrategy
-    case Safe
-    case Indermediate
-    case Bold
+	
     //
     //MARK: - Portfolio Home
     case Portfolio
@@ -112,8 +95,6 @@ enum L10n {
     case TotalEarnings
     case RecurringInvestment
     case ReturnOnInvestment
-    case IntermediateStrategy
-    case UpcomingPayment
     case AllAssetsAvailable
     case ViewAll
     case MyBalance
@@ -122,25 +103,19 @@ enum L10n {
     case Resources
     case MarketCap
     case Volume
-    case TradingActivity
     case CirculatingSupply
-    case ShareOfCryptoMarket
     case Popularity
     case Balance
     case ROI
     case AnnualPercentage
-    case Historique
     case History
     case Bought
     
     //MARK: - Personal Info
     case PersonalData
     case ForLegalReasons
-    case FirstName
     case CardholderName
-    case LastName
     case BirthDate
-    case BirthPlace
     case BirthCountry
     case AreYouAUSCitizen
     case Yes
@@ -152,13 +127,7 @@ enum L10n {
     
     case AddressEmail
     case informtionUsed
-    case Email
     
-    case VérificationEmail
-    case weHaveSentEmailTo
-    case CheckYourMailbox
-    case OpenAppleMail
-    case OpenGmail
     case ResendEmail
     
     case Address
@@ -209,33 +178,22 @@ enum L10n {
     case NewTechnologies
     
     case WhatSalaryRangeYouFallInto
-    case Lessthan800€PerMonth
-    case between801and1100€PerMonth
-    case between1101and2000€PerMonth
-    case between2001and4000€PerMonth
-    case between4001and10000€PerMonth
-    case Over10001€PerMonth
     
     case IdentityVerification
     case stepsProtectYouFromFraudsAndTheft
     case TakePictureOfYourPapers
     case NationalIDCardPassportOrDrivingLicense
     case TakeASelfie
-    case OpenCamera
     case Camera
     case SelectFromGallery
     case SetDefaultPictures
-    case SendPicturesToLyber
     case Start
     case EditPersonalData
-    case WelcometoLyber
-    case LetVerifyYourIdentity
     case VerificationInProgress
     
     
     //MARK: - Invest money
     case UsingMyStrategy
-    case InvestUsingMyStrategy
     case MakeInvestment
     case PickAnotherStrategy
     case DepositSingularBuy
@@ -246,7 +204,6 @@ enum L10n {
     case BuildYourOwnStrategy
     case InvestInSingleAsset
     case ChooseAmong80DifferentAssets
-    case InvestIn
     case CreditCard
     case AddAFrequency
     case PreviewMyInvestment
@@ -288,7 +245,6 @@ enum L10n {
     case Every21stOfTheMonth
     case Recommended
     case Deposit
-    case DepositFIAT
     case MoneyToLyber
     case DepositFees
     
@@ -308,8 +264,6 @@ enum L10n {
     case WithdrawTo
     case WithdrawAllMyPortfolio
     case PreviewWithdraw
-    case Paypal
-    case ManageYourAssets
     case depositFunds
     case bankAccountDetails
     case pleaseDepositMoneyInMentioned
@@ -334,41 +288,37 @@ enum L10n {
     case PaymentMethod
     case AddPaymentMethod
     case Account
-    case Currency
-    case PhoneNumber
     case Notifications
-    case ExtractDocuments
     case Security
     case StrongAuthentification
     case ChangePin
     case FaceID
     case LogOut
     case ListOfAllTransactions
-    case UsedOnlyForWithdrawals
     case CardNumber
     case Expire
     case CVV
     case Add
     case ByAddingNewCardYouAcceptTermsConditions
+    case Verification
+    case EnterCodeDisplayedGoogleAuthenticator
+    case EnterCodeReceivedEmail
+    case EnterCodeReceivedSms
+    case Back
     
     //MARK: - Strong Authentication
     case forAddedSecurityOnLyberAccount
     case BySMS
-    case ManageApplicationCasesOfSMSAuthentication
+    case ManageApplicationCasesOf2FA
     case ValidateWithdrawal
     case EnableDisablewhitelisting
-    case EditAccount
     case CryptoAdressBook
     case viewAndAddfavouriteCryptoAddressesHere
     case Whitelisting
-    case Search
     case AddACryptoAdress
     case EditCryptoAdress
     case AdressName
     case Network
-    case NameMYAddress
-    case EnterOrScanAnAddress
-    case Adress
     case Origin
     case Wallet
     case SelectExchange
@@ -384,12 +334,9 @@ enum L10n {
     case Hours
     case NoExtraSecurity
     case AllowYouToBlockTheAdditionOfAddress
-    case ActiveDuring
     case AddNewAdress
     case Disabled
     case Enabled
-    case disabled
-    case enabled
     case AddAndUseThisAdress
     case CryptoAssetDeposit
     case DepositAdress
@@ -412,14 +359,20 @@ enum L10n {
     case Confirm
     case SelectDefaultPicture
     case SelectedProfilePicture
+    case ByEmail
+    case GoogleAuthenticator
+    case TwoFA
+    case AddGoogleAuthenticator
+    case Verify
+    case TapToAddToGoogleAuthenticator
     
     //MARK: - Alert Messages
     case enterPhoneNumber
     case enterValidPhoneNumber
     case enterCorrectPin
+    case tooManyFailedAttemptPleaseReauthenticate
     case enterFirstName
     case enterLastName
-    case selectBirthDate
     case selectNationality
     case enterEmail
     case enterValidEmail
@@ -487,8 +440,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Ask me later")
         case .dontMissAnyUpdate:
             return L10n.tr("Enable notifications so you don't miss any updates from Lyber.")
-        case .NotNow:
-            return L10n.tr("Not now")
             
             //MARK: - Education Strategy
         case .DiversifiedStrategy:
@@ -514,8 +465,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Add as many assets as you wish and choose their respective allocation.")
         case .AddAnAsset:
             return L10n.tr("Add an asset")
-        case .SauvegarderMaStratégie:
-            return L10n.tr("Sauvegarder ma stratégie")
         case .VousDevezAjouter:
             return L10n.tr("Vous devez ajouter un asset minimum pour créer votre stratégie.")
         case .Trending:
@@ -534,24 +483,8 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Ether")
         case .ETH:
             return L10n.tr("ETH")
-        case .Dogecoin:
-            return L10n.tr("Dogecoin")
-        case .DOGE:
-            return L10n.tr("DOGE")
-        case .Solana:
-            return L10n.tr("Solana")
-        case .SOL:
-            return L10n.tr("SOL")
         case .USDC:
             return L10n.tr("USDC")
-        case .ADA:
-            return L10n.tr("ADA")
-        case .LUNA:
-            return L10n.tr("LUNA")
-        case .XND:
-            return L10n.tr("XND")
-        case .MATIC:
-            return L10n.tr("MATIC")
         case .ViewAllAvailableAssets:
             return L10n.tr("View all 16 available assets")
         case .Allocation:
@@ -568,47 +501,20 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("assets")
         case .AllAssets:
             return L10n.tr("All assets")
-        case .Proportion:
-            return L10n.tr("Proportion")
-        case .SetThisProportion:
-            return L10n.tr("Set this proportion")
         case .SetThisAllocation:
             return L10n.tr("Set this allocation")
         case .yourAllocationIsGreaterThan:
-            return L10n.tr("Your allocation is greater than 100%,remove ")
+            return L10n.tr("Your allocation is greater than 100%, remove ")
         case .yourAllocationIslessThan:
-            return L10n.tr("Your allocation is less than 100%,add ")
+            return L10n.tr("Your allocation is less than 100%, add ")
         case .InvestmentStrategies:
             return L10n.tr("Investment strategies")
         case .strategiesAreThereToHelpYou:
             return L10n.tr("The strategies are there to help you dilute your investments over several assets.")
-        case .MyOwnStrategy:
-            return L10n.tr("My own strategy")
-        case .LearnMore:
-            return L10n.tr("Learn more ...")
         case .Yield:
             return L10n.tr("Yield: ")
         case .Risk:
             return L10n.tr("Risk: ")
-        case .ChooseThisStrategy:
-            return L10n.tr("Choose this strategy")
-        case .Safe:
-            return L10n.tr("Safe")
-        case .Indermediate:
-            return L10n.tr("Indermediate")
-        case .Bold:
-            return L10n.tr("Bold")
-            //        case .RiskLow:
-            //            return L10n.tr("Risk: Low")
-            //        case .RiskLow:
-            //            return L10n.tr("Risk: Low")
-            //        case .RiskLow:
-            //            return L10n.tr("Risk: Low")
-            //        case .RiskLow:
-            //            return L10n.tr("Risk: Low")
-            //        case .RiskLow:
-            //            return L10n.tr("Risk: Low")
-            
             
             
             //MARK: - Portfolio Home
@@ -653,10 +559,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Recurring investment")
         case .ReturnOnInvestment:
             return L10n.tr("Return on Investment")
-        case .IntermediateStrategy:
-            return L10n.tr("Intermediate strategy")
-        case .UpcomingPayment:
-            return L10n.tr("Upcoming payment : April 27")
         case .AllAssetsAvailable:
             return L10n.tr("All assets available")
         case .ViewAll:
@@ -673,12 +575,8 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Market cap")
         case .Volume:
             return L10n.tr("Volume")
-        case .TradingActivity:
-            return L10n.tr("Trading activity")
         case .CirculatingSupply:
             return L10n.tr("Circulating supply")
-        case .ShareOfCryptoMarket:
-            return L10n.tr("Share of crypto market")
         case .Popularity:
             return L10n.tr("Popularity")
         case .Balance:
@@ -687,31 +585,10 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("ROI")
         case .AnnualPercentage:
             return L10n.tr("*Annual Percentage")
-        case .Historique:
-            return L10n.tr("Historique")
         case .History:
             return L10n.tr("History")
         case .Bought:
             return L10n.tr("Bought ")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            //        case .ROI:
-            //            return L10n.tr("ROI")
-            
             
             
             //MARK: - Personal Info
@@ -719,16 +596,10 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Personal data")
         case .ForLegalReasons:
             return L10n.tr("For legal reasons, we need you to answer some questions and provide us with personal information.")
-        case .FirstName:
-            return L10n.tr("First name")
         case .CardholderName:
             return L10n.tr("Cardholder's name")
-        case .LastName:
-            return L10n.tr("Last name")
         case .BirthDate:
             return L10n.tr("Birth date")
-        case .BirthPlace:
-            return L10n.tr("Birth Place")
         case .BirthCountry:
             return L10n.tr("Birth Country")
         case .AreYouAUSCitizen:
@@ -750,19 +621,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Address email")
         case .informtionUsed:
             return L10n.tr("This information will be used for security purposes and to confirm your transactions.")
-        case .Email:
-            return L10n.tr("Email")
-            
-        case .VérificationEmail:
-            return L10n.tr("Email verification")
-        case .weHaveSentEmailTo:
-            return L10n.tr("We have sent an email to ")
-        case .CheckYourMailbox:
-            return L10n.tr("Check your mailbox and click on the confirmation link to continue.")
-        case .OpenAppleMail:
-            return L10n.tr("Open Apple Mail")
-        case .OpenGmail:
-            return L10n.tr("Open Gmail")
         case .ResendEmail:
             return L10n.tr("RESEND EMAIL")
             
@@ -857,18 +715,6 @@ extension L10n: CustomStringConvertible{
             
         case .WhatSalaryRangeYouFallInto:
             return L10n.tr("What salary range do you fall into ?")
-        case .Lessthan800€PerMonth:
-            return L10n.tr("Less than 800€/month")
-        case .between801and1100€PerMonth:
-            return L10n.tr("801 - 1100€/month")
-        case .between1101and2000€PerMonth:
-            return L10n.tr("1101 - 2000€/month")
-        case .between2001and4000€PerMonth:
-            return L10n.tr("2001 - 4000€/month")
-        case .between4001and10000€PerMonth:
-            return L10n.tr("4000 - 10 000€/month")
-        case .Over10001€PerMonth:
-            return L10n.tr("Over 10 001€/month")
             
         case .IdentityVerification:
             return L10n.tr("Identity verification")
@@ -880,24 +726,16 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("National ID card, passport or driving licence")
         case .TakeASelfie:
             return L10n.tr("Take a selfie")
-        case .OpenCamera:
-            return L10n.tr("Open camera")
         case .Camera:
             return L10n.tr("Camera")
         case .SelectFromGallery:
             return L10n.tr("Select from gallery")
         case .SetDefaultPictures:
             return L10n.tr("Set default pictures")
-        case .SendPicturesToLyber:
-            return L10n.tr("Send pictures to Lyber")
         case .Start:
             return L10n.tr("Start")
         case .EditPersonalData:
             return L10n.tr("Edit Personal Data")
-        case .WelcometoLyber:
-            return L10n.tr("Welcome to Lyber")
-        case .LetVerifyYourIdentity:
-            return L10n.tr("Let's verify your identity.")
         case .VerificationInProgress:
             return L10n.tr("Verification in progress")
             
@@ -905,8 +743,6 @@ extension L10n: CustomStringConvertible{
             
         case .UsingMyStrategy:
             return L10n.tr("Using my strategy")
-        case .InvestUsingMyStrategy:
-            return L10n.tr("Invest using my strategy")
         case .MakeInvestment:
             return L10n.tr("Make Investment")
         case .PickAnotherStrategy:
@@ -927,8 +763,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Invest in a single asset")
         case .ChooseAmong80DifferentAssets:
             return L10n.tr("Choose among 80 different assets")
-        case .InvestIn:
-            return L10n.tr("Invest in ")
         case .CreditCard:
             return L10n.tr("Credit card")
         case .AddAFrequency:
@@ -1011,8 +845,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Recommended")
         case .Deposit:
             return L10n.tr("Deposit")
-        case .DepositFIAT:
-            return L10n.tr("Deposit FIAT")
         case .MoneyToLyber:
             return L10n.tr("Add money on Lyber")
         case .DepositFees:
@@ -1049,10 +881,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Withdraw all my portfolio")
         case .PreviewWithdraw:
             return L10n.tr("Preview withdraw")
-        case .Paypal:
-            return L10n.tr("Paypal")
-        case .ManageYourAssets:
-            return L10n.tr("Manage your assets")
         case .depositFunds:
             return L10n.tr("Deposit Funds")
         case .bankAccountDetails:
@@ -1084,7 +912,7 @@ extension L10n: CustomStringConvertible{
         case .RecurrentInvestment:
             return L10n.tr("Recurrent Investment")
         case .ExecuteStrategyRegularBasis:
-            return L10n.tr("Execute a strategy a regular basis")
+            return L10n.tr("Execute a strategy on a regular basis")
         
             
             
@@ -1101,14 +929,8 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Add payment method")
         case .Account:
             return L10n.tr("Account")
-        case .Currency:
-            return L10n.tr("Currency")
-        case .PhoneNumber:
-            return L10n.tr("Phone number")
         case .Notifications:
             return L10n.tr("Notifications")
-        case .ExtractDocuments:
-            return L10n.tr("Extract documents")
         case .Security:
             return L10n.tr("Security")
         case .StrongAuthentification:
@@ -1121,8 +943,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Log out")
         case .ListOfAllTransactions:
             return L10n.tr("List of all transactions (purchase, exchange or withdrawal) made on your account.")
-        case .UsedOnlyForWithdrawals:
-            return L10n.tr("Used only for withdrawals")
         case .CardNumber:
             return L10n.tr("Card number")
         case .Expire:
@@ -1133,28 +953,36 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Add")
         case .ByAddingNewCardYouAcceptTermsConditions:
             return L10n.tr("By adding a new card, you accept the terms and conditions.")
-        
+        case .Verification:
+            return L10n.tr("Verification")
+        case .EnterCodeDisplayedGoogleAuthenticator:
+            return L10n.tr("Enter the code displayed by Google Authenticator")
+        case .Back:
+            return L10n.tr("Back")
+        case .EnterCodeReceivedEmail:
+            return L10n.tr("Enter the code received by email")
+        case .EnterCodeReceivedSms:
+            return L10n.tr("Enter the code received by sms")
+		case .tooManyFailedAttemptPleaseReauthenticate:
+            return L10n.tr("Too many failed attempts, please reauthenticate")
+                
             //MARK: - Strong Authentication
         case .forAddedSecurityOnLyberAccount:
             return L10n.tr("For added security on your Lyber account, enable strong authentication. ")
         case .BySMS:
             return L10n.tr("By SMS")
-        case .ManageApplicationCasesOfSMSAuthentication:
-            return L10n.tr("Manage the application cases of SMS authentication")
+        case .ManageApplicationCasesOf2FA:
+            return L10n.tr("Manage the application cases of 2FA")
         case .ValidateWithdrawal:
             return L10n.tr("Validate a withdrawal")
         case .EnableDisablewhitelisting:
             return L10n.tr("Enable/Disable whitelisting")
-        case .EditAccount:
-            return L10n.tr("Edit account")
         case .CryptoAdressBook:
             return L10n.tr("Crypto address book")
         case .viewAndAddfavouriteCryptoAddressesHere:
             return L10n.tr("View and add your favorite crypto addresses here, you can also enable Whitelisting for these addresses.")
         case .Whitelisting:
             return L10n.tr("Whitelisting")
-        case .Search:
-            return L10n.tr("Search")
         case .AddACryptoAdress:
             return L10n.tr("Add a crypto address")
         case .EditCryptoAdress:
@@ -1163,12 +991,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Address name")
         case .Network:
             return L10n.tr("Network")
-        case .NameMYAddress:
-            return L10n.tr("Name my address")
-        case .EnterOrScanAnAddress:
-            return L10n.tr("Enter or scan an address")
-        case .Adress:
-            return L10n.tr("Adress")
         case .Origin:
             return L10n.tr("Origin")
         case .Wallet:
@@ -1199,18 +1021,12 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("No extra security")
         case .AllowYouToBlockTheAdditionOfAddress:
             return L10n.tr("Allows you to block the addition of new addresses during a given period (effective 4H after its activation).")
-        case .ActiveDuring:
-            return L10n.tr("Active during : ")
         case .AddNewAdress:
             return L10n.tr("Add a new address")
         case .Disabled:
             return L10n.tr("Disabled")
         case .Enabled:
             return L10n.tr("Enabled")
-        case .disabled:
-            return L10n.tr("disabled")
-        case .enabled:
-            return L10n.tr("enabled")
         case .AddAndUseThisAdress:
             return L10n.tr("Add and use this adress")
         case .CryptoAssetDeposit:
@@ -1255,7 +1071,18 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Select Default Picture")
         case .SelectedProfilePicture:
             return L10n.tr("Selected Profile Picture")
-            
+        case .ByEmail:
+            return L10n.tr("By Email")
+        case .GoogleAuthenticator:
+            return L10n.tr("Google authenticator")
+        case .TwoFA:
+            return L10n.tr("Two factor authentication")
+        case .AddGoogleAuthenticator:
+            return L10n.tr("Add to your Google Authenticator application")
+        case .Verify:
+            return L10n.tr("Verify")
+        case .TapToAddToGoogleAuthenticator:
+            return L10n.tr("Tap to add to Google Authenticator")
             
             //MARK: - Alert Messages
         case .enterPhoneNumber:
@@ -1268,8 +1095,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Please enter first name")
         case .enterLastName:
             return L10n.tr("Please enter last name")
-        case .selectBirthDate:
-            return L10n.tr("Please select your birth date")
         case .selectNationality:
             return L10n.tr("Please select nationality")
         case .enterEmail:
@@ -1305,10 +1130,6 @@ extension L10n: CustomStringConvertible{
     private static func tr(_ key: String, _ args: CVarArg...) -> String{
         let format = NSLocalizedString(key, comment: "")
         return String(format: format, locale: NSLocale.current , arguments: args)
-        //        if selectedLanguage.code == "en"{
-        //            return keyValEng[key] ?? ""
-        //        }else{
-        //            return keyValAr[key] ?? ""
-        //        }
+
     }
 }

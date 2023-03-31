@@ -26,8 +26,8 @@ class ProfileLogoutTVC: UITableViewCell {
 
 extension ProfileLogoutTVC{
     func setUpCell(){
-        CommonUI.setUpButton(btn: logOutBtn, text: L10n.LogOut.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        logOutBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.LogOut.description), for: .normal)
+        CommonUI.setUpButton(btn: logOutBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        logOutBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOG_OUT")), for: .normal)
         logOutBtn.addTarget(self, action: #selector(logOutAct), for: .touchUpInside)
         
     }

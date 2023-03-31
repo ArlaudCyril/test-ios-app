@@ -22,7 +22,8 @@ struct User: Codable {
     let emailVerified, documentVerification: Bool?
     let isoCode: String?
     let countryCode: String?
-    let phoneNo, phoneVerificationCode: Int?
+    let phoneNo: String?
+    let phoneVerificationCode: Int?
     let phoneVerificationCodeGeneratedAt: String?
     let pinVerificationCode: Int?
     let pinVerificationCodeGeneratedAt: String?
@@ -109,12 +110,11 @@ struct User: Codable {
 
 // MARK: - Device
 struct Device: Codable {
-    let deviceID, deviceToken, deviceType, accessToken: String?
+    let deviceID, deviceType, accessToken: String?
     let id: String?
 
     enum CodingKeys: String, CodingKey {
         case deviceID = "device_id"
-        case deviceToken = "device_token"
         case deviceType = "device_type"
         case accessToken = "access_token"
         case id = "_id"
@@ -178,12 +178,19 @@ struct LogInAPI: Codable {
 }
 
 // MARK: - DataClass
+//{ has2FA: true, type2FA: "email" | "phone" | "otp" }
+//access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Nzg3ODg1NDcsImV4cCI6MTY3ODg3NDk0NywiYXVkIjoidXNlciIsInN1YiI6ImM3MzFmYzFiLTQyNmEtNDFlYi04YWE2LWJhN2YzODRhYTU4YyJ9.WEcrYoYLllGuRJ7Cz7aL89Q1jpEVomYw3uSIB6SVrSQ",
+//refresh_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Nzg3ODg1NDcsImV4cCI6MTY4MTM4MDU0NywiYXVkIjoicmVmcmVzaF90b2tlbiIsInN1YiI6ImM3MzFmYzFiLTQyNmEtNDFlYi04YWE2LWJhN2YzODRhYTU4YyJ9.dODpehqr5JXsCriInd8XsyxKuTAsoCXPr7rB0lqYwJA"
 struct LoginData: Codable {
-    let accessToken, refreshToken, m2: String?
+    let accessToken, refreshToken, m2, type2FA: String?
+    let has2FA: Bool?
+   
 
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
         case refreshToken = "refresh_token"
         case m2 = "M2"
+        case type2FA = "type2FA"
+        case has2FA = "has2FA"
     }
 }

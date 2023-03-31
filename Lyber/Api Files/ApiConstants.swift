@@ -8,6 +8,7 @@
 import Foundation
 // MARK:- API ENVIORMENT
 enum ApiEnvironment: String {
+//    case Dev = "https://dev.lyber.com/"
     case Dev = "https://staging.lyber.com/"
 //            "https://lyber.com:3001/"
     case Stage = "http://104.211.21.101:3001/"

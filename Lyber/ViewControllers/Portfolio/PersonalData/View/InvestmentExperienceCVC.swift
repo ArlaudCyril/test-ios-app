@@ -10,6 +10,7 @@ import UIKit
 class InvestmentExperienceCVC: UICollectionViewCell {
     //MARK: - Variables
     var controller : PersonalDataVC?
+	var bundleEnglish : Bundle?
     
     //MARK: - IB OUTLETS
     @IBOutlet var investmentExperienceLbl: UILabel!
@@ -35,21 +36,24 @@ class InvestmentExperienceCVC: UICollectionViewCell {
     @IBOutlet var personalAssetsVw: UIView!
     @IBOutlet var personalAssetsValueLbl: UILabel!
     override func awakeFromNib() {
+		let language = "en"
+		let path = Bundle.main.path(forResource: language, ofType: "lproj")
+		bundleEnglish = Bundle(path: path!)
         setUpCell()
     }
 }
 
 extension InvestmentExperienceCVC{
     func setUpCell(){
-        CommonUI.setUpLbl(lbl: self.investmentExperienceLbl, text: L10n.InvestmentExperience.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.investmentExpDescLbl, text: L10n.mustAnswerTheseQuestions.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.investmentExpDescLbl, text: L10n.mustAnswerTheseQuestions.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.investmentExperienceLbl, text: CommonFunctions.localisation(key: "INVESTMENT_EXPERIENCE"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.investmentExpDescLbl, text: CommonFunctions.localisation(key: "MUST_ANSWER_THESE_QUESTIONS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.investmentExpDescLbl, text: CommonFunctions.localisation(key: "MUST_ANSWER_THESE_QUESTIONS"), lineSpacing: 6, textAlignment: .left)
         
-        CommonUI.setUpLbl(lbl: self.investExpWithCryptoLbl, text: L10n.investExperienceWithCryptos.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.yourSourceOfIncomeLbl, text: L10n.YourSourceOfIncome.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.yourWorkIndustryLbl, text: L10n.YourWorkIndustry.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.YourAnnualIncomeLbl, text: L10n.YourAnnualIncome.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.personalAssetsLbl, text: L10n.YourPersonalAssets.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.investExpWithCryptoLbl, text: CommonFunctions.localisation(key: "INVEST_EXPERIENCE_WITH_CRYPTOS"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.yourSourceOfIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_SOURCE_OF_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.yourWorkIndustryLbl, text: CommonFunctions.localisation(key: "YOUR_WORK_INDUSTRY"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.YourAnnualIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_ANNUAL_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.personalAssetsLbl, text: CommonFunctions.localisation(key: "YOUR_PERSONAL_ASSETS"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.experienceView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.sourceOfIncomeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
@@ -57,11 +61,11 @@ extension InvestmentExperienceCVC{
         CommonUI.setUpViewBorder(vw: self.annualIncomeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.personalAssetsVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
-        CommonUI.setUpLbl(lbl: self.experienceLbl, text: L10n.Choose.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.sourceOfIncomeLbl, text: L10n.Choose.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.workIndustryLbl, text: L10n.Choose.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.annualIncomeLbl, text: L10n.Choose.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.personalAssetsValueLbl, text: L10n.Choose.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.experienceLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.sourceOfIncomeLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.workIndustryLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.annualIncomeLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.personalAssetsValueLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         let experienceTap = UITapGestureRecognizer(target: self, action: #selector(experinceVwTapped))
         self.experienceView.addGestureRecognizer(experienceTap)
@@ -106,8 +110,8 @@ extension InvestmentExperienceCVC{
         controller?.present(vc, animated: true, completion: nil)
         vc.investmentType = .experience
         vc.investExperienceCallBack = { experience in
-            self.experienceLbl.text = experience
-            self.controller?.investmentExp = experience
+            self.experienceLbl.text = CommonFunctions.localisation(key: experience)
+			self.controller?.investmentExp = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
             self.experienceLbl.textColor = UIColor.ThirdTextColor
         }
     }
@@ -116,8 +120,8 @@ extension InvestmentExperienceCVC{
         controller?.present(vc, animated: true, completion: nil)
         vc.investmentType = .sourceOfIncome
         vc.investExperienceCallBack = { experience in
-            self.sourceOfIncomeLbl.text = experience
-            self.controller?.sourceOfIncome = experience
+            self.sourceOfIncomeLbl.text = CommonFunctions.localisation(key: experience)
+            self.controller?.sourceOfIncome = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
             self.sourceOfIncomeLbl.textColor = UIColor.ThirdTextColor
         }
     }
@@ -126,8 +130,8 @@ extension InvestmentExperienceCVC{
         controller?.present(vc, animated: true, completion: nil)
         vc.investmentType = .workIndustry
         vc.investExperienceCallBack = { experience in
-            self.workIndustryLbl.text = experience
-            self.controller?.workIndustry = experience
+            self.workIndustryLbl.text = CommonFunctions.localisation(key: experience)
+            self.controller?.workIndustry = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
             self.workIndustryLbl.textColor = UIColor.ThirdTextColor
         }
     }
@@ -136,8 +140,8 @@ extension InvestmentExperienceCVC{
         controller?.present(vc, animated: true, completion: nil)
         vc.investmentType = .AnnualIncome
         vc.investExperienceCallBack = { experience in
-            self.annualIncomeLbl.text = experience
-            self.controller?.annualIncome = experience
+            self.annualIncomeLbl.text = CommonFunctions.localisation(key: experience)
+            self.controller?.annualIncome = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
             self.annualIncomeLbl.textColor = UIColor.ThirdTextColor
         }
     }
@@ -146,8 +150,8 @@ extension InvestmentExperienceCVC{
         controller?.present(vc, animated: true, completion: nil)
         vc.investmentType = .personalAssets
         vc.investExperienceCallBack = { experience in
-            self.personalAssetsValueLbl.text = experience
-            self.controller?.personalAssets = experience
+            self.personalAssetsValueLbl.text = CommonFunctions.localisation(key: experience)
+            self.controller?.personalAssets = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
             self.personalAssetsValueLbl.textColor = UIColor.ThirdTextColor
         }
     }

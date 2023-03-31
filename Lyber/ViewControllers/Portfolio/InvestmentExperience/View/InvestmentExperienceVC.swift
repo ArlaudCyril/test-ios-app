@@ -7,34 +7,45 @@
 
 import UIKit
 
-class InvestmentExperienceVC: UIViewController {
+class InvestmentExperienceVC: ViewController {
     //MARK: - Variables
     var investmentType : investment!
-    var investmentExpData : [String] = [L10n.IHaveNeverInvested.description,
-                                        L10n.lessThan1000€.description,
-                                        L10n.between1000€and9999€.description,
-                                        L10n.Between10000€And99999€.description,
-                                        L10n.greaterThan100000€.description]
-    var sourceOfIncomeData : [String] = [L10n.Salary.description,
-                                        L10n.Investments.description,
-                                        L10n.Savings.description,
-                                        L10n.Inheritance.description,
-                                        L10n.CreditLoan.description,
-                                        L10n.FamillyOthers.description]
-    var workIndustryData : [String] = [L10n.Agriculture.description,
-                                        L10n.ArtsMedia.description,
-                                        L10n.CasinosGames.description,
-                                        L10n.Building.description,
-                                        L10n.Defense.description,
-                                        L10n.Entertainement.description,
-                                        L10n.Education.description,
-                                        L10n.Energy.description,
-                                        L10n.MediaTV.description,
-                                        L10n.NewTechnologies.description]
-    var annualIncomeData : [String] = ["0-18k€/month","19-23k€/month","24-27k€/month", "28-35k€/month","36-56k€/month","57-*k€/month"]
-    var personalAssetsData  = ["0-2 assets","3-22 assets","23-128 assets", "129-319 assets","320-464 assets","465- assets"]
+    var investmentExpData : [String] = ["I_HAVE_NEVER_INVESTED",
+                                        "LESS_THAN_1000€",
+                                        "BETWEEN_1000€_AND_9999€",
+                                        "BETWEEN_10000_€AND_99999€",
+                                        "GREATER_THAN_100000€"]
+    var sourceOfIncomeData : [String] = ["SALARY",
+                                        "INVESTMENTS",
+                                        "SAVINGS",
+                                        "INHERITANCE",
+                                        "CREDIT_LOAN",
+                                        "FAMILLY_OTHERS"]
+    var workIndustryData : [String] = ["AGRICULTURE",
+                                        "ARTS_MEDIA",
+                                        "CASINOS_GAMES",
+                                        "BUILDING",
+                                        "DEFENSE",
+                                        "ENTERTAINEMENT",
+                                        "EDUCATION",
+                                        "ENERGY",
+                                        "MEDIATV",
+                                        "NEW_TECHNOLOGIES"]
+    var annualIncomeData : [String] = ["18K_MONTH",
+									   "23K_MONTH",
+									   "27K_MONTH",
+									   "35K_MONTH",
+									   "56K_MONTH",
+									   "*K_MONTH"]
+    var personalAssetsData = ["2_ASSETS",
+							   "22_ASSETS",
+							   "128_ASSETS",
+							   "319_ASSETS",
+							   "464_ASSETS",
+							   "465_ASSETS"]
 
     var investExperienceCallBack :((String)->())?
+
     //MARK: - IB OUTLETS
     @IBOutlet var outerVw: UIView!
     @IBOutlet var bottomView: UIView!
@@ -46,12 +57,13 @@ class InvestmentExperienceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+		
     }
-}
 
-//MARK: - SetUpUI
-extension InvestmentExperienceVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.tblView.delegate = self
         self.tblView.dataSource = self
         self.bottomView.layer.cornerRadius = 32
@@ -60,19 +72,19 @@ extension InvestmentExperienceVC{
         bottomView.addShadow()
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.yourInvestmentExpLbl, text: L10n.WhatYourInvestmentExperienceWithCryptos.description, textColor: UIColor.ThirdTextColor, font: UIFont.AtypDisplayMedium(Size.Header.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.yourInvestmentExpLbl, text: L10n.WhatYourInvestmentExperienceWithCryptos.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.yourInvestmentExpLbl, text: CommonFunctions.localisation(key: "WHAT_YOUR_INVESTMENT_EXPERIENCE_WITH_CRYPTOS"), textColor: UIColor.ThirdTextColor, font: UIFont.AtypDisplayMedium(Size.Header.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.yourInvestmentExpLbl, text: CommonFunctions.localisation(key: "WHAT_YOUR_INVESTMENT_EXPERIENCE_WITH_CRYPTOS"), lineSpacing: 6, textAlignment: .left)
         
         if investmentType == .experience{
-            self.yourInvestmentExpLbl.text = L10n.WhatYourInvestmentExperienceWithCryptos.description
+            self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_YOUR_INVESTMENT_EXPERIENCE_WITH_CRYPTOS")
         }else if investmentType == .sourceOfIncome{
-            self.yourInvestmentExpLbl.text = L10n.WhatYourSourceOfIncome.description
+            self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_YOUR_SOURCE_OF_INCOME")
         }else if investmentType == .workIndustry{
-            self.yourInvestmentExpLbl.text = L10n.WhatYourWorkIndustry.description
+            self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_YOUR_WORK_INDUSTRY")
         }else if investmentType == .AnnualIncome{
-            self.yourInvestmentExpLbl.text = L10n.WhatSalaryRangeYouFallInto.description
+            self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_SALARY_RANGE_YOU_FALL_INTO")
         }else if investmentType == .personalAssets{
-            self.yourInvestmentExpLbl.text = L10n.HowManyPersonalAssetsYouHave.description
+            self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "HOW_MANY_PERSONAL_ASSETS_YOU_HAVE")
         }
         let outerTapped = UITapGestureRecognizer(target: self, action: #selector(cancelBtnAct))
         self.outerVw.addGestureRecognizer(outerTapped)
@@ -94,30 +106,30 @@ extension InvestmentExperienceVC : UITableViewDelegate,UITableViewDataSource{
             return personalAssetsData.count
         }else{
             return 2
-        }
-        
+		}
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InvestmentExperienceTVC")as! InvestmentExperienceTVC
         if investmentType == .experience{
-            cell.setUpCell(data: investmentExpData[indexPath.row])
+			cell.setUpCell(data: CommonFunctions.localisation(key: investmentExpData[indexPath.row]))
         }else if investmentType == .sourceOfIncome{
-            cell.setUpCell(data: sourceOfIncomeData[indexPath.row])
+			cell.setUpCell(data: CommonFunctions.localisation(key: sourceOfIncomeData[indexPath.row]))
         }else if investmentType == .workIndustry{
-            cell.setUpCell(data: workIndustryData[indexPath.row])
+			cell.setUpCell(data: CommonFunctions.localisation(key: workIndustryData[indexPath.row]))
         }else if investmentType == .AnnualIncome{
-            cell.setUpCell(data: annualIncomeData[indexPath.row])
+			cell.setUpCell(data: CommonFunctions.localisation(key: annualIncomeData[indexPath.row]))
         }else if investmentType == .personalAssets{
-            cell.setUpCell(data: personalAssetsData[indexPath.row])
+			cell.setUpCell(data: CommonFunctions.localisation(key: personalAssetsData[indexPath.row]))
         }
-        
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
         if investmentType == .experience{
-            self.investExperienceCallBack?(investmentExpData[indexPath.row])
+			self.investExperienceCallBack?(investmentExpData[indexPath.row])
         }else if investmentType == .sourceOfIncome{
             self.investExperienceCallBack?(sourceOfIncomeData[indexPath.row])
         }else if investmentType == .workIndustry{

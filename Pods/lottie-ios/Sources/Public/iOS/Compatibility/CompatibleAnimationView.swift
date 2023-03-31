@@ -17,8 +17,8 @@ public final class CompatibleAnimation: NSObject {
   // MARK: Lifecycle
 
   @objc
-  public init(name: String, bundle: Bundle = Bundle.main) {
-    self.name = name
+  public init(firstname: String, bundle: Bundle = Bundle.main) {
+    self.firstname = firstname
     self.bundle = bundle
     super.init()
   }
@@ -26,17 +26,17 @@ public final class CompatibleAnimation: NSObject {
   // MARK: Internal
 
   internal var animation: Animation? {
-    Animation.named(name, bundle: bundle)
+    Animation.named(firstname, bundle: bundle)
   }
 
   @objc
-  static func named(_ name: String) -> CompatibleAnimation {
-    CompatibleAnimation(name: name)
+  static func named(_ firstname: String) -> CompatibleAnimation {
+    CompatibleAnimation(firstname: firstname)
   }
 
   // MARK: Private
 
-  private let name: String
+  private let firstname: String
   private let bundle: Bundle
 }
 

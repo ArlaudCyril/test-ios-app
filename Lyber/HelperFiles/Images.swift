@@ -82,7 +82,9 @@ enum Assets : String{
     case profile_placholder
     case cover_placholder
     
-    
+    //Flags
+	case uk_flag
+	case fr_flag
     
     
     //GIF Name

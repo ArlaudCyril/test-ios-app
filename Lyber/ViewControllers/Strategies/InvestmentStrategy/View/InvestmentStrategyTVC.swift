@@ -97,11 +97,11 @@ extension InvestmentStrategyTVC{
             informationsView.isHidden = false
             
             //Default strategy
-            if(data?.risk != nil && data?.expectedYield != nil)
+			if(data?.risk != nil && data?.expectedYield != nil)
             {
                 informationHeight += 50
-                self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Risk.description, secondStr: data?.risk?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
-                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Yield.description, secondStr: data?.expectedYield?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "RISK"), secondStr: data?.risk?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "YIELD"), secondStr: data?.expectedYield?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 defaultStrategyView.isHidden = false
                     
             }
@@ -110,9 +110,9 @@ extension InvestmentStrategyTVC{
             if(data?.activeStrategy != nil)
             {
                 informationHeight += 50
-                self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Frequency.description, secondStr: CommonFunctions.frequenceDecoder(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "FREQUENCY"), secondStr: CommonFunctions.frequenceDecoder(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 
-                self.amountLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.Amount.description, secondStr: String(data?.activeStrategy?.amount ?? 0)+"€", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.amountLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "AMOUNT"), secondStr: String(data?.activeStrategy?.amount ?? 0)+"€", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 
                 activeStrategyView.isHidden = false
             }
@@ -151,9 +151,9 @@ extension InvestmentStrategyTVC : MultiProgressViewDelegate, MultiProgressViewDa
     
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
         let sectionView = ProgressViewSection()
-        DispatchQueue.main.async {
+        //2DispatchQueue.main.async {
             sectionView.backgroundColor = CommonFunctions.selectorStrategyColor(position : section, totalNumber : self.investmentStrategyAssets.count)
-        }
+        //}
        
         return sectionView
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InvestmentStrategyVC: UIViewController {
+class InvestmentStrategyVC: ViewController {
     //MARK: - Variables
     var investmentStrategyVM = InvestmentStrategyVM()
     var investmentStrategyTVC = InvestmentStrategyTVC()
@@ -35,18 +35,16 @@ class InvestmentStrategyVC: UIViewController {
         
     }
     
-    
 
-}
-//MARK: - SetUpUI
-extension InvestmentStrategyVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
-        CommonUI.setUpLbl(lbl: self.investmentStratgyLbl, text: L10n.InvestmentStrategies.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.strategyDescLbl, text: L10n.strategiesAreThereToHelpYou.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.strategyDescLbl, text: L10n.strategiesAreThereToHelpYou.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.investmentStratgyLbl, text: CommonFunctions.localisation(key: "INVESTMENT_STRATEGIES"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.strategyDescLbl, text: CommonFunctions.localisation(key: "STRATEGIES_ARE_THERE_TO_HELP_YOU"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.strategyDescLbl, text: CommonFunctions.localisation(key: "STRATEGIES_ARE_THERE_TO_HELP_YOU"), lineSpacing: 6, textAlignment: .left)
         
-        CommonUI.setUpButton(btn: buildOwnStrategyBtn, text: L10n.BuildMyOwnStrategy.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpButton(btn: buildOwnStrategyBtn, text: CommonFunctions.localisation(key: "BUILD_MY_OWN_STRATEGY"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         CommonUI.setUpViewBorder(vw: bottomView, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
        
@@ -119,6 +117,7 @@ extension InvestmentStrategyVC{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.callGetStrategies()
+		self.invstStrategyData.sort(by: {$0.publicType ?? "" < $1.publicType ?? "" })
         self.setUpUI()
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
 

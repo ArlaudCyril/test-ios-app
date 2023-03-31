@@ -54,18 +54,16 @@ class CommonFunctions{
     }
 
     static func logout(){
-//        let vc = CommonFunction.getTopMostViewController()
-//        vc?.dismiss(animated: true, completion: {
-            let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-            let navVC = UINavigationController(rootViewController: vc)
-            UIApplication.shared.windows[0].rootViewController = navVC
-            UIApplication.shared.windows[0].makeKeyAndVisible()
-            navVC.navigationController?.popToRootViewController(animated: true)
-            navVC.setNavigationBarHidden(true , animated: true)
-            userData.shared.deleteData()
-            
-//        })
-        
+        let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+        let navVC = UINavigationController(rootViewController: vc)
+        UIApplication.shared.windows[0].rootViewController = navVC
+        UIApplication.shared.windows[0].makeKeyAndVisible()
+        navVC.navigationController?.popToRootViewController(animated: true)
+        navVC.setNavigationBarHidden(true , animated: true)
+        userData.shared.logInPinSet = 0
+        userData.shared.userToken = ""
+        userData.shared.refreshToken = ""
+        userData.shared.dataSave()
     }
     
     static func showLoader(){
@@ -295,7 +293,7 @@ class CommonFunctions{
         
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = format
-        //        (selectedLanguage.code == "en") ? (inputFormatter.locale = Locale(identifier: "en")) : (inputFormatter.locale = Locale(identifier: "ar"))
+        
         let showDate = inputFormatter.date(from: date)
         inputFormatter.dateFormat = rqrdFormat
         let resultString = inputFormatter.string(from: showDate!)
@@ -396,11 +394,11 @@ class CommonFunctions{
     static func frequenceDecoder(frequence : String?)->(String){
         switch frequence {
         case "1d":
-            return L10n.Daily.description
+            return NSLocalizedString("DAILY", comment: "")
         case "1w":
-            return L10n.Weekly.description
+            return NSLocalizedString("WEEKLY", comment: "")
         case "1m":
-            return L10n.Monthly.description
+            return NSLocalizedString("MONTHLY", comment: "")
         default:
             return ""
         }
@@ -409,18 +407,42 @@ class CommonFunctions{
     //MARK: - Encoder
     static func frequenceEncoder(frequence : String?)->(String){
         switch frequence {
-        case L10n.Once.description:
+        case NSLocalizedString("ONCE", comment: ""):
             return "1d"
-        case L10n.Daily.description:
+        case NSLocalizedString("DAILY", comment: ""):
             return "1d"
-        case L10n.Weekly.description:
+        case NSLocalizedString("WEEKLY", comment: ""):
             return "1w"
-        case L10n.Monthly.description:
+        case NSLocalizedString("MONTHLY", comment: ""):
             return "1m"
         default:
             return ""
         }
     }
+    
+    static func enableNotifications(enable: Int)
+    {
+        if(enable == 1){
+            UNUserNotificationCenter.current().requestAuthorization(options: [
+                  .badge, .sound, .alert
+                ]) { granted, _ in
+                  guard granted else { return }
+
+                  DispatchQueue.main.async {
+                    let application = UIApplication.shared
+                      application.registerForRemoteNotifications()
+                  }
+                }
+        }else if(enable == 2){
+            //say to server that notifications are desactivated, no need to block on the phone
+            userData.shared.is_push_enabled = 2
+            userData.shared.dataSave()
+        }
+    }
+	
+	static func localisation(key : String) -> String{
+		return NSLocalizedString(key, bundle: GlobalVariables.bundle, comment: "")
+	}
     
     static func selectorStrategyColor(position : Int, totalNumber : Int) -> UIColor{
         if(totalNumber > 8)
@@ -532,5 +554,17 @@ class CommonFunctions{
         }
         
     }
-
+	
+	
+	static func nameLanguage() -> String{
+		switch userData.shared.language {
+			case "fr":
+				return "Français"
+			case "en":
+				return "English"
+			default:
+				print("error, language not recognised")
+				return ""
+		}
+	}
 }

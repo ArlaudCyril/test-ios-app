@@ -11,7 +11,7 @@ enum whiteListingPopUp{
     case detailAddress
     case confirmAddress
 }
-class AddressAddedPopUpVC: UIViewController {
+class AddressAddedPopUpVC: ViewController {
     //MARK: - Variables
     var controller : AddCryptoAddressVC?
     var addressBookController : CryptoAddressBookVC?
@@ -46,18 +46,16 @@ class AddressAddedPopUpVC: UIViewController {
        
     }
 
-}
+	//MARK: - SetUpUI
 
-//MARK: - SetUpUI
-extension AddressAddedPopUpVC{
-    func setUpUI(){
+    override func setUpUI(){
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.headerView.headerLbl.text = cryptoAddressAdded?.addressName ?? ""
         
         CommonUI.setUpViewBorder(vw: self.addressView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.networkLbl, text: L10n.Network.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addresOriginLbl, text: "\(L10n.Address.description) \(L10n.Origin.description)", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addresOriginLbl, text: "\(CommonFunctions.localisation(key: "ADDRESS")) \(CommonFunctions.localisation(key: "ORIGIN"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: "Date added", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
         CommonUI.setUpLbl(lbl: self.networkNameLbl, text: cryptoAddressAdded?.network ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -67,8 +65,8 @@ extension AddressAddedPopUpVC{
         CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: cryptoAddressAdded?.exchange ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getCurrentDate(requiredFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        CommonUI.setUpButton(btn: self.confirmBtn, text: L10n.Confirm.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpButton(btn: self.editBtn, text: L10n.Edit.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: self.confirmBtn, text: CommonFunctions.localisation(key: "CONFIRM"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: self.editBtn, text: CommonFunctions.localisation(key: "EDIT"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
@@ -80,7 +78,7 @@ extension AddressAddedPopUpVC{
         if popUpType == .confirmAddress{
             
         }else if popUpType == .detailAddress{
-            self.confirmBtn.setTitle(L10n.Delete.description, for: .normal)
+            self.confirmBtn.setTitle(CommonFunctions.localisation(key: "DELETE"), for: .normal)
             CommonFunctions.showLoader(self.bottomView)
             addressAddedPopUpVM.getAddressDetailApi(addressId: self.addressId, completion: {[weak self]response in
                 CommonFunctions.hideLoader(self?.bottomView ?? UIView())

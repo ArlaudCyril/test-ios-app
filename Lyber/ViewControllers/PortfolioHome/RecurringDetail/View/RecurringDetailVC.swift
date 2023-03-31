@@ -9,7 +9,7 @@ import UIKit
 import MultiProgressView
 import Lottie
 
-class RecurringDetailVC: UIViewController {
+class RecurringDetailVC: ViewController {
     //MARK: - Variables
     var recurringDetailVM = RecurringDetailVM()
     var coinsData : [InvestmentStrategyAsset] = []
@@ -40,25 +40,23 @@ class RecurringDetailVC: UIViewController {
         setUpUI()
         callInvestmentDetail(id: investmentId)
     }
-}
 
-//MARK: - SetUpUI
-extension RecurringDetailVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         
         CommonUI.setUpViewBorder(vw: strategyView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
-        CommonUI.setUpLbl(lbl: self.frequencyTimeLbl, text: L10n.Weekly.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.frequencyTimeLbl, text: CommonFunctions.localisation(key: "WEEKLY"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "10€", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: singleView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
-        CommonUI.setUpLbl(lbl: self.assetFreqLbl, text: L10n.Weekly.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.assetFreqLbl, text: CommonFunctions.localisation(key: "WEEKLY"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.EuroPresentLbl, text: "10€", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.historyLbl, text: L10n.History.description, textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.historyLbl, text: CommonFunctions.localisation(key: "HISTORY"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.collview.delegate = self
         self.collview.dataSource = self
-        self.cancelInvestmentBtn.setTitle("\(L10n.Delete.description) Investment", for: .normal)
+        self.cancelInvestmentBtn.setTitle("\(CommonFunctions.localisation(key: "DELETE")) Investment", for: .normal)
         self.strategyView.isHidden = true
         self.singleView.isHidden = true
         

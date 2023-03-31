@@ -13,6 +13,8 @@ class ProfileAccountTVC: UITableViewCell {
     @IBOutlet var outerView: UIView!
     @IBOutlet var nameLbl: UILabel!
     @IBOutlet var nameDescLbl: UILabel!
+	@IBOutlet var valueView: UIView!
+	@IBOutlet var valueLbl: UILabel!
     @IBOutlet var rightArrowView: UIView!
     @IBOutlet var rightArrowBtn: UIButton!
     @IBOutlet var switchView: UIView!
@@ -34,12 +36,22 @@ extension ProfileAccountTVC{
     func setUpCell(data : SecurityModel?,index : IndexPath,lastIndex : Int){
         CommonUI.setUpLbl(lbl: nameLbl, text: data?.name, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: nameDescLbl, text: data?.desc, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		self.valueView.isHidden = true
         self.rightArrowView.isHidden = false
         self.switchView.isHidden = true
         self.switchBtn.addTarget(self, action: #selector(switchBtnAct), for: .touchUpInside)
         if index.section == 2{
-            outerView.layer.cornerRadius = 16
             self.nameDescLbl.isHidden = true
+			if(index.row == 0){
+				outerView.layer.cornerRadius = 16
+				outerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+			}
+			if(index.row == 1){
+				outerView.layer.cornerRadius = 16
+				outerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+				self.valueView.isHidden = false
+				CommonUI.setUpLbl(lbl: self.valueLbl, text: CommonFunctions.nameLanguage(), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+			}
         }else if index.section == 3{
             if index.row == 0{
                 outerView.layer.cornerRadius = 16

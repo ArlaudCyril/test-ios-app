@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class CryptoDepositeVC: UIViewController {
+class CryptoDepositeVC: ViewController {
     //MARK: - Variables
     var selectedAssetName : String = "bitcoin"
     var availableAssets : [GetAssetsAPIElement]? = []
@@ -44,16 +44,16 @@ class CryptoDepositeVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-}
 
-//MARK: - SetUpUI
-extension CryptoDepositeVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
-        CommonUI.setUpLbl(lbl: cryptoAssetLbl, text: L10n.CryptoAssetDeposit.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.assetLbl, text: L10n.asset.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.depositeAddressLbl, text: L10n.DepositAdress.description, textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: cryptoAssetLbl, text: CommonFunctions.localisation(key: "CRYPTO_ASSET_DEPOSIT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.assetLbl, text: CommonFunctions.localisation(key: "ASSET"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.depositeAddressLbl, text: CommonFunctions.localisation(key: "DEPOSIT_ADRESS"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: assetView ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: depositeAddressVw ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
@@ -64,9 +64,9 @@ extension CryptoDepositeVC{
         self.depositeAddresTextVw.font = UIFont.MabryPro(Size.Large.sizeValue())
         
         CommonUI.setUpViewBorder(vw: self.sendOnlyAssetView, radius: 16, borderWidth: 0, borderColor: UIColor.ColorFFF2D9.cgColor, backgroundColor: UIColor.ColorFFF2D9)
-        CommonUI.setUpLbl(lbl: sendOnlyAssetLbl, text: L10n.sendOnlyBitcoin.description, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: sendOnlyAssetLbl, text: CommonFunctions.localisation(key: "SEND_ONLY_BITCOIN"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: orLbl, text: "Or", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpButton(btn: buyCoinBtn, text: L10n.BuyBitcoinOnLyber.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: buyCoinBtn, text: CommonFunctions.localisation(key: "BUY_BITCOIN_LYBER"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         dropDown.layer.cornerRadius = 6
         dropDown.anchorView = assetView

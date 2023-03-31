@@ -36,9 +36,9 @@ class addressCVC: UICollectionViewCell {
 
 extension addressCVC{
     func setUpCell(){
-        CommonUI.setUpLbl(lbl: self.addressLbl, text: L10n.Address.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addressDescLbl, text: L10n.toEnsureCryptoServicesAreLegal.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.addressDescLbl, text: L10n.toEnsureCryptoServicesAreLegal.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "ADDRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressDescLbl, text: CommonFunctions.localisation(key: "TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.addressDescLbl, text: CommonFunctions.localisation(key: "TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpViewBorder(vw: self.streetNumberVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.buildingFloorVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
@@ -47,12 +47,12 @@ extension addressCVC{
         CommonUI.setUpViewBorder(vw: self.zipCodeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.countryVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
-        CommonUI.setUpTextField(textfield: buildingFloorTF, placeholder: L10n.BuildingFloor.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: streetNumberTF, placeholder: L10n.StreetNumber.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: cityTF, placeholder: L10n.City.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: stateTF, placeholder: L10n.State.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: zipCodeTF, placeholder: L10n.ZIPCode.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: countryTF, placeholder: L10n.Country.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: buildingFloorTF, placeholder: CommonFunctions.localisation(key: "BUILDING_FLOOR"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: streetNumberTF, placeholder: CommonFunctions.localisation(key: "STREET_NUMBER"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: cityTF, placeholder: CommonFunctions.localisation(key: "CITY"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: stateTF, placeholder: CommonFunctions.localisation(key: "STATE"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: zipCodeTF, placeholder: CommonFunctions.localisation(key: "ZIPCODE"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: countryTF, placeholder: CommonFunctions.localisation(key: "COUNTRY"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         countryTF.textColor = UIColor.Purple35126D
         
         let countryTap = UITapGestureRecognizer(target: self, action: #selector(selectCountry))

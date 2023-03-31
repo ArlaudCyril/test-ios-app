@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class TotalEarningsVC: UIViewController {
+class TotalEarningsVC: ViewController {
     
     //MARK: - Variables
     var chartData = ["1H","1D","1W","1M","1Y","ALL"]
@@ -35,21 +35,18 @@ class TotalEarningsVC: UIViewController {
 //        setUpChart()
     }
 
-}
-
-extension TotalEarningsVC{
-    func setUpUI(){
+    override func setUpUI(){
         
         
         self.backBtn.layer.cornerRadius = 12
         if returnOnInvestment == true{
-            CommonUI.setUpButton(btn: self.dropdownBtn, text: "  \(L10n.ReturnOnInvestment.description)  ", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpButton(btn: self.dropdownBtn, text: "  \(CommonFunctions.localisation(key: "RETURN_ON_INVESTMENT"))  ", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: totalEarningLbl, text: "Yield", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: euroLbl, text: "5.01%", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
             CommonUI.setUpLbl(lbl: yieldLbl, text: "Total earnings: 0.00€", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
         }else{
-            CommonUI.setUpButton(btn: self.dropdownBtn, text: "  \(L10n.TotalEarnings.description)  ", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            CommonUI.setUpLbl(lbl: totalEarningLbl, text: L10n.TotalEarnings.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpButton(btn: self.dropdownBtn, text: "  \(CommonFunctions.localisation(key: "TOTAL_EARNINGS"))  ", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: totalEarningLbl, text: CommonFunctions.localisation(key: "TOTAL_EARNINGS"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: euroLbl, text: "0.00€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
             CommonUI.setUpLbl(lbl: yieldLbl, text: "Yield: 5.01%", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
         }

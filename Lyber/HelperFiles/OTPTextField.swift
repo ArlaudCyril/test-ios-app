@@ -16,7 +16,12 @@ class otpTextField: UITextField {
     weak var otpDelegate: MyTextFieldDelegate?
 
     override func deleteBackward() {
+		otpDelegate?.textFieldDidDelete(self)
         super.deleteBackward()
-        otpDelegate?.textFieldDidDelete(self)
+        
     }
+	
+	override func insertText(_ text: String) {
+		super.insertText(text)
+	}
 }

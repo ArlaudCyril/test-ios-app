@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectedProfileVC: UIViewController {
+class SelectedProfileVC: ViewController {
     var profilePicImg = UIImage()
     var profilePicType : profilePicType = .GALLERY
     var profileChangeCallback : ((UIImage)->())?
@@ -24,13 +24,12 @@ class SelectedProfileVC: UIViewController {
        
     }
     
-}
 
-//MARK: - SetUpUI
-extension SelectedProfileVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
-        self.headerView.headerLbl.text = L10n.SelectedProfilePicture.description
+        self.headerView.headerLbl.text = CommonFunctions.localisation(key: "SELECTED_PROFILE_PICTURE")
         self.profilePicVw.layer.cornerRadius = self.profilePicVw.layer.bounds.height/2
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.height/2
         self.profilePic.image = profilePicImg
@@ -40,7 +39,7 @@ extension SelectedProfileVC{
         }else{
             self.profilePic.contentMode = .scaleAspectFill
         }
-        self.saveBtn.setTitle("Save", for: .normal)
+        self.saveBtn.setTitle(CommonFunctions.localisation(key: "SAVE"), for: .normal)
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.saveBtn.addTarget(self, action: #selector(saveBtnAct), for: .touchUpInside)

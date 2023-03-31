@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class KycWebVC: UIViewController,WKNavigationDelegate {
+class KycWebVC: ViewController,WKNavigationDelegate {
     //MARK: - Variables
     var kycWebVC  = KycWebVM()
     var Ubalurl = String()
@@ -20,11 +20,9 @@ class KycWebVC: UIViewController,WKNavigationDelegate {
         setUpUI()
         
     }
-}
 
-//MARK: - SetUpUI
-extension KycWebVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         let myURL = URL(string: Ubalurl)
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)

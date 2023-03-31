@@ -7,14 +7,14 @@
 
 import UIKit
 
-class TransactionVC: UIViewController {
+class TransactionVC: ViewController {
     //MARK: - Variables
     var transactionVM = TransactionVM()
     var sectionData = ["15 april 2022"]
 //    var transactionData : [TransactionModel] = [
-//        TransactionModel(coinImg: Assets.money_deposit.image(), transactionType: "\(L10n.Bought.description)BTC", date: "15/04/2022", euro: "+20€", noOfCoin: "0.0002 BTC"),
-//        TransactionModel(coinImg: Assets.exchange.image(), transactionType: "\(L10n.Exch.description)BTC → ETH", date: "15/04/2022", euro: "-0.0002 BTC", noOfCoin: "0.0002 ETH"),
-//        TransactionModel(coinImg: Assets.withdraw.image(), transactionType: "\(L10n.Withdrawal.description)", date: "12/04/2022", euro: "-100€", noOfCoin: "0.0002 BTC")]
+//        TransactionModel(coinImg: Assets.money_deposit.image(), transactionType: "\(CommonFunctions.localisation(key: "BOUGHT"))BTC", date: "15/04/2022", euro: "+20€", noOfCoin: "0.0002 BTC"),
+//        TransactionModel(coinImg: Assets.exchange.image(), transactionType: "\(CommonFunctions.localisation(key: "EXCH"))BTC → ETH", date: "15/04/2022", euro: "-0.0002 BTC", noOfCoin: "0.0002 ETH"),
+//        TransactionModel(coinImg: Assets.withdraw.image(), transactionType: "\(CommonFunctions.localisation(key: "WITHDRAWAL"))", date: "12/04/2022", euro: "-100€", noOfCoin: "0.0002 BTC")]
     var transactionData : [Transaction] = []
     var totalSection = [String:[Transaction]]()
     var arrOfKeys: [String] = []
@@ -31,14 +31,13 @@ class TransactionVC: UIViewController {
         self.callTransactionApi()
         
     }
-}
 
-//MARK: - SetUpUI
-extension TransactionVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
-        CommonUI.setUpLbl(lbl: transactionLbl, text: L10n.Transaction.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: transactionSubLbl, text: L10n.ListOfAllTransactions.description, textColor: UIColor.grey877E95 , font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: transactionLbl, text: CommonFunctions.localisation(key: "TRANSACTION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: transactionSubLbl, text: CommonFunctions.localisation(key: "LIST_ALL_TRANSACTIONS"), textColor: UIColor.grey877E95 , font: UIFont.MabryPro(Size.Large.sizeValue()))
         
         tblView.delegate = self
         tblView.dataSource = self

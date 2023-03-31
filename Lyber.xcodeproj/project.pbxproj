@@ -196,7 +196,6 @@
 		0A8DA731289CF116000C4BC8 /* dropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA72F289CF116000C4BC8 /* dropDownTableViewCell.swift */; };
 		0A8DA732289CF116000C4BC8 /* dropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8DA730289CF116000C4BC8 /* dropDownTableViewCell.xib */; };
 		0A8DA735289CF7D8000C4BC8 /* StrongAuthOTPVerifyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA734289CF7D8000C4BC8 /* StrongAuthOTPVerifyVM.swift */; };
-		0A8DA738289CF829000C4BC8 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA737289CF829000C4BC8 /* StrongAuthVM.swift */; };
 		0A8DA73B289D0469000C4BC8 /* CryptoAddressBookVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA73A289D0469000C4BC8 /* CryptoAddressBookVM.swift */; };
 		0A8DA73E289D04F3000C4BC8 /* EnableWhitelistingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA73D289D04F3000C4BC8 /* EnableWhitelistingVM.swift */; };
 		0A9059212848863B003F6198 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9059202848863B003F6198 /* StringExtension.swift */; };
@@ -269,8 +268,22 @@
 		1883D3172950798A00CEC597 /* configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D3102950798A00CEC597 /* configuration.swift */; };
 		1886C7E62959A53600D28828 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E52959A53600D28828 /* Socket.swift */; };
 		1886C7E82959BFE000D28828 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E72959BFE000D28828 /* WebSocket.swift */; };
+		1F0988BA29B9E86A0075B000 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0988B929B9E86A0075B000 /* Test.storyboard */; };
+		1F2A425A29CC7352001D71F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A425C29CC7352001D71F8 /* Localizable.strings */; };
 		1F432CC3297DDDD9006EBEEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1F432CC2297DDDD9006EBEEA /* .gitignore */; };
+		1F4DCC5F29D2FDFD00C3B374 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */; };
+		1F4DCC6129D2FF4500C3B374 /* LanguageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */; };
+		1F4DCC6429D3264500C3B374 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6329D3264500C3B374 /* LanguageModel.swift */; };
+		1F5B7C5229C1BDA100256438 /* VerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B7C5129C1BDA100256438 /* VerificationVM.swift */; };
+		1F8BD79A29D43ED100EF322A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BD79929D43ED100EF322A /* ViewController.swift */; };
 		1F9E2B9E299FDEA50016CAB8 /* Portfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9728448D32007002E0 /* Portfolio.storyboard */; };
+		1FB9A0A629B89B01008431B0 /* GoogleAuthenticatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */; };
+		1FB9A0AA29B89CF0008431B0 /* GoogleAuthenticatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */; };
+		1FB9A0AC29B8D831008431B0 /* VerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */; };
+		1FC9B5A429B250AB001483CF /* GoogleAuthenticatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */; };
+		1FD4A4A029D48C7E002DFC11 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */; };
+		1FE7695329C46356005141C0 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695229C46356005141C0 /* Model.xcmappingmodel */; };
+		1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
 		4C0A8C3629955D5700CCC88A /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Currencies.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
 		B085C2FFA151F8B97AC534D7 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
@@ -466,7 +479,6 @@
 		0A8DA72F289CF116000C4BC8 /* dropDownTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropDownTableViewCell.swift; sourceTree = "<group>"; };
 		0A8DA730289CF116000C4BC8 /* dropDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = dropDownTableViewCell.xib; sourceTree = "<group>"; };
 		0A8DA734289CF7D8000C4BC8 /* StrongAuthOTPVerifyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthOTPVerifyVM.swift; sourceTree = "<group>"; };
-		0A8DA737289CF829000C4BC8 /* StrongAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVM.swift; sourceTree = "<group>"; };
 		0A8DA73A289D0469000C4BC8 /* CryptoAddressBookVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAddressBookVM.swift; sourceTree = "<group>"; };
 		0A8DA73D289D04F3000C4BC8 /* EnableWhitelistingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableWhitelistingVM.swift; sourceTree = "<group>"; };
 		0A9059202848863B003F6198 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -540,7 +552,26 @@
 		1883D3102950798A00CEC597 /* configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = configuration.swift; sourceTree = "<group>"; };
 		1886C7E52959A53600D28828 /* Socket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		1886C7E72959BFE000D28828 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		1F0988B929B9E86A0075B000 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		1F0A372C29CB44C000B07A20 /* LyberDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LyberDebug.entitlements; sourceTree = "<group>"; };
+		1F2A425629CC7082001D71F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1F2A425729CC7082001D71F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		1F2A425B29CC7352001D71F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F2A425D29CC7389001D71F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F432CC2297DDDD9006EBEEA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
+		1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTVC.swift; sourceTree = "<group>"; };
+		1F4DCC6329D3264500C3B374 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
+		1F5B7C5129C1BDA100256438 /* VerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVM.swift; sourceTree = "<group>"; };
+		1F8BD79929D43ED100EF322A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVM.swift; sourceTree = "<group>"; };
+		1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorModel.swift; sourceTree = "<group>"; };
+		1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVC.swift; sourceTree = "<group>"; };
+		1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVC.swift; sourceTree = "<group>"; };
+		1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVM.swift; sourceTree = "<group>"; };
+		1FE7695129C45CD1005141C0 /* Lyber 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Lyber 2.xcdatamodel"; sourceTree = "<group>"; };
+		1FE7695229C46356005141C0 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
+		1FE7695529C47144005141C0 /* StrongAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVM.swift; sourceTree = "<group>"; };
 		242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.debug.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.debug.xcconfig"; sourceTree = "<group>"; };
 		3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.release.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.release.xcconfig"; sourceTree = "<group>"; };
 		4C0A8C3529955D5700CCC88A /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
@@ -567,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC4C2AC283F4AD80086C6B8 /* Lyber.xcdatamodeld */,
+				1FE7695229C46356005141C0 /* Model.xcmappingmodel */,
 				0A005C162844CC6A008117D1 /* CoreData.swift */,
 			);
 			path = "Core Data";
@@ -948,7 +980,6 @@
 		0A71B79D283F7D59007CE9B2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				0A7586CA286C7C7C00DC889E /* Model */,
 				0A71B79E283F7D66007CE9B2 /* View */,
 				0A7586C9286C7C6C00DC889E /* View Model */,
 			);
@@ -1025,6 +1056,7 @@
 			isa = PBXGroup;
 			children = (
 				0A71B8B4283F88EF007CE9B2 /* LocalizationKeys.swift */,
+				1F2A425C29CC7352001D71F8 /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1106,6 +1138,8 @@
 		0A72190A28634319009F42C5 /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
+				1F5B7C5329C1D24100256438 /* Verification */,
+				1FC9B5A029B2502B001483CF /* GoogleAuthenticator */,
 				0A86AA8328A381E700C6C688 /* SelectedProfile */,
 				0A86AA7C28A375FA00C6C688 /* DefaultPicture */,
 				0AB24EE5288A7BE100B7BAE8 /* ChangePin */,
@@ -1348,13 +1382,6 @@
 				0A7586CB286C7C9600DC889E /* LoginVM.swift */,
 			);
 			path = "View Model";
-			sourceTree = "<group>";
-		};
-		0A7586CA286C7C7C00DC889E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0A7586CD286C7CAF00DC889E /* View Model */ = {
@@ -1828,14 +1855,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		0A8DA736289CF812000C4BC8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				0A8DA737289CF829000C4BC8 /* StrongAuthVM.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		0A8DA73C289D04D6000C4BC8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2168,6 +2187,8 @@
 		0AC4C2A2283F4AD80086C6B8 /* Lyber */ = {
 			isa = PBXGroup;
 			children = (
+				1F8BD79829D43EB400EF322A /* Class */,
+				1F0A372C29CB44C000B07A20 /* LyberDebug.entitlements */,
 				4C0A8C3429955D3100CCC88A /* Storage */,
 				0A78F19D28B63ABB0094DBA1 /* Lyber.entitlements */,
 				0A7546F4290152B4008BBC07 /* Animation_1.mp4 */,
@@ -2217,6 +2238,7 @@
 		0AC4C2BC283F4B400086C6B8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F4DCC5C29D2FDD500C3B374 /* Language */,
 				0A707D3C2890082F00C9ACA4 /* HeaderView.swift */,
 				0A770CF328478E5E00DBAE66 /* LoginSignUp */,
 				0AC5B5F62840A8A300533ED3 /* EductaionStrategy */,
@@ -2309,7 +2331,7 @@
 		0AD0985928979E8700C0551F /* Strong Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				0A8DA736289CF812000C4BC8 /* ViewModel */,
+				1FE7695429C47132005141C0 /* Model */,
 				0AD0985A28979EB200C0551F /* View */,
 			);
 			path = "Strong Authentication";
@@ -2326,7 +2348,6 @@
 		0AD0985F2897B52A00C0551F /* StongAuthVerifyCode */ = {
 			isa = PBXGroup;
 			children = (
-				0AD098612897B54F00C0551F /* Model */,
 				0AD098602897B54900C0551F /* View */,
 				0A8DA733289CF7A6000C4BC8 /* ViewModel */,
 			);
@@ -2339,13 +2360,6 @@
 				0AD098622897B58F00C0551F /* StrongAuthOTPVerifyVC.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0AD098612897B54F00C0551F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0AD6C0C628A0E42F00C2A184 /* Model */ = {
@@ -2409,6 +2423,117 @@
 				1883D3102950798A00CEC597 /* configuration.swift */,
 			);
 			path = SRP;
+			sourceTree = "<group>";
+		};
+		1F4DCC5C29D2FDD500C3B374 /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				1FD4A49E29D48C69002DFC11 /* ViewModel */,
+				1F4DCC6229D3263300C3B374 /* Model */,
+				1F4DCC5D29D2FDEE00C3B374 /* View */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
+		1F4DCC5D29D2FDEE00C3B374 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */,
+				1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F4DCC6229D3263300C3B374 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F4DCC6329D3264500C3B374 /* LanguageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F5B7C5329C1D24100256438 /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				1F5B7C5529C1D25400256438 /* Model */,
+				1F5B7C5429C1D24D00256438 /* View */,
+			);
+			path = Verification;
+			sourceTree = "<group>";
+		};
+		1F5B7C5429C1D24D00256438 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F5B7C5529C1D25400256438 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F5B7C5129C1BDA100256438 /* VerificationVM.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F8BD79829D43EB400EF322A /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				1F8BD79929D43ED100EF322A /* ViewController.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		1FB9A0A429B89AE5008431B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1FB9A0A829B89CDD008431B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1FC9B5A029B2502B001483CF /* GoogleAuthenticator */ = {
+			isa = PBXGroup;
+			children = (
+				1FB9A0A829B89CDD008431B0 /* Model */,
+				1FB9A0A429B89AE5008431B0 /* ViewModel */,
+				1FC9B5A229B25050001483CF /* View */,
+			);
+			path = GoogleAuthenticator;
+			sourceTree = "<group>";
+		};
+		1FC9B5A229B25050001483CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */,
+				1F0988B929B9E86A0075B000 /* Test.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1FD4A49E29D48C69002DFC11 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1FE7695429C47132005141C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FE7695529C47144005141C0 /* StrongAuthVM.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4C0A8C3429955D3100CCC88A /* Storage */ = {
@@ -2487,6 +2612,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 0AC4C297283F4AD80086C6B8;
 			packageReferences = (
@@ -2532,6 +2658,7 @@
 				0A71B8C3283F9275007CE9B2 /* Mabry Pro Black Italic.otf in Resources */,
 				0A71B8C4283F9275007CE9B2 /* Mabry Pro Black.otf in Resources */,
 				0A71B8C5283F9275007CE9B2 /* Mabry Pro Bold Italic.otf in Resources */,
+				1F2A425A29CC7352001D71F8 /* Localizable.strings in Resources */,
 				0A71B8C6283F9275007CE9B2 /* Mabry Pro Bold.otf in Resources */,
 				0A769FDB28C2082900F15C00 /* portfolio.json in Resources */,
 				0A7546F5290152B4008BBC07 /* Animation_1.mp4 in Resources */,
@@ -2555,6 +2682,7 @@
 				0A71B8D2283F9275007CE9B2 /* AtypText-Medium.ttf in Resources */,
 				0A71B8D3283F9275007CE9B2 /* AtypText-MediumItalic.ttf in Resources */,
 				0A71B8D4283F9275007CE9B2 /* AtypText-Regular.ttf in Resources */,
+				1F0988BA29B9E86A0075B000 /* Test.storyboard in Resources */,
 				0A71B8D5283F9275007CE9B2 /* AtypText-Semibold.ttf in Resources */,
 				0A759D412852029600E59580 /* InvestStrategy.storyboard in Resources */,
 				0A71B8D6283F9275007CE9B2 /* AtypText-SemiboldItalic.ttf in Resources */,
@@ -2618,6 +2746,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A721A4C288EB1FA0092FBED /* PortfolioHomeVM.swift in Sources */,
+				1F4DCC6129D2FF4500C3B374 /* LanguageTVC.swift in Sources */,
 				0A75020C2859F76300D68BAB /* AllAssetsAvailableTVC.swift in Sources */,
 				0A71B7A0283F7D7C007CE9B2 /* LoginVC.swift in Sources */,
 				0A77D54528B7A94B00A2C684 /* SearchAssetVM.swift in Sources */,
@@ -2628,7 +2757,9 @@
 				0A721909286329E1009F42C5 /* ProfileModel.swift in Sources */,
 				0A6FCB9528BCBFF1003557B0 /* RecurringDetailModel.swift in Sources */,
 				0A74457C285740AA00BF05EF /* DepositeOrBuyVC.swift in Sources */,
+				1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */,
 				0A53DEE9284635FB0027367A /* InvestmentExpModel.swift in Sources */,
+				1F5B7C5229C1BDA100256438 /* VerificationVM.swift in Sources */,
 				1883D3132950798A00CEC597 /* error.swift in Sources */,
 				0AC4C2C3283F5DDF0086C6B8 /* enterNumberCVC.swift in Sources */,
 				0A6FD4082849D3B3003A2AA0 /* AddStrategyTVC.swift in Sources */,
@@ -2639,6 +2770,7 @@
 				0ACC70262893A96500C96679 /* BalanceVM.swift in Sources */,
 				0A6FA81D28F575F700E17E7B /* chartVC.swift in Sources */,
 				0A716B032848B52C00451BD3 /* AddStrategyModel.swift in Sources */,
+				1FB9A0AC29B8D831008431B0 /* VerificationVC.swift in Sources */,
 				0A77D54328B7A4BC00A2C684 /* SearchAssetTVC.swift in Sources */,
 				0AC5B5FA2840A8D700533ED3 /* EducationStrategyVC.swift in Sources */,
 				0A1C74FA2840E3F3003CA6A7 /* ViewControllerExtension.swift in Sources */,
@@ -2683,6 +2815,7 @@
 				0AC5B5FE2840ACA500533ED3 /* EducationStrategyModel.swift in Sources */,
 				0A6B29DD2878446200674860 /* PinVerificationVC.swift in Sources */,
 				0AC4C2CA283F64040086C6B8 /* SpinnerView.swift in Sources */,
+				1FD4A4A029D48C7E002DFC11 /* LanguageVM.swift in Sources */,
 				0A76C596291BC8FC00C603B9 /* PinVerificationVM.swift in Sources */,
 				4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */,
 				0A7A3BF0285C9CB400646337 /* TotalEarningsVC.swift in Sources */,
@@ -2726,10 +2859,12 @@
 				1883D3152950798A00CEC597 /* server.swift in Sources */,
 				0A857C71288592710013ED99 /* NotificationTVC.swift in Sources */,
 				0A90592D2848A1A3003F6198 /* AddAssetsCVC.swift in Sources */,
+				1FB9A0A629B89B01008431B0 /* GoogleAuthenticatorVM.swift in Sources */,
 				0AC4C2AE283F4AD80086C6B8 /* Lyber.xcdatamodeld in Sources */,
 				0A8DA73B289D0469000C4BC8 /* CryptoAddressBookVM.swift in Sources */,
 				0A907E64285B585F001ABD6A /* InfosTVC.swift in Sources */,
 				0A907E66285B5874001ABD6A /* AboutTVC.swift in Sources */,
+				1FB9A0AA29B89CF0008431B0 /* GoogleAuthenticatorModel.swift in Sources */,
 				1883D3142950798A00CEC597 /* srp.swift in Sources */,
 				0A7445852857624800BF05EF /* FrequencyVC.swift in Sources */,
 				0A73AB952875B37C00A92D1D /* AddStrategyVM.swift in Sources */,
@@ -2737,7 +2872,6 @@
 				0A70BC5A289920D700577C0B /* EnableWhitelistingTVC.swift in Sources */,
 				0AD098632897B58F00C0551F /* StrongAuthOTPVerifyVC.swift in Sources */,
 				0A76840C2876DFBA00A5BC7C /* KycWebVC.swift in Sources */,
-				0A8DA738289CF829000C4BC8 /* StrongAuthVM.swift in Sources */,
 				0A71B8DC283F96E4007CE9B2 /* AppStoryboard.swift in Sources */,
 				0AC5B5FC2840AA4B00533ED3 /* EductaionStrategyCVC.swift in Sources */,
 				0A76E703288974FE0021A7A6 /* TransactionModel.swift in Sources */,
@@ -2745,6 +2879,7 @@
 				0A907E60285B5824001ABD6A /* PortfolioDetailHeaderTVC.swift in Sources */,
 				4C0A8C3629955D5700CCC88A /* Currencies.swift in Sources */,
 				0A7684102876EFBC00A5BC7C /* KycWebVM.swift in Sources */,
+				1F4DCC5F29D2FDFD00C3B374 /* LanguageVC.swift in Sources */,
 				0A7C379728609BCE00E238D8 /* ExchangeModel.swift in Sources */,
 				0A8DA73E289D04F3000C4BC8 /* EnableWhitelistingVM.swift in Sources */,
 				0A71A1B32886B8090030FE23 /* AllAssetsVM.swift in Sources */,
@@ -2776,6 +2911,8 @@
 				0A7218FD28632540009F42C5 /* ProfileHeaderTVC.swift in Sources */,
 				0A71B7A6283F807E007CE9B2 /* UiColorsExtension.swift in Sources */,
 				0A6E3BA22844ABAB007002E0 /* AccountCompletedModel.swift in Sources */,
+				1FE7695329C46356005141C0 /* Model.xcmappingmodel in Sources */,
+				1F8BD79A29D43ED100EF322A /* ViewController.swift in Sources */,
 				0A90592428488884003F6198 /* Constants.swift in Sources */,
 				0A7013D6286DC12000BB63C5 /* PersonalDataModel.swift in Sources */,
 				1886C7E82959BFE000D28828 /* WebSocket.swift in Sources */,
@@ -2800,6 +2937,7 @@
 				0A53DEE7284635010027367A /* InvestmentExperienceTVC.swift in Sources */,
 				0A71B8B5283F88EF007CE9B2 /* LocalizationKeys.swift in Sources */,
 				0A7AAB18285378EE00D2E25D /* ConfirmInvestmentVC.swift in Sources */,
+				1F4DCC6429D3264500C3B374 /* LanguageModel.swift in Sources */,
 				0A759D3F2852021C00E59580 /* InvestMoneyVC.swift in Sources */,
 				0A7218FB286324BC009F42C5 /* ProfileVC.swift in Sources */,
 				0A71B8E2283FA3BD007CE9B2 /* ConfirmPinCVC.swift in Sources */,
@@ -2821,6 +2959,7 @@
 				0AC4C2A6283F4AD80086C6B8 /* SceneDelegate.swift in Sources */,
 				0A907E57285B3543001ABD6A /* PortfolioHeaderTVC.swift in Sources */,
 				0AB9B2BC289E2B2000A6DCDD /* AddCryptoAddressModel.swift in Sources */,
+				1FC9B5A429B250AB001483CF /* GoogleAuthenticatorVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2831,6 +2970,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0AC4C2AA283F4AD80086C6B8 /* Base */,
+				1F2A425729CC7082001D71F8 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2839,8 +2979,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				0AC4C2B2283F4AD90086C6B8 /* Base */,
+				1F2A425629CC7082001D71F8 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1F2A425C29CC7352001D71F8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F2A425B29CC7352001D71F8 /* en */,
+				1F2A425D29CC7389001D71F8 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2850,6 +3000,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -2911,6 +3062,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -2968,7 +3120,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Lyber/Lyber.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Lyber/LyberDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
@@ -2981,6 +3133,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -3019,6 +3172,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -3101,9 +3255,10 @@
 		0AC4C2AC283F4AD80086C6B8 /* Lyber.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1FE7695129C45CD1005141C0 /* Lyber 2.xcdatamodel */,
 				0AC4C2AD283F4AD80086C6B8 /* Lyber.xcdatamodel */,
 			);
-			currentVersion = 0AC4C2AD283F4AD80086C6B8 /* Lyber.xcdatamodel */;
+			currentVersion = 1FE7695129C45CD1005141C0 /* Lyber 2.xcdatamodel */;
 			path = Lyber.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

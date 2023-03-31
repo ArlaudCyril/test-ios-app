@@ -11,46 +11,48 @@ struct Constants{
     
     static let deviceType = "IOS"
     static let deviceID = "df"
-    static let deviceToken = "df"
-    
+
     struct AlertMessages{
-        static var enterPhoneNumber = L10n.enterPhoneNumber.description
-        static var enterValidPhoneNumber = L10n.enterValidPhoneNumber.description
-        static var enterCorrectPin = L10n.enterCorrectPin.description
-        static var enterFirstName = L10n.enterFirstName.description
-        static var enterLastName = L10n.enterLastName.description
-        static var selectBirthDate = L10n.selectBirthDate.description
-        static var selectNationality = L10n.selectNationality.description
-        static var enterEmail = L10n.enterEmail.description
-        static var enterValidEmail = L10n.enterValidEmail.description
-        static var enterStreetNumber = L10n.enterStreetNumber.description
-        static var enterBuildingFloor = L10n.enterBuildingFloor.description
-        static var enterCity = L10n.enterCityName.description
-        static var enterZipcode = L10n.enterZipcode.description
-        static var enterCountry = L10n.enterCountry.description
-        static var chooseInvestmentExp = L10n.chooseInvestmentExp.description
-        static var chooseSourceOfIncome = L10n.chooseSourceOfIncome.description
-        static var chooseWorkIndustry = L10n.chooseWorkIndustry.description
-        static var chooseAnnualIncome = L10n.chooseAnnualIncome.description
-        static let logOut = L10n.LogOut.description
-        static let sureLogOut = L10n.AreYouSureLogOut.description
-        static let Cancel = L10n.Cancel.description
+		static var enterPhoneNumber = CommonFunctions.localisation(key:"ENTER_PHONE_NUMBER")
+        static var enterValidPhoneNumber = CommonFunctions.localisation(key:"ALERT_VALID_PHONE_NUMBER")
+        static var enterCorrectPin = CommonFunctions.localisation(key:"ALERT_CORRECT_PIN")
+        static var enterFirstName = CommonFunctions.localisation(key:"ALERT_FIRST_NAME")
+        static var enterLastName = CommonFunctions.localisation(key:"ALERT_LAST_NAME")
+        static var selectBirthDate = CommonFunctions.localisation(key:"SELECT_BIRTH_DATE")
+        static var selectNationality = CommonFunctions.localisation(key:"ALERT_NATIONALITY")
+        static var enterEmail = CommonFunctions.localisation(key:"ALERT_EMAIL")
+        static var enterValidEmail = CommonFunctions.localisation(key:"ALERT_VALID_EMAIL")
+        static var enterStreetNumber = CommonFunctions.localisation(key:"ALERT_STREET_NUMBER")
+        static var enterBuildingFloor = CommonFunctions.localisation(key:"ALERT_BUILDING_FLOOR")
+        static var enterCity = CommonFunctions.localisation(key:"ALERT_CITY_NAME")
+        static var enterZipcode = CommonFunctions.localisation(key:"ALERT_ZIP_CODE")
+        static var enterCountry = CommonFunctions.localisation(key:"ALERT_COUNTRY")
+        static var chooseInvestmentExp = CommonFunctions.localisation(key:"ALERT_INVESTMENT_EXP")
+        static var chooseSourceOfIncome = CommonFunctions.localisation(key:"ALERT_SOURCE_INCOME")
+        static var chooseWorkIndustry = CommonFunctions.localisation(key:"ALERT_WORK_INDUSTRY")
+        static var chooseAnnualIncome = CommonFunctions.localisation(key:"ALERT_ANNUAL_INCOME")
+        static let logOut = CommonFunctions.localisation(key:"LOG_OUT")
+        static let sureLogOut = CommonFunctions.localisation(key:"ALERT_LOG_OUT")
+        static let Cancel = CommonFunctions.localisation(key:"CANCEL")
+        static let tooManyFailedAttemptPleaseReauthenticate = CommonFunctions.localisation(key:"TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE")
         
-        static var enterPassword = "Please enter password"
-        static var enterValidPassword = "Password should be of minimum 8 characters"
-        static var enterState = "Please enter state name"
-        static var enterValidZipcode = "Please enter valid zipcode"
-        static var selectBirthPlace = "Please enter your birth Place"
-        static var selectBirthCountry = "Please select your birth country"
-        static var selectAreYouUSCitizen = "Please select are you US Citizen or not?"
-        static var pleaseSelectPersonalAssets = "Please Select your personal Assets"
+        static var enterPassword = CommonFunctions.localisation(key:"ALERT_PASSWORD")
+        static var enterValidPassword = CommonFunctions.localisation(key:"ALERT_VALID_PASSWORD")
+        static var enterState = CommonFunctions.localisation(key:"ALERT_STATE_NAME")
+        static var enterValidZipcode = CommonFunctions.localisation(key:"ALERT_VALID_ZIPCODE")
+        static var enterBirthPlace = CommonFunctions.localisation(key:"ALERT_BIRTH_PLACE")
+        static var selectBirthCountry = CommonFunctions.localisation(key:"ALERT_BIRTH_COUNTRY")
+        static var selectAreYouUSCitizen = CommonFunctions.localisation(key:"ALERT_US_CITIZEN")
+        static var pleaseSelectPersonalAssets = CommonFunctions.localisation(key:"ALERT_PERSONAL_ASSETS")
         
-        static var PleaseEnterYourAddressName = "Please enter your address name"
-        static var PleaseSelectYourNetwork = "Please select your network"
-        static var PleaseEnterOrScanAnAddress = "Please enter or scan an address"
-        static var PleaseSelectYourExchange = "Please select your exchange"
-        static var PleaseEnableWhitelistingAddress = "Please enable whitelisting address to add address"
-    }
+        static var PleaseEnterYourAddressName = CommonFunctions.localisation(key:"ALERT_ADDRESS_NAME")
+        static var PleaseSelectYourNetwork = CommonFunctions.localisation(key:"ALERT_NETWORK")
+        static var PleaseEnterOrScanAnAddress = CommonFunctions.localisation(key:"ALERT_SCAN_ADDRESS")
+        static var PleaseSelectYourExchange = CommonFunctions.localisation(key:"ALERT_EXCHANGE")
+        static var PleaseEnableWhitelistingAddress = CommonFunctions.localisation(key:"ALERT_WHITELISTING")
+		
+		static var AllAssetsMustHaveAllocationsGreaterThan0 = CommonFunctions.localisation(key:"ASSETS_ALLOCATIONS_GREATER_0")
+	}
     
     // MARK: - ALL API KEYS
     struct ApiKeys {
@@ -80,6 +82,7 @@ struct Constants{
         static let name = "name"
         static let first_name = "first_name"
         static let last_name = "last_name"
+		static let language = "language"
 //        static let email = "email"
         static let state = "state"
         static let countryName = "countryName"
@@ -138,6 +141,9 @@ struct Constants{
         static let id = "id"
         static let address_id = "address_id"
         
+        //Main
+        static let uuid = "uuid"
+        
         
         
         // MARK: - New backend
@@ -176,6 +182,9 @@ struct Constants{
         static let incomeRange = "incomeRange"
         static let personalAssets = "personalAssets"
         
+        // MARK: - Profile keys
+        static let type2FA = "type2FA"
+        static let googleOTP = "googleOTP"
         
     }
     
@@ -264,18 +273,18 @@ struct Constants{
         //Profile page
         static let userServiceUser = "user-service/user"
         static let assetServiceAssets = "asset-service/assets"
+        static let userServiceGoogleOtp = "user-service/google-otp"
+        static let userService2FA = "user-service/2FA"
+        static let userServiceVerify2FA = "user-service/verify-2FA"
+        static let userServiceScope2FA = "user-service/scope-2FA"
+        static let userServiceLanguage = "user-service/language"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"
         static let strategyServiceStrategy = "strategy-service/strategy"
         static let strategyServiceActiveStrategy = "strategy-service/active-strategy"
        
+        //Notification
+        static let registerDeviceToken = "notification-service/register"
     }
-
-    struct Language {
-        static let ENGLISH = "ENGLISH"
-        static let ARABIC = "ARABIC"
-    }
-    
-        
 }

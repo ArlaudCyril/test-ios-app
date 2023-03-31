@@ -26,7 +26,7 @@ class AddStrategyVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func tailorStrategyApi(newStrategy:Strategy,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -48,7 +48,7 @@ class AddStrategyVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getCoinInfoApi(Asset : String,completion: @escaping ( (AssetBaseAPI?) -> Void )){
@@ -61,6 +61,6 @@ class AddStrategyVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 }

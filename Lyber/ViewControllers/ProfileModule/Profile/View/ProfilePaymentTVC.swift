@@ -41,12 +41,12 @@ extension ProfilePaymentTVC{
     func setUpCell(data : buyDepositeModel?,row : Int,lastIndex : Int){
 //        cardImgView.layer.cornerRadius = self.cardImgView.layer.bounds.height/2
 //        cardImg.image = data?.icon
-        CommonUI.setUpLbl(lbl: cardTypeLbl, text: L10n.IBANumber.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: cardTypeLbl, text: CommonFunctions.localisation(key: "IBAN_NUMBER"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: cardNumberLbl, text: userData.shared.iban, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: bicLbl, text: L10n.BICNumber.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: bicLbl, text: CommonFunctions.localisation(key: "BIC_NUMBER"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: bicNumberLbl, text: userData.shared.bic, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpButton(btn: addPaymentBtn, text: L10n.AddPaymentMethod.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        addPaymentBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.AddPaymentMethod.description), for: .normal)
+        CommonUI.setUpButton(btn: addPaymentBtn, text: CommonFunctions.localisation(key: "ADD_PAYMENT_METHOD"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        addPaymentBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "ADD_PAYMENT_METHOD")), for: .normal)
         addPaymentBtn.addTarget(self, action: #selector(addPaymentBtnAction), for: .touchUpInside)
         
         stackView.layer.cornerRadius = 16

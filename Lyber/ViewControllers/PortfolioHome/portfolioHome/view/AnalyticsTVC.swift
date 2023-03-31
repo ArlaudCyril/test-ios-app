@@ -35,11 +35,11 @@ class AnalyticsTVC: UITableViewCell {
 extension AnalyticsTVC{
     func setUpCell(){
         CommonUI.setUpViewBorder(vw: self.earningVw, radius: 12, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.totalEarningLbl, text: L10n.TotalEarnings.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalEarningLbl, text: CommonFunctions.localisation(key: "TOTAL_EARNINGS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "0.00€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.yieldVw, radius: 12, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.yieldLbl, text: L10n.ReturnOnInvestment.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.yieldLbl, text: CommonFunctions.localisation(key: "RETURN_ON_INVESTMENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: self.yieldPercentageLbl, text: "0.00%", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         var graphValues: [ChartDataEntry] = []
         for index in 0..<8 {

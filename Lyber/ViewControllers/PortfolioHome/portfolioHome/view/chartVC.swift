@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class chartVC: UIViewController {
+class chartVC: ViewController {
 
     let customMarkerView = customMarker()
     

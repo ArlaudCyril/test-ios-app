@@ -17,6 +17,6 @@ class EnableWhitelistingVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

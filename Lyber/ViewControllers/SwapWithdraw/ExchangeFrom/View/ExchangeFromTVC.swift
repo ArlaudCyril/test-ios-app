@@ -55,7 +55,7 @@ extension ExchangeFromTVC{
         self.euroImgVw.image = Assets.euro.image()
         CommonUI.setUpLbl(lbl: self.flatEuroLbl, text: "Euro", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroInWalletLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroAvailable))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: "FIAT Wallet", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: CommonFunctions.localisation(key: "FIAT_WALLET"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
         self.coinsInWalletLbl.isHidden = true
         
         

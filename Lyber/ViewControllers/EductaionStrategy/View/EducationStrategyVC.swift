@@ -7,16 +7,16 @@
 
 import UIKit
 
-class EducationStrategyVC: UIViewController {
+class EducationStrategyVC: ViewController {
     //MARK: - Variables
     var educationReadCallback : (()->())?
     var currentPage : Int? = 0,educationStrategyVM = EducationStrategyVM()
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
     let collData : [educationModel] =
-    [educationModel(image: Assets.slider_one.image(), desc: L10n.DiversifiedStrategy.description, subDesc: L10n.educationSubDescription1.description),
-     educationModel(image: Assets.slider_two.image(), desc: L10n.flexibleFrequency.description, subDesc: L10n.educationSubDescription2.description),
-     educationModel(image: Assets.slider_one.image(), desc: L10n.EvolvingAndAutomatedPortfolio.description, subDesc: L10n.educationSubDescription3.description)]
+    [educationModel(image: Assets.slider_one.image(), desc: CommonFunctions.localisation(key: "DIVERSIFIED_STRATEGY"), subDesc: CommonFunctions.localisation(key: "EDUCATION_SUBDESCRIPTION_1")),
+     educationModel(image: Assets.slider_two.image(), desc: CommonFunctions.localisation(key: "FLEXIBLE_FREQUENCY"), subDesc: CommonFunctions.localisation(key: "EDUCATION_SUBDESCRIPTION_2")),
+     educationModel(image: Assets.slider_one.image(), desc: CommonFunctions.localisation(key: "EVOLVING_AND_AUTOMATED_PORTFOLIO"), subDesc: CommonFunctions.localisation(key: "EDUCATION_SUBDESCRIPTION_3"))]
     
     //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
@@ -36,12 +36,9 @@ class EducationStrategyVC: UIViewController {
         setUpUI()
     }
 
+	//MARK: - SetUpUI
 
-}
-
-//MARK: - SetUpUI
-extension EducationStrategyVC{
-    func setUpUI(){
+    override func setUpUI(){
         self.collView.delegate = self
         self.collView.dataSource = self
         indicatorView = [indicator1,indicator2,indicator3]
@@ -49,7 +46,7 @@ extension EducationStrategyVC{
         self.setIndicatorViews()
         
         self.backBtn.layer.cornerRadius = 12
-        self.nextButton.setTitle(L10n.Next.description, for: .normal)
+        self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
     }
@@ -144,10 +141,10 @@ extension EducationStrategyVC{
             }
             if self.currentPage ?? 0 == 2{
                 self.nextButton.tag = 1
-                self.nextButton.setTitle(L10n.ChooseAStrategy.description, for: .normal)
+                self.nextButton.setTitle(CommonFunctions.localisation(key: "CHOOSE_STRATEGY"), for: .normal)
             }else{
                 self.nextButton.tag = 0
-                self.nextButton.setTitle(L10n.Next.description, for: .normal)
+                self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
             }
         }
     }

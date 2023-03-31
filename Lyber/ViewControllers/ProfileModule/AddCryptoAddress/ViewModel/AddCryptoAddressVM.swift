@@ -13,7 +13,7 @@ class AddCryptoAddressVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getExchangeApi(completion: @escaping ( (ExchangeAPI?) -> Void )){
@@ -22,7 +22,7 @@ class AddCryptoAddressVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func editWhiteListingAddressApi(cryptoAddress : cryptoAddressModel?,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -38,6 +38,6 @@ class AddCryptoAddressVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PUTWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PUTWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

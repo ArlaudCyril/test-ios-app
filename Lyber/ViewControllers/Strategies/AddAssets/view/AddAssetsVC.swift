@@ -8,13 +8,13 @@
 import UIKit
 import ESPullToRefresh
 
-class AddAssetsVC: UIViewController {
+class AddAssetsVC: ViewController {
     //MARK: - Variables
     var addAssetsVM = AddAssetsVM()
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     //var AssetsAddDataCallback : ((Trending?)->())?
     var AssetsAddDataCallback : ((priceServiceResume?)->())?
-    var coinsType : [String] = [L10n.Trending.description,L10n.TopGainers.description,L10n.TopLoosers.description,L10n.Stable.description]
+    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "TOP_GAINERS"),CommonFunctions.localisation(key: "TOP_LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
     var coinsData : [priceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
     var timer = Timer()
@@ -35,18 +35,18 @@ class AddAssetsVC: UIViewController {
         super.viewWillDisappear(animated)
         self.timer.invalidate()
     }
-}
 
-//MARK: - SetUpUI
-extension AddAssetsVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.addAssetsVM.controller = self
         self.bottomVw.layer.cornerRadius = 32
         self.bottomVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.addAssetLbl, text: L10n.AddAnAsset.description, textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-//        CommonUI.setUpButton(btn: self.viewAllAssetsBtn, text: L10n.ViewAllAvailableAssets.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-//        self.viewAllAssetsBtn.setAttributedTitle(CommonFunction.underlineString(str: L10n.ViewAllAvailableAssets.description), for: .normal)
+        CommonUI.setUpLbl(lbl: self.addAssetLbl, text: CommonFunctions.localisation(key: "ADD_AN_ASSET"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+//        CommonUI.setUpButton(btn: self.viewAllAssetsBtn, text: CommonFunctions.localisation(key: "VIEW_ALL_AVAILABLE_ASSETS"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+//        self.viewAllAssetsBtn.setAttributedTitle(CommonFunction.underlineString(str: CommonFunctions.localisation(key: "VIEW_ALL_AVAILABLE_ASSETS")), for: .normal)
         self.collView.delegate = self
         self.collView.dataSource = self
         self.tblView.delegate = self

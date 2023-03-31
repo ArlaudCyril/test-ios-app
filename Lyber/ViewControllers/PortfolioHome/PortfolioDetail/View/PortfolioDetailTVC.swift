@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class PortfolioDetailTVC: UITableViewCell {
     //MARK: - Variables
-    var chartData = ["1H ","4H ","1D","1W ","1M ","1Y"]
+    var chartData = ["1H ","4H ",CommonFunctions.localisation(key: "1D"),CommonFunctions.localisation(key: "1W"),"1M ",CommonFunctions.localisation(key: "1Y")]
 //                     ,"ALL"]
     var controller : PortfolioDetailVC?
     let customMarkerView = customMarker()
@@ -84,7 +84,7 @@ extension PortfolioDetailTVC{
             }
         }
         
-        CommonUI.setUpLbl(lbl: priceLbl, text: L10n.price.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: priceLbl, text: CommonFunctions.localisation(key: "PRICE"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: self.chartLastPoint ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: percentageLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
         

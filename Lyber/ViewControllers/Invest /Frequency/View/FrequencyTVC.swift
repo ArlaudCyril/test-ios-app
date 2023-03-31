@@ -34,7 +34,7 @@ extension FrequencyTVC{
         CommonUI.setUpLbl(lbl: self.mainLbl, text: data.name, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.subLabel, text: data.subName, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpButton(btn: self.rightArrowbtn, text: data.rightBtnName, textcolor: UIColor.grey877E95, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpButton(btn: self.recommendedBtn, text: L10n.Recommended.description , textcolor: UIColor.PurpleColor, backgroundColor: UIColor.LightPurple, cornerRadius: self.recommendedBtn.layer.bounds.height/2, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpButton(btn: self.recommendedBtn, text: CommonFunctions.localisation(key: "RECOMMENDED") , textcolor: UIColor.PurpleColor, backgroundColor: UIColor.LightPurple, cornerRadius: self.recommendedBtn.layer.bounds.height/2, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         self.recommendedBtn.isHidden = true
         
         if controller?.popUpType == .changeProfile{

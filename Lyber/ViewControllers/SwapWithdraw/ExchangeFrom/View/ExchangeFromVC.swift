@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ExchangeFromVC: UIViewController {
+class ExchangeFromVC: ViewController {
     //MARK: - Variables
     var screenType : ExchangeEnum = .exchange
 //    var assetsData : [coinsStruct] = [
-//        coinsStruct(coinImg: Assets.ether.image(), coinName: L10n.Ether.description, euro: "966.8€", totalCoin: "0.001234 ETH",coin: L10n.ETH.description),
-//        coinsStruct(coinImg: Assets.usdc.image(), coinName: L10n.USDC.description, euro: "310€", totalCoin: "322.187 USDC",coin: L10n.USDC.description),
-//        coinsStruct(coinImg: Assets.bitcoin.image(), coinName: L10n.Bitcoin.description, euro: "133.8€", totalCoin: "0.001234 BTC",coin: L10n.BTC.description)]
+//        coinsStruct(coinImg: Assets.ether.image(), coinName: CommonFunctions.localisation(key: "ETHER"), euro: "966.8€", totalCoin: "0.001234 ETH",coin: CommonFunctions.localisation(key: "ETH")),
+//        coinsStruct(coinImg: Assets.usdc.image(), coinName: CommonFunctions.localisation(key: "USDC"), euro: "310€", totalCoin: "322.187 USDC",coin: CommonFunctions.localisation(key: "USDC")),
+//        coinsStruct(coinImg: Assets.bitcoin.image(), coinName: CommonFunctions.localisation(key: "BITCOIN"), euro: "133.8€", totalCoin: "0.001234 BTC",coin: CommonFunctions.localisation(key: "BTC"))]
     var assetsData : [Asset] = []
     var walletData : [assetsModel] = [
         assetsModel(coinImg: Assets.euro.image(), coinName: "Euro", euro: "\(totalEuroAvailable ?? 0)€", totalCoin: "0.001234 BTC")]
@@ -37,23 +37,22 @@ class ExchangeFromVC: UIViewController {
         callMyAssetsApi()
     }
 
-}
 
-//MARK: - SetUpUI
-extension ExchangeFromVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.navigationController?.navigationBar.isHidden = true
-        CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: L10n.ExchangeFrom.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.lyberPortfolioLbl, text: L10n.LyberPortfolio.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.allportfolioLbl, text: L10n.AllMyPortfolio.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: CommonFunctions.localisation(key: "EXCHANGE_FROM"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.lyberPortfolioLbl, text: CommonFunctions.localisation(key: "LYBER_PORTFOLIO"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.allportfolioLbl, text: CommonFunctions.localisation(key: "ALL_PORTFOLIO"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         if screenType == .exchange{
             self.allPortfolioVw.isHidden = true
         }else if screenType == .withdraw{
             self.allPortfolioVw.isHidden = false
-            self.headerView.headerLbl.text = L10n.IWantToWithdraw.description
-            self.lyberPortfolioLbl.text = L10n.APreciseAsset.description
+            self.headerView.headerLbl.text = CommonFunctions.localisation(key: "WANT_WITHDRAW")
+            self.lyberPortfolioLbl.text = CommonFunctions.localisation(key: "PRECISE_ASSET")
         }
         
         self.tblView.delegate = self

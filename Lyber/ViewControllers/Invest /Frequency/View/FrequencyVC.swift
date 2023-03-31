@@ -7,19 +7,19 @@
 
 import UIKit
 
-class FrequencyVC: UIViewController {
+class FrequencyVC: ViewController {
     //MARK: - Variables
     var popUpType  : bottomPopUp = .frequency
     var frequencyData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Once.description, subName: L10n.UniqueInvestment.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.apple_pay.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Daily.description, subName: L10n.Everyday.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Weekly.description, subName: L10n.EveryThursday.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: L10n.Monthly.description, subName: L10n.Every21stOfTheMonth.description, rightBtnName: "")
+        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ONCE"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.apple_pay.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DAILY"), subName: CommonFunctions.localisation(key: "EVERYDAY"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WEEKLY"), subName: CommonFunctions.localisation(key: "EVERY_THURSDAY"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "MONTHLY"), subName: CommonFunctions.localisation(key: "EVERY_21ST_MONTH"), rightBtnName: "")
     ]
     var profileData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Camera.description, subName: L10n.UniqueInvestment.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.SelectFromGallery.description, subName: L10n.UniqueInvestment.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.SetDefaultPictures.description, subName: L10n.UniqueInvestment.description, rightBtnName: "")]
+        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CAMERA"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SELECT_FROM_GALLERY"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SET_DEFAULT_PICTURES"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: "")]
     var frequencySelectedCallback : ((String)->())?
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -32,19 +32,14 @@ class FrequencyVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-    
 
+	//MARK: - SetUpUI
 
-}
-
-
-//MARK: - SetUpUI
-extension FrequencyVC{
-    func setUpUI(){
+    override func setUpUI(){
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.frequencyLbl, text: L10n.Frequency.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.frequencyLbl, text: CommonFunctions.localisation(key: "FREQUENCY"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.tblView.delegate = self
         self.tblView.dataSource = self
         
@@ -53,7 +48,7 @@ extension FrequencyVC{
         self.outerView.addGestureRecognizer(tap)
         
         if popUpType == .changeProfile{
-            self.frequencyLbl.text = L10n.SelectedProfilePicture.description
+            self.frequencyLbl.text = CommonFunctions.localisation(key: "SELECTED_PROFILE_PICTURE")
         }
     }
 }

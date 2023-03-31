@@ -18,7 +18,7 @@ class EnterWalletAddressVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func withdrawFiatApi(amount : Double,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -29,6 +29,6 @@ class EnterWalletAddressVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
 }

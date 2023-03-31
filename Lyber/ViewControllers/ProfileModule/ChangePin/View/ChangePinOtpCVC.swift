@@ -21,14 +21,14 @@ class ChangePinOtpCVC: UICollectionViewCell ,MyTextFieldDelegate{
     @IBOutlet var Tf3: otpTextField!
     @IBOutlet var Tf4: otpTextField!
 //    @IBOutlet var resendCodeBtn: UIButton!
-}
 
-//Mark:- SetUpUI
-extension ChangePinOtpCVC{
+
+	//MARK: - SetUpUI
+
     func setUpUI(){
 //        IQKeyboardManager.shared.enableAutoToolbar = false
-        CommonUI.setUpLbl(lbl: enterCodeLbl, text: L10n.EnterCode.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: confirmationLbl, text: L10n.confirmationCode.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: confirmationLbl, text: CommonFunctions.localisation(key: "CONFIRMATION_CODE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 
         let tfs : [otpTextField] = [Tf1,Tf2,Tf3, Tf4]
         for tf in tfs {
@@ -37,9 +37,7 @@ extension ChangePinOtpCVC{
             tf.font = UIFont.MabryProMedium(Size.Large.sizeValue())
             CommonUI.setUpViewBorder(vw: tf, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor)
         }
-//        CommonUI.setUpButton(btn: resendCodeBtn, text: "\(L10n.resendCodeWillBeSend.description)00:\(time)", textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-//        self.resendCodeBtn.addTarget(self, action: #selector(resendCodeButton), for: .touchUpInside)
-//        hitTimer()
+
     }
     
 }

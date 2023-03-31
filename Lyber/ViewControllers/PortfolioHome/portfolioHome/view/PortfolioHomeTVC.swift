@@ -53,7 +53,7 @@ extension PortfolioHomeTVC{
         
         
         
-        CommonUI.setUpLbl(lbl: portfolioLbl, text: L10n.Portfolio.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         
         

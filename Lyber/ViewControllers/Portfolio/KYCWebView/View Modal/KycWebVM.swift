@@ -15,6 +15,6 @@ class KycWebVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PUT, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")
     }
 }

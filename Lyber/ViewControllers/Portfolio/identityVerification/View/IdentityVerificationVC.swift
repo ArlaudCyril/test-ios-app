@@ -9,7 +9,7 @@ import UIKit
 import AVKit
 import JWTDecode
 
-class IdentityVerificationVC: UIViewController {
+class IdentityVerificationVC: ViewController {
     //MARK: - Variables
     var imagePicker = UIImagePickerController()
     var IDProofImage : UIImage? = nil
@@ -33,7 +33,7 @@ class IdentityVerificationVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
         do {
-            var token = try decode(jwt: userData.shared.accessToken)
+            var token = try decode(jwt: userData.shared.userToken)
         } catch {
             print(error)
         }
@@ -48,24 +48,23 @@ class IdentityVerificationVC: UIViewController {
             
         }
     }
-}
 
-//MARK: - SetUpUI
-extension IdentityVerificationVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
         headerView.backBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.verificationLbl, text: L10n.IdentityVerification.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.verificationDescLbl, text: L10n.stepsProtectYouFromFraudsAndTheft.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.verificationDescLbl, text: L10n.stepsProtectYouFromFraudsAndTheft.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.verificationLbl, text: CommonFunctions.localisation(key: "IDENTITY_VERIFICATION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.verificationDescLbl, text: CommonFunctions.localisation(key: "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.verificationDescLbl, text: CommonFunctions.localisation(key: "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT"), lineSpacing: 6, textAlignment: .left)
         
-        CommonUI.setUpLbl(lbl: self.takePictureLbl, text: L10n.TakePictureOfYourPapers.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.idPassportLbl, text: L10n.NationalIDCardPassportOrDrivingLicense.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.idPassportLbl, text: L10n.NationalIDCardPassportOrDrivingLicense.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.takePictureLbl, text: CommonFunctions.localisation(key: "TAKE_PICTURE_OF_YOUR_PAPERS"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.idPassportLbl, text: CommonFunctions.localisation(key: "NATIONAL_ID_CARD_PASSPORT_OR_DRIVING_LICENSE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.idPassportLbl, text: CommonFunctions.localisation(key: "NATIONAL_ID_CARD_PASSPORT_OR_DRIVING_LICENSE"), lineSpacing: 6, textAlignment: .left)
         
-        CommonUI.setUpLbl(lbl: self.takeSelfieLbl, text: L10n.TakeASelfie.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.takeSelfieLbl, text: CommonFunctions.localisation(key: "TAKE_A_SELFIE"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        self.OpenCameraBtn.setTitle("Start verification", for: .normal)
+        self.OpenCameraBtn.setTitle(CommonFunctions.localisation(key: "START_VERIFICATION"), for: .normal)
         let btns = [firstBtn,secondBtn]
         for btn in btns {
             btn?.layer.cornerRadius = (btn?.layer.bounds.height ?? 0)/2
@@ -161,7 +160,7 @@ extension IdentityVerificationVC{
         self.secondBtn.setImage(Assets.checkmark_color.image(), for: .normal)
         CommonUI.StrikeThroughLabel(lbl: takeSelfieLbl, textcolor: UIColor.grey877E95)
         self.OpenCameraBtn.tag = 1
-        self.OpenCameraBtn.setTitle(L10n.Next.description, for: .normal)
+        self.OpenCameraBtn.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
     }
     
     func showAlert(){

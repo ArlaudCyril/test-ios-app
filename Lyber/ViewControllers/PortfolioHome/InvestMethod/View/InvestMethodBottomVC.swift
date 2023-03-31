@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InvestMethodBottomVC: UIViewController {
+class InvestMethodBottomVC: ViewController {
     //MARK: - Variables
     
     //MARK: - IB OUTLETS
@@ -30,14 +30,11 @@ class InvestMethodBottomVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-    
 
 
-}
+	//MARK: - SetUpUI
 
-//MARK: - SetUpUI
-extension InvestMethodBottomVC{
-    func setUpUI(){
+    override func setUpUI(){
         let tap = UITapGestureRecognizer(target: self, action:#selector(closeBottomSheet))
         self.outerView.addGestureRecognizer(tap)
         
@@ -47,18 +44,18 @@ extension InvestMethodBottomVC{
         self.bottomStackVw.addGestureRecognizer(pan)
         self.completeYourAccountVw.layer.cornerRadius = 32
         
-        CommonUI.setUpLbl(lbl: completeYourAccountLbl, text: L10n.CompleteYourAccount.description, textColor: UIColor.whiteColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: startInvestingLbl, text: L10n.ToStartInvesting.description, textColor: UIColor.whiteColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: completeYourAccountLbl, text: CommonFunctions.localisation(key: "COMPLETE_YOUR_ACCOUNT"), textColor: UIColor.whiteColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: startInvestingLbl, text: CommonFunctions.localisation(key: "TO_START_INVESTING"), textColor: UIColor.whiteColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.withdrawExchangeView.isHidden = true
         self.withDrawView.layer.cornerRadius = 32
         self.withDrawView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
 //        self.withDrawView.alpha = 0.6
-        CommonUI.setUpLbl(lbl: withdrawLbl, text: L10n.Withdraw.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: assetToBankAccountLbl, text: L10n.YourAssetsYourBankAccount.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: withdrawLbl, text: CommonFunctions.localisation(key: "WITHDRAW"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: assetToBankAccountLbl, text: CommonFunctions.localisation(key: "YOUR_ASSETS_YOUR_BANK_ACCOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: exchangeLbl, text: L10n.Exchange.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: tradeOneAssetsLbl, text: L10n.TradeOneAssetAgainstAnother.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: exchangeLbl, text: CommonFunctions.localisation(key: "EXCHANGE"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: tradeOneAssetsLbl, text: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.rightArrowBtn.addTarget(self, action: #selector(rightBtnAct), for: .touchUpInside)
     }

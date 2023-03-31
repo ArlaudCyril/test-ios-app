@@ -14,7 +14,7 @@ class RecurringDetailVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GetString, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func deleteInvestmentApi(id : String,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -24,6 +24,6 @@ class RecurringDetailVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

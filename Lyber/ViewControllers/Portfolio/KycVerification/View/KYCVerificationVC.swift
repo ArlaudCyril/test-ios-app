@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KYCVerificationVC: UIViewController {
+class KYCVerificationVC: ViewController {
     //MARK: - Variables
     var kycVerificationVM = KYCVerificationVM()
     var isKycDone : Bool = false
@@ -35,18 +35,16 @@ class KYCVerificationVC: UIViewController {
             CommonFunctions.hideLoader(self.view)
         })
     }
-}
 
-//MARK: - SetUpUI
-extension KYCVerificationVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
-        CommonUI.setUpLbl(lbl: self.welcometoLyberLbl, text: L10n.IdentityVerification.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.verifyYourIdentityLbl, text: L10n.stepsProtectYouFromFraudsAndTheft.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.verifyYourIdentityLbl, text: L10n.stepsProtectYouFromFraudsAndTheft.description, lineSpacing: 6, textAlignment: .left)
-        CommonUI.setUpButton(btn: self.btnVerificationInProgress, text: L10n.VerificationInProgress.description, textcolor: UIColor.primaryTextcolor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-        self.startBtn.setTitle(L10n.Start.description, for: .normal)
-        self.editBtn.setTitle(L10n.EditPersonalData.description, for: .normal)
+        CommonUI.setUpLbl(lbl: self.welcometoLyberLbl, text: CommonFunctions.localisation(key: "IDENTITY_VERIFICATION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.verifyYourIdentityLbl, text: CommonFunctions.localisation(key: "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.verifyYourIdentityLbl, text: CommonFunctions.localisation(key: "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT"), lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpButton(btn: self.btnVerificationInProgress, text: CommonFunctions.localisation(key: "VERIFICATION_IN_PROGRESS"), textcolor: UIColor.primaryTextcolor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        self.startBtn.setTitle(CommonFunctions.localisation(key: "START"), for: .normal)
+        self.editBtn.setTitle(CommonFunctions.localisation(key: "EDIT_PERSONAL_DATA"), for: .normal)
         self.editView.isHidden = true
         self.btnVerificationInProgress.isHidden = true
         

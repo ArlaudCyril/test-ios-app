@@ -34,6 +34,9 @@ class PersonalDataVM{
         if personalData?.isUsPerson ?? "" != ""{
             param[Constants.ApiKeys.isUSCitizen] =  personalData?.isUsPerson ?? "" == "Yes" ? true : false
         }
+		if personalData?.language ?? "" != ""{
+			param[Constants.ApiKeys.language] =  personalData?.language?.uppercased() ?? ""
+        }
         
         
         if profile_info_step == 4{
@@ -60,7 +63,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
     func setAddressApi(profile_info_step : Int,personalData : personalDataStruct?, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -83,7 +86,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
     func setInvestmentExperienceApi(profile_info_step : Int,personalData : personalDataStruct?, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -104,7 +107,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
     
@@ -117,7 +120,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func sendVerificationEmailApi(email : String?,password : String?, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -138,17 +141,18 @@ class PersonalDataVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
-    func checkEmailVerificationApi(uuid : String? , completion: @escaping ( (OTPAPI?) -> Void )){
-        let link = "\(Constants.ApiUrlKeys.userVerifyEmail)?uuid=\(uuid ?? "")&code=\(1234)"
-        ApiHandler.callApiWithParameters(url: link, withParameters: [:], ofType: OTPAPI.self, onSuccess: { response in
+    func checkEmailVerificationApi(code : String?, completion: @escaping ( (OTPAPI?) -> Void )){
+        let params : [String : Any] = [Constants.ApiKeys.code : code ?? ""]
+
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyEmail, withParameters: params, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error in
             completion(nil)
 //            CommonFunction.toster(error)
-        }, method: .GetString, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
     func finishRegistrationApi(completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -158,6 +162,6 @@ class PersonalDataVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
 }

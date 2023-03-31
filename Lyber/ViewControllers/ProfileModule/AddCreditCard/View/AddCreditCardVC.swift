@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class AddCreditCardVC: UIViewController {
+class AddCreditCardVC: ViewController {
     //MARK: - Variables
     var dropDown = DropDown()
     //MARK: - IB OUTLETS
@@ -33,15 +33,15 @@ class AddCreditCardVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-}
 
-//MARK: - SetUpUI
-extension AddCreditCardVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
-        CommonUI.setUpLbl(lbl: addCreditcardLbl, text: L10n.AddCreditCard.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: termConditionLbl, text: L10n.ByAddingNewCardYouAcceptTermsConditions.description, textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: addCreditcardLbl, text: CommonFunctions.localisation(key: "ADD_CREDIT_CARD"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: termConditionLbl, text: CommonFunctions.localisation(key: "ADDING_NEW_CARD_ACCEPT_TERMS_CONDITIONS"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.nameView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.cardNumberView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
@@ -49,13 +49,13 @@ extension AddCreditCardVC{
         CommonUI.setUpViewBorder(vw: self.CVVView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.zipView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
-        CommonUI.setUpTextField(textfield: nameTF, placeholder: L10n.CardholderName.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: cardNumberTF, placeholder: L10n.CardNumber.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-//        CommonUI.setUpTextField(textfield: expireTF, placeholder: L10n.Expire.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-//        CommonUI.setUpButton(btn: expireBtn, text: L10n.Expire.description, textcolor: UIColor.TFplaceholderColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: expireLbl, text: L10n.Expire.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: cvvTF, placeholder: L10n.CVV.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: zipCodeTF, placeholder: L10n.ZIPCode.description, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: nameTF, placeholder: CommonFunctions.localisation(key: "CARD_HOLDER_NAME"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: cardNumberTF, placeholder: CommonFunctions.localisation(key: "CARD_NUMBER"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+//        CommonUI.setUpTextField(textfield: expireTF, placeholder: CommonFunctions.localisation(key: "EXPIRE"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+//        CommonUI.setUpButton(btn: expireBtn, text: CommonFunctions.localisation(key: "EXPIRE"), textcolor: UIColor.TFplaceholderColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: expireLbl, text: CommonFunctions.localisation(key: "EXPIRE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: cvvTF, placeholder: CommonFunctions.localisation(key: "CVV"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: zipCodeTF, placeholder: CommonFunctions.localisation(key: "ZIPCODE"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         let tfs = [nameTF,cardNumberTF,cvvTF,zipCodeTF]
         for tf in tfs{
@@ -63,7 +63,7 @@ extension AddCreditCardVC{
             tf?.textColor = UIColor.Purple35126D
             tf?.tintColor = UIColor.Purple35126D
         }
-        self.addBtn.setTitle(L10n.Add.description, for: .normal)
+        self.addBtn.setTitle(CommonFunctions.localisation(key: "ADD"), for: .normal)
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.addBtn.addTarget(self, action: #selector(addBtnAct), for: .touchUpInside)

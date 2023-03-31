@@ -9,17 +9,28 @@ import Foundation
 import CoreData
 import UIKit
 
+struct GlobalVariables {
+    static var isRegistering = false
+	static var language : Language = Language(id: "fr", name: "Français", image: Assets.fr_flag)
+	static var languageArray : [Language] = [Language(id:"en", name: "English", image: Assets.uk_flag),Language(id: "fr", name: "Français", image: Assets.fr_flag)]
+	static var bundle : Bundle = Bundle()
+}
+
+
 class userData : NSObject {
-    var accessToken = ""
+    var userToken = ""
     var refreshToken = ""
+    var registrationToken = ""
+	var language = ""
     var time : Date? = nil
     var id = ""
     var email = ""
-    var name = ""
+    var firstname = ""
+    var lastname = ""
     var rating = 0.0
     var profile_image = ""
     var profilePicType = ""
-    var phone_no = 0
+    var phone_no = ""
     var phoneVerified = 0
     var countryCode = ""
     var walletBalance = 0
@@ -39,6 +50,11 @@ class userData : NSObject {
     var extraSecurity = ""
     var strongAuthVerified = false
     var enableWhiteListing = false
+    var scope2FALogin = false
+    var scope2FAWhiteListing = false
+    var scope2FAWithdrawal = false
+    var has2FA = false
+    var type2FA = "none"
     
     class var shared: userData{
         struct singleTon {
@@ -47,13 +63,14 @@ class userData : NSObject {
         return singleTon.instance
     }
 
-    func fromSignUpData(_ data : LoginAPI?){// why no refresh token here
+    /* put in comment to see if used, to delete if not
+     func fromSignUpData(_ data : LoginAPI?){// why no refresh token here
         self.accessToken = data?.token ?? ""
         self.profile_image = data?.user?.profilePic ?? ""
         self.profilePicType = data?.user?.profilePicType ?? ""
         self.name = "\(data?.user?.firstName ?? "") \(data?.user?.lastName ?? "")"
         self.email = data?.user?.email ?? ""
-        self.phone_no = data?.user?.phoneNo ?? 0
+        self.phone_no = data?.user?.phoneNo ?? ""
         self.countryCode = data?.user?.countryCode ?? ""
         self.logInPinSet = data?.user?.loginPin ?? 0
         self.is_push_enabled = data?.user?.isPushEnabled ?? 0
@@ -67,6 +84,8 @@ class userData : NSObject {
         self.extraSecurity = data?.user?.extraSecurity ?? ""
         self.strongAuthVerified = data?.user?.isStrongAuthVerified ?? false
         self.enableWhiteListing = data?.user?.isAddressWhitelistingEnabled ?? false
+
+        var scope2FAWithdrawal = false
         
         if data?.user?.step == 1{
             self.isAccountCreated = true
@@ -82,43 +101,8 @@ class userData : NSObject {
        
 //        self.walletBalance = data.wallet ?? 0
         dataSave()
-    }
+    }*/
 
-//    func fromPersonalData(_ data : ProfileAPI?){
-//        self.name = "\(data?.firstName ?? "") \(data?.lastName ?? "")"
-//        self.profile_image = data?.profilePic ?? ""
-//        self.profilePicType = data?.profilePicType ?? ""
-//        self.email = data?.email ?? ""
-//        self.phone_no = data?.phoneNo ?? 0
-//        self.countryCode = data?.countryCode ?? ""
-//        self.logInPinSet = data?.loginPin ?? 0
-//        self.is_push_enabled = data?.isPushEnabled ?? 0
-//        self.personalDataStepComplete = data?.personalInfoStep ?? 0
-//        self.balance = data?.balance ?? 0
-//        self.iban = data?.iban ?? ""
-//        self.bic = data?.bic ?? ""
-//        self.step = data?.step ?? 0
-//        self.faceIdEnabled = data?.isFaceIDEnabled ?? 0
-//        self.extraSecurity = data?.extraSecurity ?? ""
-//        self.strongAuthVerified = data?.isStrongAuthVerified ?? false
-//        self.enableWhiteListing = data?.isAddressWhitelistingEnabled ?? false
-//        
-//        if data?.step == 1{
-//            self.isAccountCreated = true
-//        }else if data?.step == 2{
-//            self.isPersonalInfoFilled = true
-////            self.isIdentityVerified = true
-//        }else if data?.step == 3{
-//            self.isIdentityVerified = true
-//        }else if data?.step == 4{
-//            self.isIdentityVerified = true
-//            self.isEducationStrategyRead = true
-//        }
-////        self.phoneVerified = data.isVerified!
-////        self.profile_image = data.profilePic ?? ""
-////        self.walletBalance = data.wallet ?? 0
-//        dataSave()
-//    }
     
     func dataSave(){
        
@@ -132,10 +116,13 @@ class userData : NSObject {
             print(error)
         }
         let newData = NSEntityDescription.insertNewObject(forEntityName: "UserData", into: context)
-        newData.setValue(accessToken, forKey: "accessToken")
+        newData.setValue(userToken, forKey: "accessToken")
         newData.setValue(refreshToken, forKey: "refreshToken")
+        newData.setValue(registrationToken, forKey: "registrationToken")
+        newData.setValue(language, forKey: "language")
         newData.setValue(time, forKey: "time")
-        newData.setValue(name, forKey: "name")
+        newData.setValue(firstname, forKey: "firstname")
+        newData.setValue(lastname, forKey: "lastname")
         newData.setValue(email, forKey: "email")
         newData.setValue(phone_no, forKey: "phone_no")
         newData.setValue(countryCode, forKey: "countryCode")
@@ -157,7 +144,12 @@ class userData : NSObject {
         newData.setValue(profile_image, forKey: "profile_image")
         newData.setValue(profilePicType, forKey: "profilePicType")
         newData.setValue(enableWhiteListing, forKey: "enableWhiteListing")
-//        newData.setValue(walletBalance, forKey: "wallet")
+        newData.setValue(scope2FALogin, forKey: "scope2FALogin")
+        newData.setValue(scope2FAWhiteListing, forKey: "scope2FAWhiteListing")
+        newData.setValue(scope2FAWithdrawal, forKey: "scope2FAWithdrawal")
+        newData.setValue(has2FA, forKey: "has2FA")
+        newData.setValue(type2FA, forKey: "type2FA")
+        
         do {
             try context.save()
             print(newData)
@@ -171,6 +163,26 @@ class userData : NSObject {
     
     func getData(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        //MARK: - Uncomment when you want to update the types of variables in your bdd
+        /*let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
+        let fileManager = FileManager.default
+        guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Could not access documents directory")
+        }
+
+        let storeURL = documentsURL.appendingPathComponent("Lyber.sqlite")
+
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        let options = [NSMigratePersistentStoresAutomaticallyOption: true,
+                       NSInferMappingModelAutomaticallyOption: true]
+        do {
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil,
+                                               at: storeURL, options: options)
+        } catch {
+            print("Error adding persistent store: \(error)")
+        }*/
+
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
         request.returnsObjectsAsFaults = true
@@ -196,20 +208,32 @@ class userData : NSObject {
                         print("data get isEducationStrategyRead \(isEducationStrategyRead)")
                     }
                     if let accessToken = result.value(forKey: "accessToken") as? String{
-                        self.accessToken = accessToken
+                        self.userToken = accessToken
                         print("data get accessToken \(accessToken)")
                     }
                     if let refreshToken = result.value(forKey: "refreshToken") as? String{
                         self.refreshToken = refreshToken
                         print("data get refreshToken \(refreshToken)")
                     }
+                    if let registrationToken = result.value(forKey: "registrationToken") as? String{
+                        self.registrationToken = registrationToken
+                        print("data get registrationToken \(registrationToken)")
+                    }
+					if let language = result.value(forKey: "language") as? String{
+                        self.language = language
+                        print("data get language \(language)")
+                    }
                     if let time = result.value(forKey: "time") as? Date{
                         self.time = time
                         print("data get time \(time)")
                     }
-                    if let name = result.value(forKey: "name") as? String{
-                        self.name = name
-                        print("data get name \(name)")
+                    if let firstname = result.value(forKey: "firstname") as? String{
+                        self.firstname = firstname
+                        print("data get firstname \(firstname)")
+                    }
+					if let lastname = result.value(forKey: "lastname") as? String{
+                        self.lastname = lastname
+                        print("data get lastname \(lastname)")
                     }
                     if let email = result.value(forKey: "email") as? String{
                         self.email = email
@@ -235,7 +259,7 @@ class userData : NSObject {
                         self.step = step
                         print("data get step \(step)")
                     }
-                    if let phone_no = result.value(forKey: "phone_no") as? Int{
+                    if let phone_no = result.value(forKey: "phone_no") as? String{
                         self.phone_no = phone_no
                         print("data get phone_no \(phone_no)")
                     }
@@ -279,6 +303,26 @@ class userData : NSObject {
                         self.enableWhiteListing = enableWhiteListing
                         print("data get enableWhiteListing \(enableWhiteListing)")
                     }
+                    if let scope2FALogin = result.value(forKey: "scope2FALogin") as? Bool{
+                        self.scope2FALogin = scope2FALogin
+                        print("data get scope2FALogin \(scope2FALogin)")
+                    }
+                    if let scope2FAWhiteListing = result.value(forKey: "scope2FAWhiteListing") as? Bool{
+                        self.scope2FAWhiteListing = scope2FAWhiteListing
+                        print("data get scope2FAWhiteListing \(scope2FAWhiteListing)")
+                    }
+                    if let scope2FAWithdrawal = result.value(forKey: "scope2FAWithdrawal") as? Bool{
+                        self.scope2FAWithdrawal = scope2FAWithdrawal
+                        print("data get scope2FAWithdrawal \(scope2FAWithdrawal)")
+                    }
+                    if let has2FA = result.value(forKey: "has2FA") as? Bool{
+                        self.has2FA = has2FA
+                        print("data get has2FA \(has2FA)")
+                    }
+                    if let type2FA = result.value(forKey: "type2FA") as? String{
+                        self.type2FA = type2FA
+                        print("data get type2FA \(type2FA)")
+                    }
                 }
             }
         } catch {
@@ -291,15 +335,18 @@ class userData : NSObject {
         self.isPersonalInfoFilled = false
         self.isIdentityVerified = false
         self.isEducationStrategyRead = false
-        self.accessToken = ""
+        self.userToken = ""
         self.refreshToken = ""
+        self.registrationToken = ""
+        self.language = ""
         self.time = nil
         self.id = ""
-        self.name = ""
+        self.firstname = ""
+        self.lastname = ""
         self.rating = 0.0
         self.profile_image = ""
         self.email = ""
-        self.phone_no = 0
+        self.phone_no = ""
         self.countryCode = ""
         self.phoneVerified = 0
         self.walletBalance = 0
@@ -317,6 +364,11 @@ class userData : NSObject {
         self.profile_image = ""
         self.profilePicType = ""
         self.enableWhiteListing = false
+        self.scope2FALogin = false
+        self.scope2FAWhiteListing = false
+        self.scope2FAWithdrawal = false
+        self.has2FA = false
+        self.type2FA = "none"
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext

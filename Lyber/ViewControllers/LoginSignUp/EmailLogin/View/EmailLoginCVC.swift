@@ -27,9 +27,11 @@ class EmailLoginCVC: UICollectionViewCell {
 extension EmailLoginCVC{
     func setUpUI(){
 //        IQKeyboardManager.shared.enableAutoToolbar = false
-        CommonUI.setUpLbl(lbl: enterEmailLbl, text: L10n.NiceToSeeYouAgain.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: enterEmailDescLbl, text: L10n.enterYourEmailToLogin.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: enterEmailDescLbl, text: L10n.enterYourEmailToLogin.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: enterEmailLbl, text: CommonFunctions.localisation(key: "NICE_SEE_YOU_AGAIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: enterEmailDescLbl, text: CommonFunctions.localisation(key: "ENTER_EMAIL_LOGIN"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: enterEmailDescLbl, text: CommonFunctions.localisation(key: "ENTER_EMAIL_LOGIN"), lineSpacing: 6, textAlignment: .left)
+		self.emailTF.placeholder = CommonFunctions.localisation(key: "MAIL_ADDRESS")
+		self.passwordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
     
        
         CommonUI.setUpViewBorder(vw: self.emailView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
@@ -38,12 +40,12 @@ extension EmailLoginCVC{
         self.emailTF.delegate = self
         self.passwordTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         self.passwordTF.delegate = self
-        CommonUI.setUpButton(btn: self.loginByPhoneBtn, text: L10n.LoginByPhone.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        self.loginByPhoneBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.LoginByPhone.description ), for: .normal)
+        CommonUI.setUpButton(btn: self.loginByPhoneBtn, text: CommonFunctions.localisation(key: "LOGIN_PHONE"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        self.loginByPhoneBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOGIN_PHONE") ), for: .normal)
 //        if controller?.isLogin == true{
 //            self.loginByEmailBtn.isHidden = false
-//            self.enterNumberLbl.text = L10n.HappyToSeeYouBack.description
-//            self.enterNumberDescLbl.text = L10n.EnterPhoneNumberToLogin.description
+//            self.enterNumberLbl.text = CommonFunctions.localisation(key: "HAPPY_SEE_YOU_BACK")
+//            self.enterNumberDescLbl.text = CommonFunctions.localisation(key: "ENTER_PHONE_NUMBER_LOGIN")
 //        }else{
 //            self.loginByEmailBtn.isHidden = true
 //        }

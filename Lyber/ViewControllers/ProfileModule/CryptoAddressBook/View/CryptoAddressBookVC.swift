@@ -8,7 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class CryptoAddressBookVC: UIViewController {
+class CryptoAddressBookVC: ViewController {
     //MARK: - Variables
     var cryptoAddressBookVM = CryptoAddressBookVM()
     var whiteListAddress : [Address] = []
@@ -41,22 +41,20 @@ class CryptoAddressBookVC: UIViewController {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-}
+	
+	//MARK: - SetUpUI
 
-//MARK: - SetUpUI
-extension CryptoAddressBookVC{
-    func setUpUI(){
+    override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
-        
-        CommonUI.setUpLbl(lbl: self.addressBookLbl, text: L10n.CryptoAdressBook.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addressBookDescLbl, text: L10n.viewAndAddfavouriteCryptoAddressesHere.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.addressBookDescLbl, text: L10n.viewAndAddfavouriteCryptoAddressesHere.description, lineSpacing: 6, textAlignment: .left)
+		self.searchTF.placeholder = CommonFunctions.localisation(key: "SEARCH")
+        CommonUI.setUpLbl(lbl: self.addressBookLbl, text: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressBookDescLbl, text: CommonFunctions.localisation(key: "VIEW_ADD_FAVOURITE_CRYPTO_ADDRESSES_HERE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.addressBookDescLbl, text: CommonFunctions.localisation(key: "VIEW_ADD_FAVOURITE_CRYPTO_ADDRESSES_HERE"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpViewBorder(vw: self.whitlistingView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.whitlistingLbl, text: L10n.Whitelisting.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.activeDuringLbl, text: "\(L10n.Security.description) : 72H", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.whitlistingLbl, text: CommonFunctions.localisation(key: "WHITELISTING"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.activeDuringLbl, text: "\(CommonFunctions.localisation(key: "SECURITY")) : 72H", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.activeDuringLbl.isHidden = true
         
@@ -67,17 +65,17 @@ extension CryptoAddressBookVC{
         
         CommonUI.setUpViewBorder(vw: addAddressView, radius: 32, borderWidth: 1, borderColor: UIColor.borderColor.cgColor)
         self.addAddressView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        CommonUI.setUpButton(btn: self.addNewAddressBtn, text: L10n.AddNewAdress.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: self.addNewAddressBtn, text: CommonFunctions.localisation(key: "ADD_NEW_ADRESS"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         if userData.shared.enableWhiteListing {
             self.whitlistingBtn.isOn = true
             self.activeDuringLbl.isHidden = false
             if userData.shared.extraSecurity == "24_HOURS"{
-                self.activeDuringLbl.text = "\(L10n.Security.description) : 24H"
+                self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 24H"
             }else if userData.shared.extraSecurity == "72_HOURS"{
-                self.activeDuringLbl.text = "\(L10n.Security.description) : 72H"
+                self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 72H"
             }else if userData.shared.extraSecurity == "NO_EXTRA_SECURITY"{
-                self.activeDuringLbl.text = "\(L10n.Security.description) : No Security"
+                self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : No Security"
             }
         }else{
             self.whitlistingBtn.isOn = false
@@ -179,11 +177,11 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
                 self?.whitlistingBtn.isOn = true
                 self?.activeDuringLbl.isHidden = false
                 if response?.id == 1{               //72Hour
-                    self?.activeDuringLbl.text = "\(L10n.Security.description) : 72H"
+                    self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 72H"
                 }else if response?.id == 2{         //24 Hour
-                    self?.activeDuringLbl.text = "\(L10n.Security.description) : 24H"
+                    self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 24H"
                 }else{                              //No Extra Secuirty
-                    self?.activeDuringLbl.text = "\(L10n.Security.description) : No Security"
+                    self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : No Security"
                 }
 //                self?.timeBtn.isHidden = false
             }

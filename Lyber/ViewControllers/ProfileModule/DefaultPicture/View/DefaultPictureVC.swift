@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DefaultPictureVC: UIViewController {
+class DefaultPictureVC: ViewController {
     //MARK: - Variables
     var pictureData : [String] =
     ["one","two","three","four","five","six","seven","eight","nine","ten",
@@ -24,13 +24,13 @@ class DefaultPictureVC: UIViewController {
         setUpUI()
     }
 
-}
 
-//MARK: - SetUpUI
-extension DefaultPictureVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
-        self.headerView.headerLbl.text = L10n.SelectDefaultPicture.description
+        self.headerView.headerLbl.text = CommonFunctions.localisation(key: "SELECT_DEFAULT_PICTURE")
         self.collView.delegate = self
         self.collView.dataSource = self
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)

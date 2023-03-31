@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BalanceVC: UIViewController {
+class BalanceVC: ViewController {
     
     //MARK: - Variables
     var pointOrigin : CGPoint!
@@ -45,32 +45,32 @@ class BalanceVC: UIViewController {
         self.getTransactionData()
     }
 
-}
 
-//MARK: - SetUpUI
-extension BalanceVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.navigationController?.navigationBar.isHidden = true
         bottomView.layer.cornerRadius = 32
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.balanceLbl, text: L10n.Balance.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.balanceLbl, text: CommonFunctions.localisation(key: "BALANCE"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.coinNameLbl, text: "\(myAsset?.name ?? "") (\(myAsset?.symbol?.uppercased() ?? ""))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
         CommonUI.setUpLbl(lbl: self.coinLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: (myAsset?.total_balance ?? 0.0))) \(myAsset?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: ((myAsset?.total_balance ?? 0.0)*(myAsset?.currentPrice ?? 0.0))))€", textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         
         self.earningVw.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.totalEarningLbl, text: L10n.TotalEarnings.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalEarningLbl, text: CommonFunctions.localisation(key: "TOTAL_EARNINGS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: self.NoOfEuroLbl, text: "0.00€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: (myAsset?.total_balance ?? 0.0))) \(myAsset?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
         self.percentageVw.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.roiLbl, text: L10n.ROI.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.roiLbl, text: CommonFunctions.localisation(key: "ROI"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: "~5,01%*", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.annualPercentageLbl, text: L10n.AnnualPercentage.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.annualPercentageLbl, text: CommonFunctions.localisation(key: "ANNUAL_PERCENTAGE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: self.historiqueLbl, text: L10n.History.description , textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.historiqueLbl, text: CommonFunctions.localisation(key: "HISTORY") , textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         
         self.tblView.delegate = self
         self.tblView.dataSource = self

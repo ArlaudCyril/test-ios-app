@@ -8,7 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class InvestInMyStrategyVC: UIViewController {
+class InvestInMyStrategyVC: ViewController {
     //MARK: - Variables
     var strategyType : InvestStrategyModel = .activateStrategy
     var fromCoinData : Asset?
@@ -89,18 +89,16 @@ class InvestInMyStrategyVC: UIViewController {
             getAddedWalletAddress()
         }
     }
-}
 
-//MARK: - SetUpUI
-extension InvestInMyStrategyVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.strategyCoinsData = self.strategyData?.bundle ?? []
         self.rightExchangeBtn.layer.cornerRadius = 8
         self.maximumBtn.isHidden = true
         self.rightExchangeBtn.isHidden = true
-        CommonUI.setUpLbl(lbl: self.investInMyStrategyLbl, text: L10n.InvestInMyStrat.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.investInMyStrategyLbl, text: CommonFunctions.localisation(key: "INVEST_IN_MY_STRAT"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.coinsLbl, text: "BTC, ETH, SOL, AVAX +5 other assets", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "0.0 BTC", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "15.0 BTC", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.creditCardVw.backgroundColor = UIColor.greyColor
         self.creditCardVw.layer.cornerRadius = 16
@@ -123,15 +121,15 @@ extension InvestInMyStrategyVC{
         CommonUI.setUpButton(btn: self.maximumBtn, text: "MAX", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 8, font: UIFont.MabryProMedium(Size.VSmall.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.frequencyVw, radius: 12, borderWidth: 0, borderColor: UIColor.PurpleColor.cgColor, backgroundColor: UIColor.PurpleColor)
-        CommonUI.setUpLbl(lbl: self.frequencyLbl, text: L10n.AddAFrequency.description, textColor: UIColor.whiteColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.frequencyLbl, text: CommonFunctions.localisation(key: "ADD_A_FREQUENCY"), textColor: UIColor.whiteColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: fromLbl, text: L10n.From.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: fromLbl, text: CommonFunctions.localisation(key: "FROM"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: fromCoinnameLbl, text: assetsData?.symbol?.uppercased() ?? self.fromCoinData?.assetID ?? "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.fromCoinImg.sd_setImage(with: URL(string: assetsData?.image ?? ""))
         
         
-        CommonUI.setUpLbl(lbl: ToLbl, text: L10n.To.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: ToCoinNameLbl, text: L10n.ETH.description, textColor: UIColor.ThirdTextColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: ToLbl, text: CommonFunctions.localisation(key: "TO"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: ToCoinNameLbl, text: CommonFunctions.localisation(key: "ETH"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.ToCoinImg.sd_setImage(with: URL(string: "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880"))
         
         let btnKeys : [UIButton] = [key0,key1,key2,key3,key4,key5,key6,key7,key8,key9,decimalKey,keyCancel]
@@ -148,7 +146,7 @@ extension InvestInMyStrategyVC{
         
         self.enteredText = ""
         self.isFloatTyped = false
-        self.previewMyInvest.setTitle(L10n.PreviewMyInvestment.description, for: .normal)
+        self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_MY_INVESTMENT"), for: .normal)
         self.previewMyInvest.backgroundColor = UIColor.TFplaceholderColor
         self.previewMyInvest.isUserInteractionEnabled = false
         
@@ -172,9 +170,9 @@ extension InvestInMyStrategyVC{
             self.noOfCoinVw.isHidden = false
             self.maximumBtn.isHidden = false
             self.rightExchangeBtn.isHidden = false
-            self.investInMyStrategyLbl.text = "\(L10n.InvestIn.description)\(self.assetsData?.name ?? "")"
+            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "INVEST_IN"))\(self.assetsData?.name ?? "")"
             self.noOfCoinLbl.text = "0.0 \(self.assetsData?.symbol?.uppercased() ?? "")"
-            self.frequencyLbl.text = "\(L10n.AddAFrequency.description) (Optional)"
+            self.frequencyLbl.text = "\(CommonFunctions.localisation(key: "ADD_A_FREQUENCY")) (\(CommonFunctions.localisation(key: "OPTIONAL")))"
             self.maximumMoneyInvest()
         }else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy){
             self.exchangeView.isHidden = true
@@ -215,17 +213,17 @@ extension InvestInMyStrategyVC{
             self.coinsLbl.isHidden = true
             self.noOfCoinVw.isHidden = true
             self.frequencyVw.isHidden = true
-            self.investInMyStrategyLbl.text = L10n.EuroDesposit.description
-            self.previewMyInvest.setTitle(L10n.PreviewDeposit.description, for: .normal)
+            self.investInMyStrategyLbl.text = CommonFunctions.localisation(key: "EURO_DESPOSIT")
+            self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_DEPOSIT"), for: .normal)
         }else if strategyType == .Exchange{
             self.frequencyVw.isHidden = true
             self.maximumBtn.isHidden = false
-            self.previewMyInvest.setTitle(L10n.PreviewExchange.description, for: .normal)
-            self.investInMyStrategyLbl.text = "\(L10n.Exchange.description)\(fromCoinData?.assetID ?? (self.assetsData?.symbol?.uppercased() ?? ""))"
+            self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_EXCHANGE"), for: .normal)
+            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "EXCHANGE"))\(fromCoinData?.assetID ?? (self.assetsData?.symbol?.uppercased() ?? ""))"
             if fromCoinData == nil{
-                self.coinsLbl.text = "\((assetsData?.total_balance ?? 0)*(assetsData?.currentPrice ?? 0))€ Available"
+                self.coinsLbl.text = "\((assetsData?.total_balance ?? 0)*(assetsData?.currentPrice ?? 0))€ \(CommonFunctions.localisation(key: "AVAILABLE"))"
             }else{
-                self.coinsLbl.text = "\((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))€ Available"
+                self.coinsLbl.text = "\((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))€ \(CommonFunctions.localisation(key: "AVAILABLE"))"
             }
             
             self.noOfCoinLbl.text = "0.0 \(self.ToCoinNameLbl.text ?? "")"
@@ -241,16 +239,16 @@ extension InvestInMyStrategyVC{
             self.frequencyVw.isHidden = true
             self.maximumBtn.isHidden = false
             self.rightExchangeBtn.isHidden = false
-            self.previewMyInvest.setTitle(L10n.Next.description, for: .normal)
-            self.investInMyStrategyLbl.text = "\(L10n.WithdrawFrom.description)\(assetsData?.name ?? "")"
-            self.coinsLbl.text = "\((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))€ Available"
+            self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
+            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW_FROM"))\(assetsData?.name ?? "")"
+            self.coinsLbl.text = "\((fromCoinData?.totalBalance ?? 0)*(fromCoinData?.euroAmount ?? 0))€ \(CommonFunctions.localisation(key: "AVAILABLE"))"
             self.noOfCoinLbl.text = "0.0 \(fromCoinData?.assetID ?? "")"
             self.maxMoneyWithdraw()
         } else if strategyType == .withdrawEuro{
             self.exchangeView.isHidden = true
             self.frequencyVw.isHidden = true
-            self.previewMyInvest.setTitle(L10n.Next.description, for: .normal)
-            self.investInMyStrategyLbl.text = "\(L10n.Withdraw.description) Euro"
+            self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
+            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) Euro"
             self.coinsLbl.isHidden = true
             self.noOfCoinLbl.isHidden = true
         }else if strategyType == .anotherWallet{
@@ -268,8 +266,8 @@ extension InvestInMyStrategyVC{
             self.frequencyVw.isHidden = true
             self.creditCardVw.isHidden = true
             self.maximumBtn.isHidden = false
-            self.investInMyStrategyLbl.text = "\(L10n.Sell.description) \(self.assetsData?.name ?? "")"
-            self.previewMyInvest.setTitle(L10n.Sell.description, for: .normal)
+            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.name ?? "")"
+            self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "SELL"), for: .normal)
             self.noOfCoinLbl.text = "0.0 \(self.assetsData?.symbol?.uppercased() ?? "")"
             
         }
@@ -318,7 +316,7 @@ extension InvestInMyStrategyVC {
         }else{
             if self.frequencyVw.isHidden == false{
                 if selectedFrequency == ""{
-                    CommonFunctions.toster(L10n.pleaseSelectFrequency.description)
+                    CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_FREQUENCY"))
                 }else{
                     self.goToConfirmInvestment()
                 }

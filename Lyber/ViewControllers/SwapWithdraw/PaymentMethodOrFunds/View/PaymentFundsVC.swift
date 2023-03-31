@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PaymentFundsVC: UIViewController {
+class PaymentFundsVC: ViewController {
     //MARK:- IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var bottomView: UIView!
@@ -29,24 +29,21 @@ class PaymentFundsVC: UIViewController {
         // Do any additional setup after loading the view.
     }
   
-}
-
-//MARK: - SetUpUI
-extension PaymentFundsVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
         
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         
-        CommonUI.setUpLbl(lbl: addPaymentLbl, text: L10n.AddPaymentMethodOrFundLyberAccount.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: addPaymentLbl, text: CommonFunctions.localisation(key: "ADD_PAYMENT_METHOD_FUND_LYBER_ACCOUNT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         
         self.fundAccountImgView.layer.cornerRadius = self.fundAccountImgView.bounds.height/2
-        CommonUI.setUpLbl(lbl: fundAccountLbl, text: L10n.FundAccount.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: fromyourbankAccLbl, text: L10n.FromYourBankAccount.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: fundAccountLbl, text: CommonFunctions.localisation(key: "FUND_ACCOUNT"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: fromyourbankAccLbl, text: CommonFunctions.localisation(key: "FROM_BANK_ACCOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.creditCardImgView.layer.cornerRadius = self.creditCardImgView.bounds.height/2
-        CommonUI.setUpLbl(lbl: creditCardlbl, text: L10n.AddCreditDebitCard.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: creditCardlbl, text: CommonFunctions.localisation(key: "ADD_CREDIT_DEBIT_CARD"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         let accountTap = UITapGestureRecognizer(target: self, action: #selector(accountTapped))

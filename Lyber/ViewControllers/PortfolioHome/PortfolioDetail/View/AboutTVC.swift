@@ -36,27 +36,35 @@ extension AboutTVC{
         self.descvw.layer.cornerRadius = 16
         if !isExpand {
             DispatchQueue.main.async {
-//                self.controller?.tblView.beginUpdates()
-                CommonUI.setUpLbl(lbl: self.descriptionLbl, text: assetData?.data?.about?.en ?? "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+
                 self.descriptionLbl.delegate = self
                 self.descriptionLbl.numberOfLines = 3
                 self.descriptionLbl.shouldCollapse = true
                 self.descriptionLbl.collapsed = true
                 
                 
-                self.descriptionLbl.collapsedAttributedLink = NSAttributedString(string: "View more", attributes: [NSAttributedString.Key.foregroundColor : UIColor.PurpleColor,NSAttributedString.Key.font : UIFont.MabryProBold(Size.Large.sizeValue()),NSAttributedString.Key.underlineStyle : NSUnderlineStyle.thick.rawValue])
+                self.descriptionLbl.collapsedAttributedLink = NSAttributedString(string: CommonFunctions.localisation(key: "VIEW_MORE"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.PurpleColor,NSAttributedString.Key.font : UIFont.MabryProBold(Size.Large.sizeValue()),NSAttributedString.Key.underlineStyle : NSUnderlineStyle.thick.rawValue])
                 self.descriptionLbl.ellipsis = NSAttributedString(string: "...")
-                self.descriptionLbl.text = assetData?.data?.about?.en ?? ""
-                
+				if(userData.shared.language == "fr")
+				{
+					self.descriptionLbl.text = assetData?.data?.about?.fr ?? ""
+				}else{
+					self.descriptionLbl.text = assetData?.data?.about?.en ?? ""
+				}
                 self.descriptionLbl.layoutIfNeeded()
                 self.descriptionLbl.layoutSubviews()
                 self.contentView.setNeedsLayout()
                 
             }
         }else{
-                self.descriptionLbl.expandedAttributedLink = NSAttributedString(string: "Read Less", attributes: [NSAttributedString.Key.foregroundColor : UIColor.PurpleColor,NSAttributedString.Key.font : UIFont.MabryProBold(Size.Large.sizeValue()),NSAttributedString.Key.underlineStyle : NSUnderlineStyle.thick.rawValue])
+                self.descriptionLbl.expandedAttributedLink = NSAttributedString(string: CommonFunctions.localisation(key: "READ_LESS"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.PurpleColor,NSAttributedString.Key.font : UIFont.MabryProBold(Size.Large.sizeValue()),NSAttributedString.Key.underlineStyle : NSUnderlineStyle.thick.rawValue])
                 self.descriptionLbl.ellipsis = NSAttributedString(string: "...")
-                self.descriptionLbl.text = assetData?.data?.about?.en ?? ""
+			if(userData.shared.language == "fr")
+				{
+					self.descriptionLbl.text = assetData?.data?.about?.fr ?? ""
+				}else{
+					self.descriptionLbl.text = assetData?.data?.about?.en ?? ""
+				}
                 self.descriptionLbl.layoutIfNeeded()
                 self.descriptionLbl.layoutSubviews()
                 self.contentView.setNeedsLayout()

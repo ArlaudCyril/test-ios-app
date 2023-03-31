@@ -7,51 +7,51 @@
 
 import UIKit
 
-class DepositeOrBuyVC: UIViewController {
+class DepositeOrBuyVC: ViewController {
     //MARK: - Variables
     var assetsData : Trending?, coinName : String?
     var buyDepositeData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.InvestOnSingleAsset.description, subName: L10n.WithoutGoingThroughMyStrategy.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.MoneyDeposit.description, subName: L10n.InEurosFromMyBankAccount.description, rightBtnName: "")
+        buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "INVEST_ON_SINGLE_ASSET"), subName: CommonFunctions.localisation(key: "WITHOUT_GOING_THROUGH_STRATEGY"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "MONEY_DEPOSIT"), subName: CommonFunctions.localisation(key: "EUROS_BANK_ACCOUNT"), rightBtnName: "")
     ]
     var paymentMethodData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.CreditCard.description, subName: "***0103", rightBtnName: "1000\(L10n.Max.description)"),
-        buyDepositeModel(icon: Assets.apple_pay.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.ApplePay.description, subName: "***0103", rightBtnName: "750\(L10n.Max.description)"),
-        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.BankAccount.description, subName: "Frida... MX12...3392", rightBtnName: "25 000\(L10n.Max.description)"),
-        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: L10n.AddBankAccount.description, subName: L10n.LimitedTo1000€PerWeek.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.credit_card.image(), iconBackgroundColor: UIColor.PurpleColor, name: L10n.AddCreditCard.description, subName: L10n.LimitedTo25000€PerWeek.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "1000\(CommonFunctions.localisation(key: "MAX"))"),
+        buyDepositeModel(icon: Assets.apple_pay.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "APPLE_PAY"), subName: "***0103", rightBtnName: "750\(CommonFunctions.localisation(key: "MAX"))"),
+        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "BANK_ACCOUNT"), subName: "Frida... MX12...3392", rightBtnName: "25 000\(CommonFunctions.localisation(key: "MAX"))"),
+        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.credit_card.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_CREDIT_CARD"), subName: CommonFunctions.localisation(key: "LIMITED_25000€_WEEK"), rightBtnName: ""),
     ]
     var withdrawExchangedata : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Withdraw.description, subName: L10n.YourAssetsYourBankAccount.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Exchange.description, subName: L10n.TradeOneAssetAgainstAnother.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Deposit.description, subName: L10n.MoneyToLyber.description, rightBtnName: ""),
-//        buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Sell.description, subName: "\(L10n.Sell.description) \(L10n.assets.description)", rightBtnName: "")
+        buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "YOUR_ASSETS_YOUR_BANK_ACCOUNT"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT"), subName: CommonFunctions.localisation(key: "MONEY_LYBER"), rightBtnName: ""),
+//        buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SELL"), subName: "\(CommonFunctions.localisation(key: "SELL")) \(CommonFunctions.localisation(key: "ASSETS"))", rightBtnName: "")
     ]
     var withdrawToAccountData : [buyDepositeModel] = []
     var connectedAccountAddress : [Address] = []
     
     var withdrawAllData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: "Frida... MX12...3392", subName: L10n.BankAccount.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: L10n.AddBankAccount.description, subName: L10n.LimitedTo1000€PerWeek.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: "Frida... MX12...3392", subName: CommonFunctions.localisation(key: "BANK_ACCOUNT"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""),
     ]
     
     var investInStrategyOrAssetData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.InvestInStrategies.description, subName: L10n.BuildYourOwnStrategy.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.InvestInSingleAsset.description, subName: L10n.ChooseAmong80DifferentAssets.description, rightBtnName: "")
+        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "INVEST_IN_STRATEGIES"), subName: CommonFunctions.localisation(key: "BUILD_YOUR_OWN_STRATEGY"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "INVEST_IN_SINGLE_ASSET"), subName: CommonFunctions.localisation(key: "CHOOSE_AMONG_80_DIFFERENT_ASSETS"), rightBtnName: "")
     ]
     
     var investWithStrategiesActiveData: [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.OneTimeInvestment.description, subName: L10n.ExecuteStrategySingleTime.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.pencil.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.AdjustInvestment.description, subName: L10n.ChangeFrequencyAmount.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.TailorStrategy.description, subName: L10n.ChangeAssetRepartition.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.pause.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.PauseStrategy.description, subName: "", rightBtnName: "")
+        buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ONE_TIME_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_SINGLETIME"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.pencil.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ADJUST_INVESTMENT"), subName: CommonFunctions.localisation(key: "CHANGE_FREQUENCY_AMOUNT"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "TAILOR_STRATEGY"), subName: CommonFunctions.localisation(key: "CHANGE_ASSET_REPARTITION"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.pause.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "PAUSE_STRATEGY"), subName: "", rightBtnName: "")
     ]
     
     var investWithStrategiesInactiveData: [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.OneTimeInvestment.description, subName: L10n.ExecuteStrategySingleTime.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.recurrent.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.RecurrentInvestment.description, subName: L10n.ExecuteStrategyRegularBasis.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.TailorStrategy.description, subName: L10n.ChangeAssetRepartition.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.DeleteStrategy.description, subName: "", rightBtnName: "")
+        buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ONE_TIME_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_SINGLETIME"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.recurrent.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "RECURRENT_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_REGULAR_BASIS"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "TAILOR_STRATEGY"), subName: CommonFunctions.localisation(key: "CHANGE_ASSET_REPARTITION"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DELETE_STRATEGY"), subName: "", rightBtnName: "")
     ]
     
     var strategy : Strategy = Strategy()
@@ -75,55 +75,55 @@ class DepositeOrBuyVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-}
 
-//MARK: - SetUpUI
-extension DepositeOrBuyVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.depositeOrSingularBuyLbl, text: L10n.DepositSingularBuy.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.depositeOrSingularBuyLbl, text: CommonFunctions.localisation(key: "DEPOSIT_SINGULAR_BUY"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.tblView.delegate = self
         self.tblView.dataSource = self
         
         if popupType == .DepositeBuy{
-            self.depositeOrSingularBuyLbl.text = L10n.DepositSingularBuy.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "DEPOSIT_SINGULAR_BUY")
         }else if popupType == .PayWith{
-            self.depositeOrSingularBuyLbl.text = L10n.PayWith.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "PAY_WITH")
         }else if popupType == .withdrawExchange{
-            self.depositeOrSingularBuyLbl.text = L10n.WithdrawOrExchange.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_EXCHANGE")
         }else if popupType == .withdrawTo{
-            self.depositeOrSingularBuyLbl.text = L10n.WithdrawTo.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_TO")
             if self.connectedAccountAddress.count > 0{
                 for i in 0...((self.connectedAccountAddress.count) - 1){
                     self.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(),svgUrl: self.connectedAccountAddress[i].logo ?? "", iconBackgroundColor: UIColor.clear, name: self.connectedAccountAddress[i].name , subName: self.connectedAccountAddress[i].address ?? "", rightBtnName: ""))
                 }
             }
-            self.withdrawToAccountData.insert(buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(L10n.Add.description) \(self.assetsData?.name ?? "") \(L10n.Address.description)", subName: "Unlimited withdrawal", rightBtnName: ""), at: self.connectedAccountAddress.count )
-            self.withdrawToAccountData.insert(buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: L10n.AddBankAccount.description, subName: L10n.LimitedTo1000€PerWeek.description, rightBtnName: ""), at: ((self.connectedAccountAddress.count ) + 1))
+            self.withdrawToAccountData.insert(buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "ADD")) \(self.assetsData?.name ?? "") \(CommonFunctions.localisation(key: "ADDRESS"))", subName: "Unlimited withdrawal", rightBtnName: ""), at: self.connectedAccountAddress.count )
+            self.withdrawToAccountData.insert(buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""), at: ((self.connectedAccountAddress.count ) + 1))
         }else if popupType == .InvestInStrategiesOrAsset{
-            self.depositeOrSingularBuyLbl.text = L10n.InvestInStrategiesOrSingleAsset.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "INVEST_IN_STRATEGIES_OR_SINGLE_ASSET")
         }else if(popupType == .investWithStrategiesActive || popupType == .investWithStrategiesInactive){
-            self.depositeOrSingularBuyLbl.text = L10n.investWithStrategies.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "INVEST_WITH_STRATEGIES")
         }else if popupType == .withdrawAll{
-            self.depositeOrSingularBuyLbl.text = L10n.WithdrawTo.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_TO")
         }else if popupType == .AssetDetailPagePopUp{
-            self.depositeOrSingularBuyLbl.text = L10n.WithdrawOrExchange.description
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_EXCHANGE")
             
             //check for the specific 8 coins
             if specificAssetsArr.contains(self.assetsData?.symbol ?? ""){
                 specificAssets = true
                 self.assetPagePopUpData  = [
-                    buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(L10n.Withdraw.description) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "To your personal wallet", rightBtnName: ""),
-                    buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Exchange.description, subName: L10n.TradeOneAssetAgainstAnother.description, rightBtnName: ""),
-                    buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(L10n.Deposit.description) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "To your Lyber wallet", rightBtnName: ""),
-                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(L10n.Sell.description) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "For fiat currency", rightBtnName: ""),]
+                    buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "WITHDRAW")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "To your personal wallet", rightBtnName: ""),
+                    buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
+                    buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "DEPOSIT")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "To your Lyber wallet", rightBtnName: ""),
+                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "For fiat currency", rightBtnName: ""),]
             }else{
                 self.assetPagePopUpData  = [
-                    buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.Exchange.description, subName: L10n.TradeOneAssetAgainstAnother.description, rightBtnName: ""),
-                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(L10n.Sell.description) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "", rightBtnName: ""),]
+                    buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
+                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "", rightBtnName: ""),]
             }
         }
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)

@@ -17,7 +17,7 @@ class SelectedProfileVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithImage, img: [ProfilePic], imageParamater: ["file"], headerPresent: true)
+        }, method: .PostWithImage, img: [ProfilePic], imageParamater: ["file"], headerType: "user")
     }
     
     func updateProfileImgApi(ProfilePic : String, ProfileType : profilePicType?,completion: @escaping ( (profileUpdateApi?) -> Void )){
@@ -30,6 +30,6 @@ class SelectedProfileVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PUTWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PUTWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

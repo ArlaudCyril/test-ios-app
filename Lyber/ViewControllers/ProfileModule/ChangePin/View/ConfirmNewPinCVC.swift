@@ -30,7 +30,7 @@ extension ConfirmNewPinCVC{
         if verifyPin == true{
             CommonUI.setUpLbl(lbl: confirmPinLbl, text: "Please enter Your Pin", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.XLarge.sizeValue()))
         }else{
-            CommonUI.setUpLbl(lbl: confirmPinLbl, text: L10n.ConfirmPIN.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+            CommonUI.setUpLbl(lbl: confirmPinLbl, text: CommonFunctions.localisation(key: "CONFIRM_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         }
         let pins : [otpTextField] = [pinTF1,pinTF2,pinTF3,pinTF4]
         for pin in pins{

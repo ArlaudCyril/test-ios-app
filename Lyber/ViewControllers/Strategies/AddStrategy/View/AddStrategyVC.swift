@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddStrategyVC: UIViewController {
+class AddStrategyVC: ViewController {
     //MARK: - Variables
     var addStrategyVM = AddStrategyVM()
     var addAssetsVC = AddAssetsVC()
@@ -34,29 +34,29 @@ class AddStrategyVC: UIViewController {
         setUpUI()
     }
 
-}
 
-//MARK: - SetUpUI
-extension AddStrategyVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: buildMyOwnStrategyLbl, text: L10n.BuildMyOwnStrategy.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: buildMyOwnStrategyLbl, text: CommonFunctions.localisation(key: "BUILD_MY_OWN_STRATEGY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: addManyAssetsLbl, text: L10n.AddManyAssetsAsYouWish.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: addManyAssetsLbl, text: CommonFunctions.localisation(key: "ADD_MANY_ASSETS_AS_YOU_WISH"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
-        CommonUI.setTextWithLineSpacing(label: self.addManyAssetsLbl, text: L10n.AddManyAssetsAsYouWish.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setTextWithLineSpacing(label: self.addManyAssetsLbl, text: CommonFunctions.localisation(key: "ADD_MANY_ASSETS_AS_YOU_WISH"), lineSpacing: 6, textAlignment: .left)
         
-        CommonUI.setUpButton(btn: self.addAnAssetBtn, text: L10n.AddAnAsset.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: self.addAnAssetBtn, text: CommonFunctions.localisation(key: "ADD_AN_ASSET"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: bottomView, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
         
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        self.saveMyStrategyBtn.setTitle(L10n.SaveMyStrategy.description, for: .normal)
+        self.saveMyStrategyBtn.setTitle(CommonFunctions.localisation(key: "SAVE_MY_STRATEGY"), for: .normal)
 //        self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
         
-        CommonUI.setUpLbl(lbl: noOfAssetsLbl, text: "\(assetsData.count) \(L10n.asset.description)", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: noOfAssetsLbl, text: "\(assetsData.count) \(CommonFunctions.localisation(key: "ASSET"))", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: isStrategyReadyLbl, text: L10n.YourStrategyReadyToBeSaved.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: isStrategyReadyLbl, text: CommonFunctions.localisation(key: "YOUR_STRATEGY_READY_TO_BE_SAVED"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.tblView.delegate = self
         self.tblView.dataSource = self
@@ -86,13 +86,13 @@ extension AddStrategyVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?{
    
 
-        let action = UIContextualAction(style: .destructive, title: NSLocalizedString("Delete", comment: "Delete"),
+        let action = UIContextualAction(style: .destructive, title: CommonFunctions.localisation(key: "DELETE"),
             handler: { (action, view, completionHandler) in
             // Update data source when user taps action
             self.assetsData.remove(at: indexPath.row)
             self.allocation.remove(at: indexPath.row)
             self.handleAllocationPercentageView()
-            self.noOfAssetsLbl.text =  "\(self.assetsData.count) \(L10n.assets.description)"
+            self.noOfAssetsLbl.text =  "\(self.assetsData.count) \(CommonFunctions.localisation(key: "ASSETS"))"
             completionHandler(true)
           })
       action.backgroundColor = .red
@@ -116,7 +116,7 @@ extension AddStrategyVC{
             self?.handleAllocationPercentage(asset : assets)
             self?.tblView.reloadData()
             self?.handleAllocationPercentageView()
-            self?.noOfAssetsLbl.text = self?.assetsData.count ?? 0 > 1 ? "\(self?.assetsData.count ?? 0) \(L10n.assets.description)" : "\(self?.assetsData.count ?? 0) \(L10n.asset.description)"
+            self?.noOfAssetsLbl.text = self?.assetsData.count ?? 0 > 1 ? "\(self?.assetsData.count ?? 0) \(CommonFunctions.localisation(key: "ASSETS"))" : "\(self?.assetsData.count ?? 0) \(CommonFunctions.localisation(key: "ASSET"))"
         }
         self.present(vc, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
@@ -145,21 +145,21 @@ extension AddStrategyVC{
             
             self.noOfAssetsLbl.isHidden = false
             if self.totalAllocationPercentage > 100{
-                self.isStrategyReadyLbl.text = "\(L10n.yourAllocationIsGreaterThan.description)\((self.totalAllocationPercentage ) - 100)%"
+                self.isStrategyReadyLbl.text = "\(CommonFunctions.localisation(key: "YOUR_ALLOCATION_IS_GREATER_THAN"))\((self.totalAllocationPercentage ) - 100)%"
                 self.isStrategyReadyLbl.textColor = UIColor.RedDF5A43
                 self.noOfAssetsLbl.textColor = UIColor.RedDF5A43
                 self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
                 self.saveMyStrategyBtn.isUserInteractionEnabled = false
             }
             else if self.totalAllocationPercentage < 100{
-                self.isStrategyReadyLbl.text = "\(L10n.yourAllocationIslessThan.description)\(100 - (self.totalAllocationPercentage ))%"
+                self.isStrategyReadyLbl.text = "\(CommonFunctions.localisation(key: "YOUR_ALLOCATION_IS_LESS_THAN"))\(100 - (self.totalAllocationPercentage ))%"
                 self.isStrategyReadyLbl.textColor = UIColor.RedDF5A43
                 self.noOfAssetsLbl.textColor = UIColor.RedDF5A43
                 self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
                 self.saveMyStrategyBtn.isUserInteractionEnabled = false
             }
             else{
-                self.isStrategyReadyLbl.text = L10n.YourStrategyReadyToBeSaved.description
+                self.isStrategyReadyLbl.text = CommonFunctions.localisation(key: "YOUR_STRATEGY_READY_TO_BE_SAVED")
                 self.isStrategyReadyLbl.textColor = UIColor.SecondarytextColor
                 self.noOfAssetsLbl.textColor = UIColor.ThirdTextColor
                 self.saveMyStrategyBtn.backgroundColor = UIColor.PurpleColor
@@ -167,7 +167,7 @@ extension AddStrategyVC{
             }
         }else{
             self.noOfAssetsLbl.isHidden = true
-            self.isStrategyReadyLbl.text = L10n.VousDevezAjouter.description
+            self.isStrategyReadyLbl.text = CommonFunctions.localisation(key: "YOU_MUST_ADD")
             self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
             self.saveMyStrategyBtn.isUserInteractionEnabled = false
         }
@@ -237,6 +237,7 @@ extension AddStrategyVC{
                 self.addStrategyVM.addStrategyApi(strategy: strategy, completion: {[]response in
                     if response != nil{
                         self.investmentStrategyController?.invstStrategyData.append(strategy)
+						self.investmentStrategyController?.invstStrategyData.sort(by: {$0.publicType ?? "" < $1.publicType ?? "" })
                         self.investmentStrategyController?.tblView.reloadData()
                         self.dismiss(animated: true, completion: nil)
                     }
@@ -252,7 +253,7 @@ extension AddStrategyVC{
         alert.addTextField { (textField) in
             textField.text = self.tailoringStrategy?.name!
             if(self.tailoringStrategy?.publicType != nil){
-                textField.text! += " (Copy)"
+                textField.text! += " (\(CommonFunctions.localisation(key: "COPY")))"
             }
             
         }
@@ -271,6 +272,7 @@ extension AddStrategyVC{
                     self.addStrategyVM.addStrategyApi(strategy: strategy, completion: {[]response in
                         if response != nil{
                             self.investmentStrategyController?.invstStrategyData.append(strategy)
+							self.investmentStrategyController?.invstStrategyData.sort(by: {$0.publicType ?? "" < $1.publicType ?? "" })
                             self.investmentStrategyController?.tblView.reloadData()
                             self.dismiss(animated: true, completion: nil)
                         }
@@ -296,33 +298,57 @@ extension AddStrategyVC{
         self.present(alert, animated: true, completion: nil)*/
 
         //MARK: - Waiting solution
-        if(self.tailoringStrategy?.publicType != nil){
-
-            let strategy = self.createStrategy(strategyName: (tailoringStrategy?.name)! + " (Copy)")
-            //Public strategy, we just add this strategy to our list
-            self.addStrategyVM.addStrategyApi(strategy: strategy, completion: {[]response in
-                if response != nil{
-                    self.investmentStrategyController?.invstStrategyData.append(strategy)
-                    self.investmentStrategyController?.tblView.reloadData()
-                    self.dismiss(animated: true, completion: nil)
-                }
-            })
-        }
-        else{
-            let strategy = self.modifyStrategy(strategyName: (tailoringStrategy?.name)!, tailoringStrategy: self.tailoringStrategy!)
-            self.addStrategyVM.tailorStrategyApi(newStrategy: strategy, completion: {[]response in
-                if response != nil{
-                    for i in 0...((self.investmentStrategyController?.invstStrategyData.count ?? 0) - 1) {
-                        if(self.investmentStrategyController?.invstStrategyData[i].name == self.tailoringStrategy?.name)
-                        {
-                            self.investmentStrategyController?.invstStrategyData[i] = strategy
-                        }
-                    }
-                    self.investmentStrategyController?.tblView.reloadData()
-                    self.dismiss(animated: true, completion: nil)
-                }
-            })
-        }
+		if(self.allocation.min() ?? 0 <= 0){
+			CommonFunctions.toster(Constants.AlertMessages.AllAssetsMustHaveAllocationsGreaterThan0)
+		}else{
+			if(self.tailoringStrategy?.publicType != nil){
+				let alert = UIAlertController(title: "Build Strategy", message: "Enter your strategy name", preferredStyle: .alert)
+				alert.addTextField { (textField) in
+					textField.text = self.tailoringStrategy?.name!
+					textField.text! += " (\(CommonFunctions.localisation(key: "COPY")))"
+				}
+				alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: {_ in
+					
+				}))
+				alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+					let textField = alert?.textFields![0]
+					if textField?.text?.isEmpty ?? true{
+						CommonFunctions.toster((CommonFunctions.localisation(key: "ALERT_STRATEGY_NAMET")))
+					}else{
+						var strategy = self.createStrategy(strategyName:textField?.text ?? "")
+						strategy.risk = nil
+						strategy.expectedYield = nil
+						//Public strategy, we just add this strategy to our list
+						self.addStrategyVM.addStrategyApi(strategy: strategy, completion: {[]response in
+							if response != nil{
+								self.investmentStrategyController?.invstStrategyData.append(strategy)
+								self.investmentStrategyController?.invstStrategyData.sort(by: {$0.publicType ?? "" < $1.publicType ?? "" })
+								self.investmentStrategyController?.tblView.reloadData()
+								self.dismiss(animated: true, completion: nil)
+							}
+						})
+					}
+				}))
+				self.present(alert, animated: true, completion: nil)
+			}
+			else{
+				
+				let strategy = self.modifyStrategy(strategyName: (tailoringStrategy?.name)!, tailoringStrategy: self.tailoringStrategy!)
+				self.addStrategyVM.tailorStrategyApi(newStrategy: strategy, completion: {[]response in
+					if response != nil{
+						for i in 0...((self.investmentStrategyController?.invstStrategyData.count ?? 0) - 1) {
+							if(self.investmentStrategyController?.invstStrategyData[i].name == self.tailoringStrategy?.name)
+							{
+								self.investmentStrategyController?.invstStrategyData[i] = strategy
+							}
+						}
+						self.investmentStrategyController?.tblView.reloadData()
+						self.dismiss(animated: true, completion: nil)
+					}
+				})
+			}
+		}
+        
     }
     
     func getStrategy(){

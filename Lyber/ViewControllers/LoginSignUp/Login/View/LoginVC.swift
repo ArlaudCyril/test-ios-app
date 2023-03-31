@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: ViewController {
     //MARK: - IB OUTLETS
     @IBOutlet var backgroundImgVw: UIImageView!
     @IBOutlet var titleLbl: UILabel!
@@ -19,16 +19,13 @@ class LoginVC: UIViewController {
         setUpUI()
         
     }
-    
-}
-//MARK: - SetUpUI
-extension LoginVC{
-    func setUpUI(){
-        CommonUI.setUpLbl(lbl: titleLbl, text: L10n.lyberReInvented.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XVLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: subtitleLbl, text: L10n.diversifiedRegularSimple.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+	//MARK: - SetUpUI
+    override func setUpUI(){
+        CommonUI.setUpLbl(lbl: titleLbl, text: CommonFunctions.localisation(key: "LYBER_REINVENTED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XVLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: subtitleLbl, text: CommonFunctions.localisation(key: "DIVERSIFIED_REGULAR_SIMPLE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
-        self.signUpBtn.setTitle(L10n.SignUp.description, for: .normal)
-        CommonUI.setUpButton(btn: LoginBtn, text: L10n.LogIn.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        self.signUpBtn.setTitle(CommonFunctions.localisation(key: "SIGN_UP"), for: .normal)
+        CommonUI.setUpButton(btn: LoginBtn, text: CommonFunctions.localisation(key: "LOG_IN"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         
         self.signUpBtn.addTarget(self, action: #selector(signUpBtnAct), for: .touchUpInside)
         self.LoginBtn.addTarget(self, action: #selector(loginBtnAct), for: .touchUpInside)
@@ -38,6 +35,7 @@ extension LoginVC{
 //MARK: - objective functions
 extension LoginVC{
     @objc func signUpBtnAct(){
+		GlobalVariables.isRegistering = true
         let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
@@ -46,6 +44,7 @@ extension LoginVC{
     }
     
     @objc func loginBtnAct(){
+		GlobalVariables.isRegistering = false
         let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
         vc.isLogin = true
         let nav = UINavigationController(rootViewController: vc)

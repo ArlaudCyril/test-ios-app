@@ -8,7 +8,7 @@
 import UIKit
 import MultiProgressView
 
-class InvestMoneyVC: UIViewController {
+class InvestMoneyVC: ViewController {
     //MARK: - Variables
 //    var coinsData : [DifferentCoinsModel] = [
 //        DifferentCoinsModel(coinColor: UIColor.PurpleColor.withAlphaComponent(1), coinName: "USDC", percentage: "40%"),
@@ -37,24 +37,21 @@ class InvestMoneyVC: UIViewController {
         setUpUI()
     }
 
-}
-
-//MARK: - SetUpUI
-extension InvestMoneyVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         coinsData = strategyData?.bundle ?? []
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.investMoneyLbl, text: L10n.InvestMoney.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.usingMyStrategy, text: L10n.UsingMyStrategy.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.investMoneyLbl, text: CommonFunctions.localisation(key: "INVEST_MONEY"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.usingMyStrategy, text: CommonFunctions.localisation(key: "USING_MY_STRATEGY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.Header.sizeValue()))
         CommonUI.setUpViewBorder(vw: strategyVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         /*CommonUI.setUpLbl(lbl: self.strategyNameLbl, text: strategyData?.status, textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))*/
-        CommonUI.setUpLbl(lbl: self.riskLbl, text: L10n.Risk.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.riskLbl, text: CommonFunctions.localisation(key: "RISK"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         /*self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: L10n.RiskLow.description, secondStr: strategyData?.risk ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)*/
         
-        self.investUsingMyStrategy.setTitle(L10n.MakeInvestment.description, for: .normal)
-        CommonUI.setUpButton(btn: self.pickAnotherStrategy, text: L10n.PickAnotherStrategy.description, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.borderColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpButton(btn: self.depositBuyBtn, text: L10n.DepositSingularBuy.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        self.depositBuyBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.DepositSingularBuy.description), for: .normal)
+        self.investUsingMyStrategy.setTitle(CommonFunctions.localisation(key: "MAKE_INVESTMENT"), for: .normal)
+        CommonUI.setUpButton(btn: self.pickAnotherStrategy, text: CommonFunctions.localisation(key: "PICK_ANOTHER_STRATEGY"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.borderColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: self.depositBuyBtn, text: CommonFunctions.localisation(key: "DEPOSIT_SINGULAR_BUY"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        self.depositBuyBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "DEPOSIT_SINGULAR_BUY")), for: .normal)
         
         self.progressVw.delegate = self
         self.progressVw.dataSource = self

@@ -25,7 +25,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func activateStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -39,7 +39,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func editActiveStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -53,7 +53,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func exchangeCryptoApi(exchangeFrom : String ,exchangeTo : String,exchangeFromAmount : Double,exchangeToAmount: Double,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -67,7 +67,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func SellApi(assetId: String,amount : Double,assetAmount : Double,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -82,7 +82,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }
 

@@ -8,7 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class ChangePinVC: UIViewController {
+class ChangePinVC: ViewController {
     //MARK: - Variables
         var verifyPin = false
         var changePinVM = ChangePinVM()
@@ -26,11 +26,11 @@ class ChangePinVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
 
-}
 
-//MARK: - SetUpUI
-extension ChangePinVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.collView.delegate = self
         self.collView.dataSource = self
         self.collView.layer.cornerRadius = 32

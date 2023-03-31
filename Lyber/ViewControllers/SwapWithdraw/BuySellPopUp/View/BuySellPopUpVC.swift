@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BuySellPopUpVC: UIViewController {
+class BuySellPopUpVC: ViewController {
     //MARK: - Variables
     var popUpType : confirmationPopUp?
     var assetData : Trending?
@@ -25,11 +25,11 @@ class BuySellPopUpVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-}
 
-//MARK: - SetUpUI
-extension BuySellPopUpVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.PopupView.layer.cornerRadius = 32
         CommonUI.setUpLbl(lbl: self.successfullylbl, text: "Successfully bought", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.ownLbl, text: "You now own \(self.assetData?.symbol?.uppercased() ?? "") \(self.coinInvest ?? "")", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Medium.sizeValue()))

@@ -14,7 +14,7 @@ class AllAssetsVC: swipeGesture {
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     var screenType : screenEnum = .portfolio
     var coinSelectedCallback : ((_ coinData : Trending?)->())?
-    var coinsType : [String] = [L10n.Trending.description,L10n.TopGainers.description,L10n.TopLoosers.description,L10n.Stable.description]
+    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "TOP_GAINERS"),CommonFunctions.localisation(key: "TOP_LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
     
     var coinsData : [priceServiceResume] = []
     var originalData : [priceServiceResume] = []
@@ -57,20 +57,21 @@ class AllAssetsVC: swipeGesture {
         super.viewWillDisappear(animated)
         self.timer.invalidate()
     }
-}
 
-//MARK: - SetUpUI
-extension AllAssetsVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.allAssetsVM.controller = self
         self.filteredData = coinDetailData
         self.backBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.AllAssetsLbl, text: L10n.chooseAnAsset.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		self.searchTF.placeholder = CommonFunctions.localisation(key: "SEARCH")
+        CommonUI.setUpLbl(lbl: self.AllAssetsLbl, text: CommonFunctions.localisation(key: "CHOOSE_AN_ASSET"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpViewBorder(vw: searchView, radius: 12, borderWidth: 1, borderColor: UIColor.borderColor.cgColor)
         searchTF.delegate = self
         searchTF.addTarget(self, action: #selector(searchTextChange), for: .editingChanged)
         
-        CommonUI.setUpLbl(lbl: self.availbaleFlatLbl, text: L10n.AvailableFlAT.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.availbaleFlatLbl, text: CommonFunctions.localisation(key: "AVAILABLE_FLAT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "Euro", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.noOfEuroLbl, text: "1€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.collView.delegate = self
@@ -80,17 +81,17 @@ extension AllAssetsVC{
         
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         if screenType == .exchange{
-            self.AllAssetsLbl.text = L10n.ExchangeTo.description
+            self.AllAssetsLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
             self.backBtn.setImage(Assets.close.image(), for: .normal)
             self.availableFlatVw.isHidden = false
         }else if screenType == .singleAssets{
             self.backBtn.setImage(Assets.back.image(), for: .normal)
             self.availableFlatVw.isHidden = true
-            self.AllAssetsLbl.text = L10n.chooseAnAsset.description
+            self.AllAssetsLbl.text = CommonFunctions.localisation(key: "CHOOSE_AN_ASSET")
         }else{
             self.backBtn.setImage(Assets.back.image(), for: .normal)
             self.availableFlatVw.isHidden = true
-            self.AllAssetsLbl.text = L10n.AllAssets.description
+            self.AllAssetsLbl.text = CommonFunctions.localisation(key: "ALL_ASSETS")
         }
         
         tblView.es.addPullToRefresh {
@@ -230,7 +231,7 @@ extension AllAssetsVC{
             if let response = response {
                 print(response)
                 self.originalData = response.data
-                self.coinsData = response.data //.append(contentsOf: response.data ?? [])
+                self.coinsData = response.data
                 self.filterData()
             }
             self.filterCoin = self.coinsData
@@ -239,9 +240,9 @@ extension AllAssetsVC{
             self.tblView.es.stopPullToRefresh()
             self.tblView.tableFooterView?.isHidden = true
             CommonFunctions.hideLoader(self.view)
-//            DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
-                self.tblView.reloadData()
-//            })
+
+			self.tblView.reloadData()
+
         })
     }
     

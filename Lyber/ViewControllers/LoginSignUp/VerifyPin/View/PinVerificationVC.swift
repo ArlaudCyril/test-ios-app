@@ -8,9 +8,10 @@
 import UIKit
 import LocalAuthentication
 
-class PinVerificationVC: UIViewController {
+class PinVerificationVC: ViewController {
     var pinCreatedDelegate : ((String)->())?
     var enterDigitCounts : Int! = 0
+    var tryNumber : Int! = 0
     
     //MARK:- IB OUTLETS
     @IBOutlet var enterYourPinLbl: UILabel!
@@ -38,16 +39,14 @@ class PinVerificationVC: UIViewController {
         
     }
 
-}
+	//MARK: - SetUpUI
 
-//MARK: - SetUpUI
-extension PinVerificationVC{
-    func setUpUI(){
-        CommonUI.setUpLbl(lbl: self.enterYourPinLbl, text: "Enter Your Pin", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.XXlarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.orLbl, text: "OR", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Large.sizeValue()))
+    override func setUpUI(){
+        CommonUI.setUpLbl(lbl: self.enterYourPinLbl, text: CommonFunctions.localisation(key: "ENTER_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.XXlarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.orLbl, text: CommonFunctions.localisation(key: "OR"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Large.sizeValue()))
         self.useBiometricVw.layer.cornerRadius = 8
 //        self.useBiometricVw.backgroundColor = UIColor.borderColor
-        CommonUI.setUpLbl(lbl: self.useBiometricLbl, text: "Use Biometric", textColor: UIColor.PurpleColor, font: UIFont.AtypDisplayRegular(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.useBiometricLbl, text: CommonFunctions.localisation(key: "USE_BIOMETRIC"), textColor: UIColor.PurpleColor, font: UIFont.AtypDisplayRegular(Size.Large.sizeValue()))
         
         let pins : [otpTextField] = [pinTF1,pinTF2,pinTF3,pinTF4]
         for pin in pins{
@@ -104,7 +103,24 @@ extension PinVerificationVC{
                     
                     
                 }else{
-                    CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+                    if(self.tryNumber == 3)
+                    {
+                        userData.shared.logInPinSet = 0
+                        userData.shared.dataSave()
+                        let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+                        vc.isLogin = true
+                        let nav = UINavigationController(rootViewController: vc)
+                        CommonFunctions.toster(Constants.AlertMessages.tooManyFailedAttemptPleaseReauthenticate)
+                        nav.modalPresentationStyle = .fullScreen
+                        nav.navigationBar.isHidden = true
+                        self.present(nav, animated: true, completion: nil)
+                        
+                    
+                    }else{
+                        self.tryNumber+=1
+                        CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+                    }
+                    
                 }
             }
             break
@@ -240,23 +256,23 @@ extension PinVerificationVC{
     }
     
     func GoToScreen(){
-        var vc = UIViewController()
+        var vc = ViewController()
         
         if let diff = Calendar.current.dateComponents([.hour], from: userData.shared.time ?? Date(), to: Date()).hour, diff >= 24 {
             print("time is equal or greater than 24 hour", diff)
             
             PinVerificationVM().refreshTokenApi(completion: {[weak self]response in
                 if let response = response{
-                    userData.shared.accessToken = response.data?.accessToken ?? ""
+                    
+                    userData.shared.userToken = response.data?.accessToken ?? ""
                     userData.shared.refreshToken = response.data?.refreshToken ?? ""
                     userData.shared.time = Date()
                     userData.shared.dataSave()
-                    
                     print("current time \(Date())")
-                    if userData.shared.isIdentityVerified == true{
+					if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
+						vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+					}else if userData.shared.isIdentityVerified == true{
                          vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                    }else if userData.shared.isAccountCreated == true{
-                        vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                     }
                     let navController = UINavigationController(rootViewController: vc)
                     navController.modalPresentationStyle = .fullScreen
@@ -267,15 +283,16 @@ extension PinVerificationVC{
         }else{
             if userData.shared.is_push_enabled == 0{
                 vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-            }else if userData.shared.isIdentityVerified == true{
+			}else if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
+				vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+			}else{
                  vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            }else if userData.shared.isAccountCreated == true{
-                vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
             }
             let navController = UINavigationController(rootViewController: vc)
             navController.modalPresentationStyle = .fullScreen
             navController.navigationBar.isHidden = true
             self.present(navController, animated: true, completion: nil)
         }
+        
     }
 }

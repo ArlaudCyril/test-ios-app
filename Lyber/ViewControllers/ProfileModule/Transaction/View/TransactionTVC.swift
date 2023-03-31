@@ -44,19 +44,19 @@ extension TransactionTVC{
         
         if data?.type == 1{    //exchange
             self.coinImg.image = Assets.exchange.image()
-            self.transactionTypeLbl.text = "\(L10n.Exch.description) \(data?.exchangeFrom ?? "")->\(data?.exchangeTo ?? "")"
+            self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "EXCH")) \(data?.exchangeFrom ?? "")->\(data?.exchangeTo ?? "")"
             self.euroLbl.text = "\(data?.exchangeFromAmount ?? 0.0) \(data?.exchangeFrom ?? "")"
             self.noOfCoinLbl.text = "\(data?.exchangeToAmount ?? 0.0) \(data?.exchangeTo ?? "")"
         }else if data?.type == 2{           //deposite
-            self.transactionTypeLbl.text = "\(L10n.Deposit.description) \(data?.assetID ?? "")"
+            self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT")) \(data?.assetID ?? "")"
         }else if data?.type == 3{               //withdraw
             self.coinImg.image = Assets.withdraw.image()
-            self.transactionTypeLbl.text = L10n.Withdrawal.description
+            self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL")
             self.euroLbl.text = "-\(data?.amount ?? 0.0)€"
             self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
         }else if data?.type == 4{                   //bought
             self.coinImg.image = Assets.money_deposit.image()
-            self.transactionTypeLbl.text = "\(L10n.Bought.description) \(data?.assetID ?? "")"
+            self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "BOUGHT")) \(data?.assetID ?? "")"
             self.euroLbl.text = "+\(data?.amount ?? 0.0)€"
             self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
         }

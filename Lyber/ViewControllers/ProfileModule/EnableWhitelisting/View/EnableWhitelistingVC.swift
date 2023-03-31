@@ -7,14 +7,14 @@
 
 import UIKit
 
-class EnableWhitelistingVC: UIViewController {
+class EnableWhitelistingVC: ViewController {
     //MARK: - Variables
     var enableWhitelistingVM = EnableWhitelistingVM()
     var timeCallBack : ((SecurityTime?)->())?
     var TimeData : [SecurityTime] = [
-        SecurityTime(id: 1, securityTime: "72_HOURS", time: "72 \(L10n.Hours.description)", isSelected: false),
-        SecurityTime(id: 2, securityTime: "24_HOURS", time: "24 \(L10n.Hours.description)", isSelected: false),
-        SecurityTime(id: 3, securityTime: "NO_EXTRA_SECURITY", time: L10n.NoExtraSecurity.description, isSelected: false)]
+        SecurityTime(id: 1, securityTime: "72_HOURS", time: "72 \(CommonFunctions.localisation(key: "HOURS"))", isSelected: false),
+        SecurityTime(id: 2, securityTime: "24_HOURS", time: "24 \(CommonFunctions.localisation(key: "HOURS"))", isSelected: false),
+        SecurityTime(id: 3, securityTime: "NO_EXTRA_SECURITY", time: CommonFunctions.localisation(key: "NO_EXTRA_SECURITY"), isSelected: false)]
     var selectedTime : SecurityTime?
     var disableWhitelisting = false
     //MARK: - IB OUTLETS
@@ -33,25 +33,24 @@ class EnableWhitelistingVC: UIViewController {
         super.viewDidLoad()
         setUpUI()
     }
-}
 
-//MARK: - SetUpUI
-extension EnableWhitelistingVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
         
-        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: L10n.EnableWhitelisting.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.whitlistingDescLbl, text: L10n.WhitelistingIsFeatureThatLimitsWithdrawls.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.whitlistingDescLbl, text: L10n.WhitelistingIsFeatureThatLimitsWithdrawls.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "ENABLE_WHITELISTING"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), lineSpacing: 6, textAlignment: .left)
         
-        CommonUI.setUpLbl(lbl: self.extraSecurityLbl, text: L10n.ExtraSecurity.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.extraSecurityLbl, text: CommonFunctions.localisation(key: "EXTRA_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         
         self.tblView.delegate = self
         self.tblView.dataSource = self
         CommonUI.setUpViewBorder(vw: self.blockView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.blockLbl, text: L10n.AllowYouToBlockTheAdditionOfAddress.description, textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        self.enableWhitelistingBtn.setTitle(L10n.EnableWhitelisting.description, for: .normal)
+        CommonUI.setUpLbl(lbl: self.blockLbl, text: CommonFunctions.localisation(key: "ALLOW_BLOCK_ADDITION_ADDRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        self.enableWhitelistingBtn.setTitle(CommonFunctions.localisation(key: "ENABLE_WHITELISTING"), for: .normal)
         self.enableWhitelistingBtn.backgroundColor = UIColor.TFplaceholderColor
         self.enableWhitelistingBtn.isUserInteractionEnabled = false
         
@@ -63,8 +62,8 @@ extension EnableWhitelistingVC{
                 if TimeData[index].securityTime == userData.shared.extraSecurity{
                     TimeData[index].isSelected = true
                     selectedTime = TimeData[index]
-                    self.enableWhitelistingLbl.text = L10n.DisableWhitelisting.description
-                    self.enableWhitelistingBtn.setTitle(L10n.DisableWhitelisting.description, for: .normal)
+                    self.enableWhitelistingLbl.text = CommonFunctions.localisation(key: "DISABLE_WHITELISTING")
+                    self.enableWhitelistingBtn.setTitle(CommonFunctions.localisation(key: "DISABLE_WHITELISTING"), for: .normal)
                     self.enableWhitelistingBtn.backgroundColor = UIColor.PurpleColor
                     self.enableWhitelistingBtn.isUserInteractionEnabled = true
                     self.tblView.isUserInteractionEnabled = false

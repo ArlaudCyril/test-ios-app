@@ -14,7 +14,7 @@ class ChangePinVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func enterOtpApi(otp : String,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -25,7 +25,7 @@ class ChangePinVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func setNewPinApi(Pin : String,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -36,6 +36,6 @@ class ChangePinVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PUT, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")
     }
 }

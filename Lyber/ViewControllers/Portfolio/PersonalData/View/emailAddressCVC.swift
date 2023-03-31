@@ -28,16 +28,18 @@ class emailAddressCVC: UICollectionViewCell {
 
 extension emailAddressCVC{
     func SetUpCell(){
-        CommonUI.setUpLbl(lbl: self.emailAddresslbl, text: L10n.AddressEmail.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.emailAddressDescLbl, text: L10n.informtionUsed.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.emailAddressDescLbl, text: L10n.informtionUsed.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.emailAddresslbl, text: CommonFunctions.localisation(key: "MAIL_ADDRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.emailAddressDescLbl, text: CommonFunctions.localisation(key: "INFORMATION_USED"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.emailAddressDescLbl, text: CommonFunctions.localisation(key: "INFORMATION_USED"), lineSpacing: 6, textAlignment: .left)
         CommonUI.setUpViewBorder(vw: self.enterEmailVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.passwordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
+		self.emailTF.placeholder = CommonFunctions.localisation(key: "MAIL_ADDRESS")
         self.emailTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
         self.emailTF.textColor = UIColor.Purple35126D
         self.emailTF.delegate = self
         self.emailTF.addTarget(self, action: #selector(editChange(_:)), for: .editingChanged)
+		self.passwordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
         self.passwordTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
         self.passwordTF.textColor = UIColor.Purple35126D
         self.passwordTF.delegate = self

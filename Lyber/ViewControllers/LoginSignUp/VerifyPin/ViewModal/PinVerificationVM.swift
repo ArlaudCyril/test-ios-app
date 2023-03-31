@@ -16,6 +16,6 @@ class PinVerificationVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerPresent: false)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
     }
 }

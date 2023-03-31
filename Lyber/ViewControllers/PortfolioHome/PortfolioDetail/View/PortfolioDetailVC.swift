@@ -9,15 +9,15 @@ import UIKit
 
 class PortfolioDetailVC: swipeGesture {
     //MARK: - VARIABLES
-    var headerData : [String] = [L10n.MyBalance.description,L10n.MyBalance.description,L10n.Infos.description,L10n.About.description,L10n.Resources.description]
+    var headerData : [String] = [CommonFunctions.localisation(key: "MY_BALANCE"),CommonFunctions.localisation(key: "MY_BALANCE"),CommonFunctions.localisation(key: "INFOS"),CommonFunctions.localisation(key: "ABOUT"),CommonFunctions.localisation(key: "RESOURCES")]
     var assetData : Trending?
     var assetDetailData : AssetDetailApi?
     var assetName : String = ""
     var infoData : [InfoModel] = [
-        InfoModel(name: L10n.MarketCap.description, value: "72 083 593 181,6€"),
-        InfoModel(name: L10n.Volume.description, value: "72 083 593 181,6€"),
-        InfoModel(name: L10n.CirculatingSupply.description, value: "72 083 593 181,6€"),
-        InfoModel(name: L10n.Popularity.description, value: "72"),]
+        InfoModel(name: CommonFunctions.localisation(key: "MARKETCAP"), value: "72 083 593 181,6€"),
+        InfoModel(name: CommonFunctions.localisation(key: "VOLUME"), value: "72 083 593 181,6€"),
+        InfoModel(name: CommonFunctions.localisation(key: "CIRCULATING_SUPPLY"), value: "72 083 593 181,6€"),
+        InfoModel(name: CommonFunctions.localisation(key: "POPULARITY"), value: "72"),]
     var portfolioDetailVM = PortfolioDetailVM()
     var chartData : chartData?
     var timer = Timer()
@@ -44,18 +44,16 @@ class PortfolioDetailVC: swipeGesture {
         webSocket?.cancel(with: .goingAway, reason: nil)
         self.timer.invalidate()
     }
-}
-
-//MARK: - SetUpUI
-extension PortfolioDetailVC{
-    func setUpUI(){
+	
+	//MARK: - SetUpUI
+    override func setUpUI(){
         PortfolioDetailTVC().controller = self
         self.tblView.delegate = self
         self.tblView.dataSource = self
         if #available(iOS 15.0, *) {
             tblView.sectionHeaderTopPadding = 0
         }
-        CommonUI.setUpButton(btn: investMoneyBtn, text: "\(L10n.InvestIN.description)\(L10n.BTC.description)", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpButton(btn: investMoneyBtn, text: "\(CommonFunctions.localisation(key: "INVEST_IN"))\(CommonFunctions.localisation(key: "BTC"))", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         self.threeDotBtn.layer.cornerRadius = 16
         self.threeDotBtn.threeDotButtonShadow()
         

@@ -8,7 +8,7 @@
 import UIKit
 import MultiProgressView
 
-class ConfirmInvestmentVC: UIViewController {
+class ConfirmInvestmentVC: ViewController {
     //MARK: - Variables
     var confirmInvestmentVM = ConfirmInvestmentVM()
     var assetData : Trending?,strategyData : Strategy?
@@ -55,25 +55,25 @@ class ConfirmInvestmentVC: UIViewController {
         checkInvestmentType()
     }
 
-}
 
-//MARK: - SetUpUI
-extension ConfirmInvestmentVC{
-    func setUpUI(){
+
+	//MARK: - SetUpUI
+
+    override func setUpUI(){
         self.coinsData = strategyData?.bundle ?? []
         self.cancelBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.confirmInvestmentLbl, text: L10n.ConfirmInvestment.description, textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.confirmInvestmentLbl, text: CommonFunctions.localisation(key: "CONFIRM_INVESTMENT"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.noOfEuroInvested, text: "100€", textColor: UIColor.PurpleColor, font: UIFont.MabryProMedium(Size.XVLarge.sizeValue()))
         self.stackVw.layer.cornerRadius = 16
         
-        CommonUI.setUpLbl(lbl: self.coinPriceLbl, text: "\(assetData?.name ?? "") \(L10n.price.description)", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.amountLbl, text: L10n.Amount.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.frequencyLbl, text: L10n.Frequency.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.paymentLbl, text: L10n.Payment.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.buyLbl, text: L10n.Buy.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.lyberFeeLbl, text: L10n.LyberFees.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.totalLbl, text: L10n.Total.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.allocationLbl, text: L10n.Allocation.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.coinPriceLbl, text: "\(assetData?.name ?? "") \(CommonFunctions.localisation(key: "PRICE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.amountLbl, text: CommonFunctions.localisation(key: "AMOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.frequencyLbl, text: CommonFunctions.localisation(key: "FREQUENCY"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.paymentLbl, text: CommonFunctions.localisation(key: "PAYMENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.buyLbl, text: CommonFunctions.localisation(key: "BUY"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.lyberFeeLbl, text: CommonFunctions.localisation(key: "LYBER_FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalLbl, text: CommonFunctions.localisation(key: "TOTAL"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(CommonFunctions.formattedCurrency(from : self.assetData?.currentPrice ?? 0.0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroAmountLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -85,9 +85,9 @@ extension ConfirmInvestmentVC{
         
         CommonUI.setUpViewBorder(vw: bottomVw, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
         self.bottomVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        self.confirmInvestmentBtn.setTitle(L10n.ConfirmInvestment.description, for: .normal)
-        CommonUI.setUpLbl(lbl: volatilePriceLbl, text: L10n.priceOfCryptoCurrencyIsvolatile.description, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: volatilePriceLbl, text: L10n.priceOfCryptoCurrencyIsvolatile.description, lineSpacing: 6, textAlignment: .center)
+        self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_INVESTMENT"), for: .normal)
+        CommonUI.setUpLbl(lbl: volatilePriceLbl, text: CommonFunctions.localisation(key: "PRICE_CRYPTOCURRENCY_VOLATILE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: volatilePriceLbl, text: CommonFunctions.localisation(key: "PRICE_CRYPTOCURRENCY_VOLATILE"), lineSpacing: 6, textAlignment: .center)
         
         self.progressBar.delegate = self
         self.progressBar.dataSource = self
@@ -130,17 +130,17 @@ extension ConfirmInvestmentVC{
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
             self.frequencyVw.isHidden = true
-            self.buyLbl.text = L10n.Deposit.description
-            self.lyberFeeLbl.text = L10n.DepositFees.description
-            self.confirmInvestmentLbl.text = L10n.ConfirmMyDeposit.description
-            confirmInvestmentBtn.setTitle(L10n.ConfirmDeposit.description, for: .normal)
+            self.buyLbl.text = CommonFunctions.localisation(key: "DEPOSIT")
+            self.lyberFeeLbl.text = CommonFunctions.localisation(key: "DEPOSIT_FEES")
+            self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_MY_DEPOSIT")
+            confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_DEPOSIT"), for: .normal)
         }else if InvestmentType == .Exchange{
             self.noOfEuroInvested.text = "\(totalCoinsInvested) \(exchangeTo)"
-            self.confirmInvestmentLbl.text = L10n.ConfirmExchange.description
-            self.confirmInvestmentBtn.setTitle(L10n.ConfirmExchange.description, for: .normal)
-            self.amountLbl.text = "Exchange From"
+            self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
+            self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE"), for: .normal)
+            self.amountLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
             self.euroAmountLbl.text = "\(totalEuroInvested) \(exchangeFrom)"
-            self.frequencyLbl.text = "Exchange To"
+            self.frequencyLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
             self.frequencyNameLbl.text = "\(totalCoinsInvested) \(exchangeTo)"
             self.totalEuroLbl.text = "\(totalCoinsInvested + (0.08)) \(exchangeTo)"
             self.allocationView.isHidden = true
@@ -219,7 +219,7 @@ extension ConfirmInvestmentVC{
                     let nav = UINavigationController(rootViewController: vc)
                     nav.modalPresentationStyle = .fullScreen
                     nav.navigationBar.isHidden = true
-                    self?.present(nav, animated: true, completion: nil)
+                    self?.navigationController?.pushViewController(vc, animated: true)
                 }
             })
         }else if InvestmentType == .editActiveStrategy{
@@ -232,7 +232,7 @@ extension ConfirmInvestmentVC{
                     let nav = UINavigationController(rootViewController: vc)
                     nav.modalPresentationStyle = .fullScreen
                     nav.navigationBar.isHidden = true
-                    self?.present(nav, animated: true, completion: nil)
+                    self?.navigationController?.pushViewController(vc, animated: true)
                 }
             })
         }

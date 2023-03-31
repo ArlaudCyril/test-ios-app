@@ -7,11 +7,11 @@
 
 import UIKit
 
-class AddPaymentMethodVC: UIViewController {
+class AddPaymentMethodVC: ViewController {
     //MARK: - Variables
     var paymentMethodData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.BankAccount.description, subName: L10n.LimitedTo25000€PerWeek.description, rightBtnName: ""),
-        buyDepositeModel(icon: Assets.creditcardPurple.image(), iconBackgroundColor: UIColor.LightPurple, name: L10n.AddCreditCard.description, subName: L10n.LimitedTo1000€PerWeek.description, rightBtnName: ""),
+        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_25000€_WEEK"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.creditcardPurple.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ADD_CREDIT_CARD"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""),
     ]
     //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
@@ -23,13 +23,11 @@ class AddPaymentMethodVC: UIViewController {
         setUpUI()
     }
 
-}
+	//MARK: - SetUpUI
 
-//MARK: - SetUpUI
-extension AddPaymentMethodVC{
-    func setUpUI(){
+    override func setUpUI(){
         self.backBtn.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: addPaymentLbl, text: L10n.AddPaymentMethod.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: addPaymentLbl, text: CommonFunctions.localisation(key: "ADD_PAYMENT_METHOD"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         tblView.delegate = self
         tblView.dataSource = self
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StrongAuthOTPVerifyVC: UIViewController ,MyTextFieldDelegate{
+class StrongAuthOTPVerifyVC: ViewController ,MyTextFieldDelegate{
     //MARK: - Variables
     var time = 30
     var timer = Timer()
@@ -47,15 +47,13 @@ class StrongAuthOTPVerifyVC: UIViewController ,MyTextFieldDelegate{
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-}
 
-//MARK: - SetUpUI
-extension StrongAuthOTPVerifyVC{
-    func setUpUI(){
+	//MARK: - SetUpUI
+    override func setUpUI(){
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        CommonUI.setUpLbl(lbl: enterCodeLbl, text: L10n.EnterCode.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: wehaveSentCodeLbl, text: L10n.confirmationCode.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: wehaveSentCodeLbl, text: CommonFunctions.localisation(key: "CONFIRMATION_CODE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: phoneNumberLbl, text: "\(userData.shared.countryCode) \(userData.shared.phone_no)", textColor: UIColor.ThirdTextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
 
         let tfs : [otpTextField] = [tf1,tf2,tf3, tf4,tf5,tf6]
@@ -64,11 +62,10 @@ extension StrongAuthOTPVerifyVC{
             tf.otpDelegate = self
             tf.font = UIFont.MabryProMedium(Size.Large.sizeValue())
             CommonUI.setUpViewBorder(vw: tf, radius: 16, borderWidth: 1.5, borderColor: UIColor.greyColor.cgColor)
-            tf.addTarget(self, action: #selector(textFieldDataChanged), for: .editingChanged)
         }
         
-        CommonUI.setUpButton(btn: resendBtn, text: "\(L10n.resendCodeWillBeSend.description)00:\(time)", textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpButton(btn: cancelBtn, text: L10n.Cancel.description, textcolor: UIColor.primaryTextcolor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: resendBtn, text: "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(time)", textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpButton(btn: cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.primaryTextcolor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.resendBtn.addTarget(self, action: #selector(resendCodeButton), for: .touchUpInside)
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
@@ -173,34 +170,7 @@ extension StrongAuthOTPVerifyVC: UITextFieldDelegate{
             CommonUI.setUpViewBorder(vw: self.tf6, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
         }
     }
-    
-    @objc func textFieldDataChanged(tf:UITextField){
-//        if tf == tf1{
-//            tf2.becomeFirstResponder()
-//        }else if tf == tf2{
-//            tf3.becomeFirstResponder()
-//        }else if tf == tf3{
-//            tf4.becomeFirstResponder()
-//        }else if tf == tf4{
-//            tf5.becomeFirstResponder()
-//        }else if tf == tf5{
-//            tf6.becomeFirstResponder()
-//        }else if tf == tf6{
-//            tf6.resignFirstResponder()
-//        }
-        
-//        if tf1.text != "" && tf2.text != "" && tf3.text != "" && tf4.text != "" && tf5.text != "" && tf6.text != ""{
-//            let otp = "\(tf1.text ?? "")\(tf2.text ?? "")\(tf3.text ?? "")\(tf4.text ?? "")\(tf5.text ?? "")\(tf6.text ?? "")"
-//            strongAuthOTPVerifyVM.verifyStrongAuthApi(otp: otp, completion: {[]response in
-//                if let response = response{
-//                    self.dismiss(animated: true, completion: nil)
-//                    self.strongAuthCallback?()
-//                }
-//               
-//            })
-//        }
-        
-    }
+
 }
 
 //MARK: - Other functions
@@ -219,7 +189,7 @@ extension StrongAuthOTPVerifyVC{
     @objc func resendCodeButton(){
         time = 30
         self.resendBtn.setTitleColor(UIColor.SecondarytextColor, for: .normal)
-        resendBtn.setTitle("\(L10n.resendCodeWillBeSend.description)00:\(time)", for:.normal)
+        resendBtn.setTitle("\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(time)", for:.normal)
         self.hitTimer()
     }
     
@@ -250,9 +220,9 @@ extension StrongAuthOTPVerifyVC{
     @objc func fireTimer(){
         if self.time > 0{
             self.time -= 1
-            var tempString = "\(L10n.resendCodeWillBeSend.description)00:\(self.time)"
+            var tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(self.time)"
             if time < 10{
-                tempString = "\(L10n.resendCodeWillBeSend.description)00:0\(self.time)"
+                tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:0\(self.time)"
             }
             UIView.performWithoutAnimation {
                 self.resendBtn.setTitle(tempString, for: .normal)
@@ -262,7 +232,7 @@ extension StrongAuthOTPVerifyVC{
         }else{
             self.timer.invalidate()
             UIView.performWithoutAnimation {
-                self.resendBtn.setTitle(L10n.ResendCode.description, for:.normal)
+                self.resendBtn.setTitle(CommonFunctions.localisation(key: "RESEND_CODE"), for:.normal)
                 self.resendBtn.setTitleColor(UIColor.PurpleColor, for: .normal)
                 self.resendBtn.layoutIfNeeded()
             }

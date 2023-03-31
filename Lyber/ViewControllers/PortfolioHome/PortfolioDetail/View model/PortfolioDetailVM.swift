@@ -18,7 +18,7 @@ class PortfolioDetailVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getChartDataApi(AssetId : String,timeFrame: String,completion: @escaping ( (ChartAPI?) -> Void )){
@@ -30,7 +30,7 @@ class PortfolioDetailVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getAssetsNewsApi(id : String,completion: @escaping ( (NewsDataAPI?) -> Void )){
@@ -43,6 +43,6 @@ class PortfolioDetailVM{
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GetString, img: nil, imageParamater: nil, headerPresent: true)
+        }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
     }
 }

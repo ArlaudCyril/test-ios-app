@@ -43,9 +43,12 @@ class PersonalDataCVC: UICollectionViewCell {
 //Mark:- SetUpUI
 extension PersonalDataCVC{
     func SetUpCell(){
-        CommonUI.setUpLbl(lbl: self.personalDataLbl, text: L10n.PersonalData.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.personalDataDescLbl, text: L10n.ForLegalReasons.description, textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.personalDataDescLbl, text: L10n.ForLegalReasons.description, lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.personalDataLbl, text: CommonFunctions.localisation(key: "PERSONAL_DATA"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		CommonUI.setUpTextField(textfield: self.nameTF, placeholder: CommonFunctions.localisation(key: "FIRST_NAME"), font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		CommonUI.setUpTextField(textfield: self.lastNameTF, placeholder: CommonFunctions.localisation(key: "LAST_NAME"), font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		CommonUI.setUpTextField(textfield: self.birthPlaceTF, placeholder: CommonFunctions.localisation(key: "BIRTH_PLACE"), font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.personalDataDescLbl, text: CommonFunctions.localisation(key: "FOR_LEGAL_REASONS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.personalDataDescLbl, text: CommonFunctions.localisation(key: "FOR_LEGAL_REASONS"), lineSpacing: 6, textAlignment: .left)
         let Views = [self.nameVw,self.lastNameVw,self.birthPlaceVw,self.birthDateVw,self.birthCountryVw,self.nationalityVw,self.specifiedUSPersonVw]
         for vw in Views{
             CommonUI.setUpViewBorder(vw: vw ?? UIView(), radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
@@ -57,10 +60,10 @@ extension PersonalDataCVC{
         self.nameTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
         self.lastNameTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
         self.birthPlaceTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
-        CommonUI.setUpButton(btn: self.birthDateBtn, text: L10n.BirthDate.description, textcolor: UIColor.TFplaceholderColor, backgroundColor: UIColor.white, cornerRadius: 16, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.birthCountryLbl, text: L10n.BirthCountry.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.NationalityLbl, text: L10n.Nationality.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.specifiedUSPersonLbl, text: L10n.AreYouAUSCitizen.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpButton(btn: self.birthDateBtn, text: CommonFunctions.localisation(key: "BIRTH_DATE"), textcolor: UIColor.TFplaceholderColor, backgroundColor: UIColor.white, cornerRadius: 16, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.birthCountryLbl, text: CommonFunctions.localisation(key: "BIRTH_COUNTRY"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.NationalityLbl, text: CommonFunctions.localisation(key: "NATIONALITY"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.specifiedUSPersonLbl, text: CommonFunctions.localisation(key: "ARE_YOU_A_US_CITIZEN"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         let birthTap = UITapGestureRecognizer(target: self, action: #selector(selectBirthDate))
         self.birthDateVw.addGestureRecognizer(birthTap)
@@ -85,7 +88,7 @@ extension PersonalDataCVC{
         self.nameTF.text = data?.first_name ?? ""
         self.lastNameTF.text = data?.last_name ?? ""
         self.birthPlaceTF.text = data?.birth_place ?? ""
-        self.specifiedUSPersonLbl.text = data?.specifiedUSPerson == true ? L10n.Yes.description : L10n.No.description
+        self.specifiedUSPersonLbl.text = data?.specifiedUSPerson == true ? CommonFunctions.localisation(key: "YES") : CommonFunctions.localisation(key: "NO")
         self.birthDateBtn.setTitle(CommonFunctions.getDateFormat(date: data?.dob ?? "", format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", rqrdFormat: "dd MMM yyyy"), for: .normal)
         self.birthCountryLbl.text = countryName(from: data?.birth_country ?? "")
         self.NationalityLbl.text = countryName(from: data?.birth_country ?? "")
@@ -207,7 +210,7 @@ extension PersonalDataCVC{
 //MARK: - Other functions
 extension PersonalDataCVC{
     @objc func IsUsPerson(){
-        dropDown.dataSource = [L10n.Yes.description,L10n.No.description]
+        dropDown.dataSource = [CommonFunctions.localisation(key: "YES"),CommonFunctions.localisation(key: "NO")]
         dropDown.selectionBackgroundColor = UIColor.LightPurple
         dropDown.backgroundColor = UIColor.white
         dropDown.layer.cornerRadius = 6

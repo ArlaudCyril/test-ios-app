@@ -14,7 +14,6 @@ extension String{
         return emailPred.evaluate(with: self)
     }
     
-    
     var htmlToAttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
         do {

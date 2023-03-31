@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchAssetVC: UIViewController {
+class SearchAssetVC: ViewController {
     //MARK: - Variables
     var searchAssetVM = SearchAssetVM()
     var allAssets : [GetAssetsAPIElement] = []
@@ -24,10 +24,7 @@ class SearchAssetVC: UIViewController {
         callAssetsApi()
     }
 
-}
-//MARK: - SetUpUI
-extension SearchAssetVC{
-    func setUpUI(){
+    override func setUpUI(){
         self.headerVw.headerLbl.isHidden = true
         self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
         CommonUI.setUpViewBorder(vw: searchView, radius: 12, borderWidth: 1, borderColor: UIColor.borderColor.cgColor)

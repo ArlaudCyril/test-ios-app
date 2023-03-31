@@ -7,80 +7,102 @@
 
 import UIKit
 
-class VerificationEmailCVC: UICollectionViewCell {
+class VerificationEmailCVC: UICollectionViewCell, MyTextFieldDelegate {
     
     //MARK: - Variables
     var controller : PersonalDataVC?
     var personalDataVM = PersonalDataVM()
-    var openAppleMailCallBack : (()->())?
+    var verificationEmailCallBack : ((String)->())?
     //MARK: - IB OUTLETS
-    @IBOutlet var verificationEmailLbl: UILabel!
-    @IBOutlet var verificationEmailDescLbl: UILabel!
-    @IBOutlet var checkMailBoxLbl: UILabel!
     
-    @IBOutlet var opemAppleMailVw: UIView!
-    @IBOutlet var openAppleMailLbl: UILabel!
+    @IBOutlet var enterCodeLbl: UILabel!
+    @IBOutlet var confirmationLbl: UILabel!
+	@IBOutlet var emailAdressLbl: UILabel!
+
+    @IBOutlet var Tf1: otpTextField!
+    @IBOutlet var Tf2: otpTextField!
+    @IBOutlet var Tf3: otpTextField!
+    @IBOutlet var Tf4: otpTextField!
+    @IBOutlet var Tf5: otpTextField!
+    @IBOutlet var Tf6: otpTextField!
     
-    @IBOutlet var openGmailVw: UIView!
-    @IBOutlet var openGmailLbl: UILabel!
-    @IBOutlet var resendEmailBtn: UIButton!
-    
-    override func awakeFromNib() {
-        setUpCell()
-    }
 }
 
+
+//MARK: - SetUpUI
 extension VerificationEmailCVC{
     func setUpCell(){
-        print(self.controller?.email ?? "")
-        CommonUI.setUpLbl(lbl: self.verificationEmailLbl, text: L10n.VérificationEmail.description, textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        DispatchQueue.main.async {
-            CommonUI.setUpLbl(lbl: self.verificationEmailDescLbl, text: "\(L10n.weHaveSentEmailTo.description)\(self.controller?.email ?? "")", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-            CommonUI.setTextWithLineSpacing(label: self.verificationEmailDescLbl, text: "\(L10n.weHaveSentEmailTo.description)\(self.controller?.email ?? "")", lineSpacing: 6, textAlignment: .left)
-            
-            self.verificationEmailDescLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(L10n.weHaveSentEmailTo.description)", secondStr: self.controller?.email ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+        Tf1.becomeFirstResponder()
+		
+        CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: confirmationLbl, text: CommonFunctions.localisation(key: "CONFIRMATION_CODE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		
+		CommonUI.setUpLbl(lbl: emailAdressLbl, text: self.controller?.email ?? "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+		
+
+        let tfs : [otpTextField] = [Tf1,Tf2,Tf3, Tf4, Tf5, Tf6]
+        for tf in tfs {
+            tf.delegate = self
+            tf.otpDelegate = self
+            tf.font = UIFont.MabryProMedium(Size.Large.sizeValue())
+            CommonUI.setUpViewBorder(vw: tf, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor)
         }
-        CommonUI.setUpLbl(lbl: self.checkMailBoxLbl, text: "\(L10n.CheckYourMailbox.description)", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.checkMailBoxLbl, text: "\(L10n.CheckYourMailbox.description)", lineSpacing: 6, textAlignment: .left)
-        
-        
-        CommonUI.setUpLbl(lbl: self.openAppleMailLbl, text: L10n.OpenAppleMail.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.openGmailLbl, text: L10n.OpenGmail.description, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpButton(btn: self.resendEmailBtn, text: L10n.ResendEmail.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        self.resendEmailBtn.addTarget(self, action: #selector(resendBtnAct), for: .touchUpInside)
-        self.resendEmailBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.ResendEmail.description), for: .normal)
-        
-        
-        let openAppleMailTap = UITapGestureRecognizer(target: self, action: #selector(openAppleMailTapped(sender:)))
-        self.opemAppleMailVw.addGestureRecognizer(openAppleMailTap)
-//
-        let openGMailTap = UITapGestureRecognizer(target: self, action: #selector(openGMailTapped))
-        self.openGmailVw.addGestureRecognizer(openGMailTap)
-//        openAppleMailCallBack?()
+    }
+
+}
+
+//MARK: - Text Field Delegates
+extension VerificationEmailCVC: UITextFieldDelegate{
+    
+    func textFieldDidDelete(_ tf: UITextField) {
+        switch tf {
+        case Tf1:
+            Tf1.resignFirstResponder()
+        case Tf2:
+            Tf1.becomeFirstResponder()
+        case Tf3:
+            Tf2.becomeFirstResponder()
+        case Tf4:
+            Tf3.becomeFirstResponder()
+        case Tf5:
+            Tf4.becomeFirstResponder()
+        case Tf6:
+            Tf5.becomeFirstResponder()
+            
+        default:
+            print("error")
+        }
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+            let maxLength = 1
+            if string.count == 1{
+                textField.text = string
+                if Tf1 == textField{
+                    Tf2.becomeFirstResponder()
+                }else if Tf2 == textField{
+                    Tf3.becomeFirstResponder()
+                }else if Tf3 == textField{
+                    Tf4.becomeFirstResponder()
+                }else if Tf4 == textField{
+                    Tf5.becomeFirstResponder()
+                }else if Tf5 == textField{
+                    Tf6.becomeFirstResponder()
+                }else if Tf6 == textField{
+                    Tf6.resignFirstResponder()
+                }
+                if Tf1.text != "" && Tf2.text != "" && Tf3.text != "" && Tf4.text != "" && Tf5.text != "" && Tf6.text != ""{
+
+                    verificationEmailCallBack?("\(Tf1.text ?? "")\(Tf2.text ?? "")\(Tf3.text ?? "")\(Tf4.text ?? "")\(Tf5.text ?? "")\(Tf6.text ?? "")")
+                }
+            }
+
+        return newString.length <= maxLength
     }
 }
 
-extension VerificationEmailCVC {
-    @objc func openAppleMailTapped(sender : UITapGestureRecognizer){
-        let mailURL = URL(string: "message://")!
-        if UIApplication.shared.canOpenURL(mailURL) {
-//            UIApplication.shared.openURL(mailURL)
-            UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
-        }
-    }
-    @objc func openGMailTapped(){
-        let googleUrlString = "googlegmail://"
-        if let googleUrl = URL(string: googleUrlString) {
-            if UIApplication.shared.canOpenURL(googleUrl) {
-                UIApplication.shared.open(googleUrl, options: [:], completionHandler: nil)
-            }
-        }
-    }
-    
-    @objc func resendBtnAct(){
-        personalDataVM.sendVerificationEmailApi(email: self.controller?.email, password: self.controller?.emailPassword , completion: {[]response in
-//            print(response?.message ?? "")
-        })
-    }
-}
 

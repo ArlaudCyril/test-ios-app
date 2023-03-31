@@ -38,7 +38,7 @@ extension ExchAnotherWalletTVC{
         CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: data.coinName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: data.euro, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: data.totalCoin, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: "FIAT Wallet", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: CommonFunctions.localisation(key: "FIAT_WALLET"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
         
         if screenType == .exchange{
             self.flatVw.isHidden = true

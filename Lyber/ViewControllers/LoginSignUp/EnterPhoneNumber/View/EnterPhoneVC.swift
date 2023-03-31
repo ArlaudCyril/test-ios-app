@@ -11,7 +11,7 @@ import JWTDecode
 import BigNum
 import CryptoKit
 
-class EnterPhoneVC: UIViewController {
+class EnterPhoneVC: ViewController {
     //MARK: - Variables
     var verifyPin = false
     var enterPhoneVM = EnterPhoneVM()
@@ -48,26 +48,13 @@ class EnterPhoneVC: UIViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
         
         do {
-            var token = try decode(jwt: userData.shared.accessToken)
+            _ = try decode(jwt: userData.shared.userToken)
         } catch {
             print(error)
         }
         
         setUpUI()
-        if verifyPin == true{
-            self.headerVw.backBtn.isHidden = true
-            DispatchQueue.main.async {
-                let indexPath = NSIndexPath(item: 3, section: 0)
-                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-            }
-            
-        }
-        if userData.shared.is_push_enabled == 0 && userData.shared.logInPinSet != 0{
-            DispatchQueue.main.async {
-                let indexPath = NSIndexPath(item: 4, section: 0)
-                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-            }
-        }else if userData.shared.isPhoneVerified == true{
+        if (userData.shared.isPhoneVerified == true && userData.shared.userToken != ""){
             DispatchQueue.main.async {
                 let indexPath = NSIndexPath(item: 2, section: 0)
                 self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
@@ -88,11 +75,8 @@ class EnterPhoneVC: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-}
 
-//MARK: - SetUpUI
-extension EnterPhoneVC{
-    func setUpUI(){
+    override func setUpUI(){
         //        self.hideKeyboardWhenTappedAround()
         self.headerVw.headerLbl.isHidden = true
         self.collView.delegate = self
@@ -102,7 +86,7 @@ extension EnterPhoneVC{
         self.collView.layer.cornerRadius = 32
         self.collView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.setIndicatorViews()
-        self.nextButton.setTitle(L10n.Next.description, for: .normal)
+        self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
         self.headerVw.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
         
@@ -136,7 +120,10 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             return cell
         }else if indexPath.item == 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OtpCVC", for: indexPath as IndexPath) as! OtpCVC
-            cell.setUpUI(countryCode: self.countryCode, phoneNumber: self.phoneNumber)
+            cell.phoneNumber = self.phoneNumber
+            cell.countryCode = self.countryCode
+            
+            cell.setUpUI()
             cell.controller = self
             cell.otpFieldDelegate = {[]otp in
                 self.OtpVerified(otpValue : otp)
@@ -174,7 +161,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmPinCVC", for: indexPath as IndexPath) as! ConfirmPinCVC
             cell.setUpUI(verifyPin : verifyPin)
             cell.pinConfirmDelegate = {[]pin in
-                if self.verifyPin == true{
+                if userData.shared.logInPinSet != 0{
                     if userData.shared.logInPinSet != Int(pin){
                         CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
                     }else{
@@ -214,9 +201,6 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enableNotificationCVC", for: indexPath as IndexPath) as! enableNotificationCVC
             cell.setUpUI()
             cell.delegate = self
-            //            cell.enableNotificationCallBack = {[] in
-            //
-            //            }
             return cell
         }else{
             return UICollectionViewCell()
@@ -240,7 +224,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 extension EnterPhoneVC{
     @objc func backBtnAct(){
         if self.currentPage ?? 0 == 0 || self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
-            userData.shared.deleteData()
+            //userData.shared.deleteData()
             CommonFunctions.logout()
             //            self.navigationController?.popToRootViewController(animated: true)
             //            self.dismiss(animated: true, completion: nil)
@@ -253,7 +237,6 @@ extension EnterPhoneVC{
     
     @objc func nextBtnAct(){
         self.checkValidationOnPhoneNumber()
-        //        collView.reloadData()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -300,8 +283,8 @@ extension EnterPhoneVC{
             if self.currentPage ?? 0 >= 1{
                 if self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
                     self.headerVw.backBtn.setImage(UIImage(), for: .normal)
-                    CommonUI.setUpButton(btn: self.headerVw.backBtn, text: L10n.LogOut.description, textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
-                    self.headerVw.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: L10n.LogOut.description), for: .normal)
+                    CommonUI.setUpButton(btn: self.headerVw.backBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
+                    self.headerVw.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOG_OUT")), for: .normal)
                 }else{
                     self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
                     self.headerVw.backBtn.setAttributedTitle(CommonFunctions.removeUnderlineString(str: ""), for: .normal)
@@ -329,8 +312,8 @@ extension EnterPhoneVC{
                     self?.nextButton.hideLoading()
                     self?.nextButton.isUserInteractionEnabled = true
                     if let response = response{
-                        userData.shared.accessToken = response.data?.token ?? ""
-                        userData.shared.phone_no = Int(self?.phoneNumber ?? "") ?? 0
+                        userData.shared.registrationToken = response.data?.token ?? ""
+                        userData.shared.phone_no = self?.phoneNumber ?? ""
                         userData.shared.time = Date()
                         userData.shared.dataSave()
                         self?.nextBtnView.isHidden = true
@@ -348,7 +331,7 @@ extension EnterPhoneVC{
                         self?.nextButton.hideLoading()
                         self?.nextButton.isUserInteractionEnabled = true
                         if let response = response{
-                            userData.shared.accessToken = response.data?.token ?? ""
+                            userData.shared.userToken = response.data?.token ?? ""
                             userData.shared.dataSave()
                             let serverPublicKey = BigNum.init(response.data?.b ?? "")!
                             let salt = BigNum.init(response.data?.salt ?? "")!
@@ -362,17 +345,19 @@ extension EnterPhoneVC{
                                 let clientProof = client.calculateSimpleClientProof(clientPublicKey: clientKeys.public, serverPublicKey: spk, sharedSecret: clientSharedSecret)
                                 EnterPhoneVM().logInApi(A: BigNum(bytes: clientKeys.public.bytes).dec, M1: BigNum(bytes: clientProof).dec, method: "srp", completion: {[weak self] response in
                                     if let response = response{
-                                        userData.shared.is_push_enabled = 1
-                                        userData.shared.isIdentityVerified = true
-                                        userData.shared.accessToken = response.data?.accessToken ?? ""
-                                        userData.shared.refreshToken = response.data?.refreshToken ?? ""
-                                        userData.shared.time = Date()
-                                        userData.shared.dataSave()
-                                        self?.nextBtnView.isHidden = true
-                                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 2, section: 0)
-                                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
-                                        //                                    let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                                        //                                    self?.navigationController?.pushViewController(vc, animated: true)
+                                        if(response.data?.accessToken != nil){
+                                            userData.shared.userToken = response.data?.accessToken ?? ""
+                                            userData.shared.refreshToken = response.data?.refreshToken ?? ""
+                                            userData.shared.time = Date()
+                                            userData.shared.dataSave()
+                                            self?.nextBtnView.isHidden = true
+                                            let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 2, section: 0)
+                                            self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+                                        }else{
+                                            let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                                            vc.typeVerification = response.data?.type2FA
+                                            self?.navigationController?.pushViewController(vc, animated: true)
+                                        }
                                     }
                                 })
                             }catch{
@@ -394,6 +379,7 @@ extension EnterPhoneVC{
                 
                 if userData.shared.logInPinSet == 0{
                     self?.GotoNextIndex()
+                    
                 }else {
                     if userData.shared.isIdentityVerified == true{
                         let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
@@ -401,12 +387,12 @@ extension EnterPhoneVC{
                         nav.modalPresentationStyle = .fullScreen
                         nav.navigationBar.isHidden = true
                         self?.present(nav, animated: true, completion: nil)
-                    }else if userData.shared.is_push_enabled == 1 || userData.shared.is_push_enabled == 2{
+                    }/*else if userData.shared.is_push_enabled == 1 || userData.shared.is_push_enabled == 2{
                         userData.shared.isAccountCreated = true
                         userData.shared.dataSave()
                         let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                         self?.navigationController?.pushViewController(vc, animated: true)
-                    }else{
+                    }*/else{
                         let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 3, section: 0)
                         self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
                     }
@@ -417,37 +403,36 @@ extension EnterPhoneVC{
     
     
     func setLoginPin(enteredPin : String){
-        //        enterPhoneVM.setLoginPinApi(Pin: enteredPin, completion: {[weak self]response in
-        //            if let response = response{
-        //                print(response)
         userData.shared.logInPinSet = Int(enteredPin) ?? 0
         userData.shared.dataSave()
-        
-        if isLogin{
-            let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else{
-            self.showActiveFaceIdAlert()
-        }
-        //            }
-        //        })
+        self.showActiveFaceIdAlert()
     }
     
     func showActiveFaceIdAlert(){
-        let alert = UIAlertController(title: L10n.ActivateFaceID.description, message: L10n.AccessLyberFaceID.description, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: L10n.Decline.description, style: .default, handler: {(action : UIAlertAction) in
+        let alert = UIAlertController(title: CommonFunctions.localisation(key: "ACTIVATE_FACE_ID"), message: CommonFunctions.localisation(key: "ACCESS_LYBER_FACE_ID"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "DECLINE"), style: .default, handler: {(action : UIAlertAction) in
             //            self.enterPhoneVM.enableFaceIdApi(enable: 0, completion: {[]response in
             //                if let response = response{
             //                    print(response)
-            self.GotoNextIndex()
+            if userData.shared.isAccountCreated{
+                let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                self.GotoNextIndex()
+            }
             //                }
             //            })
         }))
-        alert.addAction(UIAlertAction(title: L10n.Activate.description, style: .default, handler: {_ in
+        alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "ACTIVATE"), style: .default, handler: {_ in
             //            self.enterPhoneVM.enableFaceIdApi(enable: 1, completion: {[]response in
             //                if let response = response{
             //                    print(response)
-            self.GotoNextIndex()
+            if userData.shared.isAccountCreated{
+                let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                self.GotoNextIndex()
+            }
             //                }
             //            })
         }))
