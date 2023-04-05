@@ -97,8 +97,8 @@ extension SceneDelegate{
     func checkInitialAppSetup(){
         userData.shared.getData()
 		if(userData.shared.userToken != ""){
-			loadingProfileApi()
-		}else{
+			CommonFunctions.loadingProfileApi()
+		}else if(userData.shared.language == ""){
 			if(Bundle.main.preferredLocalizations.first == "fr")
 			{
 				userData.shared.language = "fr"
@@ -106,41 +106,10 @@ extension SceneDelegate{
 				userData.shared.language = "en"
 			}
 			userData.shared.dataSave()
-			controllerDelegate()
-		} 
+		}
+		self.controllerDelegate()
     }
-	
-	func loadingProfileApi(){
-		ProfileVM().getProfileDataApi(completion: {[]response in
-			if let response = response{
-				//handle language
-				if(response.data?.language == ""){
-					if(Bundle.main.preferredLocalizations.first == "fr")
-					{
-						userData.shared.language = "fr"
-					}else{
-						userData.shared.language = "en"
-					}
-				}else{
-					userData.shared.language = response.data?.language?.lowercased() ?? ""
-				}
-				userData.shared.firstname = response.data?.firstName ?? ""
-				userData.shared.lastname = response.data?.lastName ?? ""
-				userData.shared.has2FA = response.data?.has2FA ?? false
-				userData.shared.type2FA = response.data?.type2FA ?? "none"
-				userData.shared.phone_no = response.data?.phoneNo ?? ""
-				userData.shared.email = response.data?.email ?? ""
-				//userData.shared.profile_image = response.data?.profilePic ?? ""
-				userData.shared.scope2FALogin = response.data?.scope2FA?.login ?? false
-				userData.shared.scope2FAWhiteListing =  response.data?.scope2FA?.whitelisting ?? false
-				userData.shared.scope2FAWithdrawal = response.data?.scope2FA?.withdrawal ?? false
-				
-				userData.shared.dataSave()
-				
-				self.controllerDelegate()
-			}
-		})
-	}
+
 	
 	func controllerDelegate(){
 		let path = Bundle.main.path(forResource: userData.shared.language, ofType: "lproj")!

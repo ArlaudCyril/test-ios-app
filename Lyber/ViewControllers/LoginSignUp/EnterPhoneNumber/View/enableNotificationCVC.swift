@@ -54,11 +54,14 @@ extension enableNotificationCVC{
         
         CommonFunctions.enableNotifications(enable: enable)
         
-        var vc : ViewController = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        var vc : ViewController
         if(GlobalVariables.isRegistering == true)
         {
             vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-        }
+		}else{
+			vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+			CommonFunctions.loadingProfileApi()
+		}
         let navController = UINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .fullScreen
         navController.navigationBar.isHidden = true

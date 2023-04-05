@@ -17,7 +17,6 @@ class PortfolioHomeTVC: UITableViewCell {
     var activityIndicator : NVActivityIndicatorView!
     var controller : PortfolioHomeVC?
     var markerController : customMarker?
-//    var chartData = ["1D","1W","1M","1Y","ALL"]
     let customMarkerView = customMarker()
 //    var player: AVQueuePlayer!
 //    var playerLayer = AVPlayerLayer!

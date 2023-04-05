@@ -419,7 +419,7 @@ extension PersonalDataVC{
                             userData.shared.refreshToken = response.data?.refresh_token ?? ""
                             userData.shared.dataSave()
                             //                            userData.shared.fromPersonalData(response)
-                            
+							CommonFunctions.loadingProfileApi()
                             if self?.fromLoginScreen == true{
                                 let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                                 let navVC = UINavigationController(rootViewController: vc)

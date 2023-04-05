@@ -17,11 +17,15 @@ class PortfolioDetailTVC: UITableViewCell {
     let customMarkerView = customMarker()
     var allAssets : [GetAssetsAPIElement] = []
     var assetDetail : Trending?
-    var dateTimeArr : [graphStruct] = []
+	var dateTimeArr : [graphStruct] = []
     var assetName = String()
     var chartLastPoint = Double()
     var isOpened = false
-//    var webSocket : URLSessionWebSocketTask?
+	var graphValues: [ChartDataEntry] = []
+	var valueWebSocket : Double = 0
+	var timer = Timer()
+	var entrySelected = ChartDataEntry()
+	var scaleYChartView : CGFloat = 0
     
     //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
@@ -48,34 +52,30 @@ extension PortfolioDetailTVC{
     func setUpCell(assetData : Trending?,chartData : chartData?){
         self.customMarkerView.contentView.isHidden = true
         self.assetDetail = assetData
-        var graphValues: [ChartDataEntry] = []
+		self.graphValues = []
+        
         self.chartView.delegate = self
         
         let modifiedDateArr = self.getTimeValues(date: chartData?.lastUpdate ?? "", count: chartData?.prices?.count ?? 0)
-        print("modifiedDateArr \(modifiedDateArr)")
-        for (index,value) in stride(from: 0, through: (chartData?.prices?.count ?? 0)-1, by: 1).enumerated(){
-            
-            self.dateTimeArr.append(graphStruct(index: index, date: modifiedDateArr[value], euro: Double(chartData?.prices?[value] ?? "") ?? 0))
-//            let yValue = chartData?.prices?[value][1] ?? ""
-            let yValue = Double(chartData?.prices?[value] ?? "") ?? 0
-            graphValues.append(ChartDataEntry(x: Double(value), y: yValue))
+
+		for (index,_) in stride(from: 0, through: (chartData?.prices?.count ?? 0)-1, by: 1).enumerated(){
+			self.dateTimeArr.append(graphStruct(index: index, date: modifiedDateArr[index], euro: Double(chartData?.prices?[index] ?? "") ?? 0))
+			let yValue = Double(chartData?.prices?[index] ?? "") ?? 0
+			self.graphValues.append(ChartDataEntry(x: Double(index), y: yValue))
         }
-        self.extractedFunc(graphValues, UIColor.PurpleColor)
+        self.extractedFunc(self.graphValues, UIColor.PurpleColor)
         
-        if graphValues.count > 0{
-            let lastPoint = self.chartView.getPosition(entry: graphValues[graphValues.count - 1], axis: .left)
-            print("lastPoint : \(lastPoint)")
+        if self.graphValues.count > 0{
+            let lastPoint = self.chartView.getPosition(entry: self.graphValues[self.graphValues.count - 1], axis: .left)
             self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
-            self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: graphValues[graphValues.count - 1].x, yValue: graphValues[graphValues.count - 1].y)
-            self.chartLastPoint = graphValues[graphValues.count - 1].y
+            self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.graphValues[self.graphValues.count - 1].y)
+            self.chartLastPoint = self.graphValues[self.graphValues.count - 1].y
             self.customMarkerView.contentView.isHidden = false
         }
         
         self.chartView.addSubview(customMarkerView)
-        self.receiveMessage()
-   
-        
-        
+		
+		
         self.backBtn.layer.cornerRadius = 12
         CommonUI.setUpButton(btn: self.coinBtn, text: "", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         for coin in coinDetailData{
@@ -86,7 +86,7 @@ extension PortfolioDetailTVC{
         
         CommonUI.setUpLbl(lbl: priceLbl, text: CommonFunctions.localisation(key: "PRICE"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: self.chartLastPoint ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: percentageLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: percentageLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))//update percentage
         
         if (assetData?.priceChangePercentage24H ?? 0) < 0{
             percentageLbl.textColor = UIColor.RedDF5A43
@@ -103,6 +103,8 @@ extension PortfolioDetailTVC{
         
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
+		
+		
         
     }
     
@@ -166,9 +168,9 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Item Selected is \(indexPath.item)")
         self.customMarkerView.contentView.isHidden = true
         var chartDuration : chartType = .oneWeek
+		self.timer.invalidate()
         switch indexPath.row{
         case 0:
             chartDuration = .oneHour
@@ -182,30 +184,11 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
             chartDuration = .oneMonth
         case 5:
             chartDuration = .oneYear
-        
         default:
             break
         }
-//        self.controller?.chartDurationTime = chartDuration.rawValue
-//        if indexPath.row == 0 || indexPath.row == 1{
-//            var graphValues: [ChartDataEntry] = []
-//            graphValues.append(ChartDataEntry(x: 0, y: 0))
-//            for index in 1..<8 {
-//                let randomValue = Double(arc4random_uniform(15000))
-//                graphValues.append(ChartDataEntry(x: Double(index), y: randomValue ))
-//            }
-//            extractedFunc(graphValues, UIColor.PurpleColor)
-//
-//            let lastPoint = self.chartView.getPosition(entry: graphValues[graphValues.count - 1], axis: .left)
-//            print("lastPoint : \(lastPoint)")
-//            self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
-//            self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: graphValues[graphValues.count - 1].x, yValue: graphValues[graphValues.count - 1].y)
-//            self.customMarkerView.contentView.isHidden = false
-//        }else{
-            self.dateTimeArr = []
-            self.callChartApi(duration: chartDuration.rawValue)
-//        }
-        
+		self.dateTimeArr = []
+		self.callChartApi(duration: chartDuration.rawValue)
     }
 }
 
@@ -228,9 +211,8 @@ extension PortfolioDetailTVC{
 
 extension PortfolioDetailTVC: ChartViewDelegate{
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-//        guard let dataSet = chartView.data?.dataSets[highlight.dataSetIndex] else { return }
-        print("chartValueSelected : x = \(highlight.x) y = \(highlight.y)")
         self.customMarkerView.center = CGPoint(x: highlight.xPx, y: (highlight.yPx ))
+		self.entrySelected = entry
         self.customMarkerView.contentView.isHidden = false
         self.hideShowBubble(xPixel: highlight.xPx, yPixel: highlight.yPx, xValue: highlight.x, yValue:highlight.y )
         
@@ -241,26 +223,23 @@ extension PortfolioDetailTVC: ChartViewDelegate{
 extension PortfolioDetailTVC{
     func callChartApi(duration : String){
         self.controller?.portfolioDetailVM.getChartDataApi(AssetId: self.assetName, timeFrame: duration , completion: {[ self]response in
-//            CommonFunction.hideLoader()
             if let response = response{
-                var graphValues: [ChartDataEntry] = []
+                self.graphValues = []
                 
                 let modifiedDateArr = self.getTimeValues(date: response.data?.lastUpdate ?? "", timeFrame: duration, count: response.data?.prices?.count ?? 0)
-                print("modifiedDateArr \(modifiedDateArr)")
                 
                 for (index,value) in stride(from: 0, through: (response.data?.prices?.count ?? 0)-1, by: 1).enumerated(){
                     self.dateTimeArr.append(graphStruct(index: index, date: modifiedDateArr[value], euro: Double(response.data?.prices?[value] ?? "") ?? 0))
-               
-        //            let yValue = chartData?.prices?[value][1] ?? ""
                     let yValue = Double(response.data?.prices?[value] ?? "") ?? 0
-                    graphValues.append(ChartDataEntry(x: Double(value), y: yValue))
+                    self.graphValues.append(ChartDataEntry(x: Double(value), y: yValue))
                 }
-                self.extractedFunc(graphValues, UIColor.PurpleColor)
+                self.extractedFunc(self.graphValues, UIColor.PurpleColor)
+				self.entrySelected = self.graphValues.last ?? ChartDataEntry()
+				self.setTimer(timeFrame: duration)
                 
-                let lastPoint = self.chartView.getPosition(entry: graphValues[graphValues.count - 1], axis: .left)
-                print("lastPoint : \(lastPoint)")
+                let lastPoint = self.chartView.getPosition(entry: self.graphValues[self.graphValues.count - 1], axis: .left)
                 self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
-                self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: graphValues[graphValues.count - 1].x, yValue: graphValues[graphValues.count - 1].y)
+                self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.graphValues[self.graphValues.count - 1].y)
                 self.customMarkerView.contentView.isHidden = false
             }
         })
@@ -274,7 +253,6 @@ extension PortfolioDetailTVC{
             customMarkerView.bottomBubble.isHidden = false
             customMarkerView.topBubble.isHidden = true
         }
-        print(yValue)
         customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
         customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
 
@@ -291,7 +269,9 @@ extension PortfolioDetailTVC{
 extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
     func receiveMessage() {
         if !isOpened {
-            openWebSocket(assetName: self.assetName)
+			if(self.dateTimeArr.count != 0){
+				openWebSocket(assetName: self.assetName)
+			}
         }
         self.controller?.webSocket?.receive(completionHandler: { [weak self] result in
             switch result {
@@ -300,18 +280,17 @@ extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
             case .success(let message):
                 switch message {
                 case .string(let messageString):
-                    print(messageString)
                     let messageDict = messageString as String
-                    print(messageDict)
                     do{
                         let data = messageString.data(using: .utf8)
                         let jsondata = try JSON(data: data ?? Data())
-                        print(jsondata["Price"])
                         let price = (jsondata["Price"].rawValue) as? String
                         let value = Double(price ?? "")
                         DispatchQueue.main.async {
                             if value  != 0{
                                 self?.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: value ))€"
+								self?.valueWebSocket = value ?? 0
+								self?.updateValueLastPoint()
                             }
                         }
                     }
@@ -337,6 +316,11 @@ extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
             self.controller?.webSocket = session.webSocketTask(with: request)
             self.controller?.webSocket?.resume()
             isOpened = true
+			
+			//setting timer for updating point
+			self.entrySelected = self.graphValues.last ?? ChartDataEntry()
+			self.setTimer(timeFrame: "1h")
+			self.scaleYChartView = Double(self.chartView.data?.yMax ?? 0) - Double(self.chartView.data?.yMin ?? 0)
         }
     }
     
@@ -348,7 +332,111 @@ extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
     
     func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
         print("Web socket closed")
+		self.timer.invalidate()
 //        isOpened = false
     }
+	
+	@objc func updateChartView(value: Double){
+		let indexSelected = Int(self.entrySelected.x)
+		
+		//delete first element
+		self.dateTimeArr.remove(at: 0)
+		self.graphValues.remove(at: 0)
+		
+		//reset arrays without the first element
+		let copyDateTimeArr = self.dateTimeArr
+		let copyGraphValues = self.graphValues
+		
+		self.dateTimeArr = []
+		self.graphValues = []
+		
+		for (index,_) in stride(from: 0, through: copyGraphValues.count-1, by: 1).enumerated(){
+			self.dateTimeArr.append(graphStruct(index: index, date: copyDateTimeArr[index].date, euro: copyDateTimeArr[index].euro))
+			self.graphValues.append(ChartDataEntry(x: Double(index), y: copyGraphValues[index].y))
+		}
+		
+		//last index
+		let date = CommonFunctions.getDate(date: Date())
+		let value = self.valueWebSocket
+		self.dateTimeArr.append(graphStruct(index: self.graphValues.count, date: date, euro: value))
+		self.graphValues.append(ChartDataEntry(x: Double(self.graphValues.count), y: value))
+		self.extractedFunc(self.graphValues, UIColor.PurpleColor)
+		
+		
+		var indexGraph = 0
+		if(indexSelected >= self.graphValues.count-1){
+			indexGraph = self.graphValues.count-1
+		}else if(indexSelected <= 0){
+			indexGraph = 0
+		}else{
+			indexGraph = indexSelected-1
+		}
+		self.entrySelected = self.graphValues[indexGraph]
+		let point = self.chartView.getPosition(entry: self.graphValues[indexGraph], axis: .left)
+		self.customMarkerView.center = CGPoint(x: point.x , y: (point.y ) )
+		self.hideShowBubble(xPixel: point.x, yPixel: point.y, xValue: self.graphValues[indexGraph].x, yValue: self.graphValues[indexGraph].y)
 
+	}
+	
+	func updateValueLastPoint(){
+		let diffYCharView = Double(self.chartView.data?.yMax ?? 0) - Double(self.chartView.data?.yMin ?? 0)
+		if(diffYCharView != self.scaleYChartView){
+			self.scaleYChartView = diffYCharView
+			let pointSelected = self.chartView.getPosition(entry: self.entrySelected, axis: .left)
+			self.customMarkerView.center = CGPoint(x: pointSelected.x , y: (pointSelected.y ) )
+		}
+		let lastPoint = self.chartView.getPosition(entry: self.graphValues[self.graphValues.count - 1], axis: .left)
+		//self.customMarkerView.contentView.isHidden = false
+		if(Int(self.entrySelected.x) == self.graphValues.count - 1){
+			self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
+			self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.valueWebSocket)
+			
+		}
+		self.graphValues[self.graphValues.count-1] = ChartDataEntry(x: Double(self.graphValues.count-1), y: self.valueWebSocket)
+		self.extractedFunc(self.graphValues, UIColor.PurpleColor)
+	}
+	
+	func setTimer(timeFrame : String){
+		//setting timer for updating point
+		var interval : Double = 0
+		let formatter = DateFormatter()
+		//get current year
+		formatter.dateFormat = "yyyy"
+		let yearString = formatter.string(from: Date())
+		let dateString = (self.dateTimeArr.last?.date)! + " " + yearString
+		//get date of the last index in array
+		formatter.dateFormat = "MMM. d, HH:mm yyyy"
+		var date = formatter.date(from: dateString) ?? Date()
+		switch timeFrame {
+			case "1h":
+				//every minutes
+				date = Calendar.current.date(byAdding: .minute, value: 1, to: date )!
+				interval = 60
+			case "4h":
+				//every 5 minutes
+				date = Calendar.current.date(byAdding: .minute, value: 5, to: date )!
+				interval = 60*5
+			case "1d":
+				//every 30 minutes
+				date = Calendar.current.date(byAdding: .minute, value: 30, to: date )!
+				interval = 60*30
+			case "1w":
+				//every 4 hours
+				date = Calendar.current.date(byAdding: .hour , value: 4, to: date )!
+				interval = 60*60*4
+			case "1m":
+				//every 12 hours
+				date = Calendar.current.date(byAdding: .hour, value: 12, to: date )!
+				interval = 60*60*12
+			case "1y":
+				//every 7 days
+				date = Calendar.current.date(byAdding: .day, value: 7, to: date )!
+				interval = 60*60*24*7
+			default:
+				print("timeFrame not recognized")
+		}
+
+		self.timer = Timer(fireAt: date, interval: interval, target: self, selector: #selector(self.updateChartView), userInfo: nil, repeats: true)
+		RunLoop.main.add(self.timer, forMode: RunLoop.Mode.common)
+	}
 }

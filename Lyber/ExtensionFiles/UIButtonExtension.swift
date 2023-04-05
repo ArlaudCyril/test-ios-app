@@ -121,9 +121,6 @@ class PurpleButton: LoadingButton {
         self.titleLabel?.font = UIFont.MabryProMedium(Size.XLarge.sizeValue())
         self.setTitleColor(UIColor.whiteColor, for: .normal)
         self.backgroundColor = UIColor.PurpleColor
-//        DispatchQueue.main.async {
-//            self.applyGradient(colors: [UIColor.primaryGreen.cgColor, UIColor.secondaryGreen.cgColor], isHorizontal: true)
-//        }
     }
     
    

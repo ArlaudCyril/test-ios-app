@@ -229,7 +229,6 @@ struct Constants{
         
         //Profile
         static let userTransactions = "user/transactions"
-        static let userPinOtp = "user/pin/otp"
         static let userPinVerifyPhone = "user/pin/verify-phone"
         static let userPin = "user/pin"
         static let user = "user"

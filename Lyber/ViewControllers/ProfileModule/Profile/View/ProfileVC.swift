@@ -186,7 +186,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
                 let vc = CryptoAddressBookVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else if indexPath.row == 2{
-                CommonFunctions.showLoader(self.view)
+                /*CommonFunctions.showLoader(self.view)
                 ChangePinVM().sendOtpApi(completion: {[]response in
                     CommonFunctions.hideLoader(self.view)
                     if let response = response{
@@ -196,7 +196,11 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
                         nav.modalPresentationStyle = .fullScreen
                         self.present(nav, animated: true, completion: nil)
                     }
-                })
+                })*/
+				let vc = ChangePinVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				let nav = UINavigationController(rootViewController: vc)
+				nav.modalPresentationStyle = .fullScreen
+				self.present(nav, animated: true, completion: nil)
             }
         }
     }

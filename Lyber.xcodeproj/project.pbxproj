@@ -227,7 +227,6 @@
 		0AB24EEB288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEA288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift */; };
 		0AB24EED288A7DAF00B7BAE8 /* CreateNewPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEC288A7DAF00B7BAE8 /* CreateNewPinCVC.swift */; };
 		0AB24EEF288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEE288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift */; };
-		0AB24EF2288A8CC400B7BAE8 /* ChangePinVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EF1288A8CC400B7BAE8 /* ChangePinVM.swift */; };
 		0AB67BD32872D38F00270548 /* KYCVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB67BD22872D38F00270548 /* KYCVerificationVC.swift */; };
 		0AB9B2BA289E2A2700A6DCDD /* AddCryptoAddressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9B2B9289E2A2700A6DCDD /* AddCryptoAddressVM.swift */; };
 		0AB9B2BC289E2B2000A6DCDD /* AddCryptoAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9B2BB289E2B2000A6DCDD /* AddCryptoAddressModel.swift */; };
@@ -509,7 +508,6 @@
 		0AB24EEA288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinOtpCVC.swift; sourceTree = "<group>"; };
 		0AB24EEC288A7DAF00B7BAE8 /* CreateNewPinCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPinCVC.swift; sourceTree = "<group>"; };
 		0AB24EEE288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmNewPinCVC.swift; sourceTree = "<group>"; };
-		0AB24EF1288A8CC400B7BAE8 /* ChangePinVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinVM.swift; sourceTree = "<group>"; };
 		0AB67BD22872D38F00270548 /* KYCVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KYCVerificationVC.swift; sourceTree = "<group>"; };
 		0AB9B2B9289E2A2700A6DCDD /* AddCryptoAddressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoAddressVM.swift; sourceTree = "<group>"; };
 		0AB9B2BB289E2B2000A6DCDD /* AddCryptoAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCryptoAddressModel.swift; sourceTree = "<group>"; };
@@ -2049,7 +2047,6 @@
 			isa = PBXGroup;
 			children = (
 				0AB24EF0288A8CB100B7BAE8 /* View Model */,
-				0AB24EE7288A7C0B00B7BAE8 /* Model */,
 				0AB24EE6288A7C0100B7BAE8 /* View */,
 			);
 			path = ChangePin;
@@ -2066,17 +2063,9 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0AB24EE7288A7C0B00B7BAE8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0AB24EF0288A8CB100B7BAE8 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
-				0AB24EF1288A8CC400B7BAE8 /* ChangePinVM.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -2796,7 +2785,6 @@
 				0A005C222844EBFD008117D1 /* PersonalDataVC.swift in Sources */,
 				0A8DA731289CF116000C4BC8 /* dropDownTableViewCell.swift in Sources */,
 				0A8AE891284A27EA0090A354 /* InvestmentStrategyVC.swift in Sources */,
-				0AB24EF2288A8CC400B7BAE8 /* ChangePinVM.swift in Sources */,
 				0A71B8DE283F9708007CE9B2 /* Images.swift in Sources */,
 				0A808C4B2872EA9F000CA519 /* KYCVerificationModel.swift in Sources */,
 				0AC5B5F52840979B00533ED3 /* enableNotificationCVC.swift in Sources */,

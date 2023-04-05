@@ -20,7 +20,6 @@ class PortfolioDetailVC: swipeGesture {
         InfoModel(name: CommonFunctions.localisation(key: "POPULARITY"), value: "72"),]
     var portfolioDetailVM = PortfolioDetailVM()
     var chartData : chartData?
-    var timer = Timer()
     var chartDurationTime = chartType.oneHour.rawValue
     var resoucesData : [newsData] = []
     var webSocket : URLSessionWebSocketTask?
@@ -42,7 +41,6 @@ class PortfolioDetailVC: swipeGesture {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         webSocket?.cancel(with: .goingAway, reason: nil)
-        self.timer.invalidate()
     }
 	
 	//MARK: - SetUpUI
@@ -57,15 +55,10 @@ class PortfolioDetailVC: swipeGesture {
         self.threeDotBtn.layer.cornerRadius = 16
         self.threeDotBtn.threeDotButtonShadow()
         
-        self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self , selector: #selector(fireTimer), userInfo: nil, repeats: true)
-        
         self.investMoneyBtn.addTarget(self, action: #selector(investMoneyBtnAct), for: .touchUpInside)
         self.threeDotBtn.addTarget(self, action: #selector(threeDotBtnAct), for: .touchUpInside)
     }
     
-    @objc func fireTimer(){
-//        self.callChartApi(duration: self.chartDurationTime)
-    }
 }
 
 //Mark: - table view delegates and dataSource
@@ -92,7 +85,11 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioDetailTVC")as! PortfolioDetailTVC
             cell.controller = self
             cell.assetName = self.assetName
-            cell.setUpCell(assetData : assetData,chartData : self.chartData)
+			cell.setUpCell(assetData : self.assetData,chartData : self.chartData)
+			cell.receiveMessage()
+
+            
+			
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyBalanceTVC")as! MyBalanceTVC

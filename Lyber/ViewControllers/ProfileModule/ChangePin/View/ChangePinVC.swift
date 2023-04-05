@@ -10,10 +10,9 @@ import IQKeyboardManagerSwift
 
 class ChangePinVC: ViewController {
     //MARK: - Variables
-        var verifyPin = false
-        var changePinVM = ChangePinVM()
+	var verifyPin = false
     var enteredPin = String()
-        var currentPage : Int? = 0
+	var currentPage : Int? = 0
   //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var collView: UICollectionView!
@@ -53,22 +52,6 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChangePinOtpCVC", for: indexPath as IndexPath) as! ChangePinOtpCVC
-            cell.setUpUI()
-            cell.otpFieldDelegate = {[]otp in
-                self.OtpVerified(otpValue : otp)
-            }
-            if currentPage == 0{
-                DispatchQueue.main.async {
-                    cell.Tf1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
-                }
-            }else{
-//                cell.timer.invalidate()
-                cell.endEditing(true)
-            }
-            return cell
-        }else if indexPath.item == 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreateNewPinCVC", for: indexPath as IndexPath) as! CreateNewPinCVC
             cell.setUpUI()
             cell.configureWithData()
@@ -76,7 +59,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
                 self.enteredPin = pin
                 self.GotoNextIndex()
             }
-            if currentPage == 1{
+            if currentPage == 0{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
@@ -85,7 +68,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
                 cell.endEditing(true)
             }
             return cell
-        }else if indexPath.item == 2{
+        }else if indexPath.item == 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmNewPinCVC", for: indexPath as IndexPath) as! ConfirmNewPinCVC
             cell.setUpUI(verifyPin : verifyPin)
             cell.pinConfirmDelegate = {[]pin in
@@ -96,7 +79,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
                 }
                 
             }
-            if currentPage == 2{
+            if currentPage == 1{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
@@ -133,7 +116,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
 //MARK: - objective functions
 extension ChangePinVC{
     @objc func backBtnAct(){
-        if self.currentPage ?? 0 == 2 {
+        if self.currentPage ?? 0 == 1 {
             let indexPath = NSIndexPath(item: (currentPage ?? 0) - 1, section: 0)
             self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
             
@@ -152,7 +135,7 @@ extension ChangePinVC{
         if Int(value) != self.currentPage{
             self.currentPage = (Int(value))
         }
-        if currentPage == 2{
+        if currentPage == 1{
             self.backBtn.setImage(Assets.back.image(), for: .normal)
         }else{
             self.backBtn.setImage(Assets.close.image(), for: .normal)
@@ -168,24 +151,11 @@ extension ChangePinVC{
         let indexPath = NSIndexPath(item: (self.currentPage ?? 0) + 1, section: 0)
         self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
     }
-  
-    func OtpVerified(otpValue : String){
-        changePinVM.enterOtpApi(otp: otpValue, completion: {[weak self]response in
-            if let response = response{
-                print(response)
-                self?.GotoNextIndex()
-            }
-        })
-    }
     
     func setNewLoginPin(enteredPin : String){
-        changePinVM.setNewPinApi(Pin: enteredPin, completion: {[weak self]response in
-            if let response = response{
-                print(response)
-                userData.shared.logInPinSet = Int(enteredPin) ?? 0
-                userData.shared.dataSave()
-                self?.dismiss(animated: true, completion: nil)
-            }
-        })
+		userData.shared.logInPinSet = Int(enteredPin) ?? 0
+		userData.shared.dataSave()
+		self.dismiss(animated: true, completion: nil)
+        
     }
 }
