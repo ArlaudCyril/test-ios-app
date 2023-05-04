@@ -53,8 +53,8 @@ extension PortfolioHomeTVC{
         
         
         CommonUI.setUpLbl(lbl: portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
-        
+		
+		getTotalPortfolio()
         
         self.profilePic.yy_setImage(with: URL(string: "\(ApiEnvironment.ImageUrl)\(userData.shared.profile_image)"), placeholder: UIImage(named: "profile"))
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.height/2
@@ -101,6 +101,15 @@ extension PortfolioHomeTVC{
 //            playerAV.pause()
             print(#function)
         }
+	
+	func getTotalPortfolio(){
+		totalPortfolio = 0
+		for balance in Storage.balances{
+			totalPortfolio += (Double(balance?.balanceData.euroBalance ?? "0") ?? 0)
+		}
+		
+		CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+	}
 }
 
 
@@ -132,10 +141,11 @@ extension PortfolioHomeTVC: ChartViewDelegate{
 extension PortfolioHomeTVC{
     @objc func profileAction(){
         let vc = ProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.controller?.present(nav, animated: true, completion: nil)
+//        let nav = UINavigationController(rootViewController: vc)
+//        nav.modalPresentationStyle = .fullScreen
+//        nav.navigationBar.isHidden = true
+//        self.controller?.present(nav, animated: true, completion: nil)
+		self.controller?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

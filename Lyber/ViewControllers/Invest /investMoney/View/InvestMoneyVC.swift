@@ -59,7 +59,7 @@ class InvestMoneyVC: ViewController {
         self.progressVw.lineCap = .round
         for i in 0...(coinsData.count - 1){
 //            DispatchQueue.main.async {
-            self.progressVw.setProgress(section: i, to: (Float(coinsData[i].share ?? 0))/100)
+			self.progressVw.setProgress(section: i, to: (Float(coinsData[i].share ))/100)
 //            }
         }
         

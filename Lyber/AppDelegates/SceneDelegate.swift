@@ -96,9 +96,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate{
     func checkInitialAppSetup(){
         userData.shared.getData()
-		if(userData.shared.userToken != ""){
-			CommonFunctions.loadingProfileApi()
-		}else if(userData.shared.language == ""){
+		if(userData.shared.language == ""){
 			if(Bundle.main.preferredLocalizations.first == "fr")
 			{
 				userData.shared.language = "fr"
@@ -114,59 +112,55 @@ extension SceneDelegate{
 	func controllerDelegate(){
 		let path = Bundle.main.path(forResource: userData.shared.language, ofType: "lproj")!
 		GlobalVariables.bundle = Bundle(path: path)!
-		if(userData.shared.refreshToken == ""){
+		do {
+			let refreshToken = try decode(jwt: userData.shared.refreshToken)
+			print(refreshToken)
+			let exp = refreshToken.body["exp"]
+			if (NSDate().timeIntervalSince1970 > exp as! Double) {
+				print("Refresh token expired")
+				let  vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+				let navController = UINavigationController(rootViewController: vc)
+				navController.navigationBar.isHidden = true
+				window?.rootViewController = navController
+				window?.makeKeyAndVisible()
+			}else{
+				PinVerificationVM().refreshTokenApi(completion: {[weak self]response in
+					if let response = response{
+						//print encore server error
+						userData.shared.userToken = response.data?.accessToken ?? ""
+						userData.shared.refreshToken = response.data?.refreshToken ?? ""
+						userData.shared.time = Date()
+						userData.shared.dataSave()
+						print("current time \(Date())")
+						CommonFunctions.loadingProfileApi()
+						if userData.shared.logInPinSet != 0{
+							let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+							let navController = UINavigationController(rootViewController: vc)
+							navController.navigationBar.isHidden = true
+							self?.window?.rootViewController = navController
+							self?.window?.makeKeyAndVisible()
+						}else{
+							let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+							let navController = UINavigationController(rootViewController: vc)
+							navController.navigationBar.isHidden = true
+							self?.window?.rootViewController = navController
+							self?.window?.makeKeyAndVisible()
+						}
+					}
+				})
+				
+			}
+				
+		} catch {
+			print(error)
 			let  vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
 			let navController = UINavigationController(rootViewController: vc)
 			navController.navigationBar.isHidden = true
 			window?.rootViewController = navController
 			window?.makeKeyAndVisible()
-		}else{
-			do {
-				let refreshToken = try decode(jwt: userData.shared.refreshToken)
-				print(refreshToken)
-				let exp = refreshToken.body["exp"]
-				if (NSDate().timeIntervalSince1970 > exp as! Double) {
-					print("Refresh token expired")
-					let  vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-					let navController = UINavigationController(rootViewController: vc)
-					navController.navigationBar.isHidden = true
-					window?.rootViewController = navController
-					window?.makeKeyAndVisible()
-				}else{
-					print("Refresh token not expired")
-					if userData.shared.logInPinSet != 0{
-						let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-						let navController = UINavigationController(rootViewController: vc)
-						navController.navigationBar.isHidden = true
-						window?.rootViewController = navController
-						window?.makeKeyAndVisible()
-					}else if userData.shared.isPhoneVerified == true{
-						let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-						let navController = UINavigationController(rootViewController: vc)
-						navController.navigationBar.isHidden = true
-						window?.rootViewController = navController
-						window?.makeKeyAndVisible()
-					}
-				}
-				
-				if userData.shared.logInPinSet != 0{
-					let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-					let navController = UINavigationController(rootViewController: vc)
-					navController.navigationBar.isHidden = true
-					window?.rootViewController = navController
-					window?.makeKeyAndVisible()
-				}else if userData.shared.isPhoneVerified == true{
-					let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-					let navController = UINavigationController(rootViewController: vc)
-					navController.navigationBar.isHidden = true
-					window?.rootViewController = navController
-					window?.makeKeyAndVisible()
-				}
-			} catch {
-				print(error)
-				
-			}
+			
 		}
+		
 		
 	}
 }

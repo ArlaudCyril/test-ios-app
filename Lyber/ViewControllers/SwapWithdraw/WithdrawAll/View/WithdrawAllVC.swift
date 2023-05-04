@@ -37,7 +37,7 @@ class WithdrawAllVC: ViewController {
         self.creditCardImgVw.layer.cornerRadius = self.creditCardImgVw.layer.bounds.height/2
         self.creditCardImgVw.backgroundColor = UIColor.borderColor
         CommonUI.setUpLbl(lbl: withdrawAllLbl, text: CommonFunctions.localisation(key: "WITHDRAW_ALL_MY_PORTFOLIO"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: totalNoOfEuroLbl, text: "1312€", textColor: UIColor.PurpleAC82F2, font: UIFont.AtypTextMedium(Size.sixty.sizeValue()))
+        CommonUI.setUpLbl(lbl: totalNoOfEuroLbl, text: "\(totalPortfolio)€", textColor: UIColor.PurpleAC82F2, font: UIFont.AtypTextMedium(Size.sixty.sizeValue()))
         CommonUI.setUpLbl(lbl: creditCardNumberLbl, text: "Frida... MX12...3392", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: creditCardLbl, text: CommonFunctions.localisation(key: "BANK_ACCOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpButton(btn: maximumBtnb, text: "", textcolor: UIColor.grey877E95, backgroundColor: UIColor.greyColor, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))

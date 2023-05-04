@@ -13,6 +13,7 @@
 #import "BNCLog.h"
 #import "BranchConstants.h"
 #import "NSString+Branch.h"
+#import "BNCSKAdNetwork.h"
 
 static const NSTimeInterval DEFAULT_TIMEOUT = 5.5;
 static const NSTimeInterval DEFAULT_RETRY_INTERVAL = 0;
@@ -36,6 +37,7 @@ static NSString * const BRANCH_PREFS_KEY_APPLE_SEARCH_ADS_INFO = @"bnc_apple_sea
 static NSString * const BRANCH_PREFS_KEY_LINK_CLICK_IDENTIFIER = @"bnc_link_click_identifier";
 static NSString * const BRANCH_PREFS_KEY_SPOTLIGHT_IDENTIFIER = @"bnc_spotlight_identifier";
 static NSString * const BRANCH_PREFS_KEY_UNIVERSAL_LINK_URL = @"bnc_universal_link_url";
+static NSString * const BRANCH_PREFS_KEY_LOCAL_URL = @"bnc_local_url";
 static NSString * const BRANCH_PREFS_KEY_INITIAL_REFERRER = @"bnc_initial_referrer";
 static NSString * const BRANCH_PREFS_KEY_SESSION_PARAMS = @"bnc_session_params";
 static NSString * const BRANCH_PREFS_KEY_INSTALL_PARAMS = @"bnc_install_params";
@@ -47,6 +49,10 @@ static NSString * const BRANCH_PREFS_KEY_ANALYTICS_MANIFEST = @"bnc_branch_analy
 static NSString * const BRANCH_PREFS_KEY_REFERRER_GBRAID = @"bnc_referrer_gbraid";
 static NSString * const BRANCH_PREFS_KEY_REFERRER_GBRAID_WINDOW = @"bnc_referrer_gbraid_window";
 static NSString * const BRANCH_PREFS_KEY_REFERRER_GBRAID_INIT_DATE = @"bnc_referrer_gbraid_init_date";
+static NSString * const BRANCH_PREFS_KEY_SKAN_CURRENT_WINDOW = @"bnc_skan_current_window";
+static NSString * const BRANCH_PREFS_KEY_FIRST_APP_LAUNCH_TIME = @"bnc_first_app_launch_time";
+static NSString * const BRANCH_PREFS_KEY_SKAN_HIGHEST_CONV_VALUE_SENT = @"bnc_skan_send_highest_conv_value";
+static NSString * const BRANCH_PREFS_KEY_SKAN_INVOKE_REGISTER_APP = @"bnc_invoke_register_app";
 
 NSURL* /* _Nonnull */ BNCURLForBranchDirectory_Unthreaded(void);
 
@@ -80,6 +86,7 @@ NSURL* /* _Nonnull */ BNCURLForBranchDirectory_Unthreaded(void);
             installParams = _installParams,
             universalLinkUrl = _universalLinkUrl,
             initialReferrer = _initialReferrer,
+            localUrl = _localUrl,
             externalIntentURI = _externalIntentURI,
             isDebug = _isDebug,
             retryCount = _retryCount,
@@ -92,7 +99,10 @@ NSURL* /* _Nonnull */ BNCURLForBranchDirectory_Unthreaded(void);
             requestMetadataDictionary = _requestMetadataDictionary,
             instrumentationDictionary = _instrumentationDictionary,
             referrerGBRAID = _referrerGBRAID,
-            referrerGBRAIDValidityWindow = _referrerGBRAIDValidityWindow;
+            referrerGBRAIDValidityWindow = _referrerGBRAIDValidityWindow,
+            skanCurrentWindow = _skanCurrentWindow,
+            firstAppLaunchTime = _firstAppLaunchTime,
+            highestConversionValueSent = _highestConversionValueSent;
 
 + (BNCPreferenceHelper *)sharedInstance {
     static BNCPreferenceHelper *preferenceHelper;
@@ -323,6 +333,14 @@ NSURL* /* _Nonnull */ BNCURLForBranchDirectory_Unthreaded(void);
 
 - (void)setUniversalLinkUrl:(NSString *)universalLinkUrl {
     [self writeObjectToDefaults:BRANCH_PREFS_KEY_UNIVERSAL_LINK_URL value:universalLinkUrl];
+}
+
+- (NSString *)localUrl {
+    return [self readStringFromDefaults:BRANCH_PREFS_KEY_LOCAL_URL];
+}
+
+- (void)setLocalUrl:(NSString *)localURL {
+    [self writeObjectToDefaults:BRANCH_PREFS_KEY_LOCAL_URL value:localURL];
 }
 
 - (NSString *)initialReferrer {
@@ -703,13 +721,75 @@ NSURL* /* _Nonnull */ BNCURLForBranchDirectory_Unthreaded(void);
     }
 }
 
+- (NSInteger) skanCurrentWindow {
+    @synchronized (self) {
+        _skanCurrentWindow = [self readIntegerFromDefaults:BRANCH_PREFS_KEY_SKAN_CURRENT_WINDOW];
+        if(_skanCurrentWindow == NSNotFound)
+            return BranchSkanWindowInvalid;
+        return _skanCurrentWindow;
+    }
+}
+
+- (void) setSkanCurrentWindow:(NSInteger) window {
+    @synchronized (self) {
+        [self writeIntegerToDefaults:BRANCH_PREFS_KEY_SKAN_CURRENT_WINDOW value:window];
+    }
+}
+
+
+- (NSDate *) firstAppLaunchTime {
+    @synchronized (self) {
+        if(!_firstAppLaunchTime) {
+            _firstAppLaunchTime = (NSDate *)[self readObjectFromDefaults:BRANCH_PREFS_KEY_FIRST_APP_LAUNCH_TIME];
+        }
+        return _firstAppLaunchTime;
+    }
+}
+
+- (void) setFirstAppLaunchTime:(NSDate *) launchTime {
+    @synchronized (self) {
+        _firstAppLaunchTime = launchTime;
+        [self writeObjectToDefaults:BRANCH_PREFS_KEY_FIRST_APP_LAUNCH_TIME value:launchTime];
+    }
+}
+
+- (NSInteger) highestConversionValueSent {
+    @synchronized (self) {
+        _highestConversionValueSent = [self readIntegerFromDefaults:BRANCH_PREFS_KEY_SKAN_HIGHEST_CONV_VALUE_SENT];
+        if(_highestConversionValueSent == NSNotFound)
+            return 0;
+        return _highestConversionValueSent;
+    }
+}
+
+- (void) setHighestConversionValueSent:(NSInteger)value {
+    @synchronized (self) {
+        [self writeIntegerToDefaults:BRANCH_PREFS_KEY_SKAN_HIGHEST_CONV_VALUE_SENT value:value];
+    }
+}
+
+- (BOOL) invokeRegisterApp {
+    @synchronized (self) {
+        NSNumber *b = (id) [self readObjectFromDefaults:BRANCH_PREFS_KEY_SKAN_INVOKE_REGISTER_APP];
+        if ([b isKindOfClass:NSNumber.class]) return [b boolValue];
+        return false;
+    }
+}
+
+- (void) setInvokeRegisterApp:(BOOL)invoke {
+    @synchronized(self) {
+        NSNumber *b = [NSNumber numberWithBool:invoke];
+        [self writeObjectToDefaults:BRANCH_PREFS_KEY_SKAN_INVOKE_REGISTER_APP value:b];
+    }
+}
+
+
 - (void) clearTrackingInformation {
     @synchronized(self) {
         /*
          // Don't clear these
          self.randomizedDeviceToken = nil;
          self.randomizedBundleToken = nil;
-         self.userIdentity = nil;
          */
         self.sessionID = nil;
         self.linkClickIdentifier = nil;
@@ -726,6 +806,7 @@ NSURL* /* _Nonnull */ BNCURLForBranchDirectory_Unthreaded(void);
         self.previousAppBuildDate = nil;
         self.requestMetadataDictionary = nil;
         self.lastStrongMatchDate = nil;
+        self.userIdentity = nil;
     }
 }
 

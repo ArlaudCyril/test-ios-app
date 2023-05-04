@@ -56,14 +56,11 @@ class ConfirmInvestmentVM{
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func exchangeCryptoApi(exchangeFrom : String ,exchangeTo : String,exchangeFromAmount : Double,exchangeToAmount: Double,completion: @escaping ( (SuccessAPI?) -> Void )){
-        let params : [String : Any] = [Constants.ApiKeys.exchange_from : exchangeFrom,
-                                       Constants.ApiKeys.exchange_to : exchangeTo,
-                                       Constants.ApiKeys.exchange_from_amount : String(exchangeFromAmount),
-                                       Constants.ApiKeys.exchange_to_amount : String(exchangeToAmount)]
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSwapCrypto, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+    func ordersAcceptQuoteAPI(orderId : String, completion: @escaping ( (SuccessAPI?) -> Void )){
+        let params : [String : Any] = [Constants.ApiKeys.orderId : orderId]
+		
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceAcceptQuote, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunctions.hideLoader()
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)

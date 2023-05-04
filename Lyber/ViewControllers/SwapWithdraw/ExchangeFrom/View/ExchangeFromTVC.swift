@@ -31,26 +31,17 @@ class ExchangeFromTVC: UITableViewCell {
     @IBOutlet var flatWalletLbl: UILabel!
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
 
 //Mark:- SetUpUI
 extension ExchangeFromTVC{
-    func setUpCell(data : Asset?,index : Int,screenType : ExchangeEnum,lastIndex : Int){
-        self.coinImgView.sd_setImage(with: URL(string: data?.coinDetail?.image ?? ""), completed: nil)
-        CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: data?.name ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: ((data?.totalBalance ?? 0.0)*(data?.euroAmount ?? 0.0))))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunctions.formattedCurrency(from: (data?.totalBalance ?? 0.0)))\(data?.assetID ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+    func setUpCell(data : Balance?,index : Int,screenType : ExchangeEnum,lastIndex : Int){
+		let currency = CommonFunctions.getCurrency(id: data?.id ?? "")
+		
+        self.coinImgView.sd_setImage(with: URL(string: currency.image ?? ""), completed: nil)
+		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String((Double(data?.balanceData.euroBalance ?? "0") ?? 0) * (Double(data?.balanceData.balance ?? "0") ?? 0)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(data?.balanceData.balance ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.euroImgVw.image = Assets.euro.image()
         CommonUI.setUpLbl(lbl: self.flatEuroLbl, text: "Euro", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -73,16 +64,54 @@ extension ExchangeFromTVC{
         self.EuroVw.addGestureRecognizer(flatWalletVwTap)
         
         assetCallback = {() in
+			if(self.controller?.screenType == .exchange)
+			{
+				if(self.controller?.toAssetId != nil){
+					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+					vc.strategyType = .Exchange
+					vc.fromAssetId = data?.id
+					vc.toAssetId = self.controller?.toAssetId
+					
+					let nav = UINavigationController(rootViewController: vc)
+					nav.modalPresentationStyle = .fullScreen
+					nav.navigationBar.isHidden = true
+					self.controller?.present(nav, animated: true, completion: nil)
+				}
+				else{
+					let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+					vc.screenType = .exchange
+					vc.fromAssetId = data?.id ?? ""
+					
+					let nav = UINavigationController(rootViewController: vc)
+					nav.modalPresentationStyle = .fullScreen
+					nav.navigationBar.isHidden = true
+					self.controller?.navigationController?.pushViewController(vc, animated: true)
+				}
+			}
+			else if(self.controller?.screenType == .withdraw){
+				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+				vc.strategyType = .withdraw
+				vc.fromAssetId = data?.id
+				//TODO: vc.fromCoinData = data
+				//TODO: vc.assetsData = data?.coinDetail
+				self.controller?.navigationController?.pushViewController(vc, animated: true)
+				
+			}
+			
+			
+			
+        }
+		/*assetCallback = {() in
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-            vc.fromCoinData = data
-            vc.assetsData = data?.coinDetail
+            //TODO: vc.fromCoinData = data
+            //TODO: vc.assetsData = data?.coinDetail
             self.controller?.navigationController?.pushViewController(vc, animated: true)
             if screenType == .exchange{
                 vc.strategyType = .Exchange
             }else if screenType == .withdraw{
                 vc.strategyType = .withdraw
             }
-        }
+        }*/
     }
 }
 

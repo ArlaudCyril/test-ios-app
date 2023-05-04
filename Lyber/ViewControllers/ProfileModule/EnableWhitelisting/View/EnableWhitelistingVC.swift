@@ -86,7 +86,7 @@ extension EnableWhitelistingVC{
         if self.disableWhitelisting{
             enableWhitelistingVM.enableWhitelistingApi(enable: false, Security: selectedTime?.securityTime ?? "", completion: {response in
                 self.enableWhitelistingBtn.hideLoading()
-                if let response = response {
+				if response != nil {
                     userData.shared.enableWhiteListing = false
                     userData.shared.dataSave()
                     self.timeCallBack?(self.selectedTime)

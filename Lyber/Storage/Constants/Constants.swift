@@ -113,13 +113,13 @@ struct Constants{
         static let asset_amount = "asset_amount"
         static let frequency = "frequency"
         static let wallet_address = "wallet_address"
-        static let exchange_from = "exchange_from"
-        static let exchange_to = "exchange_to"
-        static let exchange_from_amount = "exchange_from_amount"
-        static let exchange_to_amount = "exchange_to_amount"
+        static let fromAsset = "fromAsset"
+        static let toAsset = "toAsset"
+        static let fromAmount = "fromAmount"
         static let bundle = "bundle"
         static let share = "share"
         static let owner_uuid = "ownerUuid"
+        static let orderId = "orderId"
         
         //MARK: - assets keys
         static let order = "order"
@@ -209,7 +209,6 @@ struct Constants{
         static let userInvestmentStrategy = "user/investment-strategy"
         static let investOnAsset = "user/invest-on-asset"
         static let userWithdrawCrypto = "user/withdraw-crypto"
-        static let userSwapCrypto = "user/swap-crypto"
         
         //Coins
         static let userSellCrypto = "user/sell-crypto"
@@ -285,5 +284,14 @@ struct Constants{
        
         //Notification
         static let registerDeviceToken = "notification-service/register"
+		
+		//Orders
+		static let orderServiceQuote = "order-service/quote"
+		static let orderServiceAcceptQuote = "order-service/accept-quote"
+		static let orderServiceOrder = "order-service/order"
+		
+		//Wallet
+		static let walletServiceAddress = "wallet-service/address"
+		static let walletServiceBalance = "wallet-service/balance"
     }
 }

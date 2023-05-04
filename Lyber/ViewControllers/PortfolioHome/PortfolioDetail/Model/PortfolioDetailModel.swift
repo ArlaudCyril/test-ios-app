@@ -93,11 +93,12 @@ struct AssetDetailData: Codable {
     let about: About?
     let image: String?
     let marketCap: String?
+	let depositChains: [String]?
 
     enum CodingKeys: String, CodingKey {
         case circulatingSupply, isUIActive, isDepositActive, isWithdrawalActive
         case volume24H = "volume24h"
-        case isTradeActive, fullName, marketRank, about, image, marketCap
+        case isTradeActive, fullName, marketRank, about, image, marketCap, depositChains
     }
 }
 
@@ -105,3 +106,20 @@ struct AssetDetailData: Codable {
 struct About: Codable {
     let fr, en: String
 }
+
+// MARK: - OrderAPI
+struct OrderAPI: Codable {
+	let data: Order
+}
+
+// MARK: - Order
+struct Order: Codable {
+	let orderId: String
+	let quoteId: String
+	let fromAsset: String
+	let fromAmount: String
+	let toAsset: String
+	let toAmount: String
+	let orderStatus: String
+}
+

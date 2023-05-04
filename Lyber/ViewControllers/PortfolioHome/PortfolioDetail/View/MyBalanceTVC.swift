@@ -8,7 +8,6 @@
 import UIKit
 
 class MyBalanceTVC: UITableViewCell {
-    var controller : PortfolioDetailVC?
     var assetName = String()
     //MARK:- IB OUTLETS
     @IBOutlet var assetsView: UIView!
@@ -35,18 +34,18 @@ class MyBalanceTVC: UITableViewCell {
 
 //Mark:- SetUpUI
 extension MyBalanceTVC{
-    func setUpCell(assetData : Trending?){
+    func setUpCell(assetId : String?){
+		let balance = CommonFunctions.getBalance(id: assetId ?? "")
         self.assetsView.layer.cornerRadius = 16
         self.singleAssetVw.layer.cornerRadius = 16
         
         CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-//        self.coinTypeLbl.text = assetData?.name ?? ""
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: ((assetData?.total_balance ?? 0.0)*(assetData?.currentPrice ?? 0.0))))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(CommonFunctions.formattedCurrency(from: (assetData?.total_balance ?? 0.0))) \(assetData?.symbol?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(balance.balanceData.euroBalance) ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: balance.balanceData.balance, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.percentageLbl.isHidden = true
         for coin in coinDetailData{
-            if coin.id == (self.controller?.assetName ?? "") {
+            if coin.id == assetId {
                 self.coinTypeLbl.text = "\(coin.fullName ?? "")"
                 self.coinImgView.sd_setImage(with: URL(string: coin.image ?? ""), completed: nil)
             }

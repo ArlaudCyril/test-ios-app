@@ -160,10 +160,7 @@ extension KYCVerificationVC{
             userData.shared.dataSave()
 //            self.dismiss(animated: true, completion: nil)
             let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            navController.navigationBar.isHidden = true
-            self.present(navController, animated: true, completion: nil)
+			self.navigationController?.pushViewController(vc, animated: true)
           }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)

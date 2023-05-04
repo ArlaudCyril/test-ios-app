@@ -11,7 +11,7 @@ class AddStrategyVC: ViewController {
     //MARK: - Variables
     var addStrategyVM = AddStrategyVM()
     var addAssetsVC = AddAssetsVC()
-    var assetsData : [priceServiceResume?] = []
+    var assetsData : [PriceServiceResume?] = []
     var totalAllocationPercentage = 0
     var allocation : [Int] = []
     var tailoring : Bool?
@@ -174,7 +174,7 @@ extension AddStrategyVC{
         self.tblView.reloadData()
     }
     
-    func handleAllocationPercentage(asset : priceServiceResume?){
+    func handleAllocationPercentage(asset : PriceServiceResume?){
         var nbAuto = 0
         var percentageTotalManual = 0
         var percentageRemaining = 100
@@ -194,7 +194,7 @@ extension AddStrategyVC{
             }
         }
         for i in 0...((self.assetsData.count) - 1){
-            if(self.assetsData[i]?.isAuto == true)
+            if(self.assetsData[i]?.priceServiceResumeData.isAuto == true)
             {
                 nbAuto += 1
             }
@@ -204,7 +204,7 @@ extension AddStrategyVC{
             }
         }
         for i in 0...((self.assetsData.count) - 1){
-            if(self.assetsData[i]?.isAuto == true)
+            if(self.assetsData[i]?.priceServiceResumeData.isAuto == true)
             {
                 let percentageAllocated = max(0, (percentageRemaining-percentageTotalManual)/(nbAuto))
                 if(i>(self.allocation.count) - 1)
@@ -359,7 +359,7 @@ extension AddStrategyVC{
         self.addAssetsVC.addAssetsVM.getAllAssetsApi(order: "volume_desc", completion: {[]response in
             if let response = response {
                 self.addAssetsVC.coinsData.removeAll()
-                self.addAssetsVC.coinsData.append(contentsOf: response.data )
+				self.addAssetsVC.coinsData.append(contentsOf: response )
                 for i in 0...((self.tailoringStrategy?.bundle.count ?? 0) - 1){
                     self.allocation.append(self.tailoringStrategy?.bundle[i].share ?? 0)
                     for asset in  self.addAssetsVC.coinsData{

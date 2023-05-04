@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,10 +17,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7KN-Ff-h4t">
-                    <rect key="frame" x="0.0" y="44" width="713" height="891"/>
+                    <rect key="frame" x="0.0" y="48" width="713" height="887"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lax-dS-93T">
-                            <rect key="frame" x="0.0" y="0.0" width="713" height="557"/>
+                            <rect key="frame" x="0.0" y="0.0" width="713" height="485"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8R4-2i-tYI">
                                     <rect key="frame" x="24" y="0.0" width="665" height="20.5"/>
@@ -35,7 +35,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="1TL-5t-RE5">
-                                    <rect key="frame" x="24" y="69" width="665" height="488"/>
+                                    <rect key="frame" x="24" y="69" width="665" height="416"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTq-QW-pG9">
                                             <rect key="frame" x="0.0" y="0.0" width="665" height="56"/>
@@ -191,35 +191,6 @@
                                                 <constraint firstItem="hr6-OQ-YjV" firstAttribute="top" secondItem="ngj-Ae-hcZ" secondAttribute="top" id="jlh-1M-7zh"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2D-0a-G3n">
-                                            <rect key="frame" x="0.0" y="432" width="665" height="56"/>
-                                            <subviews>
-                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnm-Oi-Sjz">
-                                                    <rect key="frame" x="621" y="0.0" width="44" height="56"/>
-                                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                                    <state key="normal" image="drop_down_grey">
-                                                        <color key="titleColor" name="AccentColor"/>
-                                                    </state>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aha-W2-sHT">
-                                                    <rect key="frame" x="12" y="0.0" width="601" height="56"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="aha-W2-sHT" secondAttribute="bottom" id="4J7-Sk-wlc"/>
-                                                <constraint firstItem="aha-W2-sHT" firstAttribute="leading" secondItem="T2D-0a-G3n" secondAttribute="leading" constant="12" id="An9-wB-5R7"/>
-                                                <constraint firstItem="vnm-Oi-Sjz" firstAttribute="leading" secondItem="aha-W2-sHT" secondAttribute="trailing" constant="8" id="Bif-4v-9iG"/>
-                                                <constraint firstAttribute="trailing" secondItem="vnm-Oi-Sjz" secondAttribute="trailing" id="Mfz-Rd-duL"/>
-                                                <constraint firstAttribute="bottom" secondItem="vnm-Oi-Sjz" secondAttribute="bottom" id="P17-e5-fUy"/>
-                                                <constraint firstAttribute="height" constant="56" id="PeM-0D-84B"/>
-                                                <constraint firstItem="vnm-Oi-Sjz" firstAttribute="top" secondItem="T2D-0a-G3n" secondAttribute="top" id="QhZ-hp-BDy"/>
-                                                <constraint firstItem="aha-W2-sHT" firstAttribute="top" secondItem="T2D-0a-G3n" secondAttribute="top" id="vly-YR-TwS"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -271,8 +242,6 @@
                 <outlet property="nationalityVw" destination="ngj-Ae-hcZ" id="ydy-ZA-hac"/>
                 <outlet property="personalDataDescLbl" destination="YUL-mU-Swg" id="NcK-6F-7eb"/>
                 <outlet property="personalDataLbl" destination="8R4-2i-tYI" id="tiL-BV-r1C"/>
-                <outlet property="specifiedUSPersonLbl" destination="aha-W2-sHT" id="ro7-Jn-ujn"/>
-                <outlet property="specifiedUSPersonVw" destination="T2D-0a-G3n" id="Wv9-QB-Qbj"/>
             </connections>
             <point key="canvasLocation" x="-135.50724637681159" y="530.69196428571422"/>
         </view>

@@ -269,13 +269,20 @@
 		1886C7E82959BFE000D28828 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E72959BFE000D28828 /* WebSocket.swift */; };
 		1F0988BA29B9E86A0075B000 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0988B929B9E86A0075B000 /* Test.storyboard */; };
 		1F2A425A29CC7352001D71F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A425C29CC7352001D71F8 /* Localizable.strings */; };
+		1F2D541029F003610078267F /* CryptoDepositeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D540F29F003610078267F /* CryptoDepositeVM.swift */; };
+		1F2D541329F006A00078267F /* CryptoDepositeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541229F006A00078267F /* CryptoDepositeModel.swift */; };
+		1F2D541529F047200078267F /* QrCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541429F047200078267F /* QrCodeVC.swift */; };
 		1F432CC3297DDDD9006EBEEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1F432CC2297DDDD9006EBEEA /* .gitignore */; };
 		1F4DCC5F29D2FDFD00C3B374 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */; };
 		1F4DCC6129D2FF4500C3B374 /* LanguageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */; };
 		1F4DCC6429D3264500C3B374 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6329D3264500C3B374 /* LanguageModel.swift */; };
 		1F5B7C5229C1BDA100256438 /* VerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B7C5129C1BDA100256438 /* VerificationVM.swift */; };
+		1F83382129F9617600E41F61 /* InvestInMyStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382029F9617600E41F61 /* InvestInMyStrategyVM.swift */; };
+		1F83382329F97D3F00E41F61 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382229F97D3F00E41F61 /* Confetti.swift */; };
+		1F83382629F97EF100E41F61 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382529F97EF100E41F61 /* Launcher.swift */; };
 		1F8BD79A29D43ED100EF322A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BD79929D43ED100EF322A /* ViewController.swift */; };
 		1F9E2B9E299FDEA50016CAB8 /* Portfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9728448D32007002E0 /* Portfolio.storyboard */; };
+		1F9FC3D529EECFE10084923E /* DepositAssetTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */; };
 		1FB9A0A629B89B01008431B0 /* GoogleAuthenticatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */; };
 		1FB9A0AA29B89CF0008431B0 /* GoogleAuthenticatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */; };
 		1FB9A0AC29B8D831008431B0 /* VerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */; };
@@ -283,7 +290,8 @@
 		1FD4A4A029D48C7E002DFC11 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */; };
 		1FE7695329C46356005141C0 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695229C46356005141C0 /* Model.xcmappingmodel */; };
 		1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
-		4C0A8C3629955D5700CCC88A /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Currencies.swift */; };
+		1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
+		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
 		B085C2FFA151F8B97AC534D7 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
 /* End PBXBuildFile section */
@@ -556,12 +564,19 @@
 		1F2A425729CC7082001D71F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		1F2A425B29CC7352001D71F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F2A425D29CC7389001D71F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F2D540F29F003610078267F /* CryptoDepositeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDepositeVM.swift; sourceTree = "<group>"; };
+		1F2D541229F006A00078267F /* CryptoDepositeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDepositeModel.swift; sourceTree = "<group>"; };
+		1F2D541429F047200078267F /* QrCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeVC.swift; sourceTree = "<group>"; };
 		1F432CC2297DDDD9006EBEEA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTVC.swift; sourceTree = "<group>"; };
 		1F4DCC6329D3264500C3B374 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		1F5B7C5129C1BDA100256438 /* VerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVM.swift; sourceTree = "<group>"; };
+		1F83382029F9617600E41F61 /* InvestInMyStrategyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestInMyStrategyVM.swift; sourceTree = "<group>"; };
+		1F83382229F97D3F00E41F61 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
+		1F83382529F97EF100E41F61 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
 		1F8BD79929D43ED100EF322A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetTVC.swift; sourceTree = "<group>"; };
 		1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVM.swift; sourceTree = "<group>"; };
 		1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorModel.swift; sourceTree = "<group>"; };
 		1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVC.swift; sourceTree = "<group>"; };
@@ -570,9 +585,10 @@
 		1FE7695129C45CD1005141C0 /* Lyber 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Lyber 2.xcdatamodel"; sourceTree = "<group>"; };
 		1FE7695229C46356005141C0 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		1FE7695529C47144005141C0 /* StrongAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVM.swift; sourceTree = "<group>"; };
+		1FFD171D29ED962C00935003 /* DepositAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetVC.swift; sourceTree = "<group>"; };
 		242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.debug.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.debug.xcconfig"; sourceTree = "<group>"; };
 		3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.release.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.release.xcconfig"; sourceTree = "<group>"; };
-		4C0A8C3529955D5700CCC88A /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
+		4C0A8C3529955D5700CCC88A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -716,6 +732,8 @@
 		0A6A9EFB289A4E13001BB63E /* CryptoDeposite */ = {
 			isa = PBXGroup;
 			children = (
+				1F2D541129F0068D0078267F /* Model */,
+				1F2D540E29F0034B0078267F /* ViewModel */,
 				0A6A9EFC289A4E36001BB63E /* View */,
 			);
 			path = CryptoDeposite;
@@ -725,6 +743,7 @@
 			isa = PBXGroup;
 			children = (
 				0A6A9EFD289A4E4D001BB63E /* CryptoDepositeVC.swift */,
+				1F2D541429F047200078267F /* QrCodeVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1682,6 +1701,7 @@
 		0A7C378E286098E700E238D8 /* SwapWithdraw */ = {
 			isa = PBXGroup;
 			children = (
+				1FFD171B29ED960E00935003 /* DepositAsset */,
 				0A7B0D5E2861EE090030C4D8 /* WithdrawAll */,
 				0A7C378F286098FE00E238D8 /* ExchangeFrom */,
 				0A73D7932865A4DC0037F346 /* WalletAddress */,
@@ -2370,6 +2390,8 @@
 		0AE67F40285301DD00F13D2E /* InvestInMyStrategy */ = {
 			isa = PBXGroup;
 			children = (
+				1F83382429F97EDB00E41F61 /* Animation */,
+				1F83381F29F9615C00E41F61 /* ViewModel */,
 				0AE67F42285301F900F13D2E /* Modal */,
 				0AE67F41285301F200F13D2E /* View */,
 			);
@@ -2412,6 +2434,22 @@
 				1883D3102950798A00CEC597 /* configuration.swift */,
 			);
 			path = SRP;
+			sourceTree = "<group>";
+		};
+		1F2D540E29F0034B0078267F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F2D540F29F003610078267F /* CryptoDepositeVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1F2D541129F0068D0078267F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F2D541229F006A00078267F /* CryptoDepositeModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1F4DCC5C29D2FDD500C3B374 /* Language */ = {
@@ -2464,6 +2502,23 @@
 				1F5B7C5129C1BDA100256438 /* VerificationVM.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1F83381F29F9615C00E41F61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F83382029F9617600E41F61 /* InvestInMyStrategyVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1F83382429F97EDB00E41F61 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1F83382229F97D3F00E41F61 /* Confetti.swift */,
+				1F83382529F97EF100E41F61 /* Launcher.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		1F8BD79829D43EB400EF322A /* Class */ = {
@@ -2525,11 +2580,28 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1FFD171B29ED960E00935003 /* DepositAsset */ = {
+			isa = PBXGroup;
+			children = (
+				1FFD171C29ED961B00935003 /* View */,
+			);
+			path = DepositAsset;
+			sourceTree = "<group>";
+		};
+		1FFD171C29ED961B00935003 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FFD171D29ED962C00935003 /* DepositAssetVC.swift */,
+				1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4C0A8C3429955D3100CCC88A /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				0A90592228488870003F6198 /* Constants */,
-				4C0A8C3529955D5700CCC88A /* Currencies.swift */,
+				4C0A8C3529955D5700CCC88A /* Storage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -2740,6 +2812,7 @@
 				0A71B7A0283F7D7C007CE9B2 /* LoginVC.swift in Sources */,
 				0A77D54528B7A94B00A2C684 /* SearchAssetVM.swift in Sources */,
 				0A7256512874506400E8322A /* InvestmentStrategyVM.swift in Sources */,
+				1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */,
 				0A7586C6286C76EE00DC889E /* Reachability.swift in Sources */,
 				0A86AA8628A3821100C6C688 /* SelectedProfileVC.swift in Sources */,
 				0A7218FF28632562009F42C5 /* ProfileTransactionTVC.swift in Sources */,
@@ -2749,6 +2822,7 @@
 				1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */,
 				0A53DEE9284635FB0027367A /* InvestmentExpModel.swift in Sources */,
 				1F5B7C5229C1BDA100256438 /* VerificationVM.swift in Sources */,
+				1F2D541029F003610078267F /* CryptoDepositeVM.swift in Sources */,
 				1883D3132950798A00CEC597 /* error.swift in Sources */,
 				0AC4C2C3283F5DDF0086C6B8 /* enterNumberCVC.swift in Sources */,
 				0A6FD4082849D3B3003A2AA0 /* AddStrategyTVC.swift in Sources */,
@@ -2762,6 +2836,7 @@
 				1FB9A0AC29B8D831008431B0 /* VerificationVC.swift in Sources */,
 				0A77D54328B7A4BC00A2C684 /* SearchAssetTVC.swift in Sources */,
 				0AC5B5FA2840A8D700533ED3 /* EducationStrategyVC.swift in Sources */,
+				1F9FC3D529EECFE10084923E /* DepositAssetTVC.swift in Sources */,
 				0A1C74FA2840E3F3003CA6A7 /* ViewControllerExtension.swift in Sources */,
 				0AD6C0C828A0E44900C2A184 /* CryptoAddressBookModel.swift in Sources */,
 				0A005C172844CC6A008117D1 /* CoreData.swift in Sources */,
@@ -2772,6 +2847,8 @@
 				0A75020F2859F94400D68BAB /* PortfolioHomeModel.swift in Sources */,
 				0A53DEE5284634DC0027367A /* InvestmentExperienceVC.swift in Sources */,
 				0A6D69CB28AD169D00BFB186 /* SelectedProfileModel.swift in Sources */,
+				1F83382129F9617600E41F61 /* InvestInMyStrategyVM.swift in Sources */,
+				1F2D541329F006A00078267F /* CryptoDepositeModel.swift in Sources */,
 				0A53DEEB28463D460027367A /* UiViewExtension.swift in Sources */,
 				0A7219112863436F009F42C5 /* TransactionVC.swift in Sources */,
 				0A72190F2863435D009F42C5 /* TransactionTVC.swift in Sources */,
@@ -2865,7 +2942,7 @@
 				0A76E703288974FE0021A7A6 /* TransactionModel.swift in Sources */,
 				0A7246F62891570F00EBCA21 /* AddBankAccountVC.swift in Sources */,
 				0A907E60285B5824001ABD6A /* PortfolioDetailHeaderTVC.swift in Sources */,
-				4C0A8C3629955D5700CCC88A /* Currencies.swift in Sources */,
+				4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */,
 				0A7684102876EFBC00A5BC7C /* KycWebVM.swift in Sources */,
 				1F4DCC5F29D2FDFD00C3B374 /* LanguageVC.swift in Sources */,
 				0A7C379728609BCE00E238D8 /* ExchangeModel.swift in Sources */,
@@ -2915,6 +2992,7 @@
 				0A707D3D2890082F00C9ACA4 /* HeaderView.swift in Sources */,
 				0A8B4AC228571A5000F64ECE /* AllAssetsVC.swift in Sources */,
 				0AB24EEF288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift in Sources */,
+				1F83382329F97D3F00E41F61 /* Confetti.swift in Sources */,
 				0A71F67A28B8DB7A00FB6188 /* RecurringDetailVC.swift in Sources */,
 				0AB24EEB288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift in Sources */,
 				0A005C262844F251008117D1 /* PersonalDataCVC.swift in Sources */,
@@ -2924,6 +3002,7 @@
 				0A86AA8228A3773C00C6C688 /* DefaultPictureCVC.swift in Sources */,
 				0A53DEE7284635010027367A /* InvestmentExperienceTVC.swift in Sources */,
 				0A71B8B5283F88EF007CE9B2 /* LocalizationKeys.swift in Sources */,
+				1F2D541529F047200078267F /* QrCodeVC.swift in Sources */,
 				0A7AAB18285378EE00D2E25D /* ConfirmInvestmentVC.swift in Sources */,
 				1F4DCC6429D3264500C3B374 /* LanguageModel.swift in Sources */,
 				0A759D3F2852021C00E59580 /* InvestMoneyVC.swift in Sources */,
@@ -2945,6 +3024,7 @@
 				0A74E3EA288813BC002BE4CA /* EnterWalletAddressVM.swift in Sources */,
 				0A005C1B2844D8F2008117D1 /* InvestMethodBottomVC.swift in Sources */,
 				0AC4C2A6283F4AD80086C6B8 /* SceneDelegate.swift in Sources */,
+				1F83382629F97EF100E41F61 /* Launcher.swift in Sources */,
 				0A907E57285B3543001ABD6A /* PortfolioHeaderTVC.swift in Sources */,
 				0AB9B2BC289E2B2000A6DCDD /* AddCryptoAddressModel.swift in Sources */,
 				1FC9B5A429B250AB001483CF /* GoogleAuthenticatorVC.swift in Sources */,
@@ -3036,7 +3116,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3092,7 +3172,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

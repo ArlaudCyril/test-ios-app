@@ -37,14 +37,15 @@ class PortfolioDetailTVC: UITableViewCell {
     @IBOutlet var collView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
+	
     
 }
 
@@ -102,7 +103,7 @@ extension PortfolioDetailTVC{
         self.collView.dataSource = self
         
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
+        //self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
 		
 		
         
@@ -195,14 +196,20 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
 //MARK: - objective functions
 extension PortfolioDetailTVC{
     @objc func backBtnAct(){
-        self.controller?.navigationController?.popViewController(animated: true)
+		//si previous controller quote on prend la variable globale qui est initialisée lorsque l'on clique sur échange avec le controller qu'il faudra rendre quand il le previous controller ou porfolio homevc
+		if(self.controller?.previousController is ConfirmInvestmentVC){
+			self.controller?.navigationController?.popToViewController(ofClass: Storage.previousControllerPortfolioDetailObject, animated: true)
+		}else{
+			self.controller?.navigationController?.popViewController(animated: true)
+		}
+		
     }
     
     @objc func coinBtnAct(){
         let vc = SearchAssetVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
         self.controller?.navigationController?.pushViewController(vc, animated: true)
         vc.assetNameCallback = {assetName in
-            self.controller?.assetName = assetName
+            self.controller?.assetId = assetName
             self.controller?.callCoinInfoApi()
         }
     }
@@ -311,7 +318,7 @@ extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
     func openWebSocket(assetName : String) {
         let urlString = ApiEnvironment.socketBaseUrl + "\(assetName)eur"
         if let url = URL(string: urlString) {
-            var request = URLRequest(url: url)
+			let request = URLRequest(url: url)
             let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
             self.controller?.webSocket = session.webSocketTask(with: request)
             self.controller?.webSocket?.resume()

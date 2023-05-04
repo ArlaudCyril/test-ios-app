@@ -10,11 +10,7 @@ import UIKit
 class ExchangeFromVC: ViewController {
     //MARK: - Variables
     var screenType : ExchangeEnum = .exchange
-//    var assetsData : [coinsStruct] = [
-//        coinsStruct(coinImg: Assets.ether.image(), coinName: CommonFunctions.localisation(key: "ETHER"), euro: "966.8€", totalCoin: "0.001234 ETH",coin: CommonFunctions.localisation(key: "ETH")),
-//        coinsStruct(coinImg: Assets.usdc.image(), coinName: CommonFunctions.localisation(key: "USDC"), euro: "310€", totalCoin: "322.187 USDC",coin: CommonFunctions.localisation(key: "USDC")),
-//        coinsStruct(coinImg: Assets.bitcoin.image(), coinName: CommonFunctions.localisation(key: "BITCOIN"), euro: "133.8€", totalCoin: "0.001234 BTC",coin: CommonFunctions.localisation(key: "BTC"))]
-    var assetsData : [Asset] = []
+	var toAssetId : String?
     var walletData : [assetsModel] = [
         assetsModel(coinImg: Assets.euro.image(), coinName: "Euro", euro: "\(totalEuroAvailable ?? 0)€", totalCoin: "0.001234 BTC")]
     
@@ -34,15 +30,13 @@ class ExchangeFromVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        callMyAssetsApi()
     }
 
 
 
 	//MARK: - SetUpUI
     override func setUpUI(){
-        self.navigationController?.navigationBar.isHidden = true
-        CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: CommonFunctions.localisation(key: "EXCHANGE_FROM"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: CommonFunctions.localisation(key: "EXCHANGE_FROM_TITLE"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.lyberPortfolioLbl, text: CommonFunctions.localisation(key: "LYBER_PORTFOLIO"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allportfolioLbl, text: CommonFunctions.localisation(key: "ALL_PORTFOLIO"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -70,17 +64,12 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0{
-            return assetsData.count
-//        }else{
-//            return walletData.count
-//        }
-        
+            return Storage.balances.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeFromTVC")as! ExchangeFromTVC
-        cell.setUpCell(data: assetsData[indexPath.row],index : indexPath.row,screenType : screenType, lastIndex: assetsData.count - 1)
+        cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row,screenType : screenType, lastIndex: Storage.balances.count - 1)
         cell.controller = self
         return cell
         
@@ -104,14 +93,5 @@ extension ExchangeFromVC{
 
 //MARK: - Other functions
 extension ExchangeFromVC{
-    func callMyAssetsApi(){
-        CommonFunctions.showLoader(self.view)
-        PortfolioHomeVM().getMyAssetsApi(completion: {[weak self]response in
-            CommonFunctions.hideLoader(self?.view ?? UIView())
-            if let response = response{
-                self?.assetsData = response.assets ?? []
-                self?.tblView.reloadData()
-            }
-        })
-    }
+  
 }

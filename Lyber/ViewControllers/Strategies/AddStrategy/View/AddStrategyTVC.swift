@@ -39,7 +39,7 @@ class AddStrategyTVC: UITableViewCell {
 
 //Mark:- SetUpUI
 extension AddStrategyTVC{
-    func setUpCell(data: priceServiceResume?,index : Int, allocation: Int){
+    func setUpCell(data: PriceServiceResume?,index : Int, allocation: Int){
         //get all informations of the currency
         let currencyDetail : AssetBaseData? = Storage.getCurrency(asset : data)
         
@@ -47,11 +47,11 @@ extension AddStrategyTVC{
         self.coinImg.sd_setImage(with: URL(string: currencyDetail?.image ?? ""))
 
         CommonUI.setUpLbl(lbl: self.coinNameLbl, text: currencyDetail?.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: (data?.lastPrice ?? "0.00")+" €", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.percentageLbl, text: (data?.change ?? "0.00")+" %", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: (data?.priceServiceResumeData.change ?? "0.00")+" €", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.percentageLbl, text: (data?.priceServiceResumeData.change ?? "0.00")+" %", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
        
-        if(data?.isAuto == true)
+        if(data?.priceServiceResumeData.isAuto == true)
         {
             self.autoPercentageLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "AUTO"), secondStr: " (\(allocation) %)", firstFont: UIFont.MabryPro(Size.XLarge.sizeValue()), secondFont: UIFont.MabryPro(Size.XLarge.sizeValue()), firstColor: UIColor.primaryTextcolor, secondColor: UIColor.SecondarytextColor)
         }
@@ -65,7 +65,7 @@ extension AddStrategyTVC{
         let percentageTap = UITapGestureRecognizer(target: self, action: #selector(selectAllocation))
         self.percentageView.addGestureRecognizer(percentageTap)
         self.percentageView.tag = index
-        self.graphVw.sd_setImage(with: URL(string: data?.squiggleURL ?? ""))
+        self.graphVw.sd_setImage(with: URL(string: data?.priceServiceResumeData.squiggleURL ?? ""))
       
     }
 }
@@ -84,7 +84,7 @@ extension AddStrategyTVC{
         
         vc.allocationCallBack = { [weak self] allocation in
             self?.controller?.allocation[self?.percentageView.tag ?? 0] = Int(allocation.replacingOccurrences(of: "%", with: "")) ?? 0
-            self?.controller?.assetsData[self?.percentageView.tag ?? 0]?.isAuto = false
+            self?.controller?.assetsData[self?.percentageView.tag ?? 0]?.priceServiceResumeData.isAuto = false
         
             self?.controller?.handleAllocationPercentage(asset : self?.controller?.assetsData[self?.percentageView.tag ?? 0])
           

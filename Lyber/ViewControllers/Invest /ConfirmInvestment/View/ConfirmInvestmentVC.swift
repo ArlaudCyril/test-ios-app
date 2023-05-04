@@ -16,6 +16,13 @@ class ConfirmInvestmentVC: ViewController {
     var frequency = String()
     var InvestmentType : InvestStrategyModel = .activateStrategy
     var coinsData : [InvestmentStrategyAsset] = []
+	
+	//Exchange
+	var timeLimit : Int?
+	var ratioCoin : String?
+	var amountFrom : String?
+	var amountTo : String?
+	var orderId: String?
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var confirmInvestmentLbl: UILabel!
@@ -74,8 +81,7 @@ class ConfirmInvestmentVC: ViewController {
         CommonUI.setUpLbl(lbl: self.lyberFeeLbl, text: CommonFunctions.localisation(key: "LYBER_FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalLbl, text: CommonFunctions.localisation(key: "TOTAL"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        
-        CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(CommonFunctions.formattedCurrency(from : self.assetData?.currentPrice ?? 0.0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(CommonFunctions.formattedCurrency(from : self.assetData?.currentPrice ?? 0.0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroAmountLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.frequencyNameLbl, text: frequency, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.paymentCardLbl, text: "Mastercard ···· 0103", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -121,7 +127,7 @@ class ConfirmInvestmentVC: ViewController {
             self.allocationView.isHidden = false
             for i in 0...(coinsData.count - 1){
                 DispatchQueue.main.async {
-                    self.progressBar.setProgress(section: i, to: (Float(self.coinsData[i].share ?? 0))/100)
+					self.progressBar.setProgress(section: i, to: (Float(self.coinsData[i].share ))/100)
                 }
             }
             self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€"
@@ -135,16 +141,18 @@ class ConfirmInvestmentVC: ViewController {
             self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_MY_DEPOSIT")
             confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_DEPOSIT"), for: .normal)
         }else if InvestmentType == .Exchange{
-            self.noOfEuroInvested.text = "\(totalCoinsInvested) \(exchangeTo)"
-            self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
-            self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE"), for: .normal)
+			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
+			self.noOfEuroInvested.text = "\(amountTo ?? "") \(exchangeTo.uppercased())"
+			self.coinPriceLbl.text = CommonFunctions.localisation(key: "RATIO")
+			self.euroCoinPriceLbl.text = self.ratioCoin ?? ""
             self.amountLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
-            self.euroAmountLbl.text = "\(totalEuroInvested) \(exchangeFrom)"
+			self.euroAmountLbl.text = "\(amountFrom ?? "") \(exchangeFrom.uppercased())"
             self.frequencyLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
-            self.frequencyNameLbl.text = "\(totalCoinsInvested) \(exchangeTo)"
-            self.totalEuroLbl.text = "\(totalCoinsInvested + (0.08)) \(exchangeTo)"
+            self.frequencyNameLbl.text = "\(amountTo ?? "") \(exchangeTo.uppercased())"
+			self.totalEuroLbl.text = "\(amountFrom ?? "") \(exchangeTo.uppercased())"//TODO: Ajouter frais
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
+			self.fireTimer(seconds: 25)
         }
     }
 }
@@ -177,20 +185,15 @@ extension ConfirmInvestmentVC{
     
     @objc func confirmInvestmentBtnAct(){
         if InvestmentType == .Exchange{
-            self.confirmInvestmentBtn.showLoading()
-            confirmInvestmentVM.exchangeCryptoApi(exchangeFrom: exchangeFrom, exchangeTo: exchangeTo, exchangeFromAmount: totalEuroInvested, exchangeToAmount: totalCoinsInvested, completion: {[weak self]response in
-                    self?.confirmInvestmentBtn.hideLoading()
-                    if let response = response{
-                        print(response)
-                        
-                        
-                        let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                        let nav = UINavigationController(rootViewController: vc)
-                        nav.modalPresentationStyle = .fullScreen
-                        nav.navigationBar.isHidden = true
-                        self?.present(nav, animated: true, completion: nil)
-                    }
-            })
+			ConfirmInvestmentVM().ordersAcceptQuoteAPI(orderId: self.orderId ?? "", completion: {response in
+				if response != nil{
+					let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+					vc.previousController = self
+					vc.assetId = self.exchangeTo
+					vc.orderId = self.orderId ?? ""
+					self.navigationController?.pushViewController(vc, animated: true)
+				}
+			})
         }else if InvestmentType == .singleCoin{
             self.confirmInvestmentBtn.showLoading()
             confirmInvestmentVM.InvestOnAssetApi(assetId: assetData?.symbol?.uppercased() ?? "", assetName: assetData?.id ?? "", amount: totalEuroInvested,assetAmount: totalCoinsInvested, frequency: frequency, completion: {[weak self]response in
@@ -253,6 +256,21 @@ extension ConfirmInvestmentVC{
         let height = CGFloat((20*((self.coinsData.count+1)/2)) + 12*(self.coinsData.count/2))
         collViewHeight.constant = height
     }
+	
+	func fireTimer(seconds: Int){
+		if(seconds == 0)
+		{
+			confirmInvestmentBtn.setTitle("\(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")) (\(seconds) sec)", for: .normal)
+			confirmInvestmentBtn.isEnabled = false
+			confirmInvestmentBtn.backgroundColor = .gray
+		}else{
+			confirmInvestmentBtn.setTitle("\(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")) (\(seconds) sec)", for: .normal)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+				self.fireTimer(seconds: seconds-1)
+			}
+		}
+		
+	}
 }
 
 //MARK: - Progress View Delegate and DataSourec

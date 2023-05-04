@@ -10,6 +10,7 @@
 @import Foundation;
 #else
 #import <Foundation/Foundation.h>
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 #endif
 
 #import "BNCCallbacks.h"
@@ -700,7 +701,7 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
  
  Note: Branch does not automatically call SKAdNetwork unless configured on the dashboard.
  */
-- (void)setSKAdNetworkCalloutMaxTimeSinceInstall:(NSTimeInterval)maxTimeInterval;
+- (void)setSKAdNetworkCalloutMaxTimeSinceInstall:(NSTimeInterval)maxTimeInterval __attribute__((deprecated(("This is no longer supported for iOS 16.1+ - SKAN4.0"))));
 
 /*
  Add a Partner Parameter for Facebook.
@@ -969,7 +970,7 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
  
  @param action The action string.
  */
-- (void)userCompletedAction:(nullable NSString *)action;
+- (void)userCompletedAction:(nullable NSString *)action __attribute__((deprecated(("Please use BranchEvent to track commerce events. You can refer to https://help.branch.io/developers-hub/docs/tracking-commerce-content-lifecycle-and-custom-events for additional information."))));
 
 /**
  Send a user action to the server with additional state items. Some examples actions could be things like `viewed_personal_welcome`, `purchased_an_item`, etc.
@@ -981,7 +982,7 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
  @param action The action string.
  @param state The additional state items associated with the action.
  */
-- (void)userCompletedAction:(nullable NSString *)action withState:(nullable NSDictionary *)state;
+- (void)userCompletedAction:(nullable NSString *)action withState:(nullable NSDictionary *)state __attribute__((deprecated(("Please use BranchEvent to track commerce events. You can refer to https://help.branch.io/developers-hub/docs/tracking-commerce-content-lifecycle-and-custom-events for additional information."))));
 
 /**
  Send a user action to the server with additional state items. Some examples actions could be things like `viewed_personal_welcome`, `purchased_an_item`, etc.
@@ -996,7 +997,7 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
  
  @deprecated Please use userCompletedAction:action:state instead
  */
-- (void)userCompletedAction:(nullable NSString *)action withState:(nullable NSDictionary *)state withDelegate:(nullable id)branchViewCallback __attribute__((deprecated(("This API is deprecated. Please use userCompletedAction:action:state instead."))));
+- (void)userCompletedAction:(nullable NSString *)action withState:(nullable NSDictionary *)state withDelegate:(nullable id)branchViewCallback __attribute__((deprecated(("Please use BranchEvent to track commerce events. You can refer to https://help.branch.io/developers-hub/docs/tracking-commerce-content-lifecycle-and-custom-events for additional information."))));
 
 /**
  Sends a user commerce event to the server.
@@ -1018,7 +1019,7 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
  */
 - (void) sendCommerceEvent:(BNCCommerceEvent*)commerceEvent
 				  metadata:(NSDictionary<NSString*,id>*)metadata
-			withCompletion:(void (^) (NSDictionary* _Nullable response, NSError* _Nullable error))completion __attribute__((deprecated(("Please use BranchEvent to track commerce events."))));
+			withCompletion:(void (^) (NSDictionary* _Nullable response, NSError* _Nullable error))completion __attribute__((deprecated(("Please use BranchEvent to track commerce events. You can refer to https://help.branch.io/developers-hub/docs/tracking-commerce-content-lifecycle-and-custom-events for additional information."))));
 
 
 #pragma mark - Query methods
@@ -1838,6 +1839,16 @@ typedef NS_ENUM(NSUInteger, BranchCreditHistoryOrder) {
 // Read-only property exposed for unit testing.
 @property (strong, readonly) BNCServerInterface* serverInterface;
 - (void) clearNetworkQueue;
+
+#if !TARGET_OS_TV
+#pragma mark - UIPasteControl Support
+/**
+ This method is used to pass paste board items to Branch SDK when user implements UIPasteControl at their end. SDK retrives URL from these item providers if any to support native link functionality.
+ @param itemProviders - an array of item providers collected from pasteboard.
+ @warning This function works with  iOS 16 or above.
+ */
+- (void)passPasteItemProviders:(NSArray<NSItemProvider *> *)itemProviders API_AVAILABLE(ios(16));
+#endif
 @end
 
 NS_ASSUME_NONNULL_END

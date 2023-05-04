@@ -12,7 +12,7 @@ class PortfolioDetailVC: swipeGesture {
     var headerData : [String] = [CommonFunctions.localisation(key: "MY_BALANCE"),CommonFunctions.localisation(key: "MY_BALANCE"),CommonFunctions.localisation(key: "INFOS"),CommonFunctions.localisation(key: "ABOUT"),CommonFunctions.localisation(key: "RESOURCES")]
     var assetData : Trending?
     var assetDetailData : AssetDetailApi?
-    var assetName : String = ""
+    var assetId : String = ""
     var infoData : [InfoModel] = [
         InfoModel(name: CommonFunctions.localisation(key: "MARKETCAP"), value: "72 083 593 181,6€"),
         InfoModel(name: CommonFunctions.localisation(key: "VOLUME"), value: "72 083 593 181,6€"),
@@ -23,25 +23,59 @@ class PortfolioDetailVC: swipeGesture {
     var chartDurationTime = chartType.oneHour.rawValue
     var resoucesData : [newsData] = []
     var webSocket : URLSessionWebSocketTask?
+	var previousController = UIViewController()
+	static var view : UIView?
+	static var transactionFinished:Bool = false{
+		didSet {
+			if transactionFinished == true  {
+				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: true)
+				self.callWalletGetBalance()
+				
+			}else{
+				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: false)
+			}
+		}
+		
+	}
+	static var staticTblView : UITableView?
+	var timer = Timer()
+	
+	//ConfirmInvestmentVC
+	var orderId : String
+	= ""
     //MARK: - IB OUTLETS
     @IBOutlet var emptyView: UIView!
+    @IBOutlet var contentView: UIView!
     @IBOutlet var tblView: UITableView!
     @IBOutlet var investMoneyBtn: UIButton!
     @IBOutlet var threeDotBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        callCoinInfoApi()
-        self.callChartApi(duration: self.chartDurationTime)
-        callResoucesApi()
-        setUpUI()
+		
+
+		if(self.orderId != ""){
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+				CommonFunctions.showLoaderCheckbox(self.view)
+				PortfolioDetailVC.staticTblView = self.tblView
+				PortfolioDetailVC.view = self.view
+				self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+			}
+		}
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         webSocket?.cancel(with: .goingAway, reason: nil)
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		callCoinInfoApi()
+		self.callChartApi(duration: self.chartDurationTime)
+		callResoucesApi()
+		setUpUI()
+	}
 	
 	//MARK: - SetUpUI
     override func setUpUI(){
@@ -51,7 +85,7 @@ class PortfolioDetailVC: swipeGesture {
         if #available(iOS 15.0, *) {
             tblView.sectionHeaderTopPadding = 0
         }
-        CommonUI.setUpButton(btn: investMoneyBtn, text: "\(CommonFunctions.localisation(key: "INVEST_IN"))\(CommonFunctions.localisation(key: "BTC"))", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+		CommonUI.setUpButton(btn: investMoneyBtn, text: "\(CommonFunctions.localisation(key: "INVEST_IN"))\(self.assetId.uppercased())", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         self.threeDotBtn.layer.cornerRadius = 16
         self.threeDotBtn.threeDotButtonShadow()
         
@@ -84,17 +118,16 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioDetailTVC")as! PortfolioDetailTVC
             cell.controller = self
-            cell.assetName = self.assetName
+            cell.assetName = self.assetId
 			cell.setUpCell(assetData : self.assetData,chartData : self.chartData)
 			cell.receiveMessage()
-
+			
             
 			
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyBalanceTVC")as! MyBalanceTVC
-            cell.setUpCell(assetData : assetData)
-            cell.controller = self
+            cell.setUpCell(assetId : assetId)
             return cell
         }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "InfosTVC")as! InfosTVC
@@ -134,17 +167,17 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1{
-            let vc = BalanceVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//            vc.assetSymbol = assetData?.symbol ?? ""
-//            vc.myAsset = assetData
-//            vc.otherAsset = cryptoInfoValues
-//            if myAssetsData != nil{
-//                vc.myAssetPresent = true
-//            }
-            
-            self.present(vc, animated: true, completion: nil)
-        }
+//        if indexPath.section == 1{
+//            let vc = BalanceVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+////            vc.assetSymbol = assetData?.symbol ?? ""
+////            vc.myAsset = assetData
+////            vc.otherAsset = cryptoInfoValues
+////            if myAssetsData != nil{
+////                vc.myAssetPresent = true
+////            }
+//            
+//            self.present(vc, animated: true, completion: nil)
+//        }
     }
     
     
@@ -155,8 +188,10 @@ extension PortfolioDetailVC{
     @objc func threeDotBtnAct(){
         let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
         vc.popupType = .AssetDetailPagePopUp
+		vc.previousController = self.previousController
+		vc.idAsset = self.assetId
         vc.portfolioDetailScreen = true
-//        vc.coinName = self.assetData?.name ?? ""
+		vc.coinId = self.assetId
 //        vc.assetsData = self.assetData
         vc.portfolioDetailController = self
         self.present(vc, animated: true, completion: nil)
@@ -168,48 +203,82 @@ extension PortfolioDetailVC{
         vc.strategyType = .singleCoin
         self.navigationController?.pushViewController(vc, animated: true)
     }
+	
+	@objc func fireTimer(){
+		portfolioDetailVM.OrderGetOrderApi(orderId: self.orderId, completion: {[]response in
+			if(response != nil){
+				if(response?.data.orderStatus == "VALIDATED"){
+					//success
+					PortfolioDetailVC.transactionFinished = true
+					self.timer.invalidate()
+					self.orderId = ""
+				}else if(response?.data.orderStatus == "PENDING" || response?.data.orderStatus == "PROCESSED"){
+					//waiting
+				}else{
+					//error
+					CommonFunctions.toster(CommonFunctions.localisation(key: "ERROR_TRANSACTION"))
+					PortfolioDetailVC.transactionFinished = false
+					self.timer.invalidate()
+					self.orderId = ""
+				}
+			}
+		})
+	}
 }
 
 //MARK: - Other functions
 extension PortfolioDetailVC{
-    func callCoinInfoApi(){
-        CommonFunctions.showLoader(self.view)
-        portfolioDetailVM.getCoinInfoApi(Asset: assetName, completion: {[self]response in
-            
-            self.emptyView.isHidden = true
-            self.assetDetailData = response
-            if((response) != nil)
-            {
-                self.infoData[0].value = "\(response?.data?.marketCap ?? "")€"
-                self.infoData[1].value = "\(response?.data?.volume24H ?? "")€"
-                self.infoData[2].value = "\(response?.data?.circulatingSupply ?? "") \(self.assetName.uppercased() )"
-                self.infoData[3].value = "#\(response?.data?.marketRank ?? 0)"
-            }
-            
-            
-            DispatchQueue.main.async() {
-                self.tblView.reloadData()
-            }
-            
-        })
-    }
-    
-    func callChartApi(duration : String){
-        self.portfolioDetailVM.getChartDataApi(AssetId: self.assetName, timeFrame: duration , completion: {[ self]response in
-//            if self.chartData?.stats != response?.stats {
-            self.chartData = response?.data
-            self.tblView.reloadData()
-//            }
-            CommonFunctions.hideLoader(self.view )
-        })
-    }
-    
-    func callResoucesApi(){
-        CommonFunctions.showLoader(self.view)
-        portfolioDetailVM.getAssetsNewsApi(id: self.assetName, completion: {[self]response in
-            CommonFunctions.hideLoader(self.view)
-            self.resoucesData = response?.data ?? []
-            self.tblView.reloadData()
-        })
-    }
+	func callCoinInfoApi(){
+		CommonFunctions.showLoader(self.view)
+		portfolioDetailVM.getCoinInfoApi(Asset: assetId, completion: {[self]response in
+			
+			self.emptyView.isHidden = true
+			self.assetDetailData = response
+			if((response) != nil)
+			{
+				self.infoData[0].value = "\(response?.data?.marketCap ?? "")€"
+				self.infoData[1].value = "\(response?.data?.volume24H ?? "")€"
+				self.infoData[2].value = "\(response?.data?.circulatingSupply ?? "") \(self.assetId.uppercased() )"
+				self.infoData[3].value = "#\(response?.data?.marketRank ?? 0)"
+			}
+			
+			
+			DispatchQueue.main.async() {
+				self.tblView.reloadData()
+			}
+			
+		})
+	}
+	
+	func callChartApi(duration : String){
+		self.portfolioDetailVM.getChartDataApi(AssetId: self.assetId, timeFrame: duration , completion: {[ self]response in
+			//            if self.chartData?.stats != response?.stats {
+			self.chartData = response?.data
+			self.tblView.reloadData()
+			//            }
+			CommonFunctions.hideLoader(self.view )
+		})
+	}
+	
+	func callResoucesApi(){
+		CommonFunctions.showLoader(self.view)
+		portfolioDetailVM.getAssetsNewsApi(id: self.assetId, completion: {[self]response in
+			CommonFunctions.hideLoader(self.view)
+			self.resoucesData = response?.data ?? []
+			self.tblView.reloadData()
+		})
+	}
+}
+	
+extension PortfolioDetailVC{
+	//MARK: Static functions
+	
+	static func callWalletGetBalance(){
+		PortfolioHomeVM().callWalletGetBalanceApi(completion: {[]response in
+			if response != nil {
+				CommonFunctions.setBalances(balances: response ?? [])
+				PortfolioDetailVC.staticTblView?.reloadData()
+			}
+		})
+	}
 }

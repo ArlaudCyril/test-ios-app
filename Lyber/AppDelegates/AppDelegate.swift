@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
+	
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         userData.shared.is_push_enabled = 2
@@ -32,10 +33,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         userData.shared.is_push_enabled = 1
         userData.shared.dataSave()
     }
-    
+    //Called when user interact with notification (click on it etc)
+//	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//		print(response)
+//	}
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-            completionHandler([.alert, .badge, .sound])
-        }
+		let content = notification.request.content
+		print(content)
+
+		if let userInfo = content.userInfo as? [String: Any],
+		let acme2 = userInfo["acme2"] as? NSDictionary,
+		let lyberId = acme2.object(forKey: "lyberId") as? Int {
+			if(lyberId == 2002)
+			{//end transaction
+				PortfolioDetailVC.transactionFinished = true
+			}
+			if(lyberId == 2005){//amount //TODO: better simplification
+				PortfolioHomeVM().callWalletGetBalanceApi(completion: {[]response in
+					if response != nil {
+						CommonFunctions.setBalances(balances: response ?? [])
+					}
+				})
+			}
+			print(lyberId)
+		}
+
+		completionHandler([.alert, .badge, .sound])
+	}
 
     // MARK: UISceneSession Lifecycle
 

@@ -17,7 +17,7 @@ class PersonalDataVC: ViewController {
     var currentPage : Int = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
-    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),email = String(),emailPassword = String(),streetNumber = String(),buildingFloor = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),personalAssets = String(),isEditData = false
+    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),email = String(),emailPassword = String(),streetNumber = String(),buildingFloor = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),personalAssets = String(),isEditData = false
 //    var personalData : [personalDataStruct] = []
     var personalData : personalDataStruct?,userPersonalDetail : UserPersonalData?
     
@@ -267,7 +267,10 @@ extension PersonalDataVC{
                 vw.backgroundColor = UIColor.PurpleColor.withAlphaComponent(0.2)
                 self.indicatorViewsWidth[num].constant = 4
             }
-            if self.currentPage == 2{
+			if self.currentPage == 1{
+				self.nextButton.isUserInteractionEnabled = false
+				self.nextButton.backgroundColor = .gray
+			}else if self.currentPage == 2{
                 self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
                 self.nextButton.isHidden = true
             }else{
@@ -295,11 +298,9 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.selectBirthCountry)
         }else if self.nationality == ""{
             CommonFunctions.toster(Constants.AlertMessages.selectNationality)
-        }else if self.isUsPerson == ""{
-            CommonFunctions.toster(Constants.AlertMessages.selectAreYouUSCitizen)
         }else{
 //            GotoNextIndex()
-			personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, isUsPerson: isUsPerson, language: userData.shared.language)
+			personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, language: userData.shared.language)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.personalDataApi(profile_info_step : 1,personalData: personalData, completion: {[weak self]response in
@@ -368,8 +369,6 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.enterState)
         }else if self.zipCode.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterZipcode)
-        }else if self.zipCode.count < 5{
-            CommonFunctions.toster(Constants.AlertMessages.enterValidZipcode)
         }else if self.CountryName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterCountry)
         }else{

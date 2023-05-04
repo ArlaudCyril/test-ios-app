@@ -209,7 +209,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
 //MARK: - objective functions
 extension ProfileVC{
     @objc func cancelBtnAct(){
-        self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popViewController(animated: true)
     }
     
     @objc func profileTapped(){

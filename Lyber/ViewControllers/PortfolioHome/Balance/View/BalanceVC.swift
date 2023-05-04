@@ -132,7 +132,7 @@ extension BalanceVC{
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
       if let obj = object as? UITableView {
           if obj == self.tblView && keyPath == "contentSize" {
-            if let newSize = change?[NSKeyValueChangeKey.newKey] as? CGSize {
+			  if change?[NSKeyValueChangeKey.newKey] is CGSize {
 //                if newSize.height > 500{
 //                    self.tblViewHeightConst.constant = 500
 //                }else{

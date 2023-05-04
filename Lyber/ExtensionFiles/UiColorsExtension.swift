@@ -34,6 +34,16 @@ extension UIColor{
             return UIColor(named: "Purple#35126D") ?? UIColor.purple
         }
     }
+	open class var dark_transparent : UIColor{
+        get {
+            return UIColor(named: "dark_transparent") ?? UIColor.purple
+        }
+    }
+	open class var PurpleGrey_500 : UIColor{
+		get {
+			return UIColor(named: "PurpleGrey_500") ?? UIColor.purple
+		}
+	}
     open class var SecondarytextColor : UIColor{
         get {
             return UIColor(named: "SecondarytextColor") ?? UIColor.black

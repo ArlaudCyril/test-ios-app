@@ -13,6 +13,7 @@ import var CommonCrypto.CC_MD5_DIGEST_LENGTH
 import func CommonCrypto.CC_MD5
 import typealias CommonCrypto.CC_LONG
 
+
 class EntryAttributeWrapper {
     var attributes: EKAttributes
     init(with attributes: EKAttributes) {
@@ -113,6 +114,61 @@ class CommonFunctions{
             topView.addSubview(loadingView)
         }
     }
+	
+	static func showLoaderWhite(_ onView : UIView){
+		let topView = onView
+		let loadingView = UIView(frame : CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
+		loadingView.backgroundColor = UIColor.white
+		loadingView.alpha = 0.6
+		let laodingFrame = SpinnerView(frame: CGRect(x: topView.frame.width/2 - 20, y: topView.frame.height/2 - 20, width: 40, height: 40))
+		loadingView.addSubview(laodingFrame)
+		loadingView.tag = 111
+		var present = false
+		for (_,subView) in topView.subviews.enumerated(){
+			if subView.tag == 111 {
+				present = true
+			}
+		}
+		if !present{
+			topView.addSubview(loadingView)
+		}
+	}
+	
+	
+	static func showLoaderCheckbox(_ topView : UIView){
+		
+		
+		let loadingView = UIView(frame : CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
+	    
+		loadingView.layer.addSublayer(CALayer())
+		loadingView.backgroundColor = UIColor.dark_transparent
+		loadingView.alpha = 0.9
+		
+		let loadingRect = UIView(frame : CGRect(x: topView.frame.width/2 - 60, y: topView.frame.height/2 - 60, width: 120, height: 120))
+		loadingRect.backgroundColor = UIColor.white
+		loadingView.addSubview(loadingRect)
+		loadingView.layer.addSublayer(loadingRect.layer)
+		loadingRect.layer.zPosition = 1
+
+		
+		let laodingFrame = SpinnerView(frame: CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80))
+		loadingView.addSubview(laodingFrame)
+		loadingView.layer.addSublayer(laodingFrame.layer)
+		laodingFrame.layer.zPosition = 1
+		
+		loadingView.tag = 111
+
+		
+		var present = false
+		for (_,subView) in topView.subviews.enumerated(){
+			if subView.tag == 111 {
+				present = true
+			}
+		}
+		if !present{
+			topView.addSubview(loadingView)
+		}
+	}
     
     static func hideLoader(){
         let topView = getTopMostViewController()?.view
@@ -133,6 +189,41 @@ class CommonFunctions{
             }
         }
     }
+	
+	static func hideLoaderCheckbox(_ onView : UIView, success: Bool){
+		
+        let topView = onView
+		var underView = UIImageView()
+		if(success == true){
+			underView = UIImageView(image:UIImage(asset: Assets.checkmark_color))
+			underView.frame = CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80)
+		}else{
+			underView = UIImageView(image:UIImage(asset: Assets.close_color))
+			underView.frame = CGRect(x: topView.frame.width/2 - 30, y: topView.frame.height/2 - 30, width: 60, height: 60)
+		}
+		
+        for (num,subView) in topView.subviews.enumerated(){
+			if subView.tag == 111{
+				subView.addSubview(underView)
+				subView.layer.addSublayer(underView.layer)
+				underView.layer.zPosition = 1
+				
+				let launcher = Launcher(layer: subView.layer)
+				if(success == true){
+					launcher.setup(frame: topView.frame)
+					subView.layer.addSublayer(launcher)
+					launcher.zPosition = 0
+					launcher.runCells()
+				}
+				
+				
+				DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+					topView.subviews[num].removeFromSuperview()
+					launcher.emitterCells?.removeAll()
+				}
+            }
+        }
+    }
     
     // for getting top most view controller
     static func getTopMostViewController() -> UIViewController?{
@@ -150,7 +241,57 @@ class CommonFunctions{
     static func getImageUrl() -> String{
         return "ApiEnviorment.ImageUrl"
     }
+	
+	
+	static func getImage(id: String) -> String{
+		for currency in Storage.currencies {
+			if(currency?.id == id){
+				return currency?.image ?? ""
+			}
+		}
+		return ""
+	}
+	static func getCurrency(id: String) -> AssetBaseData{
+		for currency in Storage.currencies {
+			if(currency?.id == id){
+				return currency ?? AssetBaseData()
+			}
+		}
+		return AssetBaseData()
+	}
+	
+	static func getBalance(id: String) -> Balance{
+		for balance in Storage.balances {
+			if(balance?.id == id){
+				return balance ?? Balance()
+			}
+		}
+		return Balance()
+	}
     
+	static func setBalances(balances: [Balance])
+	{
+		var balancesSorted : [Balance] = []
+		var balanceArray = balances
+		
+		//first btc
+		let btcIndex = balanceArray.firstIndex(where: {$0.id == "btc"})
+		if(btcIndex != nil){
+			balancesSorted.append(balanceArray[btcIndex ?? 0])
+			balanceArray.remove(at: btcIndex ?? 0)
+		}
+		//second eth
+		let ethIndex = balances.firstIndex(where: {$0.id == "eth"})
+		if(ethIndex != nil){
+			balancesSorted.append(balanceArray[ethIndex ?? 0])
+			balanceArray.remove(at: ethIndex ?? 0)
+		}
+		//sorted alphabetical
+		balanceArray = balanceArray.sorted(by: {$0.id < $1.id})
+		balancesSorted.append(contentsOf: balanceArray)
+		
+		Storage.balances = balancesSorted
+	}
     
     //MARK: - Line Chart
     
@@ -308,6 +449,10 @@ class CommonFunctions{
     }
     
     static func getTwoDecimalValue(number: Double) -> Double{
+		if(number.isNaN)
+		{
+			return 0
+		}
         let stringValue = String(format: "%.2f", number)
         return Double(stringValue)!
     }
@@ -421,17 +566,17 @@ class CommonFunctions{
     }
     
     static func enableNotifications(enable: Int)
-    {
+    {//TODO: test à changer quand met à jour son système d'exploitation ou désinstalle l'application
         if(enable == 1){
+			
             UNUserNotificationCenter.current().requestAuthorization(options: [
-                  .badge, .sound, .alert
+				.badge, .sound, .alert
                 ]) { granted, _ in
                   guard granted else { return }
-
-                  DispatchQueue.main.async {
-                    let application = UIApplication.shared
-                      application.registerForRemoteNotifications()
-                  }
+					DispatchQueue.main.async {
+						let application = UIApplication.shared
+						application.registerForRemoteNotifications()
+					}
                 }
         }else if(enable == 2){
             //say to server that notifications are desactivated, no need to block on the phone
@@ -596,5 +741,23 @@ class CommonFunctions{
 				userData.shared.dataSave()
 			}
 		})
+	}
+	
+	//MARK: - networkDecoder
+	static func networkDecoder(network : String?)->(String){
+		switch network {
+			case "bsc":
+				return "Binance Smart Chain"
+			case "bnb":
+				return "BNB Chain"
+			case "native":
+				return "Native"
+			case "ethereum":
+				return "Ethereum"
+			case "arbitrum":
+				return "Arbitrum One"
+			default:
+				return ""
+		}
 	}
 }

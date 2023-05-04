@@ -18,7 +18,7 @@ protocol AnimationLayer: CALayer {
 // Context describing the timing parameters of the current animation
 struct LayerAnimationContext {
   /// The animation being played
-  let animation: Animation
+  let animation: LottieAnimation
 
   /// The timing configuration that should be applied to `CAAnimation`s
   let timingConfiguration: CoreAnimationLayer.CAMediaTimingConfiguration
@@ -41,9 +41,12 @@ struct LayerAnimationContext {
   /// The AnimationKeypath represented by the current layer
   var currentKeypath: AnimationKeypath
 
-  /// Whether or not to log `AnimationKeypath`s for all of the animation's layers
-  ///  - Used for `CoreAnimationLayer.logHierarchyKeypaths()`
-  var logHierarchyKeypaths: Bool
+  /// The `AnimationTextProvider`
+  var textProvider: AnimationTextProvider
+
+  /// Records the given animation keypath so it can be logged or collected into a list
+  ///  - Used for `CoreAnimationLayer.logHierarchyKeypaths()` and `allHierarchyKeypaths()`
+  var recordHierarchyKeypath: ((String) -> Void)?
 
   /// A closure that remaps the given frame in the child layer's local time to a frame
   /// in the animation's overall global time

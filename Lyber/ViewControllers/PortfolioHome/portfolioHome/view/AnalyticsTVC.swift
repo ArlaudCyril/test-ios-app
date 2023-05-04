@@ -48,10 +48,10 @@ extension AnalyticsTVC{
         }
         extractedFunc(graphValues, UIColor.PurpleColor)
         
-        let earningVwTap = UITapGestureRecognizer(target: self, action: #selector(earningVwAction))
-        self.earningVw.addGestureRecognizer(earningVwTap)
-        let roiVwTap = UITapGestureRecognizer(target: self, action: #selector(ROIViewAction))
-        self.yieldVw.addGestureRecognizer(roiVwTap)
+//        let earningVwTap = UITapGestureRecognizer(target: self, action: #selector(earningVwAction))
+//        self.earningVw.addGestureRecognizer(earningVwTap)
+//        let roiVwTap = UITapGestureRecognizer(target: self, action: #selector(ROIViewAction))
+//        self.yieldVw.addGestureRecognizer(roiVwTap)
         
     }
     

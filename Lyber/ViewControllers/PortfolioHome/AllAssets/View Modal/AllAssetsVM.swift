@@ -8,10 +8,18 @@
 import Foundation
 class AllAssetsVM{
     var controller : AllAssetsVC?
-    func getAllAssetsApi(keyword : String,completion: @escaping ( (priceServiceResumeAPI?) -> Void )){
+    func getAllAssetsApi(completion: @escaping ( ([PriceServiceResume]?) -> Void )){
         
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.priceServiceResume, withParameters: [:], ofType: priceServiceResumeAPI.self, onSuccess: { response in
-                completion(response)
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.priceServiceResume, withParameters: [:], ofType: PriceServiceResumeAPI.self, onSuccess: { response in
+			print(response)
+			var priceServiceResumeDataDict : [String:PriceServiceResumeData] = response.data
+			var priceServiceResumeArray : [PriceServiceResume] = []
+			for (id, priceServiceResumeData) in priceServiceResumeDataDict.sorted(by: {$0.value.rank < $1.value.rank}){
+				let priceServiceResume = PriceServiceResume(id: id, priceServiceResumeData: priceServiceResumeData)
+				priceServiceResumeArray.append(priceServiceResume)
+			}
+		
+			completion(priceServiceResumeArray)
         }, onFailure: { reload, error in
             completion(nil)
             CommonFunctions.toster(error)

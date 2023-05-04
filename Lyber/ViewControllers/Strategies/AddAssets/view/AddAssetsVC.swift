@@ -13,9 +13,9 @@ class AddAssetsVC: ViewController {
     var addAssetsVM = AddAssetsVM()
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     //var AssetsAddDataCallback : ((Trending?)->())?
-    var AssetsAddDataCallback : ((priceServiceResume?)->())?
+    var AssetsAddDataCallback : ((PriceServiceResume?)->())?
     var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "TOP_GAINERS"),CommonFunctions.localisation(key: "TOP_LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
-    var coinsData : [priceServiceResume] = []
+    var coinsData : [PriceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
     var timer = Timer()
     //MARK: - IB OUTLETS
@@ -142,7 +142,7 @@ extension AddAssetsVC: UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var newAsset = coinsData[indexPath.row]
-        newAsset.isAuto = true
+        newAsset.priceServiceResumeData.isAuto = true
         self.AssetsAddDataCallback?(newAsset)
         self.dismiss(animated: true, completion: nil)
     }
@@ -192,9 +192,9 @@ extension AddAssetsVC{
         addAssetsVM.getAllAssetsApi(order: order, completion: {[]response in
             if var response = response {
                 self.coinsData.removeAll()
-                self.coinsData.append(contentsOf: response.data )
+                self.coinsData.append(contentsOf: response )
                 
-                if (response.data.count) < 10 {
+                if (response.count) < 10 {
                     self.canPaginate = false
                 }
                 self.apiHitOnce = true

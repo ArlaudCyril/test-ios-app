@@ -258,41 +258,12 @@ extension PinVerificationVC{
     func GoToScreen(){
         var vc = ViewController()
         
-        if let diff = Calendar.current.dateComponents([.hour], from: userData.shared.time ?? Date(), to: Date()).hour, diff >= 24 {
-            print("time is equal or greater than 24 hour", diff)
-            
-            PinVerificationVM().refreshTokenApi(completion: {[weak self]response in
-                if let response = response{
-                    
-                    userData.shared.userToken = response.data?.accessToken ?? ""
-                    userData.shared.refreshToken = response.data?.refreshToken ?? ""
-                    userData.shared.time = Date()
-                    userData.shared.dataSave()
-                    print("current time \(Date())")
-					if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
-						vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-					}else if userData.shared.isIdentityVerified == true{
-                         vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                    }
-                    let navController = UINavigationController(rootViewController: vc)
-                    navController.modalPresentationStyle = .fullScreen
-                    navController.navigationBar.isHidden = true
-                    self?.present(navController, animated: true, completion: nil)
-                }
-            })
-        }else{
-            if userData.shared.is_push_enabled == 0{
-                vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-			}else if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
-				vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			}else{
-                 vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            }
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            navController.navigationBar.isHidden = true
-            self.present(navController, animated: true, completion: nil)
-        }
-        
+		if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
+			vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		}else{
+			 vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		}
+		self.navigationController?.pushViewController(vc, animated: true)
+
     }
 }

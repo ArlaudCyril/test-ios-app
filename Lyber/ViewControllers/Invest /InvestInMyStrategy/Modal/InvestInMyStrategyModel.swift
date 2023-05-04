@@ -20,8 +20,24 @@ enum InvestStrategyModel{
 }
 
 struct exchangeFromModel{
-    var exchangeFromCoin : String
-    var exchangeFromCoinImg : UIImage
-    var exchangeToCoin : String
-    var exchangeToCoinImg : UIImage
+    var exchangeFromCoinId : String
+    var exchangeFromCoinImg : String
+    var exchangeFromCoinBalance : Balance
+    var exchangeToCoinId : String
+    var exchangeToCoinPrice : String
+    var exchangeToCoinImg : String
+}
+
+struct QuoteAPI: Codable{
+	var data: Quote
+}
+
+struct Quote: Codable{
+	var toAmount: String
+	var fromAmount: String
+	var validTimestamp: Int
+	var fromAsset: String
+	var toAsset: String
+	var ratio: String
+	var orderId: String
 }

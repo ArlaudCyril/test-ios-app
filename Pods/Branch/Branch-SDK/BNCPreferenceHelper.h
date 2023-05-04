@@ -29,9 +29,10 @@ NSURL* /* _Nonnull */ BNCURLForBranchDirectory(void);
 @property (copy, nonatomic) NSString *sessionID;
 @property (copy, nonatomic) NSString *linkClickIdentifier;
 @property (copy, nonatomic) NSString *spotlightIdentifier;
-@property (copy, nonatomic)    NSString *universalLinkUrl;
-@property (copy, nonatomic)    NSString *initialReferrer;
+@property (copy, nonatomic) NSString *universalLinkUrl;
+@property (copy, nonatomic) NSString *initialReferrer;
 @property (copy, nonatomic) NSString *userUrl;
+@property (copy, nonatomic) NSString *localUrl;
 @property (copy, nonatomic) NSString *userIdentity;
 @property (copy, nonatomic) NSString *sessionParams;
 @property (copy, nonatomic) NSString *installParams;
@@ -70,6 +71,11 @@ NSURL* /* _Nonnull */ BNCURLForBranchDirectory(void);
 @property (copy, nonatomic) NSString *referrerGBRAID;
 @property (assign, nonatomic) NSTimeInterval referrerGBRAIDValidityWindow;
 @property (strong, nonatomic) NSDate *referrerGBRAIDInitDate;
+
+@property (assign, nonatomic) NSInteger skanCurrentWindow;
+@property (assign, nonatomic) NSInteger highestConversionValueSent;
+@property (strong, nonatomic) NSDate   *firstAppLaunchTime;
+@property (assign, nonatomic) BOOL invokeRegisterApp;
 
 - (void) clearTrackingInformation;
 

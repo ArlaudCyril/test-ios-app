@@ -15,13 +15,13 @@ class AllAssetsVC: swipeGesture {
     var screenType : screenEnum = .portfolio
     var coinSelectedCallback : ((_ coinData : Trending?)->())?
     var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "TOP_GAINERS"),CommonFunctions.localisation(key: "TOP_LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
+	var fromAssetId : String = ""
     
-    var coinsData : [priceServiceResume] = []
-    var originalData : [priceServiceResume] = []
+    var coinsData : [PriceServiceResume] = []
+    var originalData : [PriceServiceResume] = []
     var filteredData : [AssetBaseData] = []
-    var filterCoin : [priceServiceResume] = []
+    var filterCoin : [PriceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
-    var timer = Timer()
     //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
     @IBOutlet var AllAssetsLbl: UILabel!
@@ -34,28 +34,12 @@ class AllAssetsVC: swipeGesture {
     @IBOutlet var euroLbl: UILabel!
     @IBOutlet var noOfEuroLbl: UILabel!
     @IBOutlet var euroImg: UIImageView!
+    @IBOutlet var collViewTop: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-//        CommonFunction.showLoader(self.view)
         self.tblView.es.startPullToRefresh()
-//        self.coinsData = []
-//        self.pageNumber  = 1
-//        self.apiHitOnce = false
-//        self.apiHitting = false
-//        self.canPaginate = true
-//        self.callGetAssetsApi()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.timer.invalidate()
     }
 
 
@@ -63,7 +47,8 @@ class AllAssetsVC: swipeGesture {
 
     override func setUpUI(){
         self.allAssetsVM.controller = self
-        self.filteredData = coinDetailData
+		self.filteredData = coinDetailData
+		
         self.backBtn.layer.cornerRadius = 12
 		self.searchTF.placeholder = CommonFunctions.localisation(key: "SEARCH")
         CommonUI.setUpLbl(lbl: self.AllAssetsLbl, text: CommonFunctions.localisation(key: "CHOOSE_AN_ASSET"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -73,7 +58,7 @@ class AllAssetsVC: swipeGesture {
         
         CommonUI.setUpLbl(lbl: self.availbaleFlatLbl, text: CommonFunctions.localisation(key: "AVAILABLE_FLAT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "Euro", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.noOfEuroLbl, text: "1€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.noOfEuroLbl, text: "0€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.collView.delegate = self
         self.collView.dataSource = self
         self.tblView.delegate = self
@@ -81,16 +66,20 @@ class AllAssetsVC: swipeGesture {
         
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         if screenType == .exchange{
-            self.AllAssetsLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
-            self.backBtn.setImage(Assets.close.image(), for: .normal)
+            self.AllAssetsLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO_TITLE")
+            self.backBtn.setImage(Assets.back.image(), for: .normal)
             self.availableFlatVw.isHidden = false
         }else if screenType == .singleAssets{
             self.backBtn.setImage(Assets.back.image(), for: .normal)
             self.availableFlatVw.isHidden = true
             self.AllAssetsLbl.text = CommonFunctions.localisation(key: "CHOOSE_AN_ASSET")
         }else{
+			self.availableFlatVw.isHidden = true
+			//update position of collview
+			self.collViewTop.constant = 30
+			
             self.backBtn.setImage(Assets.back.image(), for: .normal)
-            self.availableFlatVw.isHidden = true
+            
             self.AllAssetsLbl.text = CommonFunctions.localisation(key: "ALL_ASSETS")
         }
         
@@ -130,7 +119,6 @@ extension AllAssetsVC: UICollectionViewDelegate, UICollectionViewDataSource,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collView.scrollToItem(at: IndexPath(item: indexPath.row, section: 0), at: .centeredHorizontally, animated: true)
         self.searchTF.text = ""
         self.searchTF.resignFirstResponder()
         if indexPath.item == 0{
@@ -143,16 +131,6 @@ extension AllAssetsVC: UICollectionViewDelegate, UICollectionViewDataSource,UICo
             self.selectedCoinsType = .Stable
         }
         self.filterData()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-//            self.pageNumber  = 1
-//            self.apiHitOnce = false
-//            self.apiHitting = false
-//            self.canPaginate = true
-//            self.tblView.tableFooterView?.isHidden = true
-//            self.showSpinnerOnTableHeader()
-//            self.callGetAssetsApi(isEmpty: true)
-//        })
-        
         
     }
     
@@ -178,22 +156,22 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if self.apiHitOnce == true {
-//            if  indexPath.row == (coinsData.count-7) && canPaginate{
-//                self.showSpinnerOnTableFooter()
-//                self.callGetAssetsApi()
-//            }
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if screenType == .portfolio{
             let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            vc.assetName = coinsData[indexPath.row].id ?? ""
+			vc.previousController = self
+			vc.assetId = coinsData[indexPath.row].id 
             self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .exchange{
-//            self.coinSelectedCallback?(coinsData[indexPath.row])
-            self.dismiss(animated: true, completion: nil)
+			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+			vc.fromAssetId = self.fromAssetId
+			vc.toAssetId = filterCoin[indexPath.row].id
+			vc.toAssetPrice = filterCoin[indexPath.row].priceServiceResumeData.lastPrice
+			vc.strategyType = .Exchange
+			//            vc.assetsData = coinsData[indexPath.row]
+			self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .singleAssets{
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             vc.strategyType = .singleCoin
@@ -206,13 +184,8 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
 //MARK: - objective functions
 extension AllAssetsVC{
     @objc func backBtnAct(){
-        if screenType == .portfolio{
-            self.navigationController?.popViewController(animated: true)
-        }else if screenType == .exchange{
-            self.dismiss(animated: true, completion: nil)
-        }else if screenType == .singleAssets{
-            self.navigationController?.popViewController(animated: true)
-        }
+		self.navigationController?.popViewController(animated: true)
+		//self.dismiss(animated: true)
     }
     
     @objc func fireTimer(){
@@ -227,11 +200,15 @@ extension AllAssetsVC{
 //MARK: - Other functions
 extension AllAssetsVC{
     func callGetAssetsApi(isEmpty : Bool = false){
-        allAssetsVM.getAllAssetsApi( keyword: searchTF.text ?? "", completion: {[]response in
-            if let response = response {
+        allAssetsVM.getAllAssetsApi(completion: {[]response in
+            if var response = response {
                 print(response)
-                self.originalData = response.data
-                self.coinsData = response.data
+				if(self.fromAssetId != ""){
+					let indexAssetToRemove = response.firstIndex(where: {$0.id == self.fromAssetId}) ?? 0
+					response.remove(at: indexAssetToRemove)
+				}
+                self.originalData = response
+                self.coinsData = response
                 self.filterData()
             }
             self.filterCoin = self.coinsData
@@ -256,7 +233,7 @@ extension AllAssetsVC{
 //            self.filteredData = coinDetailData.filter ({
 //                ($0.id?.contains(searchTF.text ?? "") ?? false) || ($0.fullName?.contains(searchTF.text ?? "") ?? false)})
             self.filteredData = coinDetailData.filter({
-                ($0.id?.hasPrefix(searchTF.text ?? "") ?? false) || ($0.fullName?.lowercased().hasPrefix(searchTF.text ?? "") ?? false)
+				($0.id?.hasPrefix(searchTF.text ?? "") ?? false) || ($0.fullName?.lowercased().hasPrefix(searchTF.text?.lowercased() ?? "") ?? false)
 
             })
             print(filteredData)
@@ -296,9 +273,9 @@ extension AllAssetsVC{
     }
     func filterData(){
         if self.selectedCoinsType == .TopGainers{
-            self.coinsData = self.coinsData.sorted(by: {(Double($0.change ?? "") ?? 0) > (Double($1.change ?? "") ?? 0)})
+            self.coinsData = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) > (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
         }else if self.selectedCoinsType == .TopLoosers{
-            self.coinsData = self.coinsData.sorted(by: {(Double($0.change ?? "") ?? 0) < (Double($1.change ?? "") ?? 0)})
+            self.coinsData = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) < (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
         }else
         {
             self.coinsData = self.originalData

@@ -25,7 +25,7 @@
 "NEXT" = "Suivant";
 "ENTER_CODE" = "Entrez le code";
 "CONFIRMATION_CODE" = "Nous vous avons envoyé un code de confirmation.";
-"RESEND_CODE_WILL_BE_SEND" = "Un nouveau code sera envoyé dans";
+"RESEND_CODE_COULD_BE_SEND" = "Un nouveau code pourra être renvoyé dans ";
 "RESEND_CODE" = "Renvoyer le code";
 "CREATE_PIN" = "Créer un code PIN";
 "FOUR_DIGIT_CODE" = "Sécurisez votre compte en créant un code à 4 chiffres.";
@@ -40,6 +40,7 @@
 "SEARCH" = "Recherche";
 "COPY" = "Copie";
 "SAVE" = "Sauvegarder";
+"COPIED" = "Copié";
 
 //MARK: - EDUCATION STRATEGY;
 
@@ -72,7 +73,8 @@
 "AUTO" = "Auto";
 "SAVE_MY_STRATEGY" = "Sauvegarder ma stratégie";
 "YOUR_STRATEGY_READY_TO_BE_SAVED" = "Votre stratégie est prête à être sauvegardée.";
-"ASSET" = "actif";
+"ASSET" = "Actif";
+"NETWORK" = "Réseau";
 "ASSETS" = "Actifs";
 "ALL_ASSETS" = "Tous les actifs";
 "SET_THIS_ALLOCATION" = "Définir cette allocation";
@@ -199,6 +201,8 @@
 "EDIT_PERSONAL_DATA" = "Modifier les données personnelles";
 "VERIFICATION_IN_PROGRESS" = "Vérification en cours";
 "START_VERIFICATION" = "Commencer la vérification";
+"PASSWORD_REQUIREMENTS" = "Le mot de passe doit comporter au moins 10 caractères, 1 caractère spécial, 1 minuscule et 1 majuscule";
+"STRONG_PASSWORD" = "Vous avez un mot de passe sécurisé";
 
 //MARK: - INVEST MONEY;
 "USING_MY_STRATEGY" = "Utiliser ma stratégie";
@@ -223,7 +227,7 @@
 "AMOUNT" = "Montant : ";
 "FREQUENCY" = "Fréquence : ";
 "PAYMENT" = "Paiement";
-"BUY" = "Acheter ";
+"BUY" = "Acheter du";
 "SELL" = "Vendre";
 "LYBER_FEES" = "Frais Lyber";
 "TOTAL" = "Total";
@@ -254,21 +258,23 @@
 "RECOMMENDED" = "Recommandé";
 "DEPOSIT" = "Dépôt";
 "MONEY_LYBER" = "Ajouter de l'argent sur Lyber";
+"ASSET_LYBER_PART1" = "Ajouter des";
+"ASSET_LYBER_PART2" = "sur Lyber";
 "DEPOSIT_FEES" = "Frais de dépôt";
+"RATIO" = "Ratio";
 
 //Withdraw
 "WITHDRAW_EXCHANGE" = "Retirer ou échanger";
-"EXCHANGE_FROM" = "Echanger → De";
+"EXCHANGE_FROM_TITLE" = "Echanger → De";
 "LYBER_PORTFOLIO" = "Portefeuille Lyber";
 "FROM" = "De";
 "TO" = "Vers";
 "PREVIEW_EXCHANGE" = "Aperçu de l'échange";
 "AVAILABLE_FLAT" = "FlAT disponible";
-"EXCHANGE_TO" = "Échange → À";
+"EXCHANGE_TO_TITLE" = "Échange → Vers";
 "WANT_WITHDRAW" = "Je veux retirer";
 "ALL_PORTFOLIO" = "Tout mon portefeuille";
 "PRECISE_ASSET" = "Un actif précis";
-"WITHDRAW_FROM" = "Retirer de";
 "WITHDRAW_TO" = "Retirer → Vers";
 "WITHDRAW_ALL_MY_PORTFOLIO" = "Retirer tout mon portefeuille";
 "PREVIEW_WITHDRAW" = "Aperçu du retrait";
@@ -295,6 +301,13 @@
 "TRANSFER_TIMING" = "Délai de transfert";
 "SEPA_TRANSFER" = "Les virements SEPA prennent de 1 à 3 jours ouvrables pour être reçus par Lyber.";
 "ASSETS_ALLOCATIONS_GREATER_0" = "Tous les actifs doivent avoir une allocation supérieure à 0";
+"CRYPTO" = "Crypto";
+"ASSET_DEPOSIT" = "Dépôt d'actifs";
+"CREDIT_CARD_BANK_TRANSFER" = "Par carte de crédit ou virement bancaire";
+"CANT_EXCHANGE_ASSET_DONT_HAVE" = "Vous ne pouvez pas échanger un actif non présent dans votre portefeuille";
+"NOT_ENOUGH_BALANCE" = "Votre solde est insuffisant pour investir";
+"NOT_ENOUGH_COINS" = "Vous n'avez pas assez d'actifs pour échanger";
+"NOT_ENOUGH_COINS_WITHDRAW" = "Vous n'avez pas assez d'actifs pour effectuer un retrait";
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";
@@ -361,8 +374,10 @@
 "ADD_USE_ADRESS" = "Ajouter et utiliser cette adresse";
 "CRYPTO_ASSET_DEPOSIT" = "Dépôt de crypto-actifs";
 "DEPOSIT_ADRESS" = "Adresse de dépôt";
-"SEND_ONLY_BITCOIN" = "Envoyer uniquement des bitcoins (BTC) à cette adresse, en utilisant le protocole natif de Bitcoin. ";
-"BUY_BITCOIN_LYBER" = "Acheter des bitcoins sur Lyber";
+"SEND_ONLY" = "Envoyer uniquement du";
+"ADDRESS_USING" = "à cette adresse, en utilisant le protocole";
+"PROTOCOL_CHAIN" = "";
+"ON_LYBER" = "sur Lyber";
 "ADD_PAYMENT_METHOD_FUND_LYBER_ACCOUNT" = "Ajouter une méthode de paiement ou approvisionner votre compte Lyber";
 "FUND_ACCOUNT" = "Approvisionner le compte";
 "FROM_BANK_ACCOUNT" = "Depuis votre compte bancaire";
@@ -443,3 +458,7 @@
 "464_ASSETS" = "320-464 actifs";
 "465_ASSETS" = "465- actifs";
 
+
+//MARK: - ERRORS
+
+"ERROR_TRANSACTION" = "La transaction n'a pas pu aboutir";

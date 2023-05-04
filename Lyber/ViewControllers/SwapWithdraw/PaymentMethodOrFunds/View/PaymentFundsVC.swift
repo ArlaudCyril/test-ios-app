@@ -32,7 +32,7 @@ class PaymentFundsVC: ViewController {
 	//MARK: - SetUpUI
     override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
-        
+		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         
@@ -57,7 +57,7 @@ class PaymentFundsVC: ViewController {
 //MARK: - objective functions
 extension PaymentFundsVC{
     @objc func backBtnAct(){
-        self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popViewController(animated: true)
     }
     
     @objc func accountTapped(){

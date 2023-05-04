@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVKit
 import JWTDecode
 
 class IdentityVerificationVC: ViewController {
@@ -33,7 +32,7 @@ class IdentityVerificationVC: ViewController {
         super.viewDidLoad()
         setUpUI()
         do {
-            var token = try decode(jwt: userData.shared.userToken)
+			_ = try decode(jwt: userData.shared.userToken)
         } catch {
             print(error)
         }
@@ -106,10 +105,7 @@ extension IdentityVerificationVC{
             userData.shared.isIdentityVerified = true
             userData.shared.dataSave()
             let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            navController.navigationBar.isHidden = true
-            self.present(navController, animated: true, completion: nil)
+			self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

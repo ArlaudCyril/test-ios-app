@@ -24,7 +24,7 @@
 "NEXT" = "Next";
 "ENTER_CODE" = "Enter code";
 "CONFIRMATION_CODE" = "We’ve sent you a confirmation code.";
-"RESEND_CODE_WILL_BE_SEND" = "A new code will be sent in ";
+"RESEND_CODE_COULD_BE_SEND" = "A new code could be returned in ";
 "RESEND_CODE" = "Resend Code";
 "CREATE_PIN" = "Create a PIN";
 "FOUR_DIGIT_CODE" = "Secure your account by creating a 4 digit code.";
@@ -40,6 +40,7 @@
 "COPY" = "Copy";
 "SAVE" = "Save";
 "OR" = "OR";
+"COPIED" = "Copied";
 
 //MARK: - EDUCATION STRATEGY;
 
@@ -72,7 +73,8 @@
 "AUTO" = "Auto";
 "SAVE_MY_STRATEGY" = "Save my strategy";
 "YOUR_STRATEGY_READY_TO_BE_SAVED" = "Your strategy is ready to be saved.";
-"ASSET" = "asset";
+"ASSET" = "Asset";
+"NETWORK" = "Network";
 "ASSETS" = "assets";
 "ALL_ASSETS" = "All assets";
 "SET_THIS_ALLOCATION" = "Set this allocation";
@@ -82,6 +84,7 @@
 "STRATEGIES_ARE_THERE_TO_HELP_YOU" = "The strategies are there to help you dilute your investments over several assets.";
 "YIELD" = "Yield: ";
 "RISK" = "Risk: ";
+
 
 //MARK: - PORTFOLIO HOME;
 "PORTFOLIO" = "Portfolio";
@@ -204,6 +207,8 @@
 "EDIT_PERSONAL_DATA" = "Edit Personal Data";
 "VERIFICATION_IN_PROGRESS" = "Verification in progress";
 "START_VERIFICATION" = "Start verification";
+"PASSWORD_REQUIREMENTS" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case";
+"STRONG_PASSWORD" = "You have a strong password";
 
 //MARK: - INVEST MONEY;
 "USING_MY_STRATEGY" = "Using my strategy";
@@ -259,21 +264,23 @@
 "RECOMMENDED" = "Recommended";
 "DEPOSIT" = "Deposit";
 "MONEY_LYBER" = "Add money on Lyber";
+"ASSET_LYBER_PART1" = "Add";
+"ASSET_LYBER_PART2" = "on Lyber";
 "DEPOSIT_FEES" = "Deposit fees";
+"RATIO" = "Ratio";
 
 //Withdraw
 "WITHDRAW_EXCHANGE" = "Withdraw or exchange";
-"EXCHANGE_FROM" = "Exchange → From";
+"EXCHANGE_FROM_TITLE" = "Exchange → From";
 "LYBER_PORTFOLIO" = "Lyber portfolio";
 "FROM" = "From";
 "TO" = "To";
 "PREVIEW_EXCHANGE" = "Preview exchange";
 "AVAILABLE_FLAT" = "Available FlAT";
-"EXCHANGE_TO" = "Exchange → To";
+"EXCHANGE_TO_TITLE" = "Exchange → To";
 "WANT_WITHDRAW" = "I want to withdraw";
 "ALL_PORTFOLIO" = "All my portfolio";
 "PRECISE_ASSET" = "A precise asset";
-"WITHDRAW_FROM" = "Withdraw from ";
 "WITHDRAW_TO" = "Withdraw → To";
 "WITHDRAW_ALL_MY_PORTFOLIO" = "Withdraw all my portfolio";
 "PREVIEW_WITHDRAW" = "Preview withdraw";
@@ -300,6 +307,13 @@
 "TRANSFER_TIMING" = "Transfer timing";
 "SEPA_TRANSFER" = "SEPA transfers take 1-3 business days to be received by Lyber.";
 "ASSETS_ALLOCATIONS_GREATER_0" = "All assets must have allocations greater than 0";
+"CRYPTO" = "Crypto";
+"ASSET_DEPOSIT" = "Asset deposit";
+"CREDIT_CARD_BANK_TRANSFER" = "By credit card or bank transfer";
+"CANT_EXCHANGE_ASSET_DONT_HAVE" = "You can't exchange assets you don't have in your wallet";
+"NOT_ENOUGH_BALANCE" = "You don't have enough balance to invest";
+"NOT_ENOUGH_COINS" = "You don't have enough coins to exchange";
+"NOT_ENOUGH_COINS_WITHDRAW" = "You don't have enough coins to withdraw";
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";
@@ -365,8 +379,10 @@
 "ADD_USE_ADRESS" = "Add and use this adress";
 "CRYPTO_ASSET_DEPOSIT" = "Crypto asset deposit";
 "DEPOSIT_ADRESS" = "Deposit adress";
-"SEND_ONLY_BITCOIN" = "Send only Bitcoin (BTC to this address, using the native Bitcoin protocol.";
-"BUY_BITCOIN_LYBER" = "Buy Bitcoin on Lyber";
+"SEND_ONLY" = "Send only";
+"ADDRESS_USING" = "to this address, using the";
+"PROTOCOL_CHAIN" = "protocol";
+"ON_LYBER" = "on Lyber";
 "ADD_PAYMENT_METHOD_FUND_LYBER_ACCOUNT" = "Add payment method or fund your Lyber account";
 "FUND_ACCOUNT" = "Fund account";
 "FROM_BANK_ACCOUNT" = "From your bank account";
@@ -446,3 +462,8 @@
 "319_ASSETS" = "129-319 assets";
 "464_ASSETS" = "320-464 assets";
 "465_ASSETS" = "465- assets";
+
+
+//MARK: - ERRORS
+
+"ERROR_TRANSACTION" = "The transaction could not be completed";

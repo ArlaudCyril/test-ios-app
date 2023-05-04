@@ -31,9 +31,6 @@ class PersonalDataVM{
         if personalData?.nationality ?? "" != ""{
             param[Constants.ApiKeys.nationality] =  personalData?.nationality ?? ""
         }
-        if personalData?.isUsPerson ?? "" != ""{
-            param[Constants.ApiKeys.isUSCitizen] =  personalData?.isUsPerson ?? "" == "Yes" ? true : false
-        }
 		if personalData?.language ?? "" != ""{
 			param[Constants.ApiKeys.language] =  personalData?.language?.uppercased() ?? ""
         }
@@ -75,7 +72,7 @@ class PersonalDataVM{
             param[Constants.ApiKeys.street] =  personalData?.buildingFloor ?? ""
             param[Constants.ApiKeys.city] =  personalData?.CityName ?? ""
             param[Constants.ApiKeys.stateOrProvince] =  personalData?.stateName ?? ""
-            param[Constants.ApiKeys.zipCode] =  Int(personalData?.zipCode ?? "")
+            param[Constants.ApiKeys.zipCode] =  personalData?.zipCode ?? ""
             param[Constants.ApiKeys.country] =  personalData?.CountryName ?? ""
         }
       

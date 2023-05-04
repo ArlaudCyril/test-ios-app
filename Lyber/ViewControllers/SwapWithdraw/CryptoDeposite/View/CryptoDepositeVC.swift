@@ -10,25 +10,33 @@ import DropDown
 
 class CryptoDepositeVC: ViewController {
     //MARK: - Variables
-    var selectedAssetName : String = "bitcoin"
-    var availableAssets : [GetAssetsAPIElement]? = []
+    var selectedAsset : AssetBaseData?
+    var availableAssets : [AssetBaseData] = []
     var assetValueArr : [String]? = []
     var assetImgArr : [String]? = []
-    var dropDown = DropDown()
+    var dropDownAsset = DropDown()
+    var dropDownProtocol = DropDown()
     
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var cryptoAssetLbl: UILabel!
+	
     @IBOutlet var assetView: UIView!
     @IBOutlet var assetLbl: UILabel!
     @IBOutlet var assetImgVw: UIImageView!
     @IBOutlet var assetNameLbl: UILabel!
     @IBOutlet var assetDropdownBtn: UIButton!
     
+	@IBOutlet var protocolView: UIView!
+	@IBOutlet var protocolLbl: UILabel!
+	@IBOutlet var protocolNameLbl: UILabel!
+	@IBOutlet var protocolDropdownBtn: UIButton!
+	
     @IBOutlet var depositeAddressLbl: UILabel!
     @IBOutlet var depositeAddressVw: UIView!
     @IBOutlet var depositeAddresTextVw: UITextView!
     @IBOutlet var scanBtn: UIButton!
+    @IBOutlet var copyBtn: UIButton!
     
     @IBOutlet var sendOnlyAssetView: UIView!
     @IBOutlet var sendOnlyAssetLbl: UILabel!
@@ -39,9 +47,8 @@ class CryptoDepositeVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-//        callNetworkApi()
-        callAssetsApi()
-        // Do any additional setup after loading the view.
+        callAssetsDetailApi()
+		callCoinInfoApi(assetId: self.selectedAsset?.id ?? "")
     }
 
 
@@ -52,43 +59,39 @@ class CryptoDepositeVC: ViewController {
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
         CommonUI.setUpLbl(lbl: cryptoAssetLbl, text: CommonFunctions.localisation(key: "CRYPTO_ASSET_DEPOSIT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.assetLbl, text: CommonFunctions.localisation(key: "ASSET"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        
         CommonUI.setUpLbl(lbl: self.depositeAddressLbl, text: CommonFunctions.localisation(key: "DEPOSIT_ADRESS"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         
-        CommonUI.setUpViewBorder(vw: assetView ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
+        
         CommonUI.setUpViewBorder(vw: depositeAddressVw ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
-        self.assetImgVw.image = Assets.bitcoin.image()
-        CommonUI.setUpLbl(lbl: assetNameLbl, text: "Bitcoin (BTC)", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		
+		
+									
         self.depositeAddresTextVw.textColor = UIColor.ThirdTextColor
         self.depositeAddresTextVw.font = UIFont.MabryPro(Size.Large.sizeValue())
         
         CommonUI.setUpViewBorder(vw: self.sendOnlyAssetView, radius: 16, borderWidth: 0, borderColor: UIColor.ColorFFF2D9.cgColor, backgroundColor: UIColor.ColorFFF2D9)
-        CommonUI.setUpLbl(lbl: sendOnlyAssetLbl, text: CommonFunctions.localisation(key: "SEND_ONLY_BITCOIN"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        CommonUI.setUpLbl(lbl: orLbl, text: "Or", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpButton(btn: buyCoinBtn, text: CommonFunctions.localisation(key: "BUY_BITCOIN_LYBER"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: orLbl, text: CommonFunctions.localisation(key: "OR"), textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
-        dropDown.layer.cornerRadius = 6
-        dropDown.anchorView = assetView
-        dropDown.bottomOffset = CGPoint(x: 0, y: assetView.frame.height)
-        dropDown.textFont = UIFont.MabryPro(Size.Large.sizeValue())
-        dropDown.cellNib = UINib(nibName: "dropDownTableViewCell", bundle: nil)
-        dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
-            guard let cell = cell as? dropDownTableViewCell else { return }
-            cell.textLbl.text = item
-            cell.imgVw.sd_setImage(with: URL(string: self.assetImgArr?[index] ?? ""))
-        }
-        dropDown.selectionAction = {[weak self] (index: Int,item: String) in
-            self?.assetNameLbl.text = item
-            self?.selectedAssetName = self?.availableAssets?[index].assetID ?? ""
-            self?.assetImgVw.sd_setImage(with: URL(string: self?.assetImgArr?[index] ?? ""))
-        }
-        dropDown.cellHeight = 44
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.buyCoinBtn.addTarget(self, action: #selector(buyCoinBtnAct), for: .touchUpInside)
+        self.copyBtn.addTarget(self, action: #selector(copyBtnAct), for: .touchUpInside)
+        self.scanBtn.addTarget(self, action: #selector(scanBtnAct), for: .touchUpInside)
+		
+		//asset Dropdown
+		dropdownAssetConfiguration()
+		
         let assetTap = UITapGestureRecognizer(target: self, action: #selector(assetSelect))
         self.assetView.addGestureRecognizer(assetTap)
+        self.assetDropdownBtn.addTarget(self, action: #selector(assetDropdownBtnAct), for: .touchUpInside)
+		
+		//protocol Dropdown
+		dropdownProtocolConfiguration()
+		let protocolTap = UITapGestureRecognizer(target: self, action: #selector(protocolSelect))
+		self.protocolView.addGestureRecognizer(protocolTap)
+		self.protocolDropdownBtn.addTarget(self, action: #selector(protocolDropdownBtnAct), for: .touchUpInside)
     }
 }
 
@@ -99,38 +102,158 @@ extension CryptoDepositeVC{
     }
     
     @objc func assetSelect(){
-        self.dropDown.show()
+        self.dropDownAsset.show()
     }
+	@objc func assetDropdownBtnAct(){
+		assetSelect()
+	}
+	
+	@objc func protocolSelect(){
+		self.dropDownProtocol.show()
+	}
+	@objc func protocolDropdownBtnAct(){
+		protocolSelect()
+	}
     
     @objc func buyCoinBtnAct(){
-        self.callCoinInfoApi(assetName: self.selectedAssetName)
+		//TODO:
+        //self.callCoinInfoApi(assetName: self.selectedAssetName)
     }
+	@objc func copyBtnAct(){
+		UIPasteboard.general.string = self.depositeAddresTextVw.text
+		CommonFunctions.toster(CommonFunctions.localisation(key: "COPIED"))
+    }
+	@objc func scanBtnAct(){
+		if(self.depositeAddresTextVw.text != ""){
+			let vc = QrCodeVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+			vc.urlQrCode = self.depositeAddresTextVw.text
+			let nav = UINavigationController(rootViewController: vc)
+			nav.modalPresentationStyle = .fullScreen
+			nav.navigationBar.isHidden = true
+			self.present(nav, animated: true, completion: nil)
+		}
+		
+    }
+	
+	
 }
 
 //MARK: - Other functions
 extension CryptoDepositeVC{
-    func callAssetsApi(){
-        SearchAssetVM().getAssetsApi(searchText: "", completion: {[weak self]response in
+    func callAssetsDetailApi(){
+        AllAssetsVM().getAllAssetsDetailApi(completion: {[]response in
             if let response = response{
-                self?.availableAssets = response
+				self.availableAssets = response
                 for (index,value) in response.enumerated() {
                     print(index,value)
-                    self?.assetValueArr?.append("\(value.assetName ?? "") (\(value.symbol?.uppercased() ?? ""))")
-                    self?.assetImgArr?.append(value.image ?? "")
+					self.assetValueArr?.append("\(value.fullName ?? "") (\(value.id?.uppercased() ?? ""))")
+                    self.assetImgArr?.append(value.image ?? "")
                 }
-                self?.dropDown.dataSource = self?.assetValueArr ?? []
+                self.dropDownAsset.dataSource = self.assetValueArr ?? []
             }
         })
     }
     
-    func callCoinInfoApi(assetName: String){
-        CommonFunctions.showLoader(self.view)
-        PortfolioDetailVM().getCoinInfoApi(Asset: assetName, completion: {[weak self]response in
-            CommonFunctions.hideLoader(self?.view ?? UIView())
-            let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-//            vc.assetsData = response
-            vc.strategyType = .singleCoin
-            self?.navigationController?.pushViewController(vc, animated: true)
+	
+	func callCoinInfoApi(assetId: String){
+		let textBuyCoinBtn = "\(CommonFunctions.localisation(key: "BUY")) \(self.selectedAsset?.fullName ?? "") \(CommonFunctions.localisation(key: "ON_LYBER"))"
+		
+		CommonUI.setUpButton(btn: self.buyCoinBtn ?? UIButton(), text: textBuyCoinBtn, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+        PortfolioDetailVM().getCoinInfoApi(Asset: assetId, completion: {[weak self]response in
+			var protocolArray = response?.data?.depositChains ?? []
+			let indexNative = protocolArray.firstIndex(where: {$0 == "native"})
+			
+			if(indexNative != nil){
+				protocolArray.move(fromOffsets: IndexSet(integer: indexNative ?? 0) , toOffset: 0)
+			}
+			self?.dropDownProtocol.dataSource = protocolArray
+			
+			CommonUI.setUpLbl(lbl: self?.protocolNameLbl ?? UILabel(), text: CommonFunctions.networkDecoder(network: self?.dropDownProtocol.dataSource[0] ?? ""), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		
+			
+			self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", chain: self?.dropDownProtocol.dataSource[0] ?? "")
         })
     }
+	
+	func callGetWalletAdressApi(assetId: String, chain: String){
+		var textSendOnlyAssetLbl : String = ""
+		if(chain == "native"){
+			textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(CommonFunctions.networkDecoder(network:chain)) \(self.selectedAsset?.fullName ?? "") \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
+		}else{
+			textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(CommonFunctions.networkDecoder(network:chain)) \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
+		}
+		
+		CommonUI.setUpLbl(lbl: self.sendOnlyAssetLbl ?? UILabel(), text: textSendOnlyAssetLbl, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+		
+		self.depositeAddresTextVw.text = ""
+		CommonFunctions.showLoaderWhite(self.depositeAddresTextVw)
+		CryptoDepositeVM().getWalletAdressApi(assetId: assetId, chain: chain, completion: {[weak self]response in
+			CommonFunctions.hideLoader(self?.depositeAddresTextVw ?? UIView())
+			self?.depositeAddresTextVw.text = response?.data?.address
+			
+			
+		})
+	}
+	
+	func dropdownAssetConfiguration(){
+		CommonUI.setUpViewBorder(vw: assetView ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
+		
+		CommonUI.setUpLbl(lbl: self.assetLbl, text: CommonFunctions.localisation(key: "ASSET"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+		
+		self.assetImgVw.sd_setImage(with: URL(string: CommonFunctions.getImage(id: selectedAsset?.id ?? "")))
+		
+		CommonUI.setUpLbl(lbl: assetNameLbl, text: "\(selectedAsset?.fullName ?? "") (\(selectedAsset?.id ?? ""))", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		
+		
+		dropDownAsset.layer.cornerRadius = 6
+		dropDownAsset.cellHeight = 44
+		dropDownAsset.anchorView = assetView
+		dropDownAsset.bottomOffset = CGPoint(x: 0, y: assetView.frame.height)
+		dropDownAsset.textFont = UIFont.MabryPro(Size.Large.sizeValue())
+		dropDownAsset.cellNib = UINib(nibName: "dropDownTableViewCell", bundle: nil)
+		
+		
+		//configuration printing dropdown
+		dropDownAsset.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+			guard let cell = cell as? dropDownTableViewCell else { return }
+			cell.textLbl.text = item
+			cell.imgVw.sd_setImage(with: URL(string: self.assetImgArr?[index] ?? ""))
+		}
+		
+		
+		//when one option is selected
+		dropDownAsset.selectionAction = {[weak self] (index: Int,item: String) in
+			self?.assetNameLbl.text = item
+			self?.assetImgVw.sd_setImage(with: URL(string: self?.assetImgArr?[index] ?? ""))
+			self?.selectedAsset = self?.availableAssets[index] ?? nil
+			self?.callCoinInfoApi(assetId: self?.availableAssets[index].id ?? "")
+		}
+		
+	}
+	
+	func dropdownProtocolConfiguration(){
+		CommonUI.setUpViewBorder(vw: protocolView ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
+		
+		CommonUI.setUpLbl(lbl: self.protocolLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+		
+		dropDownProtocol.layer.cornerRadius = 6
+		dropDownProtocol.cellHeight = 44
+		dropDownProtocol.anchorView = protocolView
+		dropDownProtocol.bottomOffset = CGPoint(x: 0, y: protocolView.frame.height)
+		dropDownProtocol.textFont = UIFont.MabryPro(Size.Large.sizeValue())
+		dropDownProtocol.backgroundColor = UIColor.systemBackground
+
+		//configuration printing dropdown
+		dropDownProtocol.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+			cell.optionLabel.text = CommonFunctions.networkDecoder(network: item)
+		}
+		
+		//when one option is selected
+		dropDownProtocol.selectionAction = {[weak self] (index: Int,item: String) in
+			self?.protocolNameLbl.text = CommonFunctions.networkDecoder(network:item)
+			self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", chain: item)
+		}
+		
+	}
 }

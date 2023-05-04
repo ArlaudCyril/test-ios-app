@@ -7,15 +7,15 @@
 
 import UIKit
 
-var totalEuroAvailable : Double? = 100
-var totalPortfolio : Double = 25.0
+var totalEuroAvailable : Double? = 0
+var totalPortfolio : Double = 0
 var coinDetailData : [AssetBaseData] = []
-class PortfolioHomeVC: notSwipeGesture {
+class PortfolioHomeVC: swipeGesture {
     //MARK: - IB OUTLETS
     var headerData : [String] = []
     var assetsData : [Asset] = []
     var recurringInvestmentData : [Investment] = []
-    var allAvailableAssets : [priceServiceResume] = []
+    var allAvailableAssets : [PriceServiceResume] = []
     
     var noRecurringInvestment = false
     let group = DispatchGroup()
@@ -28,15 +28,14 @@ class PortfolioHomeVC: notSwipeGesture {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAllAssetsDetail()
+		self.getTotalAvailableAssetsApi()
+		
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpUI()
-        self.getTotalAvailableAssetsApi()
-       
-
-        
+		self.callWalletGetBalance()
     }
 
 
@@ -55,6 +54,11 @@ class PortfolioHomeVC: notSwipeGesture {
         if #available(iOS 15.0, *) {
             tblView.sectionHeaderTopPadding = 0
         }
+		
+		tblView.es.addPullToRefresh {
+			self.callWalletGetBalance()
+			self.tblView.es.stopPullToRefresh()
+		}
     }
 }
 
@@ -67,7 +71,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
         if section == 0{
             return 1
         }else if section == 1{
-            return 1
+            return Storage.balances.count
         }else if section == 2{
             return 1
         }else if section == 3{
@@ -85,15 +89,10 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
-            cell.coinImgView.image = Assets.bitcoin.image()
-            CommonUI.setUpLbl(lbl: cell.coinTypeLbl, text: "Bitcoin", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            CommonUI.setUpLbl(lbl: cell.euroLbl, text: "987€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            CommonUI.setUpLbl(lbl: cell.noOfCoinLbl, text: "5 BTC", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-            CommonUI.setUpLbl(lbl: cell.flatWalletLbl, text: CommonFunctions.localisation(key: "FIAT_WALLET"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
-			cell.assetsView.layer.cornerRadius = 16
-//            cell.setUpCell(data: assetsData[indexPath.row],index : indexPath.row,lastIndex: assetsData.count - 1)
-            cell.setEuroAmount(totalAmount: totalEuroAvailable ?? 0)
-            cell.controller = self
+			cell.setEuroAmount(totalAmount: totalEuroAvailable ?? 0)
+			cell.controller = self
+			cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row,lastIndex: Storage.balances.count - 1)
+            
             return cell
         }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTVC")as! AnalyticsTVC
@@ -203,24 +202,6 @@ extension PortfolioHomeVC{
 
 //MARK: - Other functions
 extension PortfolioHomeVC{
-    func callMyAssetsApi(){
-        CommonFunctions.showLoader(self.view)
-        PortfolioHomeVM().getMyAssetsApi(completion: {[weak self]response in
-            if let response = response{
-                totalEuroAvailable = response.total_euros_available ?? 0
-                self?.assetsData = response.assets ?? []
-//                self?.tblView.reloadData()
-//                self?.tblView.reloadSections(IndexSet(integer: 1), with: .automatic)
-                for i in 0...((self?.assetsData.count ?? 0) - 1){
-                    let str = ((self?.assetsData[i].totalBalance ?? 0.0)*(self?.assetsData[i].euroAmount ?? 0.0))
-                    totalPortfolio = Double((totalPortfolio ) + Double(str))
-                }
-//                self?.callRecurringInvestmentApi()
-                self?.group.leave()
-            }
-        })
-    }
-    
     func callRecurringInvestmentApi(){
         CommonFunctions.showLoader(self.view)
         PortfolioHomeVM().getRecurringInvestmentApi(completion: {[weak self]response in
@@ -229,9 +210,6 @@ extension PortfolioHomeVC{
                 if self?.recurringInvestmentData.count == 0 {
                     self?.noRecurringInvestment = true
                 }
-//                self?.tblView.reloadData()
-//                self?.tblView.layoutIfNeeded()
-//                self?.tblView.reloadSections(IndexSet(integer: 3), with: .automatic)
                 self?.group.leave()
             }
         })
@@ -240,26 +218,16 @@ extension PortfolioHomeVC{
     func getTotalAvailableAssetsApi(){
         self.allAvailableAssets = []
         CommonFunctions.showLoader(self.view)
-        AllAssetsVM().getAllAssetsApi( keyword: "", completion: {[]response in
+        AllAssetsVM().getAllAssetsApi(completion: {[]response in
             if let response = response {
                 CommonFunctions.hideLoader(self.view )
                 for i in 0..<6{
-                    self.allAvailableAssets.append(response.data[i])
+                    self.allAvailableAssets.append(response[i])
                 }
                 self.tblView.reloadData()
             }
-        })
+		})
         
-//        CommonFunction.showLoader(self.view)
-//        PortfolioHomeVM().getAllAvailableAssetsApi(order: "volume_desc", completion: {[weak self]response in
-//            if let response = response{
-//                self?.allAvailableAssets = response.data ?? []
-////                self?.tblView.reloadData()
-////                self?.tblView.reloadSections(IndexSet(integer: 4), with: .automatic)
-//                self?.group.leave()
-//            }
-//            CommonFunction.hideLoader(self?.view ?? UIView())
-//        })
     }
     func getAllAssetsDetail(){
         AllAssetsVM().getAllAssetsDetailApi(completion: {[]response in
@@ -267,6 +235,14 @@ extension PortfolioHomeVC{
             if response != nil {
                 Storage.currencies = coinDetailData
                 
+            }
+        })
+    }
+	func callWalletGetBalance(){
+		PortfolioHomeVM().callWalletGetBalanceApi(completion: {[]response in
+            if response != nil {
+				CommonFunctions.setBalances(balances: response ?? [])
+				self.tblView.reloadData()
             }
         })
     }

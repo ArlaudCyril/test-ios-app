@@ -16,10 +16,11 @@ class AllCoinCVC: UICollectionViewCell {
 }
 
 extension AllCoinCVC{
-    func configureWithData(data : priceServiceResume?,assetDetail : AssetBaseData?){
+    func configureWithData(data : PriceServiceResume?){
+		let curency = CommonFunctions.getCurrency(id: data?.id ?? "")
         self.coinVw.layer.cornerRadius = 16
-        self.coinImgVw.sd_setImage(with: URL(string: assetDetail?.image ?? ""), completed: nil)
+		self.coinImgVw.sd_setImage(with: URL(string: curency.image ?? ""), completed: nil)
         CommonUI.setUpLbl(lbl: coinNameLbl, text: data?.id.uppercased() ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: coinPercentageLbl, text: "\(CommonFunctions.formattedCurrency(from: Double(data?.change ?? "")))%", textColor: (Double(data?.change ?? "") ?? 0)<0 ? UIColor.RedDF5A43 : UIColor.GreenColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: coinPercentageLbl, text: "\(CommonFunctions.formattedCurrency(from: Double(data?.priceServiceResumeData.change ?? "")))%", textColor: (Double(data?.priceServiceResumeData.change ?? "") ?? 0)<0 ? UIColor.RedDF5A43 : UIColor.GreenColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
     }
 }

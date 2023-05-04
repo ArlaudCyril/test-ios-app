@@ -69,9 +69,6 @@ extension ConfirmationVC{
 //        self.dismiss(animated: true, completion: nil)
 //        self.controller?.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self, animated: true)
         let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.present(nav, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
     }
 }

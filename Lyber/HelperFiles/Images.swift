@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 
 enum Assets : String{
+	case box
+	case circle
+	case triangle
     case back
     case close
+	case close_color
+	case copy
     case cancel_white
     case slider_one
     case slider_two

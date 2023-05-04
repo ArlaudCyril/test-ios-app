@@ -62,10 +62,7 @@ extension enableNotificationCVC{
 			vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 			CommonFunctions.loadingProfileApi()
 		}
-        let navController = UINavigationController(rootViewController: vc)
-        navController.modalPresentationStyle = .fullScreen
-        navController.navigationBar.isHidden = true
-        self.delegate?.present(navController, animated: true, completion: nil)
+        self.delegate?.navigationController?.pushViewController(vc, animated: true)
         
     }
 }

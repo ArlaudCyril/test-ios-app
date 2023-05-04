@@ -94,6 +94,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>branch_app_domain</key>
 	<array>
 		<string>hmd9m.test-app.link</string>

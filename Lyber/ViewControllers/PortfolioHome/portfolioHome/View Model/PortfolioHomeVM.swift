@@ -42,4 +42,22 @@ class PortfolioHomeVM{
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
+	
+	func callWalletGetBalanceApi(completion: @escaping ( ([Balance]?) -> Void )){
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceBalance, withParameters: [:], ofType: BalanceAPI.self, onSuccess: { response in
+			print(response)
+			
+			let balanceDataDict : [String:BalanceData] = response.data
+			var balances : [Balance] = []
+			for (id, balanceData) in balanceDataDict{
+				let balance = Balance(id: id, balanceData: balanceData)
+				balances.append(balance)
+			}
+            
+            completion(balances)
+        }, onFailure: { reload, error in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+    }
 }

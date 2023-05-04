@@ -447,6 +447,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
                 {
                     delegate?.chartValueNothingSelected?(self)
                 }
+                setNeedsDisplay()
                 return
         }
 
@@ -516,9 +517,9 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     }
     
     /// - Returns: The actual position in pixels of the MarkerView for the given Entry in the given DataSet.
-    @objc open func getMarkerPosition( highlight: Highlight) -> CGPoint
+    @objc open func getMarkerPosition(highlight: Highlight) -> CGPoint
     {
-                return CGPoint(x: highlight.drawX, y: highlight.drawY)
+        return CGPoint(x: highlight.drawX, y: highlight.drawY)
     }
     
     // MARK: - Animation

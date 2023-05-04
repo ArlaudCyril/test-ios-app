@@ -51,7 +51,7 @@ extension OtpCVC{
             tf.font = UIFont.MabryProMedium(Size.Large.sizeValue())
             CommonUI.setUpViewBorder(vw: tf, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor)
         }
-        CommonUI.setUpButton(btn: resendCodeBtn, text: "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(time)", textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpButton(btn: resendCodeBtn, text: "\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:\(time)", textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.resendCodeBtn.addTarget(self, action: #selector(resendCodeButton), for: .touchUpInside)
 //        hitTimer()
     }
@@ -118,17 +118,16 @@ extension OtpCVC: UITextFieldDelegate{
 extension OtpCVC{
     
     @objc func resendCodeButton(){
-
-        CommonFunctions.showLoader(self.controller?.view ?? UIView())
-        self.controller?.enterPhoneVM.resendOtpCodeApi(completion: {[weak self]response in
-            CommonFunctions.hideLoader(self?.controller?.view ?? UIView())
-            if let _ = response{
-                self?.time = 30
-                self?.resendCodeBtn.setTitleColor(UIColor.SecondarytextColor, for: .normal)
-                self?.resendCodeBtn.setTitle("\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(self?.time ?? 0)", for:.normal)
-                self?.hitTimer()
-            }
-        })
+		CommonFunctions.showLoader(self.controller?.view ?? UIView())
+		self.controller?.enterPhoneVM.SignUpApi(phoneNumber: self.controller?.phoneNumber ?? "", countryCode: self.controller?.countryCode ?? "", completion: {response in
+			if response != nil{
+				CommonFunctions.hideLoader(self.controller?.view ?? UIView())
+					self.time = 30
+					self.resendCodeBtn.setTitleColor(UIColor.SecondarytextColor, for: .normal)
+					self.resendCodeBtn.setTitle("\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:\(self.time)", for:.normal)
+					self.hitTimer()
+			}
+		})
     }
     
     func hitTimer(){
@@ -139,9 +138,9 @@ extension OtpCVC{
     @objc func fireTimer(){
         if self.time > 0{
             self.time -= 1
-            var tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(self.time)"
+            var tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:\(self.time)"
             if time < 10{
-                tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:0\(self.time)"
+                tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:0\(self.time)"
             }
             UIView.performWithoutAnimation {
                 self.resendCodeBtn.setTitle(tempString, for: .normal)

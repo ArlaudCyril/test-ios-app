@@ -64,7 +64,7 @@ class StrongAuthOTPVerifyVC: ViewController ,MyTextFieldDelegate{
             CommonUI.setUpViewBorder(vw: tf, radius: 16, borderWidth: 1.5, borderColor: UIColor.greyColor.cgColor)
         }
         
-        CommonUI.setUpButton(btn: resendBtn, text: "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(time)", textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpButton(btn: resendBtn, text: "\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:\(time)", textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpButton(btn: cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.primaryTextcolor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.resendBtn.addTarget(self, action: #selector(resendCodeButton), for: .touchUpInside)
@@ -125,7 +125,7 @@ extension StrongAuthOTPVerifyVC: UITextFieldDelegate{
                 if tf1.text != "" && tf2.text != "" && tf3.text != "" && tf4.text != "" && tf5.text != "" && tf6.text != ""{
                     let otp = "\(tf1.text ?? "")\(tf2.text ?? "")\(tf3.text ?? "")\(tf4.text ?? "")\(tf5.text ?? "")\(tf6.text ?? "")"
                     strongAuthOTPVerifyVM.verifyStrongAuthApi(otp: otp, completion: {[]response in
-                        if let response = response{
+						if response != nil{
                             self.dismiss(animated: true, completion: nil)
                             self.strongAuthCallback?()
                             userData.shared.strongAuthVerified = true
@@ -189,7 +189,7 @@ extension StrongAuthOTPVerifyVC{
     @objc func resendCodeButton(){
         time = 30
         self.resendBtn.setTitleColor(UIColor.SecondarytextColor, for: .normal)
-        resendBtn.setTitle("\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(time)", for:.normal)
+        resendBtn.setTitle("\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:\(time)", for:.normal)
         self.hitTimer()
     }
     
@@ -220,9 +220,9 @@ extension StrongAuthOTPVerifyVC{
     @objc func fireTimer(){
         if self.time > 0{
             self.time -= 1
-            var tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:\(self.time)"
+            var tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:\(self.time)"
             if time < 10{
-                tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_WILL_BE_SEND")) 00:0\(self.time)"
+                tempString = "\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) 00:0\(self.time)"
             }
             UIView.performWithoutAnimation {
                 self.resendBtn.setTitle(tempString, for: .normal)

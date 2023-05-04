@@ -167,10 +167,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                     }else{
                         if userData.shared.isIdentityVerified == true{
                             let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                            let navController = UINavigationController(rootViewController: vc)
-                            navController.modalPresentationStyle = .fullScreen
-                            navController.navigationBar.isHidden = true
-                            self.present(navController, animated: true, completion: nil)
+							self.navigationController?.pushViewController(vc, animated: true)
                         }else if userData.shared.isAccountCreated == true{
                             let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                             let navController = UINavigationController(rootViewController: vc)
@@ -352,8 +349,8 @@ extension EnterPhoneVC{
                                             userData.shared.dataSave()
                                             self?.nextBtnView.isHidden = true
                                             let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 2, section: 0)
-                                            self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
-                                        }else{
+                                            self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+										}else{
                                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                                             vc.typeVerification = response.data?.type2FA
                                             self?.navigationController?.pushViewController(vc, animated: true)
@@ -383,10 +380,7 @@ extension EnterPhoneVC{
                 }else {
                     if userData.shared.isIdentityVerified == true{
                         let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                        let nav = UINavigationController(rootViewController: vc)
-                        nav.modalPresentationStyle = .fullScreen
-                        nav.navigationBar.isHidden = true
-                        self?.present(nav, animated: true, completion: nil)
+						self?.navigationController?.pushViewController(vc, animated: true)
                     }/*else if userData.shared.is_push_enabled == 1 || userData.shared.is_push_enabled == 2{
                         userData.shared.isAccountCreated = true
                         userData.shared.dataSave()
@@ -414,7 +408,7 @@ extension EnterPhoneVC{
             //            self.enterPhoneVM.enableFaceIdApi(enable: 0, completion: {[]response in
             //                if let response = response{
             //                    print(response)
-            if userData.shared.isAccountCreated{
+            if userData.shared.isIdentityVerified{
                 let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
@@ -427,7 +421,7 @@ extension EnterPhoneVC{
             //            self.enterPhoneVM.enableFaceIdApi(enable: 1, completion: {[]response in
             //                if let response = response{
             //                    print(response)
-            if userData.shared.isAccountCreated{
+            if userData.shared.isIdentityVerified{
                 let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{

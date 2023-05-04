@@ -94,7 +94,6 @@ class ApiHandler: NSObject {
             
             AF.sessionConfiguration.timeoutIntervalForRequest = 90              //FOR TIMEOUT SETTINGS
             AF.request("\(NetworkURL().BASE_URL)\(url)", method: kMehod ?? .get, parameters: parameters, encoding: URLEncoding.default, headers: header).response{ response in
-//                print(response)
                 
                 let statusCode = response.response?.statusCode
                 switch response.result{
@@ -104,9 +103,11 @@ class ApiHandler: NSObject {
                             do{
                                 let jsondata = try JSON(data: data)
                                 print(jsondata)
+
                                 let json = try JSONDecoder().decode(T.self, from: data)
+
                                 print(json)
-                                onSuccess(json)
+								onSuccess(json)
 
                             }
                             catch let error as NSError {

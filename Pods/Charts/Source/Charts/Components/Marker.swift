@@ -36,6 +36,4 @@ public protocol Marker: AnyObject
     
     /// Draws the Marker on the given position on the given context
     func draw(context: CGContext, point: CGPoint)
-    
-    
 }

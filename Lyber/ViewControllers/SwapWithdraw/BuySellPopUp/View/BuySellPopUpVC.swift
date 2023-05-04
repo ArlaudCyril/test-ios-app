@@ -56,9 +56,6 @@ extension BuySellPopUpVC{
     @objc func dismissTapped(){
 //        self.dismiss(animated: true, completion: nil)
         let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.present(nav, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
     }
 }
