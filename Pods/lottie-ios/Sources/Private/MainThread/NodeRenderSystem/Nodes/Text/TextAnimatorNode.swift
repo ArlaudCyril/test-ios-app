@@ -28,14 +28,14 @@ final class TextAnimatorNodeProperties: NodePropertyMap, KeypathSearchable {
 
     if let keyframeGroup = textAnimator.position {
       position = NodeProperty(provider: KeyframeInterpolator(keyframes: keyframeGroup.keyframes))
-      properties[PropertyName.position.rawValue] = position
+      properties["Position"] = position
     } else {
       position = nil
     }
 
     if let keyframeGroup = textAnimator.scale {
       scale = NodeProperty(provider: KeyframeInterpolator(keyframes: keyframeGroup.keyframes))
-      properties[PropertyName.scale.rawValue] = scale
+      properties["Scale"] = scale
     } else {
       scale = nil
     }
@@ -54,31 +54,16 @@ final class TextAnimatorNodeProperties: NodePropertyMap, KeypathSearchable {
       skewAxis = nil
     }
 
-    if let keyframeGroup = textAnimator.rotationX {
-      rotationX = NodeProperty(provider: KeyframeInterpolator(keyframes: keyframeGroup.keyframes))
-      properties["Rotation X"] = rotationX
+    if let keyframeGroup = textAnimator.rotation {
+      rotation = NodeProperty(provider: KeyframeInterpolator(keyframes: keyframeGroup.keyframes))
+      properties["Rotation"] = rotation
     } else {
-      rotationX = nil
-    }
-
-    if let keyframeGroup = textAnimator.rotationY {
-      rotationY = NodeProperty(provider: KeyframeInterpolator(keyframes: keyframeGroup.keyframes))
-      properties["Rotation Y"] = rotationY
-    } else {
-      rotationY = nil
-    }
-
-    if let keyframeGroup = textAnimator.rotationZ {
-      rotationZ = NodeProperty(provider: KeyframeInterpolator(keyframes: keyframeGroup.keyframes))
-      properties["Rotation Z"] = rotationZ
-      properties[PropertyName.rotation.rawValue] = rotationZ
-    } else {
-      rotationZ = nil
+      rotation = nil
     }
 
     if let keyframeGroup = textAnimator.opacity {
       opacity = NodeProperty(provider: KeyframeInterpolator(keyframes: keyframeGroup.keyframes))
-      properties[PropertyName.opacity.rawValue] = opacity
+      properties["Opacity"] = opacity
     } else {
       opacity = nil
     }
@@ -120,19 +105,17 @@ final class TextAnimatorNodeProperties: NodePropertyMap, KeypathSearchable {
 
   let keypathName: String
 
-  let anchor: NodeProperty<LottieVector3D>?
-  let position: NodeProperty<LottieVector3D>?
-  let scale: NodeProperty<LottieVector3D>?
-  let skew: NodeProperty<LottieVector1D>?
-  let skewAxis: NodeProperty<LottieVector1D>?
-  let rotationX: NodeProperty<LottieVector1D>?
-  let rotationY: NodeProperty<LottieVector1D>?
-  let rotationZ: NodeProperty<LottieVector1D>?
-  let opacity: NodeProperty<LottieVector1D>?
-  let strokeColor: NodeProperty<LottieColor>?
-  let fillColor: NodeProperty<LottieColor>?
-  let strokeWidth: NodeProperty<LottieVector1D>?
-  let tracking: NodeProperty<LottieVector1D>?
+  let anchor: NodeProperty<Vector3D>?
+  let position: NodeProperty<Vector3D>?
+  let scale: NodeProperty<Vector3D>?
+  let skew: NodeProperty<Vector1D>?
+  let skewAxis: NodeProperty<Vector1D>?
+  let rotation: NodeProperty<Vector1D>?
+  let opacity: NodeProperty<Vector1D>?
+  let strokeColor: NodeProperty<Color>?
+  let fillColor: NodeProperty<Color>?
+  let strokeWidth: NodeProperty<Vector1D>?
+  let tracking: NodeProperty<Vector1D>?
 
   let keypathProperties: [String: AnyNodeProperty]
   let properties: [AnyNodeProperty]
@@ -142,9 +125,7 @@ final class TextAnimatorNodeProperties: NodePropertyMap, KeypathSearchable {
       anchor: anchor?.value.pointValue ?? .zero,
       position: position?.value.pointValue ?? .zero,
       scale: scale?.value.sizeValue ?? CGSize(width: 100, height: 100),
-      rotationX: rotationX?.value.cgFloatValue ?? 0,
-      rotationY: rotationY?.value.cgFloatValue ?? 0,
-      rotationZ: rotationZ?.value.cgFloatValue ?? 0,
+      rotation: rotation?.value.cgFloatValue ?? 0,
       skew: skew?.value.cgFloatValue,
       skewAxis: skewAxis?.value.cgFloatValue)
   }

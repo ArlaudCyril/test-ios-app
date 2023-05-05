@@ -10,10 +10,10 @@ import Lottie
 
 class EductaionStrategyCVC: UICollectionViewCell {
     //MARK: - Variables
-    let animationView = LottieAnimationView()
+    let animationView = AnimationView()
     //MARK:- IB OUTLETS
 //    @IBOutlet var ImgVw: UIImageView!
-    @IBOutlet var animationVw: LottieAnimationView!
+    @IBOutlet var animationVw: AnimationView!
     @IBOutlet var descLbl: UILabel!
     @IBOutlet var subDescLbl: UILabel!
     
@@ -36,7 +36,7 @@ class EductaionStrategyCVC: UICollectionViewCell {
         
         
         
-        animationView.animation = LottieAnimation.named("portfolio")
+        animationView.animation = Animation.named("portfolio")
         animationView.frame.size = animationVw.frame.size
         animationView.contentMode = .scaleToFill
         animationVw.loopMode = .autoReverse

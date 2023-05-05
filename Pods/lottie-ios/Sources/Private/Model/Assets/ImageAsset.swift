@@ -80,10 +80,9 @@ extension Data {
   /// - parameter dataString: The data string to parse.
   /// - parameter options: Options for the string parsing. Default value is `[]`.
   internal init?(dataString: String, options: DataURLReadOptions = []) {
-    let trimmedDataString = dataString.trimmingCharacters(in: .whitespacesAndNewlines)
     guard
       dataString.hasPrefix("data:"),
-      let url = URL(string: trimmedDataString)
+      let url = URL(string: dataString)
     else {
       return nil
     }
@@ -91,10 +90,10 @@ extension Data {
     // with messages since url doesn't have a host. This only fixes flooding logs
     // when data inside Data URL is base64 encoded.
     if
-      let base64Range = trimmedDataString.range(of: ";base64,"),
+      let base64Range = dataString.range(of: ";base64,"),
       !options.contains(DataURLReadOptions.legacy)
     {
-      let encodedString = String(trimmedDataString[base64Range.upperBound...])
+      let encodedString = String(dataString[base64Range.upperBound...])
       self.init(base64Encoded: encodedString)
     } else {
       try? self.init(contentsOf: url)

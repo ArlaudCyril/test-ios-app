@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class swipeGesture : ViewController, UIGestureRecognizerDelegate{
+class SwipeGesture : ViewController, UIGestureRecognizerDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -21,31 +21,10 @@ class swipeGesture : ViewController, UIGestureRecognizerDelegate{
     }
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
-//            return false
-//        }
         return true
     }
 }
 
-class notSwipeGesture: ViewController, UIGestureRecognizerDelegate{
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        swipeToPop()
-    }
-    
-    func swipeToPop() {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-    }
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
-            return false
-        }
-        return true
-    }
-}
 class NotSwipeGesture: UITabBarController, UIGestureRecognizerDelegate{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

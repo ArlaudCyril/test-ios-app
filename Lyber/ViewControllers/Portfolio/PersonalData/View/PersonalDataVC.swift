@@ -12,7 +12,6 @@ import JWTDecode
 class PersonalDataVC: ViewController {
     //MARK: - Variables
     var personalDataVM = PersonalDataVM()
-    var fromLoginScreen = false
     var openFromLink = false
     var currentPage : Int = 0
     var indicatorView : [UIView]!
@@ -153,17 +152,13 @@ extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, 
 //MARK: - objective functions
 extension PersonalDataVC{
     @objc func backBtnAct(){
-        if fromLoginScreen == true{
-            self.navigationController?.popViewController(animated: true)
-        }else{
-            if self.currentPage == 2{
-                let indexPath = NSIndexPath(item: (currentPage) - 1, section: 0)
-                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
-            }else{
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
         
+		if self.currentPage == 2{
+			GotoPreviousIndex()
+			self.nextButton.isHidden = false
+		}else{
+			self.dismiss(animated: true, completion: nil)
+		}
     }
     
     @objc func nextBtnAct(){
@@ -194,37 +189,31 @@ extension PersonalDataVC{
     }
     
     func goToStep(){
-        if self.fromLoginScreen == true{
-            DispatchQueue.main.async {
-                let indexPath = NSIndexPath(item: 2, section: 0)
-                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-            }
-        }else{
-            if openFromLink == true{
-                DispatchQueue.main.async {
-                    let indexPath = NSIndexPath(item: 2, section: 0)
-                    self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-                }
-            }else{
-                if userData.shared.personalDataStepComplete == 1{
-                    DispatchQueue.main.async {
-                        let indexPath = NSIndexPath(item: 1, section: 0)
-                        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-                    }
-                }else if userData.shared.personalDataStepComplete == 3{
-                    DispatchQueue.main.async {
-                        let indexPath = NSIndexPath(item: 3, section: 0)
-                        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-                    }
-                }else if userData.shared.personalDataStepComplete == 4{
-                    DispatchQueue.main.async {
-                        let indexPath = NSIndexPath(item: 4, section: 0)
-                        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-                    }
-                }
-            }
+		if openFromLink == true{
+			DispatchQueue.main.async {
+				let indexPath = NSIndexPath(item: 2, section: 0)
+				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+			}
+		}else{
+			if userData.shared.personalDataStepComplete == 1{
+				DispatchQueue.main.async {
+					let indexPath = NSIndexPath(item: 1, section: 0)
+					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+				}
+			}else if userData.shared.personalDataStepComplete == 3{
+				DispatchQueue.main.async {
+					let indexPath = NSIndexPath(item: 3, section: 0)
+					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+				}
+			}else if userData.shared.personalDataStepComplete == 4{
+				DispatchQueue.main.async {
+					let indexPath = NSIndexPath(item: 4, section: 0)
+					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+				}
+			}
+		}
             
-        }
+        
     }
 }
 
@@ -407,28 +396,17 @@ extension PersonalDataVC{
 			personalDataVM.setInvestmentExperienceApi(profile_info_step : 5,personalData: personalData, completion: {[weak self]response in
                 if let response = response{
                     print(response)
-                    self?.personalDataVM.finishRegistrationApi(completion: {[weak self]response in
-                        self?.nextButton.hideLoading()
-                        self?.nextButton.isUserInteractionEnabled = true
-                        if let response = response{
-                            userData.shared.isPersonalInfoFilled = true
-                            userData.shared.time = Date()
-                            GlobalVariables.isRegistering = false
-                            userData.shared.userToken = response.data?.access_token ?? ""
-                            userData.shared.refreshToken = response.data?.refresh_token ?? ""
-                            userData.shared.dataSave()
-                            //                            userData.shared.fromPersonalData(response)
-							CommonFunctions.loadingProfileApi()
-                            if self?.fromLoginScreen == true{
-                                let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                                let navVC = UINavigationController(rootViewController: vc)
-                                UIApplication.shared.windows[0].rootViewController = navVC
-                                navVC.navigationController?.popToRootViewController(animated: true)
-                                navVC.setNavigationBarHidden(true , animated: true)
-                            }
-                            self?.dismiss(animated: true, completion: nil)
-                        }
-                    })
+					self?.nextButton.hideLoading()
+					self?.nextButton.isUserInteractionEnabled = true
+					userData.shared.isPersonalInfoFilled = true
+					userData.shared.dataSave()
+					
+					let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+					let navVC = UINavigationController(rootViewController: vc)
+					UIApplication.shared.windows[0].rootViewController = navVC
+					navVC.navigationController?.popToRootViewController(animated: true)
+					navVC.setNavigationBarHidden(true , animated: true)
+					
                 }
             })
         }

@@ -8,7 +8,7 @@
 import UIKit
 import ESPullToRefresh
 
-class AllAssetsVC: swipeGesture {
+class AllAssetsVC: SwipeGesture {
     //MARK: - Variables
     var allAssetsVM = AllAssetsVM()
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true

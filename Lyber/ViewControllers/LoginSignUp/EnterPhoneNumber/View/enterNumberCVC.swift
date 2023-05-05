@@ -50,7 +50,8 @@ extension enterNumberCVC{
         self.passwordTF.delegate = self
         CommonUI.setUpButton(btn: self.loginByEmailBtn, text: CommonFunctions.localisation(key: "LOGIN_EMAIL"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.loginByEmailBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOGIN_EMAIL") ), for: .normal)
-        if controller?.isLogin == true{
+		
+        if GlobalVariables.isLogin == true{
             self.loginByEmailBtn.isHidden = false
             self.enterNumberLbl.text = CommonFunctions.localisation(key: "HAPPY_SEE_YOU_BACK")
             self.enterNumberDescLbl.text = CommonFunctions.localisation(key: "ENTER_PHONE_NUMBER_LOGIN")

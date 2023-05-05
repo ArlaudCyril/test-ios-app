@@ -61,10 +61,7 @@ class CommonFunctions{
         UIApplication.shared.windows[0].makeKeyAndVisible()
         navVC.navigationController?.popToRootViewController(animated: true)
         navVC.setNavigationBarHidden(true , animated: true)
-        userData.shared.logInPinSet = 0
-        userData.shared.userToken = ""
-        userData.shared.refreshToken = ""
-        userData.shared.dataSave()
+        userData.shared.disconnect()
     }
     
     static func showLoader(){
@@ -215,7 +212,7 @@ class CommonFunctions{
 					launcher.zPosition = 0
 					launcher.runCells()
 				}
-				
+				//TODO: quand il y a notification double appel desfois crash
 				
 				DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 					topView.subviews[num].removeFromSuperview()

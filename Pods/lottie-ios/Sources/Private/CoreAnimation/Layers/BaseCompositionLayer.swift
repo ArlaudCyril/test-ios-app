@@ -17,7 +17,6 @@ class BaseCompositionLayer: BaseAnimationLayer {
     setupSublayers()
     compositingFilter = layerModel.blendMode.filterName
     name = layerModel.name
-    contentsLayer.name = "\(layerModel.name) (Content)"
   }
 
   required init?(coder _: NSCoder) {
@@ -37,10 +36,6 @@ class BaseCompositionLayer: BaseAnimationLayer {
 
   // MARK: Internal
 
-  /// The layer that content / sublayers should be rendered in.
-  /// This is the layer that transform animations are applied to.
-  let contentsLayer = BaseAnimationLayer()
-
   /// Whether or not this layer render should render any visible content
   var renderLayerContents: Bool { true }
 
@@ -48,22 +43,24 @@ class BaseCompositionLayer: BaseAnimationLayer {
   /// and all child `AnimationLayer`s.
   ///  - Can be overridden by subclasses, which much call `super`.
   override func setupAnimations(context: LayerAnimationContext) throws {
-    let layerContext = context.addingKeypathComponent(baseLayerModel.name)
-    let childContext = renderLayerContents ? layerContext : context
+    var context = context
+    if renderLayerContents {
+      context = context.addingKeypathComponent(baseLayerModel.name)
+    }
 
-    try setupLayerAnimations(context: layerContext)
-    try setupChildAnimations(context: childContext)
+    try setupLayerAnimations(context: context)
+    try setupChildAnimations(context: context)
   }
 
   func setupLayerAnimations(context: LayerAnimationContext) throws {
-    let transformContext = context.addingKeypathComponent("Transform")
+    let context = context.addingKeypathComponent(baseLayerModel.name)
 
-    try contentsLayer.addTransformAnimations(for: baseLayerModel.transform, context: transformContext)
+    try addTransformAnimations(for: baseLayerModel.transform, context: context)
 
     if renderLayerContents {
-      try contentsLayer.addOpacityAnimation(for: baseLayerModel.transform, context: transformContext)
+      try addOpacityAnimation(for: baseLayerModel.transform, context: context)
 
-      contentsLayer.addVisibilityAnimation(
+      addVisibilityAnimation(
         inFrame: CGFloat(baseLayerModel.inFrame),
         outFrame: CGFloat(baseLayerModel.outFrame),
         context: context)
@@ -74,27 +71,16 @@ class BaseCompositionLayer: BaseAnimationLayer {
     try super.setupAnimations(context: context)
   }
 
-  override func addSublayer(_ layer: CALayer) {
-    if layer === contentsLayer {
-      super.addSublayer(contentsLayer)
-    } else {
-      contentsLayer.addSublayer(layer)
-    }
-  }
-
   // MARK: Private
 
   private let baseLayerModel: LayerModel
 
   private func setupSublayers() {
-    addSublayer(contentsLayer)
-
     if
       renderLayerContents,
-      let masks = baseLayerModel.masks?.filter({ $0.mode != .none }),
-      !masks.isEmpty
+      let masks = baseLayerModel.masks
     {
-      contentsLayer.mask = MaskCompositionLayer(masks: masks)
+      mask = MaskCompositionLayer(masks: masks)
     }
   }
 

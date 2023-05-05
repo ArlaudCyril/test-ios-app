@@ -49,9 +49,9 @@ extension enableNotificationCVC{
     }
     
     func enableNotification(enable : Int){
-        userData.shared.isAccountCreated = true
-        userData.shared.dataSave()
-        
+		//just for simulator, normaly defined in app delegate
+		userData.shared.is_push_enabled = enable
+		userData.shared.dataSave()
         CommonFunctions.enableNotifications(enable: enable)
         
         var vc : ViewController

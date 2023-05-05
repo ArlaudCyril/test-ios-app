@@ -124,7 +124,7 @@ extension checkAccountCompletedVC: UITableViewDelegate, UITableViewDataSource{
 //MARK: - Other functions
 extension checkAccountCompletedVC{
     func checkAccountInfoCompleted(){
-        if userData.shared.isAccountCreated{
+        if userData.shared.isPhoneVerified{
             self.tableData[0].isCompleted = true
             self.tableData[0].isPending = false
         }

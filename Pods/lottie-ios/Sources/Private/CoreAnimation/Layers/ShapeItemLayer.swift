@@ -55,13 +55,8 @@ final class ShapeItemLayer: BaseAnimationLayer {
     /// A `ShapeItem` that should be rendered by this layer
     let item: ShapeItem
 
-    /// The set of groups that this item descends from
-    ///  - Due to the way `GroupLayer`s are setup, the original `ShapeItem`
-    ///    hierarchy from the `ShapeLayer` data model may no longer exactly
-    ///    match the hierarchy of `GroupLayer` / `ShapeItemLayer`s constructed
-    ///    at runtime. Since animation keypaths need to match the original
-    ///    structure of the `ShapeLayer` data model, we track that info here.
-    let groupPath: [String]
+    /// The group that contains this `ShapeItem`, if applicable
+    let parentGroup: Group?
   }
 
   override func setupAnimations(context: LayerAnimationContext) throws {
@@ -92,8 +87,6 @@ final class ShapeItemLayer: BaseAnimationLayer {
     let gradientAlphaLayer: GradientRenderLayer?
     /// The `CAShapeLayer` that clips the gradient layers to the expected shape
     let shapeMaskLayer: CAShapeLayer
-    /// The top-most `CAShapeLayer` used to render `Stroke`s over the gradient if necessary
-    let overlayLayer: CAShapeLayer?
   }
 
   /// The configuration of this layer's `fill` sublayers
@@ -152,22 +145,12 @@ final class ShapeItemLayer: BaseAnimationLayer {
     for gradientFill: GradientFill)
     -> FillLayerConfiguration
   {
-    let container = BaseAnimationLayer()
-    let pathContainer = BaseAnimationLayer()
-
     let pathMask = CAShapeLayer()
     pathMask.fillColor = .rgb(0, 0, 0)
-    pathContainer.mask = pathMask
+    mask = pathMask
 
     let rgbGradientLayer = GradientRenderLayer()
-    pathContainer.addSublayer(rgbGradientLayer)
-    container.addSublayer(pathContainer)
-
-    let overlayLayer = CAShapeLayer()
-    overlayLayer.fillColor = nil
-    container.addSublayer(overlayLayer)
-
-    addSublayer(container)
+    addSublayer(rgbGradientLayer)
 
     let alphaGradientLayer: GradientRenderLayer?
     if gradientFill.hasAlphaComponent {
@@ -180,8 +163,7 @@ final class ShapeItemLayer: BaseAnimationLayer {
     return .gradientFill(GradientLayers(
       gradientColorLayer: rgbGradientLayer,
       gradientAlphaLayer: alphaGradientLayer,
-      shapeMaskLayer: pathMask,
-      overlayLayer: overlayLayer))
+      shapeMaskLayer: pathMask))
   }
 
   private func setupGradientStrokeLayerHierarchy(
@@ -210,8 +192,7 @@ final class ShapeItemLayer: BaseAnimationLayer {
     return GradientLayers(
       gradientColorLayer: rgbGradientLayer,
       gradientAlphaLayer: alphaGradientLayer,
-      shapeMaskLayer: pathMask,
-      overlayLayer: nil)
+      shapeMaskLayer: pathMask)
   }
 
   private func setupSolidFillAnimations(
@@ -220,22 +201,11 @@ final class ShapeItemLayer: BaseAnimationLayer {
     throws
   {
     var trimPathMultiplier: PathMultiplier? = nil
-    if let (trim, context) = otherItems.first(Trim.self, where: { !$0.isEmpty }, context: context) {
+    if let (trim, context) = otherItems.first(Trim.self, context: context) {
       trimPathMultiplier = try shapeLayer.addAnimations(for: trim, context: context)
-
-      try context.compatibilityAssert(
-        otherItems.first(Fill.self) == nil,
-        """
-        The Core Animation rendering engine doesn't currently support applying
-        trims to filled shapes (only stroked shapes).
-        """)
     }
 
-    try shapeLayer.addAnimations(
-      for: shape.item,
-      context: context.for(shape),
-      pathMultiplier: trimPathMultiplier ?? 1,
-      roundedCorners: otherItems.first(RoundedCorners.self))
+    try shapeLayer.addAnimations(for: shape.item, context: context.for(shape), pathMultiplier: trimPathMultiplier ?? 1)
 
     if let (fill, context) = otherItems.first(Fill.self, context: context) {
       try shapeLayer.addAnimations(for: fill, context: context)
@@ -251,23 +221,14 @@ final class ShapeItemLayer: BaseAnimationLayer {
     context: LayerAnimationContext)
     throws
   {
-    let pathLayers = [layers.shapeMaskLayer, layers.overlayLayer]
-    for pathLayer in pathLayers {
-      try pathLayer?.addAnimations(
-        for: shape.item,
-        context: context.for(shape),
-        pathMultiplier: 1,
-        roundedCorners: otherItems.first(RoundedCorners.self))
-    }
+    try layers.shapeMaskLayer.addAnimations(
+      for: shape.item,
+      context: context.for(shape),
+      pathMultiplier: 1)
 
     if let (gradientFill, context) = otherItems.first(GradientFill.self, context: context) {
-      layers.shapeMaskLayer.fillRule = gradientFill.fillRule.caFillRule
       try layers.gradientColorLayer.addGradientAnimations(for: gradientFill, type: .rgb, context: context)
       try layers.gradientAlphaLayer?.addGradientAnimations(for: gradientFill, type: .alpha, context: context)
-    }
-
-    if let (stroke, context) = otherItems.first(Stroke.self, context: context) {
-      try layers.overlayLayer?.addStrokeAnimations(for: stroke, context: context)
     }
   }
 
@@ -284,8 +245,7 @@ final class ShapeItemLayer: BaseAnimationLayer {
     try layers.shapeMaskLayer.addAnimations(
       for: shape.item,
       context: context.for(shape),
-      pathMultiplier: trimPathMultiplier ?? 1,
-      roundedCorners: otherItems.first(RoundedCorners.self))
+      pathMultiplier: trimPathMultiplier ?? 1)
 
     if let (gradientStroke, context) = otherItems.first(GradientStroke.self, context: context) {
       try layers.gradientColorLayer.addGradientAnimations(for: gradientStroke, type: .rgb, context: context)
@@ -302,13 +262,11 @@ final class ShapeItemLayer: BaseAnimationLayer {
 extension Array where Element == ShapeItemLayer.Item {
   /// The first `ShapeItem` in this array of the given type
   func first<ItemType: ShapeItem>(
-    _: ItemType.Type,
-    where condition: (ItemType) -> Bool = { _ in true },
-    context: LayerAnimationContext)
+    _: ItemType.Type, context: LayerAnimationContext)
     -> (item: ItemType, context: LayerAnimationContext)?
   {
     for item in self {
-      if let match = item.item as? ItemType, condition(match) {
+      if let match = item.item as? ItemType {
         return (match, context.for(item))
       }
     }
@@ -334,8 +292,8 @@ extension LayerAnimationContext {
   func `for`(_ item: ShapeItemLayer.Item) -> LayerAnimationContext {
     var context = self
 
-    for parentGroupName in item.groupPath {
-      context.currentKeypath.keys.append(parentGroupName)
+    if let group = item.parentGroup {
+      context.currentKeypath.keys.append(group.name)
     }
 
     context.currentKeypath.keys.append(item.item.name)

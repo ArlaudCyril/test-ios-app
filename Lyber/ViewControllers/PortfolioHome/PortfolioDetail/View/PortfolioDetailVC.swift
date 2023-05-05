@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PortfolioDetailVC: swipeGesture {
+class PortfolioDetailVC: SwipeGesture {
     //MARK: - VARIABLES
     var headerData : [String] = [CommonFunctions.localisation(key: "MY_BALANCE"),CommonFunctions.localisation(key: "MY_BALANCE"),CommonFunctions.localisation(key: "INFOS"),CommonFunctions.localisation(key: "ABOUT"),CommonFunctions.localisation(key: "RESOURCES")]
     var assetData : Trending?
@@ -75,6 +75,14 @@ class PortfolioDetailVC: swipeGesture {
 		self.callChartApi(duration: self.chartDurationTime)
 		callResoucesApi()
 		setUpUI()
+	}
+	
+	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
+			//TODO: change comportement
+			return false
+		}
+		return true
 	}
 	
 	//MARK: - SetUpUI

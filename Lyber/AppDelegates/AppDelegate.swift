@@ -84,8 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        let urlStr = url.absoluteString //1
 //        // Parse the custom URL as per your uses, this will change as per requirement
 //        if urlStr == "com.ever://"{
-////            let vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-////            vc.fromLoginScreen = true
+
 ////            let navController = UINavigationController(rootViewController: vc)
 ////            navController.navigationBar.isHidden = true
 ////            window?.rootViewController = navController

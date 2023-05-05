@@ -192,8 +192,9 @@
         
         [self stopAnimating];
         [self checkPlay];
+
+        [self.imageViewLayer setNeedsDisplay];
     }
-    [self.imageViewLayer setNeedsDisplay];
 }
 
 #pragma mark - Configuration
@@ -471,7 +472,7 @@
 {
     if ([image.class conformsToProtocol:@protocol(SDAnimatedImage)] && image.sd_isIncremental && [image respondsToSelector:@selector(animatedCoder)]) {
         id<SDAnimatedImageCoder> animatedCoder = [(id<SDAnimatedImage>)image animatedCoder];
-        if ([animatedCoder respondsToSelector:@selector(initIncrementalWithOptions:)]) {
+        if ([animatedCoder conformsToProtocol:@protocol(SDProgressiveImageCoder)]) {
             return (id<SDAnimatedImageCoder, SDProgressiveImageCoder>)animatedCoder;
         }
     }
@@ -492,11 +493,6 @@
         // If we have no animation frames, call super implementation. iOS 14+ UIImageView use this delegate method for rendering.
         if ([UIImageView instancesRespondToSelector:@selector(displayLayer:)]) {
             [super displayLayer:layer];
-        } else {
-            // Fallback to implements the static image rendering by ourselves (like macOS or before iOS 14)
-            currentFrame = super.image;
-            layer.contentsScale = currentFrame.scale;
-            layer.contents = (__bridge id)currentFrame.CGImage;
         }
     }
 }

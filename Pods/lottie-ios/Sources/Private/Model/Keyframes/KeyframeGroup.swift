@@ -19,34 +19,21 @@ final class KeyframeGroup<T> {
 
   // MARK: Lifecycle
 
-  init(
-    keyframes: ContiguousArray<Keyframe<T>>,
-    unsupportedAfterEffectsExpression: String? = nil)
-  {
+  init(keyframes: ContiguousArray<Keyframe<T>>) {
     self.keyframes = keyframes
-    self.unsupportedAfterEffectsExpression = unsupportedAfterEffectsExpression
   }
 
-  init(
-    _ value: T,
-    unsupportedAfterEffectsExpression: String? = nil)
-  {
+  init(_ value: T) {
     keyframes = [Keyframe(value)]
-    self.unsupportedAfterEffectsExpression = unsupportedAfterEffectsExpression
   }
 
   // MARK: Internal
 
   enum KeyframeWrapperKey: String, CodingKey {
     case keyframeData = "k"
-    case unsupportedAfterEffectsExpression = "x"
   }
 
   let keyframes: ContiguousArray<Keyframe<T>>
-
-  /// lottie-ios doesn't support After Effects expressions, but we parse them so we can log diagnostics.
-  /// More info: https://helpx.adobe.com/after-effects/using/expression-basics.html
-  let unsupportedAfterEffectsExpression: String?
 
 }
 
@@ -55,13 +42,10 @@ final class KeyframeGroup<T> {
 extension KeyframeGroup: Decodable where T: Decodable {
   convenience init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: KeyframeWrapperKey.self)
-    let unsupportedAfterEffectsExpression = try? container.decode(String.self, forKey: .unsupportedAfterEffectsExpression)
 
     if let keyframeData: T = try? container.decode(T.self, forKey: .keyframeData) {
       /// Try to decode raw value; No keyframe data.
-      self.init(
-        keyframes: [Keyframe<T>(keyframeData)],
-        unsupportedAfterEffectsExpression: unsupportedAfterEffectsExpression)
+      self.init(keyframes: [Keyframe<T>(keyframeData)])
     } else {
       // Decode and array of keyframes.
       //
@@ -105,9 +89,7 @@ extension KeyframeGroup: Decodable where T: Decodable {
           spatialOutTangent: keyframeData.spatialOutTangent))
         previousKeyframeData = keyframeData
       }
-      self.init(
-        keyframes: keyframes,
-        unsupportedAfterEffectsExpression: unsupportedAfterEffectsExpression)
+      self.init(keyframes: keyframes)
     }
   }
 }
@@ -147,7 +129,6 @@ extension KeyframeGroup: Encodable where T: Encodable {
 extension KeyframeGroup: DictionaryInitializable where T: AnyInitializable {
   convenience init(dictionary: [String: Any]) throws {
     var keyframes = ContiguousArray<Keyframe<T>>()
-    let unsupportedAfterEffectsExpression = dictionary[KeyframeWrapperKey.unsupportedAfterEffectsExpression.rawValue] as? String
     if
       let rawValue = dictionary[KeyframeWrapperKey.keyframeData.rawValue],
       let value = try? T(value: rawValue)
@@ -181,9 +162,7 @@ extension KeyframeGroup: DictionaryInitializable where T: AnyInitializable {
       }
     }
 
-    self.init(
-      keyframes: keyframes,
-      unsupportedAfterEffectsExpression: unsupportedAfterEffectsExpression)
+    self.init(keyframes: keyframes)
   }
 }
 
@@ -214,39 +193,5 @@ extension Keyframe {
       outTangent: outTangent,
       spatialInTangent: spatialInTangent,
       spatialOutTangent: spatialOutTangent)
-  }
-}
-
-extension KeyframeGroup {
-  /// Maps the values of each individual keyframe in this group
-  func map<NewValue>(_ transformation: (T) throws -> NewValue) rethrows -> KeyframeGroup<NewValue> {
-    KeyframeGroup<NewValue>(
-      keyframes: ContiguousArray(try keyframes.map { keyframe in
-        keyframe.withValue(try transformation(keyframe.value))
-      }),
-      unsupportedAfterEffectsExpression: unsupportedAfterEffectsExpression)
-  }
-}
-
-// MARK: - AnyKeyframeGroup
-
-/// A type-erased wrapper for `KeyframeGroup`s
-protocol AnyKeyframeGroup {
-  /// An untyped copy of these keyframes
-  var untyped: KeyframeGroup<Any> { get }
-
-  /// An untyped `KeyframeInterpolator` for these keyframes
-  var interpolator: AnyValueProvider { get }
-}
-
-// MARK: - KeyframeGroup + AnyKeyframeGroup
-
-extension KeyframeGroup: AnyKeyframeGroup where T: AnyInterpolatable {
-  var untyped: KeyframeGroup<Any> {
-    map { $0 as Any }
-  }
-
-  var interpolator: AnyValueProvider {
-    KeyframeInterpolator(keyframes: keyframes)
   }
 }

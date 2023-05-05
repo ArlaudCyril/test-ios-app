@@ -76,7 +76,6 @@
 #import "BranchLinkProperties.h"
 #import "BranchLogoutRequest.h"
 #import "BranchOpenRequest.h"
-#import "BranchPasteControl.h"
 #import "BranchPluginSupport.h"
 #import "BranchQRCode.h"
 #import "BranchRegisterViewRequest.h"

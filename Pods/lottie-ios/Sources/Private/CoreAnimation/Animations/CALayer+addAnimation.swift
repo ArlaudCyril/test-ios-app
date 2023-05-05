@@ -10,9 +10,9 @@ extension CALayer {
   /// Constructs a `CAKeyframeAnimation` that reflects the given keyframes,
   /// and adds it to this `CALayer`.
   @nonobjc
-  func addAnimation<KeyframeValue, ValueRepresentation>(
+  func addAnimation<KeyframeValue, ValueRepresentation: Equatable>(
     for property: LayerProperty<ValueRepresentation>,
-    keyframes: KeyframeGroup<KeyframeValue>,
+    keyframes: ContiguousArray<Keyframe<KeyframeValue>>,
     value keyframeValueMapping: (KeyframeValue) throws -> ValueRepresentation,
     context: LayerAnimationContext)
     throws
@@ -41,26 +41,13 @@ extension CALayer {
   @nonobjc
   private func defaultAnimation<KeyframeValue, ValueRepresentation>(
     for property: LayerProperty<ValueRepresentation>,
-    keyframes keyframeGroup: KeyframeGroup<KeyframeValue>,
+    keyframes: ContiguousArray<Keyframe<KeyframeValue>>,
     value keyframeValueMapping: (KeyframeValue) throws -> ValueRepresentation,
     context: LayerAnimationContext)
-    throws -> CAAnimation?
+    throws
+    -> CAAnimation?
   {
-    let keyframes = keyframeGroup.keyframes
     guard !keyframes.isEmpty else { return nil }
-
-    // Check if this set of keyframes uses After Effects expressions, which aren't supported.
-    if let unsupportedAfterEffectsExpression = keyframeGroup.unsupportedAfterEffectsExpression {
-      context.logger.info("""
-        `\(property.caLayerKeypath)` animation for "\(context.currentKeypath.fullPath)" \
-        includes an After Effects expression (https://helpx.adobe.com/after-effects/using/expression-language.html), \
-        which is not supported by lottie-ios (expressions are only supported by lottie-web). \
-        This animation may not play correctly.
-
-          \(unsupportedAfterEffectsExpression.replacingOccurrences(of: "\n", with: "\n  "))
-
-        """)
-    }
 
     // If there is exactly one keyframe value, we can improve performance
     // by applying that value directly to the layer instead of creating
@@ -95,12 +82,13 @@ extension CALayer {
 
   /// A `CAAnimation` that applies the custom value from the `AnyValueProvider`
   /// registered for this specific property's `AnimationKeypath`,
-  /// if one has been registered using `LottieAnimationView.setValueProvider(_:keypath:)`.
+  /// if one has been registered using `AnimationView.setValueProvider(_:keypath:)`.
   @nonobjc
   private func customizedAnimation<ValueRepresentation>(
     for property: LayerProperty<ValueRepresentation>,
     context: LayerAnimationContext)
-    throws -> CAPropertyAnimation?
+    throws
+    -> CAPropertyAnimation?
   {
     guard
       let customizableProperty = property.customizableProperty,
@@ -142,15 +130,17 @@ extension CALayer {
     if writeDirectlyToPropertyIfPossible {
       // If the keyframe value is the same as the layer's default value for this property,
       // then we can just ignore this set of keyframes.
-      if property.isDefaultValue(keyframeValue) {
+      if keyframeValue == property.defaultValue {
         return nil
       }
 
       // If the property on the CALayer being animated hasn't been modified from the default yet,
       // then we can apply the keyframe value directly to the layer using KVC instead
       // of creating a `CAAnimation`.
-      let currentValue = value(forKey: property.caLayerKeypath) as? ValueRepresentation
-      if property.isDefaultValue(currentValue) {
+      if
+        let defaultValue = property.defaultValue,
+        defaultValue == value(forKey: property.caLayerKeypath) as? ValueRepresentation
+      {
         setValue(keyframeValue, forKeyPath: property.caLayerKeypath)
         return nil
       }
@@ -172,7 +162,8 @@ extension CALayer {
     animationSegments: [[Keyframe<KeyframeValue>]],
     value keyframeValueMapping: (KeyframeValue) throws -> ValueRepresentation,
     context: LayerAnimationContext)
-    throws -> CAAnimationGroup
+    throws
+    -> CAAnimationGroup
   {
     // Build the `CAKeyframeAnimation` for each segment of keyframes
     // with the same `CAAnimationCalculationMode`.
@@ -190,15 +181,11 @@ extension CALayer {
       let isLastSegment = (index == animationSegments.indices.last!)
 
       if isFirstSegment {
-        segmentStartTime = min(
-          context.time(for: context.animation.startFrame),
-          segmentStartTime)
+        segmentStartTime = context.time(for: context.animation.startFrame)
       }
 
       if isLastSegment {
-        segmentEndTime = max(
-          context.time(for: context.animation.endFrame),
-          segmentEndTime)
+        segmentEndTime = context.time(for: context.animation.endFrame)
       }
 
       let segmentDuration = segmentEndTime - segmentStartTime
@@ -246,8 +233,8 @@ extension CALayer {
       NSNumber(value: Float(context.progressTime(for: keyframeModel.time)))
     }
 
-    var timingFunctions = timingFunctions(for: keyframes)
-    let calculationMode = calculationMode(for: keyframes)
+    var timingFunctions = self.timingFunctions(for: keyframes)
+    let calculationMode = self.calculationMode(for: keyframes)
 
     let animation = CAKeyframeAnimation(keyPath: property.caLayerKeypath)
 
@@ -349,7 +336,8 @@ extension CALayer {
         if
           let controlPoint1 = keyframe.spatialOutTangent?.pointValue,
           let controlPoint2 = nextKeyframe.spatialInTangent?.pointValue,
-          !(controlPoint1 == .zero && controlPoint2 == .zero)
+          controlPoint1 != .zero,
+          controlPoint2 != .zero
         {
           path.addCurve(
             to: try keyframeValueMapping(nextKeyframe.value),

@@ -22,10 +22,10 @@ open class Highlight: NSObject
     fileprivate var _y = Double.nan
     
     /// the x-pixel of the highlight
-    private var _xPx = CGFloat.nan
+    var _xPx = CGFloat.nan
     
     /// the y-pixel of the highlight
-    private var _yPx = CGFloat.nan
+    var _yPx = CGFloat.nan
     
     /// the index of the data object - in case it refers to more than one
     @objc open var dataIndex = Int(-1)

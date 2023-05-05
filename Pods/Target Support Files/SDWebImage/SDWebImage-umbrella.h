@@ -18,7 +18,6 @@
 #import "SDAnimatedImageRep.h"
 #import "SDAnimatedImageView+WebCache.h"
 #import "SDAnimatedImageView.h"
-#import "SDCallbackQueue.h"
 #import "SDDiskCache.h"
 #import "SDGraphicsImageRenderer.h"
 #import "SDImageAPNGCoder.h"

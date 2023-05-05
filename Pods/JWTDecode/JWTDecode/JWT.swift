@@ -1,12 +1,7 @@
 import Foundation
 
 /// A decoded JWT.
-///
-/// ## See Also
-///
-/// - [JWT.io](https://jwt.io)
-/// - [Validate JSON Web Tokens](https://auth0.com/docs/secure/tokens/json-web-tokens/validate-json-web-tokens)
-/// - [Validate ID Tokens](https://auth0.com/docs/secure/tokens/id-tokens/validate-id-tokens)
+/// See [jwt.io](https://jwt.io/) for more information on JWTs.
 public protocol JWT {
 
     /// Contents of the header part.
@@ -42,8 +37,7 @@ public protocol JWT {
     /// Value of the `jti` claim, if available.
     var identifier: String? { get }
 
-    /// Checks if the JWT is currently expired using the `exp` claim. If the claim is not present the JWT will be
-    /// deemed unexpired.
+    /// Checks if the JWT is currently expired using the `exp` claim. If the claim is not present the JWT will be deemed unexpired.
     var expired: Bool { get }
 
 }

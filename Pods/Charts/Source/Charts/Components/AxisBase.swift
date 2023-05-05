@@ -87,7 +87,7 @@ open class AxisBase: ComponentBase
     /// the number of label entries the axis should have
     ///
     /// **default**: 6
-    private var _labelCount = Int(6)
+    private var _labelCount = Int(3)
     
     /// the number of decimal digits to use (for the default formatter
     @objc open var decimals: Int = 0
@@ -237,7 +237,7 @@ open class AxisBase: ComponentBase
         {
             let range = axisMinLabels...axisMaxLabels as ClosedRange
             _labelCount = newValue.clamped(to: range)
-                        
+//            _labelCount = 3
             forceLabelsEnabled = false
         }
     }

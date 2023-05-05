@@ -257,7 +257,6 @@
 		0AD098632897B58F00C0551F /* StrongAuthOTPVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD098622897B58F00C0551F /* StrongAuthOTPVerifyVC.swift */; };
 		0AD6C0C828A0E44900C2A184 /* CryptoAddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6C0C728A0E44900C2A184 /* CryptoAddressBookModel.swift */; };
 		0AE67F442853021D00F13D2E /* InvestInMyStrategyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE67F432853021D00F13D2E /* InvestInMyStrategyVC.swift */; };
-		1883CE212950728F00CEC597 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1883CE202950728F00CEC597 /* Charts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1883D3112950798A00CEC597 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30A2950798A00CEC597 /* Array.swift */; };
 		1883D3122950798A00CEC597 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30B2950798A00CEC597 /* keys.swift */; };
 		1883D3132950798A00CEC597 /* error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30C2950798A00CEC597 /* error.swift */; };
@@ -293,7 +292,7 @@
 		1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
 		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
-		B085C2FFA151F8B97AC534D7 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
+		A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -597,11 +596,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1883CE212950728F00CEC597 /* Charts.framework in Frameworks */,
 				0A52D449290A66E400C6DD40 /* BigNum in Frameworks */,
-				B085C2FFA151F8B97AC534D7 /* Pods_Lyber.framework in Frameworks */,
 				0A929169290013B700E23409 /* Crypto in Frameworks */,
 				0A92916B290013B700E23409 /* _CryptoExtras in Frameworks */,
+				A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

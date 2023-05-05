@@ -326,22 +326,15 @@ public extension NSImageView {
     ///
     /// - Returns : A boolean for weather the imageView is displayed
     func isDisplayedInScreen(_ imageView: NSView?) -> Bool {
-        guard !isHidden, window != nil, let imageView = imageView else  {
+        guard !isHidden, let imageView = imageView else  {
             return false
         }
-
-        for screen in NSScreen.screens {
-          let screenRect = screen.visibleFrame
-          let viewRect = imageView.convert(bounds, to: nil)
-          let intersectionRect = viewRect.intersection(screenRect)
-
-          if !intersectionRect.isEmpty && !intersectionRect.isNull {
-            // The image view is visible on a screen
-            return true
-          }
-        }
-
-        return false
+        
+        let screenRect = NSScreen.main?.visibleFrame ?? .zero
+        let viewRect = imageView.convert(bounds, to:nil)
+        let intersectionRect = viewRect.intersection(screenRect)
+        
+        return window != nil && !intersectionRect.isEmpty && !intersectionRect.isNull
     }
     
     func clear() {

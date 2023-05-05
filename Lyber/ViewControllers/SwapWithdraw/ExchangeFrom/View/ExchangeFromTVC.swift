@@ -40,7 +40,7 @@ extension ExchangeFromTVC{
 		
         self.coinImgView.sd_setImage(with: URL(string: currency.image ?? ""), completed: nil)
 		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String((Double(data?.balanceData.euroBalance ?? "0") ?? 0) * (Double(data?.balanceData.balance ?? "0") ?? 0)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String(Double(data?.balanceData.euroBalance ?? "0") ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(data?.balanceData.balance ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.euroImgVw.image = Assets.euro.image()

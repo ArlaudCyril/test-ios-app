@@ -124,6 +124,7 @@ static CGFloat SDImageScaleFromPath(NSString *string) {
     if (!data || data.length == 0) {
         return nil;
     }
+    data = [data copy]; // avoid mutable data
     id<SDAnimatedImageCoder> animatedCoder = nil;
     for (id<SDImageCoder>coder in [SDImageCodersManager sharedManager].coders.reverseObjectEnumerator) {
         if ([coder conformsToProtocol:@protocol(SDAnimatedImageCoder)]) {

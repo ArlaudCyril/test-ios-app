@@ -108,7 +108,7 @@ extension PinVerificationVC{
                         userData.shared.logInPinSet = 0
                         userData.shared.dataSave()
                         let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-                        vc.isLogin = true
+						GlobalVariables.isLogin = true
                         let nav = UINavigationController(rootViewController: vc)
                         CommonFunctions.toster(Constants.AlertMessages.tooManyFailedAttemptPleaseReauthenticate)
                         nav.modalPresentationStyle = .fullScreen

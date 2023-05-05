@@ -23,10 +23,10 @@ final class PolygonNodeProperties: NodePropertyMap, KeypathSearchable {
     rotation = NodeProperty(provider: KeyframeInterpolator(keyframes: star.rotation.keyframes))
     points = NodeProperty(provider: KeyframeInterpolator(keyframes: star.points.keyframes))
     keypathProperties = [
-      PropertyName.position.rawValue : position,
+      "Position" : position,
       "Outer Radius" : outerRadius,
       "Outer Roundedness" : outerRoundedness,
-      PropertyName.rotation.rawValue : rotation,
+      "Rotation" : rotation,
       "Points" : points,
     ]
     properties = Array(keypathProperties.values)
@@ -42,11 +42,11 @@ final class PolygonNodeProperties: NodePropertyMap, KeypathSearchable {
   let properties: [AnyNodeProperty]
 
   let direction: PathDirection
-  let position: NodeProperty<LottieVector3D>
-  let outerRadius: NodeProperty<LottieVector1D>
-  let outerRoundedness: NodeProperty<LottieVector1D>
-  let rotation: NodeProperty<LottieVector1D>
-  let points: NodeProperty<LottieVector1D>
+  let position: NodeProperty<Vector3D>
+  let outerRadius: NodeProperty<Vector1D>
+  let outerRoundedness: NodeProperty<Vector1D>
+  let rotation: NodeProperty<Vector1D>
+  let points: NodeProperty<Vector1D>
 }
 
 // MARK: - PolygonNode

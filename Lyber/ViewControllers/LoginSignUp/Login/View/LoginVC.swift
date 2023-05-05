@@ -34,7 +34,15 @@ class LoginVC: ViewController {
 extension LoginVC{
     @objc func signUpBtnAct(){
 		GlobalVariables.isRegistering = true
-        let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+		GlobalVariables.isLogin = false
+		var vc = UIViewController()
+		if((userData.shared.is_push_enabled != 0 && userData.shared.personalDataStepComplete == 0) || userData.shared.isPersonalInfoFilled == true){
+			vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		}else if(userData.shared.personalDataStepComplete > 0){
+			vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		}else{
+			vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+		}
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         nav.navigationBar.isHidden = true
@@ -43,8 +51,8 @@ extension LoginVC{
     
     @objc func loginBtnAct(){
 		GlobalVariables.isRegistering = false
+		GlobalVariables.isLogin = true
         let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-        vc.isLogin = true
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         nav.navigationBar.isHidden = true

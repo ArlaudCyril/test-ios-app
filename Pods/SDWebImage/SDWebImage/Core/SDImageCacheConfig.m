@@ -35,8 +35,6 @@ static const NSInteger kDefaultCacheMaxDiskAge = 60 * 60 * 24 * 7; // 1 week
         _maxDiskAge = kDefaultCacheMaxDiskAge;
         _maxDiskSize = 0;
         _diskCacheExpireType = SDImageCacheConfigExpireTypeModificationDate;
-        _fileManager = nil;
-        _ioQueueAttributes = DISPATCH_QUEUE_SERIAL; // NULL
         _memoryCacheClass = [SDMemoryCache class];
         _diskCacheClass = [SDDiskCache class];
     }
@@ -58,7 +56,6 @@ static const NSInteger kDefaultCacheMaxDiskAge = 60 * 60 * 24 * 7; // 1 week
     config.maxMemoryCount = self.maxMemoryCount;
     config.diskCacheExpireType = self.diskCacheExpireType;
     config.fileManager = self.fileManager; // NSFileManager does not conform to NSCopying, just pass the reference
-    config.ioQueueAttributes = self.ioQueueAttributes; // Pass the reference
     config.memoryCacheClass = self.memoryCacheClass;
     config.diskCacheClass = self.diskCacheClass;
     

@@ -11,6 +11,7 @@ import UIKit
 
 struct GlobalVariables {
     static var isRegistering = false
+    static var isLogin = false
 	static var language : Language = Language(id: "fr", name: "Français", image: Assets.fr_flag)
 	static var languageArray : [Language] = [Language(id:"en", name: "English", image: Assets.uk_flag),Language(id: "fr", name: "Français", image: Assets.fr_flag)]
 	static var bundle : Bundle = Bundle()
@@ -23,17 +24,13 @@ class userData : NSObject {
     var registrationToken = ""
 	var language = ""
     var time : Date? = nil
-    var id = ""
     var email = ""
     var firstname = ""
     var lastname = ""
-    var rating = 0.0
     var profile_image = ""
     var profilePicType = ""
     var phone_no = ""
-    var phoneVerified = 0
     var countryCode = ""
-    var walletBalance = 0
     var isAccountCreated = false
     var isPersonalInfoFilled = false
     var isIdentityVerified = false
@@ -42,7 +39,6 @@ class userData : NSObject {
     var is_push_enabled = 0
     var isPhoneVerified = false
     var personalDataStepComplete  = 0
-    var step = 0
     var balance = 0.0
     var faceIdEnabled = 0
     var iban = ""
@@ -62,46 +58,6 @@ class userData : NSObject {
         }
         return singleTon.instance
     }
-
-    /* put in comment to see if used, to delete if not
-     func fromSignUpData(_ data : LoginAPI?){// why no refresh token here
-        self.accessToken = data?.token ?? ""
-        self.profile_image = data?.user?.profilePic ?? ""
-        self.profilePicType = data?.user?.profilePicType ?? ""
-        self.name = "\(data?.user?.firstName ?? "") \(data?.user?.lastName ?? "")"
-        self.email = data?.user?.email ?? ""
-        self.phone_no = data?.user?.phoneNo ?? ""
-        self.countryCode = data?.user?.countryCode ?? ""
-        self.logInPinSet = data?.user?.loginPin ?? 0
-        self.is_push_enabled = data?.user?.isPushEnabled ?? 0
-        self.personalDataStepComplete = data?.user?.personal_info_step ?? 0
-        self.isPhoneVerified = data?.user?.phoneNoVerified == true ? true : false
-        self.balance = data?.user?.balance ?? 0
-        self.iban = data?.user?.iban ?? ""
-        self.bic = data?.user?.bic ?? ""
-        self.step = data?.user?.step ?? 0
-        self.faceIdEnabled = data?.user?.isFaceIDEnabled ?? 0
-        self.extraSecurity = data?.user?.extraSecurity ?? ""
-        self.strongAuthVerified = data?.user?.isStrongAuthVerified ?? false
-        self.enableWhiteListing = data?.user?.isAddressWhitelistingEnabled ?? false
-
-        var scope2FAWithdrawal = false
-        
-        if data?.user?.step == 1{
-            self.isAccountCreated = true
-        }else if data?.user?.step == 2{
-            self.isPersonalInfoFilled = true
-//            self.isIdentityVerified = true
-        }else if data?.user?.step == 3{
-            self.isIdentityVerified = true
-        }else if data?.user?.step == 4{
-            self.isIdentityVerified = true
-            self.isEducationStrategyRead = true
-        }
-       
-//        self.walletBalance = data.wallet ?? 0
-        dataSave()
-    }*/
 
     
     func dataSave(){
@@ -134,7 +90,6 @@ class userData : NSObject {
         newData.setValue(is_push_enabled, forKey: "is_push_enabled")
         newData.setValue(isPhoneVerified, forKey: "isPhoneVerified")
         newData.setValue(personalDataStepComplete, forKey: "personalDataStepComplete")
-        newData.setValue(step, forKey: "step")
         newData.setValue(balance, forKey: "balance")
         newData.setValue(iban, forKey: "iban")
         newData.setValue(bic, forKey: "bic")
@@ -255,10 +210,6 @@ class userData : NSObject {
                         self.isPhoneVerified = isPhoneVerified
                         print("data get isPhoneVerified \(isPhoneVerified)")
                     }
-                    if let step = result.value(forKey: "step") as? Int{
-                        self.step = step
-                        print("data get step \(step)")
-                    }
                     if let phone_no = result.value(forKey: "phone_no") as? String{
                         self.phone_no = phone_no
                         print("data get phone_no \(phone_no)")
@@ -329,8 +280,62 @@ class userData : NSObject {
             print("something error during getting data")
         }
     }
+	
+	func registered(){
+		
+		self.isAccountCreated = true
+		
+		
+		self.isPersonalInfoFilled = false
+		self.isIdentityVerified = false
+		self.isPhoneVerified = false
+		self.personalDataStepComplete = 0
+		self.registrationToken = ""
+		
+		self.dataSave()
+	}
+	
+	func disconnect(){
+//all except following
+//		self.isAccountCreated = false
+//		self.isPersonalInfoFilled = false
+//		self.isIdentityVerified = false
+//		self.isEducationStrategyRead = false
+//		self.isPhoneVerified = false
+//		self.personalDataStepComplete = 0
+//		self.registrationToken = ""
+//		self.language = ""
+		self.userToken = ""
+		self.refreshToken = ""
+		self.time = nil
+		self.firstname = ""
+		self.lastname = ""
+		self.profile_image = ""
+		self.email = ""
+		self.phone_no = ""
+		self.countryCode = ""
+		self.logInPinSet = 0
+		self.is_push_enabled = 0
+		self.balance = 0
+		self.iban = ""
+		self.bic = ""
+		self.faceIdEnabled = 0
+		self.extraSecurity = ""
+		self.strongAuthVerified = false
+		self.profile_image = ""
+		self.profilePicType = ""
+		self.enableWhiteListing = false
+		self.scope2FALogin = false
+		self.scope2FAWhiteListing = false
+		self.scope2FAWithdrawal = false
+		self.has2FA = false
+		self.type2FA = "none"
+		
+		self.dataSave()
+	}
     
-    func deleteData(){
+    func deleteData(){//maybe it delete also language
+		//all except self.language = ""
         self.isAccountCreated = false
         self.isPersonalInfoFilled = false
         self.isIdentityVerified = false
@@ -338,23 +343,17 @@ class userData : NSObject {
         self.userToken = ""
         self.refreshToken = ""
         self.registrationToken = ""
-        self.language = ""
         self.time = nil
-        self.id = ""
         self.firstname = ""
         self.lastname = ""
-        self.rating = 0.0
         self.profile_image = ""
         self.email = ""
         self.phone_no = ""
         self.countryCode = ""
-        self.phoneVerified = 0
-        self.walletBalance = 0
         self.logInPinSet = 0
         self.is_push_enabled = 0
         self.isPhoneVerified = false
         self.personalDataStepComplete = 0
-        self.step = 0
         self.balance = 0
         self.iban = ""
         self.bic = ""

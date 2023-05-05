@@ -132,6 +132,7 @@ extension SceneDelegate{
 						userData.shared.time = Date()
 						userData.shared.dataSave()
 						print("current time \(Date())")
+						GlobalVariables.isLogin = true
 						CommonFunctions.loadingProfileApi()
 						if userData.shared.logInPinSet != 0{
 							let vc = PinVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Main)

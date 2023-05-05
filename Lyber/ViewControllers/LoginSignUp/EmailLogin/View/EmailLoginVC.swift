@@ -13,7 +13,7 @@ import SwiftySRP
 
 class EmailLoginVC: ViewController {
     //MARK: - Variables
-    var email = String() ,password = String(), enteredPin = String(),isLogin : Bool = false
+    var email = String() ,password = String(), enteredPin = String()
     var currentPage : Int? = 0
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
@@ -232,36 +232,22 @@ extension EmailLoginVC{
     func showActiveFaceIdAlert(){
         let alert = UIAlertController(title: CommonFunctions.localisation(key: "ACTIVATE_FACE_ID"), message: CommonFunctions.localisation(key: "ACCESS_LYBER_FACE_ID"), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "DECLINE"), style: .default, handler: {(action : UIAlertAction) in
-            //            self.enterPhoneVM.enableFaceIdApi(enable: 0, completion: {[]response in
-            //                if let response = response{
-            //                    print(response)
-            if userData.shared.isAccountCreated{
-				if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
-					let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-					self.navigationController?.pushViewController(vc, animated: true)
-				}else{
-					let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-					self.navigationController?.pushViewController(vc, animated: true)
-				}
-				
+            //already login cause email login vc so if notifications activated : go to portfolio
+            if userData.shared.is_push_enabled != 0{
+				let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 self.GotoNextIndex()
             }
-            //                }
-            //            })
         }))
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "ACTIVATE"), style: .default, handler: {_ in
-            //            self.enterPhoneVM.enableFaceIdApi(enable: 1, completion: {[]response in
-            //                if let response = response{
-            //                    print(response)
-            if userData.shared.isAccountCreated{
-                let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                self.navigationController?.pushViewController(vc, animated: true)
-            }else{
-                self.GotoNextIndex()
-            }
-            //                }
-            //            })
+			//already login cause email login vc so if notifications activated : go to portfolio
+			if userData.shared.is_push_enabled != 0{
+				let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				self.navigationController?.pushViewController(vc, animated: true)
+			}else{
+				self.GotoNextIndex()
+			}
         }))
         present(alert, animated: true, completion: nil)
     }

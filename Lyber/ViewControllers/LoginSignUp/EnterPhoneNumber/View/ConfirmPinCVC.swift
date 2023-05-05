@@ -37,13 +37,12 @@ extension ConfirmPinCVC{
         for pin in pins{
             pin.delegate = self
             pin.otpDelegate = self
+			pin.text = ""
+			pin.backgroundColor = UIColor.borderColor
             pin.layer.cornerRadius = (pin.layer.bounds.width )/2
-        }
+		}
     }
     
-    func configureWithData(){
-        
-    }
 }
 
 //Mark:- text field Delagtes
@@ -136,6 +135,7 @@ extension ConfirmPinCVC: UITextFieldDelegate,MyTextFieldDelegate{
 					tf?.backgroundColor = UIColor.borderColor
 					tf?.text = ""
 				}
+				self.pinTF1.becomeFirstResponder()
 			})
 			
 		}

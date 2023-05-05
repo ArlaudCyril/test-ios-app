@@ -25,38 +25,26 @@ import UIKit
 
 /** @abstract   IQToolbar for IQKeyboardManager.    */
 @available(iOSApplicationExtension, unavailable)
-@objc open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
+open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    private static var _classInitialize: Void = classInitialize()
 
-        initialize()
-    }
+    private class func classInitialize() {
 
-    @objc required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        let  appearanceProxy = self.appearance()
 
-        initialize()
-    }
-
-    private func initialize() {
-
-        sizeToFit()
-
-        autoresizingMask = .flexibleWidth
-        self.isTranslucent = true
-        self.barTintColor = nil
+        appearanceProxy.barTintColor = nil
 
         let positions: [UIBarPosition] = [.any, .bottom, .top, .topAttached]
 
         for position in positions {
 
-            self.setBackgroundImage(nil, forToolbarPosition: position, barMetrics: .default)
-            self.setShadowImage(nil, forToolbarPosition: .any)
+            appearanceProxy.setBackgroundImage(nil, forToolbarPosition: position, barMetrics: .default)
+            appearanceProxy.setShadowImage(nil, forToolbarPosition: .any)
         }
 
         //Background color
-        self.backgroundColor = nil
+        appearanceProxy.backgroundColor = nil
     }
 
     /**
@@ -102,7 +90,6 @@ import UIKit
             if privateTitleBarButton == nil {
                 privateTitleBarButton = IQTitleBarButtonItem(title: nil)
                 privateTitleBarButton?.accessibilityLabel = "Title"
-                privateTitleBarButton?.accessibilityIdentifier = privateTitleBarButton?.accessibilityLabel
             }
             return privateTitleBarButton!
         }
@@ -152,6 +139,26 @@ import UIKit
         set (newValue) {
             privateFixedSpaceBarButton = newValue
         }
+    }
+
+    override init(frame: CGRect) {
+        _ = IQToolbar._classInitialize
+        super.init(frame: frame)
+
+        sizeToFit()
+
+        autoresizingMask = .flexibleWidth
+        self.isTranslucent = true
+    }
+
+    @objc required public init?(coder aDecoder: NSCoder) {
+        _ = IQToolbar._classInitialize
+        super.init(coder: aDecoder)
+
+        sizeToFit()
+
+        autoresizingMask = .flexibleWidth
+        self.isTranslucent = true
     }
 
     @objc override open func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -248,5 +255,15 @@ import UIKit
 
     @objc open var enableInputClicksWhenVisible: Bool {
         return true
+    }
+
+    deinit {
+
+        items = nil
+        privatePreviousBarButton = nil
+        privateNextBarButton = nil
+        privateTitleBarButton = nil
+        privateDoneBarButton = nil
+        privateFixedSpaceBarButton = nil
     }
 }

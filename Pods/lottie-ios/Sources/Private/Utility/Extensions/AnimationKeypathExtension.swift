@@ -115,28 +115,20 @@ extension KeypathSearchable {
     return nil
   }
 
-  /// Computes the list of animation keypaths that descend from this layer
-  func allKeypaths(for keyPath: AnimationKeypath? = nil) -> [String] {
-    var allKeypaths: [String] = []
-
+  func logKeypaths(for keyPath: AnimationKeypath?, logger: LottieLogger) {
     let newKeypath: AnimationKeypath
     if let previousKeypath = keyPath {
       newKeypath = previousKeypath.appendingKey(keypathName)
     } else {
       newKeypath = AnimationKeypath(keys: [keypathName])
     }
-
-    allKeypaths.append(newKeypath.fullPath)
-
+    logger.info(newKeypath.fullPath)
     for key in keypathProperties.keys {
-      allKeypaths.append(newKeypath.appendingKey(key).fullPath)
+      logger.info(newKeypath.appendingKey(key).fullPath)
     }
-
     for child in childKeypaths {
-      allKeypaths.append(contentsOf: child.allKeypaths(for: newKeypath))
+      child.logKeypaths(for: newKeypath, logger: logger)
     }
-
-    return allKeypaths
   }
 }
 
@@ -233,8 +225,8 @@ extension String {
     }
     if let index = firstIndex(of: "*") {
       // Wildcard search.
-      let prefix = String(prefix(upTo: index))
-      let suffix = String(suffix(from: self.index(after: index)))
+      let prefix = String(self.prefix(upTo: index))
+      let suffix = String(self.suffix(from: self.index(after: index)))
 
       if prefix.count > 0 {
         // Match prefix.

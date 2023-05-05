@@ -15,7 +15,7 @@ class EnterPhoneVC: ViewController {
     //MARK: - Variables
     var verifyPin = false
     var enterPhoneVM = EnterPhoneVM()
-    var phoneNumber = String() ,password = String(), countryCode = "+33", enteredPin = String(),isLogin : Bool = false
+    var phoneNumber = String() ,password = String(), countryCode = "+33", enteredPin = String()
     var currentPage : Int? = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
@@ -46,29 +46,15 @@ class EnterPhoneVC: ViewController {
         super.viewDidLoad()
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
-        
-        do {
-            _ = try decode(jwt: userData.shared.userToken)
-        } catch {
-            print(error)
-        }
-        
         setUpUI()
-        if (userData.shared.isPhoneVerified == true && userData.shared.userToken != ""){
-            DispatchQueue.main.async {
-                let indexPath = NSIndexPath(item: 2, section: 0)
-                self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-            }
-        }
+		if (userData.shared.isPhoneVerified == true && GlobalVariables.isRegistering){
+			DispatchQueue.main.async {
+				let indexPath = NSIndexPath(item: 4, section: 0)
+				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+			}
+		}
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -161,28 +147,23 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmPinCVC", for: indexPath as IndexPath) as! ConfirmPinCVC
             cell.setUpUI(verifyPin : verifyPin)
             cell.pinConfirmDelegate = {[]pin in
-                if userData.shared.logInPinSet != 0{
-                    if userData.shared.logInPinSet != Int(pin){
-                        CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
-                    }else{
-                        if userData.shared.isIdentityVerified == true{
-                            let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-							self.navigationController?.pushViewController(vc, animated: true)
-                        }else if userData.shared.isAccountCreated == true{
-                            let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                            let navController = UINavigationController(rootViewController: vc)
-                            navController.modalPresentationStyle = .fullScreen
-                            navController.navigationBar.isHidden = true
-                            self.present(navController, animated: true, completion: nil)
-                        }
-                    }
-                }else{
-                    if self.enteredPin != pin{
-                        CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
-                    }else{
-                        self.setLoginPin(enteredPin: pin)
-                    }
-                }
+				
+				if userData.shared.logInPinSet != 0{
+					if userData.shared.logInPinSet != Int(pin){
+						CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+					}else{
+						let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+						self.navigationController?.pushViewController(vc, animated: true)
+					}
+				}else{
+					if self.enteredPin != pin{
+						CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+					}else{
+						self.setLoginPin(enteredPin: pin)
+					}
+				}
+				
+                
             }
             
             if currentPage == 3{
@@ -302,7 +283,7 @@ extension EnterPhoneVC{
         }else if phoneNumber.count < 7 {
             CommonFunctions.toster(Constants.AlertMessages.enterValidPhoneNumber)
         }else{
-            if self.isLogin == false{
+			if GlobalVariables.isLogin == false{
                 self.nextButton.isUserInteractionEnabled = false
                 self.nextButton.showLoading()
                 self.enterPhoneVM.SignUpApi(phoneNumber: self.phoneNumber, countryCode: self.countryCode, completion: { [weak self] response in
@@ -318,7 +299,7 @@ extension EnterPhoneVC{
                         self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
                     }
                 })
-            }else if self.isLogin == true{
+            }else if GlobalVariables.isLogin == true{
                 if self.password == ""{
                     CommonFunctions.toster(Constants.AlertMessages.enterPassword)
                 }else{
@@ -374,22 +355,16 @@ extension EnterPhoneVC{
                 userData.shared.isPhoneVerified = true
                 userData.shared.dataSave()
                 
-                if userData.shared.logInPinSet == 0{
+				if(GlobalVariables.isRegistering == true){
+					let indexPath = NSIndexPath(item: 4, section: 0)
+					self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+				}else if userData.shared.logInPinSet == 0{
                     self?.GotoNextIndex()
                     
-                }else {
-                    if userData.shared.isIdentityVerified == true{
-                        let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-						self?.navigationController?.pushViewController(vc, animated: true)
-                    }/*else if userData.shared.is_push_enabled == 1 || userData.shared.is_push_enabled == 2{
-                        userData.shared.isAccountCreated = true
-                        userData.shared.dataSave()
-                        let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                    }*/else{
-                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 3, section: 0)
-                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
-                    }
+				}else {
+					let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 3, section: 0)
+					self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+                    
                 }
             }
         })
@@ -408,7 +383,7 @@ extension EnterPhoneVC{
             //            self.enterPhoneVM.enableFaceIdApi(enable: 0, completion: {[]response in
             //                if let response = response{
             //                    print(response)
-            if userData.shared.isIdentityVerified{
+			if userData.shared.isIdentityVerified && !GlobalVariables.isRegistering{
                 let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
@@ -421,7 +396,7 @@ extension EnterPhoneVC{
             //            self.enterPhoneVM.enableFaceIdApi(enable: 1, completion: {[]response in
             //                if let response = response{
             //                    print(response)
-            if userData.shared.isIdentityVerified{
+            if userData.shared.isIdentityVerified && !GlobalVariables.isRegistering{
                 let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{

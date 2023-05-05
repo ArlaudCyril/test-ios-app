@@ -12,7 +12,6 @@
 @interface BranchOpenRequest : BNCServerRequest
 
 @property (nonatomic, copy) callbackWithStatus callback;
-@property (assign, nonatomic) BOOL clearLocalURL;
 
 + (void) waitForOpenResponseLock;
 + (void) releaseOpenResponseLock;

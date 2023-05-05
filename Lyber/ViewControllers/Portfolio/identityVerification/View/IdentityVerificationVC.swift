@@ -31,11 +31,6 @@ class IdentityVerificationVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        do {
-			_ = try decode(jwt: userData.shared.userToken)
-        } catch {
-            print(error)
-        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -102,10 +97,7 @@ extension IdentityVerificationVC{
         if OpenCameraBtn.tag == 0{
             showAlert()
         }else{
-            userData.shared.isIdentityVerified = true
-            userData.shared.dataSave()
-            let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			self.navigationController?.pushViewController(vc, animated: true)
+			finishRegistration()
         }
     }
     
@@ -170,4 +162,21 @@ extension IdentityVerificationVC{
           }))
         self.present(alert, animated: true, completion: nil)
     }
+	
+	func finishRegistration(){
+		//end of register phase
+		PersonalDataVM().finishRegistrationApi(completion: {[weak self]response in
+			if response != nil {
+				userData.shared.time = Date()
+				GlobalVariables.isRegistering = false
+				userData.shared.userToken = response?.data?.access_token ?? ""
+				userData.shared.refreshToken = response?.data?.refresh_token ?? ""
+				userData.shared.dataSave()
+				CommonFunctions.loadingProfileApi()
+				userData.shared.registered()
+				let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				self?.navigationController?.pushViewController(vc, animated: true)
+			}
+		})
+	}
 }

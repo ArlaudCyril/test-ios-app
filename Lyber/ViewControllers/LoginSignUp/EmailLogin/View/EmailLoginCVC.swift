@@ -42,13 +42,7 @@ extension EmailLoginCVC{
         self.passwordTF.delegate = self
         CommonUI.setUpButton(btn: self.loginByPhoneBtn, text: CommonFunctions.localisation(key: "LOGIN_PHONE"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.loginByPhoneBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOGIN_PHONE") ), for: .normal)
-//        if controller?.isLogin == true{
-//            self.loginByEmailBtn.isHidden = false
-//            self.enterNumberLbl.text = CommonFunctions.localisation(key: "HAPPY_SEE_YOU_BACK")
-//            self.enterNumberDescLbl.text = CommonFunctions.localisation(key: "ENTER_PHONE_NUMBER_LOGIN")
-//        }else{
-//            self.loginByEmailBtn.isHidden = true
-//        }
+
         
         self.eyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
         self.emailTF.addTarget(self, action: #selector(editChange), for: .editingChanged)

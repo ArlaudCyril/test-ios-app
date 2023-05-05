@@ -68,12 +68,12 @@ final class PreCompLayer: BaseCompositionLayer {
     try setupLayerAnimations(context: context)
 
     // Precomp layers can adjust the local time of their child layers (relative to the
-    // animation's global time) via `timeRemapping` or a custom `startTime` / `timeStretch`
+    // animation's global time) via `timeRemapping` or a custom `startTime`
     let contextForChildren = context.withTimeRemapping { [preCompLayer, timeRemappingInterpolator] layerLocalFrame in
       if let timeRemappingInterpolator = timeRemappingInterpolator {
         return timeRemappingInterpolator.value(frame: layerLocalFrame) as? AnimationFrameTime ?? layerLocalFrame
       } else {
-        return (layerLocalFrame * AnimationFrameTime(preCompLayer.timeStretch)) + AnimationFrameTime(preCompLayer.startTime)
+        return layerLocalFrame + AnimationFrameTime(preCompLayer.startTime)
       }
     }
 
@@ -101,16 +101,17 @@ extension PreCompLayer: CustomLayoutLayer {
       width: CGFloat(preCompLayer.width),
       height: CGFloat(preCompLayer.height))
 
-    contentsLayer.masksToBounds = true
+    masksToBounds = true
   }
 }
 
 extension KeyframeInterpolator where ValueType == AnimationFrameTime {
   /// A `KeyframeInterpolator` for the given `timeRemapping` keyframes
   static func timeRemapping(
-    keyframes timeRemappingKeyframes: KeyframeGroup<LottieVector1D>,
+    keyframes timeRemappingKeyframes: KeyframeGroup<Vector1D>,
     context: LayerContext)
-    throws -> KeyframeInterpolator<AnimationFrameTime>
+    throws
+    -> KeyframeInterpolator<AnimationFrameTime>
   {
     try context.logCompatibilityIssue("""
       The Core Animation rendering engine partially supports time remapping keyframes,
