@@ -81,7 +81,7 @@ extension PortfolioDetailTVC{
         CommonUI.setUpButton(btn: self.coinBtn, text: "", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         for coin in coinDetailData{
             if coin.id == self.assetName {
-                self.coinBtn.setTitle("\(coin.fullName ?? "") (\(self.assetName.uppercased()))", for: .normal)
+                self.coinBtn.setTitle("\(coin.fullName ?? "")", for: .normal)
             }
         }
         
@@ -103,7 +103,7 @@ extension PortfolioDetailTVC{
         self.collView.dataSource = self
         
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        //self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
+        self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
 		
 		
         
@@ -196,7 +196,6 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
 //MARK: - objective functions
 extension PortfolioDetailTVC{
     @objc func backBtnAct(){
-		//si previous controller quote on prend la variable globale qui est initialisée lorsque l'on clique sur échange avec le controller qu'il faudra rendre quand il le previous controller ou porfolio homevc
 		if(self.controller?.previousController is ConfirmInvestmentVC){
 			self.controller?.navigationController?.popToViewController(ofClass: Storage.previousControllerPortfolioDetailObject, animated: true)
 		}else{
@@ -206,12 +205,8 @@ extension PortfolioDetailTVC{
     }
     
     @objc func coinBtnAct(){
-        let vc = SearchAssetVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-        self.controller?.navigationController?.pushViewController(vc, animated: true)
-        vc.assetNameCallback = {assetName in
-            self.controller?.assetId = assetName
-            self.controller?.callCoinInfoApi()
-        }
+        let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		self.controller?.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

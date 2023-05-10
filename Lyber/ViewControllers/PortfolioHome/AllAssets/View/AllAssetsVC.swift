@@ -184,8 +184,7 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
 //MARK: - objective functions
 extension AllAssetsVC{
     @objc func backBtnAct(){
-		self.navigationController?.popViewController(animated: true)
-		//self.dismiss(animated: true)
+		self.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
     }
     
     @objc func fireTimer(){

@@ -45,10 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 		let acme2 = userInfo["acme2"] as? NSDictionary,
 		let lyberId = acme2.object(forKey: "lyberId") as? Int {
 			if(lyberId == 2002)
-			{//end transaction
+			{//transaction success
 				PortfolioDetailVC.transactionFinished = true
 			}
-			if(lyberId == 2005){//amount //TODO: better simplification
+			else if(lyberId == 2003){//transaction failure
+				PortfolioDetailVC.transactionFinished = false
+			}
+			else if(lyberId == 2005){//amount //TODO: better simplification
 				PortfolioHomeVM().callWalletGetBalanceApi(completion: {[]response in
 					if response != nil {
 						CommonFunctions.setBalances(balances: response ?? [])

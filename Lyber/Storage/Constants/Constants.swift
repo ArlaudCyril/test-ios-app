@@ -125,6 +125,7 @@ struct Constants{
         static let order = "order"
         static let page = "page"
         static let limit = "limit"
+        static let offset = "offset"
         static let keyword = "keyword"
         static let duration = "duration"
         
@@ -284,6 +285,7 @@ struct Constants{
        
         //Notification
         static let registerDeviceToken = "notification-service/register"
+		static let notificationServiceNotifications = "notification-service/notifications"
 		
 		//Orders
 		static let orderServiceQuote = "order-service/quote"

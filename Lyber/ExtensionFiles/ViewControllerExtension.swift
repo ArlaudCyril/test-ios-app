@@ -27,4 +27,27 @@ extension UINavigationController {
       popToViewController(vc, animated: animated)
     }
   }
+	
+	func deleteToViewController(ofClass: AnyClass) {
+		if(ofClass == AllAssetsVC.self){
+			for i in (1...viewControllers.count-2).reversed() {
+				if(viewControllers[i].isKind(of: AllAssetsVC.self)){
+					let allAssetController = viewControllers[i] as! AllAssetsVC
+					if(allAssetController.screenType == .portfolio){
+						return
+					}
+				}
+				viewControllers.remove(at: i)
+			}
+		}else{
+			for i in (1...viewControllers.count-2).reversed() {
+				print(type(of: viewControllers[i]))
+				if(viewControllers[i].isKind(of: ofClass)){
+					return
+				}else{
+					viewControllers.remove(at: i)
+				}
+			}
+		}
+	}
 }

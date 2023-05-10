@@ -648,8 +648,9 @@ extension InvestInMyStrategyVC {
 			self.previewMyInvest.showLoading()
 				
 			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalCoinInvested, completion: {response in
+				self.previewMyInvest.hideLoading()
 				if( response != nil){
-					self.previewMyInvest.hideLoading()
+					
 					vc.InvestmentType = .Exchange
 					vc.exchangeFrom = response?.data.fromAsset ?? ""
 					vc.exchangeTo = response?.data.toAsset ?? ""

@@ -32,9 +32,6 @@ class InvestmentExperienceCVC: UICollectionViewCell {
     @IBOutlet var annualIncomeVw: UIView!
     @IBOutlet var annualIncomeLbl: UILabel!
     
-    @IBOutlet var personalAssetsLbl: UILabel!
-    @IBOutlet var personalAssetsVw: UIView!
-    @IBOutlet var personalAssetsValueLbl: UILabel!
     override func awakeFromNib() {
 		let language = "en"
 		let path = Bundle.main.path(forResource: language, ofType: "lproj")
@@ -53,19 +50,16 @@ extension InvestmentExperienceCVC{
         CommonUI.setUpLbl(lbl: self.yourSourceOfIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_SOURCE_OF_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.yourWorkIndustryLbl, text: CommonFunctions.localisation(key: "YOUR_WORK_INDUSTRY"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.YourAnnualIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_ANNUAL_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.personalAssetsLbl, text: CommonFunctions.localisation(key: "YOUR_PERSONAL_ASSETS"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.experienceView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.sourceOfIncomeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.workIndustryVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.annualIncomeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
-        CommonUI.setUpViewBorder(vw: self.personalAssetsVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
         CommonUI.setUpLbl(lbl: self.experienceLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.sourceOfIncomeLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.workIndustryLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.annualIncomeLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.personalAssetsValueLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         let experienceTap = UITapGestureRecognizer(target: self, action: #selector(experinceVwTapped))
         self.experienceView.addGestureRecognizer(experienceTap)
@@ -75,8 +69,6 @@ extension InvestmentExperienceCVC{
         self.workIndustryVw.addGestureRecognizer(workIndustryTap)
         let annualIncomeTap = UITapGestureRecognizer(target: self, action: #selector(annualIncomeVwTapped))
         self.annualIncomeVw.addGestureRecognizer(annualIncomeTap)
-        let personalAssetsTap = UITapGestureRecognizer(target: self, action: #selector(personalAssetsVwTapped))
-        self.personalAssetsVw.addGestureRecognizer(personalAssetsTap)
     }
     
     func setPersonalDate (data : UserPersonalData?){
@@ -84,21 +76,18 @@ extension InvestmentExperienceCVC{
         self.sourceOfIncomeLbl.text = data?.income_source ?? ""
         self.workIndustryLbl.text = data?.occupation ?? ""
         self.annualIncomeLbl.text = "\(data?.incomeRange ?? "")€/month"
-        self.personalAssetsValueLbl.text = "\(data?.personalAssets ?? "") assets"
         
         DispatchQueue.main.async {
             self.controller?.investmentExp = self.experienceLbl.text ?? ""
             self.controller?.sourceOfIncome = self.sourceOfIncomeLbl.text ?? ""
             self.controller?.workIndustry = self.workIndustryLbl.text ?? ""
             self.controller?.annualIncome = self.annualIncomeLbl.text ?? ""
-            self.controller?.personalAssets = self.personalAssetsValueLbl.text ?? ""
             
         }
         self.experienceLbl.textColor = UIColor.ThirdTextColor
         self.sourceOfIncomeLbl.textColor = UIColor.ThirdTextColor
         self.workIndustryLbl.textColor = UIColor.ThirdTextColor
         self.annualIncomeLbl.textColor = UIColor.ThirdTextColor
-        self.personalAssetsValueLbl.textColor = UIColor.ThirdTextColor
 
     }
 }
@@ -143,16 +132,6 @@ extension InvestmentExperienceCVC{
             self.annualIncomeLbl.text = CommonFunctions.localisation(key: experience)
             self.controller?.annualIncome = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
             self.annualIncomeLbl.textColor = UIColor.ThirdTextColor
-        }
-    }
-    @objc func personalAssetsVwTapped(){
-        let vc = InvestmentExperienceVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-        controller?.present(vc, animated: true, completion: nil)
-        vc.investmentType = .personalAssets
-        vc.investExperienceCallBack = { experience in
-            self.personalAssetsValueLbl.text = CommonFunctions.localisation(key: experience)
-            self.controller?.personalAssets = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
-            self.personalAssetsValueLbl.textColor = UIColor.ThirdTextColor
         }
     }
     

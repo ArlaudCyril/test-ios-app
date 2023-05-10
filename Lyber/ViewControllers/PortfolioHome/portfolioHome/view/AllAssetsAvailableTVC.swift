@@ -91,10 +91,6 @@ extension AllAssetsAvailableTVC: UICollectionViewDelegate, UICollectionViewDataS
 extension AllAssetsAvailableTVC{
     @objc func viewAllBtnAct(){
         let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//		let nav = UINavigationController(rootViewController: vc)
-//		nav.modalPresentationStyle = .fullScreen
-//		nav.navigationBar.isHidden = true
-//		self.controller?.present(nav, animated: true, completion: nil)
 		self.controller?.navigationController?.pushViewController(vc, animated: true)
     }
 }

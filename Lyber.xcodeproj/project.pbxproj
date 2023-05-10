@@ -289,6 +289,8 @@
 		1FD4A4A029D48C7E002DFC11 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */; };
 		1FE7695329C46356005141C0 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695229C46356005141C0 /* Model.xcmappingmodel */; };
 		1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
+		1FE8E54D2A0A838A0033398F /* NotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54C2A0A838A0033398F /* NotificationVM.swift */; };
+		1FE8E5502A0A847B0033398F /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54F2A0A847B0033398F /* NotificationModel.swift */; };
 		1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
 		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
@@ -584,6 +586,8 @@
 		1FE7695129C45CD1005141C0 /* Lyber 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Lyber 2.xcdatamodel"; sourceTree = "<group>"; };
 		1FE7695229C46356005141C0 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		1FE7695529C47144005141C0 /* StrongAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVM.swift; sourceTree = "<group>"; };
+		1FE8E54C2A0A838A0033398F /* NotificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVM.swift; sourceTree = "<group>"; };
+		1FE8E54F2A0A847B0033398F /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		1FFD171D29ED962C00935003 /* DepositAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetVC.swift; sourceTree = "<group>"; };
 		242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.debug.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.debug.xcconfig"; sourceTree = "<group>"; };
 		3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.release.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.release.xcconfig"; sourceTree = "<group>"; };
@@ -1767,6 +1771,8 @@
 		0A857C6C288592340013ED99 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				1FE8E54E2A0A84690033398F /* Model */,
+				1FE8E54B2A0A83770033398F /* View Model */,
 				0A857C6D2885923C0013ED99 /* View */,
 			);
 			path = Notification;
@@ -2578,6 +2584,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1FE8E54B2A0A83770033398F /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FE8E54C2A0A838A0033398F /* NotificationVM.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		1FE8E54E2A0A84690033398F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FE8E54F2A0A847B0033398F /* NotificationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1FFD171B29ED960E00935003 /* DepositAsset */ = {
 			isa = PBXGroup;
 			children = (
@@ -2846,6 +2868,7 @@
 				0A53DEE5284634DC0027367A /* InvestmentExperienceVC.swift in Sources */,
 				0A6D69CB28AD169D00BFB186 /* SelectedProfileModel.swift in Sources */,
 				1F83382129F9617600E41F61 /* InvestInMyStrategyVM.swift in Sources */,
+				1FE8E5502A0A847B0033398F /* NotificationModel.swift in Sources */,
 				1F2D541329F006A00078267F /* CryptoDepositeModel.swift in Sources */,
 				0A53DEEB28463D460027367A /* UiViewExtension.swift in Sources */,
 				0A7219112863436F009F42C5 /* TransactionVC.swift in Sources */,
@@ -3014,6 +3037,7 @@
 				0AC721A328521CD7003E7FD9 /* InvestMoneyCVC.swift in Sources */,
 				0A750211285A01E600D68BAB /* AllCoinCVC.swift in Sources */,
 				0A7502082859F71D00D68BAB /* AnalyticsTVC.swift in Sources */,
+				1FE8E54D2A0A838A0033398F /* NotificationVM.swift in Sources */,
 				0A721907286325BB009F42C5 /* ProfileLogoutTVC.swift in Sources */,
 				0AC4C2C1283F5D210086C6B8 /* EnterPhoneVC.swift in Sources */,
 				0A7586D1286C7D8C00DC889E /* EnterPhoneModel.swift in Sources */,

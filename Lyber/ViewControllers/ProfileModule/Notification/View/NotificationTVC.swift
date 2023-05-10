@@ -24,7 +24,8 @@ class NotificationTVC: UITableViewCell {
 }
 
 extension NotificationTVC{
-    func setupCell(text : String){
-        CommonUI.setUpLbl(lbl: self.notificationLbl, text: "Lorem ipsum is simply dummy text of the printing and type setting industry ", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+    func setupCell(notificationBody : String){
+		
+		CommonUI.setUpLbl(lbl: self.notificationLbl, text: notificationBody, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
     }
 }

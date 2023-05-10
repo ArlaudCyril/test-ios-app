@@ -59,7 +59,11 @@ class PortfolioDetailVC: SwipeGesture {
 				CommonFunctions.showLoaderCheckbox(self.view)
 				PortfolioDetailVC.staticTblView = self.tblView
 				PortfolioDetailVC.view = self.view
-				self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+				if(userData.shared.is_push_enabled != 1)//notifications desactivated
+				{
+					self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+				}
+				
 			}
 		}
     }
@@ -80,10 +84,13 @@ class PortfolioDetailVC: SwipeGesture {
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
 			//TODO: change comportement
-			return false
+			if(self.previousController is ConfirmInvestmentVC){
+				self.navigationController?.deleteToViewController(ofClass: Storage.previousControllerPortfolioDetailObject)
+			}
 		}
 		return true
 	}
+	
 	
 	//MARK: - SetUpUI
     override func setUpUI(){
@@ -99,6 +106,12 @@ class PortfolioDetailVC: SwipeGesture {
         
         self.investMoneyBtn.addTarget(self, action: #selector(investMoneyBtnAct), for: .touchUpInside)
         self.threeDotBtn.addTarget(self, action: #selector(threeDotBtnAct), for: .touchUpInside)
+		
+		let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(moveToNextItem(_:)))
+		//rightSwipe.direction = .right
+		view.addGestureRecognizer(rightSwipe)
+		
+		
     }
     
 }
@@ -231,6 +244,16 @@ extension PortfolioDetailVC{
 				}
 			}
 		})
+	}
+	
+	@objc func moveToNextItem(_ sender:UISwipeGestureRecognizer) {
+		if sender.direction == .right{
+			if(self.previousController is ConfirmInvestmentVC){
+				self.navigationController?.popToViewController(ofClass: Storage.previousControllerPortfolioDetailObject, animated: true)
+			}else{
+				self.navigationController?.popViewController(animated: true)
+			}
+		}
 	}
 }
 

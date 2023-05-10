@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29R-Bx-7rU">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="538"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="441"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVJ-Rb-BPE">
                                     <rect key="frame" x="24" y="0.0" width="366" height="20.5"/>
@@ -35,7 +35,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Irh-2z-OCi">
-                                    <rect key="frame" x="24" y="69" width="366" height="469"/>
+                                    <rect key="frame" x="24" y="69" width="366" height="372"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLu-Zy-GEb">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="81"/>
@@ -237,56 +237,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="47Q-uh-s69" secondAttribute="trailing" id="wt5-ew-Oaz"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajp-8L-I7u">
-                                            <rect key="frame" x="0.0" y="388" width="366" height="81"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cF-tP-3gy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qse-A2-WCH">
-                                                    <rect key="frame" x="0.0" y="25" width="366" height="56"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAI-C3-G8t">
-                                                            <rect key="frame" x="12" y="0.0" width="302" height="56"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4Z-vh-bt3">
-                                                            <rect key="frame" x="322" y="0.0" width="44" height="56"/>
-                                                            <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                                            <state key="normal" image="drop_down_grey">
-                                                                <color key="titleColor" name="AccentColor"/>
-                                                            </state>
-                                                        </button>
-                                                    </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="AAI-C3-G8t" secondAttribute="bottom" id="0Hu-Jy-PDl"/>
-                                                        <constraint firstAttribute="height" constant="56" id="Mb4-8R-b4O"/>
-                                                        <constraint firstAttribute="bottom" secondItem="O4Z-vh-bt3" secondAttribute="bottom" id="OpR-qc-kMw"/>
-                                                        <constraint firstItem="AAI-C3-G8t" firstAttribute="top" secondItem="Qse-A2-WCH" secondAttribute="top" id="haO-EI-js2"/>
-                                                        <constraint firstItem="O4Z-vh-bt3" firstAttribute="leading" secondItem="AAI-C3-G8t" secondAttribute="trailing" constant="8" id="rSy-pq-QJB"/>
-                                                        <constraint firstItem="O4Z-vh-bt3" firstAttribute="top" secondItem="Qse-A2-WCH" secondAttribute="top" id="sta-Lc-tkj"/>
-                                                        <constraint firstItem="AAI-C3-G8t" firstAttribute="leading" secondItem="Qse-A2-WCH" secondAttribute="leading" constant="12" id="vuY-px-Z4T"/>
-                                                        <constraint firstAttribute="trailing" secondItem="O4Z-vh-bt3" secondAttribute="trailing" id="xUP-lo-AEx"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstItem="4cF-tP-3gy" firstAttribute="top" secondItem="ajp-8L-I7u" secondAttribute="top" id="AN4-LR-b2j"/>
-                                                <constraint firstItem="4cF-tP-3gy" firstAttribute="leading" secondItem="ajp-8L-I7u" secondAttribute="leading" id="GhH-Mz-6Vm"/>
-                                                <constraint firstAttribute="bottom" secondItem="Qse-A2-WCH" secondAttribute="bottom" id="MAD-92-fxr"/>
-                                                <constraint firstItem="Qse-A2-WCH" firstAttribute="top" secondItem="4cF-tP-3gy" secondAttribute="bottom" constant="4" id="NWS-x7-Rjl"/>
-                                                <constraint firstItem="Qse-A2-WCH" firstAttribute="leading" secondItem="ajp-8L-I7u" secondAttribute="leading" id="cWd-m0-3wy"/>
-                                                <constraint firstAttribute="trailing" secondItem="4cF-tP-3gy" secondAttribute="trailing" id="fVv-2R-Vo4"/>
-                                                <constraint firstAttribute="trailing" secondItem="Qse-A2-WCH" secondAttribute="trailing" id="rhR-pr-KnX"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -332,9 +282,6 @@
                 <outlet property="investExpWithCryptoLbl" destination="wpi-QK-fkL" id="Mvi-B3-wKB"/>
                 <outlet property="investmentExpDescLbl" destination="8eg-JA-VTJ" id="fBP-Id-1LA"/>
                 <outlet property="investmentExperienceLbl" destination="dVJ-Rb-BPE" id="hoH-Xy-5eL"/>
-                <outlet property="personalAssetsLbl" destination="4cF-tP-3gy" id="izL-QL-dHR"/>
-                <outlet property="personalAssetsValueLbl" destination="AAI-C3-G8t" id="9Vr-n8-Wl0"/>
-                <outlet property="personalAssetsVw" destination="Qse-A2-WCH" id="Yg5-Uk-u8M"/>
                 <outlet property="sourceOfIncomeLbl" destination="BMD-kk-VYI" id="3CN-yZ-tRL"/>
                 <outlet property="sourceOfIncomeVw" destination="1YN-uq-6MA" id="jpp-4b-022"/>
                 <outlet property="workIndustryLbl" destination="dyR-7p-fvF" id="pBm-us-DE3"/>
