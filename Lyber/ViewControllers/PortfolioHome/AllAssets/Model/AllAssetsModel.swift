@@ -72,9 +72,10 @@ struct AssetBaseAPI: Codable {
 struct AssetBaseData: Codable {
     let id, fullName: String?
     let image: String?
+    let isStablecoin: Bool?
     let isUIActive, isTradeActive, isDepositActive, isWithdrawalActive: Bool?
 	
-	init(id: String?, fullName: String?, image: String?, isUIActive: Bool?, isTradeActive: Bool?, isDepositActive: Bool?, isWithdrawalActive: Bool?) {
+	init(id: String?, fullName: String?, image: String?, isUIActive: Bool?, isTradeActive: Bool?, isDepositActive: Bool?, isWithdrawalActive: Bool?, isStablecoin: Bool?) {
 		self.id = id
 		self.fullName = fullName
 		self.image = image
@@ -82,12 +83,14 @@ struct AssetBaseData: Codable {
 		self.isTradeActive = isTradeActive
 		self.isDepositActive = isDepositActive
 		self.isWithdrawalActive = isWithdrawalActive
+		self.isStablecoin = isStablecoin
 	}
 	
 	init() {
 		self.id = ""
 		self.fullName = ""
 		self.image = ""
+		self.isStablecoin = false
 		self.isUIActive = false
 		self.isTradeActive = false
 		self.isDepositActive = false

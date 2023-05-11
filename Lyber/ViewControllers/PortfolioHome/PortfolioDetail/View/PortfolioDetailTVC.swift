@@ -7,7 +7,6 @@
 
 import UIKit
 import Charts
-import SwiftyJSON
 
 class PortfolioDetailTVC: UITableViewCell {
     //MARK: - Variables
@@ -20,7 +19,6 @@ class PortfolioDetailTVC: UITableViewCell {
 	var dateTimeArr : [graphStruct] = []
     var assetName = String()
     var chartLastPoint = Double()
-    var isOpened = false
 	var graphValues: [ChartDataEntry] = []
 	var valueWebSocket : Double = 0
 	var timer = Timer()
@@ -37,16 +35,9 @@ class PortfolioDetailTVC: UITableViewCell {
     @IBOutlet var collView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
+		//setting timer for updating point
     }
 
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-	
-    
 }
 
 extension PortfolioDetailTVC{
@@ -208,9 +199,56 @@ extension PortfolioDetailTVC{
         let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 		self.controller?.navigationController?.pushViewController(vc, animated: true)
     }
+	
+	@objc func updateChartView(value: Double){
+		let indexSelected = Int(self.entrySelected.x)
+		
+		//delete first element
+		self.dateTimeArr.remove(at: 0)
+		self.graphValues.remove(at: 0)
+		
+		//reset arrays without the first element
+		let copyDateTimeArr = self.dateTimeArr
+		let copyGraphValues = self.graphValues
+		
+		self.dateTimeArr = []
+		self.graphValues = []
+		
+		for (index,_) in stride(from: 0, through: copyGraphValues.count-1, by: 1).enumerated(){
+			self.dateTimeArr.append(graphStruct(index: index, date: copyDateTimeArr[index].date, euro: copyDateTimeArr[index].euro))
+			self.graphValues.append(ChartDataEntry(x: Double(index), y: copyGraphValues[index].y))
+		}
+		
+		//last index
+		let date = CommonFunctions.getDate(date: Date())
+		//ici bug
+		var value = self.valueWebSocket
+		if(value == 0){
+			value = self.graphValues.last?.y ?? 0
+		}
+		self.dateTimeArr.append(graphStruct(index: self.graphValues.count, date: date, euro: value))
+		self.graphValues.append(ChartDataEntry(x: Double(self.graphValues.count), y: value))
+		self.extractedFunc(self.graphValues, UIColor.PurpleColor)
+		
+		
+		var indexGraph = 0
+		if(indexSelected >= self.graphValues.count-1){
+			indexGraph = self.graphValues.count-1
+		}else if(indexSelected <= 0){
+			indexGraph = 0
+		}else{
+			indexGraph = indexSelected-1
+		}
+		self.entrySelected = self.graphValues[indexGraph]
+		let point = self.chartView.getPosition(entry: self.graphValues[indexGraph], axis: .left)
+		self.customMarkerView.center = CGPoint(x: point.x , y: (point.y ) )
+		self.hideShowBubble(xPixel: point.x, yPixel: point.y, xValue: self.graphValues[indexGraph].x, yValue: self.graphValues[indexGraph].y)
+		
+	}
+	
 }
 
-
+//MARK: ChartViewDelegate
 extension PortfolioDetailTVC: ChartViewDelegate{
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         self.customMarkerView.center = CGPoint(x: highlight.xPx, y: (highlight.yPx ))
@@ -265,120 +303,6 @@ extension PortfolioDetailTVC{
             }
         }
     }
-}
-
-
-extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
-    func receiveMessage() {
-        if !isOpened {
-			if(self.dateTimeArr.count != 0){
-				openWebSocket(assetName: self.assetName)
-			}
-        }
-        self.controller?.webSocket?.receive(completionHandler: { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let message):
-                switch message {
-                case .string(let messageString):
-                    let messageDict = messageString as String
-                    do{
-                        let data = messageString.data(using: .utf8)
-                        let jsondata = try JSON(data: data ?? Data())
-                        let price = (jsondata["Price"].rawValue) as? String
-                        let value = Double(price ?? "")
-                        DispatchQueue.main.async {
-                            if value  != 0{
-                                self?.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: value ))€"
-								self?.valueWebSocket = value ?? 0
-								self?.updateValueLastPoint()
-                            }
-                        }
-                    }
-                    catch let error as NSError {
-                        print(error)
-                    }
-//
-                case .data(let data):
-                    print(data.description)
-                default:
-                    print("Unknown type received from WebSocket")
-                }
-            }
-            self?.receiveMessage()
-        })
-    }
-
-    func openWebSocket(assetName : String) {
-        let urlString = ApiEnvironment.socketBaseUrl + "\(assetName)eur"
-        if let url = URL(string: urlString) {
-			let request = URLRequest(url: url)
-            let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
-            self.controller?.webSocket = session.webSocketTask(with: request)
-            self.controller?.webSocket?.resume()
-            isOpened = true
-			
-			//setting timer for updating point
-			self.entrySelected = self.graphValues.last ?? ChartDataEntry()
-			self.setTimer(timeFrame: "1h")
-			self.scaleYChartView = Double(self.chartView.data?.yMax ?? 0) - Double(self.chartView.data?.yMin ?? 0)
-        }
-    }
-    
-    func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
-        print("Web socket opened")
-//        isOpened = true
-    }
-
-    
-    func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
-        print("Web socket closed")
-		self.timer.invalidate()
-//        isOpened = false
-    }
-	
-	@objc func updateChartView(value: Double){
-		let indexSelected = Int(self.entrySelected.x)
-		
-		//delete first element
-		self.dateTimeArr.remove(at: 0)
-		self.graphValues.remove(at: 0)
-		
-		//reset arrays without the first element
-		let copyDateTimeArr = self.dateTimeArr
-		let copyGraphValues = self.graphValues
-		
-		self.dateTimeArr = []
-		self.graphValues = []
-		
-		for (index,_) in stride(from: 0, through: copyGraphValues.count-1, by: 1).enumerated(){
-			self.dateTimeArr.append(graphStruct(index: index, date: copyDateTimeArr[index].date, euro: copyDateTimeArr[index].euro))
-			self.graphValues.append(ChartDataEntry(x: Double(index), y: copyGraphValues[index].y))
-		}
-		
-		//last index
-		let date = CommonFunctions.getDate(date: Date())
-		let value = self.valueWebSocket
-		self.dateTimeArr.append(graphStruct(index: self.graphValues.count, date: date, euro: value))
-		self.graphValues.append(ChartDataEntry(x: Double(self.graphValues.count), y: value))
-		self.extractedFunc(self.graphValues, UIColor.PurpleColor)
-		
-		
-		var indexGraph = 0
-		if(indexSelected >= self.graphValues.count-1){
-			indexGraph = self.graphValues.count-1
-		}else if(indexSelected <= 0){
-			indexGraph = 0
-		}else{
-			indexGraph = indexSelected-1
-		}
-		self.entrySelected = self.graphValues[indexGraph]
-		let point = self.chartView.getPosition(entry: self.graphValues[indexGraph], axis: .left)
-		self.customMarkerView.center = CGPoint(x: point.x , y: (point.y ) )
-		self.hideShowBubble(xPixel: point.x, yPixel: point.y, xValue: self.graphValues[indexGraph].x, yValue: self.graphValues[indexGraph].y)
-
-	}
 	
 	func updateValueLastPoint(){
 		let diffYCharView = Double(self.chartView.data?.yMax ?? 0) - Double(self.chartView.data?.yMin ?? 0)
@@ -437,8 +361,10 @@ extension PortfolioDetailTVC : URLSessionWebSocketDelegate{
 			default:
 				print("timeFrame not recognized")
 		}
-
+		
 		self.timer = Timer(fireAt: date, interval: interval, target: self, selector: #selector(self.updateChartView), userInfo: nil, repeats: true)
 		RunLoop.main.add(self.timer, forMode: RunLoop.Mode.common)
 	}
 }
+
+

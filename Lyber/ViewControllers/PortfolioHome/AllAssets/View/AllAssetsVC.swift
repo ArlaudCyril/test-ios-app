@@ -42,6 +42,13 @@ class AllAssetsVC: SwipeGesture {
         self.tblView.es.startPullToRefresh()
     }
 
+	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
+			//TODO: change comportement
+			self.navigationController?.deleteToViewController(ofClass: PortfolioHomeVC.self)
+		}
+		return true
+	}
 
 	//MARK: - SetUpUI
 
@@ -162,7 +169,7 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
         if screenType == .portfolio{
             let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 			vc.previousController = self
-			vc.assetId = coinsData[indexPath.row].id 
+			vc.assetId = filterCoin[indexPath.row].id
             self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .exchange{
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
@@ -210,7 +217,6 @@ extension AllAssetsVC{
                 self.coinsData = response
                 self.filterData()
             }
-            self.filterCoin = self.coinsData
             self.tblView.tableHeaderView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tblView.bounds.width, height: CGFloat(0)))
             self.tblView.tableHeaderView?.isHidden = true
             self.tblView.es.stopPullToRefresh()
@@ -271,15 +277,20 @@ extension AllAssetsVC{
         self.tblView.tableHeaderView?.isHidden = false
     }
     func filterData(){
-        if self.selectedCoinsType == .TopGainers{
-            self.coinsData = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) > (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
-        }else if self.selectedCoinsType == .TopLoosers{
-            self.coinsData = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) < (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
-        }else
-        {
-            self.coinsData = self.originalData
-        }
-        self.filterCoin = self.coinsData
+		if self.selectedCoinsType == .Stable{
+			self.filterCoin = self.coinsData.filter({CommonFunctions.getCurrency(id: $0.id).isStablecoin ?? false})
+		}
+		else{
+			if self.selectedCoinsType == .TopGainers{
+				self.filterCoin = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) > (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
+			}else if self.selectedCoinsType == .TopLoosers{
+				self.filterCoin = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) < (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
+			}else{
+				self.filterCoin = self.originalData
+			}
+			self.filterCoin = self.filterCoin.filter({!(CommonFunctions.getCurrency(id: $0.id).isStablecoin ?? false)})
+		}
+        
         self.tblView.reloadData()
     }
 }

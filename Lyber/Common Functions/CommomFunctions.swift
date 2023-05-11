@@ -333,7 +333,7 @@ class CommonFunctions{
 //        view.pinchZoomEnabled = false
 //        view.doubleTapToZoomEnabled = false
         view.scaleXEnabled = false
-        view.scaleYEnabled = true
+        view.scaleYEnabled = false
         
         view.leftAxis.gridColor = lineColor
         view.extraTopOffset = 8

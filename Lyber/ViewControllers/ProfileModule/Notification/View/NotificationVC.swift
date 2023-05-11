@@ -13,7 +13,7 @@ class NotificationVC: ViewController {
     var headerData : [String] = []
 	var notificationArray = [[String]] ()
 	var totalRows = 0
-	var numberOfNotificationsPerRequest = 15
+	var numberOfNotificationsPerRequest = 50
 	var bottomReached = false
     //MARK:- IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!

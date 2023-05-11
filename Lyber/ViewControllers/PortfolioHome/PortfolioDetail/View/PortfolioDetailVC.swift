@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Charts
 
 class PortfolioDetailVC: SwipeGesture {
     //MARK: - VARIABLES
@@ -22,7 +24,12 @@ class PortfolioDetailVC: SwipeGesture {
     var chartData : chartData?
     var chartDurationTime = chartType.oneHour.rawValue
     var resoucesData : [newsData] = []
+	//Socket
     var webSocket : URLSessionWebSocketTask?
+	var isOpened = false
+	var portfolioDetailTVC : PortfolioDetailTVC?
+	
+	//navigation controller
 	var previousController = UIViewController()
 	static var view : UIView?
 	static var transactionFinished:Bool = false{
@@ -41,8 +48,7 @@ class PortfolioDetailVC: SwipeGesture {
 	var timer = Timer()
 	
 	//ConfirmInvestmentVC
-	var orderId : String
-	= ""
+	var orderId : String = ""
     //MARK: - IB OUTLETS
     @IBOutlet var emptyView: UIView!
     @IBOutlet var contentView: UIView!
@@ -53,7 +59,10 @@ class PortfolioDetailVC: SwipeGesture {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			self.receiveMessage()
+		}
+		
 		if(self.orderId != ""){
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
 				CommonFunctions.showLoaderCheckbox(self.view)
@@ -139,12 +148,9 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioDetailTVC")as! PortfolioDetailTVC
             cell.controller = self
+			self.portfolioDetailTVC = cell
             cell.assetName = self.assetId
 			cell.setUpCell(assetData : self.assetData,chartData : self.chartData)
-			cell.receiveMessage()
-			
-            
-			
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyBalanceTVC")as! MyBalanceTVC
@@ -187,19 +193,6 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.section == 1{
-//            let vc = BalanceVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-////            vc.assetSymbol = assetData?.symbol ?? ""
-////            vc.myAsset = assetData
-////            vc.otherAsset = cryptoInfoValues
-////            if myAssetsData != nil{
-////                vc.myAssetPresent = true
-////            }
-//            
-//            self.present(vc, animated: true, completion: nil)
-//        }
-    }
     
     
 }
@@ -255,6 +248,76 @@ extension PortfolioDetailVC{
 			}
 		}
 	}
+}
+
+//MARK: URLSessionWebSocketDelegate
+extension PortfolioDetailVC : URLSessionWebSocketDelegate{
+	func receiveMessage() {
+		if !isOpened {
+			openWebSocket(assetId: assetId)
+		}
+		self.webSocket?.receive(completionHandler: { [weak self] result in
+			switch result {
+				case .failure(let error):
+					print(error.localizedDescription)
+				case .success(let message):
+					switch message {
+						case .string(let messageString):
+							let messageDict = messageString as String
+							do{
+								let data = messageString.data(using: .utf8)
+								let jsondata = try JSON(data: data ?? Data())
+								let price = (jsondata["Price"].rawValue) as? String
+								let value = Double(price ?? "")
+								DispatchQueue.main.async {
+									if value  != 0{
+										self?.portfolioDetailTVC?.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: value ))€"
+										self?.portfolioDetailTVC?.valueWebSocket = value ?? 0
+										self?.portfolioDetailTVC?.updateValueLastPoint()
+									}
+								}
+							}
+							catch let error as NSError {
+								print(error)
+							}
+						case .data(let data):
+							print(data.description)
+						default:
+							print("Unknown type received from WebSocket")
+					}
+					self?.receiveMessage()
+			}
+			
+		})
+		
+	}
+	
+	func openWebSocket(assetId : String) {
+		let urlString = ApiEnvironment.socketBaseUrl + "\(assetId)eur"
+		if let url = URL(string: urlString) {
+			let request = URLRequest(url: url)
+			let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+			self.webSocket = session.webSocketTask(with: request)
+			self.webSocket?.resume()
+		}
+	}
+	
+	func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
+		print("Web socket opened")
+		isOpened = true
+		self.portfolioDetailTVC?.entrySelected = self.portfolioDetailTVC?.graphValues.last ?? ChartDataEntry()
+		self.portfolioDetailTVC?.setTimer(timeFrame: "1h")
+		self.portfolioDetailTVC?.scaleYChartView = Double(self.portfolioDetailTVC?.chartView.data?.yMax ?? 0) - Double(self.portfolioDetailTVC?.chartView.data?.yMin ?? 0)
+		
+	}
+	
+	
+	func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didCloseWith closeCode: URLSessionWebSocketTask.CloseCode, reason: Data?) {
+		print("Web socket closed")
+		self.timer.invalidate()
+		isOpened = false
+	}
+	
 }
 
 //MARK: - Other functions
