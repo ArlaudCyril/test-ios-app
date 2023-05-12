@@ -77,15 +77,16 @@ extension PortfolioDetailTVC{
         }
         
         CommonUI.setUpLbl(lbl: priceLbl, text: CommonFunctions.localisation(key: "PRICE"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+
         CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: self.chartLastPoint ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: percentageLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))//update percentage
         
         if (assetData?.priceChangePercentage24H ?? 0) < 0{
             percentageLbl.textColor = UIColor.RedDF5A43
-            self.percentageLbl.text = "▼ \(CommonFunctions.formattedCurrency(from: assetData?.priceChangePercentage24H ?? 0))% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
+            self.percentageLbl.text = "▼ \(assetData?.priceChangePercentage24H ?? 0)% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
         }else{
             percentageLbl.textColor = UIColor.GreenColor
-            self.percentageLbl.text = "▲ \(CommonFunctions.formattedCurrency(from: assetData?.priceChangePercentage24H ?? 0))% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
+            self.percentageLbl.text = "▲ \(assetData?.priceChangePercentage24H ?? 0)% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
         }
         
         self.collView.layer.cornerRadius = 12

@@ -23,9 +23,10 @@ extension UIViewController {
 
 extension UINavigationController {
   func popToViewController(ofClass: AnyClass, animated: Bool = true) {
-    if let vc = viewControllers.first(where: { $0.isKind(of: ofClass) }) {
-      popToViewController(vc, animated: animated)
-    }
+	  
+	  if let vc = viewControllers.first(where: { $0.isKind(of: ofClass) }) {
+		  popToViewController(vc, animated: animated)
+	  }
   }
 	
 	func deleteToViewController(ofClass: AnyClass) {

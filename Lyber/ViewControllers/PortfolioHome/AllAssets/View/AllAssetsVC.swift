@@ -45,7 +45,7 @@ class AllAssetsVC: SwipeGesture {
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
 			//TODO: change comportement
-			self.navigationController?.deleteToViewController(ofClass: PortfolioHomeVC.self)
+			self.backBtnAct()
 		}
 		return true
 	}
@@ -175,6 +175,7 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.fromAssetId = self.fromAssetId
 			vc.toAssetId = filterCoin[indexPath.row].id
+			vc.fromAssetPrice = coinsData.first(where: {$0.id == self.fromAssetId})?.priceServiceResumeData.lastPrice
 			vc.toAssetPrice = filterCoin[indexPath.row].priceServiceResumeData.lastPrice
 			vc.strategyType = .Exchange
 			//            vc.assetsData = coinsData[indexPath.row]
@@ -191,7 +192,12 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
 //MARK: - objective functions
 extension AllAssetsVC{
     @objc func backBtnAct(){
-		self.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
+		if(screenType == .exchange){
+			self.navigationController?.popViewController(animated: true)
+		}else{
+			self.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
+		}
+		
     }
     
     @objc func fireTimer(){
@@ -209,10 +215,6 @@ extension AllAssetsVC{
         allAssetsVM.getAllAssetsApi(completion: {[]response in
             if var response = response {
                 print(response)
-				if(self.fromAssetId != ""){
-					let indexAssetToRemove = response.firstIndex(where: {$0.id == self.fromAssetId}) ?? 0
-					response.remove(at: indexAssetToRemove)
-				}
                 self.originalData = response
                 self.coinsData = response
                 self.filterData()
@@ -289,6 +291,10 @@ extension AllAssetsVC{
 				self.filterCoin = self.originalData
 			}
 			self.filterCoin = self.filterCoin.filter({!(CommonFunctions.getCurrency(id: $0.id).isStablecoin ?? false)})
+		}
+		if(self.fromAssetId != ""){
+			let indexAssetToRemove = filterCoin.firstIndex(where: {$0.id == self.fromAssetId}) ?? 0
+			filterCoin.remove(at: indexAssetToRemove)
 		}
         
         self.tblView.reloadData()

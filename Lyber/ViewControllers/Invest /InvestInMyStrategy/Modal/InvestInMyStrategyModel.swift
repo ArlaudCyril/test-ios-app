@@ -22,9 +22,10 @@ enum InvestStrategyModel{
 struct exchangeFromModel{
     var exchangeFromCoinId : String
     var exchangeFromCoinImg : String
+	var exchangeFromCoinPrice : Double
     var exchangeFromCoinBalance : Balance
     var exchangeToCoinId : String
-    var exchangeToCoinPrice : String
+    var exchangeToCoinPrice : Double
     var exchangeToCoinImg : String
 }
 

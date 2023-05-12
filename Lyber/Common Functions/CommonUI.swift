@@ -86,4 +86,82 @@ class CommonUI{
         attrString.addAttributes(myAttribute2, range: NSRange(substringRange, in: firstStr))
         return attrString
     }
+	
+	static func formattedViewCurrency(value: Double?, labelView: UILabel) {
+		guard value != nil else {
+			return CommonUI.setUpLbl(lbl: labelView, text: "0.00€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		}
+		
+		let formatter = NumberFormatter()
+		
+		var numberZerosLeft = 0
+		
+		if(value ?? 0 > 10000)
+		{
+			formatter.maximumFractionDigits = 0
+			formatter.minimumFractionDigits =  0
+		}else if(value ?? 0 > 1000){
+			formatter.maximumFractionDigits = 1
+			formatter.minimumFractionDigits =  1
+		}else if(value ?? 0 > 10){
+			formatter.maximumFractionDigits = 2
+			formatter.minimumFractionDigits =  2
+		}else if(value ?? 0 > 1){
+			formatter.maximumFractionDigits = 3
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.1){
+			numberZerosLeft = 1
+			formatter.maximumFractionDigits = 4
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.01){
+			numberZerosLeft = 2
+			formatter.maximumFractionDigits = 5
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.001){
+			numberZerosLeft = 3
+			formatter.maximumFractionDigits = 6
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.0001){
+			numberZerosLeft = 4
+			formatter.maximumFractionDigits = 7
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.00001){
+			numberZerosLeft = 5
+			formatter.maximumFractionDigits = 8
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.000001){
+			numberZerosLeft = 6
+			formatter.maximumFractionDigits = 9
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.0000001){
+			numberZerosLeft = 7
+			formatter.maximumFractionDigits = 10
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.00000001){
+			numberZerosLeft = 8
+			formatter.maximumFractionDigits = 11
+			formatter.minimumFractionDigits =  3
+		}
+		
+		formatter.groupingSeparator = ","
+		formatter.groupingSize = 3
+		formatter.usesGroupingSeparator = true
+		formatter.decimalSeparator = "."
+		//        formatter.numberStyle = .decimal
+		var stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "$\(value ?? 0)"
+		let amountText = NSMutableAttributedString.init(string: stringFormatted)
+		
+		amountText.setAttributes([NSAttributedString.Key.font: UIFont.MabryProMedium(Size.Large.sizeValue()),
+								  NSAttributedString.Key.foregroundColor: UIColor.grey36323C], range: NSRange(location: 0, length: amountText.length))
+		
+		if(numberZerosLeft > 0){
+			amountText.setAttributes([NSAttributedString.Key.font: UIFont.MabryProMedium(Size.VSmall.sizeValue()),
+									  NSAttributedString.Key.foregroundColor: UIColor.grey36323C],
+									 range: NSMakeRange(0, numberZerosLeft+1))//we count the dot
+		}
+		labelView.attributedText = amountText
+		labelView.lineBreakMode = .byCharWrapping
+		
+		
+	}
 }

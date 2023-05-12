@@ -314,6 +314,7 @@
 "NOT_ENOUGH_BALANCE" = "You don't have enough balance to invest";
 "NOT_ENOUGH_COINS" = "You don't have enough coins to exchange";
 "NOT_ENOUGH_COINS_WITHDRAW" = "You don't have enough coins to withdraw";
+"MINIMUM_AMOUNT_EXCHANGE" = "The minimum amount of assets to be exchanged is";
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";

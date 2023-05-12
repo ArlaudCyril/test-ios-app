@@ -18,6 +18,7 @@ class InvestInMyStrategyVC: ViewController {
 	var fromBalance : Balance?
 	var fromCurrency : AssetBaseData?
 	var fromBalanceTotal : String?
+	var fromAssetPrice : String?
 	
 	var toAssetId : String?
 	var toAssetPrice : String?
@@ -32,6 +33,8 @@ class InvestInMyStrategyVC: ViewController {
     var MaxCoin = Double()
     var maxEuroWithdraw = Double(), maxCoinWithdraw = Double()
     var maxCoinExchange = Double()
+	var minPriceExchange = 1.05
+	var minAmountExchange : Double?
     
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
@@ -81,6 +84,7 @@ class InvestInMyStrategyVC: ViewController {
     @IBOutlet var key0: UIButton!
     @IBOutlet var keyCancel: UIButton!
     @IBOutlet var previewMyInvest: PurpleButton!
+	@IBOutlet var exchangeAlertLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +98,7 @@ class InvestInMyStrategyVC: ViewController {
 		}
 		
 		if strategyType == .Exchange{
-			self.exchangeData = exchangeFromModel(exchangeFromCoinId: self.fromAssetId ?? "", exchangeFromCoinImg: self.fromCurrency?.image ?? "", exchangeFromCoinBalance: fromBalance ?? Balance(), exchangeToCoinId: self.toAssetId ?? "", exchangeToCoinPrice: self.toAssetPrice ?? "", exchangeToCoinImg: self.toCurrency?.image ?? "")
+			self.exchangeData = exchangeFromModel(exchangeFromCoinId: self.fromAssetId ?? "", exchangeFromCoinImg: self.fromCurrency?.image ?? "", exchangeFromCoinPrice: Double(self.fromAssetPrice ?? "") ?? 0, exchangeFromCoinBalance: fromBalance ?? Balance(), exchangeToCoinId: self.toAssetId ?? "", exchangeToCoinPrice: Double(self.toAssetPrice ?? "") ?? 0, exchangeToCoinImg: self.toCurrency?.image ?? "")
 			
 		}
 		
@@ -166,6 +170,7 @@ class InvestInMyStrategyVC: ViewController {
             key.tag = index
             key.addTarget(self, action: #selector(keyTyped), for: .touchUpInside)
         }
+		self.exchangeAlertLbl.isHidden = true
         
         self.enteredText = ""
         self.isFloatTyped = false
@@ -244,10 +249,15 @@ class InvestInMyStrategyVC: ViewController {
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_DEPOSIT"), for: .normal)
 			
         }else if strategyType == .Exchange{
+			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
+			self.exchangeAlertLbl.isHidden = false
+			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, prix: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.RedDF5A43, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			
             self.frequencyVw.isHidden = true
             self.maximumBtn.isHidden = false
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_EXCHANGE"), for: .normal)
 			self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "EXCHANGE")) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
+			
 			
 			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.ToCoinNameLbl.text ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -434,8 +444,7 @@ extension InvestInMyStrategyVC {
                 
             }
             if enteredText != ""{
-                self.previewMyInvest.backgroundColor = UIColor.PurpleColor
-                self.previewMyInvest.isUserInteractionEnabled = true
+				handlePreviewInvestButton(value: enteredText)
             }
             break
         case 10:
@@ -469,6 +478,7 @@ extension InvestInMyStrategyVC {
                         isFloatTyped = false
                     }
                 }
+				self.handlePreviewInvestButton(value: enteredText)
             }
             break
         default:
@@ -487,17 +497,19 @@ extension InvestInMyStrategyVC {
 				exchangeData?.exchangeFromCoinId = fromAssetId ?? ""
 				exchangeData?.exchangeFromCoinImg = fromCurrency?.image ?? ""
 				exchangeData?.exchangeFromCoinBalance = fromBalance ?? Balance()
+				exchangeData?.exchangeFromCoinPrice = Double(self.fromAssetPrice ?? "0") ?? 0
 				exchangeData?.exchangeToCoinId = toAssetId ?? ""
 				exchangeData?.exchangeToCoinImg = toCurrency?.image ?? ""
-				exchangeData?.exchangeToCoinPrice = toAssetPrice ?? ""
+				exchangeData?.exchangeToCoinPrice = Double(toAssetPrice ?? "0") ?? 0
 				
 			}else{
 				exchangeData?.exchangeFromCoinId = toAssetId ?? ""
 				exchangeData?.exchangeFromCoinImg = toCurrency?.image ?? ""
 				exchangeData?.exchangeFromCoinBalance = toBalance ?? Balance()
+				exchangeData?.exchangeFromCoinPrice = Double(toAssetPrice ?? "0") ?? 0
 				exchangeData?.exchangeToCoinId = fromAssetId ?? ""
 				exchangeData?.exchangeToCoinImg = fromCurrency?.image ?? ""
-				exchangeData?.exchangeToCoinPrice = String((Double(fromBalance?.balanceData.euroBalance ?? "0") ?? 0)/(Double(fromBalance?.balanceData.balance ?? "0") ?? 0))
+				exchangeData?.exchangeToCoinPrice = Double(self.fromAssetPrice ?? "0") ?? 0
 			}
 			self.maxCoinExchange = Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") ?? 0
 			self.fromBalanceTotal = String((Double(exchangeData?.exchangeFromCoinBalance.balanceData.euroBalance ?? "0") ?? 0))
@@ -550,8 +562,7 @@ extension InvestInMyStrategyVC {
         if enteredText.contains("."){
             self.isFloatTyped = true
         }
-        self.previewMyInvest.backgroundColor = UIColor.PurpleColor
-        self.previewMyInvest.isUserInteractionEnabled = true
+		self.handlePreviewInvestButton(value: enteredText)
     }
     
     
@@ -592,16 +603,16 @@ extension InvestInMyStrategyVC {
     
     func noOfCoins(value: String){
         if strategyType == .Exchange{
-			let coinFromPrice = (Double( exchangeData?.exchangeFromCoinBalance.balanceData.euroBalance ?? "0") ?? 0)/(Double( exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") ?? 0)
+			let coinFromPrice = exchangeData?.exchangeFromCoinPrice ?? 0
+			let coinToPrice = exchangeData?.exchangeToCoinPrice ?? 0
+			
 			let totalEuro = ((Double(value) ?? 0.0)*(coinFromPrice))
 			
 			amountTF.text = "\(value) \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
 			
 			totalCoinInvested = Double(value) ?? 0.0
 			
-			
-			let coinToPrice = Double(exchangeData?.exchangeToCoinPrice ?? "0") ?? 0
-			totalNoOfCoinsInvest = CommonFunctions.getTwoDecimalValue(number: (totalEuro/coinToPrice))
+			totalNoOfCoinsInvest = Double(fromBalance?.balanceData.balance ?? "0") ?? 0
 			
 			self.noOfCoinLbl.text = "~\(String(CommonFunctions.getTwoDecimalValue(number:(totalCoinInvested * coinFromPrice)/coinToPrice))) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
             
@@ -700,6 +711,26 @@ extension InvestInMyStrategyVC {
         maxCoinWithdraw = CommonFunctions.getTwoDecimalValue(number: ((maxEuroWithdraw)*(1/coinPrice)))
         
     }
+	
+	func handlePreviewInvestButton(value: String){
+		if(self.strategyType == .Exchange)
+		{
+			if(Double(value) ?? 0 >= self.minAmountExchange ?? 0){
+				self.previewMyInvest.backgroundColor = UIColor.PurpleColor
+				self.previewMyInvest.isUserInteractionEnabled = true
+				self.exchangeAlertLbl.isHidden = true
+			}
+			else{
+				self.previewMyInvest.backgroundColor = UIColor.TFplaceholderColor
+				self.previewMyInvest.isUserInteractionEnabled = false
+				self.exchangeAlertLbl.isHidden = false
+			}
+		}else{
+			self.previewMyInvest.backgroundColor = UIColor.PurpleColor
+			self.previewMyInvest.isUserInteractionEnabled = true
+		}
+	}
+	
 }
 
 

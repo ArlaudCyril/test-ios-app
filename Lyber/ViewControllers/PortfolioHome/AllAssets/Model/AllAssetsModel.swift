@@ -114,8 +114,8 @@ struct BalanceData: Codable{
 	}
 	
 	init(){
-		self.balance = ""
-		self.euroBalance = ""
+		self.balance = "0"
+		self.euroBalance = "0"
 	}
 }
 

@@ -308,6 +308,7 @@
 "NOT_ENOUGH_BALANCE" = "Votre solde est insuffisant pour investir";
 "NOT_ENOUGH_COINS" = "Vous n'avez pas assez d'actifs pour échanger";
 "NOT_ENOUGH_COINS_WITHDRAW" = "Vous n'avez pas assez d'actifs pour effectuer un retrait";
+"MINIMUM_AMOUNT_EXCHANGE" = "Le montant minimum d'assets à échanger est";
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";

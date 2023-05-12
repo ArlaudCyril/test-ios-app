@@ -81,10 +81,6 @@ extension ExchangeFromTVC{
 					let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 					vc.screenType = .exchange
 					vc.fromAssetId = data?.id ?? ""
-					
-					let nav = UINavigationController(rootViewController: vc)
-					nav.modalPresentationStyle = .fullScreen
-					nav.navigationBar.isHidden = true
 					self.controller?.navigationController?.pushViewController(vc, animated: true)
 				}
 			}

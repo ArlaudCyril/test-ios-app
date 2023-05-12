@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -766,6 +766,12 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pns-YI-bOU">
+                                        <rect key="frame" x="10" y="649" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -776,6 +782,7 @@
                                     <constraint firstItem="94i-gb-P7a" firstAttribute="top" secondItem="Do9-aR-lyT" secondAttribute="bottom" constant="12" id="IaB-GD-cjJ"/>
                                     <constraint firstItem="wPD-m2-pxf" firstAttribute="top" secondItem="xDg-NP-NnW" secondAttribute="top" id="L80-Wy-vMp"/>
                                     <constraint firstItem="Do9-aR-lyT" firstAttribute="top" secondItem="wPD-m2-pxf" secondAttribute="bottom" constant="16" id="NTo-4J-pzk"/>
+                                    <constraint firstItem="pns-YI-bOU" firstAttribute="top" secondItem="94i-gb-P7a" secondAttribute="top" constant="56" id="RA6-yu-n40"/>
                                     <constraint firstItem="Do9-aR-lyT" firstAttribute="leading" secondItem="xDg-NP-NnW" secondAttribute="leading" constant="24" id="dDy-DS-zlU"/>
                                     <constraint firstItem="94i-gb-P7a" firstAttribute="leading" secondItem="xDg-NP-NnW" secondAttribute="leading" constant="24" id="fEz-d1-FC1"/>
                                     <constraint firstAttribute="trailing" secondItem="Do9-aR-lyT" secondAttribute="trailing" constant="24" id="kNF-nA-oGU"/>
@@ -786,12 +793,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qEz-Cb-2Px" firstAttribute="trailing" secondItem="xDg-NP-NnW" secondAttribute="trailing" id="2eK-Vd-KEa"/>
+                            <constraint firstItem="pns-YI-bOU" firstAttribute="leading" secondItem="qEz-Cb-2Px" secondAttribute="leading" constant="10" id="4X9-qQ-kz5"/>
                             <constraint firstItem="JzV-tm-o6v" firstAttribute="top" secondItem="2FY-qn-Rhx" secondAttribute="top" id="7oc-ab-3xs"/>
                             <constraint firstItem="xDg-NP-NnW" firstAttribute="leading" secondItem="qEz-Cb-2Px" secondAttribute="leading" id="90Y-Vl-2Gu"/>
                             <constraint firstAttribute="trailing" secondItem="jeg-LW-056" secondAttribute="trailing" constant="24" id="9AF-LD-mWX"/>
                             <constraint firstItem="qEz-Cb-2Px" firstAttribute="trailing" secondItem="JzV-tm-o6v" secondAttribute="trailing" id="KUQ-HF-fie"/>
+                            <constraint firstItem="pns-YI-bOU" firstAttribute="bottom" secondItem="qEz-Cb-2Px" secondAttribute="bottom" constant="12.5" id="R22-p0-XPw"/>
                             <constraint firstItem="xYD-nq-gVM" firstAttribute="top" secondItem="qEz-Cb-2Px" secondAttribute="top" constant="12" id="VR9-fz-OJs"/>
                             <constraint firstItem="JzV-tm-o6v" firstAttribute="leading" secondItem="qEz-Cb-2Px" secondAttribute="leading" id="VyS-xA-qc8"/>
+                            <constraint firstItem="qEz-Cb-2Px" firstAttribute="trailing" secondItem="pns-YI-bOU" secondAttribute="trailing" constant="10" id="b7z-9u-8Bg"/>
                             <constraint firstItem="Do9-aR-lyT" firstAttribute="height" secondItem="qEz-Cb-2Px" secondAttribute="height" multiplier="0.35" id="fcg-2f-Cai"/>
                             <constraint firstItem="jeg-LW-056" firstAttribute="leading" secondItem="2FY-qn-Rhx" secondAttribute="leading" constant="24" id="flh-bx-B52"/>
                             <constraint firstItem="qEz-Cb-2Px" firstAttribute="bottom" secondItem="xDg-NP-NnW" secondAttribute="bottom" constant="16" id="nCz-xb-QNf"/>
@@ -814,6 +824,7 @@
                         <outlet property="creditCardNumberLbl" destination="HG1-yL-dgO" id="WRk-su-7d6"/>
                         <outlet property="creditCardVw" destination="cGO-sT-jOO" id="no7-dn-Emg"/>
                         <outlet property="decimalKey" destination="N7Z-5d-GtL" id="tSG-0S-FqM"/>
+                        <outlet property="exchangeAlertLbl" destination="pns-YI-bOU" id="jl0-kk-NfT"/>
                         <outlet property="exchangeBtn" destination="92R-Fk-kJ0" id="m1q-CY-jkd"/>
                         <outlet property="exchangeView" destination="fgv-tI-zgL" id="Bt2-Nf-3wv"/>
                         <outlet property="frequencyDropDown" destination="Gy3-Xj-tCR" id="3tr-vd-LRk"/>

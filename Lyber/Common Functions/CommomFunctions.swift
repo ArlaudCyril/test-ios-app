@@ -456,25 +456,46 @@ class CommonFunctions{
     
     static func formattedCurrency(from value: Double?) -> String {
         guard value != nil else { return "$0.00" }
-//        let doubleValue = Double(value!) ?? 0.0
         let formatter = NumberFormatter()
-//        formatter.currencyCode = "EUR"
-//        formatter.currencySymbol = "€"
-//        formatter.locale = Locale(identifier: "es_ES")
-        
+
 
         if(value ?? 0 > 10000)
         {
             formatter.maximumFractionDigits = 0
             formatter.minimumFractionDigits =  0
-        }
-        else if(value ?? 0 > 1000){
+        }else if(value ?? 0 > 1000){
             formatter.maximumFractionDigits = 1
             formatter.minimumFractionDigits =  1
-        }
-        else{
+        }else if(value ?? 0 > 10){
             formatter.maximumFractionDigits = 2
             formatter.minimumFractionDigits =  2
+        }else if(value ?? 0 > 1){
+            formatter.maximumFractionDigits = 3
+            formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.1){
+            formatter.maximumFractionDigits = 4
+            formatter.minimumFractionDigits =  3
+        }else if(value ?? 0 > 0.01){
+            formatter.maximumFractionDigits = 5
+            formatter.minimumFractionDigits =  3
+        }else if(value ?? 0 > 0.001){
+            formatter.maximumFractionDigits = 6
+            formatter.minimumFractionDigits =  3
+        }else if(value ?? 0 > 0.0001){
+            formatter.maximumFractionDigits = 7
+            formatter.minimumFractionDigits =  3
+        }else if(value ?? 0 > 0.00001){
+            formatter.maximumFractionDigits = 8
+            formatter.minimumFractionDigits =  3
+        }else if(value ?? 0 > 0.000001){
+            formatter.maximumFractionDigits = 9
+            formatter.minimumFractionDigits =  3
+        }else if(value ?? 0 > 0.0000001){
+            formatter.maximumFractionDigits = 10
+            formatter.minimumFractionDigits =  3
+        }else if(value ?? 0 > 0.00000001){
+            formatter.maximumFractionDigits = 11
+            formatter.minimumFractionDigits =  3
         }
       
         formatter.groupingSeparator = ","
@@ -482,8 +503,40 @@ class CommonFunctions{
         formatter.usesGroupingSeparator = true
         formatter.decimalSeparator = "."
 //        formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "$\(value ?? 0)"
+        var stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "0"
+		
+		return stringFormatted
     }
+	
+	static func formattedAsset(from value: Double?, prix: Double?, rounding : NumberFormatter.RoundingMode) -> String {
+		guard value != nil else { return "0.00" }
+		guard prix != nil else { return "0.00" }
+		let formatter = NumberFormatter()
+		
+		//To find the precision, here X
+		//Price * 10e-X >= 0.01(pennies)
+		//=> X  >= -log(0,01/Price)
+		let precision = Int(ceil(-log10(0.01/(prix ?? 1))))
+		if(precision > 0){
+			formatter.maximumFractionDigits = precision
+		}else{
+			formatter.maximumFractionDigits = 0
+		}
+		formatter.minimumFractionDigits =  0
+		
+		formatter.groupingSeparator = ","
+		formatter.groupingSize = 3
+		formatter.usesGroupingSeparator = true
+		formatter.decimalSeparator = "."
+		formatter.roundingMode = rounding
+	
+		//        formatter.numberStyle = .decimal
+		let stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "0"
+		
+		return stringFormatted
+	}
+	
+	
     
     static func numberFormat(from value: Double?) -> String {
         guard value != nil else { return "$0.00" }
@@ -753,6 +806,8 @@ class CommonFunctions{
 				return "Ethereum"
 			case "arbitrum":
 				return "Arbitrum One"
+			case "solana":
+				return "Solana"
 			default:
 				return ""
 		}
