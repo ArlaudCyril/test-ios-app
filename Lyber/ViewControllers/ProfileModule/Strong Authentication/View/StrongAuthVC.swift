@@ -116,7 +116,7 @@ extension StrongAuthVC{
             CommonFunctions.showLoader(self.view)
             VerificationVM().TwoFAApi(type2FA: "phone", completion: {[weak self]response in
                 CommonFunctions.hideLoader(self?.view ?? UIView())
-                if let response = response{
+				if response != nil{
                     userData.shared.has2FA = true
                     userData.shared.type2FA = "phone"
                     userData.shared.dataSave()
@@ -136,7 +136,7 @@ extension StrongAuthVC{
             CommonFunctions.showLoader(self.view)
             VerificationVM().TwoFAApi(type2FA: "email", completion: {[weak self]response in
                 CommonFunctions.hideLoader(self?.view ?? UIView())
-                if let response = response{
+				if response != nil{
                     userData.shared.has2FA = true
                     userData.shared.type2FA = "email"
                     userData.shared.dataSave()
@@ -171,22 +171,22 @@ extension StrongAuthVC{
     @objc func loginSwitchAct(sender : UISwitch){
         if (userData.shared.has2FA == true){
             if sender.isOn == true{
-                var params = ["login": true,
+				let params = ["login": true,
                               "withdrawal": userData.shared.scope2FAWithdrawal,
                               "whitelisting": userData.shared.scope2FAWhiteListing]
                 
-                StrongAuthVM().scope2FAApi(params: params, completion: {[weak self]response in
+                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
                     if response != nil{
                         userData.shared.scope2FALogin = true
                         userData.shared.dataSave()
                     }
                 })
             }else{
-                var params = ["login": false,
+				let params = ["login": false,
                               "withdrawal": userData.shared.scope2FAWithdrawal,
                               "whitelisting": userData.shared.scope2FAWhiteListing]
                 
-                StrongAuthVM().scope2FAApi(params: params, completion: {[weak self]response in
+                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
                     if response != nil{
                         userData.shared.scope2FALogin = false
                         userData.shared.dataSave()
@@ -199,22 +199,22 @@ extension StrongAuthVC{
     @objc func validateWithdrawSwitchAct(sender : UISwitch){
         if (userData.shared.has2FA == true){
             if sender.isOn == true{
-                var params = ["login": userData.shared.scope2FALogin,
+				let params = ["login": userData.shared.scope2FALogin,
                               "withdrawal": true,
                               "whitelisting": userData.shared.scope2FAWhiteListing]
                 
-                StrongAuthVM().scope2FAApi(params: params, completion: {[weak self]response in
+                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
                     if response != nil{
                         userData.shared.scope2FAWithdrawal = true
                         userData.shared.dataSave()
                     }
                 })
             }else{
-                var params = ["login": userData.shared.scope2FALogin,
+				let params = ["login": userData.shared.scope2FALogin,
                               "withdrawal": false,
                               "whitelisting": userData.shared.scope2FAWhiteListing]
                 
-                StrongAuthVM().scope2FAApi(params: params, completion: {[weak self]response in
+                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
                     if response != nil{
                         userData.shared.scope2FAWithdrawal = false
                         userData.shared.dataSave()
@@ -227,7 +227,7 @@ extension StrongAuthVC{
     @objc func enableWhitelistingSwitchAct(sender : UISwitch){
         if (userData.shared.has2FA == true){
             if sender.isOn == true{
-                var params = ["login": userData.shared.scope2FALogin,
+				let params = ["login": userData.shared.scope2FALogin,
                               "withdrawal": userData.shared.scope2FAWithdrawal,
                               "whitelisting": true]
                 
@@ -257,7 +257,7 @@ extension StrongAuthVC{
 extension StrongAuthVC{
     func desactivateTwoFA(){
         VerificationVM().TwoFAApi(type2FA: "none", completion: {[weak self]response in
-            if let response = response{
+			if response != nil{
                 self?.twoAuthView.isHidden = true
                 userData.shared.has2FA = false
                 userData.shared.type2FA = "none"

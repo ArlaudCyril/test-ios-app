@@ -163,7 +163,7 @@ extension EmailLoginVC{
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]as? NSValue)?.cgRectValue{
+		if ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]as? NSValue)?.cgRectValue) != nil{
 //            self.stackViewBottomConst.constant = keyboardSize.height + 12
         }
     }

@@ -20,8 +20,8 @@ class PinVerificationVC: ViewController {
     @IBOutlet var pinTF3: otpTextField!
     @IBOutlet var pinTF4: otpTextField!
     @IBOutlet var orLbl: UILabel!
-    @IBOutlet var useBiometricVw: UIView!
-    @IBOutlet var useBiometricLbl: UILabel!
+    @IBOutlet var useFaceIdVw: UIView!
+    @IBOutlet var useFaceIdLbl: UILabel!
     @IBOutlet var key1: UIButton!
     @IBOutlet var key2: UIButton!
     @IBOutlet var key3: UIButton!
@@ -44,9 +44,9 @@ class PinVerificationVC: ViewController {
     override func setUpUI(){
         CommonUI.setUpLbl(lbl: self.enterYourPinLbl, text: CommonFunctions.localisation(key: "ENTER_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.XXlarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.orLbl, text: CommonFunctions.localisation(key: "OR"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Large.sizeValue()))
-        self.useBiometricVw.layer.cornerRadius = 8
+        self.useFaceIdVw.layer.cornerRadius = 8
 //        self.useBiometricVw.backgroundColor = UIColor.borderColor
-        CommonUI.setUpLbl(lbl: self.useBiometricLbl, text: CommonFunctions.localisation(key: "USE_BIOMETRIC"), textColor: UIColor.PurpleColor, font: UIFont.AtypDisplayRegular(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.useFaceIdLbl, text: CommonFunctions.localisation(key: "USE_FACE_ID"), textColor: UIColor.PurpleColor, font: UIFont.AtypDisplayRegular(Size.Large.sizeValue()))
         
         let pins : [otpTextField] = [pinTF1,pinTF2,pinTF3,pinTF4]
         for pin in pins{
@@ -68,7 +68,7 @@ class PinVerificationVC: ViewController {
         }
         
         let biometricTap = UITapGestureRecognizer(target: self, action: #selector(authenticationWithTouchID))
-        self.useBiometricVw.addGestureRecognizer(biometricTap)
+        self.useFaceIdVw.addGestureRecognizer(biometricTap)
     }
 }
 

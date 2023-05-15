@@ -71,11 +71,7 @@ extension ExchangeFromTVC{
 					vc.strategyType = .Exchange
 					vc.fromAssetId = data?.id
 					vc.toAssetId = self.controller?.toAssetId
-					
-					let nav = UINavigationController(rootViewController: vc)
-					nav.modalPresentationStyle = .fullScreen
-					nav.navigationBar.isHidden = true
-					self.controller?.present(nav, animated: true, completion: nil)
+					self.controller?.navigationController?.pushViewController(vc, animated: true)
 				}
 				else{
 					let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)

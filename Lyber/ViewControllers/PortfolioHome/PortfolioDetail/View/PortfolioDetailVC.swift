@@ -263,7 +263,6 @@ extension PortfolioDetailVC : URLSessionWebSocketDelegate{
 				case .success(let message):
 					switch message {
 						case .string(let messageString):
-							let messageDict = messageString as String
 							do{
 								let data = messageString.data(using: .utf8)
 								let jsondata = try JSON(data: data ?? Data())

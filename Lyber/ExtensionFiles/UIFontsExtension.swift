@@ -31,40 +31,40 @@ internal enum Size : CGFloat{
 extension UIFont {
 
     class func AtypDisplayBold(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypDisplay-Bold", size: size) ?? UIFont()
+        return UIFont(name: "AtypDisplay-Bold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func AtypDisplayMedium(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypDisplay-Medium", size: size) ?? UIFont()
+        return UIFont(name: "AtypDisplay-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func AtypDisplayRegular(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypDisplay-Regular", size: size) ?? UIFont()
+        return UIFont(name: "AtypDisplay-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func AtypDisplaySemibold(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypDisplay-Semibold", size: size) ?? UIFont()
+        return UIFont(name: "AtypDisplay-Semibold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func MabryProBold(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "Mabry Pro Bold", size: size) ?? UIFont()
+        return UIFont(name: "MabryPro-Bold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func MabryProMedium(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "Mabry Pro Medium", size: size) ?? UIFont()
+        return UIFont(name: "MabryPro-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func MabryProLight(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "Mabry Pro Light", size: size) ?? UIFont()
+        return UIFont(name: "MabryPro-Light", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func AtypTextBold(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypText-Bold", size: size) ?? UIFont()
+        return UIFont(name: "AtypText-Bold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func AtypTextMedium(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypText-Medium", size: size) ?? UIFont()
+        return UIFont(name: "AtypText-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func AtypTextRegular(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypText-Regular", size: size) ?? UIFont()
+        return UIFont(name: "AtypText-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func AtypTextSemibold(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "AtypText-Semibold", size: size) ?? UIFont()
+        return UIFont(name: "AtypText-Semibold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     class func MabryPro(_ size:CGFloat) -> UIFont {
-        return UIFont(name: "Mabry Pro", size: size) ?? UIFont()
+        return UIFont(name: "MabryPro-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
     }
 //    class func MontSemiBold(_ size:CGFloat) -> UIFont {
 //        return UIFont(name: "Mont-SemiBold", size: size)!

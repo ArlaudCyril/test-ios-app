@@ -169,7 +169,7 @@ extension TotalEarningsVC{
 
 extension TotalEarningsVC: ChartViewDelegate{
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        guard let dataSet = chartView.data?.dataSets[highlight.dataSetIndex] else { return }
+		guard (chartView.data?.dataSets[highlight.dataSetIndex]) != nil else { return }
         print("chartValueSelected : x = \(highlight.xPx) y = \(highlight.yPx)")
         
         customMarkerView.center = CGPoint(x: highlight.xPx, y: (highlight.yPx ))

@@ -43,7 +43,7 @@ extension AnalyticsTVC{
         CommonUI.setUpLbl(lbl: self.yieldPercentageLbl, text: "0.00%", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         var graphValues: [ChartDataEntry] = []
         for index in 0..<8 {
-            let randomValue = Double(arc4random_uniform(15000))
+			_ = Double(arc4random_uniform(15000))
             graphValues.append(ChartDataEntry(x: Double(index), y: 0))
         }
         extractedFunc(graphValues, UIColor.PurpleColor)

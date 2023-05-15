@@ -334,8 +334,6 @@ extension PersonalDataVC{
         personalDataVM.checkEmailVerificationApi(code: code , completion: {[self]response in
             CommonFunctions.hideLoader(self.view)
             if (response != nil){
-                
-                    print(response)
                     userData.shared.personalDataStepComplete = 3
                     userData.shared.dataSave()
                     self.GotoNextIndex()

@@ -190,7 +190,7 @@ extension AddAssetsVC{
             order = "stable_coins"
         }
         addAssetsVM.getAllAssetsApi(order: order, completion: {[]response in
-            if var response = response {
+			if let response = response {
                 self.coinsData.removeAll()
                 self.coinsData.append(contentsOf: response )
                 

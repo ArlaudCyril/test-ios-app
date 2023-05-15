@@ -10,7 +10,7 @@ import UIKit
 var totalEuroAvailable : Double? = 0
 var totalPortfolio : Double = 0
 var coinDetailData : [AssetBaseData] = []
-class PortfolioHomeVC: ViewController {
+class PortfolioHomeVC: NotSwipeGesture {
     //MARK: - IB OUTLETS
     var headerData : [String] = []
     var assetsData : [Asset] = []

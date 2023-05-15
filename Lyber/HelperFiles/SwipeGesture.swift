@@ -25,7 +25,7 @@ class SwipeGesture : ViewController, UIGestureRecognizerDelegate{
     }
 }
 
-class NotSwipeGesture: UITabBarController, UIGestureRecognizerDelegate{
+class NotSwipeGesture: ViewController, UIGestureRecognizerDelegate{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         swipeToPop()

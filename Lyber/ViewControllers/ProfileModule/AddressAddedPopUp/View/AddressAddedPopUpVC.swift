@@ -151,7 +151,7 @@ extension AddressAddedPopUpVC{
         addressAddedPopUpVM.addWhiteListingAddressApi(cryptoAddress: self.cryptoAddressAdded, completion: {[weak self]response in
             self?.confirmBtn.isUserInteractionEnabled = true
             self?.confirmBtn.hideLoading()
-            if let response = response{
+			if response != nil{
                 self?.dismiss(animated: true, completion: nil)
                 self?.controller?.navigationController?.popToViewController(ofClass: CryptoAddressBookVC.self)
             }

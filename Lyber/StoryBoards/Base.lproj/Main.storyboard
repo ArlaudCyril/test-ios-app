@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pUK-Bp-7Fg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pUK-Bp-7Fg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1153,7 +1153,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p73-Em-MgL">
                                         <rect key="frame" x="159.5" y="245" width="95.5" height="54"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="biometric" translatesAutoresizingMaskIntoConstraints="NO" id="5f7-Ee-6H1">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face_id" translatesAutoresizingMaskIntoConstraints="NO" id="5f7-Ee-6H1">
                                                 <rect key="frame" x="0.0" y="12" width="30" height="30"/>
                                                 <color key="tintColor" name="PurpleColor"/>
                                                 <constraints>
@@ -1313,8 +1313,8 @@
                         <outlet property="pinTF2" destination="3wt-Fk-H8h" id="0Ud-n5-hsn"/>
                         <outlet property="pinTF3" destination="BCp-iI-d6e" id="jyt-G0-vL8"/>
                         <outlet property="pinTF4" destination="GGf-Pw-TzA" id="Qgu-8b-aC5"/>
-                        <outlet property="useBiometricLbl" destination="k8C-Nq-XvS" id="tSk-Q2-tFo"/>
-                        <outlet property="useBiometricVw" destination="p73-Em-MgL" id="7fw-lh-gZF"/>
+                        <outlet property="useFaceIdLbl" destination="k8C-Nq-XvS" id="tSk-Q2-tFo"/>
+                        <outlet property="useFaceIdVw" destination="p73-Em-MgL" id="DFp-wH-nQN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7g-JA-aR9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1992,11 +1992,11 @@
     <resources>
         <image name="Group 1853" width="220" height="63"/>
         <image name="back" width="6" height="11"/>
-        <image name="biometric" width="24" height="24"/>
         <image name="close" width="14" height="14"/>
         <image name="discovery_bg" width="375" height="435"/>
         <image name="drop_down" width="28" height="28"/>
         <image name="enable_notifications" width="302" height="170.5"/>
+        <image name="face_id" width="28" height="28"/>
         <image name="splash_background" width="375" height="812"/>
         <image name="visibility_off" width="20" height="20"/>
         <namedColor name="LightPurple">

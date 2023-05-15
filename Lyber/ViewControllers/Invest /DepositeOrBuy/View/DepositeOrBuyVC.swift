@@ -199,11 +199,8 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 let vc = DepositFundsVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 self.controller?.navigationController?.pushViewController(vc, animated: true)
             }
-        case .PayWith:                                                                   //Pay With
-            break
         case .withdrawExchange:                                                          //withdraw exchange
             if indexPath.row == 0 || indexPath.row == 1{
-                self.dismiss(animated: true, completion: nil)
                 let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen

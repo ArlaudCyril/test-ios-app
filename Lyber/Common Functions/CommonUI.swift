@@ -107,40 +107,40 @@ class CommonUI{
 			formatter.maximumFractionDigits = 2
 			formatter.minimumFractionDigits =  2
 		}else if(value ?? 0 > 1){
-			formatter.maximumFractionDigits = 3
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 2
+			formatter.minimumFractionDigits =  2
 		}else if(value ?? 0 > 0.1){
 			numberZerosLeft = 1
-			formatter.maximumFractionDigits = 4
+			formatter.maximumFractionDigits = 3
 			formatter.minimumFractionDigits =  3
 		}else if(value ?? 0 > 0.01){
 			numberZerosLeft = 2
-			formatter.maximumFractionDigits = 5
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 4
+			formatter.minimumFractionDigits =  4
 		}else if(value ?? 0 > 0.001){
 			numberZerosLeft = 3
-			formatter.maximumFractionDigits = 6
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 5
+			formatter.minimumFractionDigits =  5
 		}else if(value ?? 0 > 0.0001){
 			numberZerosLeft = 4
-			formatter.maximumFractionDigits = 7
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 6
+			formatter.minimumFractionDigits =  6
 		}else if(value ?? 0 > 0.00001){
 			numberZerosLeft = 5
-			formatter.maximumFractionDigits = 8
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 7
+			formatter.minimumFractionDigits =  7
 		}else if(value ?? 0 > 0.000001){
 			numberZerosLeft = 6
-			formatter.maximumFractionDigits = 9
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 8
+			formatter.minimumFractionDigits =  8
 		}else if(value ?? 0 > 0.0000001){
 			numberZerosLeft = 7
-			formatter.maximumFractionDigits = 10
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 9
+			formatter.minimumFractionDigits =  9
 		}else if(value ?? 0 > 0.00000001){
 			numberZerosLeft = 8
-			formatter.maximumFractionDigits = 11
-			formatter.minimumFractionDigits =  3
+			formatter.maximumFractionDigits = 10
+			formatter.minimumFractionDigits =  10
 		}
 		
 		formatter.groupingSeparator = ","
@@ -149,6 +149,8 @@ class CommonUI{
 		formatter.decimalSeparator = "."
 		//        formatter.numberStyle = .decimal
 		var stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "$\(value ?? 0)"
+		stringFormatted += "€"
+		
 		let amountText = NSMutableAttributedString.init(string: stringFormatted)
 		
 		amountText.setAttributes([NSAttributedString.Key.font: UIFont.MabryProMedium(Size.Large.sizeValue()),

@@ -45,7 +45,9 @@ class AllAssetsVC: SwipeGesture {
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
 			//TODO: change comportement
-			self.backBtnAct()
+			if(screenType != .exchange){
+				self.navigationController?.deleteToViewController(ofClass: PortfolioHomeVC.self)
+			}
 		}
 		return true
 	}
@@ -213,7 +215,7 @@ extension AllAssetsVC{
 extension AllAssetsVC{
     func callGetAssetsApi(isEmpty : Bool = false){
         allAssetsVM.getAllAssetsApi(completion: {[]response in
-            if var response = response {
+			if let response = response {
                 print(response)
                 self.originalData = response
                 self.coinsData = response
@@ -233,8 +235,7 @@ extension AllAssetsVC{
    
     @objc func searchTextChange(){
         if searchTF.text == ""{
-            self.filteredData = coinDetailData
-            self.filterCoin = self.coinsData
+			self.filterData()
         }else{
             self.filterCoin = []
 //            self.filteredData = coinDetailData.filter ({

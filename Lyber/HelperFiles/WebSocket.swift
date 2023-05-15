@@ -87,45 +87,19 @@ extension WebSockets {
                 break
             case .cancelled:
                 isConnected = false
-            case .error(let error):
+			case .error(_):
                 isConnected = false
 //                handleError(error)
             }
         
     }
     
-//    func openWebSocket() {
-//        let urlString = "ws://52.47.162.87/websocket/btceur"
-//        if let url = URL(string: urlString) {
-//            var request = URLRequest(url: url)
-//            let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
-//            let webSocket = session.webSocketTask(with: request)
-//            webSocket.resume()
-//            webSocket.receive(completionHandler: { result in
-//
-//                switch result {
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                case .success(let message):
-//                    switch message {
-//                    case .string(let messageString):
-//                        print(messageString)
-//                    case .data(let data):
-//                        print(data.description)
-//                    default:
-//                        print("Unknown type received from WebSocket")
-//                    }
-//                }
-//            })
-//        }
-//    }
-    
     
 
     func openWebSocket() {
         let urlString = "wss://rtf.beta.getbux.com/subscriptions/me"
         if let url = URL(string: urlString) {
-            var request = URLRequest(url: url)
+			let request = URLRequest(url: url)
             let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
             let webSocket = session.webSocketTask(with: request)
             webSocket.resume()

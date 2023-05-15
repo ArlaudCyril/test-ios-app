@@ -312,11 +312,7 @@ class InvestInMyStrategyVC: ViewController {
 //MARK: - objective functions
 extension InvestInMyStrategyVC {
     @objc func cancelBtnAct(){
-        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .singleCoin || strategyType == .activateStrategy || strategyType == .editActiveStrategy || strategyType == .sell || strategyType == .withdrawEuro{
-            self.navigationController?.popViewController(animated: true)
-        }else{
-            self.dismiss(animated: true, completion: nil)
-        }
+		self.navigationController?.popViewController(animated: true)
     }
     
     @objc func previewMyInvestAction(){
@@ -406,10 +402,7 @@ extension InvestInMyStrategyVC {
         let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
         vc.screenType = .exchange
 		vc.fromAssetId = self.exchangeData?.exchangeFromCoinId ?? ""
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.present(nav, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
         
     }
 	
@@ -417,10 +410,7 @@ extension InvestInMyStrategyVC {
 		let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
         vc.screenType = .exchange
 		vc.toAssetId = self.exchangeData?.exchangeToCoinId
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.present(nav, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func keyTyped(sender : UIButton){
@@ -555,7 +545,7 @@ extension InvestInMyStrategyVC {
 			noOfCoins(value: enteredText)
             
         }else if strategyType == .Exchange{
-            enteredText = exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0"
+            enteredText = CommonFunctions.formattedAsset(from: Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0"), prix: exchangeData?.exchangeFromCoinPrice, rounding: .down)
             noOfCoins(value: enteredText)
         }
         
@@ -605,8 +595,7 @@ extension InvestInMyStrategyVC {
         if strategyType == .Exchange{
 			let coinFromPrice = exchangeData?.exchangeFromCoinPrice ?? 0
 			let coinToPrice = exchangeData?.exchangeToCoinPrice ?? 0
-			
-			let totalEuro = ((Double(value) ?? 0.0)*(coinFromPrice))
+		
 			
 			amountTF.text = "\(value) \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
 			
@@ -745,7 +734,6 @@ extension InvestInMyStrategyVC : UITextFieldDelegate{
     func textFieldDidChangeSelection(_ textField: UITextField) {
 //        let startPosition: UITextPosition = amountTF.beginningOfDocument
 //        let endPosition: UITextPosition = amountTF.endOfDocument
-        let selectedRange: UITextRange? = amountTF.selectedTextRange
         if let selectedRange = amountTF.selectedTextRange {
             cursorPosition = amountTF.offset(from: amountTF.beginningOfDocument, to: selectedRange.start)
             print("cursor position -----\(cursorPosition)")

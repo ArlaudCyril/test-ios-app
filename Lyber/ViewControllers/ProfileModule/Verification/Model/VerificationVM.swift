@@ -23,7 +23,7 @@ class VerificationVM{
     
     func TwoFAApi(type2FA: String?, completion: @escaping ( (SuccessAPI?) -> Void )){
         
-        let params : [String : Any] = [Constants.ApiKeys.type2FA : type2FA]
+		let params : [String : Any] = [Constants.ApiKeys.type2FA : type2FA ?? ""]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userService2FA, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             print(response)

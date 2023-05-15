@@ -459,58 +459,58 @@ class CommonFunctions{
         let formatter = NumberFormatter()
 
 
-        if(value ?? 0 > 10000)
-        {
-            formatter.maximumFractionDigits = 0
-            formatter.minimumFractionDigits =  0
-        }else if(value ?? 0 > 1000){
-            formatter.maximumFractionDigits = 1
-            formatter.minimumFractionDigits =  1
-        }else if(value ?? 0 > 10){
-            formatter.maximumFractionDigits = 2
-            formatter.minimumFractionDigits =  2
-        }else if(value ?? 0 > 1){
-            formatter.maximumFractionDigits = 3
-            formatter.minimumFractionDigits =  3
+		if(value ?? 0 > 10000)
+		{
+			formatter.maximumFractionDigits = 0
+			formatter.minimumFractionDigits =  0
+		}else if(value ?? 0 > 1000){
+			formatter.maximumFractionDigits = 1
+			formatter.minimumFractionDigits =  1
+		}else if(value ?? 0 > 10){
+			formatter.maximumFractionDigits = 2
+			formatter.minimumFractionDigits =  2
+		}else if(value ?? 0 > 1){
+			formatter.maximumFractionDigits = 2
+			formatter.minimumFractionDigits =  2
 		}else if(value ?? 0 > 0.1){
-            formatter.maximumFractionDigits = 4
-            formatter.minimumFractionDigits =  3
-        }else if(value ?? 0 > 0.01){
-            formatter.maximumFractionDigits = 5
-            formatter.minimumFractionDigits =  3
-        }else if(value ?? 0 > 0.001){
-            formatter.maximumFractionDigits = 6
-            formatter.minimumFractionDigits =  3
-        }else if(value ?? 0 > 0.0001){
-            formatter.maximumFractionDigits = 7
-            formatter.minimumFractionDigits =  3
-        }else if(value ?? 0 > 0.00001){
-            formatter.maximumFractionDigits = 8
-            formatter.minimumFractionDigits =  3
-        }else if(value ?? 0 > 0.000001){
-            formatter.maximumFractionDigits = 9
-            formatter.minimumFractionDigits =  3
-        }else if(value ?? 0 > 0.0000001){
-            formatter.maximumFractionDigits = 10
-            formatter.minimumFractionDigits =  3
-        }else if(value ?? 0 > 0.00000001){
-            formatter.maximumFractionDigits = 11
-            formatter.minimumFractionDigits =  3
-        }
+			formatter.maximumFractionDigits = 3
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.01){
+			formatter.maximumFractionDigits = 4
+			formatter.minimumFractionDigits =  4
+		}else if(value ?? 0 > 0.001){
+			formatter.maximumFractionDigits = 5
+			formatter.minimumFractionDigits =  5
+		}else if(value ?? 0 > 0.0001){
+			formatter.maximumFractionDigits = 6
+			formatter.minimumFractionDigits =  6
+		}else if(value ?? 0 > 0.00001){
+			formatter.maximumFractionDigits = 7
+			formatter.minimumFractionDigits =  7
+		}else if(value ?? 0 > 0.000001){
+			formatter.maximumFractionDigits = 8
+			formatter.minimumFractionDigits =  8
+		}else if(value ?? 0 > 0.0000001){
+			formatter.maximumFractionDigits = 9
+			formatter.minimumFractionDigits =  9
+		}else if(value ?? 0 > 0.00000001){
+			formatter.maximumFractionDigits = 10
+			formatter.minimumFractionDigits =  10
+		}
       
         formatter.groupingSeparator = ","
         formatter.groupingSize = 3
         formatter.usesGroupingSeparator = true
         formatter.decimalSeparator = "."
 //        formatter.numberStyle = .decimal
-        var stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "0"
+		let stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "0"
 		
 		return stringFormatted
     }
 	
 	static func formattedAsset(from value: Double?, prix: Double?, rounding : NumberFormatter.RoundingMode) -> String {
 		guard value != nil else { return "0.00" }
-		guard prix != nil else { return "0.00" }
+		guard (prix != nil && prix != 0 && ((prix?.isNaN) != true)) else { return "0.00" }
 		let formatter = NumberFormatter()
 		
 		//To find the precision, here X
@@ -519,10 +519,11 @@ class CommonFunctions{
 		let precision = Int(ceil(-log10(0.01/(prix ?? 1))))
 		if(precision > 0){
 			formatter.maximumFractionDigits = precision
+			formatter.minimumFractionDigits =  precision
 		}else{
 			formatter.maximumFractionDigits = 0
+			formatter.minimumFractionDigits =  0
 		}
-		formatter.minimumFractionDigits =  0
 		
 		formatter.groupingSeparator = ","
 		formatter.groupingSize = 3

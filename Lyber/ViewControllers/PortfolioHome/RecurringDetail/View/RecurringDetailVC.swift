@@ -88,10 +88,7 @@ class RecurringDetailVC: ViewController {
             self.progressView.lineCap = .round
             self.coinsData = investmentData?.strategyAssets ?? []
             for i in 0...((coinsData.count) - 1){
-//                DispatchQueue.main.async {
-                print((Float(self.coinsData[i].share ?? 0))/100)
-//                    self.progressView.setProgress(section: i, to: (Float(self.coinsData[i].allocation ?? 0))/100)
-//                }
+				print((Float(self.coinsData[i].share ))/100)
             }
             self.collview.reloadData()
             self.setLayout()
