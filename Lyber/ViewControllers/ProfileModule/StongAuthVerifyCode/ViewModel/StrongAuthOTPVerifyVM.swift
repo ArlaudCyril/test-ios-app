@@ -11,7 +11,7 @@ class StrongAuthOTPVerifyVM{
         let params : [String : Any] = [Constants.ApiKeys.otp : otp]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyStrongAuth, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")

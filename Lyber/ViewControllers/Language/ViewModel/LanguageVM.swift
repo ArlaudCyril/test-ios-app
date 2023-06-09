@@ -15,7 +15,7 @@ class LanguageVM{
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceLanguage, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
 			completion(response)
 			CommonFunctions.hideLoader()
-		}, onFailure: { reload, error in
+		}, onFailure: { reload, error, code in
 			completion(nil)
 			CommonFunctions.toster(error)
 		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")

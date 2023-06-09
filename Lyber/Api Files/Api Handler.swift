@@ -38,7 +38,7 @@ enum ApiMethod {
 class ApiHandler: NSObject {
 
     // MARK:- THIS METHOD RETURN RESPONSE IN CODEABLE
-    static func callApiWithParameters<T:Codable>(url: String , withParameters parameters: [String: Any], ofType : T.Type, onSuccess:@escaping (T)->(), onFailure: @escaping (Bool, String)->(), method: ApiMethod, img: [UIImage]? , imageParamater: [String]?, headerType: String){
+    static func callApiWithParameters<T:Codable>(url: String , withParameters parameters: [String: Any], ofType : T.Type, onSuccess:@escaping (T)->(), onFailure: @escaping (Bool, String, String)->(), method: ApiMethod, img: [UIImage]? , imageParamater: [String]?, headerType: String){
         
         var header : HTTPHeaders = [
             
@@ -70,7 +70,7 @@ class ApiHandler: NSObject {
         
         // MARK:- CHECK WHETHER INTERNET IS CONNECTED OR NOT
         if !Reachability.isConnectedToNetwork(){
-            onFailure(false, "Internet not found")
+            onFailure(false, "Internet not found", "0")
             return
         }
         
@@ -113,7 +113,7 @@ class ApiHandler: NSObject {
                             catch let error as NSError {
                                 print("Could not save error named - \n\(error)\n\(error.userInfo)\n\(error.userInfo.debugDescription)")
                                 print("\(error.localizedFailureReason ?? "")\n", error.localizedDescription)
-                                onFailure(false, error.userInfo.debugDescription)
+                                onFailure(false, error.userInfo.debugDescription, "-1")
                             }
                         }
                     }else{
@@ -125,26 +125,26 @@ class ApiHandler: NSObject {
                             }
                             if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.message].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                onFailure(false,dict[Constants.ApiKeys.message].stringValue )
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                             if dict[Constants.ApiKeys.error_description].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error_description].stringValue)
-                                onFailure(false,dict[Constants.ApiKeys.error_description].stringValue )
+								onFailure(false,dict[Constants.ApiKeys.error_description].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                             
                         }else if (statusCode == 500 || statusCode == 503){
                             print("Server Error")
-                            onFailure(false,"Server Error")
+                            onFailure(false,"Server Error", "500")
                         }else{
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                onFailure(false,dict[Constants.ApiKeys.message].stringValue )
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
-                    onFailure(false, error.localizedDescription)
+                    onFailure(false, error.localizedDescription, "-1")
                 }
             }
             
@@ -183,7 +183,7 @@ class ApiHandler: NSObject {
                                 catch let error as NSError {
                                     print("Could not save error named - \n\(error)\n\(error.userInfo)\n\(error.userInfo.debugDescription)")
                                     print("\(error.localizedFailureReason ?? "")\n", error.localizedDescription)
-                                    onFailure(false, error.userInfo.debugDescription)
+                                    onFailure(false, error.userInfo.debugDescription, "-1")
                                 }
                             }
                         }else{
@@ -195,21 +195,21 @@ class ApiHandler: NSObject {
                                 }
                                 if dict[Constants.ApiKeys.error].stringValue != ""{
                                     print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                    onFailure(false,dict[Constants.ApiKeys.error].stringValue )
+									onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue )
                                 }
                             }else if (statusCode == 500 || statusCode == 503){
                                 print("Server Error")
-                                onFailure(false,"Server Error")
+                                onFailure(false,"Server Error", "500")
                             }else{
                                 if dict[Constants.ApiKeys.error].stringValue != ""{
                                     print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                    onFailure(false,dict[Constants.ApiKeys.error].stringValue )
+									onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue)
                                 }
                             }
                         }
                     case .failure(let error):
                         print(error.localizedDescription)
-                        onFailure(false, error.localizedDescription)
+                        onFailure(false, error.localizedDescription, "-1")
                     }
 //                }
                 
@@ -242,7 +242,7 @@ class ApiHandler: NSObject {
                             catch let error as NSError {
                                 print("Could not save error named - \n\(error)\n\(error.userInfo)\n\(error.userInfo.debugDescription)")
                                 print("\(error.localizedFailureReason ?? "")\n", error.localizedDescription)
-                                onFailure(false, error.userInfo.debugDescription)
+                                onFailure(false, error.userInfo.debugDescription, "-1")
                             }
                         }
                     }else{
@@ -253,21 +253,21 @@ class ApiHandler: NSObject {
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                onFailure(false,dict[Constants.ApiKeys.message].stringValue )
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }else if (statusCode == 500 || statusCode == 503){
                             print("Server Error")
-                            onFailure(false,"Server Error")
+                            onFailure(false,"Server Error", "500")
                         }else{
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                onFailure(false,dict[Constants.ApiKeys.message].stringValue )
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
-                    onFailure(false, error.localizedDescription)
+                    onFailure(false, error.localizedDescription, "-1")
                 }
             }
             
@@ -320,7 +320,7 @@ class ApiHandler: NSObject {
                             catch let error as NSError {
                                 print("Could not save error named - \n\(error)\n\(error.userInfo)\n\(error.userInfo.debugDescription)")
                                 print("\(error.localizedFailureReason ?? "")\n", error.localizedDescription)
-                                onFailure(false, error.userInfo.debugDescription)
+                                onFailure(false, error.userInfo.debugDescription, "-1")
                             }
                         }
                     }else{
@@ -331,19 +331,19 @@ class ApiHandler: NSObject {
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                onFailure(false,dict[Constants.ApiKeys.message].stringValue )
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }else if (statusCode == 500 || statusCode == 503){
                             print("Server Error")
-                            onFailure(false,"Server Error")
+                            onFailure(false,"Server Error", "500")
                         }else if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-                                onFailure(false,dict[Constants.ApiKeys.message].stringValue )
+							onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                         }
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
-                    onFailure(false, error.localizedDescription)
+                    onFailure(false, error.localizedDescription, "-1")
                 }
             }
         }

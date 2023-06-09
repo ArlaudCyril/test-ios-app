@@ -31,6 +31,9 @@ class PersonalDataVM{
         if personalData?.nationality ?? "" != ""{
             param[Constants.ApiKeys.nationality] =  personalData?.nationality ?? ""
         }
+		if personalData?.isUsPerson ?? "" != ""{
+			param[Constants.ApiKeys.isUSCitizen] =  personalData?.isUsPerson ?? "" == "Yes" ? true : false
+		}
 		if personalData?.language ?? "" != ""{
 			param[Constants.ApiKeys.language] =  personalData?.language?.uppercased() ?? ""
         }
@@ -57,7 +60,7 @@ class PersonalDataVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetUserInfo, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
@@ -80,7 +83,7 @@ class PersonalDataVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetUserAddress, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
@@ -101,7 +104,7 @@ class PersonalDataVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestmentExperience, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
@@ -114,7 +117,7 @@ class PersonalDataVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userPersonal_info, withParameters: [:], ofType: UserPersonalData.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -135,7 +138,7 @@ class PersonalDataVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.setEmailAndPassword, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
@@ -146,7 +149,7 @@ class PersonalDataVM{
 
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyEmail, withParameters: params, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
 //            CommonFunction.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
@@ -156,7 +159,7 @@ class PersonalDataVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.finishRegistration, withParameters: [:], ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")

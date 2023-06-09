@@ -14,7 +14,7 @@ class SelectedProfileVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.upload, withParameters: [:], ofType: ImageUploadApi.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithImage, img: [ProfilePic], imageParamater: ["file"], headerType: "user")
@@ -27,7 +27,7 @@ class SelectedProfileVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.user, withParameters: params, ofType: profileUpdateApi.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PUTWithJSON, img: nil, imageParamater: nil, headerType: "user")

@@ -29,7 +29,7 @@ extension String{
    
 
       func isValidHexNumber() -> Bool {
-          let chars = NSCharacterSet(charactersIn: "0123456789abcdefx").inverted
+          let chars = NSCharacterSet(charactersIn: "0123456789abcdefxABCDEFX").inverted
           let filtered: String = (self.components(separatedBy: chars as CharacterSet) as NSArray).componentsJoined(by: "")
           if self == filtered{
               return true
@@ -46,5 +46,27 @@ extension String{
         // 3
         return firstLetter + remainingLetters
     }
+	
+	var decoderNetwork: String {
+		switch self {
+			case "ethereum":
+				return "eth"
+			case "solana":
+				return "sol"
+			default:
+				return self
+		}
+	}
+	
+	var encoderNetwork: String {
+		switch self {
+			case "eth":
+				return "ethereum"
+			case "sol":
+				return "solana"
+			default:
+				return self
+		}
+	}
     
 }

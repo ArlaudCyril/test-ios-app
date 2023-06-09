@@ -7,7 +7,7 @@
 
 import Foundation
 struct personalDataStruct : Codable{
-    var fisrtName,lastName,birthPlace ,birthDate,birthCountry,nationality,email,streetNumber ,buildingFloor,CityName,stateName,zipCode,CountryName ,investmentExp,sourceOfIncome ,workIndustry,annualIncome,personalAssets,language : String?
+    var fisrtName,lastName,birthPlace ,birthDate,birthCountry,nationality,isUsPerson,email,streetNumber ,buildingFloor,CityName,stateName,zipCode,CountryName ,investmentExp,sourceOfIncome ,workIndustry,annualIncome,personalAssets,language : String?
 }
 
 // MARK: - UserPersonalData
@@ -26,6 +26,7 @@ struct UserPersonalData : Codable {
     let incomeRange : String?
     let occupation : String?
     let personalAssets : String?
+	let specifiedUSPerson : Bool?
     let birth_place : String?
     let birth_country : String?
     let address1 : String?
@@ -63,6 +64,7 @@ struct UserPersonalData : Codable {
         case incomeRange = "incomeRange"
         case occupation = "occupation"
         case personalAssets = "personalAssets"
+		case specifiedUSPerson = "specifiedUSPerson"
         case birth_place = "birth_place"
         case birth_country = "birth_country"
         case address1 = "address1"
@@ -102,7 +104,7 @@ struct ProfileData: Codable {
     var nationality: String?
     var has2FA: Bool?
     var type2FA: String?
-    var scope2FA: TwoFAUsage?
+	var scope2FA: [String?]
     var profilePic: String?
     var profilePicType: String?
     
@@ -116,22 +118,10 @@ struct ProfileData: Codable {
 		language = "french"
         has2FA = false
         type2FA = ""
-        scope2FA = TwoFAUsage()
+        scope2FA = []
         profilePic = ""
         profilePicType = ""
     }
 
 }
 
-// MARK: - TwoFAUsage
-struct TwoFAUsage: Codable{
-    var login: Bool?
-    var whitelisting: Bool?
-    var withdrawal: Bool?
-    
-    init() {
-        login = false
-        whitelisting = false
-        withdrawal = false
-    }
-}

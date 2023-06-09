@@ -22,7 +22,7 @@ class ConfirmInvestmentVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.investOnAsset, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
@@ -36,7 +36,7 @@ class ConfirmInvestmentVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
@@ -50,7 +50,7 @@ class ConfirmInvestmentVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
@@ -61,7 +61,7 @@ class ConfirmInvestmentVM{
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceAcceptQuote, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
@@ -76,10 +76,33 @@ class ConfirmInvestmentVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSellCrypto, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+    }
+	//TODO: encoder en base 64  : {"assetId":"sol", "chain":"solana","amount":0.05,"destination":"8SbqXLQEBvFD2rZSMuUizkJQZ9TN2dqwFRnRQzGp6Kax"}
+	func userGetOtpApi(action: String, data : [String : Any], completion: @escaping ( (SuccessAPI?) -> Void )){
+        var params : [String : Any] = [:]
+		
+		do {
+			let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+			let base64EncodedString = jsonData.base64EncodedString()
+			params[Constants.ApiKeys.details] = base64EncodedString
+
+		} catch {
+			print("Error creating JSON: \(error)")
+		}
+        params[Constants.ApiKeys.action] = action
+        
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceTwoFaOtp, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            completion(response)
+            CommonFunctions.hideLoader()
+        }, onFailure: { reload, error, code in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 }
 

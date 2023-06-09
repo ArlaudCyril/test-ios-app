@@ -104,6 +104,11 @@ extension UIColor{
             return UIColor(named: "Purple#AC82F2") ?? UIColor.green
         }
     }
+	public class var purple_500 : UIColor{
+        get {
+			return UIColor(named: "purple_500") ?? UIColor.purple
+        }
+    }
 	public class var ColorFFF2D9 : UIColor{
         get {
             return UIColor(named: "Color#FFF2D9") ?? UIColor.green

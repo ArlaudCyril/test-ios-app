@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StrongAuthVC: ViewController {
+class StrongAuthVC: SwipeGesture {
     //MARK: - Variables
     var switchList : [UISwitch] = []
     
@@ -90,9 +90,9 @@ class StrongAuthVC: ViewController {
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.smsSwitchBtn.addTarget(self, action: #selector(smsSwitchBtnAct), for: .touchUpInside)
         self.mailSwitchBtn.addTarget(self, action: #selector(mailSwitchBtnAct), for: .touchUpInside)
-        self.googleAuthenticatorSwitch.addTarget(self, action: #selector(googleAuthenticatorSwitchAct), for: .touchUpInside)
-        self.googleAuthenticatorBtn.addTarget(self, action: #selector(googleAuthenticatorBtnAct), for: .touchUpInside)
-        
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(googleAuthenticatorSwitchAct))
+        self.byGoogleAuthenticatorView.addGestureRecognizer(tapGesture)
+		
         self.loginSwitch.addTarget(self, action: #selector(loginSwitchAct), for: .touchUpInside)
         self.validateWithdrawSwitch.addTarget(self, action: #selector(validateWithdrawSwitchAct), for: .touchUpInside)
         self.enableWhitelistingSwitch.addTarget(self, action: #selector(enableWhitelistingSwitchAct), for: .touchUpInside)
@@ -151,10 +151,7 @@ extension StrongAuthVC{
     
     @objc func googleAuthenticatorBtnAct(){
         let vc = GoogleAuthenticatorVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.present(nav, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func googleAuthenticatorSwitchAct(){

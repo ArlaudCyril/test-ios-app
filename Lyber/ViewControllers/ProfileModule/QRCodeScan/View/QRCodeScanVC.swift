@@ -111,7 +111,14 @@ extension QRCodeScanVC : AVCaptureMetadataOutputObjectsDelegate {
     
     func found(code: String) {
         print(code)
-        getQRString?(code)
+		var address = code
+		let index = code.firstIndex(where: {$0 == ":"})
+		if(index != nil){
+			let intIndex = code.distance(from: code.startIndex, to: index ?? code.startIndex)
+			//until ":" without +1
+			address = String(code.dropFirst(intIndex+1))
+		}
+        getQRString?(address)
         self.navigationController?.popViewController(animated: true)
     }
 }

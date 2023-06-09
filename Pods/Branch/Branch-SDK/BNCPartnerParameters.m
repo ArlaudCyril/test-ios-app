@@ -53,7 +53,7 @@
     if ([self sha256HashSanityCheckValue:value]) {
         [self addParameterWithName:name value:value partnerName:@"fb"];
     } else {
-        // TODO: log a warning that the parameter looks invalid and will be ignored. Do not log the value as it may be PII that was inadvertently passed in.
+
     }
 }
 

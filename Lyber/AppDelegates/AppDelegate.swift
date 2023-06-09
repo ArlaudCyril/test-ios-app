@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 			else if(lyberId == 2003){//transaction failure
 				PortfolioDetailVC.transactionFinished = false
 			}
-			else if(lyberId == 2005){//amount //TODO: better simplification
+			else if(lyberId == 2005){//amount
 				PortfolioHomeVM().callWalletGetBalanceApi(completion: {[]response in
 					if response != nil {
 						CommonFunctions.setBalances(balances: response ?? [])

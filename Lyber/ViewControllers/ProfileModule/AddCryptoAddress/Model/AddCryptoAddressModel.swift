@@ -7,16 +7,6 @@
 
 import Foundation
 
-struct cryptoAddressModel{
-    var addressName : String?
-    var network: String?
-    var address : String?
-    var origin : String?
-    var exchange : String?
-    var logo : String?
-    var addressId : String?
-}
-
 // MARK: - NetworkAPI
 struct NetworkAPI: Codable {
     let networks: [Networks]

@@ -94,12 +94,34 @@ struct AssetDetailData: Codable {
     let image: String?
     let marketCap: String?
 	let depositChains: [String]?
+	let withdrawalChains : [String:WithdrawalChain]?
 
     enum CodingKeys: String, CodingKey {
         case circulatingSupply, isUIActive, isDepositActive, isWithdrawalActive
         case volume24H = "volume24h"
         case isTradeActive, fullName, marketRank, about, image, marketCap, depositChains
+		case withdrawalChains
     }
+}
+
+
+// MARK: - WithdrawalChain
+struct WithdrawalChain : Codable{
+	let withdrawFee: Double
+	let withdrawMin: Double
+	let lyberEnabled: Bool
+	
+	init() {
+		self.withdrawFee = 0
+		self.withdrawMin = 0
+		self.lyberEnabled = false
+		
+	}
+	init(withdrawalChain : WithdrawalChain) {
+		self.withdrawFee = withdrawalChain.withdrawFee
+		self.withdrawMin = withdrawalChain.withdrawMin
+		self.lyberEnabled = withdrawalChain.lyberEnabled
+	}
 }
 
 // MARK: - About

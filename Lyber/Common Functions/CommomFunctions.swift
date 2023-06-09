@@ -12,6 +12,7 @@ import Charts
 import var CommonCrypto.CC_MD5_DIGEST_LENGTH
 import func CommonCrypto.CC_MD5
 import typealias CommonCrypto.CC_LONG
+import SVGKit
 
 
 class EntryAttributeWrapper {
@@ -212,7 +213,6 @@ class CommonFunctions{
 					launcher.zPosition = 0
 					launcher.runCells()
 				}
-				//TODO: quand il y a notification double appel desfois crash
 				
 				DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 					topView.subviews[num].removeFromSuperview()
@@ -233,16 +233,37 @@ class CommonFunctions{
         }
         return nil
     }
-    
+    //MARK: Img functions
     
     static func getImageUrl() -> String{
         return "ApiEnviorment.ImageUrl"
     }
 	
+	static func getImgFromUrl(urlString: String) -> UIImage {
+		var imageReturned = UIImage()
+		if let url = URL(string: urlString) {
+			URLSession.shared.dataTask(with: url) { (data, response, error) in
+				guard
+					let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+					let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+					let data = data, error == nil,
+					let receivedicon: SVGKImage = SVGKImage(data: data),
+					let image = receivedicon.uiImage
+				else { return }
+				imageReturned = image
+			}.resume()
+		}
+		return imageReturned
+	}
+	
 	
 	static func getImage(id: String) -> String{
+		var idImage = id
+		if(idImage == "bsc"){
+			idImage = "bnb"
+		}
 		for currency in Storage.currencies {
-			if(currency?.id == id){
+			if(currency?.id == idImage){
 				return currency?.image ?? ""
 			}
 		}
@@ -255,6 +276,14 @@ class CommonFunctions{
 			}
 		}
 		return AssetBaseData()
+	}
+	
+	static func callWalletGetBalance(){
+		PortfolioHomeVM().callWalletGetBalanceApi(completion: {[]response in
+			if response != nil {
+				CommonFunctions.setBalances(balances: response ?? [])
+			}
+		})
 	}
 	
 	static func getBalance(id: String) -> Balance{
@@ -455,7 +484,7 @@ class CommonFunctions{
     }
     
     static func formattedCurrency(from value: Double?) -> String {
-        guard value != nil else { return "$0.00" }
+        guard value != nil else { return "0.00€" }
         let formatter = NumberFormatter()
 
 
@@ -508,15 +537,15 @@ class CommonFunctions{
 		return stringFormatted
     }
 	
-	static func formattedAsset(from value: Double?, prix: Double?, rounding : NumberFormatter.RoundingMode) -> String {
+	static func formattedAsset(from value: Double?, price: Double?, rounding : NumberFormatter.RoundingMode = .down) -> String {
 		guard value != nil else { return "0.00" }
-		guard (prix != nil && prix != 0 && ((prix?.isNaN) != true)) else { return "0.00" }
+		guard (price != nil && price != 0 && ((price?.isNaN) != true)) else { return "0.00" }
 		let formatter = NumberFormatter()
 		
 		//To find the precision, here X
 		//Price * 10e-X >= 0.01(pennies)
 		//=> X  >= -log(0,01/Price)
-		let precision = Int(ceil(-log10(0.01/(prix ?? 1))))
+		let precision = Int(ceil(-log10(0.01/(price ?? 1))))
 		if(precision > 0){
 			formatter.maximumFractionDigits = precision
 			formatter.minimumFractionDigits =  precision
@@ -617,7 +646,7 @@ class CommonFunctions{
     }
     
     static func enableNotifications(enable: Int)
-    {//TODO: test à changer quand met à jour son système d'exploitation ou désinstalle l'application
+    {
         if(enable == 1){
 			
             UNUserNotificationCenter.current().requestAuthorization(options: [
@@ -785,9 +814,9 @@ class CommonFunctions{
 				userData.shared.phone_no = response.data?.phoneNo ?? ""
 				userData.shared.email = response.data?.email ?? ""
 				//userData.shared.profile_image = response.data?.profilePic ?? ""
-				userData.shared.scope2FALogin = response.data?.scope2FA?.login ?? false
-				userData.shared.scope2FAWhiteListing =  response.data?.scope2FA?.whitelisting ?? false
-				userData.shared.scope2FAWithdrawal = response.data?.scope2FA?.withdrawal ?? false
+				userData.shared.scope2FALogin = (response.data?.scope2FA.contains("login") == true)
+				userData.shared.scope2FAWhiteListing =  (response.data?.scope2FA.contains("whitelisting") == true)
+				userData.shared.scope2FAWithdrawal = (response.data?.scope2FA.contains("withdrawal") == true)
 				
 				userData.shared.dataSave()
 			}
@@ -803,11 +832,13 @@ class CommonFunctions{
 				return "BNB Chain"
 			case "native":
 				return "Native"
-			case "ethereum":
+			case "ethereum", "eth":
 				return "Ethereum"
 			case "arbitrum":
 				return "Arbitrum One"
 			case "solana":
+				return "Solana"
+			case "sol":
 				return "Solana"
 			default:
 				return ""

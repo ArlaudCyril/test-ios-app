@@ -8,10 +8,11 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class CryptoAddressBookVC: ViewController {
+class CryptoAddressBookVC: SwipeGesture {
     //MARK: - Variables
     var cryptoAddressBookVM = CryptoAddressBookVM()
-    var whiteListAddress : [Address] = []
+    var cryptoAddressArray : [Address] = []
+    var cryptoAddressArrayFiltered : [Address] = []
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var topAddressView: UIView!
@@ -20,7 +21,7 @@ class CryptoAddressBookVC: ViewController {
     @IBOutlet var whitlistingView: UIView!
     @IBOutlet var whitlistingLbl: UILabel!
     @IBOutlet var activeDuringLbl: UILabel!
-    @IBOutlet var whitlistingBtn: UISwitch!
+    @IBOutlet var whitlistingBtn: UIButton!
     
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchTF: UITextField!
@@ -41,6 +42,20 @@ class CryptoAddressBookVC: ViewController {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+		self.getWithdrawalAdresses()
+		self.searchTF.text = ""
+		self.setUpUI()
+		self.tblView.reloadData()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.tblView.removeObserver(self, forKeyPath: "contentSize")
+	}
 	
 	//MARK: - SetUpUI
 
@@ -68,7 +83,6 @@ class CryptoAddressBookVC: ViewController {
         CommonUI.setUpButton(btn: self.addNewAddressBtn, text: CommonFunctions.localisation(key: "ADD_NEW_ADRESS"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         if userData.shared.enableWhiteListing {
-            self.whitlistingBtn.isOn = true
             self.activeDuringLbl.isHidden = false
             if userData.shared.extraSecurity == "24_HOURS"{
                 self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 24H"
@@ -78,16 +92,9 @@ class CryptoAddressBookVC: ViewController {
                 self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : No Security"
             }
         }else{
-            self.whitlistingBtn.isOn = false
             self.activeDuringLbl.isHidden = true
         }
         
-//
-//        if self.whitlistingBtn.isOn{
-//            self.timeBtn.isHidden = false
-//        }else{
-//            self.timeBtn.isHidden = true
-//        }
         
         self.searchTF.addTarget(self, action: #selector(searchtextChanged), for: .editingChanged)
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
@@ -103,32 +110,24 @@ class CryptoAddressBookVC: ViewController {
 extension CryptoAddressBookVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return whiteListAddress.count
+        return cryptoAddressArrayFiltered.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CryptoAddressesTVC", for: indexPath) as! CryptoAddressesTVC
-        cell.configureWithData(data : whiteListAddress[indexPath.row])
+        cell.configureWithData(data : cryptoAddressArrayFiltered[indexPath.row])
         return cell
     }
      
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = AddressAddedPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
         vc.addressBookController = self
-        vc.popUpType = .detailAddress
-        vc.addressId = whiteListAddress[indexPath.row].id ?? ""
+		vc.editAddress = cryptoAddressArrayFiltered[indexPath.row]
         self.present(vc, animated: true, completion: nil)
         vc.deleteCallback = {[] in
-            self.getWhiteListedAddreses()
+            self.getWithdrawalAdresses()
             self.tblView.reloadData()
         }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.alpha = 0
-        UIView.animate(withDuration: 0.5, animations: {
-            cell.alpha = 1
-        })
     }
 }
 
@@ -148,33 +147,29 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
     @objc func searchtextChanged(){
         if searchTF.text != ""{
             topAddressView.isHidden = true
+			cryptoAddressArrayFiltered = cryptoAddressArray.filter({
+				$0.name.lowercased().hasPrefix(searchTF.text?.lowercased() ?? "") ||
+				$0.address?.lowercased().hasPrefix(searchTF.text?.lowercased() ?? "") ?? false
+				
+			})
         }else{
             topAddressView.isHidden = false
+			cryptoAddressArrayFiltered = cryptoAddressArray
+			
         }
-        cryptoAddressBookVM.getWhiteListingAddressApi(searchText: searchTF.text, completion: {[weak self]response in
-            if let response = response {
-                self?.whiteListAddress = response.addresses ?? []
-                self?.tblView.reloadData()
-            }
-        })
+		
+		self.tblView.reloadData()
     }
     
-    @objc func addNewAddressBtnAct(){
-        if userData.shared.enableWhiteListing == false {
-            CommonFunctions.toster(Constants.AlertMessages.PleaseEnableWhitelistingAddress)
-        }else{
-            let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+    @objc func addNewAddressBtnAct(){//TODO: see if enableWhiteListing useful
+		let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+		self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
-    @objc func whitelistingBtnAct(sender : UISwitch){
-//        if sender.isOn == true{
-//            print("on")
+    @objc func whitelistingBtnAct(sender : UIButton){
             let vc = EnableWhitelistingVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
             vc.timeCallBack = {[weak self]response in
-                self?.whitlistingBtn.isOn = true
                 self?.activeDuringLbl.isHidden = false
                 if response?.id == 1{               //72Hour
                     self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 72H"
@@ -183,13 +178,9 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
                 }else{                              //No Extra Secuirty
                     self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : No Security"
                 }
-//                self?.timeBtn.isHidden = false
+
             }
             self.navigationController?.pushViewController(vc, animated: true)
-//        }else {
-//            print("off")
-//
-//        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -203,10 +194,11 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
 
 //MARK: - Other functions
 extension CryptoAddressBookVC{
-    func getWhiteListedAddreses(){
-        cryptoAddressBookVM.getWhiteListingAddressApi(searchText: searchTF.text, completion: {[weak self]response in
+    func getWithdrawalAdresses(){
+        cryptoAddressBookVM.getWithdrawalAdressAPI(completion: {[weak self]response in
             if let response = response {
-                self?.whiteListAddress = response.addresses ?? []
+                self?.cryptoAddressArray = response.data ?? []
+                self?.cryptoAddressArrayFiltered = response.data ?? []
                 self?.tblView.reloadData()
             }
         })
@@ -215,19 +207,6 @@ extension CryptoAddressBookVC{
 
 // MARK: - TABLE VIEW OBSERVER
 extension CryptoAddressBookVC{
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-      self.getWhiteListedAddreses()
-        self.searchTF.text = ""
-      self.setUpUI()
-      self.tblView.reloadData()
-    }
-      
-    override func viewWillDisappear(_ animated: Bool) {
-      super.viewWillDisappear(animated)
-      self.tblView.removeObserver(self, forKeyPath: "contentSize")
-    }
       
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
       if let obj = object as? UITableView {

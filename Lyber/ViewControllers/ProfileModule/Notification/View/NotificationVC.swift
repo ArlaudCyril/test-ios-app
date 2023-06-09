@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotificationVC: ViewController {
+class NotificationVC: SwipeGesture {
 
     //MARK: - Variables
     var headerData : [String] = []

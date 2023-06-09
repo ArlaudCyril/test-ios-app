@@ -27,7 +27,7 @@ class EnterPhoneVM {
             completion(response)
 //            CommonFunction.toster(response.message ?? "")
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
@@ -39,7 +39,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyPhoneNo, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
@@ -51,7 +51,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetLoginPin, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
@@ -64,7 +64,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userChallenge, withParameters: param, ofType: LoginChallengeAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
@@ -77,7 +77,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userChallenge, withParameters: param, ofType: LoginChallengeAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
@@ -92,7 +92,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userLogin, withParameters: param, ofType: LogInAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
@@ -104,7 +104,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userResetNotification, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")
@@ -117,7 +117,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userActivateFaceId, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
@@ -128,7 +128,7 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userResendPhoneVerificationOtp, withParameters: [:], ofType: ResendOtpAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
@@ -145,7 +145,7 @@ class EnterPhoneVM {
             ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.registerDeviceToken, withParameters: param, ofType: ResendOtpAPI.self, onSuccess: { response in
                 print(response)
                 CommonFunctions.hideLoader()
-            }, onFailure: { reload, error in
+            }, onFailure: { reload, error, code in
                 print(error)
                 CommonFunctions.toster(error)
             }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: headerType)

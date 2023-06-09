@@ -12,6 +12,9 @@ import SwiftUI
 final class VerificationVC: ViewController,MyTextFieldDelegate {
     //MARK: - Variables
     var typeVerification : String?
+	var action : String?
+	var dataWithdrawal : [String : Any]?
+	var controller : ConfirmInvestmentVC?
     
     
     //MARK: - IB OUTLETS
@@ -53,6 +56,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
                 print("Unsupported 2FA method")
         }
         containerView.layer.cornerRadius = 32;
+		self.containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         containerView.layer.masksToBounds = true
         
         CommonUI.setUpLbl(lbl: verificationLbl, text: CommonFunctions.localisation(key: "VERIFICATION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
@@ -119,6 +123,13 @@ extension VerificationVC: UITextFieldDelegate{
                 if Tf1.text != "" && Tf2.text != "" && Tf3.text != "" && Tf4.text != "" && Tf5.text != "" && Tf6.text != ""{
 
                     self.verifyCode(code: "\(Tf1.text ?? "")\(Tf2.text ?? "")\(Tf3.text ?? "")\(Tf4.text ?? "")\(Tf5.text ?? "")\(Tf6.text ?? "")")
+					let tfs = [Tf1,Tf2,Tf3,Tf4,Tf5,Tf6]
+					DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+						for tf in tfs{
+							tf?.text = ""
+						}
+						self.Tf1.becomeFirstResponder()
+					})
                 }
             }
 
@@ -145,6 +156,24 @@ extension VerificationVC{
                     self.present(vc, animated: true, completion: nil)
                 }
             })
+		}else if(self.action == "withdraw"){
+			VerificationVM().walletCreateWithdrawalRequest(otp: code, data: dataWithdrawal ?? [:], onSuccess:{[]response in
+                if response != nil{
+					self.dismiss(animated: true)
+					let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+					vc.confirmationType = .Withdraw
+					vc.confirmInvesmtentController = self.controller
+					self.controller?.present(vc, animated: true)
+
+				}
+			}, onFailure: {[]response in
+				if response != nil{
+					if(response?.code != "24"){
+						self.dismiss(animated: true)
+						self.controller?.navigationController?.popViewController(animated: true)
+					}
+				}
+			})
         }else{
             VerificationVM().verify2FAApi(code: code, completion: {[]response in
                 if response != nil{

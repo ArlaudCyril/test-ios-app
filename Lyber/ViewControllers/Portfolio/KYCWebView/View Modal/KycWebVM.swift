@@ -12,7 +12,7 @@ class KycWebVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userTreezorStatus, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")

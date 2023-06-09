@@ -12,7 +12,7 @@ class ConfirmInvestmentVC: ViewController {
     //MARK: - Variables
     var confirmInvestmentVM = ConfirmInvestmentVM()
     var assetData : Trending?,strategyData : Strategy?
-    var totalCoinsInvested = Double(),totalEuroInvested = Double(),exchangeFrom = String(),exchangeTo = String()
+    var totalCoinsInvested = Double(),totalEuroInvested = Double(),fromAssetId = String(),exchangeTo = String()
     var frequency = String()
     var InvestmentType : InvestStrategyModel = .activateStrategy
     var coinsData : [InvestmentStrategyAsset] = []
@@ -23,6 +23,12 @@ class ConfirmInvestmentVC: ViewController {
 	var amountFrom : String?
 	var amountTo : String?
 	var orderId: String?
+	
+	//withdraw
+	var address : String?
+	var network : String?
+	var fees : Double?
+	var coinPrice: Double?
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var confirmInvestmentLbl: UILabel!
@@ -33,15 +39,18 @@ class ConfirmInvestmentVC: ViewController {
     @IBOutlet var coinPriceVw: UIView!
     @IBOutlet var coinPriceLbl: UILabel!
     @IBOutlet var euroCoinPriceLbl: UILabel!
+	
     @IBOutlet var amountLbl: UILabel!
     @IBOutlet var euroAmountLbl: UILabel!
+	
     @IBOutlet var frequencyVw: UIView!
     @IBOutlet var frequencyLbl: UILabel!
     @IBOutlet var frequencyNameLbl: UILabel!
-    @IBOutlet var paymentLbl: UILabel!
-    @IBOutlet var paymentCardLbl: UILabel!
-    @IBOutlet var buyLbl: UILabel!
-    @IBOutlet var euroBuyLbl: UILabel!
+	
+	@IBOutlet var networkVw: UIView!
+    @IBOutlet var networkTitleLbl: UILabel!
+    @IBOutlet var networkLbl: UILabel!
+	
     @IBOutlet var lyberFeeLbl: UILabel!
     @IBOutlet var euroLyberFeeLBl: UILabel!
     @IBOutlet var totalLbl: UILabel!
@@ -76,16 +85,13 @@ class ConfirmInvestmentVC: ViewController {
         CommonUI.setUpLbl(lbl: self.coinPriceLbl, text: "\(assetData?.name ?? "") \(CommonFunctions.localisation(key: "PRICE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.amountLbl, text: CommonFunctions.localisation(key: "AMOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.frequencyLbl, text: CommonFunctions.localisation(key: "FREQUENCY"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.paymentLbl, text: CommonFunctions.localisation(key: "PAYMENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.buyLbl, text: CommonFunctions.localisation(key: "BUY"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.networkTitleLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.lyberFeeLbl, text: CommonFunctions.localisation(key: "LYBER_FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalLbl, text: CommonFunctions.localisation(key: "TOTAL"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(CommonFunctions.formattedCurrency(from : self.assetData?.currentPrice ?? 0.0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroAmountLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.frequencyNameLbl, text: frequency, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.paymentCardLbl, text: "Mastercard ···· 0103", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroBuyLbl, text: "99,92€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.euroLyberFeeLBl, text: "0.08€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunctions.formattedCurrency(from: (totalEuroInvested)+(0.08)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
@@ -136,7 +142,6 @@ class ConfirmInvestmentVC: ViewController {
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
             self.frequencyVw.isHidden = true
-            self.buyLbl.text = CommonFunctions.localisation(key: "DEPOSIT")
             self.lyberFeeLbl.text = CommonFunctions.localisation(key: "DEPOSIT_FEES")
             self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_MY_DEPOSIT")
             confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_DEPOSIT"), for: .normal)
@@ -146,13 +151,42 @@ class ConfirmInvestmentVC: ViewController {
 			self.coinPriceLbl.text = CommonFunctions.localisation(key: "RATIO")
 			self.euroCoinPriceLbl.text = self.ratioCoin ?? ""
             self.amountLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
-			self.euroAmountLbl.text = "\(amountFrom ?? "") \(exchangeFrom.uppercased())"
+			self.euroAmountLbl.text = "\(amountFrom ?? "") \(fromAssetId.uppercased())"
             self.frequencyLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
             self.frequencyNameLbl.text = "\(amountTo ?? "") \(exchangeTo.uppercased())"
-			self.totalEuroLbl.text = "\(amountFrom ?? "") \(exchangeTo.uppercased())"//TODO: Ajouter frais
+			self.totalEuroLbl.text = "\(amountFrom ?? "") \(exchangeTo.uppercased())"
+			//TODO: -Ajouter frais
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
 			self.fireTimer(seconds: 25)
+			
+        }else if InvestmentType == .withdraw{
+			
+			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL")
+			self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL"), for: .normal)
+			
+			self.noOfEuroInvested.text = "\(self.totalCoinsInvested) \(self.fromAssetId.uppercased())"
+			
+			self.coinPriceVw.isHidden = true
+			
+			let finalAmount = self.totalCoinsInvested - (self.fees ?? 0.0)
+            self.amountLbl.text = CommonFunctions.localisation(key: "AMOUNT")
+			self.euroAmountLbl.text = "\(CommonFunctions.formattedAsset(from: finalAmount, price: self.coinPrice)) \(fromAssetId.uppercased())"
+			
+            self.frequencyLbl.text = CommonFunctions.localisation(key: "ADDRESS")
+			self.frequencyNameLbl.text = "\(self.address ?? "")"
+			
+			self.networkVw.isHidden = false
+			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.uppercased(), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+			self.lyberFeeLbl.text = CommonFunctions.localisation(key: "LYBER_FEES")
+			self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
+			
+			self.totalEuroLbl.text = "\(totalCoinsInvested) \(fromAssetId.uppercased())"
+
+			self.allocationView.isHidden = true
+            self.progressView.isHidden = true
+			self.volatilePriceLbl.isHidden = true
         }
     }
 }
@@ -238,6 +272,28 @@ extension ConfirmInvestmentVC{
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             })
+        }else if InvestmentType == .withdraw{
+            self.confirmInvestmentBtn.showLoading()
+			
+			let data = [
+				"assetId": self.fromAssetId,
+				"chain": self.network?.encoderNetwork ?? "",
+				"amount": self.totalCoinsInvested,
+				"destination": self.address ?? ""
+			] as [String : Any]
+			
+			self.confirmInvestmentVM.userGetOtpApi(action: "withdraw", data: data, completion: {[weak self]response in
+				self?.confirmInvestmentBtn.hideLoading()
+				if response != nil{
+					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+					vc.typeVerification = userData.shared.type2FA
+					vc.action = "withdraw"
+					vc.controller = self ?? ConfirmInvestmentVC()
+					vc.dataWithdrawal = data
+					self?.present(vc, animated: true, completion: nil)
+				}
+			})
+			
         }
     }
 }

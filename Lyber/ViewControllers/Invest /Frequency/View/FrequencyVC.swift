@@ -9,17 +9,12 @@ import UIKit
 
 class FrequencyVC: ViewController {
     //MARK: - Variables
-    var popUpType  : bottomPopUp = .frequency
     var frequencyData : [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ONCE"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.apple_pay.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DAILY"), subName: CommonFunctions.localisation(key: "EVERYDAY"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WEEKLY"), subName: CommonFunctions.localisation(key: "EVERY_THURSDAY"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "MONTHLY"), subName: CommonFunctions.localisation(key: "EVERY_21ST_MONTH"), rightBtnName: "")
     ]
-    var profileData : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CAMERA"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SELECT_FROM_GALLERY"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SET_DEFAULT_PICTURES"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: "")]
     var frequencySelectedCallback : ((String)->())?
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -47,43 +42,26 @@ class FrequencyVC: ViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissBottomView))
         self.outerView.addGestureRecognizer(tap)
         
-        if popUpType == .changeProfile{
-            self.frequencyLbl.text = CommonFunctions.localisation(key: "SELECTED_PROFILE_PICTURE")
-        }
     }
 }
 
 //MARK: - table view delegates and dataSource
 extension FrequencyVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if popUpType == .frequency{
-            return frequencyData.count
-        }else{
-            return profileData.count
-        }
-        
+		return frequencyData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FrequencyTVC", for: indexPath)as! FrequencyTVC
         cell.controller = self
-        if popUpType == .frequency{
-            cell.setUpCellData(data: frequencyData[indexPath.row],index: indexPath.row)
-        }else{
-            cell.setUpCellData(data: profileData[indexPath.row],index: indexPath.row)
-        }
+		cell.setUpCellData(data: frequencyData[indexPath.row],index: indexPath.row)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if popUpType == .frequency{
-            frequencySelectedCallback?(frequencyData[indexPath.row].name)
-        }else{
-            frequencySelectedCallback?(profileData[indexPath.row].name)
-        }
-        self.dismiss(animated: true, completion: nil)
-        
-    }
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		frequencySelectedCallback?(frequencyData[indexPath.row].name)
+		self.dismiss(animated: true, completion: nil)
+	}
 }
 
 //MARK: - objective functions

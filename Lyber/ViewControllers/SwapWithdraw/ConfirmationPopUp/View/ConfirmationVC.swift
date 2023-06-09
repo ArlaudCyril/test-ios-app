@@ -11,6 +11,7 @@ class ConfirmationVC: ViewController {
     var controller : EnterWalletAddressVC?
     var confirmationType : confirmationPopUp?
     var coinInvest : String?
+	var confirmInvesmtentController : ConfirmInvestmentVC?
     //MARK:- IB OUTLETS
     @IBOutlet var outerView: UIView!
     @IBOutlet var bottomView: UIView!
@@ -66,9 +67,10 @@ extension ConfirmationVC{
     }
     
     @objc func ThanksBtnAct(){
-//        self.dismiss(animated: true, completion: nil)
-//        self.controller?.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self, animated: true)
-        let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-		self.navigationController?.pushViewController(vc, animated: true)
+		CommonFunctions.callWalletGetBalance()
+        self.dismiss(animated: true, completion: nil)
+		let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+		vc.screenType = .withdraw
+		self.confirmInvesmtentController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

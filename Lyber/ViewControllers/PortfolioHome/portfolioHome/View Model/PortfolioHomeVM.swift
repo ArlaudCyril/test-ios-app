@@ -13,7 +13,7 @@ class PortfolioHomeVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userAssets, withParameters: [:], ofType: MyAssetsAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
@@ -24,7 +24,7 @@ class PortfolioHomeVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestments, withParameters: [:], ofType: RecurringInvestmentAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
@@ -37,7 +37,7 @@ class PortfolioHomeVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.coingeckoCoins, withParameters: params, ofType: TrendingCoinsAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -55,7 +55,7 @@ class PortfolioHomeVM{
 			}
             
             completion(balances)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")

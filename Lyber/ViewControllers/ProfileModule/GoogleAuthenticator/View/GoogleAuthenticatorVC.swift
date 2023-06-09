@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 //MARK: - Initialisation
-class GoogleAuthenticatorVC : ViewController {
+class GoogleAuthenticatorVC : SwipeGesture {
     
     //MARK: - Variables
     var urlGoogleOTP: String?
@@ -33,7 +33,6 @@ class GoogleAuthenticatorVC : ViewController {
     override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
-        
         CommonUI.setUpLbl(lbl: self.twoFactorLbl, text: CommonFunctions.localisation(key: "TWO_FA"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.twoFactorDescLbl, text: CommonFunctions.localisation(key: "ADD_GOOGLE_AUTHENTICATOR"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 
@@ -61,7 +60,7 @@ class GoogleAuthenticatorVC : ViewController {
     }
     
     @objc func backBtnAct(){
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func generateQRCode(string: String)->UIImage?{

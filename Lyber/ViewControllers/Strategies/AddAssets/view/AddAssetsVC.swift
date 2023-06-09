@@ -177,7 +177,7 @@ extension AddAssetsVC{
         self.tblView.tableFooterView = spinner
         self.tblView.tableFooterView?.isHidden = false
     }
-    //TODO: - Call this function in addStrategy
+	
     func callGetAssetsApi(isEmpty : Bool = false){
         var order = String()
         if self.selectedCoinsType == .Trending{

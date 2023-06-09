@@ -81,29 +81,12 @@ extension ExchangeFromTVC{
 				}
 			}
 			else if(self.controller?.screenType == .withdraw){
-				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-				vc.strategyType = .withdraw
-				vc.fromAssetId = data?.id
-				//TODO: vc.fromCoinData = data
-				//TODO: vc.assetsData = data?.coinDetail
+				let vc = WithdrawAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+				vc.asset = CommonFunctions.getCurrency(id: data?.id ?? "") 
 				self.controller?.navigationController?.pushViewController(vc, animated: true)
 				
 			}
-			
-			
-			
         }
-		/*assetCallback = {() in
-            let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-            //TODO: vc.fromCoinData = data
-            //TODO: vc.assetsData = data?.coinDetail
-            self.controller?.navigationController?.pushViewController(vc, animated: true)
-            if screenType == .exchange{
-                vc.strategyType = .Exchange
-            }else if screenType == .withdraw{
-                vc.strategyType = .withdraw
-            }
-        }*/
     }
 }
 
@@ -115,14 +98,7 @@ extension ExchangeFromTVC{
     }
     
     @objc func flatWalletVwTapped(){
-//        let vc = PaymentFundsVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-//        let nav = UINavigationController(rootViewController: vc)
-//        nav.modalPresentationStyle = .fullScreen
-//        nav.navigationBar.isHidden = true
-//        self.controller?.present(nav, animated: true, completion: nil)
         let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-//        vc.fromCoinData = data
-//        vc.assetsData = data?.coinDetail
         self.controller?.navigationController?.pushViewController(vc, animated: true)
         vc.strategyType = .withdrawEuro
     }

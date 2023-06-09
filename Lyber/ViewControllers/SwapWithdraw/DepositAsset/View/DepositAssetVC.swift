@@ -12,10 +12,10 @@ class DepositAssetVC: ViewController, UITextFieldDelegate {
 
 	//MARK: - Variables
 	var allAssetsVM = AllAssetsVM()
-	var coinsData : [AssetBaseData] = []
-	var originalData : [AssetBaseData] = []
-	var filteredData : [AssetBaseData] = []
-	var filterCoin : [AssetBaseData] = []
+	var coinsData : [AssetBaseData?] = []
+	var originalData : [AssetBaseData?] = []
+	var filteredData : [AssetBaseData?] = []
+	var filterCoin : [AssetBaseData?] = []
 	
 	//MARK:- IB OUTLETS
 	@IBOutlet var closeBtn: UIButton!
@@ -59,7 +59,7 @@ class DepositAssetVC: ViewController, UITextFieldDelegate {
 		self.euroBtn.addTarget(self, action: #selector(euroBtnAct), for: .touchUpInside)
 		
 	
-		self.callGetAssetsApi()
+		self.getAssets()
 		
 		
 	}
@@ -103,23 +103,11 @@ extension DepositAssetVC{
 
 //MARK: - Other functions
 extension DepositAssetVC{
-	func callGetAssetsApi(isEmpty : Bool = false){
-		allAssetsVM.getAllAssetsDetailApi(completion: {[]response in
-			if let response = response {
-				print(response)
-				self.originalData = response
-				self.coinsData = response
-			}
+	func getAssets(isEmpty : Bool = false){
+			self.originalData = Storage.currencies
+			self.coinsData = Storage.currencies
 			self.filterCoin = self.coinsData
-			/*self.tblView.tableHeaderView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tblView.bounds.width, height: CGFloat(0)))
-			self.tblView.tableHeaderView?.isHidden = true
-			self.tblView.es.stopPullToRefresh()
-			self.tblView.tableFooterView?.isHidden = true
-			CommonFunctions.hideLoader(self.view)*/
-			
 			self.tblView.reloadData()
-			
-		})
 	}
 	
 	
@@ -136,10 +124,10 @@ extension DepositAssetVC{
 			})
 			print(filteredData)
 			for i in 0..<self.filteredData.count{
-				print(self.filteredData[i].id ?? "")
+				print(self.filteredData[i]?.id ?? "")
 				
 				for k in 0..<self.coinsData.count{
-					if self.coinsData[k].id == self.filteredData[i].id ?? ""{
+					if self.coinsData[k]?.id == self.filteredData[i]?.id ?? ""{
 						filterCoin.append(self.coinsData[k])
 						print("filterCoin coins data",filterCoin)
 					}

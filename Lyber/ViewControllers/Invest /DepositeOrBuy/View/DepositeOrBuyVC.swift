@@ -28,7 +28,6 @@ class DepositeOrBuyVC: ViewController {
 //        buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SELL"), subName: "\(CommonFunctions.localisation(key: "SELL")) \(CommonFunctions.localisation(key: "ASSETS"))", rightBtnName: "")
     ]
     var withdrawToAccountData : [buyDepositeModel] = []
-    var connectedAccountAddress : [Address] = []
     
     var withdrawAllData : [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: "Frida... MX12...3392", subName: CommonFunctions.localisation(key: "BANK_ACCOUNT"), rightBtnName: ""),
@@ -66,6 +65,9 @@ class DepositeOrBuyVC: ViewController {
 	//PortfolioDetailVC
 	var previousController = UIViewController()
 	var idAsset : String = ""
+	
+	//withdraw
+	var network: String?
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
     @IBOutlet var bottomView: UIView!
@@ -99,13 +101,7 @@ class DepositeOrBuyVC: ViewController {
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_EXCHANGE")
         }else if popupType == .withdrawTo{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_TO")
-            if self.connectedAccountAddress.count > 0{
-                for i in 0...((self.connectedAccountAddress.count) - 1){
-                    self.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(),svgUrl: self.connectedAccountAddress[i].logo ?? "", iconBackgroundColor: UIColor.clear, name: self.connectedAccountAddress[i].name , subName: self.connectedAccountAddress[i].address ?? "", rightBtnName: ""))
-                }
-            }
-            self.withdrawToAccountData.insert(buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "ADD")) \(self.assetsData?.name ?? "") \(CommonFunctions.localisation(key: "ADDRESS"))", subName: "Unlimited withdrawal", rightBtnName: ""), at: self.connectedAccountAddress.count )
-            self.withdrawToAccountData.insert(buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""), at: ((self.connectedAccountAddress.count ) + 1))
+            /*self.withdrawToAccountData.append(buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""))*/
         }else if popupType == .InvestInStrategiesOrAsset{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "INVEST_IN_STRATEGIES_OR_SINGLE_ASSET")
         }else if(popupType == .investWithStrategiesActive || popupType == .investWithStrategiesInactive){
@@ -280,19 +276,18 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.investmentStrategyController?.deleteStrategy(strategy: self.strategy)
                 self.dismiss(animated: true, completion: nil)
             }
-        case .withdrawTo:                                                                   //Withdraw to
-            if indexPath.row == (self.withdrawToAccountData.count - 2){
+        case .withdrawTo:                                                        //Withdraw to
+            if indexPath.row == (self.withdrawToAccountData.count - 1){
                 let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                vc.addSelectedCoinAddress = true
-                vc.assetData = self.assetsData
-                self.investStrategyController?.navigationController?.pushViewController(vc, animated: true)
-            }else if indexPath.row == (self.withdrawToAccountData.count - 1){
-                let vc = AddBankAccountVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				vc.network = self.network ?? ""
                 self.investStrategyController?.navigationController?.pushViewController(vc, animated: true)
             }else{
                 accountSelectedCallback?(withdrawToAccountData[indexPath.row])
             }
-            
+			/*else if indexPath.row == (self.withdrawToAccountData.count - 1){
+			 let vc = AddBankAccountVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+			 self.investStrategyController?.navigationController?.pushViewController(vc, animated: true)
+			 }*/
         case .InvestInStrategiesOrAsset:                                                  //Invest in Strategy Or Asset
             if indexPath.row == 0{
                 let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)

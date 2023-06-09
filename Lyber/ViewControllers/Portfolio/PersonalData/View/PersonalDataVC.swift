@@ -16,7 +16,7 @@ class PersonalDataVC: ViewController {
     var currentPage : Int = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
-    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),email = String(),emailPassword = String(),streetNumber = String(),buildingFloor = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),personalAssets = String(),isEditData = false
+    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),email = String(),emailPassword = String(),streetNumber = String(),buildingFloor = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),personalAssets = String(),isEditData = false
 //    var personalData : [personalDataStruct] = []
     var personalData : personalDataStruct?,userPersonalDetail : UserPersonalData?
     
@@ -287,9 +287,11 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.selectBirthCountry)
         }else if self.nationality == ""{
             CommonFunctions.toster(Constants.AlertMessages.selectNationality)
-        }else{
+		}else if self.isUsPerson == ""{
+			CommonFunctions.toster(Constants.AlertMessages.selectAreYouUSCitizen)
+		}else{
 //            GotoNextIndex()
-			personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, language: userData.shared.language)
+			personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, isUsPerson: isUsPerson, language: userData.shared.language)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.personalDataApi(profile_info_step : 1,personalData: personalData, completion: {[weak self]response in

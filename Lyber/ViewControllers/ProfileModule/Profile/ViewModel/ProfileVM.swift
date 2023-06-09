@@ -12,7 +12,7 @@ class ProfileVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceUser, withParameters: [:], ofType: ProfileAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")

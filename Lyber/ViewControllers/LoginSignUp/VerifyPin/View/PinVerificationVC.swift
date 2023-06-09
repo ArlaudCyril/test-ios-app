@@ -171,21 +171,17 @@ extension PinVerificationVC{
             localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 
                 if success {
-                    //TODO: User authenticated successfully, take appropriate action
                     DispatchQueue.main.async {
                         self.GoToScreen()
                     }
                     
                 } else {
-                    //TODO: User did not authenticate successfully, look at error and take appropriate action
                     guard let error = evaluateError else {
                         return
                     }
                     
                     print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: error._code))
-                    
-                    //TODO: If you have choosen the 'Fallback authentication mechanism selected' (LAError.userFallback). Handle gracefully
-                    
+			
                 }
             }
         } else {
@@ -193,7 +189,6 @@ extension PinVerificationVC{
             guard let error = authError else {
                 return
             }
-            //TODO: Show appropriate alert if biometry/TouchID/FaceID is lockout or not enrolled
             print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: error.code))
             
         }

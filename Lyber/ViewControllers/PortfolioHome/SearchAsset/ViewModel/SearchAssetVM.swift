@@ -15,7 +15,7 @@ class SearchAssetVM{
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assets, withParameters: param, ofType: [GetAssetsAPIElement].self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")

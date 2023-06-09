@@ -27,7 +27,7 @@ class EnableWhitelistingVC: ViewController {
     @IBOutlet var tblViewHeightConst: NSLayoutConstraint!
     @IBOutlet var blockView: UIView!
     @IBOutlet var blockLbl: UILabel!
-    @IBOutlet var enableWhitelistingBtn: PurpleButton!
+    @IBOutlet var saveSettingsBtn: PurpleButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class EnableWhitelistingVC: ViewController {
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
         
-        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "ENABLE_WHITELISTING"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "WHITELISTING_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), lineSpacing: 6, textAlignment: .left)
         
@@ -49,23 +49,21 @@ class EnableWhitelistingVC: ViewController {
         self.tblView.delegate = self
         self.tblView.dataSource = self
         CommonUI.setUpViewBorder(vw: self.blockView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.blockLbl, text: CommonFunctions.localisation(key: "ALLOW_BLOCK_ADDITION_ADDRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        self.enableWhitelistingBtn.setTitle(CommonFunctions.localisation(key: "ENABLE_WHITELISTING"), for: .normal)
-        self.enableWhitelistingBtn.backgroundColor = UIColor.TFplaceholderColor
-        self.enableWhitelistingBtn.isUserInteractionEnabled = false
+        CommonUI.setUpLbl(lbl: self.blockLbl, text: CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        self.saveSettingsBtn.setTitle(CommonFunctions.localisation(key: "SAVE_SETTINGS"), for: .normal)
+        self.saveSettingsBtn.backgroundColor = UIColor.TFplaceholderColor
+        self.saveSettingsBtn.isUserInteractionEnabled = false
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        self.enableWhitelistingBtn.addTarget(self, action: #selector(enbaleWhiteListingBtnAct), for: .touchUpInside)
+        self.saveSettingsBtn.addTarget(self, action: #selector(saveSettingsBtnAct), for: .touchUpInside)
         
         if userData.shared.enableWhiteListing {
             for index in 0...(TimeData.count - 1){
                 if TimeData[index].securityTime == userData.shared.extraSecurity{
                     TimeData[index].isSelected = true
                     selectedTime = TimeData[index]
-                    self.enableWhitelistingLbl.text = CommonFunctions.localisation(key: "DISABLE_WHITELISTING")
-                    self.enableWhitelistingBtn.setTitle(CommonFunctions.localisation(key: "DISABLE_WHITELISTING"), for: .normal)
-                    self.enableWhitelistingBtn.backgroundColor = UIColor.PurpleColor
-                    self.enableWhitelistingBtn.isUserInteractionEnabled = true
+                    self.saveSettingsBtn.backgroundColor = UIColor.PurpleColor
+                    self.saveSettingsBtn.isUserInteractionEnabled = true
                     self.tblView.isUserInteractionEnabled = false
                     self.disableWhitelisting = true
                 }
@@ -81,11 +79,11 @@ extension EnableWhitelistingVC{
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func enbaleWhiteListingBtnAct(){
-        self.enableWhitelistingBtn.showLoading()
+    @objc func saveSettingsBtnAct(){
+        self.saveSettingsBtn.showLoading()
         if self.disableWhitelisting{
             enableWhitelistingVM.enableWhitelistingApi(enable: false, Security: selectedTime?.securityTime ?? "", completion: {response in
-                self.enableWhitelistingBtn.hideLoading()
+                self.saveSettingsBtn.hideLoading()
 				if response != nil {
                     userData.shared.enableWhiteListing = false
                     userData.shared.dataSave()
@@ -96,7 +94,7 @@ extension EnableWhitelistingVC{
             
         }else{
             enableWhitelistingVM.enableWhitelistingApi(enable: true, Security: selectedTime?.securityTime ?? "", completion: {response in
-                self.enableWhitelistingBtn.hideLoading()
+                self.saveSettingsBtn.hideLoading()
 				if response != nil {
                     userData.shared.enableWhiteListing = true
                     userData.shared.extraSecurity = self.selectedTime?.securityTime ?? ""
@@ -145,11 +143,11 @@ extension EnableWhitelistingVC: UITableViewDelegate, UITableViewDataSource{
         }
         
         if TimeData[indexPath.row].isSelected == true{
-            self.enableWhitelistingBtn.backgroundColor = UIColor.PurpleColor
-            self.enableWhitelistingBtn.isUserInteractionEnabled = true
+            self.saveSettingsBtn.backgroundColor = UIColor.PurpleColor
+            self.saveSettingsBtn.isUserInteractionEnabled = true
         }else{
-            self.enableWhitelistingBtn.backgroundColor = UIColor.TFplaceholderColor
-            self.enableWhitelistingBtn.isUserInteractionEnabled = false
+            self.saveSettingsBtn.backgroundColor = UIColor.TFplaceholderColor
+            self.saveSettingsBtn.isUserInteractionEnabled = false
         }
     }
 }

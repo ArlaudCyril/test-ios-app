@@ -20,7 +20,7 @@ class AllAssetsVM{
 			}
 		
 			completion(priceServiceResumeArray)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -31,7 +31,7 @@ class AllAssetsVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.coingeckoCoins, withParameters: [:], ofType: TrendingCoinsAPI.self, onSuccess: { response in
 
                 completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -43,7 +43,7 @@ class AllAssetsVM{
             coinDetailData = response.data ?? []
             self.controller?.filteredData = response.data ?? []
             completion(response.data)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")

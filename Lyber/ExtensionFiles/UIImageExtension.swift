@@ -96,4 +96,5 @@ extension UIImage{
            
            return UIImage.animatedImageWithSource(source)
        }
+	
 }

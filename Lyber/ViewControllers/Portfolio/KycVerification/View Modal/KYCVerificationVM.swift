@@ -16,7 +16,7 @@ class KYCVerificationVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.kyc_status, withParameters: [:], ofType: KycStatusModel.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -28,7 +28,7 @@ class KYCVerificationVM{
 //        ]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.kyc_liveness, withParameters: [:], ofType: KycLivenessModel.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")

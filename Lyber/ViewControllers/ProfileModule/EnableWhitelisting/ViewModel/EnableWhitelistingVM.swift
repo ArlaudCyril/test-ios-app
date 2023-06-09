@@ -14,7 +14,7 @@ class EnableWhitelistingVM{
                                        Constants.ApiKeys.extra_security : Security]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userEnableWhitelisting, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")

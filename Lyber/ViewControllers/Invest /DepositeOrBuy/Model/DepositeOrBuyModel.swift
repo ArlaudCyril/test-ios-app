@@ -28,8 +28,6 @@ enum bottomPopUp{
     case investWithStrategiesInactive
 //    case withdrawDepositBuySellExchange
     case AssetDetailPagePopUp
-    case frequency
-    case changeProfile
 }
 
 enum confirmationPopUp{

@@ -7,17 +7,12 @@
 
 import UIKit
 
-enum whiteListingPopUp{
-    case detailAddress
-    case confirmAddress
-}
 class AddressAddedPopUpVC: ViewController {
     //MARK: - Variables
     var controller : AddCryptoAddressVC?
     var addressBookController : CryptoAddressBookVC?
-    var cryptoAddressAdded : cryptoAddressModel?
-    var popUpType : whiteListingPopUp?
-    var addressId = String()
+    var editAddress : Address?
+    var addressId = String()//TODO: Delete addressId
     var addressAddedPopUpVM = AddressAddedPopUpVM()
     var deleteCallback : (()->())?
     
@@ -28,17 +23,20 @@ class AddressAddedPopUpVC: ViewController {
     
     @IBOutlet var addressView: UIView!
     
+    @IBOutlet var addressLbl: UILabel!
+    @IBOutlet var addressCopyLbl: UILabel!
+	
     @IBOutlet var networkLbl: UILabel!
     @IBOutlet var networkNameLbl: UILabel!
     
     @IBOutlet var addressOriginView: UIView!
-    @IBOutlet var addresOriginLbl: UILabel!
+    @IBOutlet var addressOriginLbl: UILabel!
     @IBOutlet var addressOriginNameLbl: UILabel!
     
     @IBOutlet var dateAddedLbl: UILabel!
     @IBOutlet var dateLbl: UILabel!
     
-    @IBOutlet var confirmBtn: LoadingButton!
+    @IBOutlet var deleteBtn: LoadingButton!
     @IBOutlet var editBtn: LoadingButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,50 +49,43 @@ class AddressAddedPopUpVC: ViewController {
     override func setUpUI(){
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        self.headerView.headerLbl.text = cryptoAddressAdded?.addressName ?? ""
+        self.headerView.headerLbl.text = editAddress?.name ?? ""
         
         CommonUI.setUpViewBorder(vw: self.addressView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
+		
+		CommonUI.setUpLbl(lbl: self.addressLbl, text: self.editAddress?.address, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.addressLbl.numberOfLines = 0
+		CommonUI.setUpLbl(lbl: self.addressCopyLbl, text: CommonFunctions.localisation(key: "COPY"), textColor: UIColor.purple_500, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addresOriginLbl, text: "\(CommonFunctions.localisation(key: "ADDRESS")) \(CommonFunctions.localisation(key: "ORIGIN"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressOriginLbl, text: "\(CommonFunctions.localisation(key: "ADDRESS_ORIGIN"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: "Date added", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: self.networkNameLbl, text: cryptoAddressAdded?.network ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        if cryptoAddressAdded?.exchange == ""{
+		CommonUI.setUpLbl(lbl: self.networkNameLbl, text: editAddress?.network?.uppercased() ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        if editAddress?.exchange == ""{
             self.addressOriginView.isHidden = true
         }
-        CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: cryptoAddressAdded?.exchange ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getCurrentDate(requiredFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: editAddress?.exchange ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+
+        CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.editAddress?.creationDate ?? "", format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", rqrdFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        CommonUI.setUpButton(btn: self.confirmBtn, text: CommonFunctions.localisation(key: "CONFIRM"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: self.deleteBtn, text: CommonFunctions.localisation(key: "DELETE"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpButton(btn: self.editBtn, text: CommonFunctions.localisation(key: "EDIT"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.editBtn.addTarget(self, action: #selector(editAct), for: .touchUpInside)
-        self.confirmBtn.addTarget(self, action: #selector(confirmBtnAct), for: .touchUpInside)
+        self.deleteBtn.addTarget(self, action: #selector(confirmBtnAct), for: .touchUpInside)
         let tapp = UITapGestureRecognizer(target: self, action: #selector(outerTapped))
         self.outerView.addGestureRecognizer(tapp)
-        
-        if popUpType == .confirmAddress{
-            
-        }else if popUpType == .detailAddress{
-            self.confirmBtn.setTitle(CommonFunctions.localisation(key: "DELETE"), for: .normal)
-            CommonFunctions.showLoader(self.bottomView)
-            addressAddedPopUpVM.getAddressDetailApi(addressId: self.addressId, completion: {[weak self]response in
-                CommonFunctions.hideLoader(self?.bottomView ?? UIView())
-                self?.cryptoAddressAdded = cryptoAddressModel(addressName: response?.name ?? "", network: response?.network ?? "", address: response?.address ?? "", origin: response?.origin ?? "", exchange: response?.exchange ?? "", logo: response?.logo ?? "")
-                self?.headerView.headerLbl.text = response?.name ?? ""
-                self?.networkNameLbl.text = response?.network ?? ""
-                self?.dateLbl.text = CommonFunctions.getDateFromUnixInterval(timeResult: Double(response?.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy")
-                if response?.exchange == nil || response?.exchange == nil{
-                    self?.addressOriginView.isHidden = true
-                }else{
-                    self?.addressOriginNameLbl.text = response?.exchange ?? ""
-                    self?.addressOriginView.isHidden = false
-                    
-                }
-                
-            })
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addressCopyLblTapped(_:)))
+		addressCopyLbl.addGestureRecognizer(tapGesture)
+	
+		
+		if self.editAddress?.exchange == nil || self.editAddress?.exchange == nil{
+			self.addressOriginView.isHidden = true
+		}else{
+			self.addressOriginNameLbl.text = self.editAddress?.exchange ?? ""
+			self.addressOriginView.isHidden = false
         }
     }
 }
@@ -110,52 +101,35 @@ extension AddressAddedPopUpVC{
     }
     
     @objc func editAct(){
-        if popUpType == .confirmAddress{
-            self.dismiss(animated: true, completion: nil)
-        }else if popUpType == .detailAddress{
-                self.dismiss(animated: true, completion: nil)
-                let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                vc.isEditAddress = true
-                self.cryptoAddressAdded?.addressId = addressId
-                vc.cryptoAddress = self.cryptoAddressAdded
-                self.addressBookController?.navigationController?.pushViewController(vc, animated: true)
-        }
+		self.dismiss(animated: true, completion: nil)
+		let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+		vc.isEditAddress = true
+		vc.cryptoAddress = self.editAddress
+		self.addressBookController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func confirmBtnAct(){
-        if popUpType == .confirmAddress{
-            self.callConfirmApi()
-        }else if popUpType == .detailAddress{
-            self.callDeleteApi()
-           
-        }
+		self.callDeleteApi()
+        
     }
+	
+	@objc func addressCopyLblTapped(_ gesture: UITapGestureRecognizer) {
+		CommonFunctions.toster(CommonFunctions.localisation(key: "ADDRESS_COPIED"))
+		let pasteboard = UIPasteboard.general
+		pasteboard.string = self.addressLbl.text
+	}
 }
 
 //MARK: - Other functions
 extension AddressAddedPopUpVC{
     func callDeleteApi(){
-        self.confirmBtn.showLoading(color: UIColor.PurpleColor)
-        self.confirmBtn.isUserInteractionEnabled = false
+        self.deleteBtn.showLoading(color: UIColor.PurpleColor)
+        self.deleteBtn.isUserInteractionEnabled = false
         addressAddedPopUpVM.deleteAddressApi(addressId: self.addressId, completion: {[weak self]response in
-            self?.confirmBtn.isUserInteractionEnabled = true
-            self?.confirmBtn.hideLoading()
+            self?.deleteBtn.isUserInteractionEnabled = true
+            self?.deleteBtn.hideLoading()
             self?.dismiss(animated: true, completion: nil)
             self?.deleteCallback?()
-        })
-    }
-    
-    func callConfirmApi(){
-        self.confirmBtn.showLoading(color: UIColor.PurpleColor)
-        self.confirmBtn.isUserInteractionEnabled = false
-        addressAddedPopUpVM.addWhiteListingAddressApi(cryptoAddress: self.cryptoAddressAdded, completion: {[weak self]response in
-            self?.confirmBtn.isUserInteractionEnabled = true
-            self?.confirmBtn.hideLoading()
-			if response != nil{
-                self?.dismiss(animated: true, completion: nil)
-                self?.controller?.navigationController?.popToViewController(ofClass: CryptoAddressBookVC.self)
-            }
-            
         })
     }
 }

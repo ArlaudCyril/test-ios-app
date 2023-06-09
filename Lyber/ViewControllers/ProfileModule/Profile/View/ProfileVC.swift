@@ -213,23 +213,8 @@ extension ProfileVC{
     }
     
     @objc func profileTapped(){
-        let vc = FrequencyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-        vc.popUpType = .changeProfile
-        vc.frequencySelectedCallback = {[weak self] value in
-            print(value)
-            self?.dismiss(animated: true, completion: nil)
-            if value == CommonFunctions.localisation(key: "CAMERA"){
-                guard UIImagePickerController.isSourceTypeAvailable(.camera) else{ return}
-                self?.selectImageFrom(.camera)
-            }else if value == CommonFunctions.localisation(key: "SELECT_FROM_GALLERY"){
-                guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else{ return}
-                self?.selectImageFrom(.photoLibrary)
-            }else if value == CommonFunctions.localisation(key: "SET_DEFAULT_PICTURES"){
-                let vc = DefaultPictureVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-        self.present(vc, animated: true, completion: nil)
+		let vc = DefaultPictureVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+		self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

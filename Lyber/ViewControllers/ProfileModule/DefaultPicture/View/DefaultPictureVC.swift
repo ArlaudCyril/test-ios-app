@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DefaultPictureVC: ViewController {
+class DefaultPictureVC: SwipeGesture {
     //MARK: - Variables
     var pictureData : [String] =
     ["one","two","three","four","five","six","seven","eight","nine","ten",

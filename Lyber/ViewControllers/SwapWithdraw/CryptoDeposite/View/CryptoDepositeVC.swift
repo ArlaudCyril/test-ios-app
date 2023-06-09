@@ -11,7 +11,7 @@ import DropDown
 class CryptoDepositeVC: ViewController {
     //MARK: - Variables
     var selectedAsset : AssetBaseData?
-    var availableAssets : [AssetBaseData] = []
+    var availableAssets : [AssetBaseData?] = []
     var assetValueArr : [String]? = []
     var assetImgArr : [String]? = []
     var dropDownAsset = DropDown()
@@ -47,7 +47,7 @@ class CryptoDepositeVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        callAssetsDetailApi()
+        getAssetsDetail()
 		callCoinInfoApi(assetId: self.selectedAsset?.id ?? "")
     }
 
@@ -140,18 +140,14 @@ extension CryptoDepositeVC{
 
 //MARK: - Other functions
 extension CryptoDepositeVC{
-    func callAssetsDetailApi(){
-        AllAssetsVM().getAllAssetsDetailApi(completion: {[]response in
-            if let response = response{
-				self.availableAssets = response
-                for (index,value) in response.enumerated() {
-                    print(index,value)
-					self.assetValueArr?.append("\(value.fullName ?? "") (\(value.id?.uppercased() ?? ""))")
-                    self.assetImgArr?.append(value.image ?? "")
-                }
-                self.dropDownAsset.dataSource = self.assetValueArr ?? []
-            }
-        })
+    func getAssetsDetail(){
+        self.availableAssets = Storage.currencies
+		for (_,value) in Storage.currencies.enumerated() {
+			self.assetValueArr?.append("\(value?.fullName ?? "") (\(value?.id?.uppercased() ?? ""))")
+			self.assetImgArr?.append(value?.image ?? "")
+		}
+		self.dropDownAsset.dataSource = self.assetValueArr ?? []
+        
     }
     
 	
@@ -227,7 +223,7 @@ extension CryptoDepositeVC{
 			self?.assetNameLbl.text = item
 			self?.assetImgVw.sd_setImage(with: URL(string: self?.assetImgArr?[index] ?? ""))
 			self?.selectedAsset = self?.availableAssets[index] ?? nil
-			self?.callCoinInfoApi(assetId: self?.availableAssets[index].id ?? "")
+			self?.callCoinInfoApi(assetId: self?.availableAssets[index]?.id ?? "")
 		}
 		
 	}

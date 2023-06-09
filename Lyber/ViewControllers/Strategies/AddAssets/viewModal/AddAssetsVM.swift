@@ -30,7 +30,7 @@ class AddAssetsVM{
 			}
 			
 			completion(priceServiceResumeArray)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")

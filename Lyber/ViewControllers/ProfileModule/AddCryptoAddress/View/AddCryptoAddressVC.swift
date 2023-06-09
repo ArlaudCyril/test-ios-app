@@ -11,20 +11,21 @@ import SVGKit
 import Alamofire
 import IQKeyboardManagerSwift
 
-class AddCryptoAddressVC: ViewController {
+class AddCryptoAddressVC: SwipeGesture {
     var addSelectedCoinAddress = false
-    var assetData : Trending?
-    var dropDown = DropDown(),exchangeDropDowm = DropDown()
+    var networkDropdown = DropDown()
     var addCryptoAddressVM = AddCryptoAddressVM()
     var networkValueArr : [String]? = []
-    var networkIdArr : [String] = []
     var networkImgArr : [String]? = []
     var exchangeValueArr : [String]? = []
-    var cryptoAddress : cryptoAddressModel?
+    var cryptoAddress : Address?
     var selectedOrigin = UILabel()
     var selectedNetworkImg = String()
     var selectedNetworkId = String()
     var isEditAddress = false
+	
+	//withdraw
+	var network = ""
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var addCryptoAddressLbl: UILabel!
@@ -59,7 +60,6 @@ class AddCryptoAddressVC: ViewController {
     @IBOutlet var selectExchangeLbl: UILabel!
     @IBOutlet var selectExchangeView: UIView!
     @IBOutlet var ExchangeTF: UITextField!
-    @IBOutlet var exchangeDownBtn: UIButton!
     
     @IBOutlet var noteView: UIView!
     @IBOutlet var noteLbl: UILabel!
@@ -68,11 +68,10 @@ class AddCryptoAddressVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        callNetworkApi()
-        callExchangeApi()
+        getNetworkData()
         if isEditAddress{
             setData()
-        }
+		}
     }
 
 
@@ -84,13 +83,15 @@ class AddCryptoAddressVC: ViewController {
         self.headerView.headerLbl.isHidden = true
         
         CommonUI.setUpLbl(lbl: self.addCryptoAddressLbl, text: CommonFunctions.localisation(key: "ADD_CRYPTO_ADRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+		self.addCryptoAddressLbl.numberOfLines = 0
         CommonUI.setUpLbl(lbl: self.addressNameLbl, text: CommonFunctions.localisation(key: "ADRESS_NAME"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "ADDRESS"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.originLbl, text: CommonFunctions.localisation(key: "ORIGIN"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.selectExchangeLbl, text: CommonFunctions.localisation(key: "SELECT_EXCHANGE"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.selectExchangeLbl, text: CommonFunctions.localisation(key: "WRITE_EXCHANGE"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         
         self.addressNameTF.font = UIFont.MabryPro(Size.Large.sizeValue())
+        self.addressNameTF.placeholder = CommonFunctions.localisation(key: "ADRESS_NAME")
         self.networkImgLblView.isHidden = true
         CommonUI.setUpLbl(lbl: self.networkValueLbl, text: "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.networkChooseLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
@@ -98,6 +99,7 @@ class AddCryptoAddressVC: ViewController {
         CommonUI.setUpLbl(lbl: self.addressErrorLbl, text: CommonFunctions.localisation(key: "ENTER_VALID_ADDRESS"), textColor: UIColor.red, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.addressErrorLbl.isHidden = true
         self.addressTF.delegate = self
+        self.addressTF.placeholder = CommonFunctions.localisation(key: "ENTER_SCAN_ADDRESS")
         self.addressTF.font = UIFont.MabryPro(Size.Medium.sizeValue())
         self.ExchangeTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         
@@ -110,16 +112,22 @@ class AddCryptoAddressVC: ViewController {
         selectOrigin(selectBtn: self.exchangeRadioBtn, unSelectBtn: self.walletRadioBtn, selectView: self.exchangeView, unSelectView: self.walletView)
         selectedOrigin = exchangeLbl
         
-        CommonUI.setUpLbl(lbl: self.exchangeLbl, text: CommonFunctions.localisation(key: "EXCHANGE"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.exchangeLbl, text: CommonFunctions.localisation(key: "EXCHANGE_PLATFORM"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.exchangeLbl.numberOfLines = 0
         CommonUI.setUpLbl(lbl: self.walletLbl, text: CommonFunctions.localisation(key: "WALLET"), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.noteView, radius: 16, borderWidth: 0, borderColor: UIColor.borderColor.cgColor, backgroundColor: UIColor.ColorFFF2D9)
-        CommonUI.setUpLbl(lbl: self.noteLbl, text: CommonFunctions.localisation(key: "IMPORTANT_NOTE"), textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        self.noteLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "IMPORTANT_NOTE"), secondStr: CommonFunctions.localisation(key: "YOUR_NOTE_GOES_HERE"), firstFont: UIFont.MabryProMedium(Size.Small.sizeValue()), secondFont: UIFont.MabryPro(Size.Small.sizeValue()), firstColor: UIColor.grey36323C, secondColor: UIColor.grey36323C)
+		
+		
+		// for the moment we don't use notelbl
+		self.noteView.isHidden = true
+        /*CommonUI.setUpLbl(lbl: self.noteLbl, text: CommonFunctions.localisation(key: "IMPORTANT_NOTE"), textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        self.noteLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "IMPORTANT_NOTE"), secondStr: CommonFunctions.localisation(key: "YOUR_NOTE_GOES_HERE"), firstFont: UIFont.MabryProMedium(Size.Small.sizeValue()), secondFont: UIFont.MabryPro(Size.Small.sizeValue()), firstColor: UIColor.grey36323C, secondColor: UIColor.grey36323C)*/
+		
         CommonUI.setUpButton(btn: self.addAddressBtn, text: CommonFunctions.localisation(key: "ADD_ADRESS"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        if addSelectedCoinAddress == true{
-            self.addCryptoAddressLbl.text = "Add a \(self.assetData?.name ?? "") address"
+        if network != ""{
+			self.addCryptoAddressLbl.text = "\(CommonFunctions.localisation(key: "ADD")) \(self.network.uppercased()) \(CommonFunctions.localisation(key: "ADRESS"))"
             self.addAddressBtn.setTitle(CommonFunctions.localisation(key: "ADD_USE_ADRESS"), for: .normal)
         }
         
@@ -136,21 +144,17 @@ class AddCryptoAddressVC: ViewController {
         let networkTap = UITapGestureRecognizer(target: self, action: #selector(networkTappped))
         self.networkview.addGestureRecognizer(networkTap)
         
-        let selectExchangeTap = UITapGestureRecognizer(target: self, action: #selector(selectExchangeTapped))
-        self.selectExchangeView.addGestureRecognizer(selectExchangeTap)
-        
-        dropDown.layer.cornerRadius = 6
-        dropDown.anchorView = networkview
-        dropDown.bottomOffset = CGPoint(x: 0, y: networkChooseView.frame.height)
-        dropDown.textFont = UIFont.MabryPro(Size.Large.sizeValue())
-        dropDown.cellNib = UINib(nibName: "dropDownTableViewCell", bundle: nil)
-        dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+        networkDropdown.layer.cornerRadius = 6
+        networkDropdown.anchorView = networkview
+        networkDropdown.bottomOffset = CGPoint(x: 0, y: networkChooseView.frame.height)
+        networkDropdown.textFont = UIFont.MabryPro(Size.Large.sizeValue())
+        networkDropdown.cellNib = UINib(nibName: "dropDownTableViewCell", bundle: nil)
+        networkDropdown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? dropDownTableViewCell else { return }
             cell.textLbl.text = item
             cell.imgVw.yy_setImage(with: URL(string: self.networkImgArr?[index] ?? ""), options: .progressiveBlur)
-//            cell.imgVw.setSvgImage(from: URL(string: self.networkImgArr?[index] ?? ""))
         }
-        dropDown.selectionAction = {[weak self] (index: Int,item: String) in
+        networkDropdown.selectionAction = {[weak self] (index: Int,item: String) in
             self?.networkChooseView.isHidden = true
             self?.networkImgLblView.isHidden = false
             self?.selectedNetworkImg = self?.networkImgArr?[index] ?? ""
@@ -159,28 +163,29 @@ class AddCryptoAddressVC: ViewController {
             let str = (item).components(separatedBy: " (")
             self?.selectedNetworkId = str[1].replacingOccurrences(of: ")", with: "")
         }
-        dropDown.cellHeight = 44
-
-        self.exchangeDropDowm.anchorView = self.selectExchangeView
-        self.exchangeDropDowm.bottomOffset = CGPoint(x: 0, y: self.selectExchangeView.frame.height )
-        self.exchangeDropDowm.textFont = UIFont.MabryPro(Size.Large.sizeValue())
-        self.exchangeDropDowm.selectionAction = {[weak self] (index: Int,item: String) in
-            self?.ExchangeTF.text = item
-        }
+        networkDropdown.cellHeight = 44
     }
     
     func setData(){
         self.addCryptoAddressLbl.text = CommonFunctions.localisation(key: "EDIT_CRYPTO_ADRESS")
-        self.addressNameTF.text = cryptoAddress?.addressName ?? ""
-        self.networkChooseView.isHidden = true
-        self.networkImgLblView.isHidden = false
-        self.networkImgView.yy_setImage(with: URL(string: cryptoAddress?.logo ?? ""), options: .progressiveBlur)
-        self.selectedNetworkImg = cryptoAddress?.logo ?? ""
-        self.networkValueLbl.text = cryptoAddress?.network ?? ""
-        self.addressTF.text = cryptoAddress?.address ?? ""
+        self.addressNameTF.text = cryptoAddress?.name ?? ""
+		//TODO: Select the component to edit in the dropdown
+		self.networkChooseView.isHidden = true
+		self.networkImgLblView.isHidden = false
+		self.selectedNetworkId = self.cryptoAddress?.network ?? ""
+		self.selectedNetworkImg = CommonFunctions.getImage(id: self.selectedNetworkId)
+		self.networkValueLbl.text = self.selectedNetworkId.uppercased()
+		self.networkImgView.yy_setImage(with: URL(string: self.selectedNetworkImg), options: .progressiveBlur)
+		
+		//we can't change the address and the network
+		self.addressTF.text = cryptoAddress?.address ?? ""
+		self.addressView.isUserInteractionEnabled = false
+		self.addressView.backgroundColor = UIColor.gray
+		self.networkview.backgroundColor = UIColor.gray
+		self.networkview.isUserInteractionEnabled = false
+		self.networkImgLblView.backgroundColor = UIColor.gray
+		
         self.addAddressBtn.setTitle(CommonFunctions.localisation(key: "EDIT_ADRESS"), for: .normal)
-//        let str = (cryptoAddress?.network ?? "").components(separatedBy: " (")
-        self.selectedNetworkId = cryptoAddress?.network ?? ""
         if cryptoAddress?.origin == "WALLET"{
             self.exchangeVw.isHidden = true
             selectOrigin(selectBtn: self.walletRadioBtn, unSelectBtn: self.exchangeRadioBtn, selectView: self.walletView, unSelectView: self.exchangeView)
@@ -209,62 +214,19 @@ extension AddCryptoAddressVC{
     }
     
     @objc func addAddressBtnAct(){
-        if addSelectedCoinAddress == true{
-            checkValidation(completion: {
-                self.cryptoAddress = cryptoAddressModel(addressName: self.addressNameTF.text ?? "", network: self.selectedNetworkId , address: self.addressTF.text ?? "", origin: self.selectedOrigin.text?.uppercased() ?? "", exchange: self.ExchangeTF.text, logo: self.selectedNetworkImg)
-                AddressAddedPopUpVM().addWhiteListingAddressApi(cryptoAddress: self.cryptoAddress, completion: {[weak self]response in
-                    self?.navigationController?.popViewController(animated: true)
-                })
-            })
-            
-        }else{
-            checkValidation(completion: {
-                if self.isEditAddress{
-                    self.cryptoAddress = cryptoAddressModel(addressName: self.addressNameTF.text ?? "", network: self.selectedNetworkId, address: self.addressTF.text ?? "", origin: self.selectedOrigin.text?.uppercased() ?? "", exchange: self.ExchangeTF.text, logo: self.selectedNetworkImg,addressId: self.cryptoAddress?.addressId ?? "")
-                    self.addAddressBtn.showLoading()
-                    self.addCryptoAddressVM.editWhiteListingAddressApi(cryptoAddress: self.cryptoAddress, completion: {[weak self]response in
-                        self?.addAddressBtn.hideLoading()
-                        if let _ = response{
-                            self?.navigationController?.popViewController(animated: true)
-                        }
-                    })
-                }else{
-                    self.cryptoAddress = cryptoAddressModel(addressName: self.addressNameTF.text ?? "", network: self.networkValueLbl.text ?? "", address: self.addressTF.text ?? "", origin: self.selectedOrigin.text?.uppercased() ?? "", exchange: self.ExchangeTF.text, logo: self.selectedNetworkImg)
-                    let vc = AddressAddedPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                    vc.popUpType = .confirmAddress
-                    vc.controller = self
-                    vc.cryptoAddressAdded = self.cryptoAddress
-                    self.present(vc, animated: true, completion: nil)
-                }
-            })
-            //            if addressNameTF.text == ""{
-            //                CommonFunction.toster(Constants.AlertMessages.PleaseEnterYourAddressName)
-            //            }else if networkValueLbl.text == ""{
-            //                CommonFunction.toster(Constants.AlertMessages.PleaseSelectYourNetwork)
-            //            }else if addressTF.text == ""{
-            //                CommonFunction.toster(Constants.AlertMessages.PleaseEnterOrScanAnAddress)
-            //            }else if ExchangeTF.text == ""{
-            //                CommonFunction.toster(Constants.AlertMessages.PleaseSelectYourExchange)
-            //            }else{
-            //                if isEditAddress{
-            //                    cryptoAddress = cryptoAddressModel(addressName: self.addressNameTF.text ?? "", network: networkValueLbl.text ?? "", address: addressTF.text ?? "", origin: selectedOrigin.text?.uppercased() ?? "", exchange: ExchangeTF.text, logo: self.selectedNetworkImg,addressId: cryptoAddress?.addressId ?? "")
-            //                    self.addAddressBtn.showLoading()
-            //                    addCryptoAddressVM.editWhiteListingAddressApi(cryptoAddress: cryptoAddress, completion: {[weak self]response in
-            //                        self?.addAddressBtn.hideLoading()
-            //                        if let _ = response{
-            //                            self?.navigationController?.popViewController(animated: true)
-            //                        }
-            //                    })
-            //                }else{
-            //                    cryptoAddress = cryptoAddressModel(addressName: self.addressNameTF.text ?? "", network: networkValueLbl.text ?? "", address: addressTF.text ?? "", origin: selectedOrigin.text?.uppercased() ?? "", exchange: ExchangeTF.text, logo: self.selectedNetworkImg)
-            //                    let vc = AddressAddedPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-            //                    vc.popUpType = .confirmAddress
-            //                    vc.controller = self
-            //                    vc.cryptoAddressAdded = self.cryptoAddress
-            //                    self.present(vc, animated: true, completion: nil)
-            //                }
-            //            }
-        }
+		checkValidation(completion: {
+			var originValue = "wallet"
+			if(self.exchangeRadioBtn.isSelected){
+				originValue = "exchange"
+			}
+			self.cryptoAddress = Address(asset: self.selectedNetworkId, address: self.addressTF.text ?? "", network: self.selectedNetworkId, name: self.addressNameTF.text ?? "", origin: originValue, exchange: self.ExchangeTF.text, creationDate: "")
+			self.addAddressBtn.showLoading()
+			CryptoAddressBookVM().createWithdrawalAddress(cryptoAddress: self.cryptoAddress, completion: {[weak self]response in
+				self?.addAddressBtn.hideLoading()
+				self?.navigationController?.popViewController(animated: true)
+				
+			})
+		})
     }
     
     @objc func exchangeTappped(view: UITapGestureRecognizer){
@@ -281,32 +243,23 @@ extension AddCryptoAddressVC{
     }
     
     @objc func networkTappped(){
-//        callNetworkApi()
-        self.dropDown.show()
+        self.networkDropdown.show()
         
-        
-    }
-    
-    @objc func selectExchangeTapped(){
-        callExchangeApi()
-        self.exchangeDropDowm.show()
         
     }
     
     func selectOrigin(selectBtn : UIButton, unSelectBtn: UIButton,selectView : UIView, unSelectView : UIView){
         selectView.layer.borderColor = UIColor.PurpleColor.cgColor
         selectBtn.setImage(Assets.radio_select.image(), for: .normal)
+		selectBtn.isSelected = true
         unSelectView.layer.borderColor = UIColor.borderColor.cgColor
         unSelectBtn.setImage(Assets.radio_unselect.image(), for: .normal)
+		unSelectBtn.isSelected = false
     }
 }
 
-//MARK:- Text Field Delegates
+//MARK: - Text Field Delegates
 extension AddCryptoAddressVC: UITextFieldDelegate{
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.checkAddressFormatvalidation()
-    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentString: NSString = textField.text! as NSString
@@ -342,33 +295,35 @@ extension AddCryptoAddressVC: UITextFieldDelegate{
 
 //MARK: - Other functions
 extension AddCryptoAddressVC{
-    func callNetworkApi(){
-//        CommonFunction.showLoader(dropDown.anchorView as! UIView)
-        addCryptoAddressVM.getNetworksDataApi(completion: {[weak self]response in
-//            CommonFunction.hideLoader(self?.dropDown.anchorView as! UIView)
-            if let response = response{
-                for (index,value) in response.networks.enumerated() {
-                    print(index,value)
-                    self?.networkValueArr?.append("\(value.name ?? "") (\(value.assetID ?? ""))")
-                    self?.networkIdArr.append(value.assetID ?? "")
-                    self?.networkImgArr?.append(value.logo ?? "")
-                }
-                self?.dropDown.dataSource = self?.networkValueArr ?? []
-            }
-        })
-    }
-    
-    func callExchangeApi(){
-        addCryptoAddressVM.getExchangeApi(completion: {[weak self]response in
-            if let response = response{
-                for (index,value) in response.assets.enumerated() {
-                    print(index,value)
-                    self?.exchangeValueArr?.append("\(value.name ?? "")")
-                }
-                self?.exchangeDropDowm.dataSource = self?.exchangeValueArr ?? []
-                
-            }
-        })
+    func getNetworkData(){
+		for asset in Storage.currencies{
+			var networkValue = self.network
+			if(self.network == "bsc")
+			{
+				networkValue = "bnb"
+			}
+			
+			if(self.network != "")
+			{
+				if(asset?.id == networkValue){
+					self.networkValueArr?.append("\(asset?.fullName ?? "") (\(asset?.id?.uppercased() ?? ""))")
+					self.networkImgArr?.append(asset?.image ?? "")
+				}
+				
+			}
+			else{
+				self.networkValueArr?.append("\(asset?.fullName ?? "") (\(asset?.id?.uppercased() ?? ""))")
+				self.networkImgArr?.append(asset?.image ?? "")
+			}
+		}
+		self.networkDropdown.dataSource = self.networkValueArr ?? []
+		if(self.network != "")
+		{
+			self.networkDropdown.selectionAction!(0, self.networkDropdown.dataSource[0])
+			self.networkview.backgroundColor = UIColor.gray
+			self.networkview.isUserInteractionEnabled = false
+			self.networkImgLblView.backgroundColor = UIColor.gray
+		}
     }
     
     func checkValidation(completion : @escaping (()->()) ){
@@ -378,10 +333,6 @@ extension AddCryptoAddressVC{
             CommonFunctions.toster(Constants.AlertMessages.PleaseSelectYourNetwork)
         }else if addressTF.text == ""{
             CommonFunctions.toster(Constants.AlertMessages.PleaseEnterOrScanAnAddress)
-        }else if checkAddressFormatvalidation() == false{
-//            completion()
-        }else if exchangeVw.isHidden{
-            completion()
         }else if exchangeVw.isHidden == false{
             if ExchangeTF.text == ""{
                 CommonFunctions.toster(Constants.AlertMessages.PleaseSelectYourExchange)
@@ -393,30 +344,5 @@ extension AddCryptoAddressVC{
         }
     }
     
-    func checkAddressFormatvalidation()->Bool{
-        let tf = addressTF.text ?? ""
-        if self.selectedNetworkId == "BTC"{
-            if ((tf.hasPrefix("1") || tf.hasPrefix("3")) && (tf.count >= 28 && tf.count <= 35)) || ((tf.hasPrefix("bc1")) && (tf.count >= 30 && tf.count <= 37)){
-                self.addressErrorLbl.isHidden = true
-                return true
-          }else{
-//              CommonFunction.toster("Please enter the valid address")
-              self.addressErrorLbl.isHidden = false
-              return false
-          }
-        }else if self.selectedNetworkId == ""{
-            return true
-        }else{
-            if (tf.hasPrefix("0x") && (tf.count == 42) && (tf.isValidHexNumber())){
-                self.addressErrorLbl.isHidden = true
-                return true
-            }else{
-//                CommonFunction.toster("Please enter the valid address")
-                self.addressErrorLbl.isHidden = false
-                return false
-            }
-        }
-        
-    }
 }
 

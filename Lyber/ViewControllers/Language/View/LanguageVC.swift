@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-final class LanguageVC: ViewController{
+final class LanguageVC: SwipeGesture{
 	
 	//MARK: - Variables
 	

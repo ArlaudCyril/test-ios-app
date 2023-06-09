@@ -13,7 +13,7 @@ class AddBankAccountVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userBankInfo, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")

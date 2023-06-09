@@ -83,22 +83,23 @@ struct Constants{
         static let first_name = "first_name"
         static let last_name = "last_name"
 		static let language = "language"
-//        static let email = "email"
         static let state = "state"
         static let countryName = "countryName"
         static let zip_code = "zip_code"
         static let dob = "dob"
-//        static let nationality = "nationality"
-//        static let incomeRange = "incomeRange"
         static let birth_place = "birth_place"
         static let birth_country = "birth_country"
         static let address1 = "address1"
-//        static let occupation = "occupation"
-//        static let personalAssets = "personalAssets"
         static let specifiedUSPerson = "specifiedUSPerson"
         static let investment_experience = "investment_experience"
         static let income_source = "income_source"
         static let status = "status"
+		
+		//User
+		static let action = "action"
+		static let details = "details"
+		static let destination = "destination"
+		static let chain = "chain"
         
         // MARK: - investment Strategy keys
         static let is_own_strategy = "is_own_strategy"
@@ -239,7 +240,6 @@ struct Constants{
         static let userNetworks = "user/networks"
         static let userWhitelistAddress = "user/whitelist-address"
         static let aploVenues = "aplo/venues"
-        static let userWhitelistedAddresses = "user/whitelisted-addresses"
         static let upload = "upload"
         
         
@@ -269,7 +269,7 @@ struct Constants{
         static let priceServicePrice = "price-service/price"
         static let assetServiceAsset = "asset-service/asset"
         
-        //Profile page
+        //User
         static let userServiceUser = "user-service/user"
         static let assetServiceAssets = "asset-service/assets"
         static let userServiceGoogleOtp = "user-service/google-otp"
@@ -277,6 +277,7 @@ struct Constants{
         static let userServiceVerify2FA = "user-service/verify-2FA"
         static let userServiceScope2FA = "user-service/scope-2FA"
         static let userServiceLanguage = "user-service/language"
+		static let userServiceTwoFaOtp = "user-service/2fa-otp"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"
@@ -295,5 +296,9 @@ struct Constants{
 		//Wallet
 		static let walletServiceAddress = "wallet-service/address"
 		static let walletServiceBalance = "wallet-service/balance"
+		static let walletServiceWithdrawalAddress = "wallet-service/withdrawal-address"
+		static let walletServiceWithdraw = "wallet-service/withdraw"
+		
+		
     }
 }

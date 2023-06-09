@@ -16,7 +16,7 @@ class NotificationVM{
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.notificationServiceNotifications, withParameters: params, ofType: NotificationAPI.self, onSuccess: { response in
 			print(response)
 			completion(response)
-		}, onFailure: { reload, error in
+		}, onFailure: { reload, error, code in
 			completion(nil)
 			CommonFunctions.toster(error)
 		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")

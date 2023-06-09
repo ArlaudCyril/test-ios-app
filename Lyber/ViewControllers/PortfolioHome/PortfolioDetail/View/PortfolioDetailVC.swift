@@ -92,7 +92,6 @@ class PortfolioDetailVC: SwipeGesture {
 	
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
-			//TODO: change comportement
 			if(self.previousController is ConfirmInvestmentVC){
 				self.navigationController?.deleteToViewController(ofClass: Storage.previousControllerPortfolioDetailObject)
 			}

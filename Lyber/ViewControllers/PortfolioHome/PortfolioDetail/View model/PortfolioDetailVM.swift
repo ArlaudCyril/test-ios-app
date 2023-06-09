@@ -15,7 +15,7 @@ class PortfolioDetailVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assetServiceAsset, withParameters: params, ofType: AssetDetailApi.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -27,7 +27,7 @@ class PortfolioDetailVM{
         ApiHandler.callApiWithParameters(url: url, withParameters: [:], ofType: ChartAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -40,7 +40,7 @@ class PortfolioDetailVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.newsService, withParameters: params, ofType: NewsDataAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
@@ -53,7 +53,7 @@ class PortfolioDetailVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceOrder, withParameters: params, ofType: OrderAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")

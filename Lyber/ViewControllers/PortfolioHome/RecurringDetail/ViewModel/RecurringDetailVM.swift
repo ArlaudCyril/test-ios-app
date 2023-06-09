@@ -11,7 +11,7 @@ class RecurringDetailVM{
         let params : [String : Any] = [Constants.ApiKeys.id : id]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestment, withParameters: params, ofType: RecurringInvestmentDetailAPi.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
@@ -21,7 +21,7 @@ class RecurringDetailVM{
         let params : [String : Any] = [Constants.ApiKeys.id : id]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestment, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")

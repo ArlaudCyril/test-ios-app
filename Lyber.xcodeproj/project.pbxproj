@@ -267,6 +267,8 @@
 		1886C7E62959A53600D28828 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E52959A53600D28828 /* Socket.swift */; };
 		1886C7E82959BFE000D28828 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E72959BFE000D28828 /* WebSocket.swift */; };
 		1F0988BA29B9E86A0075B000 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0988B929B9E86A0075B000 /* Test.storyboard */; };
+		1F1857772A28D0BD006F9014 /* WithdrawAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */; };
+		1F1857792A28DA5A006F9014 /* WithdrawAddressTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */; };
 		1F2A425A29CC7352001D71F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A425C29CC7352001D71F8 /* Localizable.strings */; };
 		1F2D541029F003610078267F /* CryptoDepositeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D540F29F003610078267F /* CryptoDepositeVM.swift */; };
 		1F2D541329F006A00078267F /* CryptoDepositeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541229F006A00078267F /* CryptoDepositeModel.swift */; };
@@ -561,6 +563,8 @@
 		1886C7E72959BFE000D28828 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		1F0988B929B9E86A0075B000 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		1F0A372C29CB44C000B07A20 /* LyberDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LyberDebug.entitlements; sourceTree = "<group>"; };
+		1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAddressVC.swift; sourceTree = "<group>"; };
+		1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAddressTVC.swift; sourceTree = "<group>"; };
 		1F2A425629CC7082001D71F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		1F2A425729CC7082001D71F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		1F2A425B29CC7352001D71F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1703,6 +1707,7 @@
 		0A7C378E286098E700E238D8 /* SwapWithdraw */ = {
 			isa = PBXGroup;
 			children = (
+				1F1857742A28D093006F9014 /* WithdrawAddress */,
 				1FFD171B29ED960E00935003 /* DepositAsset */,
 				0A7B0D5E2861EE090030C4D8 /* WithdrawAll */,
 				0A7C378F286098FE00E238D8 /* ExchangeFrom */,
@@ -2440,6 +2445,23 @@
 			path = SRP;
 			sourceTree = "<group>";
 		};
+		1F1857742A28D093006F9014 /* WithdrawAddress */ = {
+			isa = PBXGroup;
+			children = (
+				1F1857752A28D0A8006F9014 /* View */,
+			);
+			path = WithdrawAddress;
+			sourceTree = "<group>";
+		};
+		1F1857752A28D0A8006F9014 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */,
+				1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1F2D540E29F0034B0078267F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2842,6 +2864,7 @@
 				1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */,
 				0A53DEE9284635FB0027367A /* InvestmentExpModel.swift in Sources */,
 				1F5B7C5229C1BDA100256438 /* VerificationVM.swift in Sources */,
+				1F1857772A28D0BD006F9014 /* WithdrawAddressVC.swift in Sources */,
 				1F2D541029F003610078267F /* CryptoDepositeVM.swift in Sources */,
 				1883D3132950798A00CEC597 /* error.swift in Sources */,
 				0AC4C2C3283F5DDF0086C6B8 /* enterNumberCVC.swift in Sources */,
@@ -2905,6 +2928,7 @@
 				0A76C596291BC8FC00C603B9 /* PinVerificationVM.swift in Sources */,
 				4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */,
 				0A7A3BF0285C9CB400646337 /* TotalEarningsVC.swift in Sources */,
+				1F1857792A28DA5A006F9014 /* WithdrawAddressTVC.swift in Sources */,
 				0A857C6F288592590013ED99 /* NotificationVC.swift in Sources */,
 				0A8B4AC4285721D200F64ECE /* InvestInMyStrategyModel.swift in Sources */,
 				0A53DEDF28461D590027367A /* VerificationEmailCVC.swift in Sources */,

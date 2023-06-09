@@ -15,7 +15,7 @@ class EnterWalletAddressVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userWithdrawCrypto, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
@@ -26,7 +26,7 @@ class EnterWalletAddressVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.treezorWithdrawFiat, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")

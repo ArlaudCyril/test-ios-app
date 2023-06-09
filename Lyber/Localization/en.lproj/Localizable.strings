@@ -99,8 +99,10 @@
 "COMPLETE_YOUR_ACCOUNT" = "Complete your account";
 "TO_START_INVESTING" = "To start investing";
 "WITHDRAW" = "Withdraw";
+"WITHDRAW_ON" = "Withdraw on";
 "YOUR_ASSETS_YOUR_BANK_ACCOUNT" = "Send assets to your bank account";
 "EXCHANGE" = "Exchange";
+"EXCHANGE_PLATFORM" = "Exchange Platform";
 "TRADE_ONE_ASSET_AGAINST_ANOTHER" = "Trade one asset for another";
 "MY_ASSETS" = "My assets";
 "ANALYTICS" = "Analytics";
@@ -361,19 +363,19 @@
 "NETWORK" = "Network";
 "ORIGIN" = "Origin";
 "WALLET" = "Wallet";
-"SELECT_EXCHANGE" = "Select exchange";
+"WRITE_EXCHANGE" = "Enter the name of your exchange platform";
 "ENTER_VALID_ADDRESS" = "Please enter valid address";
 "IMPORTANT_NOTE" = "Important note: ";
 "YOUR_NOTE_GOES_HERE" = "Your note goes here and goes on a big amount of line";
 "ADD_ADRESS" = "Add address";
 "EDIT_ADRESS" = "Edit address";
-"ENABLE_WHITELISTING" = "Enable whitelisting";
-"DISABLE_WHITELISTING" = "Disable whitelisting";
+"WHITELISTING_SECURITY" = "Whitelisting security";
+"SAVE_SETTINGS" = "Save Settings";
 "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS" = "Whitelisting is a feature that limits your withdrawals and deposits to addresses in your Lyber address book.";
 "EXTRA_SECURITY" = "Extra security";
 "HOURS" = "Hours";
 "NO_EXTRA_SECURITY" = "No extra security";
-"ALLOW_BLOCK_ADDITION_ADDRESS" = "Allows you to block the addition of new addresses during a given period (effective 4H after its activation.";
+"CHANGES_EFFECTIVE_AFTER" = "The changes will be effective after";
 "ADD_NEW_ADRESS" = "Add a new address";
 "DISABLED" = "Disabled";
 "ENABLED" = "Enabled";
@@ -441,8 +443,28 @@
 "ALERT_ADDRESS_NAME" = "Please enter your address name";
 "ALERT_NETWORK" = "Please select your network";
 "ALERT_SCAN_ADDRESS" = "Please enter or scan an address";
+"ALERT_VALID_ADDRESS" = "Please enter a valid address";
 "ALERT_EXCHANGE" = "Please select your exchange";
 "ALERT_WHITELISTING" = "Please enable whitelisting address to add address";
+"ALERT_AMOUNT_WITHDRAWAL_INFERIOR" = "Your withdrawal amount is inferior to the minimum required";
+"ALERT_AMOUNT_WITHDRAWAL_SUPERIOR" = "Your withdrawal amount plus the fees exceeds your balance";
+
+
+//MARK: - Adress Book
+"ENTER_SCAN_ADDRESS" = "Enter or scan an address";
+"DATE_CREATION" = "Date of creation";
+"ADDRESS_ORIGIN" = "Adress origin";
+"ADDRESS_COPIED" = "Address copied";
+
+//MARK: - Invest
+"SELECT_CREDIT_CARD" = "Select credit card";
+"UNLIMITED_WITHDRAWAL" = "Unlimited withdrawal";
+"FEES" = "Fees";
+"MINIMUM_WITHDRAWAL" = "Minimum withdrawal";
+"CONFIRM_WITHDRAWAL" = "Confirm withdrawal";
+
+//MARK: - Withdraw
+"DEACTIVATED" = "Deactivated";
 
 
 //MARK: - UNITS

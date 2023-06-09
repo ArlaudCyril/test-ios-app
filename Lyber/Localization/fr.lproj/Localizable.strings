@@ -99,8 +99,10 @@
 "COMPLETE_YOUR_ACCOUNT" = "Compléter votre compte";
 "TO_START_INVESTING" = "Commencer à investir";
 "WITHDRAW" = "Retirer";
+"WITHDRAW_ON" = "Retirer sur";
 "YOUR_ASSETS_YOUR_BANK_ACCOUNT" = "Envoyer des actifs sur votre compte bancaire";
 "EXCHANGE" = "Échanger";
+"EXCHANGE_PLATFORM" = "Platforme d'échange";
 "TRADE_ONE_ASSET_AGAINST_ANOTHER" = "Échanger un actif contre un autre";
 "MY_ASSETS" = "Mes actifs";
 "ANALYTICS" = "Analyse";
@@ -356,19 +358,19 @@
 "NETWORK" = "Réseau";
 "ORIGIN" = "Origine";
 "WALLET" = "Portefeuille";
-"SELECT_EXCHANGE" = "Sélectionner un échange";
+"WRITE_EXCHANGE" = "Renseignez le nom de votre plaforme d'échange";
 "ENTER_VALID_ADDRESS" = "Veuillez saisir une adresse valide";
 "IMPORTANT_NOTE" = "Note importante :";
 "YOUR_NOTE_GOES_HERE" = "Votre note va ici et va sur une grande quantité de ligne";
 "ADD_ADRESS" = "Ajouter une adresse";
 "EDIT_ADRESS" = "Modifier l'adresse";
-"ENABLE_WHITELISTING" = "Activer la liste blanche";
-"DISABLE_WHITELISTING" = "Désactiver la liste blanche";
+"WHITELISTING_SECURITY" = "Sécurité de la liste blanche";
+"SAVE_SETTINGS" = "Enregistrer les paramètres";
 "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS" = "La liste blanche est une fonction qui limite vos retraits et vos dépôts aux adresses figurant dans votre carnet d'adresses Lyber. ";
 "EXTRA_SECURITY" = "Sécurité supplémentaire";
 "HOURS" = "Heures";
 "NO_EXTRA_SECURITY" = "Pas de sécurité supplémentaire";
-"ALLOW_BLOCK_ADDITION_ADDRESS" = "Permet de bloquer l'ajout de nouvelles adresses pendant une période donnée (effectif 4H après son activation).";
+"CHANGES_EFFECTIVE_AFTER" = "Les changements seront effectifs au bout de";
 "ADD_NEW_ADRESS" = "Ajouter une nouvelle adresse";
 "DISABLED" = "Désactivé";
 "ENABLED" = "Activé";
@@ -392,7 +394,7 @@
 "ENTER_EMAIL_LOGIN" = "Entrez votre adresse électronique pour vous connecter, nous vous enverrons un lien par courrier électronique.";
 "LOGIN_PHONE" = "Se connecter par téléphone";
 "DELETE" = "Supprimer";
-"EDIT" = "Modifier";
+"EDIT" = "Editer";
 "CONFIRM" = "Confirmer";
 "SELECT_DEFAULT_PICTURE" = "Sélectionner l'image par défaut";
 "SELECTED_PROFILE_PICTURE" = "Sélectionner une photo de profil";
@@ -436,9 +438,28 @@
 "ALERT_ADDRESS_NAME" = "Veuillez saisir votre nom d'adresse";
 "ALERT_NETWORK" = "Veuillez sélectionner votre réseau";
 "ALERT_SCAN_ADDRESS" = "Veuillez saisir ou scanner une adresse";
+"ALERT_VALID_ADDRESS" = "Veuillez saisir une adresse valide";
 "ALERT_EXCHANGE" = "Veuillez sélectionner votre échange";
 "ALERT_WHITELISTING" = "Veuillez activer la liste blanche d'adresses pour ajouter une adresse";
+"ALERT_AMOUNT_WITHDRAWAL" = "Le montant de votre retrait est inférieur au minimum requis";
+"ALERT_AMOUNT_WITHDRAWAL_SUPERIOR" = "Le montant de votre retrait plus les frais dépasse votre solde";
 
+//MARK: - Adress Book
+"ENTER_SCAN_ADDRESS" = "Saisir ou scanner une adresse";
+"DATE_CREATION" = "Date de création";
+"ADDRESS_ORIGIN" = "Origine de l'adresse";
+"ADDRESS_COPIED" = "Adresse copiée";
+
+
+//MARK: - Invest
+"SELECT_CREDIT_CARD" = "Sélectionner une carte de crédit";
+"UNLIMITED_WITHDRAWAL" = "Retrait illimité";
+"FEES" = "Frais";
+"MINIMUM_WITHDRAWAL" = "Retrait minimum";
+"CONFIRM_WITHDRAWAL" = "Confirmer le retrait";
+
+//MARK: - Withdraw
+"DEACTIVATED" = "Désactivé";
 
 //MARK: - UNITS
 

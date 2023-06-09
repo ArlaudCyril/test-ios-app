@@ -72,19 +72,9 @@ struct AssetBaseAPI: Codable {
 struct AssetBaseData: Codable {
     let id, fullName: String?
     let image: String?
+	let nativeNetwork : String?
     let isStablecoin: Bool?
     let isUIActive, isTradeActive, isDepositActive, isWithdrawalActive: Bool?
-	
-	init(id: String?, fullName: String?, image: String?, isUIActive: Bool?, isTradeActive: Bool?, isDepositActive: Bool?, isWithdrawalActive: Bool?, isStablecoin: Bool?) {
-		self.id = id
-		self.fullName = fullName
-		self.image = image
-		self.isUIActive = isUIActive
-		self.isTradeActive = isTradeActive
-		self.isDepositActive = isDepositActive
-		self.isWithdrawalActive = isWithdrawalActive
-		self.isStablecoin = isStablecoin
-	}
 	
 	init() {
 		self.id = ""
@@ -95,8 +85,10 @@ struct AssetBaseData: Codable {
 		self.isTradeActive = false
 		self.isDepositActive = false
 		self.isWithdrawalActive = false
+		self.nativeNetwork = ""
 	}
 }
+
 
 // MARK: - Balance
 struct BalanceAPI: Codable {

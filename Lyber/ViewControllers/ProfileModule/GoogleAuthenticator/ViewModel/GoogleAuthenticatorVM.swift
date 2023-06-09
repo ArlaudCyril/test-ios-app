@@ -13,7 +13,7 @@ class GoogleAuthenticatorVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceGoogleOtp, withParameters: [:], ofType: UrlAPI.self, onSuccess: { response in
             print(response)
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")

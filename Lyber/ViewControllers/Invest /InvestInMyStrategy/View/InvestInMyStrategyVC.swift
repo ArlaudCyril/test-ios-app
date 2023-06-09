@@ -14,8 +14,20 @@ class InvestInMyStrategyVC: ViewController {
     var enteredText : String = ""
     var isFloatTyped : Bool = false
 
+	//withdraw
+	var network : String?
+	var withdrawToAccountData : [buyDepositeModel] = []
+	var exchangeCoinToEuro = false
+	var minimumWithdrawal : Double?
+	var feeWithdrawal : Double?
+	var coinWithdrawPrice : Double = 0.0
+	var maxAmountWithdraw : Double = 0.0
+	
+	//exchange and withdraw
     var fromAssetId : String?
 	var fromBalance : Balance?
+	
+	//exchange
 	var fromCurrency : AssetBaseData?
 	var fromBalanceTotal : String?
 	var fromAssetPrice : String?
@@ -26,15 +38,16 @@ class InvestInMyStrategyVC: ViewController {
 	var toCurrency : AssetBaseData?
 	
 	var assetsData : Trending?, strategyCoinsData : [InvestmentStrategyAsset] = [],strategyData : Strategy?
-    var totalNoOfCoinsInvest = Double() , totalCoinInvested = Double()
+    var totalNoOfCoinsInvest = Double() , totalEuroInvested = Double()
     var selectedFrequency = "",exchangeCoin1ToCoin2 = false
     var exchangeData : exchangeFromModel?
     var cursorPosition = 0
     var MaxCoin = Double()
-    var maxEuroWithdraw = Double(), maxCoinWithdraw = Double()
     var maxCoinExchange = Double()
 	var minPriceExchange = 1.05
 	var minAmountExchange : Double?
+	
+	
     
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
@@ -44,13 +57,22 @@ class InvestInMyStrategyVC: ViewController {
     @IBOutlet var noOfCoinVw: UIView!
     @IBOutlet var noOfCoinLbl: UILabel!
     @IBOutlet var maximumBtn: UIButton!
+	//withdraw
+	@IBOutlet var switchPriceAssetBtn: UIButton!
+	@IBOutlet var feesLbl: UILabel!
+	
+	@IBOutlet var minimumWithdrawVw: UIView!
+	@IBOutlet var minimumWithdrawLbl: UILabel!
     
+	@IBOutlet var addressVw: UIView!
+	@IBOutlet var addressImg: UIImageView!
+	@IBOutlet var addressNameLbl: UILabel!
+	@IBOutlet var addressLbl: UILabel!
+	
     @IBOutlet var creditCardVw: UIView!
-    @IBOutlet var creditCardImgVw: UIView!
     @IBOutlet var creditCardImg: UIImageView!
     @IBOutlet var creditCardNumberLbl: UILabel!
     @IBOutlet var creditCardLbl: UILabel!
-    @IBOutlet var maximumBtnb: UIButton!
     
     @IBOutlet var BalanceView: UIView!
     @IBOutlet var balanceLbl: UILabel!
@@ -100,6 +122,14 @@ class InvestInMyStrategyVC: ViewController {
 		if strategyType == .Exchange{
 			self.exchangeData = exchangeFromModel(exchangeFromCoinId: self.fromAssetId ?? "", exchangeFromCoinImg: self.fromCurrency?.image ?? "", exchangeFromCoinPrice: Double(self.fromAssetPrice ?? "") ?? 0, exchangeFromCoinBalance: fromBalance ?? Balance(), exchangeToCoinId: self.toAssetId ?? "", exchangeToCoinPrice: Double(self.toAssetPrice ?? "") ?? 0, exchangeToCoinImg: self.toCurrency?.image ?? "")
 			
+			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
+			
+			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.RedDF5A43, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			
+				self.exchangeAlertLbl.isHidden = false
+			
+		}else{
+			self.exchangeAlertLbl.isHidden = true
 		}
 		
 		self.fromBalanceTotal = String((Double(fromBalance?.balanceData.euroBalance ?? "0") ?? 0))
@@ -111,12 +141,12 @@ class InvestInMyStrategyVC: ViewController {
         self.amountTF.inputView = UIView()
         IQKeyboardManager.shared.enableAutoToolbar = false
 
-		
-        
     }
+	
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if strategyType == .withdraw{
+			getAddresses()
         }
     }
 
@@ -126,16 +156,39 @@ class InvestInMyStrategyVC: ViewController {
         self.maximumBtn.isHidden = true
         CommonUI.setUpLbl(lbl: self.investInMyStrategyLbl, text:"", textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
+		// address
+		self.addressVw.layer.cornerRadius = 12
+		self.addressVw.backgroundColor = UIColor.greyColor
+		let addressTapped = UITapGestureRecognizer(target: self, action: #selector(selectAddress))
+		self.addressVw.addGestureRecognizer(addressTapped)
+		self.addressVw.isHidden = true
+		
+		
+		// credit card
         self.creditCardVw.backgroundColor = UIColor.greyColor
         self.creditCardVw.layer.cornerRadius = 16
         let creditTapped  = UITapGestureRecognizer(target: self, action: #selector(selectCard))
         self.creditCardVw.addGestureRecognizer(creditTapped)
-        self.creditCardVw.isHidden = true
+		self.creditCardVw.isHidden = true
+		
+		//exchange
+		self.exchangeView.isHidden = true
+		
+		self.coinsLbl.isHidden = true
+		self.noOfCoinVw.isHidden = true
+		self.frequencyVw.isHidden = true
+		self.switchPriceAssetBtn.isHidden = true
+		self.feesLbl.isHidden = true
+		self.minimumWithdrawVw.isHidden = true
+		
+		CommonUI.setUpLbl(lbl: creditCardNumberLbl, text: CommonFunctions.localisation(key: "SELECT_CREDIT_CARD"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: creditCardLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         self.BalanceView.backgroundColor = UIColor.greyColor
         self.BalanceView.layer.cornerRadius = 12
-        CommonUI.setUpLbl(lbl: self.balanceLbl, text: "Balance: ", textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.balanceLbl, text: "\(CommonFunctions.localisation(key: "BALANCE")): ", textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.totalBalanceLbl, text: "\(fromBalanceTotal ?? "0") €", textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.BalanceView.isHidden = true
         
         amountTF.font = UIFont.AtypDisplayMedium(60.0)
         amountTF.delegate = self
@@ -143,8 +196,7 @@ class InvestInMyStrategyVC: ViewController {
         self.amountTF.addTarget(self, action: #selector(editChange(_:)), for: .editingChanged)
         amountTF.textColor = UIColor.PurpleColor
 		
-        CommonUI.setUpLbl(lbl: creditCardNumberLbl, text: "select credit card", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: creditCardLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        
         CommonUI.setUpButton(btn: self.maximumBtn, text: "MAX", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 8, font: UIFont.MabryProMedium(Size.VSmall.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.frequencyVw, radius: 12, borderWidth: 0, borderColor: UIColor.PurpleColor.cgColor, backgroundColor: UIColor.PurpleColor)
@@ -170,8 +222,7 @@ class InvestInMyStrategyVC: ViewController {
             key.tag = index
             key.addTarget(self, action: #selector(keyTyped), for: .touchUpInside)
         }
-		self.exchangeAlertLbl.isHidden = true
-        
+		
         self.enteredText = ""
         self.isFloatTyped = false
 		
@@ -180,6 +231,7 @@ class InvestInMyStrategyVC: ViewController {
         
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.exchangeBtn.addTarget(self, action: #selector(exchangeBtnAction), for: .touchUpInside)
+        self.switchPriceAssetBtn.addTarget(self, action: #selector(switchPriceAssetBtnAction), for: .touchUpInside)
         self.maximumBtn.addTarget(self, action: #selector(maximumBtnAct), for: .touchUpInside)
         self.previewMyInvest.addTarget(self, action: #selector(previewMyInvestAction), for: .touchUpInside)
         
@@ -195,8 +247,6 @@ class InvestInMyStrategyVC: ViewController {
     
     func checkInvestInStrategy(){
         if strategyType == .singleCoin{
-            self.exchangeView.isHidden = true
-            self.coinsLbl.isHidden = true
             self.noOfCoinVw.isHidden = false
             self.maximumBtn.isHidden = false
             self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "INVEST_IN"))\(self.assetsData?.name ?? "")"
@@ -205,9 +255,7 @@ class InvestInMyStrategyVC: ViewController {
             self.maximumMoneyInvest()
 			
         }else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy){
-            self.exchangeView.isHidden = true
             self.coinsLbl.isHidden = false
-            self.noOfCoinVw.isHidden = true
 			self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_MY_INVESTMENT"), for: .normal)
             if(strategyData?.activeStrategy != nil)
             {//we take the informations of the active strategy
@@ -219,7 +267,7 @@ class InvestInMyStrategyVC: ViewController {
                 self.frequencyImg.image = Assets.calendar_black.image()
                 
                 amountTF.text = "\(strategyData?.activeStrategy?.amount ?? 0)€"
-                totalCoinInvested = Double(strategyData?.activeStrategy?.amount ?? 0)
+                totalEuroInvested = Double(strategyData?.activeStrategy?.amount ?? 0)
                 
                 self.previewMyInvest.backgroundColor = UIColor.PurpleColor
                 self.previewMyInvest.isUserInteractionEnabled = true
@@ -241,20 +289,14 @@ class InvestInMyStrategyVC: ViewController {
             self.coinsLbl.text = totalCoins
 			
         }else if strategyType == .deposit{
-            self.exchangeView.isHidden = true
-            self.coinsLbl.isHidden = true
-            self.noOfCoinVw.isHidden = true
-            self.frequencyVw.isHidden = true
             self.investInMyStrategyLbl.text = CommonFunctions.localisation(key: "EURO_DESPOSIT")
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_DEPOSIT"), for: .normal)
 			
         }else if strategyType == .Exchange{
-			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
-			self.exchangeAlertLbl.isHidden = false
-			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, prix: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.RedDF5A43, font: UIFont.MabryPro(Size.Small.sizeValue()))
-			
-            self.frequencyVw.isHidden = true
+			self.noOfCoinVw.isHidden = false
+			self.exchangeView.isHidden = false
             self.maximumBtn.isHidden = false
+			self.coinsLbl.isHidden = false
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_EXCHANGE"), for: .normal)
 			self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "EXCHANGE")) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
 			
@@ -268,38 +310,36 @@ class InvestInMyStrategyVC: ViewController {
             self.exchangeBtn.layer.cornerRadius = 8
 			
 			maxCoinExchange = Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") ?? 0
+			
         }else if strategyType == .withdraw{
-            self.creditCardVw.isHidden = false
-            self.exchangeView.isHidden = true
-            self.frequencyVw.isHidden = true
-            self.maximumBtn.isHidden = false
+			self.noOfCoinVw.isHidden = false
+            self.addressVw.isHidden = false
+			self.maximumBtn.isHidden = false
+			self.switchPriceAssetBtn.isHidden = false
+			self.feesLbl.isHidden = false
+			self.coinsLbl.isHidden = false
+			self.minimumWithdrawVw.isHidden = false
+			
+			self.coinWithdrawPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
+			self.maxAmountWithdraw = (Double(self.fromBalance?.balanceData.balance ?? "") ?? 0.0) - (self.feeWithdrawal ?? 0.0)
+			
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
 			self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) \(fromAssetId?.uppercased() ?? "")"
-			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(fromBalance?.balanceData.balance ?? "0") \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			
-            self.noOfCoinLbl.text = ""
-            self.maxMoneyWithdraw()
+			CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0) \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			
+			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(fromBalance?.balanceData.balance ?? "0") \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAsset(from: self.feeWithdrawal ?? 0.0, price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			
+			self.switchPriceAssetBtn.layer.cornerRadius = 8
+			
         } else if strategyType == .withdrawEuro{
-            self.exchangeView.isHidden = true
-            self.frequencyVw.isHidden = true
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
             self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) Euro"
-            self.coinsLbl.isHidden = true
-            self.noOfCoinLbl.isHidden = true
         }else if strategyType == .anotherWallet{
-            self.exchangeView.isHidden = true
-            self.coinsLbl.isHidden = true
-            self.noOfCoinVw.isHidden = true
-            self.frequencyVw.isHidden = true
-            self.exchangeView.isHidden = true
             self.amountTF.placeholder = "0"
         }else if strategyType == .sell{
-            self.exchangeView.isHidden = true
-            self.coinsLbl.isHidden = true
-            self.noOfCoinLbl.isHidden = false
-//            self.noOfCoinVw.isHidden = true
-            self.frequencyVw.isHidden = true
-            self.creditCardVw.isHidden = true
             self.maximumBtn.isHidden = false
             self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.name ?? "")"
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "SELL"), for: .normal)
@@ -316,25 +356,13 @@ extension InvestInMyStrategyVC {
     }
     
     @objc func previewMyInvestAction(){
-        if strategyType == .Exchange{
+        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .singleCoin{
             goToConfirmInvestment()
-        }else if strategyType == .withdraw {
-            if totalCoinInvested > maxEuroWithdraw{
-                CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_COINS_WITHDRAW"))
-            }else{
-                let vc = EnterWalletAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                vc.assetData = self.assetsData
-                vc.totalEuroInvested = totalCoinInvested
-                vc.noOfCoinsinvested = totalNoOfCoinsInvest
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }else if strategyType == .singleCoin{
-            self.goToConfirmInvestment()
         }else if strategyType == .sell{
             SellCoinApi()
         }else if strategyType == .withdrawEuro{
             self.previewMyInvest.showLoading()
-            EnterWalletAddressVM().withdrawFiatApi(amount: totalCoinInvested, completion: {[weak self]response in
+            EnterWalletAddressVM().withdrawFiatApi(amount: totalEuroInvested, completion: {[weak self]response in
                 self?.previewMyInvest.hideLoading()
                 if let response = response{
                     print(response)
@@ -358,18 +386,11 @@ extension InvestInMyStrategyVC {
     
     @objc func selectCard(){
         CommonFunctions.showLoader(self.view)
-        CryptoAddressBookVM().getWhiteListingAddressApi(searchText: "", completion: {[weak self]response in
-            if let response = response{
+        CryptoAddressBookVM().getWithdrawalAdressAPI(completion: {[weak self]response in
+			if response != nil{
                 CommonFunctions.hideLoader(self?.view ?? UIView())
                 let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-                if self?.strategyType == .withdraw{
-                    vc.popupType = .withdrawTo
-                    vc.investStrategyController = self
-                    vc.assetsData = self?.assetsData
-                    vc.connectedAccountAddress = response.addresses ?? []
-                }else{
-                    vc.popupType = .PayWith
-                }
+				vc.popupType = .PayWith
                 vc.accountSelectedCallback = {[weak self] accountSelected in
                     self?.creditCardLbl.text = accountSelected.subName
                     self?.creditCardNumberLbl.text = accountSelected.name
@@ -383,6 +404,20 @@ extension InvestInMyStrategyVC {
             }
         })
         
+    }
+	
+	@objc func selectAddress(){
+		let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+		vc.popupType = .withdrawTo
+		vc.investStrategyController = self
+		vc.network = self.network
+		vc.withdrawToAccountData = self.withdrawToAccountData
+		vc.accountSelectedCallback = {[weak self] accountSelected in
+			self?.addressLbl.text = accountSelected.subName
+			self?.addressNameLbl.text = accountSelected.name
+			self?.addressImg.yy_setImage(with: URL(string: accountSelected.svgUrl ?? ""), options: .progressiveBlur)
+		}
+		self.present(vc, animated: true, completion: nil)
     }
     
     @objc func frequencyBtnAction(){
@@ -418,12 +453,9 @@ extension InvestInMyStrategyVC {
         case 1,2,3,4,5,6,7,8,9,0:
             print("typed ",sender.tag)
             if enteredText.count == 0{
-                if sender.tag == 0{
-                    //                    enteredText = "\(sender.tag)"
-                }else{
-                        enteredText = "\(enteredText)\(sender.tag)"
-                        noOfCoins(value: enteredText)
-                }
+				enteredText = "\(enteredText)\(sender.tag)"
+				noOfCoins(value: enteredText)
+                
             }else{
                 if enteredText.count >= 10{
                     
@@ -439,17 +471,12 @@ extension InvestInMyStrategyVC {
             break
         case 10:
             if isFloatTyped == false{
-                if enteredText.count == 0{
+                if enteredText.count != 0{
                     print("typed ",sender.tag)
-                    enteredText = "0."
-                }else{
-                    print("typed ",sender.tag)
-                    enteredText = "\(enteredText)."
+					enteredText = "\(enteredText)."
+					noOfCoins(value: enteredText)
+					isFloatTyped = true
                 }
-                //                print("typed ",sender.tag)
-                //                enteredText = "\(enteredText)."
-                amountTF.text = "\(enteredText)€"
-                isFloatTyped = true
             }
             break
         case 11:
@@ -457,8 +484,7 @@ extension InvestInMyStrategyVC {
                 if enteredText.count == 1{
                     enteredText.removeLast()
                     noOfCoins(value: enteredText)
-                    amountTF.text?.removeAll()
-                    isFloatTyped = false
+					isFloatTyped = false
                     self.previewMyInvest.backgroundColor = UIColor.TFplaceholderColor
                     self.previewMyInvest.isUserInteractionEnabled = false
                 }else{
@@ -501,6 +527,10 @@ extension InvestInMyStrategyVC {
 				exchangeData?.exchangeToCoinImg = fromCurrency?.image ?? ""
 				exchangeData?.exchangeToCoinPrice = Double(self.fromAssetPrice ?? "0") ?? 0
 			}
+			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
+			
+			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.RedDF5A43, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			
 			self.maxCoinExchange = Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") ?? 0
 			self.fromBalanceTotal = String((Double(exchangeData?.exchangeFromCoinBalance.balanceData.euroBalance ?? "0") ?? 0))
 			
@@ -531,7 +561,27 @@ extension InvestInMyStrategyVC {
 		}
     }
     
-    @objc func maximumBtnAct(){
+    @objc func switchPriceAssetBtnAction(){
+		self.enteredText = ""
+		self.isFloatTyped = false
+		exchangeCoinToEuro = !exchangeCoinToEuro
+		let noOfCoinText = self.noOfCoinLbl.text
+		if(amountTF.text == "" || Int(noOfCoinText?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined() ?? "") == 0){
+			self.noOfCoinLbl.text = "~ 0 \(fromAssetId?.uppercased() ?? "")"
+		}else{
+			self.noOfCoinLbl.text = "~\(amountTF.text ?? "")"
+		}
+		let amountText = noOfCoinText?.dropFirst(1)
+		if(exchangeCoinToEuro == false){
+			let amountTextEuro = amountText?.dropLast(1)
+			let amountTextEuroFinal = amountTextEuro.map { String($0) }
+			amountTF.text = "\(String(CommonFunctions.getTwoDecimalValue(number: Double(amountTextEuroFinal ?? "") ?? 0.0)))€"
+		}else{
+			amountTF.text = amountText.map { String($0) }
+		}
+    }
+	
+	@objc func maximumBtnAct(){
         if strategyType == .singleCoin{
             if exchangeCoin1ToCoin2 {
                 enteredText = "\(MaxCoin)"
@@ -541,11 +591,18 @@ extension InvestInMyStrategyVC {
                 noOfCoins(value: enteredText)
             }
         }else if strategyType == .withdraw{
-			enteredText = self.fromBalanceTotal ?? "0"
+			if exchangeCoinToEuro == false{
+				self.maxAmountWithdraw = max(0, (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0)-((self.feeWithdrawal ?? 0.0)*self.coinWithdrawPrice))
+				enteredText = String(CommonFunctions.getTwoDecimalValue(number: self.maxAmountWithdraw))
+			}else{
+				let amountText = max(0,(Double(fromBalance?.balanceData.balance ?? "") ?? 0.0)-(self.feeWithdrawal ?? 0.0))
+				enteredText = CommonFunctions.formattedAsset(from: amountText, price: self.coinWithdrawPrice)
+				self.maxAmountWithdraw = (Double(enteredText) ?? 0.0) * self.coinWithdrawPrice
+			}
 			noOfCoins(value: enteredText)
             
         }else if strategyType == .Exchange{
-            enteredText = CommonFunctions.formattedAsset(from: Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0"), prix: exchangeData?.exchangeFromCoinPrice, rounding: .down)
+            enteredText = CommonFunctions.formattedAsset(from: Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0"), price: exchangeData?.exchangeFromCoinPrice, rounding: .down)
             noOfCoins(value: enteredText)
         }
         
@@ -558,14 +615,14 @@ extension InvestInMyStrategyVC {
     
     func getAddedWalletAddress(){
         CommonFunctions.showLoader(self.view)
-        CryptoAddressBookVM().getWhiteListingAddressApi(searchText: "", completion: {[weak self]response in
+        CryptoAddressBookVM().getWithdrawalAdressAPI(completion: {[weak self]response in
             if let response = response{
                 CommonFunctions.hideLoader(self?.view ?? UIView())
-                if (response.count ?? 0) > 0{
-                    self?.creditCardLbl.text = response.addresses?[0].address ?? ""
-                    self?.creditCardNumberLbl.text = response.addresses?[0].name ?? ""
+				if (response.data?.count ?? 0) > 0{
+                    self?.creditCardLbl.text = response.data?[0].address ?? ""
+                    self?.creditCardNumberLbl.text = response.data?[0].name ?? ""
 //                    self?.creditCardImg.setSvgImage(from: URL(string: response.addresses?[0].logo ?? ""))
-                    self?.creditCardImg.yy_setImage(with: URL(string: response.addresses?[0].logo ?? ""), options: .progressiveBlur)
+                    //self?.creditCardImg.yy_setImage(with: URL(string: response.data?[0].logo ?? ""), options: .progressiveBlur)
                 }
             }
         })
@@ -574,14 +631,14 @@ extension InvestInMyStrategyVC {
    func  SellCoinApi(){
        self.previewMyInvest.showLoading()
        self.previewMyInvest.isUserInteractionEnabled = false
-       ConfirmInvestmentVM().SellApi(assetId: self.assetsData?.symbol?.uppercased() ?? "", amount: self.totalCoinInvested, assetAmount: self.totalNoOfCoinsInvest, completion: {[weak self]response in
+       ConfirmInvestmentVM().SellApi(assetId: self.assetsData?.symbol?.uppercased() ?? "", amount: self.totalEuroInvested, assetAmount: self.totalNoOfCoinsInvest, completion: {[weak self]response in
            self?.previewMyInvest.hideLoading()
            self?.previewMyInvest.isUserInteractionEnabled = true
            if let _ = response{
                let vc = BuySellPopUpVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                vc.popUpType = .Sell
                vc.assetData = self?.assetsData
-               vc.coinInvest = "\(CommonFunctions.formattedCurrency(from: self?.totalCoinInvested))"
+               vc.coinInvest = "\(CommonFunctions.formattedCurrency(from: self?.totalEuroInvested))"
                self?.present(vc, animated: true, completion: nil)
            }
        })
@@ -599,45 +656,72 @@ extension InvestInMyStrategyVC {
 			
 			amountTF.text = "\(value) \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
 			
-			totalCoinInvested = Double(value) ?? 0.0
+			totalEuroInvested = Double(value) ?? 0.0
 			
 			totalNoOfCoinsInvest = Double(fromBalance?.balanceData.balance ?? "0") ?? 0
 			
-			self.noOfCoinLbl.text = "~\(String(CommonFunctions.getTwoDecimalValue(number:(totalCoinInvested * coinFromPrice)/coinToPrice))) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
+			self.noOfCoinLbl.text = "~\(String(CommonFunctions.getTwoDecimalValue(number:(totalEuroInvested * coinFromPrice)/coinToPrice))) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
             
+        }else if strategyType == .withdraw{
+			
+			
+            if exchangeCoinToEuro == false{
+				totalEuroInvested = Double(value) ?? 0.0
+				totalNoOfCoinsInvest = Double(CommonFunctions.formattedAsset(from: ((Double(value) ?? 0.0)*(1/self.coinWithdrawPrice)), price: self.coinWithdrawPrice)) ?? 0.0
+				
+				amountTF.text = "\(value)€"
+				self.noOfCoinLbl.text = "~\(totalNoOfCoinsInvest) \(self.fromAssetId?.uppercased() ?? "")"
+				
+            }else{
+				totalNoOfCoinsInvest = Double(value) ?? 0.0
+				totalEuroInvested = (Double(value) ?? 0.0)*self.coinWithdrawPrice
+				
+				amountTF.text = "\(value) \(fromAssetId?.uppercased() ?? "")"
+                self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€"
+            }
         }else{
             if exchangeCoin1ToCoin2 == false{
                     amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value)))€"
 				let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
-                    totalCoinInvested = Double(value) ?? 0.0
+                    totalEuroInvested = Double(value) ?? 0.0
                     totalNoOfCoinsInvest = CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(1/coinPrice)))
                     
 				self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValue(number: totalNoOfCoinsInvest)) \(self.fromAssetId?.uppercased() ?? "")"
             }else{
                 amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value))) \(self.assetsData?.symbol?.uppercased() ?? (self.exchangeData?.exchangeFromCoinId ?? ""))"
                 let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
-                totalCoinInvested = CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(coinPrice)))
+                totalEuroInvested = CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(coinPrice)))
                 
                 totalNoOfCoinsInvest = Double(value) ?? 0.0
-                self.noOfCoinLbl.text = "~\(totalCoinInvested)€"
+                self.noOfCoinLbl.text = "~\(totalEuroInvested)€"
             }
         }
     }
     
     func goToConfirmInvestment(){
         if strategyType == .singleCoin || strategyType == .activateStrategy || strategyType == .editActiveStrategy{
-            if totalCoinInvested > (totalEuroAvailable ?? 0){
+            if totalEuroInvested > (totalEuroAvailable ?? 0){
 				CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_BALANCE"))
             }else{
                 self.goToPreviewINvest()
             }
         }else if strategyType == .Exchange{
-            if totalCoinInvested > maxCoinExchange {
+            if totalEuroInvested > maxCoinExchange {
                 CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_COINS"))
             }else{
                 self.goToPreviewINvest()
             }
-        }
+		}else if strategyType == .withdraw{
+			if(totalNoOfCoinsInvest < self.minimumWithdrawal ?? 0.0)
+			{
+				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_INFERIOR"))
+			}else if(totalNoOfCoinsInvest > self.maxAmountWithdraw)
+			{
+				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_SUPERIOR"))
+			}else{
+				self.goToPreviewINvest()
+			}
+		}
        
     }
     
@@ -647,12 +731,12 @@ extension InvestInMyStrategyVC {
 		if(strategyType == .Exchange){
 			self.previewMyInvest.showLoading()
 				
-			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalCoinInvested, completion: {response in
+			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalEuroInvested, completion: {response in
 				self.previewMyInvest.hideLoading()
 				if( response != nil){
 					
 					vc.InvestmentType = .Exchange
-					vc.exchangeFrom = response?.data.fromAsset ?? ""
+					vc.fromAssetId = response?.data.fromAsset ?? ""
 					vc.exchangeTo = response?.data.toAsset ?? ""
 					vc.amountFrom = response?.data.fromAmount ?? ""
 					vc.amountTo = response?.data.toAmount ?? ""
@@ -663,10 +747,22 @@ extension InvestInMyStrategyVC {
 				}
 			})
 			
+		}else if(strategyType == .withdraw){
+				
+			vc.InvestmentType = .withdraw
+			vc.totalEuroInvested = totalEuroInvested
+			vc.totalCoinsInvested = totalNoOfCoinsInvest
+			vc.address = self.addressLbl.text
+			vc.network = self.network
+			vc.fees = self.feeWithdrawal
+			vc.fromAssetId = self.fromAssetId ?? ""
+			vc.coinPrice = self.coinWithdrawPrice
+			self.navigationController?.pushViewController(vc, animated: true)
+
 		}else{
 			vc.assetData = assetsData
-			vc.totalCoinsInvested = totalCoinInvested//totalNoOfCoinsInvest
-			vc.totalEuroInvested = totalCoinInvested
+			vc.totalCoinsInvested = totalEuroInvested//totalNoOfCoinsInvest
+			vc.totalEuroInvested = totalEuroInvested
 			vc.frequency = self.selectedFrequency
 			vc.strategyData = self.strategyData
 			if strategyType == .singleCoin{
@@ -677,8 +773,10 @@ extension InvestInMyStrategyVC {
 				vc.InvestmentType = .editActiveStrategy
 			}else if strategyType == .deposit{
 				vc.InvestmentType = .deposit
+				
 			}
 			self.navigationController?.pushViewController(vc, animated: true)
+			
 		}
 		
        
@@ -690,16 +788,6 @@ extension InvestInMyStrategyVC {
         MaxCoin = CommonFunctions.getTwoDecimalValue(number: ((totalEuroAvailable ?? 0)*(1/coinPrice)))
     }
     
-    func maxMoneyWithdraw(){
-		if exchangeData?.exchangeFromCoinBalance.balanceData.balance == "0" || exchangeData?.exchangeFromCoinBalance.balanceData.balance == nil{
-            maxEuroWithdraw = (CommonFunctions.getTwoDecimalValue(number: ((assetsData?.total_balance ?? 0)*(assetsData?.currentPrice ?? 0))))
-        }else{
-			maxEuroWithdraw = Double(exchangeData?.exchangeFromCoinBalance.balanceData.euroBalance ?? "0") ?? 0
-        }
-        let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
-        maxCoinWithdraw = CommonFunctions.getTwoDecimalValue(number: ((maxEuroWithdraw)*(1/coinPrice)))
-        
-    }
 	
 	func handlePreviewInvestButton(value: String){
 		if(self.strategyType == .Exchange)
@@ -718,6 +806,31 @@ extension InvestInMyStrategyVC {
 			self.previewMyInvest.backgroundColor = UIColor.PurpleColor
 			self.previewMyInvest.isUserInteractionEnabled = true
 		}
+	}
+	
+	func getAddresses(){
+		self.withdrawToAccountData.removeAll()
+		CryptoAddressBookVM().getWithdrawalAdressAPI(completion: {[weak self]response in
+			if let response = response{
+				for address in response.data ?? []{
+					if(address.network?.decoderNetwork == self?.network){
+						self?.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(), svgUrl: CommonFunctions.getImage(id: address.network?.decoderNetwork ?? "btc"), iconBackgroundColor: UIColor.clear, name: address.name , subName: address.address ?? "", rightBtnName: ""))
+					}else if(self?.network == address.network && self?.network == "bsc"){
+						self?.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(), svgUrl: CommonFunctions.getImage(id: address.network ?? "btc"), iconBackgroundColor: UIColor.clear, name: address.name , subName: address.address ?? "", rightBtnName: ""))
+					}
+				}
+			}
+			self?.withdrawToAccountData.append(buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "ADD_ADRESS"))", subName: CommonFunctions.localisation(key: "UNLIMITED_WITHDRAWAL"), rightBtnName: ""))
+			
+			CommonUI.setUpLbl(lbl: self?.addressNameLbl ?? UILabel(), text: self?.withdrawToAccountData.first?.name, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self?.addressLbl ?? UILabel(), text: self?.withdrawToAccountData.first?.subName, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+			if self?.withdrawToAccountData.first?.svgUrl == "" || self?.withdrawToAccountData.first?.svgUrl == nil{
+				self?.addressImg.image = self?.withdrawToAccountData.first?.icon
+			}else{
+				self?.addressImg.yy_setImage(with: URL(string: self?.withdrawToAccountData.first?.svgUrl ?? ""), options: .progressiveBlur)
+			}
+		})
+		
 	}
 	
 }

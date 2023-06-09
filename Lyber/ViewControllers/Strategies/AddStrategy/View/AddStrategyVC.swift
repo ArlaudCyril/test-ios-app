@@ -352,7 +352,6 @@ extension AddStrategyVC{
     }
     
     func getStrategy(){
-        //TODO: - récupérer un AllAssetsData à partir d'un Strategy
         print(self.addAssetsVC.coinsData)
         
         //MARK: - Loading resume cryptocurrencies

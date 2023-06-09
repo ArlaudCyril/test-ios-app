@@ -15,7 +15,7 @@ class CryptoDepositeVM{
 			completion(response)
 			print("success api correct")
 			CommonFunctions.hideLoader()
-		}, onFailure: { reload, error in
+		}, onFailure: { reload, error, code in
 			completion(nil)
 			print("error api not correct")
 			CommonFunctions.toster(error)

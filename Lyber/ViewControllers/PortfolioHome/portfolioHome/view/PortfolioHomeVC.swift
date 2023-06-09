@@ -27,7 +27,6 @@ class PortfolioHomeVC: NotSwipeGesture {
     @IBOutlet var threeDotBtnWidth: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getAllAssetsDetail()
 		self.getTotalAvailableAssetsApi()
 		GlobalVariables.isLogin = false
 		
@@ -37,6 +36,7 @@ class PortfolioHomeVC: NotSwipeGesture {
         super.viewWillAppear(animated)
         setUpUI()
 		self.callWalletGetBalance()
+		self.getAllAssetsDetail()
     }
 
 

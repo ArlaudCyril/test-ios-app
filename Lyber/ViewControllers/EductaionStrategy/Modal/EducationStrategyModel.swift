@@ -18,6 +18,16 @@ struct SuccessAPI: Codable {
     let message,msg: String?
     let data : dataStruct?
 }
+
+struct FailureAPI {
+	let message: String?
+	let code: String?
+	
+	init(message:String, code: String) {
+		self.message = message
+		self.code = code
+	}
+}
 struct dataStruct : Codable{
     let access_token,refresh_token : String?
 }

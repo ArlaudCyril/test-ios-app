@@ -54,7 +54,7 @@ extension MyAssetsTVC{
 		
 		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(data?.balanceData.euroBalance ?? "0") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(data?.balanceData.balance ?? ""), prix: priceCoin, rounding: .down) , textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(data?.balanceData.balance ?? ""), price: priceCoin, rounding: .down) , textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 
 
 		flatVw.isHidden = true

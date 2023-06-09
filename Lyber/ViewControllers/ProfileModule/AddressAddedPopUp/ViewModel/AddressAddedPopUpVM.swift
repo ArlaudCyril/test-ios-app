@@ -8,38 +8,11 @@
 import Foundation
 class AddressAddedPopUpVM{
     
-    func addWhiteListingAddressApi(cryptoAddress : cryptoAddressModel?,completion: @escaping ( (SuccessAPI?) -> Void )){
-        var param : [String : Any] = [:]
-//        let param : [String : Any] = [Constants.ApiKeys.name : cryptoAddress?.addressName ?? "",
-//                                      Constants.ApiKeys.network : cryptoAddress?.network ?? "",
-//                                      Constants.ApiKeys.address : cryptoAddress?.address ?? "",
-//                                      Constants.ApiKeys.origin : cryptoAddress?.origin ?? "",
-//                                      Constants.ApiKeys.exchange : cryptoAddress?.exchange ?? "",
-//                                      Constants.ApiKeys.logo : cryptoAddress?.logo ?? ""]
-        param[Constants.ApiKeys.name] = cryptoAddress?.addressName ?? ""
-        param[Constants.ApiKeys.network] = cryptoAddress?.network ?? ""
-        param[Constants.ApiKeys.address] = cryptoAddress?.address ?? ""
-        param[Constants.ApiKeys.origin] = cryptoAddress?.origin ?? ""
-        param[Constants.ApiKeys.logo] = cryptoAddress?.logo ?? ""
-        if cryptoAddress?.exchange ?? "" != ""{
-            param[Constants.ApiKeys.exchange] = cryptoAddress?.exchange ?? ""
-            
-        }
-        
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userWhitelistAddress, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
-            completion(response)
-        }, onFailure: { reload, error in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
-    }
-    
     func getAddressDetailApi(addressId: String,completion: @escaping ( (Address?) -> Void )){
         let param : [String: Any] = [Constants.ApiKeys.id : addressId]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userWhitelistAddress, withParameters: param, ofType: Address.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
 //            completion(nil)
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
@@ -49,7 +22,7 @@ class AddressAddedPopUpVM{
         let param : [String: Any] = [Constants.ApiKeys.address_id : addressId]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userWhitelistAddress, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
-        }, onFailure: { reload, error in
+        }, onFailure: { reload, error, code in
 //            completion(nil)
             CommonFunctions.toster(error)
         }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
