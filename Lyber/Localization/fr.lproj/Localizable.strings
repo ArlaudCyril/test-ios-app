@@ -102,6 +102,7 @@
 "WITHDRAW_ON" = "Retirer sur";
 "YOUR_ASSETS_YOUR_BANK_ACCOUNT" = "Envoyer des actifs sur votre compte bancaire";
 "EXCHANGE" = "Échanger";
+"EXCHANGE_NOUN" = "Echange";
 "EXCHANGE_PLATFORM" = "Platforme d'échange";
 "TRADE_ONE_ASSET_AGAINST_ANOTHER" = "Échanger un actif contre un autre";
 "MY_ASSETS" = "Mes actifs";
@@ -314,6 +315,7 @@
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";
+"OPERATIONS" = "Opérations";
 "EXCH" = "Exch. ";
 "WITHDRAWAL" = "Retrait";
 "PAYMENT_METHOD" = "Mode de paiement";
@@ -325,7 +327,7 @@
 "CHANGE_PIN" = "Changer de code PIN";
 "FACE_ID" = "Face ID";
 "LOG_OUT" = "Déconnexion";
-"LIST_ALL_TRANSACTIONS" = "Liste de toutes les transactions (achat, échange ou retrait) effectuées sur votre compte.";
+"LIST_ALL_OPERATIONS" = "Liste de toutes les opérations (dépôts, échanges et retraits) effectuées sur votre compte";
 "CARD_NUMBER" = "Numéro de carte";
 "EXPIRE" = "Expirer";
 "CVV" = "CVV";

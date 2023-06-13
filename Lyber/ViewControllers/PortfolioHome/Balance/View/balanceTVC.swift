@@ -37,7 +37,7 @@ extension balanceTVC{
         CommonUI.setUpLbl(lbl: self.euroLbl, text: "20€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "0.0002 BTC", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
-        if data?.type == 1{    //exchange
+       /* if data?.type == 1{    //exchange
             self.boughtLbl.text = "\(CommonFunctions.localisation(key: "EXCH")) \(data?.exchangeFrom ?? "")->\(data?.exchangeTo ?? "")"
             self.euroLbl.text = "\(data?.exchangeFromAmount ?? 0.0) \(data?.exchangeFrom ?? "")"
             self.noOfCoinLbl.text = "\(data?.exchangeToAmount ?? 0.0) \(data?.exchangeTo ?? "")"
@@ -51,6 +51,6 @@ extension balanceTVC{
             self.boughtLbl.text = CommonFunctions.localisation(key: "BOUGHT")
             self.euroLbl.text = "+\(data?.amount ?? 0.0)€"
             self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
-        }
+        }*/
     }
 }

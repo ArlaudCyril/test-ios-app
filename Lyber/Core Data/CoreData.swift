@@ -301,7 +301,7 @@ class userData : NSObject {
 //		self.isPersonalInfoFilled = false
 //		self.isIdentityVerified = false
 //		self.isEducationStrategyRead = false
-//		self.isPhoneVerified = false
+		self.isPhoneVerified = false
 //		self.personalDataStepComplete = 0
 //		self.registrationToken = ""
 //		self.language = ""

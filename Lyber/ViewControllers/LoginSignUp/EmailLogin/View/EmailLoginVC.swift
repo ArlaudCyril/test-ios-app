@@ -212,7 +212,8 @@ extension EmailLoginVC{
                                 }else{
                                     let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                                     vc.typeVerification = response.data?.type2FA
-                                    self?.navigationController?.pushViewController(vc, animated: true)
+									vc.controller = self
+									self?.present(vc, animated: true)
                                 }
                             }
                         })

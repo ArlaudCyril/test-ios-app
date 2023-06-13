@@ -39,29 +39,31 @@ class ProfileTransactionTVC: UITableViewCell {
 
 extension ProfileTransactionTVC{
     func setUpCell(data : Transaction?,row : Int,lastIndex : Int){
-        CommonUI.setUpLbl(lbl: transactionTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: euroLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: dateLbl, text: CommonFunctions.getDateFromUnixInterval(timeResult: Double(data?.createdAt ?? "") ?? 0, requiredFormat: "dd/MM/yyyy"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: noOfCoinLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        
-        if data?.type == 1{  //exchange
-            self.coinImg.image = Assets.exchange.image()
-            self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "EXCH")) \(data?.exchangeFrom ?? "")->\(data?.exchangeTo ?? "")"
-            self.euroLbl.text = "\(data?.exchangeFromAmount ?? 0.0) \(data?.exchangeFrom ?? "")"
-            self.noOfCoinLbl.text = "\(data?.exchangeToAmount ?? 0.0) \(data?.exchangeTo ?? "")"
-        }else if data?.type == 2{      //deposite
-            self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT")) \(data?.assetID ?? "")"
-        }else if data?.type == 3{       //withdraw
-            self.coinImg.image = Assets.withdraw.image()
-            self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL")
-            self.euroLbl.text = "-\(data?.amount ?? 0.0)€"
-            self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
-        }else if data?.type == 4{     //bought
-            self.coinImg.image = Assets.money_deposit.image()
-            self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "BOUGHT")) \(data?.assetID ?? "")"
-            self.euroLbl.text = "+\(data?.amount ?? 0.0)€"
-            self.noOfCoinLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: (data?.assetAmoount ?? 0)))\(data?.assetID ?? "")"
-        }
+		CommonUI.setUpLbl(lbl: transactionTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: euroLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: dateLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: noOfCoinLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		
+		
+		if data?.type == "order"{
+			self.coinImg.image = Assets.exchange.image()
+			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "EXCH")) \(data?.fromAsset?.uppercased() ?? "") -> \(data?.toAsset?.uppercased() ?? "")"
+			self.euroLbl.text = "-\(data?.fromAmount ?? "") \(data?.fromAsset?.uppercased() ?? "")"
+			self.noOfCoinLbl.text = "+\(data?.toAmount ?? "") \(data?.toAsset?.uppercased() ?? "")"
+		}else if data?.type == "deposit"{
+			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT")) \(data?.asset?.uppercased() ?? "")"
+			self.euroLbl.text = "+\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
+		}else if data?.type == "withdraw"{
+			self.coinImg.image = Assets.withdraw.image()
+			self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL")
+			self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
+		}
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "dd/MM/yyyy"
+		let date = formatter.date(from: data?.date ?? "") ?? Date()
+		self.dateLbl.text = dateFormatter.string(from: date)
         
         
         CommonUI.setUpButton(btn: viewAllBtn, text: CommonFunctions.localisation(key: "VIEW_ALL"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))

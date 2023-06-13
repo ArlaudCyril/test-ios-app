@@ -60,7 +60,6 @@
 		0A70BC5C28992FBB00577C0B /* EnableWhitelistingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A70BC5B28992FBB00577C0B /* EnableWhitelistingModel.swift */; };
 		0A716B032848B52C00451BD3 /* AddStrategyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A716B022848B52C00451BD3 /* AddStrategyModel.swift */; };
 		0A71A1B32886B8090030FE23 /* AllAssetsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71A1B22886B8090030FE23 /* AllAssetsVM.swift */; };
-		0A71B79C283F7AB9007CE9B2 /* OtpCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B79B283F7AB9007CE9B2 /* OtpCVC.swift */; };
 		0A71B7A0283F7D7C007CE9B2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B79F283F7D7C007CE9B2 /* LoginVC.swift */; };
 		0A71B7A3283F803E007CE9B2 /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B7A2283F803E007CE9B2 /* UIFontsExtension.swift */; };
 		0A71B7A6283F807E007CE9B2 /* UiColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B7A5283F807E007CE9B2 /* UiColorsExtension.swift */; };
@@ -353,7 +352,6 @@
 		0A70BC5B28992FBB00577C0B /* EnableWhitelistingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableWhitelistingModel.swift; sourceTree = "<group>"; };
 		0A716B022848B52C00451BD3 /* AddStrategyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStrategyModel.swift; sourceTree = "<group>"; };
 		0A71A1B22886B8090030FE23 /* AllAssetsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAssetsVM.swift; sourceTree = "<group>"; };
-		0A71B79B283F7AB9007CE9B2 /* OtpCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpCVC.swift; sourceTree = "<group>"; };
 		0A71B79F283F7D7C007CE9B2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		0A71B7A2283F803E007CE9B2 /* UIFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontsExtension.swift; sourceTree = "<group>"; };
 		0A71B7A5283F807E007CE9B2 /* UiColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColorsExtension.swift; sourceTree = "<group>"; };
@@ -2285,7 +2283,6 @@
 			children = (
 				0AC4C2C0283F5D210086C6B8 /* EnterPhoneVC.swift */,
 				0AC4C2C2283F5DDF0086C6B8 /* enterNumberCVC.swift */,
-				0A71B79B283F7AB9007CE9B2 /* OtpCVC.swift */,
 				0A71B8DF283FA2E9007CE9B2 /* createPinCVC.swift */,
 				0A71B8E1283FA3BD007CE9B2 /* ConfirmPinCVC.swift */,
 				0AC5B5F42840979B00533ED3 /* enableNotificationCVC.swift */,
@@ -2943,7 +2940,6 @@
 				1883D3172950798A00CEC597 /* configuration.swift in Sources */,
 				1883D3122950798A00CEC597 /* keys.swift in Sources */,
 				0A6D69C828AD150500BFB186 /* SelectedProfileVM.swift in Sources */,
-				0A71B79C283F7AB9007CE9B2 /* OtpCVC.swift in Sources */,
 				0A1A95BB2845F1E2001224C6 /* TextFieldExtension.swift in Sources */,
 				0A7013D4286DBD0000BB63C5 /* PersonalDataVM.swift in Sources */,
 				0A928CBC2847392A00F17DBE /* calenderVC.swift in Sources */,

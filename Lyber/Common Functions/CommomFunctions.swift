@@ -453,17 +453,19 @@ class CommonFunctions{
         return myString
     }
     
-    
-    static func getDateFormat(date: String, format: String, rqrdFormat: String) -> String {
+
+    static func getDateFormat(date: String, inputFormat: String, outputFormat: String) -> String {
         
         guard date != "" else {return ""}
         
         let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = format
+        inputFormatter.dateFormat = inputFormat
+		let outputFormatter = DateFormatter()
+		outputFormatter.dateFormat = outputFormat
         
         let showDate = inputFormatter.date(from: date)
-        inputFormatter.dateFormat = rqrdFormat
-        let resultString = inputFormatter.string(from: showDate!)
+       
+        let resultString = outputFormatter.string(from: showDate ?? Date())
         return resultString
     }
     

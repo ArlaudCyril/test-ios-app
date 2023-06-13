@@ -102,6 +102,7 @@
 "WITHDRAW_ON" = "Withdraw on";
 "YOUR_ASSETS_YOUR_BANK_ACCOUNT" = "Send assets to your bank account";
 "EXCHANGE" = "Exchange";
+"EXCHANGE_NOUN" = "Exchange";
 "EXCHANGE_PLATFORM" = "Exchange Platform";
 "TRADE_ONE_ASSET_AGAINST_ANOTHER" = "Trade one asset for another";
 "MY_ASSETS" = "My assets";
@@ -320,6 +321,7 @@
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";
+"OPERATIONS" = "Operations";
 "EXCH" = "Exch. ";
 "WITHDRAWAL" = "Withdrawal";
 "PAYMENT_METHOD" = "Payment method";
@@ -331,7 +333,7 @@
 "CHANGE_PIN" = "Change Pin";
 "FACE_ID" = "Face ID";
 "LOG_OUT" = "Log out";
-"LIST_ALL_TRANSACTIONS" = "List of all transactions (purchase, exchange or withdrawal made on your account.";
+"LIST_ALL_OPERATIONS" = "List of all operations (deposit, exchange and withdrawal) made on your account";
 "CARD_NUMBER" = "Card number";
 "EXPIRE" = "Expire";
 "CVV" = "CVV";

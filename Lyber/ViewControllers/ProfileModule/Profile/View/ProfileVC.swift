@@ -38,7 +38,7 @@ class ProfileVC: ViewController {
     override func setUpUI(){
 
 		//Writings
-		self.headerData = [CommonFunctions.localisation(key: "TRANSACTION"),CommonFunctions.localisation(key: "PAYMENT_METHOD"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
+		self.headerData = [CommonFunctions.localisation(key: "OPERATIONS"),CommonFunctions.localisation(key: "PAYMENT_METHOD"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
 		self.paymentData = [
 			buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "")
 		]
@@ -248,12 +248,11 @@ extension ProfileVC{
 //MARK: - objective functions
 extension ProfileVC{
     func callTransactionApi(){
-//        CommonFunction.showLoader(self.view)
-        TransactionVM().getAllTransactionsApi(completion: {[]response in
-//            CommonFunction.hideLoader(self.view)
+		CommonFunctions.showLoader(self.view)
+		TransactionVM().getTransactionsApi(limit: 3, offset: 0, completion: {[]response in
+			CommonFunctions.hideLoader(self.view)
             if let response = response{
-                print(response)
-                self.transactionData = response.transactions ?? []
+                self.transactionData = response.data ?? []
                 self.tblView.reloadData()
             }
         })

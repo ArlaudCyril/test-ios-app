@@ -11,7 +11,7 @@ class ConfirmationVC: ViewController {
     var controller : EnterWalletAddressVC?
     var confirmationType : confirmationPopUp?
     var coinInvest : String?
-	var confirmInvesmtentController : ConfirmInvestmentVC?
+	var confirmInvesmtentController : ViewController?
     //MARK:- IB OUTLETS
     @IBOutlet var outerView: UIView!
     @IBOutlet var bottomView: UIView!

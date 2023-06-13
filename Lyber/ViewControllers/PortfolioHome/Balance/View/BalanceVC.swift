@@ -204,10 +204,10 @@ extension BalanceVC{
             CommonFunctions.hideLoader(self?.view ?? UIView())
             if let response = response{
                 print(response)
-                if response.transactions?.count == 0{
+                if response.data?.count == 0{
                     self?.historiqueLbl.isHidden = true
                 }
-                self?.transactionData = response.transactions ?? []
+                self?.transactionData = response.data ?? []
                 self?.tblView.reloadData()
                 DispatchQueue.main.async {
                     self?.pointOrigin = CGPoint(x: 0, y: (self?.view.frame.height ?? 0) * (0.3))

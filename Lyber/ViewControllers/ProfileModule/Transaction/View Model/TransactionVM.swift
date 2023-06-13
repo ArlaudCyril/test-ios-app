@@ -7,10 +7,12 @@
 
 import Foundation
 class TransactionVM{
-    func getAllTransactionsApi(completion: @escaping ( (TransactionsAPI?) -> Void )){
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userTransactions, withParameters: [:], ofType: TransactionsAPI.self, onSuccess: { response in
+	func getTransactionsApi(limit:Int, offset: Int, completion: @escaping ( (TransactionsAPI?) -> Void )){
+		let params : [String : Any] = [Constants.ApiKeys.limit : limit,
+									   Constants.ApiKeys.offset : offset]
+		
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceTransactions, withParameters: params, ofType: TransactionsAPI.self, onSuccess: { response in
             completion(response)
-            CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)

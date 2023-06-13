@@ -11,7 +11,7 @@ class BalanceVM{
     func getTransactionsApi(assetID : String,completion: @escaping ( (TransactionsAPI?) -> Void )){
         let params : [String :Any] = [Constants.ApiKeys.asset_id : assetID]
         
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userTransactions, withParameters: params, ofType: TransactionsAPI.self, onSuccess: { response in
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceTransactions, withParameters: params, ofType: TransactionsAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in

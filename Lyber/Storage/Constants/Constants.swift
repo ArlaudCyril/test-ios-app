@@ -229,7 +229,6 @@ struct Constants{
         static let treezorWithdrawFiat = "treezor/withdraw-fiat"
         
         //Profile
-        static let userTransactions = "user/transactions"
         static let userPinVerifyPhone = "user/pin/verify-phone"
         static let userPin = "user/pin"
         static let user = "user"
@@ -278,6 +277,7 @@ struct Constants{
         static let userServiceScope2FA = "user-service/scope-2FA"
         static let userServiceLanguage = "user-service/language"
 		static let userServiceTwoFaOtp = "user-service/2fa-otp"
+		static let userServiceTransactions = "user-service/transactions"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"
@@ -298,6 +298,7 @@ struct Constants{
 		static let walletServiceBalance = "wallet-service/balance"
 		static let walletServiceWithdrawalAddress = "wallet-service/withdrawal-address"
 		static let walletServiceWithdraw = "wallet-service/withdraw"
+		
 		
 		
     }

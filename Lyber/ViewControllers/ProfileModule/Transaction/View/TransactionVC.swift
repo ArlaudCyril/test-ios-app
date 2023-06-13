@@ -7,17 +7,14 @@
 
 import UIKit
 
-class TransactionVC: ViewController {
+class TransactionVC: SwipeGesture {
     //MARK: - Variables
     var transactionVM = TransactionVM()
-    var sectionData = ["15 april 2022"]
-//    var transactionData : [TransactionModel] = [
-//        TransactionModel(coinImg: Assets.money_deposit.image(), transactionType: "\(CommonFunctions.localisation(key: "BOUGHT"))BTC", date: "15/04/2022", euro: "+20€", noOfCoin: "0.0002 BTC"),
-//        TransactionModel(coinImg: Assets.exchange.image(), transactionType: "\(CommonFunctions.localisation(key: "EXCH"))BTC → ETH", date: "15/04/2022", euro: "-0.0002 BTC", noOfCoin: "0.0002 ETH"),
-//        TransactionModel(coinImg: Assets.withdraw.image(), transactionType: "\(CommonFunctions.localisation(key: "WITHDRAWAL"))", date: "12/04/2022", euro: "-100€", noOfCoin: "0.0002 BTC")]
-    var transactionData : [Transaction] = []
-    var totalSection = [String:[Transaction]]()
-    var arrOfKeys: [String] = []
+    var transactionDict = [String:[Transaction]]()
+    var transactionDictKeys = [String]()
+	var totalRows = 0
+	var numberOfTransactionsPerRequest = 50
+	var bottomReached = false
     //MARK:- IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var transactionLbl: UILabel!
@@ -36,8 +33,8 @@ class TransactionVC: ViewController {
 	//MARK: - SetUpUI
     override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
-        CommonUI.setUpLbl(lbl: transactionLbl, text: CommonFunctions.localisation(key: "TRANSACTION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: transactionSubLbl, text: CommonFunctions.localisation(key: "LIST_ALL_TRANSACTIONS"), textColor: UIColor.grey877E95 , font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: transactionLbl, text: CommonFunctions.localisation(key: "OPERATIONS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: transactionSubLbl, text: CommonFunctions.localisation(key: "LIST_ALL_OPERATIONS"), textColor: UIColor.grey877E95 , font: UIFont.MabryPro(Size.Large.sizeValue()))
         
         tblView.delegate = self
         tblView.dataSource = self
@@ -48,36 +45,28 @@ class TransactionVC: ViewController {
 //MARK: - table view delegates and dataSource
 extension TransactionVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return totalSection.count
+		return self.transactionDict.keys.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0{
-        return totalSection[arrOfKeys[section]]?.count ?? 0
-//        }else if section == 1{
-//            return 1
-//        }else if section == 2{
-//            return 2
-//        }
-//        return 1
+		return self.transactionDict[transactionDictKeys[section]]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTVC")as! TransactionTVC
-        cell.setUpCell(data: totalSection[arrOfKeys[indexPath.section]]?[indexPath.row], section: indexPath.section,row: indexPath.row)
+		if indexPath.section == tableView.numberOfSections-1 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-1 && !self.bottomReached{
+			callTransactionApi()
+		}
+		
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTVC", for: indexPath) as! TransactionTVC
+		cell.setUpCell(data: self.transactionDict[transactionDictKeys[indexPath.section]]?[indexPath.row])
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionHeaderTVC")as! TransactionHeaderTVC
-        cell.setUpCell(data: arrOfKeys[section],section : section)
+        cell.setUpCell(data: transactionDictKeys[section])
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//
-//    }
-    
 }
 
 //MARK: - objective functions
@@ -87,31 +76,36 @@ extension TransactionVC{
     }
 }
 
-//MARK: - objective functions
+//MARK: - other functions
 extension TransactionVC{
     func callTransactionApi(){
-        CommonFunctions.showLoader(self.view)
-        transactionVM.getAllTransactionsApi(completion: {[]response in
-            CommonFunctions.hideLoader(self.view)
+		transactionVM.getTransactionsApi(limit: numberOfTransactionsPerRequest, offset: totalRows, completion: {[]response in
             if let response = response{
-                print(response)
-                self.transactionData = response.transactions ?? []
-                
-                let datesArray = self.transactionData.compactMap { CommonFunctions.getDateFromUnixInterval(timeResult: Double($0.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy") } // return array of date
-                print("datesArray",datesArray)
-                var dic = [String:[Transaction]]() // Your required result
-                datesArray.forEach {
-                    let dateKey = $0
-                    let filterArray = self.transactionData.filter { CommonFunctions.getDateFromUnixInterval(timeResult: Double($0.createdAt ?? "") ?? 0, requiredFormat: "dd MMM yyyy") == dateKey }
-                    dic[$0] = filterArray
-                }
-                print("dic is ",dic)
-                self.totalSection = dic
-                self.arrOfKeys = Array(dic.keys)
-                print("arrOfkeys", self.arrOfKeys)
-                
-                
+				if(response.data?.count ?? 0 < self.numberOfTransactionsPerRequest){
+					//stop requesting
+					self.bottomReached = true
+				}
+				self.totalRows += self.numberOfTransactionsPerRequest
+				
+				for transaction in response.data ?? []{
+					let date = CommonFunctions.getDateFormat(date:transaction.date ?? "", inputFormat:"yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat:"dd MMMM yyyy")
+					if(self.transactionDict.keys.contains(date)){
+						self.transactionDict[date]?.append(transaction)
+					}else{
+						self.transactionDict[date] = [transaction]
+					}
+				}
+				let dateFormatter = DateFormatter()
+				dateFormatter.dateFormat = "dd MMMM yyyy"
+				
+				for date in Array(self.transactionDict.keys).sorted(by: { dateFormatter.date(from: $0)! > dateFormatter.date(from: $1)! }){
+					if(!self.transactionDictKeys.contains(date)){
+						self.transactionDictKeys.append(date)
+					}
+				}
                 self.tblView.reloadData()
+				
+					
             }
         })
     }

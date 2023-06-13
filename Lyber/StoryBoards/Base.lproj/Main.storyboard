@@ -10,11 +10,6 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Poppins-Bold.ttf">
-            <string>Poppins-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
@@ -134,7 +129,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="enterNumberCVC" id="Ayt-gm-L5b" customClass="enterNumberCVC" customModule="Lyber" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="246" width="423" height="258"/>
+                                                <rect key="frame" x="7.5" y="0.0" width="423" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="anj-6v-7rm">
                                                     <rect key="frame" x="0.0" y="0.0" width="423" height="258"/>
@@ -253,6 +248,7 @@
                                                                         </button>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zLe-Ze-b0y" secondAttribute="trailing" constant="20" symbolic="YES" id="3AP-TR-cYq"/>
                                                                         <constraint firstItem="enm-U9-RNB" firstAttribute="leading" secondItem="H62-9n-tUQ" secondAttribute="leading" constant="24" id="3T8-yb-sY9"/>
                                                                         <constraint firstItem="zLe-Ze-b0y" firstAttribute="leading" secondItem="enm-U9-RNB" secondAttribute="leading" id="51z-VJ-wsq"/>
                                                                         <constraint firstItem="zLe-Ze-b0y" firstAttribute="top" secondItem="bwD-MI-kfx" secondAttribute="bottom" constant="16" id="Qts-dT-MkH"/>
@@ -301,178 +297,35 @@
                                                     <outlet property="scrollStackVw" destination="6Zg-Ms-LI2" id="bnU-Hu-ZfA"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="OtpCVC" id="mX9-jd-XDb" customClass="OtpCVC" customModule="Lyber" customModuleProvider="target">
-                                                <rect key="frame" x="494" y="0.0" width="296" height="497"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="kPX-pQ-iXa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="497"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbo-xP-u4n">
-                                                            <rect key="frame" x="0.0" y="0.0" width="296" height="497"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UT9-U2-WjG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="296" height="280"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSc-Qt-sXS">
-                                                                            <rect key="frame" x="24" y="32" width="248" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mc2-OT-6h6">
-                                                                            <rect key="frame" x="24" y="56.5" width="248" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZX-Pb-Hnb">
-                                                                            <rect key="frame" x="24" y="101" width="248" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Krl-KH-v2U">
-                                                                            <rect key="frame" x="24" y="145.5" width="248" height="56"/>
-                                                                            <subviews>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="J3l-W1-SbP">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="248" height="56"/>
-                                                                                    <subviews>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Dz-G9-rrv" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="34.5" height="56"/>
-                                                                                            <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                            <color key="tintColor" name="PurpleColor"/>
-                                                                                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
-                                                                                        </textField>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WpG-SF-5B7" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
-                                                                                            <rect key="frame" x="42.5" y="0.0" width="35" height="56"/>
-                                                                                            <color key="tintColor" name="PurpleColor"/>
-                                                                                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
-                                                                                        </textField>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ize-cK-BfY" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
-                                                                                            <rect key="frame" x="85.5" y="0.0" width="34.5" height="56"/>
-                                                                                            <color key="tintColor" name="PurpleColor"/>
-                                                                                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                                                                        </textField>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfY-QW-lhj" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
-                                                                                            <rect key="frame" x="128" y="0.0" width="34.5" height="56"/>
-                                                                                            <color key="tintColor" name="PurpleColor"/>
-                                                                                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                                                                        </textField>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWY-yz-2Ay" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
-                                                                                            <rect key="frame" x="170.5" y="0.0" width="35" height="56"/>
-                                                                                            <color key="tintColor" name="PurpleColor"/>
-                                                                                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                                                                        </textField>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J7j-CU-XE9" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
-                                                                                            <rect key="frame" x="213.5" y="0.0" width="34.5" height="56"/>
-                                                                                            <color key="tintColor" name="PurpleColor"/>
-                                                                                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                                                                        </textField>
-                                                                                    </subviews>
-                                                                                </stackView>
-                                                                            </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="bottom" secondItem="J3l-W1-SbP" secondAttribute="bottom" id="5FJ-8B-XbT"/>
-                                                                                <constraint firstItem="J3l-W1-SbP" firstAttribute="leading" secondItem="Krl-KH-v2U" secondAttribute="leading" id="Bdy-NB-u8k"/>
-                                                                                <constraint firstItem="J3l-W1-SbP" firstAttribute="top" secondItem="Krl-KH-v2U" secondAttribute="top" id="CdO-8b-lWj"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="J3l-W1-SbP" secondAttribute="trailing" id="Y9x-j7-Bsh"/>
-                                                                                <constraint firstAttribute="height" constant="56" id="p1V-1Q-XE4"/>
-                                                                            </constraints>
-                                                                        </view>
-                                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msD-yC-ZNE">
-                                                                            <rect key="frame" x="24" y="225.5" width="248" height="34.5"/>
-                                                                            <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                                        </button>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="bottom" secondItem="msD-yC-ZNE" secondAttribute="bottom" constant="20" id="24C-ZQ-Cwx"/>
-                                                                        <constraint firstItem="GZX-Pb-Hnb" firstAttribute="trailing" secondItem="tSc-Qt-sXS" secondAttribute="trailing" id="2bL-4V-EF1"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="tSc-Qt-sXS" secondAttribute="trailing" constant="24" id="9Nm-Ub-ya6"/>
-                                                                        <constraint firstItem="Krl-KH-v2U" firstAttribute="top" secondItem="GZX-Pb-Hnb" secondAttribute="bottom" constant="24" id="AX6-eI-EPJ"/>
-                                                                        <constraint firstItem="tSc-Qt-sXS" firstAttribute="top" secondItem="UT9-U2-WjG" secondAttribute="top" constant="32" id="Ftd-Fh-dkT"/>
-                                                                        <constraint firstItem="Mc2-OT-6h6" firstAttribute="leading" secondItem="tSc-Qt-sXS" secondAttribute="leading" id="J7x-uQ-P6A"/>
-                                                                        <constraint firstItem="Mc2-OT-6h6" firstAttribute="trailing" secondItem="tSc-Qt-sXS" secondAttribute="trailing" id="KvN-qd-HkF"/>
-                                                                        <constraint firstItem="tSc-Qt-sXS" firstAttribute="leading" secondItem="UT9-U2-WjG" secondAttribute="leading" constant="24" id="OSD-zb-Ta5"/>
-                                                                        <constraint firstItem="Krl-KH-v2U" firstAttribute="leading" secondItem="tSc-Qt-sXS" secondAttribute="leading" id="T8D-MR-T7z"/>
-                                                                        <constraint firstItem="Krl-KH-v2U" firstAttribute="trailing" secondItem="tSc-Qt-sXS" secondAttribute="trailing" id="Y6d-wf-1Ig"/>
-                                                                        <constraint firstItem="GZX-Pb-Hnb" firstAttribute="top" secondItem="Mc2-OT-6h6" secondAttribute="bottom" constant="24" id="Ydm-eS-ebi"/>
-                                                                        <constraint firstItem="GZX-Pb-Hnb" firstAttribute="leading" secondItem="tSc-Qt-sXS" secondAttribute="leading" id="gWU-SL-FlN"/>
-                                                                        <constraint firstItem="msD-yC-ZNE" firstAttribute="trailing" secondItem="tSc-Qt-sXS" secondAttribute="trailing" id="hsn-ez-64S"/>
-                                                                        <constraint firstItem="Mc2-OT-6h6" firstAttribute="top" secondItem="tSc-Qt-sXS" secondAttribute="bottom" constant="4" id="jzR-yC-I5c"/>
-                                                                        <constraint firstItem="msD-yC-ZNE" firstAttribute="top" secondItem="Krl-KH-v2U" secondAttribute="bottom" constant="24" id="mEP-hv-SwD"/>
-                                                                        <constraint firstItem="msD-yC-ZNE" firstAttribute="leading" secondItem="tSc-Qt-sXS" secondAttribute="leading" id="v2D-mR-9mv"/>
-                                                                    </constraints>
-                                                                </view>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="UT9-U2-WjG" firstAttribute="width" secondItem="rbo-xP-u4n" secondAttribute="width" id="81w-7U-0nQ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="UT9-U2-WjG" secondAttribute="bottom" id="GrZ-YN-vxD"/>
-                                                                <constraint firstItem="UT9-U2-WjG" firstAttribute="top" secondItem="rbo-xP-u4n" secondAttribute="top" id="TRF-1r-rHM"/>
-                                                                <constraint firstAttribute="trailing" secondItem="UT9-U2-WjG" secondAttribute="trailing" id="YcK-9Q-nYN"/>
-                                                                <constraint firstItem="UT9-U2-WjG" firstAttribute="leading" secondItem="rbo-xP-u4n" secondAttribute="leading" id="lw0-a4-U5s"/>
-                                                            </constraints>
-                                                        </scrollView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="rbo-xP-u4n" firstAttribute="leading" secondItem="kPX-pQ-iXa" secondAttribute="leading" id="0pw-Ue-8PN"/>
-                                                        <constraint firstAttribute="trailing" secondItem="rbo-xP-u4n" secondAttribute="trailing" id="1DQ-Fn-yzn"/>
-                                                        <constraint firstItem="rbo-xP-u4n" firstAttribute="top" secondItem="kPX-pQ-iXa" secondAttribute="top" id="48y-Yd-UJT"/>
-                                                        <constraint firstAttribute="bottom" secondItem="rbo-xP-u4n" secondAttribute="bottom" id="mVE-br-Anb"/>
-                                                    </constraints>
-                                                </collectionViewCellContentView>
-                                                <size key="customSize" width="296" height="497"/>
-                                                <connections>
-                                                    <outlet property="Tf1" destination="1Dz-G9-rrv" id="FMs-o3-CHS"/>
-                                                    <outlet property="Tf2" destination="WpG-SF-5B7" id="IIf-fw-jia"/>
-                                                    <outlet property="Tf3" destination="ize-cK-BfY" id="VyZ-qf-8jf"/>
-                                                    <outlet property="Tf4" destination="qfY-QW-lhj" id="dAc-nl-sGr"/>
-                                                    <outlet property="Tf5" destination="vWY-yz-2Ay" id="bCu-O6-DOA"/>
-                                                    <outlet property="Tf6" destination="J7j-CU-XE9" id="ZpU-61-oxN"/>
-                                                    <outlet property="confirmationLbl" destination="Mc2-OT-6h6" id="9UP-fi-hJP"/>
-                                                    <outlet property="enterCodeLbl" destination="tSc-Qt-sXS" id="sHT-Hj-lrn"/>
-                                                    <outlet property="phoneNumberLbl" destination="GZX-Pb-Hnb" id="G8x-dl-9cR"/>
-                                                    <outlet property="resendCodeBtn" destination="msD-yC-ZNE" id="8Mq-3p-s4h"/>
-                                                </connections>
-                                            </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="createPinCVC" id="vPA-qS-wYS" customClass="createPinCVC" customModule="Lyber" customModuleProvider="target">
-                                                <rect key="frame" x="423" y="597.5" width="438" height="40"/>
+                                                <rect key="frame" x="0.0" y="478" width="438" height="40"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="dcW-fe-MpC">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dcW-fe-MpC">
                                                     <rect key="frame" x="0.0" y="0.0" width="438" height="40"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9G-7u-5fq">
+                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9G-7u-5fq">
                                                             <rect key="frame" x="0.0" y="0.0" width="438" height="40"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXu-eh-azl">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXu-eh-azl">
                                                                     <rect key="frame" x="0.0" y="0.0" width="451" height="185"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbC-Jt-4LS">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbC-Jt-4LS">
                                                                             <rect key="frame" x="24" y="32" width="403" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdo-uq-fy1">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdo-uq-fy1">
                                                                             <rect key="frame" x="24" y="56.5" width="403" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bC0-ze-JYI">
+                                                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bC0-ze-JYI">
                                                                             <rect key="frame" x="163" y="149" width="112" height="16"/>
                                                                             <subviews>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-Qv-fbZ" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-Qv-fbZ" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -483,7 +336,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-O2-y6J" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-O2-y6J" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="32" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -494,7 +347,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1kL-yy-nY7" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1kL-yy-nY7" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="64" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -505,7 +358,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXp-Tt-ecE" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXp-Tt-ecE" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="96" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -565,28 +418,28 @@
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ConfirmPinCVC" id="qox-BW-1Y3" customClass="ConfirmPinCVC" customModule="Lyber" customModuleProvider="target">
-                                                <rect key="frame" x="487.5" y="738" width="309" height="12"/>
+                                                <rect key="frame" x="64.5" y="738" width="309" height="12"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="D9J-cN-UGn">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D9J-cN-UGn">
                                                     <rect key="frame" x="0.0" y="0.0" width="309" height="12"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61G-WQ-LQt">
+                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61G-WQ-LQt">
                                                             <rect key="frame" x="0.0" y="0.0" width="309" height="12"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ABq-ZJ-DHz">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABq-ZJ-DHz">
                                                                     <rect key="frame" x="0.0" y="0.0" width="309" height="204.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYV-et-QBV">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYV-et-QBV">
                                                                             <rect key="frame" x="24" y="32" width="261" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5np-Wx-fZo">
+                                                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5np-Wx-fZo">
                                                                             <rect key="frame" x="98.5" y="168.5" width="112" height="16"/>
                                                                             <subviews>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKV-Ka-eab" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKV-Ka-eab" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -597,7 +450,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-WA-GwH" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-WA-GwH" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="32" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -608,7 +461,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eop-XI-H0U" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eop-XI-H0U" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="64" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -619,7 +472,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCl-Xs-cas" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCl-Xs-cas" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
                                                                                     <rect key="frame" x="96" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -670,31 +523,34 @@
                                                 </connections>
                                             </collectionViewCell>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="enableNotificationCVC" id="a42-Db-rqs" customClass="enableNotificationCVC" customModule="Lyber" customModuleProvider="target">
-                                                <rect key="frame" x="861" y="0.0" width="416" height="559"/>
+                                                <rect key="frame" x="438" y="0.0" width="416" height="559"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="2Re-zU-w0B">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2Re-zU-w0B">
                                                     <rect key="frame" x="0.0" y="0.0" width="416" height="559"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPF-Nd-oWb">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPF-Nd-oWb">
                                                             <rect key="frame" x="0.0" y="0.0" width="416" height="559"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siM-70-0nk">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siM-70-0nk">
                                                                     <rect key="frame" x="24" y="32" width="368" height="43"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="43" id="5Vn-0k-LN0"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-pW-61n">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-pW-61n">
                                                                     <rect key="frame" x="24" y="79" width="368" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3h-Nk-sGo">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3h-Nk-sGo">
                                                                     <rect key="frame" x="28" y="123.5" width="360" height="239.5"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="enable_notifications" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-Id-aEv">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enable_notifications" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-Id-aEv">
                                                                             <rect key="frame" x="0.0" y="0.0" width="360" height="239.5"/>
                                                                         </imageView>
                                                                     </subviews>
@@ -706,7 +562,7 @@
                                                                         <constraint firstAttribute="trailing" secondItem="SLd-Id-aEv" secondAttribute="trailing" id="sH8-BR-Fsy"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxB-cO-kTo" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxB-cO-kTo" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
                                                                     <rect key="frame" x="24" y="387" width="368" height="56"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="56" id="EUK-Dv-L22"/>
@@ -714,7 +570,7 @@
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Button"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-SA-XJb">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-SA-XJb">
                                                                     <rect key="frame" x="24" y="459" width="368" height="56"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="56" id="ETR-CP-R4P"/>

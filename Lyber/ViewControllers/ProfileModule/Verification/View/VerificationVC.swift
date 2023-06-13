@@ -1,5 +1,5 @@
 //
-//  OtpCVC.swift
+//  VerificationVC.swift
 //  Lyber
 //
 //  Created by sonam's Mac on 26/05/22.
@@ -14,7 +14,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
     var typeVerification : String?
 	var action : String?
 	var dataWithdrawal : [String : Any]?
-	var controller : ConfirmInvestmentVC?
+	var controller : ViewController?
     
     
     //MARK: - IB OUTLETS
@@ -174,6 +174,18 @@ extension VerificationVC{
 					}
 				}
 			})
+        }else if(self.action == "signup"){
+			EnterPhoneVM().enterOTPApi(otp: code, completion: {[weak self]response in
+				if let response = response{
+					print(response)
+					userData.shared.isPhoneVerified = true
+					userData.shared.dataSave()
+					self?.dismiss(animated: true)
+					let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+					vc.isDoubleAuthentified = true
+					self?.controller?.navigationController?.pushViewController(vc, animated: true)
+				}
+			})
         }else{
             VerificationVM().verify2FAApi(code: code, completion: {[]response in
                 if response != nil{
@@ -182,8 +194,10 @@ extension VerificationVC{
                     userData.shared.refreshToken = response?.data?.refreshToken ?? ""
                     userData.shared.time = Date()
                     userData.shared.dataSave()
+					self.dismiss(animated: true)
                     let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-                    self.navigationController?.pushViewController(vc, animated: true)
+					vc.isDoubleAuthentified = true
+					self.controller?.navigationController?.pushViewController(vc, animated: true)
 
                 }
             })

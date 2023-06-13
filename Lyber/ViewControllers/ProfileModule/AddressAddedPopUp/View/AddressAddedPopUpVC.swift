@@ -66,7 +66,7 @@ class AddressAddedPopUpVC: ViewController {
         }
         CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: editAddress?.exchange ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 
-        CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.editAddress?.creationDate ?? "", format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", rqrdFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.editAddress?.creationDate ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpButton(btn: self.deleteBtn, text: CommonFunctions.localisation(key: "DELETE"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpButton(btn: self.editBtn, text: CommonFunctions.localisation(key: "EDIT"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))

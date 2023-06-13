@@ -68,10 +68,7 @@ extension enterNumberCVC{
         countryPickerVw.delegate = self
         countryPickerVw.dataSource = self
     }
-    
-    func configureWithData(){
-        
-    }
+
 }
 
 //MARK: - objective functions

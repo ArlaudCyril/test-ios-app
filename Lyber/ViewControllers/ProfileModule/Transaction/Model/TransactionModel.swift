@@ -9,33 +9,43 @@ import Foundation
 
 // MARK: - TransactionsAPI
 struct TransactionsAPI: Codable {
-    let transactions: [Transaction]?
+    let data: [Transaction]?
 }
-
 // MARK: - Transaction
 struct Transaction: Codable {
-    let assetID, exchangeFrom, exchangeTo: String?
-    let exchangeToAmount,exchangeFromAmount: Double?
-    let status: Int?
-    let withdrawalWalletAddress: String?
-    let type, amount,assetAmoount: Double?
-    let createdAt, id: String?
-    let userID: String?
-    let v: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case assetID = "asset_id"
-        case exchangeFrom = "exchange_from"
-        case exchangeTo = "exchange_to"
-        case exchangeToAmount = "exchange_to_amount"
-        case exchangeFromAmount = "exchange_from_amount"
-        case status
-        case withdrawalWalletAddress = "withdrawal_wallet_address"
-        case type, amount
-        case assetAmoount = "asset_amount"
-        case createdAt = "created_at"
-        case id = "_id"
-        case userID = "user_id"
-        case v = "__v"
-    }
+    let type: String?
+    let date: String?
+	//withdraw and deposit
+    let amount: String?
+	//order
+	let fromAsset: String?
+	let fromAmount: String?
+	let toAsset: String?
+	let toAmount: String?
+	//order and deposit
+	let status: String?
+	//deposit
+	let asset: String?
 }
+
+/* it remains the type strategy
+ {
+ "type": "withdraw",
+ "date": "2023-06-09T13:11:35.671Z",
+ "amount": 0.02
+ },
+ {"type": "order",
+ "status": "VALIDATED",
+ "date": "2023-05-09T10:49:38.337Z",
+ "fromAsset": "sol",
+ "fromAmount": "0.14354764",
+ "toAsset": "eth",
+ "toAmount": "0.00160047"
+ },
+ {
+ "type": "deposit",
+ "asset": "sol",
+ "date": "2023-05-05T15:18:48.000Z",
+ "amount": 600000000000000,
+ "status": "CREDITED"
+ },*/

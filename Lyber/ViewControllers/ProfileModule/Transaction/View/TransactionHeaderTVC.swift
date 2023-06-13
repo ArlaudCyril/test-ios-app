@@ -22,7 +22,7 @@ class TransactionHeaderTVC: UITableViewCell {
 
 }
 extension TransactionHeaderTVC{
-    func setUpCell(data : String,section : Int){
+    func setUpCell(data : String){
         CommonUI.setUpLbl(lbl: headerLbl, text: data, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         
     }

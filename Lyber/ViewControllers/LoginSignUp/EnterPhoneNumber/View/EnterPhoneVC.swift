@@ -19,6 +19,7 @@ class EnterPhoneVC: ViewController {
     var currentPage : Int? = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
+	var isDoubleAuthentified = false
     
     //MARK: - IB OUTLETS
     @IBOutlet var headerVw: HeaderView!
@@ -47,7 +48,12 @@ class EnterPhoneVC: ViewController {
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         setUpUI()
-		if (userData.shared.isPhoneVerified == true && GlobalVariables.isRegistering){
+		if(isDoubleAuthentified == true){
+			DispatchQueue.main.async {
+				let indexPath = NSIndexPath(item: 1, section: 0)
+				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+			}
+		}else if (userData.shared.isPhoneVerified == true && GlobalVariables.isRegistering){
 			DispatchQueue.main.async {
 				let indexPath = NSIndexPath(item: 4, section: 0)
 				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
@@ -105,28 +111,6 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             }
             return cell
         }else if indexPath.item == 1{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OtpCVC", for: indexPath as IndexPath) as! OtpCVC
-            cell.phoneNumber = self.phoneNumber
-            cell.countryCode = self.countryCode
-            
-            cell.setUpUI()
-            cell.controller = self
-            cell.otpFieldDelegate = {[]otp in
-                self.OtpVerified(otpValue : otp)
-            }
-            if currentPage == 1{
-                cell.timer.invalidate()
-                cell.hitTimer()
-                DispatchQueue.main.async {
-                    cell.Tf1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-                }
-            }else{
-                cell.timer.invalidate()
-                cell.endEditing(true)
-            }
-            return cell
-        }else if indexPath.item == 2{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "createPinCVC", for: indexPath as IndexPath) as! createPinCVC
             cell.setUpUI()
             cell.configureWithData()
@@ -134,7 +118,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 self.enteredPin = pin
                 self.GotoNextIndex()
             }
-            if currentPage == 2{
+            if currentPage == 1{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
@@ -201,7 +185,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 //MARK: - objective functions
 extension EnterPhoneVC{
     @objc func backBtnAct(){
-        if self.currentPage ?? 0 == 0 || self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
+        if self.currentPage ?? 0 == 0 || self.currentPage ?? 0 == 1 || self.currentPage ?? 0 == 4{
             //userData.shared.deleteData()
             CommonFunctions.logout()
             //            self.navigationController?.popToRootViewController(animated: true)
@@ -219,7 +203,6 @@ extension EnterPhoneVC{
     
     @objc func keyboardWillShow(notification: NSNotification) {
 		if ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]as? NSValue)?.cgRectValue) != nil{
-//                     self.stackViewBottomConst.constant = keyboardSize.height + 12
         }
     }
     
@@ -259,7 +242,7 @@ extension EnterPhoneVC{
                 self.indicatorViewsWidth[num].constant = 4
             }
             if self.currentPage ?? 0 >= 1{
-                if self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
+                if self.currentPage ?? 0 == 1 || self.currentPage ?? 0 == 4{
                     self.headerVw.backBtn.setImage(UIImage(), for: .normal)
                     CommonUI.setUpButton(btn: self.headerVw.backBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
                     self.headerVw.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOG_OUT")), for: .normal)
@@ -295,8 +278,13 @@ extension EnterPhoneVC{
                         userData.shared.time = Date()
                         userData.shared.dataSave()
                         self?.nextBtnView.isHidden = true
-                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 1, section: 0)
-                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+//                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 1, section: 0)
+//                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+						vc.typeVerification = "phone"
+						vc.action = "signup"
+						vc.controller = self
+						self?.present(vc, animated: true)
                     }
                 })
             }else if GlobalVariables.isLogin == true{
@@ -329,12 +317,13 @@ extension EnterPhoneVC{
                                             userData.shared.time = Date()
                                             userData.shared.dataSave()
                                             self?.nextBtnView.isHidden = true
-                                            let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 2, section: 0)
+                                            let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 1, section: 0)
                                             self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 										}else{
                                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                                             vc.typeVerification = response.data?.type2FA
-                                            self?.navigationController?.pushViewController(vc, animated: true)
+											vc.controller = self
+											self?.present(vc, animated: true)
                                         }
                                     }
                                 })
@@ -346,28 +335,6 @@ extension EnterPhoneVC{
                 }
             }
         }
-    }
-    
-    func OtpVerified(otpValue : String){
-        enterPhoneVM.enterOTPApi(otp: otpValue, completion: {[weak self]response in
-            if let response = response{
-                print(response)
-                userData.shared.isPhoneVerified = true
-                userData.shared.dataSave()
-                
-				if(GlobalVariables.isRegistering == true){
-					let indexPath = NSIndexPath(item: 4, section: 0)
-					self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
-				}else if userData.shared.logInPinSet == 0{
-                    self?.GotoNextIndex()
-                    
-				}else {
-					let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 3, section: 0)
-					self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
-                    
-                }
-            }
-        })
     }
     
     
