@@ -90,7 +90,7 @@ struct AssetBaseData: Codable {
 }
 
 
-// MARK: - Balance
+// MARK: - BalanceAPI
 struct BalanceAPI: Codable {
 	let data : [String:BalanceData]
 }
@@ -124,5 +124,21 @@ struct Balance{
 	init(){
 		self.id = ""
 		self.balanceData = BalanceData()
+	}
+}
+
+// MARK: - BalanceHistoryAPI
+struct BalanceHistoryAPI: Codable {
+	let data : [BalanceHistory]
+}
+
+// MARK: - BalanceHistory
+struct BalanceHistory: Codable{
+	var total: String
+	var date: String
+	
+	init(){
+		self.total = ""
+		self.date = ""
 	}
 }

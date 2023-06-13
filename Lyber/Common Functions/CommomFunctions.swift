@@ -376,16 +376,6 @@ class CommonFunctions{
         view.dragXEnabled = true
         view.dragYEnabled = true
         view.doubleTapToZoomEnabled = false
-//        view.setVisibleXRangeMaximum(30)
-//        view.setVisibleXRange(minXRange: 20, maxXRange: 100)
-        
-        //        let valFormatter = NumberFormatter()
-        //        valFormatter.numberStyle = .currency
-        //        valFormatter.maximumFractionDigits = 0
-        //        valFormatter.currencySymbol = "$"
-        //        view.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: valFormatter)
-        //
-        //        view.animate(xAxisDuration: 0.2)
         
         let set1 = LineChartDataSet(entries: data, label: "")
         set1.mode = .linear
@@ -399,21 +389,6 @@ class CommonFunctions{
         set1.colors = [lineColor]
         set1.drawCirclesEnabled = false
     
-//        set1.setColor(lineColor,alpha: 1)
-//        set1.circleColors = [lineColor]
-//        set1.circleHoleRadius = 1
-//        set1.circleRadius = 3.5
-//        set1.drawCirclesEnabled = true
-//        set1.drawCircleHoleEnabled = true
-//        set1.circleHoleColor = UIColor.whiteColor
-        
-//        let gradientColors = [gradientColors[0].cgColor, gradientColors[1].cgColor] as CFArray // Colors of the gradient
-//        let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
-//        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
-//        set1.fill = LinearGradientFill(gradient: gradient!, angle: 90.0)  // Set the Gradient
-//        set1.drawFilledEnabled = true // Draw the Gradient
-        
-//        let data = LineChartData(dataSets: [set1])
         let data = LineChartData(dataSet: set1)
         data.isHighlightEnabled = true
         data.setDrawValues(false)
@@ -425,12 +400,12 @@ class CommonFunctions{
         view.rightAxis.enabled = true
         view.rightAxis.labelPosition = .outsideChart
         view.rightAxis.drawGridLinesEnabled = false
-        
-        view.rightAxis.labelCount = 3
-        view.rightAxis.axisMaxLabels = 3
         view.rightAxis.setLabelCount(3, force: true)
-        
-    }
+	
+		let numberFormatter = NumberFormatter()
+		numberFormatter.numberStyle = .decimal
+		view.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: numberFormatter)
+	}
     
     static func invalidPassTyp(_ checkpass:String) -> Bool{
         let passwordCheck = "(?=.*[A-Z])(?=.*[d$@$!%*?&#.><,)/+*(])(?=.*[0-9])(?=.*[a-z]).{8,}"

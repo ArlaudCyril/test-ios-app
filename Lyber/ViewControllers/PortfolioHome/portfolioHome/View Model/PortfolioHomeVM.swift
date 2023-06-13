@@ -60,4 +60,13 @@ class PortfolioHomeVM{
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
+	
+	func walletGetBalanceHistoryApi(completion: @escaping ( (BalanceHistoryAPI?) -> Void )){
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceHistory, withParameters: [:], ofType: BalanceHistoryAPI.self, onSuccess: { response in
+            completion(response)
+        }, onFailure: { reload, error, code in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+    }
 }
