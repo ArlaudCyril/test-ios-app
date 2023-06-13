@@ -55,7 +55,7 @@ class EnterPhoneVC: ViewController {
 			}
 		}else if (userData.shared.isPhoneVerified == true && GlobalVariables.isRegistering){
 			DispatchQueue.main.async {
-				let indexPath = NSIndexPath(item: 4, section: 0)
+				let indexPath = NSIndexPath(item: 3, section: 0)
 				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 			}
 		}
@@ -127,7 +127,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 cell.endEditing(true)
             }
             return cell
-        }else if indexPath.item == 3{
+        }else if indexPath.item == 2{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmPinCVC", for: indexPath as IndexPath) as! ConfirmPinCVC
             cell.setUpUI(verifyPin : verifyPin)
             cell.pinConfirmDelegate = {[]pin in
@@ -150,7 +150,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 
             }
             
-            if currentPage == 3{
+            if currentPage == 2{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
@@ -159,7 +159,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 cell.endEditing(true)
             }
             return cell
-        }else if indexPath.item == 4{
+        }else if indexPath.item == 3{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enableNotificationCVC", for: indexPath as IndexPath) as! enableNotificationCVC
             cell.setUpUI()
             cell.delegate = self
