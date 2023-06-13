@@ -218,6 +218,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 
             }
         case .investWithStrategiesActive:
+			self.investmentStrategyController?.deselectAllStrategies()
             if indexPath.row == 0{
                 self.dismiss(animated: true, completion: nil)
                 let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
@@ -248,6 +249,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.dismiss(animated: true, completion: nil)
             }
         case .investWithStrategiesInactive:
+			self.investmentStrategyController?.deselectAllStrategies()
             if indexPath.row == 0{
                 self.dismiss(animated: true, completion: nil)
                 let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
@@ -363,7 +365,7 @@ extension DepositeOrBuyVC{
         {
             self.investmentStrategyController?.deselectAllStrategies()
         }
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
 }
 

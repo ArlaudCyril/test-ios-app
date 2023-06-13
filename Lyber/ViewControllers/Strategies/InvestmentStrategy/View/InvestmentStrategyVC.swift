@@ -149,7 +149,7 @@ extension InvestmentStrategyVC{
         }
         vc.strategy = strategy
         vc.investmentStrategyController = self
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: false)
     }
     
     func callGetStrategies(){

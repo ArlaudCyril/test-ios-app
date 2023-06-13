@@ -214,9 +214,11 @@ open class MultiProgressView: UIView {
     // MARK: - Main Methods
     
     public func setProgress(section: Int, to progress: Float) {
-        currentProgress[section] = max(0, min(progress, 1 - totalProgress + currentProgress[section]))
-        setNeedsLayout()
-        layoutIfNeeded()
+		if section >= 0 && section < currentProgress.count {
+			currentProgress[section] = max(0, min(progress, 1 - totalProgress + currentProgress[section]))
+			setNeedsLayout()
+			layoutIfNeeded()
+		}
     }
     
     public func resetProgress() {
