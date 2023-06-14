@@ -255,7 +255,9 @@ class InvestInMyStrategyVC: ViewController {
             self.maximumMoneyInvest()
 			
         }else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy){
-            self.coinsLbl.isHidden = false
+			self.frequencyVw.isHidden = false
+			self.creditCardVw.isHidden = true //it is temporary
+			self.coinsLbl.isHidden = false
 			self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_MY_INVESTMENT"), for: .normal)
             if(strategyData?.activeStrategy != nil)
             {//we take the informations of the active strategy
@@ -266,12 +268,14 @@ class InvestInMyStrategyVC: ViewController {
                 self.frequencyDropDown.image = Assets.drop_down.image()
                 self.frequencyImg.image = Assets.calendar_black.image()
                 
-                amountTF.text = "\(strategyData?.activeStrategy?.amount ?? 0)€"
+                amountTF.text = "\(strategyData?.activeStrategy?.amount ?? 0) USDT"
                 totalEuroInvested = Double(strategyData?.activeStrategy?.amount ?? 0)
                 
                 self.previewMyInvest.backgroundColor = UIColor.PurpleColor
                 self.previewMyInvest.isUserInteractionEnabled = true
-            }
+			}else{
+				amountTF.text = "0 USDT"
+			}
             
             var totalCoins : String = ""
             for index in 0...(strategyCoinsData.count - 1){
@@ -681,7 +685,7 @@ extension InvestInMyStrategyVC {
             }
         }else{
             if exchangeCoin1ToCoin2 == false{
-                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value)))€"
+                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value))) USDT"
 				let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
                     totalEuroInvested = Double(value) ?? 0.0
                     totalNoOfCoinsInvest = CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(1/coinPrice)))

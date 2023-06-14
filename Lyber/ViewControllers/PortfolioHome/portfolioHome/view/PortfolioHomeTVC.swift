@@ -105,6 +105,7 @@ extension PortfolioHomeTVC{
 		for balance in Storage.balances{
 			totalPortfolio += (Double(balance?.balanceData.euroBalance ?? "0") ?? 0)
 		}
+		totalEuroAvailable = totalPortfolio
 		
 		CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
 	}

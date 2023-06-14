@@ -6,7 +6,6 @@
         <attribute name="bic" optional="YES" attributeType="String"/>
         <attribute name="countryCode" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="enableWhiteListing" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="extraSecurity" optional="YES" attributeType="String"/>
         <attribute name="faceIdEnabled" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="firstname" optional="YES" attributeType="String"/>

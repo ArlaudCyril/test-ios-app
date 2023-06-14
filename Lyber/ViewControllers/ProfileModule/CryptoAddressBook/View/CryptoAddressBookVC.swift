@@ -71,8 +71,6 @@ class CryptoAddressBookVC: SwipeGesture {
         CommonUI.setUpLbl(lbl: self.whitlistingLbl, text: CommonFunctions.localisation(key: "WHITELISTING"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.activeDuringLbl, text: "\(CommonFunctions.localisation(key: "SECURITY")) : 72H", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
-        self.activeDuringLbl.isHidden = true
-        
         CommonUI.setUpViewBorder(vw: searchView, radius: 12, borderWidth: 1, borderColor: UIColor.borderColor.cgColor)
         self.tblView.delegate = self
         self.tblView.dataSource = self
@@ -82,19 +80,21 @@ class CryptoAddressBookVC: SwipeGesture {
         self.addAddressView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         CommonUI.setUpButton(btn: self.addNewAddressBtn, text: CommonFunctions.localisation(key: "ADD_NEW_ADRESS"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        if userData.shared.enableWhiteListing {
-            self.activeDuringLbl.isHidden = false
-            if userData.shared.extraSecurity == "24_HOURS"{
-                self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 24H"
-            }else if userData.shared.extraSecurity == "72_HOURS"{
-                self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 72H"
-            }else if userData.shared.extraSecurity == "NO_EXTRA_SECURITY"{
-                self.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : No Security"
-            }
-        }else{
-            self.activeDuringLbl.isHidden = true
+		if userData.shared.extraSecurity == "1d"{
+			let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 24H")
+			let range = (attributedText.string as NSString).range(of: "24H")
+			attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+			self.activeDuringLbl.attributedText = attributedText
+			
+		}else if userData.shared.extraSecurity == "3d"{
+			let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 72H")
+			let range = (attributedText.string as NSString).range(of: "72H")
+			attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+			self.activeDuringLbl.attributedText = attributedText
+			
+		}else if userData.shared.extraSecurity == "none"{
+			self.activeDuringLbl.text = CommonFunctions.localisation(key: "NO_SECURITY")
         }
-        
         
         self.searchTF.addTarget(self, action: #selector(searchtextChanged), for: .editingChanged)
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
@@ -161,7 +161,7 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
 		self.tblView.reloadData()
     }
     
-    @objc func addNewAddressBtnAct(){//TODO: see if enableWhiteListing useful
+    @objc func addNewAddressBtnAct(){
 		let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 		self.navigationController?.pushViewController(vc, animated: true)
         
@@ -170,13 +170,18 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
     @objc func whitelistingBtnAct(sender : UIButton){
             let vc = EnableWhitelistingVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
             vc.timeCallBack = {[weak self]response in
-                self?.activeDuringLbl.isHidden = false
                 if response?.id == 1{               //72Hour
-                    self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 72H"
+					let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 72H")
+					let range = (attributedText.string as NSString).range(of: "72H")
+					attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+					self?.activeDuringLbl.attributedText = attributedText
                 }else if response?.id == 2{         //24 Hour
-                    self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : 24H"
+					let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 24H")
+					let range = (attributedText.string as NSString).range(of: "24H")
+					attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+					self?.activeDuringLbl.attributedText = attributedText
                 }else{                              //No Extra Secuirty
-                    self?.activeDuringLbl.text = "\(CommonFunctions.localisation(key: "SECURITY")) : No Security"
+                    self?.activeDuringLbl.text = CommonFunctions.localisation(key: "NO_SECURITY")
                 }
 
             }

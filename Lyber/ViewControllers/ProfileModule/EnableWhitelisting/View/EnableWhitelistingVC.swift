@@ -16,7 +16,6 @@ class EnableWhitelistingVC: ViewController {
         SecurityTime(id: 2, securityTime: "24_HOURS", time: "24 \(CommonFunctions.localisation(key: "HOURS"))", isSelected: false),
         SecurityTime(id: 3, securityTime: "NO_EXTRA_SECURITY", time: CommonFunctions.localisation(key: "NO_EXTRA_SECURITY"), isSelected: false)]
     var selectedTime : SecurityTime?
-    var disableWhitelisting = false
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var enableWhitelistingLbl: UILabel!
@@ -57,19 +56,14 @@ class EnableWhitelistingVC: ViewController {
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.saveSettingsBtn.addTarget(self, action: #selector(saveSettingsBtnAct), for: .touchUpInside)
         
-        if userData.shared.enableWhiteListing {
-            for index in 0...(TimeData.count - 1){
-                if TimeData[index].securityTime == userData.shared.extraSecurity{
-                    TimeData[index].isSelected = true
-                    selectedTime = TimeData[index]
-                    self.saveSettingsBtn.backgroundColor = UIColor.PurpleColor
-                    self.saveSettingsBtn.isUserInteractionEnabled = true
-                    self.tblView.isUserInteractionEnabled = false
-                    self.disableWhitelisting = true
-                }
-            }
-        }
-        
+		for index in 0...(TimeData.count - 1){
+			if TimeData[index].securityTime.decoderSecurityTime == userData.shared.extraSecurity{
+				TimeData[index].isSelected = true
+				selectedTime = TimeData[index]
+				self.saveSettingsBtn.backgroundColor = UIColor.PurpleColor
+				self.saveSettingsBtn.isUserInteractionEnabled = true
+			}
+		}
     }
 }
 
@@ -81,30 +75,15 @@ extension EnableWhitelistingVC{
     
     @objc func saveSettingsBtnAct(){
         self.saveSettingsBtn.showLoading()
-        if self.disableWhitelisting{
-            enableWhitelistingVM.enableWhitelistingApi(enable: false, Security: selectedTime?.securityTime ?? "", completion: {response in
-                self.saveSettingsBtn.hideLoading()
-				if response != nil {
-                    userData.shared.enableWhiteListing = false
-                    userData.shared.dataSave()
-                    self.timeCallBack?(self.selectedTime)
-                    self.navigationController?.popViewController(animated: true)
-                }
-            })
-            
-        }else{
-            enableWhitelistingVM.enableWhitelistingApi(enable: true, Security: selectedTime?.securityTime ?? "", completion: {response in
-                self.saveSettingsBtn.hideLoading()
-				if response != nil {
-                    userData.shared.enableWhiteListing = true
-                    userData.shared.extraSecurity = self.selectedTime?.securityTime ?? ""
-                    userData.shared.dataSave()
-                    self.timeCallBack?(self.selectedTime)
-                }
-            })
-            self.navigationController?.popViewController(animated: true)
-        }
-        
+		enableWhitelistingVM.changeWhitelistingSecurityApi(withdrawalLock: self.selectedTime?.securityTime.decoderSecurityTime ?? "", completion: {response in
+			self.saveSettingsBtn.hideLoading()
+			if response != nil {
+				userData.shared.extraSecurity = self.selectedTime?.securityTime.decoderSecurityTime ?? ""
+				userData.shared.dataSave()
+				self.timeCallBack?(self.selectedTime)
+			}
+		})
+		self.navigationController?.popViewController(animated: true)
         
     }
 }
@@ -176,3 +155,4 @@ extension EnableWhitelistingVC{
       }
     }
 }
+

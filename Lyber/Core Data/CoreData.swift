@@ -43,9 +43,8 @@ class userData : NSObject {
     var faceIdEnabled = 0
     var iban = ""
     var bic = ""
-    var extraSecurity = ""
+    var extraSecurity = "none"
     var strongAuthVerified = false
-    var enableWhiteListing = false
     var scope2FALogin = false
     var scope2FAWhiteListing = false
     var scope2FAWithdrawal = false
@@ -98,7 +97,6 @@ class userData : NSObject {
         newData.setValue(strongAuthVerified, forKey: "strongAuthVerified")
         newData.setValue(profile_image, forKey: "profile_image")
         newData.setValue(profilePicType, forKey: "profilePicType")
-        newData.setValue(enableWhiteListing, forKey: "enableWhiteListing")
         newData.setValue(scope2FALogin, forKey: "scope2FALogin")
         newData.setValue(scope2FAWhiteListing, forKey: "scope2FAWhiteListing")
         newData.setValue(scope2FAWithdrawal, forKey: "scope2FAWithdrawal")
@@ -250,10 +248,6 @@ class userData : NSObject {
                         self.profilePicType = profilePicType
                         print("data get profilePicType \(profilePicType)")
                     }
-                    if let enableWhiteListing = result.value(forKey: "enableWhiteListing") as? Bool{
-                        self.enableWhiteListing = enableWhiteListing
-                        print("data get enableWhiteListing \(enableWhiteListing)")
-                    }
                     if let scope2FALogin = result.value(forKey: "scope2FALogin") as? Bool{
                         self.scope2FALogin = scope2FALogin
                         print("data get scope2FALogin \(scope2FALogin)")
@@ -320,11 +314,10 @@ class userData : NSObject {
 		self.iban = ""
 		self.bic = ""
 		self.faceIdEnabled = 0
-		self.extraSecurity = ""
+		self.extraSecurity = "none"
 		self.strongAuthVerified = false
 		self.profile_image = ""
 		self.profilePicType = ""
-		self.enableWhiteListing = false
 		self.scope2FALogin = false
 		self.scope2FAWhiteListing = false
 		self.scope2FAWithdrawal = false
@@ -358,11 +351,10 @@ class userData : NSObject {
         self.iban = ""
         self.bic = ""
         self.faceIdEnabled = 0
-        self.extraSecurity = ""
+        self.extraSecurity = "none"
         self.strongAuthVerified = false
         self.profile_image = ""
         self.profilePicType = ""
-        self.enableWhiteListing = false
         self.scope2FALogin = false
         self.scope2FAWhiteListing = false
         self.scope2FAWithdrawal = false

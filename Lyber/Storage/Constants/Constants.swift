@@ -75,7 +75,7 @@ struct Constants{
         static let face_id = "face_id"
         static let enable_face_id = "enable_face_id"
         static let enable = "enable"
-        static let extra_security = "extra_security"
+        static let withdrawalLock = "withdrawalLock"
         
         // MARK: - personal Data keys
         static let personal_info_step = "personal_info_step"
@@ -235,9 +235,7 @@ struct Constants{
         static let userBankInfo = "user/bank-info"
         static let userEnableStrongAuth = "user/enable/strong-auth"
         static let userVerifyStrongAuth = "user/verify/strong-auth"
-        static let userEnableWhitelisting = "user/enable/whitelisting"
         static let userNetworks = "user/networks"
-        static let userWhitelistAddress = "user/whitelist-address"
         static let aploVenues = "aplo/venues"
         static let upload = "upload"
         

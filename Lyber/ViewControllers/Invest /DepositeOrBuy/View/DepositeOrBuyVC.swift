@@ -218,7 +218,6 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 
             }
         case .investWithStrategiesActive:
-			self.investmentStrategyController?.deselectAllStrategies()
             if indexPath.row == 0{
                 self.dismiss(animated: true, completion: nil)
                 let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
@@ -249,7 +248,6 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.dismiss(animated: true, completion: nil)
             }
         case .investWithStrategiesInactive:
-			self.investmentStrategyController?.deselectAllStrategies()
             if indexPath.row == 0{
                 self.dismiss(animated: true, completion: nil)
                 let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
@@ -353,18 +351,10 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 //MARK: - objective functions
 extension DepositeOrBuyVC{
     @objc func cancelBtnAct(){
-        if(self.popupType == .investWithStrategiesActive || self.popupType == .investWithStrategiesInactive)
-        {
-            self.investmentStrategyController?.deselectAllStrategies()
-        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func dismissBottomView(){
-        if(self.popupType == .investWithStrategiesActive || self.popupType == .investWithStrategiesInactive)
-        {
-            self.investmentStrategyController?.deselectAllStrategies()
-        }
         self.dismiss(animated: false, completion: nil)
     }
 }
@@ -384,6 +374,10 @@ extension DepositeOrBuyVC{
     override func viewWillDisappear(_ animated: Bool) {
       super.viewWillDisappear(animated)
       self.tblView.removeObserver(self, forKeyPath: "contentSize")
+		if(self.popupType == .investWithStrategiesActive || self.popupType == .investWithStrategiesInactive)
+		{
+			self.investmentStrategyController?.deselectAllStrategies()
+		}
     }
       
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

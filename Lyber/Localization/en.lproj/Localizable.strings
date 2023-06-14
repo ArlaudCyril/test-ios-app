@@ -329,6 +329,7 @@
 "ACCOUNT" = "Account";
 "NOTIFICATIONS" = "Notifications";
 "SECURITY" = "Security";
+"NO_SECURITY" = "No security";
 "STRONG_AUTHENTIFICATION" = "Strong authentification";
 "CHANGE_PIN" = "Change Pin";
 "FACE_ID" = "Face ID";
@@ -457,6 +458,7 @@
 "DATE_CREATION" = "Date of creation";
 "ADDRESS_ORIGIN" = "Adress origin";
 "ADDRESS_COPIED" = "Address copied";
+"ACTIVE_DURING" = "Active during";
 
 //MARK: - Invest
 "SELECT_CREDIT_CARD" = "Select credit card";

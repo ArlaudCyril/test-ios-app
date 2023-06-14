@@ -68,5 +68,18 @@ extension String{
 				return self
 		}
 	}
+	
+	var decoderSecurityTime: String{
+		switch self {
+			case "72_HOURS":
+				return "3d"
+			case "24_HOURS":
+				return "1d"
+			case "NO_EXTRA_SECURITY":
+				return "none"
+			default:
+				return self
+		}
+	}
     
 }

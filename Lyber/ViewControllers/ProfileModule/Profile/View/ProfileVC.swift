@@ -48,10 +48,10 @@ class ProfileVC: ViewController {
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: "")]
         
-		if userData.shared.enableWhiteListing{
-			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "ENABLED"))"
-		}else{
+		if userData.shared.extraSecurity == "none"{
 			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"
+		}else{
+			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "ENABLED"))"
 		}
 		if userData.shared.strongAuthVerified {
 			self.securityData[0].desc = CommonFunctions.localisation(key: "ENABLED")

@@ -323,6 +323,7 @@
 "ACCOUNT" = "Compte";
 "NOTIFICATIONS" = "Notifications";
 "SECURITY" = "Sécurité";
+"NO_SECURITY" = "Pas de sécurité";
 "STRONG_AUTHENTIFICATION" = "Authentification forte";
 "CHANGE_PIN" = "Changer de code PIN";
 "FACE_ID" = "Face ID";
@@ -451,6 +452,7 @@
 "DATE_CREATION" = "Date de création";
 "ADDRESS_ORIGIN" = "Origine de l'adresse";
 "ADDRESS_COPIED" = "Adresse copiée";
+"ACTIVE_DURING" = "Actif durant";
 
 
 //MARK: - Invest

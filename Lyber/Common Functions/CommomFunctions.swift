@@ -546,7 +546,7 @@ class CommonFunctions{
 	
     
     static func numberFormat(from value: Double?) -> String {
-        guard value != nil else { return "$0.00" }
+        guard value != nil else { return "0.00" }
         let formatter = NumberFormatter()
 //        formatter.locale = Locale(identifier: "US")
 //        formatter.currencyCode = "EUR"
@@ -559,7 +559,7 @@ class CommonFunctions{
         formatter.usesGroupingSeparator = true
         formatter.decimalSeparator = "."
         formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "$\(value ?? 0)"
+        return formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "\(value ?? 0)"
         
         
 //        guard value != nil else { return "$0.00" }

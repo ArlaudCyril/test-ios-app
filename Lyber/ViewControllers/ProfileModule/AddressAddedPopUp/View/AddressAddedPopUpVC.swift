@@ -74,7 +74,7 @@ class AddressAddedPopUpVC: ViewController {
         
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.editBtn.addTarget(self, action: #selector(editAct), for: .touchUpInside)
-        self.deleteBtn.addTarget(self, action: #selector(confirmBtnAct), for: .touchUpInside)
+        self.deleteBtn.addTarget(self, action: #selector(deleteBtnAct), for: .touchUpInside)
         let tapp = UITapGestureRecognizer(target: self, action: #selector(outerTapped))
         self.outerView.addGestureRecognizer(tapp)
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addressCopyLblTapped(_:)))
@@ -108,7 +108,7 @@ extension AddressAddedPopUpVC{
 		self.addressBookController?.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func confirmBtnAct(){
+    @objc func deleteBtnAct(){
 		self.callDeleteApi()
         
     }
@@ -124,11 +124,9 @@ extension AddressAddedPopUpVC{
 extension AddressAddedPopUpVC{
     func callDeleteApi(){
         self.deleteBtn.showLoading(color: UIColor.PurpleColor)
-        self.deleteBtn.isUserInteractionEnabled = false
-        addressAddedPopUpVM.deleteAddressApi(addressId: self.addressId, completion: {[weak self]response in
-            self?.deleteBtn.isUserInteractionEnabled = true
+		addressAddedPopUpVM.deleteAddressApi(network: self.editAddress?.network ?? "", address: self.editAddress?.address ?? "", completion: {[weak self]response in
             self?.deleteBtn.hideLoading()
-            self?.dismiss(animated: true, completion: nil)
+            self?.dismiss(animated: true)
             self?.deleteCallback?()
         })
     }

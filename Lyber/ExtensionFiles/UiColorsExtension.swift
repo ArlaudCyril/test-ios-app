@@ -69,6 +69,11 @@ extension UIColor{
             return UIColor(named: "grey#36323C") ?? UIColor.gray
         }
     }
+	public class var green_500 : UIColor{
+        get {
+            return UIColor(named: "green_500") ?? UIColor.green
+        }
+    }
 	public class var borderColor : UIColor{
         get {
             return UIColor(named: "borderColor") ?? UIColor.gray

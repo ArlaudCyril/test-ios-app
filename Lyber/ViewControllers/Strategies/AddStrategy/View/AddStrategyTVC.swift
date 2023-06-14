@@ -47,7 +47,7 @@ extension AddStrategyTVC{
         self.coinImg.sd_setImage(with: URL(string: currencyDetail?.image ?? ""))
 
         CommonUI.setUpLbl(lbl: self.coinNameLbl, text: currencyDetail?.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.euroLbl, text: CommonFunctions.formattedCurrency(from: Double(data?.priceServiceResumeData.lastPrice ?? "0.00")), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: Double(data?.priceServiceResumeData.lastPrice ?? "0.00")))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: (data?.priceServiceResumeData.change ?? "0.00")+" %", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
        

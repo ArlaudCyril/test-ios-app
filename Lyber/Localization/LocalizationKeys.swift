@@ -327,8 +327,6 @@ enum L10n {
     case yourNoteGoesHere
     case AddAdress
     case EditAdress
-    case EnableWhitelisting
-    case DisableWhitelisting
     case WhitelistingIsFeatureThatLimitsWithdrawls
     case ExtraSecurity
     case Hours
@@ -1007,10 +1005,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Add address")
         case .EditAdress:
             return L10n.tr("Edit address")
-        case .EnableWhitelisting:
-            return L10n.tr("Enable whitelisting")
-        case .DisableWhitelisting:
-            return L10n.tr("Disable whitelisting")
         case .WhitelistingIsFeatureThatLimitsWithdrawls:
             return L10n.tr("Whitelisting is a feature that limits your withdrawals and deposits to addresses in your Lyber address book.")
         case .ExtraSecurity:
