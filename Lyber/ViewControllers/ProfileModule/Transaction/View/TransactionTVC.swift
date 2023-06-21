@@ -50,6 +50,7 @@ extension TransactionTVC{
 			self.euroLbl.text = "-\(data?.fromAmount ?? "") \(data?.fromAsset?.uppercased() ?? "")"
 			self.noOfCoinLbl.text = "+\(data?.toAmount ?? "") \(data?.toAsset?.uppercased() ?? "")"
         }else if data?.type == "deposit"{
+			self.coinImg.image = Assets.money_deposit.image()
 			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT")) \(data?.asset?.uppercased() ?? "")"
 			self.euroLbl.text = "+\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
         }else if data?.type == "withdraw"{

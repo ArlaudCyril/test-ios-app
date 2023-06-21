@@ -15,6 +15,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 	var action : String?
 	var dataWithdrawal : [String : Any]?
 	var controller : ViewController?
+	var verificationCallBack : ((String)->())?
     
     
     //MARK: - IB OUTLETS
@@ -44,9 +45,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
     override func setUpUI(){
 //        IQKeyboardManager.shared.enableAutoToolbar = false
         switch typeVerification {
-            case "otp":
-                fallthrough
-            case "otpValidation":
+            case "google":
                 CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
             case "phone":
                 CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_SMS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
@@ -146,16 +145,23 @@ extension VerificationVC{
     
     func verifyCode(code: String)
     {
-        if(self.typeVerification == "otpValidation"){
-            VerificationVM().TwoFAOtpApi(code: code, type2FA: "otp", completion: {[]response in
-                if response != nil{
-                    let vc = StrongAuthVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                    userData.shared.has2FA = true
-                    userData.shared.type2FA = "otp"
-                    userData.shared.dataSave()
-                    self.present(vc, animated: true, completion: nil)
-                }
-            })
+        if(self.action == "otpValidation"){//code ici google authenticator
+			let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+			vc.typeVerification = userData.shared.type2FA
+			vc.action = "verificationCallback"
+			vc.verificationCallBack = {[]codeOtp in
+				VerificationVM().TwoFAApi(type2FA: "google", otp: codeOtp, googleOtp: code, completion: {[weak self]response in
+					if response != nil{
+						userData.shared.has2FA = true
+						userData.shared.type2FA = "google"
+						userData.shared.dataSave()
+						self?.dismiss(animated: true)
+						self?.controller?.navigationController?.popToViewController(ofClass: StrongAuthVC.self)
+					}
+				})
+			}
+			self.present(vc, animated: true)
+
 		}else if(self.action == "withdraw"){
 			VerificationVM().walletCreateWithdrawalRequest(otp: code, data: dataWithdrawal ?? [:], onSuccess:{[]response in
                 if response != nil{
@@ -186,6 +192,9 @@ extension VerificationVC{
 					self?.controller?.navigationController?.pushViewController(vc, animated: true)
 				}
 			})
+        }else if(self.action == "verificationCallback"){
+			self.dismiss(animated: true)
+			self.verificationCallBack?(code)
         }else{
             VerificationVM().verify2FAApi(code: code, completion: {[]response in
                 if response != nil{

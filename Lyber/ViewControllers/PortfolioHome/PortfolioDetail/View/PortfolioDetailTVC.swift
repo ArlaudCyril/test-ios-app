@@ -90,7 +90,6 @@ extension PortfolioDetailTVC{
         }
         
         self.collView.layer.cornerRadius = 12
-        self.collView.backgroundColor = UIColor.borderColor
         self.collView.delegate = self
         self.collView.dataSource = self
         

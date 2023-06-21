@@ -60,19 +60,19 @@ extension FrequencyVC : UITableViewDelegate, UITableViewDataSource{
     
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		frequencySelectedCallback?(frequencyData[indexPath.row].name)
-		self.dismiss(animated: true, completion: nil)
+		self.dismiss(animated: false)
 	}
 }
 
 //MARK: - objective functions
 extension FrequencyVC{
     @objc func cancelBtnAct(){
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false)
     }
     
     @objc func dismissBottomView(){
         
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false)
     }
 }
 

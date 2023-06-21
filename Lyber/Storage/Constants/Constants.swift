@@ -186,7 +186,10 @@ struct Constants{
         
         // MARK: - Profile keys
         static let type2FA = "type2FA"
-        static let googleOTP = "googleOTP"
+        static let googleOtp = "googleOtp"
+		
+		// MARK: - User keys
+		static let scope2FA = "scope2FA"
         
     }
     
@@ -217,7 +220,6 @@ struct Constants{
         static let coinTrendings = "coin/trendings"
         static let coingeckoCoins = "coingecko/coins"
         static let userAssets = "user/assets"
-        static let userInvestments = "user/investments"
         static let userInvestment = "user/investment"
         static let coingeckoCoinAsset = "coingecko/coin"
         static let coingeckoPriceChart = "coingecko/price-chart"
@@ -270,9 +272,7 @@ struct Constants{
         static let userServiceUser = "user-service/user"
         static let assetServiceAssets = "asset-service/assets"
         static let userServiceGoogleOtp = "user-service/google-otp"
-        static let userService2FA = "user-service/2FA"
         static let userServiceVerify2FA = "user-service/verify-2FA"
-        static let userServiceScope2FA = "user-service/scope-2FA"
         static let userServiceLanguage = "user-service/language"
 		static let userServiceTwoFaOtp = "user-service/2fa-otp"
 		static let userServiceTransactions = "user-service/transactions"

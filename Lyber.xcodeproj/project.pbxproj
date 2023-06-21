@@ -25,7 +25,7 @@
 		0A1C74FA2840E3F3003CA6A7 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1C74F92840E3F3003CA6A7 /* ViewControllerExtension.swift */; };
 		0A1E9FC4293887420047D307 /* SwipeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E9FC3293887420047D307 /* SwipeGesture.swift */; };
 		0A272BD02851C6E8005CA57F /* AllocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A272BCF2851C6E8005CA57F /* AllocationVC.swift */; };
-		0A3E8D1B2862ED3E0063F383 /* circleMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3E8D1A2862ED3E0063F383 /* circleMarker.swift */; };
+		0A3E8D1B2862ED3E0063F383 /* customMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3E8D1A2862ED3E0063F383 /* customMarker.swift */; };
 		0A3E8D1D2862F26C0063F383 /* customMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3E8D1C2862F26C0063F383 /* customMarker.xib */; };
 		0A52D449290A66E400C6DD40 /* BigNum in Frameworks */ = {isa = PBXBuildFile; productRef = 0A52D448290A66E400C6DD40 /* BigNum */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A53DEDF28461D590027367A /* VerificationEmailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEDE28461D590027367A /* VerificationEmailCVC.swift */; };
@@ -281,6 +281,7 @@
 		1F83382329F97D3F00E41F61 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382229F97D3F00E41F61 /* Confetti.swift */; };
 		1F83382629F97EF100E41F61 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382529F97EF100E41F61 /* Launcher.swift */; };
 		1F8BD79A29D43ED100EF322A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BD79929D43ED100EF322A /* ViewController.swift */; };
+		1F96A99B2A3B4C71006D5A61 /* NoRecurringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */; };
 		1F9E2B9E299FDEA50016CAB8 /* Portfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9728448D32007002E0 /* Portfolio.storyboard */; };
 		1F9FC3D529EECFE10084923E /* DepositAssetTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */; };
 		1FB9A0A629B89B01008431B0 /* GoogleAuthenticatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */; };
@@ -317,7 +318,7 @@
 		0A1C74F92840E3F3003CA6A7 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		0A1E9FC3293887420047D307 /* SwipeGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGesture.swift; sourceTree = "<group>"; };
 		0A272BCF2851C6E8005CA57F /* AllocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationVC.swift; sourceTree = "<group>"; };
-		0A3E8D1A2862ED3E0063F383 /* circleMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circleMarker.swift; sourceTree = "<group>"; };
+		0A3E8D1A2862ED3E0063F383 /* customMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customMarker.swift; sourceTree = "<group>"; };
 		0A3E8D1C2862F26C0063F383 /* customMarker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = customMarker.xib; sourceTree = "<group>"; };
 		0A53DEDE28461D590027367A /* VerificationEmailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEmailCVC.swift; sourceTree = "<group>"; };
 		0A53DEE4284634DC0027367A /* InvestmentExperienceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentExperienceVC.swift; sourceTree = "<group>"; };
@@ -579,6 +580,7 @@
 		1F83382229F97D3F00E41F61 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		1F83382529F97EF100E41F61 /* Launcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
 		1F8BD79929D43ED100EF322A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRecurringTVC.swift; sourceTree = "<group>"; };
 		1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetTVC.swift; sourceTree = "<group>"; };
 		1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVM.swift; sourceTree = "<group>"; };
 		1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorModel.swift; sourceTree = "<group>"; };
@@ -1364,9 +1366,10 @@
 				0A75020B2859F76300D68BAB /* AllAssetsAvailableTVC.swift */,
 				0A750210285A01E600D68BAB /* AllCoinCVC.swift */,
 				0A907E56285B3543001ABD6A /* PortfolioHeaderTVC.swift */,
-				0A3E8D1A2862ED3E0063F383 /* circleMarker.swift */,
+				0A3E8D1A2862ED3E0063F383 /* customMarker.swift */,
 				0A3E8D1C2862F26C0063F383 /* customMarker.xib */,
 				0A6FA81C28F575F700E17E7B /* chartVC.swift */,
+				1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3001,6 +3004,7 @@
 				0AE67F442853021D00F13D2E /* InvestInMyStrategyVC.swift in Sources */,
 				0A7586CC286C7C9600DC889E /* LoginVM.swift in Sources */,
 				0A77D54128B79FA500A2C684 /* SearchAssetVC.swift in Sources */,
+				1F96A99B2A3B4C71006D5A61 /* NoRecurringTVC.swift in Sources */,
 				0A70BC5C28992FBB00577C0B /* EnableWhitelistingModel.swift in Sources */,
 				0A6E3B9D2844A084007002E0 /* checkAccountCompletedVC.swift in Sources */,
 				0A70175928CB3AF30024FECE /* QRCodeScanVC.swift in Sources */,
@@ -3026,7 +3030,7 @@
 				0A791DFC28646E8E0084B104 /* AddPaymentMethodTVC.swift in Sources */,
 				0A70730A2850B466001B48D9 /* InvestmentStrategyModel.swift in Sources */,
 				0A6A9F06289A61C5001BB63E /* FundAccountVC.swift in Sources */,
-				0A3E8D1B2862ED3E0063F383 /* circleMarker.swift in Sources */,
+				0A3E8D1B2862ED3E0063F383 /* customMarker.swift in Sources */,
 				0A907E6A285B5BCC001ABD6A /* PortfolioDetailModel.swift in Sources */,
 				0A7445872857625B00BF05EF /* FrequencyTVC.swift in Sources */,
 				0A7586C8286C794000DC889E /* ApiConstants.swift in Sources */,

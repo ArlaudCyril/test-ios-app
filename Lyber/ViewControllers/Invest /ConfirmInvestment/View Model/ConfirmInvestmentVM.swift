@@ -82,17 +82,20 @@ class ConfirmInvestmentVM{
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 	//TODO: encoder en base 64  : {"assetId":"sol", "chain":"solana","amount":0.05,"destination":"8SbqXLQEBvFD2rZSMuUizkJQZ9TN2dqwFRnRQzGp6Kax"}
-	func userGetOtpApi(action: String, data : [String : Any], completion: @escaping ( (SuccessAPI?) -> Void )){
+	func userGetOtpApi(action: String, data : [String : Any] = [:], completion: @escaping ( (SuccessAPI?) -> Void )){
         var params : [String : Any] = [:]
 		
-		do {
-			let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
-			let base64EncodedString = jsonData.base64EncodedString()
-			params[Constants.ApiKeys.details] = base64EncodedString
-
-		} catch {
-			print("Error creating JSON: \(error)")
+		if(!data.isEmpty){
+			do {
+				let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+				let base64EncodedString = jsonData.base64EncodedString()
+				params[Constants.ApiKeys.details] = base64EncodedString
+				
+			} catch {
+				print("Error creating JSON: \(error)")
+			}
 		}
+		
         params[Constants.ApiKeys.action] = action
         
         

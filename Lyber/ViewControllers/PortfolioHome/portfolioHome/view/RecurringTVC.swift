@@ -12,8 +12,8 @@ class RecurringTVC: UITableViewCell {
     @IBOutlet var recurringVw: UIView!
     @IBOutlet var strategyImgVw: UIImageView!
     @IBOutlet var strategyLbl: UILabel!
-    @IBOutlet var timeLbl: UILabel!
-    @IBOutlet var paymentLbl: UILabel!
+    @IBOutlet var frequenceLbl: UILabel!
+    @IBOutlet var dateLbl: UILabel!
     @IBOutlet var euroLbl: UILabel!
     
     override func awakeFromNib() {
@@ -30,19 +30,14 @@ class RecurringTVC: UITableViewCell {
 }
 
 extension RecurringTVC{
-    func setUpCell(data : Investment?,index : Int,lastIndex : Int){
-        if data?.logo != nil{
-            self.strategyImgVw.yy_setImage(with: URL(string: data?.logo ?? ""), options: .progressiveBlur)
-        }else{
-            self.strategyImgVw.image = Assets.intermediate_strategy.image()
-        }
+    func setUpCell(data : RecurrentInvestmentStrategy?,index : Int,lastIndex : Int){
+		
+		self.strategyImgVw.image = Assets.intermediate_strategy.image()
         
-        let strategyName = data?.userInvestmentStrategyID == nil ? data?.assetID ?? "" : data?.userInvestmentStrategyID?.strategyName ?? ""
-        CommonUI.setUpLbl(lbl: self.strategyLbl, text: strategyName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.timeLbl, text: data?.frequency?.rawValue ?? "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.paymentLbl, text: "Upcoming payment: 29 July", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
-        let euroAmount = data?.userInvestmentStrategyID != nil ? data?.amount ?? 0 : data?.assetAmount ?? 0
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(CommonFunctions.formattedCurrency(from: (euroAmount)))€", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.strategyLbl, text: data?.strategyName , textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.frequenceLbl, text: CommonFunctions.frequenceDecoder(frequence: data?.frequency ?? ""), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.dateLbl, text:"\(CommonFunctions.localisation(key: "NEXT_PAYMENT")):  \(CommonFunctions.getDateFormat(date: data?.nextExecution ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMMM"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String(data?.amount ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         if index == 0{
             recurringVw.layer.cornerRadius = 16

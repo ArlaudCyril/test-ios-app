@@ -23,7 +23,7 @@ class PortfolioDetailVC: SwipeGesture {
     var portfolioDetailVM = PortfolioDetailVM()
     var chartData : chartData?
     var chartDurationTime = chartType.oneHour.rawValue
-    var resoucesData : [newsData] = []
+    var resourcesData : [newsData] = []
 	//Socket
     var webSocket : URLSessionWebSocketTask?
 	var isOpened = false
@@ -127,7 +127,7 @@ class PortfolioDetailVC: SwipeGesture {
 //Mark: - table view delegates and dataSource
 extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+		return headerData.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
@@ -166,7 +166,7 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
             return cell
         }else if indexPath.section == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ResourcesTVC")as! ResourcesTVC
-            cell.resourcesData = resoucesData
+            cell.resourcesData = resourcesData
             cell.setUpCell()
             return cell
         }else{
@@ -356,7 +356,10 @@ extension PortfolioDetailVC{
 		CommonFunctions.showLoader(self.view)
 		portfolioDetailVM.getAssetsNewsApi(id: self.assetId, completion: {[self]response in
 			CommonFunctions.hideLoader(self.view)
-			self.resoucesData = response?.data ?? []
+			self.resourcesData = response?.data ?? []
+			if(self.resourcesData.isEmpty){
+				self.headerData.removeLast()
+			}
 			self.tblView.reloadData()
 		})
 	}

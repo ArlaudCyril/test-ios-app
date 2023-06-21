@@ -1,5 +1,5 @@
 //
-//  circleMarker.swift
+//  customMarker.swift
 //  Lyber
 //
 //  Created by sonam's Mac on 22/06/22.
@@ -26,7 +26,6 @@ class customMarker : MarkerView{
     @IBOutlet var markerDotVw: UIView!
     @IBOutlet var outerMarkerView: UIView!
     @IBOutlet var centerWhiteVw: UIView!
-    @IBOutlet var centerDotVw: UIView!
     @IBOutlet var outerMarkerViewWidthConst: NSLayoutConstraint!
     
     @IBOutlet var bottomBubble: UIStackView!

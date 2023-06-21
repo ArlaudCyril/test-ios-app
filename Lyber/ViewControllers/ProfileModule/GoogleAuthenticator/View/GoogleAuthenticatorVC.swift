@@ -49,9 +49,16 @@ class GoogleAuthenticatorVC : SwipeGesture {
     }
     
     @objc func verifyBtnAct(){
-        let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-        vc.typeVerification = "otpValidation"
-        self.present(vc, animated: true, completion: nil)
+		ConfirmInvestmentVM().userGetOtpApi(action: "type", completion: {[weak self]response in
+			if response != nil{
+				let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				vc.typeVerification = "google"
+				vc.controller = self
+				vc.action = "otpValidation"
+				self?.present(vc, animated: true, completion: nil)
+			}
+		})
+        
     }
     
     @objc func googleAuthenticatorBtnAct(){

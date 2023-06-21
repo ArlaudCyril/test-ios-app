@@ -18,11 +18,11 @@ open class LineChartView: BarLineChartViewBase, LineChartDataProvider
     internal override func initialize()
     {
         super.initialize()
-        
+
         renderer = LineChartRenderer(dataProvider: self, animator: chartAnimator, viewPortHandler: viewPortHandler)
     }
-    
+
     // MARK: - LineChartDataProvider
-    
+
     open var lineData: LineChartData? { return data as? LineChartData }
 }

@@ -143,9 +143,9 @@ class ConfirmInvestmentVC: ViewController {
             }
 			let feeEuros = totalEuroInvested/100
             self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDT"
-			self.euroAmountLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDT"
+			self.euroAmountLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested-feeEuros)) USDT"
 			self.euroLyberFeeLBl.text = "\(feeEuros) USDT"
-			self.totalEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested+feeEuros)) USDT"
+			self.totalEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDT"
 			
         }else if InvestmentType == .deposit{
             self.coinPriceVw.isHidden = true

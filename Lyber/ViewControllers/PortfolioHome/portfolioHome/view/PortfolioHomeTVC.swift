@@ -18,12 +18,7 @@ class PortfolioHomeTVC: UITableViewCell {
     var controller : PortfolioHomeVC?
     var markerController : customMarker?
     let customMarkerView = customMarker()
-//    var player: AVQueuePlayer!
-//    var playerLayer = AVPlayerLayer!
-//    var playerItem: AVPlayerItem!
-//    var playerLooper: AVPlayerLooper!
-    
-    var playerAV: AVPlayer!
+	var chartData = ["1M ",CommonFunctions.localisation(key: "1Y"), "ALL"]
 
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -32,13 +27,13 @@ class PortfolioHomeTVC: UITableViewCell {
     @IBOutlet var profilePicVw: UIView!
     @IBOutlet var profilePic: UIImageView!
     @IBOutlet var chartView: LineChartView!
-//    @IBOutlet var collView: UICollectionView!
+    @IBOutlet var collView: UICollectionView!
 }
 
 extension PortfolioHomeTVC{
     func setUpCell(){
 		getTotalPortfolio()
-		drawChartView()
+		drawChartView(limit: 30)
         
         CommonUI.setUpLbl(lbl: portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
@@ -52,6 +47,10 @@ extension PortfolioHomeTVC{
         self.profilePic.isUserInteractionEnabled = true
         self.chartView.delegate = self
         self.chartView.addSubview(customMarkerView)
+		
+		self.collView.layer.cornerRadius = 12
+		self.collView.delegate = self
+		self.collView.dataSource = self
 
     }
     
@@ -79,41 +78,61 @@ extension PortfolioHomeTVC{
     }
 }
 
-//MARK: - Other functions
-extension PortfolioHomeTVC{
-    func hideShowBubble(xPixel:CGFloat,yPixel : CGFloat,xValue : CGFloat,yValue: CGFloat){
-        if yPixel > self.chartView.layer.bounds.height/2{
-            customMarkerView.bottomBubble.isHidden = true
-            customMarkerView.topBubble.isHidden = false
-        }else{
-            customMarkerView.bottomBubble.isHidden = false
-            customMarkerView.topBubble.isHidden = true
-        }
-        
-        if self.controller?.groupLeaved == true{
-            self.customMarkerView.contentView.isHidden = false
-        }
-        
-        customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
-        customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
-        customMarkerView.dateTimeLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
-        customMarkerView.bottomDateLbl.text = "\(CommonFunctions.getCurrentDate(requiredFormat: "MMM dd, HH:mm"))"
-    }
+//MARK: - Coll VIEW DELEGATE AND DATA SOURCE METHODS
+extension PortfolioHomeTVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
 	
-	func getTotalPortfolio(){
-		totalPortfolio = 0
-		for balance in Storage.balances{
-			totalPortfolio += (Double(balance?.balanceData.euroBalance ?? "0") ?? 0)
-		}
-		totalEuroAvailable = totalPortfolio
-		
-		CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return chartData.count
 	}
 	
-	func drawChartView(){
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortfolioHomeCVC", for: indexPath as IndexPath) as! PortfolioHomeCVC
+		cell.configureWithData(data : chartData[indexPath.row])
+		if (indexPath.row == 0){
+			cell.isSelected = true
+			self.collView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
+		}
+		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: (((collView.layer.bounds.width/Double(chartData.count)) - 10)), height: collView.layer.bounds.height)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		var limit = 30
+		switch indexPath.row{
+			case 1:
+				limit = 365
+			case 2:
+				limit = 5000
+			default:
+				break
+		}
+		self.drawChartView(limit: limit)
+	}
+}
+
+//MARK: - Other functions
+extension PortfolioHomeTVC{
+	func getTotalPortfolio(){
+		totalPortfolio = 0
+		totalEuroAvailable = 0
+		for balance in Storage.balances{
+			totalPortfolio += (Double(balance?.balanceData.euroBalance ?? "0") ?? 0)
+			if(balance?.id == "usdt"){
+				totalEuroAvailable = (Double(balance?.balanceData.balance ?? "0") ?? 0)
+			}
+		}
+		
+		
+		CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalPortfolio))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+	}
+	
+	func drawChartView(limit: Int){
 		var graphValues: [ChartDataEntry] = []
 		
-		PortfolioHomeVM().walletGetBalanceHistoryApi(completion:{response in
+		PortfolioHomeVM().walletGetBalanceHistoryApi(limit: limit, completion:{response in
 			if response != nil{
 				if(response?.data.count ?? 0 > 0){
 					for i in 0...(response?.data.count ?? 1)-1{

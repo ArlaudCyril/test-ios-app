@@ -131,6 +131,9 @@ class ApiHandler: NSObject {
                                 print(dict[Constants.ApiKeys.error_description].stringValue)
 								onFailure(false,dict[Constants.ApiKeys.error_description].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
+							if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.code].stringValue != ""{
+								onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue)
+							}
                             
                         }else if (statusCode == 500 || statusCode == 503){
                             print("Server Error")

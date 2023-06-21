@@ -9,8 +9,6 @@ import UIKit
 
 class StrongAuthVC: SwipeGesture {
     //MARK: - Variables
-    var switchList : [UISwitch] = []
-    
     
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
@@ -20,17 +18,17 @@ class StrongAuthVC: SwipeGesture {
     @IBOutlet var byGoogleAuthenticatorView: UIView!
     @IBOutlet var byGoogleAuthenticatorLbl: UILabel!
     @IBOutlet var googleAuthenticatorBtn: UIButton!
-    @IBOutlet var googleAuthenticatorSwitch: UISwitch!
+    @IBOutlet var googleAuthenticatorBtnImg: UIImageView!
     
     @IBOutlet var byEmailView: UIView!
     @IBOutlet var byEmailLbl: UILabel!
     @IBOutlet var toMailLbl: UILabel!
-    @IBOutlet var mailSwitchBtn: UISwitch!
+    @IBOutlet var mailBtnImg: UIImageView!
     
     @IBOutlet var bySMSView: UIView!
     @IBOutlet var bySmsLbl: UILabel!
     @IBOutlet var toNumberLbl: UILabel!
-    @IBOutlet var smsSwitchBtn: UISwitch!
+    @IBOutlet var smsBtnImg: UIImageView!
 
     
     @IBOutlet var twoAuthView: UIView!
@@ -44,16 +42,9 @@ class StrongAuthVC: SwipeGesture {
     @IBOutlet var enableWhitelistingSwitch: UISwitch!
     
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        setUpUI()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpUI()
-        switchList = [googleAuthenticatorSwitch,mailSwitchBtn,smsSwitchBtn]
     }
 
 	//MARK: - SetUpUI
@@ -88,17 +79,24 @@ class StrongAuthVC: SwipeGesture {
         CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "ENABLE_DISABLE_WHITELISTING"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        self.smsSwitchBtn.addTarget(self, action: #selector(smsSwitchBtnAct), for: .touchUpInside)
-        self.mailSwitchBtn.addTarget(self, action: #selector(mailSwitchBtnAct), for: .touchUpInside)
-		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(googleAuthenticatorSwitchAct))
-        self.byGoogleAuthenticatorView.addGestureRecognizer(tapGesture)
+
+		let tapGestureSms = UITapGestureRecognizer(target: self, action: #selector(smsBtnImgAct))
+		self.bySMSView.addGestureRecognizer(tapGestureSms)
 		
-        self.loginSwitch.addTarget(self, action: #selector(loginSwitchAct), for: .touchUpInside)
+		let tapGestureEmail = UITapGestureRecognizer(target: self, action: #selector(mailBtnImgAct))
+		self.byEmailView.addGestureRecognizer(tapGestureEmail)
+		
+		let tapGestureGoogle = UITapGestureRecognizer(target: self, action: #selector(googleAuthenticatorBtnImgAct))
+        self.byGoogleAuthenticatorView.addGestureRecognizer(tapGestureGoogle)
+		
+        self.loginSwitch.isOn = true
+		self.loginSwitch.isUserInteractionEnabled = false
+		
         self.validateWithdrawSwitch.addTarget(self, action: #selector(validateWithdrawSwitchAct), for: .touchUpInside)
         self.enableWhitelistingSwitch.addTarget(self, action: #selector(enableWhitelistingSwitchAct), for: .touchUpInside)
         
         //If strong authentified
-        adjustViewSwitch()
+        adjustViewImgBtn()
         
     }
 }
@@ -106,47 +104,40 @@ class StrongAuthVC: SwipeGesture {
 //MARK: - objective functions
 extension StrongAuthVC{
     @objc func backBtnAct(){
-        let vc = ProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-        self.navigationController?.pushViewController(vc, animated: true)
+		self.navigationController?.popViewController(animated: true)
 
     }
     
-    @objc func smsSwitchBtnAct(sender : UISwitch){
-        if sender.isOn == true{
-            CommonFunctions.showLoader(self.view)
-            VerificationVM().TwoFAApi(type2FA: "phone", completion: {[weak self]response in
-                CommonFunctions.hideLoader(self?.view ?? UIView())
-				if response != nil{
-                    userData.shared.has2FA = true
-                    userData.shared.type2FA = "phone"
-                    userData.shared.dataSave()
-                    self?.smsSwitchBtn.isOn = true
-                    self?.adjustViewSwitch()
-                }
-            })
-            
-        }else {
-            desactivateTwoFA()
-            smsSwitchBtn.isOn = false
+    @objc func smsBtnImgAct(){
+		if smsBtnImg.isHidden == true{
+			if(userData.shared.type2FA == "google")
+			{
+				self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone")
+			}else{
+				ConfirmInvestmentVM().userGetOtpApi(action: "type", completion: {[weak self]response in
+					if response != nil{
+						self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone")
+					}
+				})
+				
+			}
         }
     }
     
-    @objc func mailSwitchBtnAct(sender : UISwitch){
-        if sender.isOn == true{
-            CommonFunctions.showLoader(self.view)
-            VerificationVM().TwoFAApi(type2FA: "email", completion: {[weak self]response in
-                CommonFunctions.hideLoader(self?.view ?? UIView())
-				if response != nil{
-                    userData.shared.has2FA = true
-                    userData.shared.type2FA = "email"
-                    userData.shared.dataSave()
-                    self?.adjustViewSwitch()
-                }
-            })
-            
-        }else {
-            desactivateTwoFA()
-        }
+    @objc func mailBtnImgAct(sender : UISwitch){
+		if mailBtnImg.isHidden == true{
+			if(userData.shared.type2FA == "google")
+			{
+				self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email")
+			}else{
+				ConfirmInvestmentVM().userGetOtpApi(action: "type", completion: {[weak self]response in
+					if response != nil{
+						self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email")
+					}
+				})
+				
+			}
+		}
     }
     
     @objc func googleAuthenticatorBtnAct(){
@@ -154,173 +145,140 @@ extension StrongAuthVC{
 		self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func googleAuthenticatorSwitchAct(){
+    @objc func googleAuthenticatorBtnImgAct(){
         //this button is just used for desactivating 2FA
-        if (userData.shared.type2FA == "otp" && userData.shared.has2FA == true){
-            desactivateTwoFA()
-            self.googleAuthenticatorSwitch.isOn = false
-        }
-        else{
-            googleAuthenticatorBtnAct()
-        }
-    }
-    
-    @objc func loginSwitchAct(sender : UISwitch){
-        if (userData.shared.has2FA == true){
-            if sender.isOn == true{
-				let params = ["login": true,
-                              "withdrawal": userData.shared.scope2FAWithdrawal,
-                              "whitelisting": userData.shared.scope2FAWhiteListing]
-                
-                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
-                    if response != nil{
-                        userData.shared.scope2FALogin = true
-                        userData.shared.dataSave()
-                    }
-                })
-            }else{
-				let params = ["login": false,
-                              "withdrawal": userData.shared.scope2FAWithdrawal,
-                              "whitelisting": userData.shared.scope2FAWhiteListing]
-                
-                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
-                    if response != nil{
-                        userData.shared.scope2FALogin = false
-                        userData.shared.dataSave()
-                    }
-                })
-            }
+        if (userData.shared.type2FA != "google"){
+			googleAuthenticatorBtnAct()
         }
     }
     
     @objc func validateWithdrawSwitchAct(sender : UISwitch){
-        if (userData.shared.has2FA == true){
-            if sender.isOn == true{
-				let params = ["login": userData.shared.scope2FALogin,
-                              "withdrawal": true,
-                              "whitelisting": userData.shared.scope2FAWhiteListing]
-                
-                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
-                    if response != nil{
-                        userData.shared.scope2FAWithdrawal = true
-                        userData.shared.dataSave()
-                    }
-                })
-            }else{
-				let params = ["login": userData.shared.scope2FALogin,
-                              "withdrawal": false,
-                              "whitelisting": userData.shared.scope2FAWhiteListing]
-                
-                StrongAuthVM().scope2FAApi(params: params, completion: {[]response in
-                    if response != nil{
-                        userData.shared.scope2FAWithdrawal = false
-                        userData.shared.dataSave()
-                    }
-                })
-            }
-        }
+		var scopes : [String] = []
+		ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
+			if response != nil{
+				sender.isOn = !sender.isOn
+				let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				vc.typeVerification = userData.shared.type2FA
+				vc.action = "verificationCallback"
+				vc.verificationCallBack = {[]code in
+					if(userData.shared.scope2FAWhiteListing){
+						scopes.append("whitelisting")
+					}
+					
+					if sender.isOn == true{
+						//we desactive
+						scopes.append(contentsOf: ["login"])
+						
+						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
+							if response != nil{
+								userData.shared.scope2FAWithdrawal = false
+								userData.shared.dataSave()
+								sender.isOn = false
+							}
+						})
+					}else{
+						//we active
+						scopes.append(contentsOf: ["login", "withdrawal"])
+						
+						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
+							if response != nil{
+								userData.shared.scope2FAWithdrawal = true
+								userData.shared.dataSave()
+								sender.isOn = true
+							}
+						})
+					}
+				}
+				self?.present(vc, animated: true)
+			}
+		})
+		
     }
     
     @objc func enableWhitelistingSwitchAct(sender : UISwitch){
-        if (userData.shared.has2FA == true){
-            if sender.isOn == true{
-				let params = ["login": userData.shared.scope2FALogin,
-                              "withdrawal": userData.shared.scope2FAWithdrawal,
-                              "whitelisting": true]
-                
-                StrongAuthVM().scope2FAApi(params: params, completion: {[weak self]response in
-                    if response != nil{
-                        userData.shared.scope2FAWhiteListing = true
-                        userData.shared.dataSave()
-                    }
-                })
-            }else{
-                var params = ["login": userData.shared.scope2FALogin,
-                              "withdrawal": userData.shared.scope2FAWithdrawal,
-                              "whitelisting": false]
-                
-                StrongAuthVM().scope2FAApi(params: params, completion: {[weak self]response in
-                    if response != nil{
-                        userData.shared.scope2FAWhiteListing = false
-                        userData.shared.dataSave()
-                    }
-                })
-            }
-        }
+		var scopes : [String] = []
+		ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
+			if response != nil{
+				sender.isOn = !sender.isOn
+				let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				vc.typeVerification = userData.shared.type2FA
+				vc.action = "verificationCallback"
+				vc.verificationCallBack = {[]code in
+					if(userData.shared.scope2FAWithdrawal){
+						scopes.append("withdrawal")
+					}
+					
+					if sender.isOn == true{
+						//we desactive
+						scopes.append(contentsOf: ["login"])
+						
+						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
+							if response != nil{
+								userData.shared.scope2FAWhiteListing = false
+								userData.shared.dataSave()
+								sender.isOn = false
+							}
+						})
+					}else{
+						//we active
+						scopes.append(contentsOf: ["login", "whitelisting"])
+						
+						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
+							if response != nil{
+								userData.shared.scope2FAWhiteListing = true
+								userData.shared.dataSave()
+								sender.isOn = true
+							}
+						})
+					}
+				}
+				self?.present(vc, animated: true)
+			}
+		})
+		
     }
 }
 
 //MARK: - others functions
 extension StrongAuthVC{
-    func desactivateTwoFA(){
-        VerificationVM().TwoFAApi(type2FA: "none", completion: {[weak self]response in
-			if response != nil{
-                self?.twoAuthView.isHidden = true
-                userData.shared.has2FA = false
-                userData.shared.type2FA = "none"
-                userData.shared.dataSave()
-                self?.adjustViewSwitch()
-            }
-        })
-    }
     
-    func adjustViewSwitch(){
-        if ((userData.shared.has2FA) == true){
-            self.twoAuthView.isHidden = false
-            googleAuthenticatorBtn.isHidden = true
-            googleAuthenticatorSwitch.isHidden = false
-            
-            self.loginSwitch.isOn = userData.shared.scope2FALogin
-            self.validateWithdrawSwitch.isOn = userData.shared.scope2FAWithdrawal
-            self.enableWhitelistingSwitch.isOn = userData.shared.scope2FAWhiteListing
-          
-            
-            if((userData.shared.type2FA) == "otp"){
-                googleAuthenticatorSwitch.isOn = true
-                
-                smsSwitchBtn.isEnabled = false
-                smsSwitchBtn.backgroundColor = UIColor(named: "purpleGrey_400")
-                smsSwitchBtn.layer.cornerRadius = 16.0
-                
-                mailSwitchBtn.isEnabled = false
-                mailSwitchBtn.backgroundColor = UIColor(named: "purpleGrey_400")
-                mailSwitchBtn.layer.cornerRadius = 16.0
-            }else if((userData.shared.type2FA) == "phone"){
-                smsSwitchBtn.isOn = true
-                
-                googleAuthenticatorSwitch.isEnabled = false
-                googleAuthenticatorSwitch.backgroundColor = UIColor(named: "purpleGrey_400")
-                googleAuthenticatorSwitch.layer.cornerRadius = 16.0
-                
-                mailSwitchBtn.isEnabled = false
-                mailSwitchBtn.backgroundColor = UIColor(named: "purpleGrey_400")
-                mailSwitchBtn.layer.cornerRadius = 16.0
-                
-            }else if((userData.shared.type2FA) == "email"){
-                mailSwitchBtn.isOn = true
-                
-                googleAuthenticatorSwitch.isEnabled = false
-                googleAuthenticatorSwitch.backgroundColor = UIColor(named: "purpleGrey_400")
-                googleAuthenticatorSwitch.layer.cornerRadius = 16.0
-                
-                smsSwitchBtn.isEnabled = false
-                smsSwitchBtn.backgroundColor = UIColor(named: "purpleGrey_400")
-                smsSwitchBtn.layer.cornerRadius = 16.0
-                
-            }
-        }else{
-            self.twoAuthView.isHidden = true
-            googleAuthenticatorSwitch.isHidden = true
-            googleAuthenticatorBtn.isHidden = false
-            resetAllSwitch()
-        }
+    func adjustViewImgBtn(){
+		googleAuthenticatorBtn.isHidden = false
+		googleAuthenticatorBtnImg.isHidden = true
+		
+		smsBtnImg.isHidden = true
+		mailBtnImg.isHidden = true
+		
+		self.validateWithdrawSwitch.isOn = userData.shared.scope2FAWithdrawal
+		self.enableWhitelistingSwitch.isOn = userData.shared.scope2FAWhiteListing
+	  
+		
+		if((userData.shared.type2FA) == "google"){
+			googleAuthenticatorBtn.isHidden = true
+			googleAuthenticatorBtnImg.isHidden = false
+			
+		}else if((userData.shared.type2FA) == "phone"){
+			smsBtnImg.isHidden = false
+			
+		}else if((userData.shared.type2FA) == "email"){
+			mailBtnImg.isHidden = false
+		}
     }
-    
-    func resetAllSwitch(){
-        for switchElement in switchList{
-            switchElement.isEnabled = true
-            switchElement.backgroundColor = UIColor.systemBackground
-            //switchElement.layer.cornerRadius = 16.0
-        }
-    }
+	
+	func changeTwoFa(oldWay: String, newWay: String){
+		let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+		vc.typeVerification = oldWay
+		vc.action = "verificationCallback"
+		vc.verificationCallBack = {[]code in
+			VerificationVM().TwoFAApi(type2FA: newWay, otp: code, completion: {[weak self]response in
+				if response != nil{
+					userData.shared.has2FA = true
+					userData.shared.type2FA = newWay
+					userData.shared.dataSave()
+					self?.adjustViewImgBtn()
+				}
+			})
+		}
+		self.present(vc, animated: true)
+	}
 }

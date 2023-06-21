@@ -19,15 +19,15 @@ class PortfolioHomeVM{
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func getRecurringInvestmentApi(completion: @escaping ( (RecurringInvestmentAPI?) -> Void )){
+   func getActiveStrategiesApi(completion: @escaping ( (RecurrentInvestmentStrategyAPI?) -> Void )){
         
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestments, withParameters: [:], ofType: RecurringInvestmentAPI.self, onSuccess: { response in
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: [:], ofType: RecurrentInvestmentStrategyAPI.self, onSuccess: { response in
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func getAllAvailableAssetsApi(order : String,completion: @escaping ( (TrendingCoinsAPI?) -> Void )){
@@ -61,8 +61,11 @@ class PortfolioHomeVM{
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 	
-	func walletGetBalanceHistoryApi(completion: @escaping ( (BalanceHistoryAPI?) -> Void )){
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceHistory, withParameters: [:], ofType: BalanceHistoryAPI.self, onSuccess: { response in
+	func walletGetBalanceHistoryApi(limit: Int, completion: @escaping ( (BalanceHistoryAPI?) -> Void )){
+		
+		let param : [String : Any] = [Constants.ApiKeys.limit : limit]
+		
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceHistory, withParameters: param, ofType: BalanceHistoryAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
             completion(nil)

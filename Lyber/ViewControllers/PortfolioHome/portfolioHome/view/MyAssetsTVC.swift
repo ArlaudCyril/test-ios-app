@@ -67,9 +67,7 @@ extension MyAssetsTVC{
 		}else if index == 0{
 			assetsView.layer.cornerRadius = 16
 			assetsView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-		}else {
-            assetsView.layer.cornerRadius = 16
-        }
+		}
         
         let singleAssetTap = UITapGestureRecognizer(target: self, action: #selector(singleAssetTapped))
         self.singleAssetVw.addGestureRecognizer(singleAssetTap)
@@ -91,7 +89,7 @@ extension MyAssetsTVC{
 		CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: CommonFunctions.localisation(key: "FIAT_WALLET"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
         self.euroImg.image = Assets.euro.image()
         CommonUI.setUpLbl(lbl: self.euroWalletLbl, text: "Euro", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroInWalletLbl, text: "\(CommonFunctions.formattedCurrency(from: totalAmount))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroInWalletLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalAmount))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         let flatWalletVwTap = UITapGestureRecognizer(target: self, action: #selector(flatWalletVwTapped))
         self.flatWalletVw.addGestureRecognizer(flatWalletVwTap)

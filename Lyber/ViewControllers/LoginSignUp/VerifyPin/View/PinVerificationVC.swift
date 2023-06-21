@@ -69,6 +69,7 @@ class PinVerificationVC: ViewController {
         
         let biometricTap = UITapGestureRecognizer(target: self, action: #selector(authenticationWithTouchID))
         self.useFaceIdVw.addGestureRecognizer(biometricTap)
+		authenticationWithTouchID()
     }
 }
 

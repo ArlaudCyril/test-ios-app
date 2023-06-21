@@ -51,6 +51,7 @@ extension ProfileTransactionTVC{
 			self.euroLbl.text = "-\(data?.fromAmount ?? "") \(data?.fromAsset?.uppercased() ?? "")"
 			self.noOfCoinLbl.text = "+\(data?.toAmount ?? "") \(data?.toAsset?.uppercased() ?? "")"
 		}else if data?.type == "deposit"{
+			self.coinImg.image = Assets.money_deposit.image()
 			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT")) \(data?.asset?.uppercased() ?? "")"
 			self.euroLbl.text = "+\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
 		}else if data?.type == "withdraw"{
@@ -66,7 +67,7 @@ extension ProfileTransactionTVC{
 		self.dateLbl.text = dateFormatter.string(from: date)
         
         
-        CommonUI.setUpButton(btn: viewAllBtn, text: CommonFunctions.localisation(key: "VIEW_ALL"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: viewAllBtn, text: CommonFunctions.localisation(key: "VIEW_ALL"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 16, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         viewAllBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "VIEW_ALL")), for: .normal)
         viewAllBtn.addTarget(self, action: #selector(viewAllBtnAction), for: .touchUpInside)
         
@@ -80,6 +81,7 @@ extension ProfileTransactionTVC{
             stackView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         }else{
             viewAllVw.isHidden = true
+			stackView.layer.cornerRadius = 0
         }
         
         if row == lastIndex{

@@ -8,30 +8,22 @@
 import Foundation
 
 class VerificationVM{
-    func TwoFAOtpApi(code:String?, type2FA: String?, completion: @escaping ( (SuccessAPI?) -> Void )){
+	func TwoFAApi(type2FA: String?,otp: String, googleOtp: String? = "", completion: @escaping ( (SuccessAPI?) -> Void )){
         
-        let params : [String : Any] = [Constants.ApiKeys.type2FA : type2FA ?? "",Constants.ApiKeys.googleOTP : code ?? ""]
+		var params : [String : Any] = [Constants.ApiKeys.type2FA : type2FA ?? "",
+									   Constants.ApiKeys.otp: otp]
         
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userService2FA, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+		if(!(googleOtp?.isEmpty ?? false)){
+			params[Constants.ApiKeys.googleOtp] = googleOtp
+		}
+		
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceUser, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
             completion(nil)
             CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
-    }
-    
-    func TwoFAApi(type2FA: String?, completion: @escaping ( (SuccessAPI?) -> Void )){
-        
-		let params : [String : Any] = [Constants.ApiKeys.type2FA : type2FA ?? ""]
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userService2FA, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
-            print(response)
-            completion(response)
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func verify2FAApi(code:String?, completion: @escaping ( (LogInAPI?) -> Void )){

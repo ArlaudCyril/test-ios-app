@@ -401,9 +401,13 @@ class CommonFunctions{
         view.rightAxis.labelPosition = .outsideChart
         view.rightAxis.drawGridLinesEnabled = false
         view.rightAxis.setLabelCount(3, force: true)
+		view.rightAxis.axisMinimum = data.yMin
+		view.rightAxis.axisMaximum = data.yMax
+		view.rightAxis.decimals = 2
 	
 		let numberFormatter = NumberFormatter()
 		numberFormatter.numberStyle = .decimal
+		numberFormatter.maximumFractionDigits = 2
 		view.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: numberFormatter)
 	}
     

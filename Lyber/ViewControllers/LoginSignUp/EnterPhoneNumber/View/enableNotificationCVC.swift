@@ -11,7 +11,6 @@ class enableNotificationCVC: UICollectionViewCell {
     //MARK: - Variables
     var enterPhoneVM = EnterPhoneVM()
     var delegate : ViewController?
-    var enableNotificationCallBack : (()->())?
     //MARK:- IB OUTLETS
     @IBOutlet var enableNotifiLbl: UILabel!
     @IBOutlet var enableNotifyDescLbl: UILabel!

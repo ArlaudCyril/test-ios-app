@@ -1,5 +1,5 @@
 //
-//  PortfolioHomeVC.swift
+//  PortfolioHomeVCPortfolioHomeVC.swift
 //  Lyber
 //
 //  Created by sonam's Mac on 15/06/22.
@@ -14,12 +14,9 @@ class PortfolioHomeVC: NotSwipeGesture {
     //MARK: - IB OUTLETS
     var headerData : [String] = []
     var assetsData : [Asset] = []
-    var recurringInvestmentData : [Investment] = []
+    var recurringInvestmentData : [RecurrentInvestmentStrategy] = []
     var allAvailableAssets : [PriceServiceResume] = []
     
-    var noRecurringInvestment = false
-    let group = DispatchGroup()
-    var groupLeaved  = false
     //MARK: - IB OUTLETS
     @IBOutlet var tblView: UITableView!
     @IBOutlet var investMoneyBtn: UIButton!
@@ -37,6 +34,7 @@ class PortfolioHomeVC: NotSwipeGesture {
         setUpUI()
 		self.callWalletGetBalance()
 		self.getAllAssetsDetail()
+		self.callActiveStrategies()
     }
 
 
@@ -76,7 +74,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
         }else if section == 2{
             return 1
         }else if section == 3{
-            return recurringInvestmentData.count
+			return recurringInvestmentData.count == 0 ? 1: recurringInvestmentData.count
         }else{
             return 1
         }
@@ -101,9 +99,15 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
             cell.setUpCell()
             return cell
         }else if indexPath.section == 3{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RecurringTVC")as! RecurringTVC
-            cell.setUpCell(data: recurringInvestmentData[indexPath.row],index : indexPath.row,lastIndex: (recurringInvestmentData.count - 1))
-            return cell
+			if(recurringInvestmentData.count != 0){
+				let cell = tableView.dequeueReusableCell(withIdentifier: "RecurringTVC")as! RecurringTVC
+				cell.setUpCell(data: recurringInvestmentData[indexPath.row],index : indexPath.row,lastIndex: (recurringInvestmentData.count - 1))
+				return cell
+			}else{
+				let cell = tableView.dequeueReusableCell(withIdentifier: "NoRecurringTVC")as! NoRecurringTVC
+				cell.setUpCell()
+				return cell
+			}
         }else if indexPath.section == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AllAssetsAvailableTVC")as! AllAssetsAvailableTVC
             cell.controller = self
@@ -128,12 +132,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
         if section == 0{
             return 0
         }else{
-            if section == 3{
-                return noRecurringInvestment ? 0 :80
-            }else{
-                return 80
-            }
-           
+			return 80
         }
     }
     
@@ -141,12 +140,10 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.section{
-        case 0:
-            break
-        case 3:
-            let vc = RecurringDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            vc.investmentId = recurringInvestmentData[indexPath.row].id ?? ""
-            self.navigationController?.pushViewController(vc, animated: true)
+//        case 3:
+//            let vc = RecurringDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+//            //vc.investmentId = recurringInvestmentData[indexPath.row].id ?? ""
+//            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
@@ -203,15 +200,13 @@ extension PortfolioHomeVC{
 
 //MARK: - Other functions
 extension PortfolioHomeVC{
-    func callRecurringInvestmentApi(){
-        CommonFunctions.showLoader(self.view)
-        PortfolioHomeVM().getRecurringInvestmentApi(completion: {[weak self]response in
+    func callActiveStrategies(){
+		CommonFunctions.showLoader(self.view)
+        PortfolioHomeVM().getActiveStrategiesApi(completion: {[weak self]response in
             if let response = response{
-                self?.recurringInvestmentData = response.investments ?? []
-                if self?.recurringInvestmentData.count == 0 {
-                    self?.noRecurringInvestment = true
-                }
-                self?.group.leave()
+				CommonFunctions.hideLoader(self?.view ?? UIView() )
+                self?.recurringInvestmentData = response.data ?? []
+				self?.tblView.reloadData()
             }
         })
     }

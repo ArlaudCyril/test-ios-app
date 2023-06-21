@@ -20,7 +20,6 @@ class TransactionVC: SwipeGesture {
     @IBOutlet var transactionLbl: UILabel!
     @IBOutlet var transactionSubLbl: UILabel!
     @IBOutlet var tblView: UITableView!
-    @IBOutlet var tblViewHeightConst: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +32,7 @@ class TransactionVC: SwipeGesture {
 	//MARK: - SetUpUI
     override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
+		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         CommonUI.setUpLbl(lbl: transactionLbl, text: CommonFunctions.localisation(key: "OPERATIONS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: transactionSubLbl, text: CommonFunctions.localisation(key: "LIST_ALL_OPERATIONS"), textColor: UIColor.grey877E95 , font: UIFont.MabryPro(Size.Large.sizeValue()))
         
@@ -116,22 +116,5 @@ extension TransactionVC{
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
         self.setUpUI()
-      self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-      self.tblView.reloadData()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-      super.viewWillDisappear(animated)
-      self.tblView.removeObserver(self, forKeyPath: "contentSize")
-    }
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-      if let obj = object as? UITableView {
-          if obj == self.tblView && keyPath == "contentSize" {
-            if let newSize = change?[NSKeyValueChangeKey.newKey] as? CGSize {
-              self.tblViewHeightConst.constant = newSize.height
-            }
-          }
-      }
     }
 }

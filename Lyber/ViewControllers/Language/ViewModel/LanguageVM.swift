@@ -12,12 +12,12 @@ class LanguageVM{
 		//"language": "french"
 		params = [Constants.ApiKeys.language : language.uppercased()]
 		
-		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceLanguage, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceUser, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
 			completion(nil)
 			CommonFunctions.toster(error)
-		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
 	}
 }
