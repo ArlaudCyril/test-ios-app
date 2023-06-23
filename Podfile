@@ -6,11 +6,13 @@ target 'Lyber' do
   use_frameworks!
 
   # Pods for Lyber
+	pod 'Algorithm'
   pod 'IQKeyboardManagerSwift'
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SwiftEntryKit'
   pod 'YYWebImage'
+	
 #  pod 'OTPFieldView'
   pod 'ADCountryPicker'
   pod 'CountryPickerView'
@@ -19,6 +21,7 @@ target 'Lyber' do
   pod 'Charts'
   pod 'DropDown'
   pod 'SDWebImage'
+	pod 'SDWebImageSVGKitPlugin'
   pod 'SVGKit'
   pod "ESPullToRefresh"
   pod "ExpandableLabel"

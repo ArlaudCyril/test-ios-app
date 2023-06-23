@@ -46,7 +46,7 @@ extension AddAssetsTVC{
 		CommonUI.setUpLbl(lbl: self.percentageLbl, text: "\(Double(data?.priceServiceResumeData.change ?? "") ?? 0)%", textColor: (Double(data?.priceServiceResumeData.change ?? "") ?? 0)<0 ? UIColor.RedDF5A43 : UIColor.GreenColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
         for coin in coinDetailData{
             if data?.id == coin.id{
-                self.coinImg.sd_setImage(with: URL(string: coin.image ?? ""))
+                self.coinImg.sd_setImage(with: URL(string: coin.imageUrl ?? ""))
                 self.coinFullNameLbl.text = coin.fullName ?? ""
             }
 		}

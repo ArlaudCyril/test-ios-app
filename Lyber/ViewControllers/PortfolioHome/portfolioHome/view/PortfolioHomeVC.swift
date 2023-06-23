@@ -1,5 +1,5 @@
 //
-//  PortfolioHomeVCPortfolioHomeVC.swift
+//  PortfolioHomeVC.swift
 //  Lyber
 //
 //  Created by sonam's Mac on 15/06/22.

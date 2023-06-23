@@ -17,7 +17,7 @@ class NoRecurringTVC: UITableViewCell {
 extension NoRecurringTVC{
 	func setUpCell(){
 		self.noRecurringVw.layer.cornerRadius = 16
-		CommonUI.setUpLbl(lbl: self.noRecurringLbl, text: CommonFunctions.localisation(key: "NO_ACTIVE_STRATEGIES"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.noRecurringLbl, text: CommonFunctions.localisation(key: "NO_ACTIVE_STRATEGIE"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 	}
 }
 

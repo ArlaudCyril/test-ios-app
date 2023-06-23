@@ -15,6 +15,8 @@ class ProfileTransactionTVC: UITableViewCell {
     @IBOutlet var coinImg: UIImageView!
     @IBOutlet var transactionTypeLbl: UILabel!
     @IBOutlet var dateLbl: UILabel!
+	
+	@IBOutlet var amountVw: UIView!
     @IBOutlet var euroLbl: UILabel!
     @IBOutlet var noOfCoinLbl: UILabel!
     
@@ -23,6 +25,8 @@ class ProfileTransactionTVC: UITableViewCell {
     
     @IBOutlet var noTransactionVw: UIView!
     @IBOutlet var noTransactionLbl: UILabel!
+	
+	@IBOutlet var failureIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,22 +54,30 @@ extension ProfileTransactionTVC{
 			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "EXCH")) \(data?.fromAsset?.uppercased() ?? "") -> \(data?.toAsset?.uppercased() ?? "")"
 			self.euroLbl.text = "-\(data?.fromAmount ?? "") \(data?.fromAsset?.uppercased() ?? "")"
 			self.noOfCoinLbl.text = "+\(data?.toAmount ?? "") \(data?.toAsset?.uppercased() ?? "")"
+			
 		}else if data?.type == "deposit"{
 			self.coinImg.image = Assets.money_deposit.image()
 			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT")) \(data?.asset?.uppercased() ?? "")"
 			self.euroLbl.text = "+\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
+			
 		}else if data?.type == "withdraw"{
 			self.coinImg.image = Assets.withdraw.image()
 			self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL")
 			self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
+			
+		}else if data?.type == "strategy"{
+			if(data?.status == "FAILURE")
+			{
+				self.failureIcon.isHidden = false
+				self.amountVw.isHidden = true
+			}else{
+				self.euroLbl.text = "\(data?.totalStableAmountSpent ?? "0") USDT"
+			}
+			self.coinImg.image = Assets.intermediate_strategy_outline.image()
+			self.transactionTypeLbl.text = data?.strategyName
+			self.dateLbl.text = "\(CommonFunctions.localisation(key: "NEXT_PAYMENT")):  \(CommonFunctions.getDateFormat(date: data?.nextExecution ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMMM"))"
 		}
-		let formatter = DateFormatter()
-		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "dd/MM/yyyy"
-		let date = formatter.date(from: data?.date ?? "") ?? Date()
-		self.dateLbl.text = dateFormatter.string(from: date)
-        
+		
         
         CommonUI.setUpButton(btn: viewAllBtn, text: CommonFunctions.localisation(key: "VIEW_ALL"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 16, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         viewAllBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "VIEW_ALL")), for: .normal)

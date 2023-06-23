@@ -2719,7 +2719,7 @@
 			);
 			mainGroup = 0AC4C297283F4AD80086C6B8;
 			packageReferences = (
-				0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */,
 				0A92916C290013DB00E23409 /* XCRemoteSwiftPackageReference "big-num" */,
 			);
 			productRefGroup = 0AC4C2A1283F4AD80086C6B8 /* Products */;
@@ -3329,7 +3329,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+		0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-crypto.git";
 			requirement = {
@@ -3355,12 +3355,12 @@
 		};
 		0A929168290013B700E23409 /* Crypto */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
 			productName = Crypto;
 		};
 		0A92916A290013B700E23409 /* _CryptoExtras */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
 			productName = _CryptoExtras;
 		};
 /* End XCSwiftPackageProductDependency section */

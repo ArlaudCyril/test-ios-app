@@ -38,7 +38,7 @@ extension ExchangeFromTVC{
     func setUpCell(data : Balance?,index : Int,screenType : ExchangeEnum,lastIndex : Int){
 		let currency = CommonFunctions.getCurrency(id: data?.id ?? "")
 		
-        self.coinImgView.sd_setImage(with: URL(string: currency.image ?? ""), completed: nil)
+        self.coinImgView.sd_setImage(with: URL(string: currency.imageUrl ?? ""), completed: nil)
 		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String(Double(data?.balanceData.euroBalance ?? "0") ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(data?.balanceData.balance ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))

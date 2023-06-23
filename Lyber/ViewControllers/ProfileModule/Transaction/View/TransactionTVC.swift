@@ -16,9 +16,13 @@ class TransactionTVC: UITableViewCell {
     @IBOutlet var dateVw: UIView!
     @IBOutlet var dateLbl: UILabel!
     @IBOutlet var euroVw: UIView!
+	
+	@IBOutlet var amountVw: UIView!
     @IBOutlet var euroLbl: UILabel!
     @IBOutlet var noOfCoinVw: UIView!
     @IBOutlet var noOfCoinLbl: UILabel!
+	
+	@IBOutlet var failureIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,7 +45,9 @@ extension TransactionTVC{
         CommonUI.setUpLbl(lbl: noOfCoinLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         coinImgVw.layer.cornerRadius = self.coinImgVw.layer.bounds.height/2
         
-        
+		self.failureIcon.isHidden = true
+		self.amountVw.isHidden = false
+		
         if data?.type == "order"{
             self.coinImg.image = Assets.exchange.image()
 			//self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "EXCH")) \(data?.fromAsset?.uppercased() ?? "") -> \(data?.toAsset?.uppercased() ?? "")"
@@ -57,7 +63,18 @@ extension TransactionTVC{
             self.coinImg.image = Assets.withdraw.image()
             self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL")
 			self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
-        }
+		}else if data?.type == "strategy"{
+			if(data?.status == "FAILURE")
+			{
+				self.failureIcon.isHidden = false
+				self.amountVw.isHidden = true
+			}else{
+				self.euroLbl.text = "\(data?.totalStableAmountSpent ?? "0") USDT"
+			}
+			self.coinImg.image = Assets.intermediate_strategy_outline.image()
+			self.transactionTypeLbl.text = data?.strategyName
+			self.dateLbl.text = "\(CommonFunctions.localisation(key: "NEXT_PAYMENT")):  \(CommonFunctions.getDateFormat(date: data?.nextExecution ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMMM"))"
+		}
     }
     
 }

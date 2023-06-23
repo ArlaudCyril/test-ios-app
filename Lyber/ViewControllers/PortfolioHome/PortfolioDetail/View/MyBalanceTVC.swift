@@ -48,7 +48,7 @@ extension MyBalanceTVC{
         for coin in coinDetailData{
             if coin.id == assetId {
                 self.coinTypeLbl.text = "\(coin.fullName ?? "")"
-                self.coinImgView.sd_setImage(with: URL(string: coin.image ?? ""), completed: nil)
+                self.coinImgView.sd_setImage(with: URL(string: coin.imageUrl ?? ""), completed: nil)
             }
         }
     }

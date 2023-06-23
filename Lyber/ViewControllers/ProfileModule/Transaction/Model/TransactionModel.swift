@@ -22,10 +22,14 @@ struct Transaction: Codable {
 	let fromAmount: String?
 	let toAsset: String?
 	let toAmount: String?
-	//order and deposit
+	//order and deposit and strategy
 	let status: String?
 	//deposit
 	let asset: String?
+	//strategy
+	let nextExecution: String?
+	let totalStableAmountSpent: String?
+	let strategyName: String?
 }
 
 /* it remains the type strategy

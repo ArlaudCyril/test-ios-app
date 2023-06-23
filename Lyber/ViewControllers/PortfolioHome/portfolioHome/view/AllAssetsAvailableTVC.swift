@@ -17,10 +17,6 @@ class AllAssetsAvailableTVC: UITableViewCell {
     @IBOutlet var collViewHeightConst: NSLayoutConstraint!
     @IBOutlet var viewAllBtn: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -49,10 +45,11 @@ extension AllAssetsAvailableTVC{
         coinCollView.collectionViewLayout = layout
         
         let height = coinCollView.collectionViewLayout.collectionViewContentSize.height
-//        let height = CGFloat((120*(self.allAssetsAvailable.count/3)) + 8)
+       
         collViewHeightConst.constant = height
+		coinCollView.reloadData()
     }
-}
+}// let height = CGFloat((120*(self.allAssetsAvailable.count/3)) + 8)
 
 //MARK: - COLL VIEW DELEGATE AND DATA SOURCE METHODS
 extension AllAssetsAvailableTVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{

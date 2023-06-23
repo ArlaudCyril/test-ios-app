@@ -10,6 +10,9 @@ import CoreData
 import IQKeyboardManagerSwift
 import Branch
 import UserNotifications
+import SDWebImage
+import SDWebImageSVGKitPlugin
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -17,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
         UNUserNotificationCenter.current().delegate = self
+		SDImageCodersManager.shared.addCoder(SDImageSVGKCoder.shared)
         
         return true
     }
@@ -46,10 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 		let lyberId = acme2.object(forKey: "lyberId") as? Int {
 			if(lyberId == 2002)
 			{//transaction success
-				PortfolioDetailVC.transactionFinished = true
+				PortfolioDetailVC.transactionFinished(success: true)
 			}
 			else if(lyberId == 2003){//transaction failure
-				PortfolioDetailVC.transactionFinished = false
+				PortfolioDetailVC.transactionFinished(success: false)
 			}
 			else if(lyberId == 2005){//amount
 				PortfolioHomeVM().callWalletGetBalanceApi(completion: {[]response in

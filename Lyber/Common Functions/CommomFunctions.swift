@@ -264,7 +264,7 @@ class CommonFunctions{
 		}
 		for currency in Storage.currencies {
 			if(currency?.id == idImage){
-				return currency?.image ?? ""
+				return currency?.imageUrl ?? ""
 			}
 		}
 		return ""
@@ -297,26 +297,7 @@ class CommonFunctions{
     
 	static func setBalances(balances: [Balance])
 	{
-		var balancesSorted : [Balance] = []
-		var balanceArray = balances
-		
-		//first btc
-		let btcIndex = balanceArray.firstIndex(where: {$0.id == "btc"})
-		if(btcIndex != nil){
-			balancesSorted.append(balanceArray[btcIndex ?? 0])
-			balanceArray.remove(at: btcIndex ?? 0)
-		}
-		//second eth
-		let ethIndex = balances.firstIndex(where: {$0.id == "eth"})
-		if(ethIndex != nil){
-			balancesSorted.append(balanceArray[ethIndex ?? 0])
-			balanceArray.remove(at: ethIndex ?? 0)
-		}
-		//sorted alphabetical
-		balanceArray = balanceArray.sorted(by: {$0.id < $1.id})
-		balancesSorted.append(contentsOf: balanceArray)
-		
-		Storage.balances = balancesSorted
+		Storage.balances = balances.sorted(by: {Double($0.balanceData.euroBalance) ?? 0 > Double($1.balanceData.euroBalance) ?? 0})
 	}
     
     //MARK: - Line Chart

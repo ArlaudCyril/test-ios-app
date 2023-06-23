@@ -32,18 +32,6 @@ class PortfolioDetailVC: SwipeGesture {
 	//navigation controller
 	var previousController = UIViewController()
 	static var view : UIView?
-	static var transactionFinished:Bool = false{
-		didSet {
-			if transactionFinished == true  {
-				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: true)
-				self.callWalletGetBalance()
-				
-			}else{
-				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: false)
-			}
-		}
-		
-	}
 	static var staticTblView : UITableView?
 	var timer = Timer()
 	
@@ -222,7 +210,7 @@ extension PortfolioDetailVC{
 			if(response != nil){
 				if(response?.data.orderStatus == "VALIDATED"){
 					//success
-					PortfolioDetailVC.transactionFinished = true
+					PortfolioDetailVC.transactionFinished(success: true)
 					self.timer.invalidate()
 					self.orderId = ""
 				}else if(response?.data.orderStatus == "PENDING" || response?.data.orderStatus == "PROCESSED"){
@@ -230,7 +218,7 @@ extension PortfolioDetailVC{
 				}else{
 					//error
 					CommonFunctions.toster(CommonFunctions.localisation(key: "ERROR_TRANSACTION"))
-					PortfolioDetailVC.transactionFinished = false
+					PortfolioDetailVC.transactionFinished(success: false)
 					self.timer.invalidate()
 					self.orderId = ""
 				}
@@ -375,5 +363,15 @@ extension PortfolioDetailVC{
 				PortfolioDetailVC.staticTblView?.reloadData()
 			}
 		})
+	}
+	
+	static func transactionFinished(success: Bool){
+		if success == true  {
+			CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: true)
+			self.callWalletGetBalance()
+			
+		}else{
+			CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: false)
+		}
 	}
 }

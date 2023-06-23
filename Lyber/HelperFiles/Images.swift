@@ -26,6 +26,7 @@ enum Assets : String{
     case invest_money_white
     case invest_money
     case intermediate_strategy
+    case intermediate_strategy_outline
     case drop_down
     case drop_down_white
     case drop_down_grey

@@ -307,13 +307,13 @@ extension AddCryptoAddressVC{
 			{
 				if(asset?.id == networkValue){
 					self.networkValueArr?.append("\(asset?.fullName ?? "") (\(asset?.id?.uppercased() ?? ""))")
-					self.networkImgArr?.append(asset?.image ?? "")
+					self.networkImgArr?.append(asset?.imageUrl ?? "")
 				}
 				
 			}
 			else{
 				self.networkValueArr?.append("\(asset?.fullName ?? "") (\(asset?.id?.uppercased() ?? ""))")
-				self.networkImgArr?.append(asset?.image ?? "")
+				self.networkImgArr?.append(asset?.imageUrl ?? "")
 			}
 		}
 		self.networkDropdown.dataSource = self.networkValueArr ?? []

@@ -14,6 +14,7 @@ class PinVerificationVC: ViewController {
     var tryNumber : Int! = 0
     
     //MARK:- IB OUTLETS
+	@IBOutlet var logOutBtn: UIButton!
     @IBOutlet var enterYourPinLbl: UILabel!
     @IBOutlet var pinTF1: otpTextField!
     @IBOutlet var pinTF2: otpTextField!
@@ -42,6 +43,9 @@ class PinVerificationVC: ViewController {
 	//MARK: - SetUpUI
 
     override func setUpUI(){
+		CommonUI.setUpButton(btn: self.logOutBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
+		self.logOutBtn.addTarget(self, action: #selector(LogOutAct), for: .touchUpInside)
+		
         CommonUI.setUpLbl(lbl: self.enterYourPinLbl, text: CommonFunctions.localisation(key: "ENTER_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.XXlarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.orLbl, text: CommonFunctions.localisation(key: "OR"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Large.sizeValue()))
         self.useFaceIdVw.layer.cornerRadius = 8
@@ -194,7 +198,14 @@ extension PinVerificationVC{
             
         }
     }
+	
+	@objc func LogOutAct(){
+		CommonFunctions.logout()
+	}
     
+	
+	//MARK: Other functions
+	
     func evaluatePolicyFailErrorMessageForLA(errorCode: Int) -> String {
         var message = ""
         if #available(iOS 11.0, macOS 10.13, *) {

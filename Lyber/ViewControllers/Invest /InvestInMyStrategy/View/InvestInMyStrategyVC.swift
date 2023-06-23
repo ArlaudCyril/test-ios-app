@@ -120,7 +120,7 @@ class InvestInMyStrategyVC: ViewController {
 		}
 		
 		if strategyType == .Exchange{
-			self.exchangeData = exchangeFromModel(exchangeFromCoinId: self.fromAssetId ?? "", exchangeFromCoinImg: self.fromCurrency?.image ?? "", exchangeFromCoinPrice: Double(self.fromAssetPrice ?? "") ?? 0, exchangeFromCoinBalance: fromBalance ?? Balance(), exchangeToCoinId: self.toAssetId ?? "", exchangeToCoinPrice: Double(self.toAssetPrice ?? "") ?? 0, exchangeToCoinImg: self.toCurrency?.image ?? "")
+			self.exchangeData = exchangeFromModel(exchangeFromCoinId: self.fromAssetId ?? "", exchangeFromCoinImg: self.fromCurrency?.imageUrl ?? "", exchangeFromCoinPrice: Double(self.fromAssetPrice ?? "") ?? 0, exchangeFromCoinBalance: fromBalance ?? Balance(), exchangeToCoinId: self.toAssetId ?? "", exchangeToCoinPrice: Double(self.toAssetPrice ?? "") ?? 0, exchangeToCoinImg: self.toCurrency?.imageUrl ?? "")
 			
 			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
 			
@@ -204,7 +204,7 @@ class InvestInMyStrategyVC: ViewController {
         
         CommonUI.setUpLbl(lbl: fromLbl, text: CommonFunctions.localisation(key: "FROM"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 		CommonUI.setUpLbl(lbl: fromCoinnameLbl, text: exchangeData?.exchangeFromCoinId.uppercased(), textColor: UIColor.ThirdTextColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		self.fromCoinImg.sd_setImage(with: URL(string: fromCurrency?.image ?? ""))
+		self.fromCoinImg.sd_setImage(with: URL(string: fromCurrency?.imageUrl ?? ""))
         
         
         CommonUI.setUpLbl(lbl: ToLbl, text: CommonFunctions.localisation(key: "TO"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
@@ -515,20 +515,20 @@ extension InvestInMyStrategyVC {
 			
 			if exchangeCoin1ToCoin2 == false{
 				exchangeData?.exchangeFromCoinId = fromAssetId ?? ""
-				exchangeData?.exchangeFromCoinImg = fromCurrency?.image ?? ""
+				exchangeData?.exchangeFromCoinImg = fromCurrency?.imageUrl ?? ""
 				exchangeData?.exchangeFromCoinBalance = fromBalance ?? Balance()
 				exchangeData?.exchangeFromCoinPrice = Double(self.fromAssetPrice ?? "0") ?? 0
 				exchangeData?.exchangeToCoinId = toAssetId ?? ""
-				exchangeData?.exchangeToCoinImg = toCurrency?.image ?? ""
+				exchangeData?.exchangeToCoinImg = toCurrency?.imageUrl ?? ""
 				exchangeData?.exchangeToCoinPrice = Double(toAssetPrice ?? "0") ?? 0
 				
 			}else{
 				exchangeData?.exchangeFromCoinId = toAssetId ?? ""
-				exchangeData?.exchangeFromCoinImg = toCurrency?.image ?? ""
+				exchangeData?.exchangeFromCoinImg = toCurrency?.imageUrl ?? ""
 				exchangeData?.exchangeFromCoinBalance = toBalance ?? Balance()
 				exchangeData?.exchangeFromCoinPrice = Double(toAssetPrice ?? "0") ?? 0
 				exchangeData?.exchangeToCoinId = fromAssetId ?? ""
-				exchangeData?.exchangeToCoinImg = fromCurrency?.image ?? ""
+				exchangeData?.exchangeToCoinImg = fromCurrency?.imageUrl ?? ""
 				exchangeData?.exchangeToCoinPrice = Double(self.fromAssetPrice ?? "0") ?? 0
 			}
 			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
@@ -653,14 +653,15 @@ extension InvestInMyStrategyVC {
 extension InvestInMyStrategyVC {
     
     func noOfCoins(value: String){
+		let cleanedValue = value.replacingOccurrences(of: ",", with: "")
         if strategyType == .Exchange{
 			let coinFromPrice = exchangeData?.exchangeFromCoinPrice ?? 0
 			let coinToPrice = exchangeData?.exchangeToCoinPrice ?? 0
 		
 			
-			amountTF.text = "\(value) \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
+			amountTF.text = "\(cleanedValue) \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
 			
-			totalEuroInvested = Double(value) ?? 0.0
+			totalEuroInvested = Double(cleanedValue) ?? 0.0
 			
 			totalNoOfCoinsInvest = Double(fromBalance?.balanceData.balance ?? "0") ?? 0
 			
@@ -670,33 +671,33 @@ extension InvestInMyStrategyVC {
 			
 			
             if exchangeCoinToEuro == false{
-				totalEuroInvested = Double(value) ?? 0.0
-				totalNoOfCoinsInvest = Double(CommonFunctions.formattedAsset(from: ((Double(value) ?? 0.0)*(1/self.coinWithdrawPrice)), price: self.coinWithdrawPrice)) ?? 0.0
+				totalEuroInvested = Double(cleanedValue) ?? 0.0
+				totalNoOfCoinsInvest = Double(CommonFunctions.formattedAsset(from: ((Double(cleanedValue) ?? 0.0)*(1/self.coinWithdrawPrice)), price: self.coinWithdrawPrice)) ?? 0.0
 				
-				amountTF.text = "\(value)€"
+				amountTF.text = "\(cleanedValue)€"
 				self.noOfCoinLbl.text = "~\(totalNoOfCoinsInvest) \(self.fromAssetId?.uppercased() ?? "")"
 				
             }else{
-				totalNoOfCoinsInvest = Double(value) ?? 0.0
-				totalEuroInvested = (Double(value) ?? 0.0)*self.coinWithdrawPrice
+				totalNoOfCoinsInvest = Double(cleanedValue) ?? 0.0
+				totalEuroInvested = (Double(cleanedValue) ?? 0.0)*self.coinWithdrawPrice
 				
-				amountTF.text = "\(value) \(fromAssetId?.uppercased() ?? "")"
+				amountTF.text = "\(cleanedValue) \(fromAssetId?.uppercased() ?? "")"
                 self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€"
             }
         }else{
             if exchangeCoin1ToCoin2 == false{
-                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value))) USDT"
+                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDT"
 				let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
-                    totalEuroInvested = Double(value) ?? 0.0
-                    totalNoOfCoinsInvest = CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(1/coinPrice)))
+                    totalEuroInvested = Double(cleanedValue) ?? 0.0
+                    totalNoOfCoinsInvest = CommonFunctions.getTwoDecimalValue(number: ((Double(cleanedValue) ?? 0.0)*(1/coinPrice)))
                     
 				self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValue(number: totalNoOfCoinsInvest)) \(self.fromAssetId?.uppercased() ?? "")"
             }else{
-                amountTF.text = "\(CommonFunctions.numberFormat(from: Double(value))) \(self.assetsData?.symbol?.uppercased() ?? (self.exchangeData?.exchangeFromCoinId ?? ""))"
+                amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) \(self.assetsData?.symbol?.uppercased() ?? (self.exchangeData?.exchangeFromCoinId ?? ""))"
                 let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
-                totalEuroInvested = CommonFunctions.getTwoDecimalValue(number: ((Double(value) ?? 0.0)*(coinPrice)))
+                totalEuroInvested = CommonFunctions.getTwoDecimalValue(number: ((Double(cleanedValue) ?? 0.0)*(coinPrice)))
                 
-                totalNoOfCoinsInvest = Double(value) ?? 0.0
+                totalNoOfCoinsInvest = Double(cleanedValue) ?? 0.0
                 self.noOfCoinLbl.text = "~\(totalEuroInvested)€"
             }
         }
@@ -796,7 +797,8 @@ extension InvestInMyStrategyVC {
 	func handlePreviewInvestButton(value: String){
 		if(self.strategyType == .Exchange)
 		{
-			if(Double(value) ?? 0 >= self.minAmountExchange ?? 0){
+			let cleanedString = value.replacingOccurrences(of: ",", with: "")
+			if(Double(cleanedString) ?? 0 >= self.minAmountExchange ?? 0){
 				self.previewMyInvest.backgroundColor = UIColor.PurpleColor
 				self.previewMyInvest.isUserInteractionEnabled = true
 				self.exchangeAlertLbl.isHidden = true

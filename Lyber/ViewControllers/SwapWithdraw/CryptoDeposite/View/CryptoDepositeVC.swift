@@ -144,7 +144,7 @@ extension CryptoDepositeVC{
         self.availableAssets = Storage.currencies
 		for (_,value) in Storage.currencies.enumerated() {
 			self.assetValueArr?.append("\(value?.fullName ?? "") (\(value?.id?.uppercased() ?? ""))")
-			self.assetImgArr?.append(value?.image ?? "")
+			self.assetImgArr?.append(value?.imageUrl ?? "")
 		}
 		self.dropDownAsset.dataSource = self.assetValueArr ?? []
         

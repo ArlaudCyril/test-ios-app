@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -525,14 +525,14 @@
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="enableNotificationCVC" id="a42-Db-rqs" customClass="enableNotificationCVC" customModule="Lyber" customModuleProvider="target">
                                                 <rect key="frame" x="438" y="0.0" width="416" height="559"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2Re-zU-w0B">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="2Re-zU-w0B">
                                                     <rect key="frame" x="0.0" y="0.0" width="416" height="559"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPF-Nd-oWb">
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WPF-Nd-oWb">
                                                             <rect key="frame" x="0.0" y="0.0" width="416" height="559"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siM-70-0nk">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siM-70-0nk">
                                                                     <rect key="frame" x="24" y="32" width="368" height="43"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="43" id="5Vn-0k-LN0"/>
@@ -541,16 +541,16 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-pW-61n">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaQ-pW-61n">
                                                                     <rect key="frame" x="24" y="79" width="368" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3h-Nk-sGo">
+                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M3h-Nk-sGo">
                                                                     <rect key="frame" x="28" y="123.5" width="360" height="239.5"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enable_notifications" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-Id-aEv">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="enable_notifications" translatesAutoresizingMaskIntoConstraints="NO" id="SLd-Id-aEv">
                                                                             <rect key="frame" x="0.0" y="0.0" width="360" height="239.5"/>
                                                                         </imageView>
                                                                     </subviews>
@@ -562,7 +562,7 @@
                                                                         <constraint firstAttribute="trailing" secondItem="SLd-Id-aEv" secondAttribute="trailing" id="sH8-BR-Fsy"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxB-cO-kTo" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxB-cO-kTo" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
                                                                     <rect key="frame" x="24" y="387" width="368" height="56"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="56" id="EUK-Dv-L22"/>
@@ -570,7 +570,7 @@
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     <state key="normal" title="Button"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-SA-XJb">
+                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-SA-XJb">
                                                                     <rect key="frame" x="24" y="459" width="368" height="56"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="56" id="ETR-CP-R4P"/>
@@ -934,6 +934,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="392-Td-Yib">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2EW-zD-6sV">
+                                        <rect key="frame" x="356" y="12" width="46" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Ejx-Rk-fHP"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 1853" translatesAutoresizingMaskIntoConstraints="NO" id="1jk-Dc-dbK">
                                         <rect key="frame" x="97" y="24" width="220" height="40"/>
                                         <constraints>
@@ -1126,9 +1133,12 @@
                                 <constraints>
                                     <constraint firstItem="HP5-MP-B0i" firstAttribute="leading" secondItem="392-Td-Yib" secondAttribute="leading" constant="24" id="1yo-hF-3kw"/>
                                     <constraint firstItem="NAZ-pT-5ED" firstAttribute="leading" secondItem="392-Td-Yib" secondAttribute="leading" constant="16" id="2Kz-kx-OrA"/>
+                                    <constraint firstItem="2EW-zD-6sV" firstAttribute="top" secondItem="1jk-Dc-dbK" secondAttribute="top" constant="-12" id="4Di-5s-fcz"/>
                                     <constraint firstAttribute="trailing" secondItem="HP5-MP-B0i" secondAttribute="trailing" constant="24" id="4EF-Vr-CRh"/>
                                     <constraint firstItem="1jk-Dc-dbK" firstAttribute="centerX" secondItem="392-Td-Yib" secondAttribute="centerX" id="8C8-4S-AUw"/>
+                                    <constraint firstAttribute="trailing" secondItem="2EW-zD-6sV" secondAttribute="trailing" constant="12" id="8Ia-og-mVe"/>
                                     <constraint firstItem="iMM-Q0-Hy9" firstAttribute="top" secondItem="TxT-HW-pnl" secondAttribute="bottom" constant="24" id="FwT-EJ-FMJ"/>
+                                    <constraint firstItem="2EW-zD-6sV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="392-Td-Yib" secondAttribute="leading" constant="20" symbolic="YES" id="Gjo-8a-t51"/>
                                     <constraint firstItem="TxT-HW-pnl" firstAttribute="centerX" secondItem="392-Td-Yib" secondAttribute="centerX" id="Ia8-xA-iJ6"/>
                                     <constraint firstAttribute="bottom" secondItem="NAZ-pT-5ED" secondAttribute="bottom" constant="16" id="Kpi-jR-eW6"/>
                                     <constraint firstItem="1jk-Dc-dbK" firstAttribute="top" secondItem="392-Td-Yib" secondAttribute="top" constant="24" id="Pbi-d7-uFL"/>
@@ -1164,6 +1174,7 @@
                         <outlet property="key8" destination="A0p-yI-28f" id="5mG-mW-xv5"/>
                         <outlet property="key9" destination="zU7-w2-fCV" id="RfN-ii-qKO"/>
                         <outlet property="keyCancel" destination="yXk-cT-CBz" id="VBD-Ve-A33"/>
+                        <outlet property="logOutBtn" destination="2EW-zD-6sV" id="cRw-qw-YW0"/>
                         <outlet property="orLbl" destination="iMM-Q0-Hy9" id="6ss-V9-gRf"/>
                         <outlet property="pinTF1" destination="TZa-JR-K02" id="nNX-K8-xMz"/>
                         <outlet property="pinTF2" destination="3wt-Fk-H8h" id="0Ud-n5-hsn"/>
@@ -1842,9 +1853,6 @@
             <point key="canvasLocation" x="6091" y="64"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="cv2-dY-hHK"/>
-    </designables>
     <resources>
         <image name="Group 1853" width="220" height="63"/>
         <image name="back" width="6" height="11"/>

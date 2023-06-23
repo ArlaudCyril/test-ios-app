@@ -289,8 +289,11 @@ extension AllAssetsVC{
 			self.filterCoin = self.filterCoin.filter({!(CommonFunctions.getCurrency(id: $0.id).isStablecoin ?? false)})
 		}
 		if(self.fromAssetId != ""){
-			let indexAssetToRemove = filterCoin.firstIndex(where: {$0.id == self.fromAssetId}) ?? 0
-			filterCoin.remove(at: indexAssetToRemove)
+			let indexAssetToRemove = filterCoin.firstIndex(where: {$0.id == self.fromAssetId})
+			if(indexAssetToRemove != nil){
+				filterCoin.remove(at: indexAssetToRemove!)
+			}
+			
 		}
         
         self.tblView.reloadData()

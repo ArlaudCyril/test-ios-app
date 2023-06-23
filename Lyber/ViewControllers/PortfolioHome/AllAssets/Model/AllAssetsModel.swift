@@ -71,7 +71,7 @@ struct AssetBaseAPI: Codable {
 // MARK: - AssetBaseData
 struct AssetBaseData: Codable {
     let id, fullName: String?
-    let image: String?
+    let imageUrl: String?
 	let nativeNetwork : String?
     let isStablecoin: Bool?
     let isUIActive, isTradeActive, isDepositActive, isWithdrawalActive: Bool?
@@ -79,7 +79,7 @@ struct AssetBaseData: Codable {
 	init() {
 		self.id = ""
 		self.fullName = ""
-		self.image = ""
+		self.imageUrl = ""
 		self.isStablecoin = false
 		self.isUIActive = false
 		self.isTradeActive = false

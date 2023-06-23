@@ -50,7 +50,7 @@ extension MyAssetsTVC{
 		let currency = CommonFunctions.getCurrency(id: data?.id ?? "")
 		let priceCoin = (Double(data?.balanceData.euroBalance ?? "") ?? 0)/(Double(data?.balanceData.balance ?? "") ?? 1)
 		
-		self.coinImgView.sd_setImage(with: URL(string:currency.image ?? ""), completed: nil)
+		self.coinImgView.sd_setImage(with: URL(string:currency.imageUrl ?? ""), completed: nil)
 		
 		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(data?.balanceData.euroBalance ?? "0") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))

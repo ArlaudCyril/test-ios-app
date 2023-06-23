@@ -28,7 +28,7 @@ extension DepositAssetTVC{
 
 		for coin in coinDetailData{
 			if data?.id == coin.id{
-				self.coinImg.sd_setImage(with: URL(string: coin.image ?? ""))
+				self.coinImg.sd_setImage(with: URL(string: coin.imageUrl ?? ""))
 				self.coinFullNameLbl.text = coin.fullName ?? ""
 			}
 		}
