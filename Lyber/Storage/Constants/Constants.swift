@@ -48,6 +48,7 @@ struct Constants{
         static var PleaseEnterYourAddressName = CommonFunctions.localisation(key:"ALERT_ADDRESS_NAME")
         static var PleaseSelectYourNetwork = CommonFunctions.localisation(key:"ALERT_NETWORK")
         static var PleaseEnterOrScanAnAddress = CommonFunctions.localisation(key:"ALERT_SCAN_ADDRESS")
+        static var PleaseEnterValidAddress = CommonFunctions.localisation(key:"ALERT_VALID_ADDRESS")
         static var PleaseSelectYourExchange = CommonFunctions.localisation(key:"ALERT_EXCHANGE")
         static var PleaseEnableWhitelistingAddress = CommonFunctions.localisation(key:"ALERT_WHITELISTING")
 		
@@ -141,6 +142,7 @@ struct Constants{
         static let exchange = "exchange"
         static let logo = "logo"
         static let id = "id"
+        static let include_networks = "include_networks"
         static let address_id = "address_id"
         
         //Main
@@ -297,6 +299,10 @@ struct Constants{
 		static let walletServiceWithdrawalAddress = "wallet-service/withdrawal-address"
 		static let walletServiceWithdraw = "wallet-service/withdraw"
 		static let walletServiceHistory = "wallet-service/history"
+		
+		//Network
+		static let networkServiceNetworks = "network-service/networks"
+		static let networkServiceNetwork = "network-service/network"
 		
     }
 }

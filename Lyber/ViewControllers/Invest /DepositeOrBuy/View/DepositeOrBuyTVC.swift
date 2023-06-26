@@ -34,7 +34,7 @@ extension DepositeOrBuyTVC{
             self.imgIcon.image = data.icon
         }else{
 //            self.imgIcon.setSvgImage(from: URL(string: data.svgUrl ?? "") )
-            self.imgIcon.yy_setImage(with: URL(string: data.svgUrl ?? "") , options: .progressiveBlur)
+            self.imgIcon.sd_setImage(with: URL(string: data.svgUrl ?? ""))
         }
 //
         self.iconView.backgroundColor = data.iconBackgroundColor

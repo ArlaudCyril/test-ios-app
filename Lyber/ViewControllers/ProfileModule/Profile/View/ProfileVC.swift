@@ -76,7 +76,7 @@ class ProfileVC: ViewController {
 		self.nameLbl.text = "\(userData.shared.firstname) \(userData.shared.lastname)"
 		self.emailLbl.text = userData.shared.email
 		
-		//self.profilePic.yy_setImage(with: URL(string: userData.shared.profile_image), placeholder: UIImage(named: "profile"))
+		//self.profilePic.sd_setImage(with: URL(string: userData.shared.profile_image)))
 		
 		if userData.shared.profilePicType == "DEFAULT"{
 			self.profilePic.contentMode = .scaleAspectFit
@@ -223,7 +223,7 @@ extension ProfileVC{
 extension ProfileVC{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.profilePic.yy_setImage(with: URL(string: "\(ApiEnvironment.ImageUrl)\(userData.shared.profile_image)"), placeholder: UIImage(named: "profile"))
+        self.profilePic.sd_setImage(with: URL(string: "\(ApiEnvironment.ImageUrl)\(userData.shared.profile_image)"))
         setUpUI()
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         self.tblView.reloadData()

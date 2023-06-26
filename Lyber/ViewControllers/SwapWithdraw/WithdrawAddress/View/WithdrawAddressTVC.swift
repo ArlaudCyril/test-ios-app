@@ -23,11 +23,11 @@ class WithdrawAddressTVC: UITableViewCell {
 
 //Mark:- SetUpUI
 extension WithdrawAddressTVC{//TODO: Verify this
-	func configureWithData(withdrawChain: WithdrawalChain, data : String?){
-		CommonUI.setUpLbl(lbl: self.withdrawAddressNameLbl, text:" \(CommonFunctions.localisation(key: "WITHDRAW_ON")) \(CommonFunctions.networkDecoder(network: data ?? ""))", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+	func configureWithData(data : NetworkAsset?){
+		CommonUI.setUpLbl(lbl: self.withdrawAddressNameLbl, text:" \(CommonFunctions.localisation(key: "WITHDRAW_ON")) \(data?.fullName ?? "")", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.withdrawAddressDeactivatedLbl, text:" \(CommonFunctions.localisation(key: "DEACTIVATED"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 		
-		if(withdrawChain.lyberEnabled == false){
+		if(!(data?.isWithdrawalActive ?? false)){
 			self.isUserInteractionEnabled = false
 		}else{
 			self.withdrawAddressDeactivatedLbl.isHidden = true

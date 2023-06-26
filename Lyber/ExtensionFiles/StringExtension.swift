@@ -58,17 +58,6 @@ extension String{
 		}
 	}
 	
-	var encoderNetwork: String {
-		switch self {
-			case "eth":
-				return "ethereum"
-			case "sol":
-				return "solana"
-			default:
-				return self
-		}
-	}
-	
 	var decoderSecurityTime: String{
 		switch self {
 			case "72_HOURS":
@@ -80,6 +69,13 @@ extension String{
 			default:
 				return self
 		}
+	}
+	
+	var addressFormat: String{
+		if(self.count > 14){
+			return self.prefix(8) + "..." + self.suffix(6)
+		}
+		return self
 	}
     
 }

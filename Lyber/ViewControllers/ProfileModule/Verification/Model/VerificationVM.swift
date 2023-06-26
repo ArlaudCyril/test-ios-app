@@ -44,7 +44,7 @@ class VerificationVM{
 									   Constants.ApiKeys.asset : data["assetId"] ?? "",
 									   Constants.ApiKeys.amount : data["amount"] ?? "",
 									   Constants.ApiKeys.destination : data["destination"] ?? "",
-									   Constants.ApiKeys.chain : data["chain"] ?? ""]
+									   Constants.ApiKeys.network : data["network"] ?? ""]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceWithdraw, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             print(response)

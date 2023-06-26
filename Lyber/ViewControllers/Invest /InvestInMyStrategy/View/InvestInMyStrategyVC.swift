@@ -15,7 +15,7 @@ class InvestInMyStrategyVC: ViewController {
     var isFloatTyped : Bool = false
 
 	//withdraw
-	var network : String?
+	var network : NetworkAsset?
 	var withdrawToAccountData : [buyDepositeModel] = []
 	var exchangeCoinToEuro = false
 	var minimumWithdrawal : Double?
@@ -401,7 +401,7 @@ extension InvestInMyStrategyVC {
                     if accountSelected.svgUrl == ""{
                         self?.creditCardImg.image = accountSelected.icon
                     }else{
-                        self?.creditCardImg.yy_setImage(with: URL(string: accountSelected.svgUrl ?? ""), options: .progressiveBlur)
+                        self?.creditCardImg.sd_setImage(with: URL(string: accountSelected.svgUrl ?? ""))
                     }
                 }
                 self?.present(vc, animated: true, completion: nil)
@@ -414,12 +414,12 @@ extension InvestInMyStrategyVC {
 		let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 		vc.popupType = .withdrawTo
 		vc.investStrategyController = self
-		vc.network = self.network
+		vc.network = self.network?.id
 		vc.withdrawToAccountData = self.withdrawToAccountData
 		vc.accountSelectedCallback = {[weak self] accountSelected in
 			self?.addressLbl.text = accountSelected.subName
 			self?.addressNameLbl.text = accountSelected.name
-			self?.addressImg.yy_setImage(with: URL(string: accountSelected.svgUrl ?? ""), options: .progressiveBlur)
+			self?.addressImg.sd_setImage(with: URL(string: accountSelected.svgUrl ?? ""))
 		}
 		self.present(vc, animated: true, completion: nil)
     }
@@ -626,7 +626,7 @@ extension InvestInMyStrategyVC {
                     self?.creditCardLbl.text = response.data?[0].address ?? ""
                     self?.creditCardNumberLbl.text = response.data?[0].name ?? ""
 //                    self?.creditCardImg.setSvgImage(from: URL(string: response.addresses?[0].logo ?? ""))
-                    //self?.creditCardImg.yy_setImage(with: URL(string: response.data?[0].logo ?? ""), options: .progressiveBlur)
+                    //self?.creditCardImg.sd_setImage(with: URL(string: response.data?[0].logo ?? ""))
                 }
             }
         })
@@ -819,10 +819,8 @@ extension InvestInMyStrategyVC {
 		CryptoAddressBookVM().getWithdrawalAdressAPI(completion: {[weak self]response in
 			if let response = response{
 				for address in response.data ?? []{
-					if(address.network?.decoderNetwork == self?.network){
+					if(address.network == self?.network?.id){
 						self?.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(), svgUrl: CommonFunctions.getImage(id: address.network?.decoderNetwork ?? "btc"), iconBackgroundColor: UIColor.clear, name: address.name , subName: address.address ?? "", rightBtnName: ""))
-					}else if(self?.network == address.network && self?.network == "bsc"){
-						self?.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(), svgUrl: CommonFunctions.getImage(id: address.network ?? "btc"), iconBackgroundColor: UIColor.clear, name: address.name , subName: address.address ?? "", rightBtnName: ""))
 					}
 				}
 			}
@@ -833,7 +831,7 @@ extension InvestInMyStrategyVC {
 			if self?.withdrawToAccountData.first?.svgUrl == "" || self?.withdrawToAccountData.first?.svgUrl == nil{
 				self?.addressImg.image = self?.withdrawToAccountData.first?.icon
 			}else{
-				self?.addressImg.yy_setImage(with: URL(string: self?.withdrawToAccountData.first?.svgUrl ?? ""), options: .progressiveBlur)
+				self?.addressImg.sd_setImage(with: URL(string: self?.withdrawToAccountData.first?.svgUrl ?? ""))
 			}
 		})
 		

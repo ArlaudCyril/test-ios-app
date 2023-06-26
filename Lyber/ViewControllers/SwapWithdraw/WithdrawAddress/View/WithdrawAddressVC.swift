@@ -12,9 +12,8 @@ import UIKit
 class WithdrawAddressVC: ViewController, UITextFieldDelegate {
 	
 	//MARK: - Variables
-	var networksArray : [String] = []
+	var networksArray : [NetworkAsset] = []
 	var asset : AssetBaseData?
-	var withdrawalChainArray : [WithdrawalChain] = []
 	
 	//MARK:- IB OUTLETS
 	@IBOutlet var backBtn: UIButton!
@@ -48,12 +47,12 @@ class WithdrawAddressVC: ViewController, UITextFieldDelegate {
 //MARK: - table view delegates and dataSource
 extension WithdrawAddressVC: UITableViewDelegate , UITableViewDataSource{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return withdrawalChainArray.count
+		return networksArray.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawAddressTVC", for: indexPath as IndexPath) as! WithdrawAddressTVC
-		cell.configureWithData(withdrawChain: self.withdrawalChainArray[indexPath.row], data : networksArray[indexPath.row])
+		cell.configureWithData(data : networksArray[indexPath.row])
 		return cell
 	}
 	
@@ -63,8 +62,8 @@ extension WithdrawAddressVC: UITableViewDelegate , UITableViewDataSource{
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 		vc.strategyType = .withdraw
-		vc.minimumWithdrawal = self.withdrawalChainArray[indexPath.row].withdrawMin
-		vc.feeWithdrawal = self.withdrawalChainArray[indexPath.row].withdrawFee
+		vc.minimumWithdrawal = self.networksArray[indexPath.row].withdrawMin
+		vc.feeWithdrawal = self.networksArray[indexPath.row].withdrawFee
 		vc.fromAssetId = self.asset?.id ?? ""
 		vc.network = networksArray[indexPath.row]
 		self.navigationController?.pushViewController(vc, animated: true)
@@ -83,15 +82,9 @@ extension WithdrawAddressVC{
 //MARK: - Other functions
 extension WithdrawAddressVC{
 	func getNetworks(){
-		PortfolioDetailVM().getCoinInfoApi(Asset: self.asset?.id ?? "", completion: {[self]response in
+		PortfolioDetailVM().getCoinInfoApi(Asset: self.asset?.id ?? "", isNetwork: true, completion: {[self]response in
 			if(response != nil){
-				for (key, value) in response?.data?.withdrawalChains ?? [:]{
-					self.networksArray.append(key)
-					self.withdrawalChainArray.append(value)
-				}
-				if let index = self.networksArray.firstIndex(of: "native") {
-					networksArray[index] = self.asset?.id ?? ""
-				}
+				self.networksArray = response?.data?.networks ?? []
 				self.tblView.reloadData()
 			}
 			

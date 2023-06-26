@@ -13,7 +13,6 @@ import FlagPhoneNumber
 
 class enterNumberCVC: UICollectionViewCell {
     var controller : EnterPhoneVC?
-    var picker = ADCountryPicker()
     var eyeClicked = false
     //MARK: - IB OUTLETS
     @IBOutlet var countryPickerVw: CountryPickerView!
@@ -65,8 +64,13 @@ extension enterNumberCVC{
         self.passwordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
         self.loginByEmailBtn.addTarget(self, action: #selector(loginByEmailAct), for: .touchUpInside)
         self.eyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
+		
         countryPickerVw.delegate = self
         countryPickerVw.dataSource = self
+		countryPickerVw.flagImageView.isHidden = true
+		countryPickerVw.showCountryCodeInView = false
+		countryPickerVw.showPhoneCodeInView = false
+		
     }
 
 }

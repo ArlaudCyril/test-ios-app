@@ -84,25 +84,26 @@ struct AssetDetailApi: Codable {
 
 // MARK: - DataClass
 struct AssetDetailData: Codable {
-    let circulatingSupply: String
-    let isUIActive, isDepositActive, isWithdrawalActive: Bool?
-    let volume24H: String?
-    let isTradeActive: Bool?
-    let fullName: String?
-    let marketRank: Int?
-    let about: About?
-    let image: String?
-    let marketCap: String?
+	let id: String
+	let volume24H: String?
+	let fullName: String?
+	let imageUrl: String?
+	let about: About?
+	let marketCap: String?
+    let circulatingSupply: String?
+	let marketRank: Int?
+	let defaultDepositNetwork: String?
+	let defaultWithdrawalNetwork: String?
+    let isUIActive, isDepositActive, isTradeActive, isWithdrawalActive: Bool?
+    let isStablecoin: Bool?
+	let networks: [NetworkAsset]?
+    
+    //TODO: delete this parameters
 	let depositChains: [String]?
 	let withdrawalChains : [String:WithdrawalChain]?
 
-    enum CodingKeys: String, CodingKey {
-        case circulatingSupply, isUIActive, isDepositActive, isWithdrawalActive
-        case volume24H = "volume24h"
-        case isTradeActive, fullName, marketRank, about, image, marketCap, depositChains
-		case withdrawalChains
-    }
 }
+
 
 
 // MARK: - WithdrawalChain

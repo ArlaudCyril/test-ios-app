@@ -26,7 +26,7 @@ class ConfirmInvestmentVC: ViewController {
 	
 	//withdraw
 	var address : String?
-	var network : String?
+	var network : NetworkAsset?
 	var fees : Double?
 	var coinPrice: Double?
     //MARK: - IB OUTLETS
@@ -127,7 +127,7 @@ class ConfirmInvestmentVC: ViewController {
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
             self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalCoinsInvested))"
-            self.coinImg.yy_setImage(with: URL(string: self.assetData?.image ?? ""), options: .progressiveBlur)
+            self.coinImg.sd_setImage(with: URL(string: self.assetData?.image ?? ""))
             if frequency == ""{
                 self.frequencyVw.isHidden = true
             }else{
@@ -184,10 +184,12 @@ class ConfirmInvestmentVC: ViewController {
 			self.euroAmountLbl.text = "\(CommonFunctions.formattedAsset(from: finalAmount, price: self.coinPrice)) \(fromAssetId.uppercased())"
 			
             self.frequencyLbl.text = CommonFunctions.localisation(key: "ADDRESS")
-			self.frequencyNameLbl.text = "\(self.address ?? "")"
+			
+			
+			self.frequencyNameLbl.text = "\(self.address?.addressFormat ?? "")"
 			
 			self.networkVw.isHidden = false
-			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.uppercased(), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.id.uppercased(), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
 			self.lyberFeeLbl.text = CommonFunctions.localisation(key: "LYBER_FEES")
 			self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
@@ -287,7 +289,7 @@ extension ConfirmInvestmentVC{
 			
 			let data = [
 				"assetId": self.fromAssetId,
-				"chain": self.network?.encoderNetwork ?? "",
+				"network": self.network?.fullName ?? "",
 				"amount": self.totalCoinsInvested,
 				"destination": self.address ?? ""
 			] as [String : Any]

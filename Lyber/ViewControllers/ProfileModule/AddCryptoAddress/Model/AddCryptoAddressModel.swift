@@ -7,30 +7,44 @@
 
 import Foundation
 
-// MARK: - NetworkAPI
-struct NetworkAPI: Codable {
-    let networks: [Networks]
+// MARK: - NetworkAssetAPI
+struct NetworkAssetAPI: Codable {
+    let networks: [NetworkAsset]
 }
 
-// MARK: - Network
-struct Networks: Codable {
-    let assetID, name: String?
-    let logo: String?
-    let isDeleted: Bool?
-    let createdAt: Int?
-    let id: String?
-    let v: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case assetID = "asset_id"
-        case name, logo
-        case isDeleted = "is_deleted"
-        case createdAt
-        case id = "_id"
-        case v = "__v"
-    }
+// MARK: - NetworkAsset
+struct NetworkAsset: Codable {
+    let id: String
+    let fullName: String?
+    let addressRegex: String?
+    let imageUrl: String?
+    let isUIActive: Bool?
+	let withdrawMin: Double?
+	let withdrawFee: Double?
+	let isDepositActive: Bool?
+	let isWithdrawalActive: Bool?
 }
 
+
+// MARK: - NetworkDataAPI
+struct NetworkDataAPI: Codable {
+    let data: [NetworkData]
+}
+
+// MARK: - NetworkDataAPI
+struct NetworkDataByIdAPI: Codable {
+    let data: NetworkData
+}
+
+// MARK: - NetworkAsset
+struct NetworkData: Codable {
+    let id: String
+	let fullName: String?
+	let imageUrl: String?
+    let addressRegex: String?
+	let depositStatus: Bool?
+	let withdrawalStatus: Bool?
+}
 
 // MARK: - ExchangeAPI
 struct ExchangeAPI: Codable {

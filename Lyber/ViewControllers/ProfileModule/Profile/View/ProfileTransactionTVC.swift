@@ -51,7 +51,8 @@ extension ProfileTransactionTVC{
 		
 		if data?.type == "order"{
 			self.coinImg.image = Assets.exchange.image()
-			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "EXCH")) \(data?.fromAsset?.uppercased() ?? "") -> \(data?.toAsset?.uppercased() ?? "")"
+			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "EXCHANGE_NOUN"))"
+			self.dateLbl.text = "\(data?.fromAsset?.uppercased() ?? "") -> \(data?.toAsset?.uppercased() ?? "")"
 			self.euroLbl.text = "-\(data?.fromAmount ?? "") \(data?.fromAsset?.uppercased() ?? "")"
 			self.noOfCoinLbl.text = "+\(data?.toAmount ?? "") \(data?.toAsset?.uppercased() ?? "")"
 			

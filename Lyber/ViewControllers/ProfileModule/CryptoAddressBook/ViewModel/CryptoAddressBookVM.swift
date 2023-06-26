@@ -10,7 +10,7 @@ class CryptoAddressBookVM{
 	func createWithdrawalAddress(cryptoAddress : Address?,completion: @escaping ( (SuccessAPI?) -> Void )){
 		var param : [String : Any] = [:]
 		
-		param[Constants.ApiKeys.asset] = cryptoAddress?.asset?.lowercased() ?? ""
+		param[Constants.ApiKeys.network] = cryptoAddress?.network?.lowercased() ?? ""
 		param[Constants.ApiKeys.name] = cryptoAddress?.name ?? ""
 		param[Constants.ApiKeys.address] = cryptoAddress?.address ?? ""
 		param[Constants.ApiKeys.origin] = cryptoAddress?.origin ?? ""

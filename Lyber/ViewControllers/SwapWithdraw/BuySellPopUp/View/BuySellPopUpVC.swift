@@ -36,7 +36,7 @@ class BuySellPopUpVC: ViewController {
         CommonUI.setUpLbl(lbl: self.dismissLbl, text: "Tap anywhere to dismiss", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
         
         self.assetView.layer.cornerRadius = self.assetView.layer.bounds.height/2
-        self.assetImg.yy_setImage(with: URL(string: self.assetData?.image ?? ""), options: .progressiveBlur)
+        self.assetImg.sd_setImage(with: URL(string: self.assetData?.image ?? ""))
         CommonUI.setUpLbl(lbl: self.assetNameLbl, text: self.coinInvest ?? "", textColor: UIColor.whiteColor, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissTapped))

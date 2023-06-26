@@ -784,26 +784,4 @@ class CommonFunctions{
 			}
 		})
 	}
-	
-	//MARK: - networkDecoder
-	static func networkDecoder(network : String?)->(String){
-		switch network {
-			case "bsc":
-				return "Binance Smart Chain"
-			case "bnb":
-				return "BNB Chain"
-			case "native":
-				return "Native"
-			case "ethereum", "eth":
-				return "Ethereum"
-			case "arbitrum":
-				return "Arbitrum One"
-			case "solana":
-				return "Solana"
-			case "sol":
-				return "Solana"
-			default:
-				return ""
-		}
-	}
 }

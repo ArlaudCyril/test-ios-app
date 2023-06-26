@@ -14,6 +14,7 @@ class CryptoDepositeVC: ViewController {
     var availableAssets : [AssetBaseData?] = []
     var assetValueArr : [String]? = []
     var assetImgArr : [String]? = []
+	var networkArray : [NetworkAsset] = []
     var dropDownAsset = DropDown()
     var dropDownProtocol = DropDown()
     
@@ -141,8 +142,9 @@ extension CryptoDepositeVC{
 //MARK: - Other functions
 extension CryptoDepositeVC{
     func getAssetsDetail(){
-        self.availableAssets = Storage.currencies
-		for (_,value) in Storage.currencies.enumerated() {
+		self.availableAssets = Storage.currencies.filter{$0?.isDepositActive ?? false}
+		
+		for (_,value) in self.availableAssets.enumerated() {
 			self.assetValueArr?.append("\(value?.fullName ?? "") (\(value?.id?.uppercased() ?? ""))")
 			self.assetImgArr?.append(value?.imageUrl ?? "")
 		}
@@ -155,36 +157,35 @@ extension CryptoDepositeVC{
 		let textBuyCoinBtn = "\(CommonFunctions.localisation(key: "BUY")) \(self.selectedAsset?.fullName ?? "") \(CommonFunctions.localisation(key: "ON_LYBER"))"
 		
 		CommonUI.setUpButton(btn: self.buyCoinBtn ?? UIButton(), text: textBuyCoinBtn, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		
-        PortfolioDetailVM().getCoinInfoApi(Asset: assetId, completion: {[weak self]response in
-			var protocolArray = response?.data?.depositChains ?? []
-			let indexNative = protocolArray.firstIndex(where: {$0 == "native"})
+		CommonFunctions.showLoader()
+        PortfolioDetailVM().getCoinInfoApi(Asset: assetId, isNetwork: true, completion: {[weak self]response in
+			CommonFunctions.hideLoader()
+			self?.dropDownProtocol.dataSource = []
+			self?.networkArray = response?.data?.networks ?? []
+			for network in self?.networkArray ?? []{
+				self?.dropDownProtocol.dataSource.append(network.fullName ?? "" )
+			}
+			let indexNative = self?.networkArray.firstIndex(where: {$0.id == response?.data?.defaultDepositNetwork})
 			
 			if(indexNative != nil){
-				protocolArray.move(fromOffsets: IndexSet(integer: indexNative ?? 0) , toOffset: 0)
+				self?.dropDownProtocol.dataSource.move(fromOffsets: IndexSet(integer: indexNative ?? 0) , toOffset: 0)
 			}
-			self?.dropDownProtocol.dataSource = protocolArray
-			
-			CommonUI.setUpLbl(lbl: self?.protocolNameLbl ?? UILabel(), text: CommonFunctions.networkDecoder(network: self?.dropDownProtocol.dataSource[0] ?? ""), textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self?.protocolNameLbl ?? UILabel(), text: self?.dropDownProtocol.dataSource[0] ?? "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		
 			
-			self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", chain: self?.dropDownProtocol.dataSource[0] ?? "")
+			self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", networkLabel: self?.dropDownProtocol.dataSource[0] ?? "", networkId: response?.data?.defaultDepositNetwork ?? "")
         })
     }
 	
-	func callGetWalletAdressApi(assetId: String, chain: String){
+	func callGetWalletAdressApi(assetId: String, networkLabel: String, networkId: String){
 		var textSendOnlyAssetLbl : String = ""
-		if(chain == "native"){
-			textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(CommonFunctions.networkDecoder(network:chain)) \(self.selectedAsset?.fullName ?? "") \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
-		}else{
-			textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(CommonFunctions.networkDecoder(network:chain)) \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
-		}
+		textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(networkLabel) \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
 		
 		CommonUI.setUpLbl(lbl: self.sendOnlyAssetLbl ?? UILabel(), text: textSendOnlyAssetLbl, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 		
 		self.depositeAddresTextVw.text = ""
 		CommonFunctions.showLoaderWhite(self.depositeAddresTextVw)
-		CryptoDepositeVM().getWalletAdressApi(assetId: assetId, chain: chain, completion: {[weak self]response in
+		CryptoDepositeVM().getWalletAdressApi(assetId: assetId, network: networkId, completion: {[weak self]response in
 			CommonFunctions.hideLoader(self?.depositeAddresTextVw ?? UIView())
 			self?.depositeAddresTextVw.text = response?.data?.address
 			
@@ -242,13 +243,13 @@ extension CryptoDepositeVC{
 
 		//configuration printing dropdown
 		dropDownProtocol.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
-			cell.optionLabel.text = CommonFunctions.networkDecoder(network: item)
+			cell.optionLabel.text = item
 		}
 		
 		//when one option is selected
 		dropDownProtocol.selectionAction = {[weak self] (index: Int,item: String) in
-			self?.protocolNameLbl.text = CommonFunctions.networkDecoder(network:item)
-			self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", chain: item)
+			self?.protocolNameLbl.text = item
+			self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", networkLabel: item, networkId: self?.networkArray[index].id ?? "")
 		}
 		
 	}

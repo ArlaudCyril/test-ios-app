@@ -16,7 +16,7 @@ class ResourcesCVC: UICollectionViewCell {
 extension ResourcesCVC{
     func configureWithData(data : newsData?){
         self.resourceImg.layer.cornerRadius = 8
-        self.resourceImg.yy_setImage(with: URL(string: data?.image_url ?? ""), options: .progressiveBlur)
+        self.resourceImg.sd_setImage(with: URL(string: data?.image_url ?? ""))
         CommonUI.setUpLbl(lbl: self.resoucesLbl, text: data?.title ?? "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
     }
 }

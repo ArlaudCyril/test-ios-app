@@ -11,10 +11,11 @@ class ExchangeFromTVC: UITableViewCell {
     var assetCallback : (()->())?
     var controller : ExchangeFromVC?
     //MARK:- IB OUTLETS
-    @IBOutlet var assetsView: UIView!
     @IBOutlet var singleAssetVw: UIView!
     @IBOutlet var coinImgView: UIImageView!
     @IBOutlet var coinTypeLbl: UILabel!
+    @IBOutlet var deactivatedLbl: UILabel!
+	
     @IBOutlet var euroLbl: UILabel!
     @IBOutlet var noOfCoinLbl: UILabel!
 //    @IBOutlet var flatVw: UIView!
@@ -38,8 +39,17 @@ extension ExchangeFromTVC{
     func setUpCell(data : Balance?,index : Int,screenType : ExchangeEnum,lastIndex : Int){
 		let currency = CommonFunctions.getCurrency(id: data?.id ?? "")
 		
+		if(currency.isWithdrawalActive ?? true){
+			self.deactivatedLbl.isHidden = true
+		}else{
+			singleAssetVw.isUserInteractionEnabled = false
+			CommonUI.setUpLbl(lbl: self.deactivatedLbl, text:" \(CommonFunctions.localisation(key: "DEACTIVATED"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		}
+		
         self.coinImgView.sd_setImage(with: URL(string: currency.imageUrl ?? ""), completed: nil)
 		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+		
 		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String(Double(data?.balanceData.euroBalance ?? "0") ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(data?.balanceData.balance ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         

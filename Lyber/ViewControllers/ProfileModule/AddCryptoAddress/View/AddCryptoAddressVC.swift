@@ -152,14 +152,15 @@ class AddCryptoAddressVC: SwipeGesture {
         networkDropdown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? dropDownTableViewCell else { return }
             cell.textLbl.text = item
-            cell.imgVw.yy_setImage(with: URL(string: self.networkImgArr?[index] ?? ""), options: .progressiveBlur)
+            cell.imgVw.sd_setImage(with: URL(string: self.networkImgArr?[index] ?? ""))
         }
         networkDropdown.selectionAction = {[weak self] (index: Int,item: String) in
             self?.networkChooseView.isHidden = true
             self?.networkImgLblView.isHidden = false
             self?.selectedNetworkImg = self?.networkImgArr?[index] ?? ""
-            self?.networkValueLbl.text = item
-            self?.networkImgView.yy_setImage(with: URL(string: self?.networkImgArr?[index] ?? ""), options: .progressiveBlur)
+			self?.networkValueLbl.text = item//.sd_setImage(with: URL(string: coin.imageUrl ?? ""))
+
+            self?.networkImgView.sd_setImage(with: URL(string: self?.networkImgArr?[index] ?? ""))
             let str = (item).components(separatedBy: " (")
             self?.selectedNetworkId = str[1].replacingOccurrences(of: ")", with: "")
         }
@@ -175,7 +176,7 @@ class AddCryptoAddressVC: SwipeGesture {
 		self.selectedNetworkId = self.cryptoAddress?.network ?? ""
 		self.selectedNetworkImg = CommonFunctions.getImage(id: self.selectedNetworkId)
 		self.networkValueLbl.text = self.selectedNetworkId.uppercased()
-		self.networkImgView.yy_setImage(with: URL(string: self.selectedNetworkImg), options: .progressiveBlur)
+		self.networkImgView.sd_setImage(with: URL(string: self.selectedNetworkImg))
 		
 		//we can't change the address and the network
 		self.addressTF.text = cryptoAddress?.address ?? ""
@@ -215,16 +216,33 @@ extension AddCryptoAddressVC{
     
     @objc func addAddressBtnAct(){
 		checkValidation(completion: {
-			var originValue = "wallet"
-			if(self.exchangeRadioBtn.isSelected){
-				originValue = "exchange"
-			}
-			self.cryptoAddress = Address(asset: self.selectedNetworkId, address: self.addressTF.text ?? "", network: self.selectedNetworkId, name: self.addressNameTF.text ?? "", origin: originValue, exchange: self.ExchangeTF.text, creationDate: "")
-			self.addAddressBtn.showLoading()
-			CryptoAddressBookVM().createWithdrawalAddress(cryptoAddress: self.cryptoAddress, completion: {[weak self]response in
-				self?.addAddressBtn.hideLoading()
-				self?.navigationController?.popViewController(animated: true)
+			self.addCryptoAddressVM.getNetworkByIdApi(id: self.selectedNetworkId.lowercased(), completion: {response in
+				let regexPattern = response?.data.addressRegex
+				let text = self.addressTF.text ?? ""
 				
+				do {
+					let regex = try NSRegularExpression(pattern: regexPattern ?? "")
+					let range = NSRange(text.startIndex..<text.endIndex, in: text)
+					let match = regex.firstMatch(in: text, options: [], range: range)
+					
+					if match != nil {
+						var originValue = "wallet"
+						if(self.exchangeRadioBtn.isSelected){
+							originValue = "exchange"
+						}
+						self.cryptoAddress = Address(address: self.addressTF.text ?? "", network: self.selectedNetworkId, name: self.addressNameTF.text ?? "", origin: originValue, exchange: self.ExchangeTF.text, creationDate: "")
+						self.addAddressBtn.showLoading()
+						CryptoAddressBookVM().createWithdrawalAddress(cryptoAddress: self.cryptoAddress, completion: {[weak self]response in
+							self?.addAddressBtn.hideLoading()
+							self?.navigationController?.popViewController(animated: true)
+							
+						})
+					}else {
+						CommonFunctions.toster(Constants.AlertMessages.PleaseEnterValidAddress)
+					}
+				} catch {
+					print("error : \(error)")
+				}
 			})
 		})
     }
@@ -296,34 +314,33 @@ extension AddCryptoAddressVC: UITextFieldDelegate{
 //MARK: - Other functions
 extension AddCryptoAddressVC{
     func getNetworkData(){
-		for asset in Storage.currencies{
-			var networkValue = self.network
-			if(self.network == "bsc")
-			{
-				networkValue = "bnb"
-			}
-			
-			if(self.network != "")
-			{
-				if(asset?.id == networkValue){
-					self.networkValueArr?.append("\(asset?.fullName ?? "") (\(asset?.id?.uppercased() ?? ""))")
-					self.networkImgArr?.append(asset?.imageUrl ?? "")
+		addCryptoAddressVM.getNetworksDataApi(completion: {response in
+			if response != nil{
+				for network in response?.data ?? []{
+					if(self.network != "")
+					{
+						if(network.id == self.network){
+							self.networkValueArr?.append("\(network.fullName ?? "") (\(network.id.uppercased() ))")
+							self.networkImgArr?.append(network.imageUrl ?? "")
+						}
+						
+					}
+					else{
+						self.networkValueArr?.append("\(network.fullName ?? "") (\(network.id.uppercased() ))")
+						self.networkImgArr?.append(network.imageUrl ?? "")
+					}
 				}
-				
+				self.networkDropdown.dataSource = self.networkValueArr ?? []
+				if(self.network != "")
+				{
+					self.networkDropdown.selectionAction!(0, self.networkDropdown.dataSource[0])
+					self.networkview.backgroundColor = UIColor.gray
+					self.networkview.isUserInteractionEnabled = false
+					self.networkImgLblView.backgroundColor = UIColor.gray
+				}
 			}
-			else{
-				self.networkValueArr?.append("\(asset?.fullName ?? "") (\(asset?.id?.uppercased() ?? ""))")
-				self.networkImgArr?.append(asset?.imageUrl ?? "")
-			}
-		}
-		self.networkDropdown.dataSource = self.networkValueArr ?? []
-		if(self.network != "")
-		{
-			self.networkDropdown.selectionAction!(0, self.networkDropdown.dataSource[0])
-			self.networkview.backgroundColor = UIColor.gray
-			self.networkview.isUserInteractionEnabled = false
-			self.networkImgLblView.backgroundColor = UIColor.gray
-		}
+		})
+		
     }
     
     func checkValidation(completion : @escaping (()->()) ){

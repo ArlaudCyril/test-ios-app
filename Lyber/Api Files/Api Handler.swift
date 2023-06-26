@@ -78,10 +78,22 @@ class ApiHandler: NSObject {
         if method == .GET || method == .POST || method == .PUT || method == .DELETE{
             
             var kMehod: HTTPMethod?
+			var url = "\(NetworkURL().BASE_URL)\(url)"
+			var params = parameters
             
             switch method {
             case .GET:
                 kMehod = .get
+					var i = 0
+					for (key, value) in parameters {
+						if(i == 0){
+							url += "?\(key)=\(value)"
+						}else{
+							url += "&\(key)=\(value)"
+						}
+						i += 1
+					}
+					params = [:]
             case .POST:
                 kMehod = .post
             case .PUT:
@@ -93,7 +105,7 @@ class ApiHandler: NSObject {
             }
             
             AF.sessionConfiguration.timeoutIntervalForRequest = 90              //FOR TIMEOUT SETTINGS
-            AF.request("\(NetworkURL().BASE_URL)\(url)", method: kMehod ?? .get, parameters: parameters, encoding: URLEncoding.default, headers: header).response{ response in
+            AF.request(url, method: kMehod ?? .get, parameters: params, encoding: URLEncoding.default, headers: header).response{ response in
                 
                 let statusCode = response.response?.statusCode
                 switch response.result{
@@ -122,17 +134,16 @@ class ApiHandler: NSObject {
                             if dict[Constants.ApiKeys.error_description].stringValue == "you are not authorized to perform this action." || dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
                                 CommonFunctions.logout()
                                 userData.shared.deleteData()
-                            }
-                            if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.message].stringValue != ""{
+                            }else if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.message].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
 								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
-                            }
-                            if dict[Constants.ApiKeys.error_description].stringValue != ""{
+                            }else if dict[Constants.ApiKeys.error_description].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error_description].stringValue)
 								onFailure(false,dict[Constants.ApiKeys.error_description].stringValue, dict[Constants.ApiKeys.code].stringValue)
-                            }
-							if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.code].stringValue != ""{
+                            }else if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.code].stringValue != ""{
 								onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue)
+							}else{
+								onFailure(false, dict[Constants.ApiKeys.error].stringValue, "-1")
 							}
                             
                         }else if (statusCode == 500 || statusCode == 503){
@@ -151,16 +162,15 @@ class ApiHandler: NSObject {
                 }
             }
             
-        }else if method == .PostWithJSON || method == .PUTWithJSON || method == .DELETEWithJSON || method == .PATCHWithJSON{
+		}else if method == .PostWithJSON || method == .PUTWithJSON || method == .DELETEWithJSON || method == .PATCHWithJSON{
             
             let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
             
-            var request = URLRequest(url: URL(string: "\(NetworkURL().BASE_URL)\(url)")!)
+			var request = URLRequest(url: URL(string: "\(NetworkURL().BASE_URL)\(url)")!)
             request.httpBody = jsonData
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("Bearer \(header)", forHTTPHeaderField: "Authorization")
             request.headers = header
-            
             if method == .PostWithJSON{
                 request.httpMethod = "POST"
             }else if method == .PUTWithJSON{

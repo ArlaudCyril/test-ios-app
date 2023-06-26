@@ -11,6 +11,7 @@ class DepositAssetTVC: UITableViewCell {
 	//MARK:- IB OUTLETS
 	@IBOutlet var coinImg: UIImageView!
 	@IBOutlet var coinFullNameLbl: UILabel!
+	@IBOutlet var deactivatedLbl: UILabel!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -26,6 +27,15 @@ extension DepositAssetTVC{
 		
 		CommonUI.setUpLbl(lbl: self.coinFullNameLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 
+		if(data?.isDepositActive == true){
+			self.deactivatedLbl.isHidden = true
+		}else{
+			self.deactivatedLbl.isHidden = false
+			CommonUI.setUpLbl(lbl: self.deactivatedLbl, text:" \(CommonFunctions.localisation(key: "DEACTIVATED"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+	
+		}
+		
+		
 		for coin in coinDetailData{
 			if data?.id == coin.id{
 				self.coinImg.sd_setImage(with: URL(string: coin.imageUrl ?? ""))

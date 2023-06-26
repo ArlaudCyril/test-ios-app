@@ -28,7 +28,7 @@ class SearchAssetTVC: UITableViewCell {
 //MARK: - SetUpUI
 extension SearchAssetTVC{
     func setUpCell(data : GetAssetsAPIElement?){
-        self.assetImgVw.yy_setImage(with: URL(string: data?.image ?? ""), options: .progressiveBlur)
+        self.assetImgVw.sd_setImage(with: URL(string: data?.image ?? ""))
         CommonUI.setUpLbl(lbl: self.assetNameLbl, text: data?.assetName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.assetSymbolLbl, text: data?.symbol?.uppercased() ?? "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
     }

@@ -13,9 +13,8 @@ struct CryptoAddressesAPI: Codable {
 
 // MARK: - Address
 struct Address: Codable {
-    let asset: String?
 	let address: String?
-	let network: String? //TODO: -Delete network and remplace by asset
+	let network: String?
     let name: String
     let origin: String?
     let exchange: String?

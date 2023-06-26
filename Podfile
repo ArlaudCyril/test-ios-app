@@ -11,7 +11,6 @@ target 'Lyber' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SwiftEntryKit'
-  pod 'YYWebImage'
 	
 #  pod 'OTPFieldView'
   pod 'ADCountryPicker'
