@@ -9,9 +9,8 @@ import UIKit
 
 class SelectedProfileVC: ViewController {
     var profilePicImg = UIImage()
-    var profilePicType : profilePicType = .GALLERY
     var profileChangeCallback : ((UIImage)->())?
-    var selectedProfileVM = SelectedProfileVM()
+	var icon : Constants.Icon = .HUMAN_HEAD
     //MARK:- IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var profilePicVw: UIView!
@@ -33,12 +32,8 @@ class SelectedProfileVC: ViewController {
         self.profilePicVw.layer.cornerRadius = self.profilePicVw.layer.bounds.height/2
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.height/2
         self.profilePic.image = profilePicImg
-        if profilePicType == .DEFAULT{
-            self.profilePic.contentMode = .scaleAspectFit
-            self.profilePic.image = self.profilePic.image?.roundedImageWithBorder(width: 18, color: UIColor.clear)
-        }else{
-            self.profilePic.contentMode = .scaleAspectFill
-        }
+		self.profilePic.contentMode = .scaleAspectFit
+		self.profilePic.image = self.profilePic.image?.roundedImageWithBorder(width: 18, color: UIColor.clear)
         self.saveBtn.setTitle(CommonFunctions.localisation(key: "SAVE"), for: .normal)
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
@@ -54,20 +49,14 @@ extension SelectedProfileVC{
     
     @objc func saveBtnAct(){
         self.saveBtn.showLoading()
-        selectedProfileVM.uploadImgApi(ProfilePic: profilePicImg, completion: {[weak self]response in
-            if let response = response{
-                print(response)
-                self?.selectedProfileVM.updateProfileImgApi(ProfilePic: response.file_name ?? "",ProfileType : self?.profilePicType, completion: {[weak self]response in
-                    self?.saveBtn.hideLoading()
-                    if let response = response{
-                        print(response)
-                        userData.shared.profile_image = response.profile_pic ?? ""
-                        userData.shared.profilePicType = response.profile_pic_type ?? ""
-                        userData.shared.dataSave()
-                        self?.navigationController?.popToViewController(ofClass: ProfileVC.self, animated: true)
-                    }
-                })
-            }
-        })
+		ProfileVM().saveProfilePictureApi(imageName: self.icon.rawValue, completion: {response in
+			self.saveBtn.hideLoading()
+			if response != nil{
+				userData.shared.profile_image = self.icon.rawValue
+				userData.shared.dataSave()
+				self.navigationController?.popToViewController(ofClass: ProfileVC.self, animated: true)
+			}
+		})
+        
     }
 }

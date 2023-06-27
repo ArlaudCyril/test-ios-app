@@ -347,6 +347,7 @@
 "ENTER_PASSWORD" = "Entrez votre mot de passe";
 "ENTER_PHONE_NUMBER" = "Numéro de téléphone";
 "LANGUAGE" = "Langues";
+"DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "L'appareil ne supporte pas ou n'est pas enregistré avec FaceID";
 
 
 //MARK: - STRONG AUTHENTICATION;

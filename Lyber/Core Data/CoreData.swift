@@ -27,8 +27,7 @@ class userData : NSObject {
     var email = ""
     var firstname = ""
     var lastname = ""
-    var profile_image = ""
-    var profilePicType = ""
+	var profile_image = ""
     var phone_no = ""
     var countryCode = ""
     var isAccountCreated = false
@@ -40,7 +39,7 @@ class userData : NSObject {
     var isPhoneVerified = false
     var personalDataStepComplete  = 0
     var balance = 0.0
-    var faceIdEnabled = 0
+    var faceIdEnabled = false
     var iban = ""
     var bic = ""
     var extraSecurity = "none"
@@ -96,7 +95,6 @@ class userData : NSObject {
         newData.setValue(extraSecurity, forKey: "extraSecurity")
         newData.setValue(strongAuthVerified, forKey: "strongAuthVerified")
         newData.setValue(profile_image, forKey: "profile_image")
-        newData.setValue(profilePicType, forKey: "profilePicType")
         newData.setValue(scope2FALogin, forKey: "scope2FALogin")
         newData.setValue(scope2FAWhiteListing, forKey: "scope2FAWhiteListing")
         newData.setValue(scope2FAWithdrawal, forKey: "scope2FAWithdrawal")
@@ -228,7 +226,7 @@ class userData : NSObject {
                         self.bic = bic
                         print("data get bic \(bic)")
                     }
-                    if let faceIdEnabled = result.value(forKey: "faceIdEnabled") as? Int{
+                    if let faceIdEnabled = result.value(forKey: "faceIdEnabled") as? Bool{
                         self.faceIdEnabled = faceIdEnabled
                         print("data get faceIdEnabled \(faceIdEnabled)")
                     }
@@ -240,13 +238,9 @@ class userData : NSObject {
                         self.strongAuthVerified = strongAuthVerified
                         print("data get strongAuthVerified \(strongAuthVerified)")
                     }
-                    if let profile_image = result.value(forKey: "profile_image") as? String{
+					if let profile_image = result.value(forKey: "profile_image") as? String{
                         self.profile_image = profile_image
                         print("data get profile_image \(profile_image)")
-                    }
-                    if let profilePicType = result.value(forKey: "profilePicType") as? String{
-                        self.profilePicType = profilePicType
-                        print("data get profilePicType \(profilePicType)")
                     }
                     if let scope2FALogin = result.value(forKey: "scope2FALogin") as? Bool{
                         self.scope2FALogin = scope2FALogin
@@ -313,11 +307,9 @@ class userData : NSObject {
 		self.balance = 0
 		self.iban = ""
 		self.bic = ""
-		self.faceIdEnabled = 0
+		self.faceIdEnabled = false
 		self.extraSecurity = "none"
 		self.strongAuthVerified = false
-		self.profile_image = ""
-		self.profilePicType = ""
 		self.scope2FALogin = false
 		self.scope2FAWhiteListing = false
 		self.scope2FAWithdrawal = false
@@ -339,7 +331,7 @@ class userData : NSObject {
         self.time = nil
         self.firstname = ""
         self.lastname = ""
-        self.profile_image = ""
+		self.profile_image = ""
         self.email = ""
         self.phone_no = ""
         self.countryCode = ""
@@ -350,11 +342,9 @@ class userData : NSObject {
         self.balance = 0
         self.iban = ""
         self.bic = ""
-        self.faceIdEnabled = 0
+        self.faceIdEnabled = false
         self.extraSecurity = "none"
         self.strongAuthVerified = false
-        self.profile_image = ""
-        self.profilePicType = ""
         self.scope2FALogin = false
         self.scope2FAWhiteListing = false
         self.scope2FAWithdrawal = false

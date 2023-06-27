@@ -39,7 +39,7 @@ extension PortfolioHomeTVC{
 		
 		
         
-        self.profilePic.sd_setImage(with: URL(string: "\(ApiEnvironment.ImageUrl)\(userData.shared.profile_image)"))
+		self.profilePic.image = UIImage(asset: Assets(rawValue: userData.shared.profile_image) ?? Assets.chick_egg)
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.height/2
         self.profilePicVw.layer.cornerRadius = self.profilePicVw.layer.bounds.height/2
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(profileAction))

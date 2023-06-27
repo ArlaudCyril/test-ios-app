@@ -14,7 +14,7 @@ struct LoginAPI: Codable {
 
 // MARK: - User
 struct User: Codable {
-    let profilePic,profilePicType: String?
+    let profilePic: String?
     let userID: String?
     let firstName, lastName, email, password: String?
     let registrationDate, lastLogin: String?
@@ -50,7 +50,6 @@ struct User: Codable {
 
     enum CodingKeys: String, CodingKey {
         case profilePic = "profile_pic"
-        case profilePicType = "profile_pic_type"
         case userID = "id"
         case firstName = "first_name"
         case lastName = "last_name"

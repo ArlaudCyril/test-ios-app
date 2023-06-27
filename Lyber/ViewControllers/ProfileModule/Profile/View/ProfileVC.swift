@@ -17,7 +17,6 @@ class ProfileVC: ViewController {
     var AccountData : [SecurityModel] = []
     var securityData : [SecurityModel] = []
 
-    var faceIdEnable = 0
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var nameLbl: UILabel!
@@ -68,24 +67,17 @@ class ProfileVC: ViewController {
         self.profileOuterVw.layer.cornerRadius = self.profileOuterVw.layer.bounds.height/2
         self.profileInnverVw.layer.cornerRadius = self.profileInnverVw.layer.bounds.height/2
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.height/2
-        self.faceIdEnable = userData.shared.faceIdEnabled
         tblView.delegate = self
         tblView.dataSource = self
         
        
 		self.nameLbl.text = "\(userData.shared.firstname) \(userData.shared.lastname)"
 		self.emailLbl.text = userData.shared.email
+	
 		
-		//self.profilePic.sd_setImage(with: URL(string: userData.shared.profile_image)))
-		
-		if userData.shared.profilePicType == "DEFAULT"{
-			self.profilePic.contentMode = .scaleAspectFit
-			self.profilePic.image = self.profilePic.image?.roundedImageWithBorder(width: 18, color: UIColor.clear)
-		}else{
-			self.profilePic.contentMode = .scaleAspectFill
-		}
-		
-		//Interactions
+		self.profilePic.contentMode = .scaleAspectFit
+		self.profilePic.image = self.profilePic.image?.roundedImageWithBorder(width: 18, color: UIColor.clear)
+		self.profilePic.image = UIImage(asset: Assets(rawValue: userData.shared.profile_image) ?? Assets.chick_egg)
 		
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(profileTapped))
@@ -223,7 +215,6 @@ extension ProfileVC{
 extension ProfileVC{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.profilePic.sd_setImage(with: URL(string: "\(ApiEnvironment.ImageUrl)\(userData.shared.profile_image)"))
         setUpUI()
         self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         self.tblView.reloadData()
@@ -260,7 +251,7 @@ extension ProfileVC{
     
     func selectImageFrom(_ source: ImageSourcee){
             imagePicker =  UIImagePickerController()
-            imagePicker.delegate = self
+            //imagePicker.delegate = self
             switch source {
             case .camera:
                 imagePicker.sourceType = .camera
@@ -271,15 +262,3 @@ extension ProfileVC{
         }
 }
 
-//MARK :- Image Picker Delegates
-extension ProfileVC: UINavigationControllerDelegate,UIImagePickerControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.imagePicker.dismiss(animated: true, completion: nil)
-        guard let selectedImage = info[.originalImage] as? UIImage else {
-            return
-        }
-        let vc = SelectedProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-        vc.profilePicImg = selectedImage
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}

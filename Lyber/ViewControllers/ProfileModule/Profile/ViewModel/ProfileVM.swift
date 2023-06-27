@@ -17,4 +17,16 @@ class ProfileVM{
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
+	
+	func saveProfilePictureApi(imageName: String, completion: @escaping ( (ProfileAPI?) -> Void )){
+		let param : [String: Any] = [Constants.ApiKeys.avatar : imageName]
+		
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceUser, withParameters: param, ofType: ProfileAPI.self, onSuccess: { response in
+            print(response)
+            completion(response)
+        }, onFailure: { reload, error, code in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+    }
 }

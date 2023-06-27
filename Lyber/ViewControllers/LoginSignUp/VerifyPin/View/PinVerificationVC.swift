@@ -70,10 +70,29 @@ class PinVerificationVC: ViewController {
             key.tag = index
             key.addTarget(self, action: #selector(keyTyped), for: .touchUpInside)
         }
+		
+		//Face Id
+		let localAuthenticationContext = LAContext()
+		localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+		let authType = localAuthenticationContext.biometryType
+		
+		if(authType != .faceID){
+			userData.shared.faceIdEnabled = false
+			userData.shared.dataSave()
+		}
+			
+		
+		
+		if(userData.shared.faceIdEnabled == true){
+			let biometricTap = UITapGestureRecognizer(target: self, action: #selector(authenticationWithTouchID))
+			self.useFaceIdVw.addGestureRecognizer(biometricTap)
+			authenticationWithTouchID()
+		}else{
+			self.useFaceIdVw.isHidden = true
+			self.orLbl.isHidden = true
+		}
+		
         
-        let biometricTap = UITapGestureRecognizer(target: self, action: #selector(authenticationWithTouchID))
-        self.useFaceIdVw.addGestureRecognizer(biometricTap)
-		authenticationWithTouchID()
     }
 }
 
@@ -162,18 +181,8 @@ extension PinVerificationVC{
         let reasonString = "To access the secure data"
         
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
-            
-//            let authType = localAuthenticationContext.biometryType
-//                    switch authType {
-//                    case .none:
-//                        print("Device not registered with TouchID/FaceID")
-//                    case .touchID:
-//                        print("Device support TouchID")
-//                    case .faceID:
-//                        print("Device support FaceID")
-//                    }
-//
-            localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
+
+			localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 
                 if success {
                     DispatchQueue.main.async {

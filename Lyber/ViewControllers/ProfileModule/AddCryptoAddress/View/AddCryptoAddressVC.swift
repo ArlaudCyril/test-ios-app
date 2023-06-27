@@ -103,7 +103,7 @@ class AddCryptoAddressVC: SwipeGesture {
         self.addressTF.font = UIFont.MabryPro(Size.Medium.sizeValue())
         self.ExchangeTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         
-        let views = [addressNameView,networkview,addressView,exchangeView,walletView,selectExchangeView]
+        let views = [addressNameView,networkview,addressView,exchangeView,walletView,selectExchangeView, networkImgLblView]
         for view in views{
             CommonUI.setUpViewBorder(vw: view ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         }
@@ -181,10 +181,10 @@ class AddCryptoAddressVC: SwipeGesture {
 		//we can't change the address and the network
 		self.addressTF.text = cryptoAddress?.address ?? ""
 		self.addressView.isUserInteractionEnabled = false
-		self.addressView.backgroundColor = UIColor.gray
-		self.networkview.backgroundColor = UIColor.gray
+		self.addressView.backgroundColor = UIColor.greyDisabled
+		self.networkview.backgroundColor = UIColor.greyDisabled
 		self.networkview.isUserInteractionEnabled = false
-		self.networkImgLblView.backgroundColor = UIColor.gray
+		self.networkImgLblView.backgroundColor = UIColor.greyDisabled
 		
         self.addAddressBtn.setTitle(CommonFunctions.localisation(key: "EDIT_ADRESS"), for: .normal)
         if cryptoAddress?.origin == "WALLET"{

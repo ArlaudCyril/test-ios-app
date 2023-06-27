@@ -110,19 +110,6 @@ class EnterPhoneVM {
         }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func enableFaceIdApi(enable: Int, completion: @escaping ( (SuccessAPI?) -> Void )){
-        let param: [String: Any] = [Constants.ApiKeys.face_id: Constants.deviceID,
-                                    Constants.ApiKeys.enable_face_id : enable]
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userActivateFaceId, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
-            completion(response)
-            CommonFunctions.hideLoader()
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
-    }
-    
     func resendOtpCodeApi(completion: @escaping ( (ResendOtpAPI?) -> Void )){
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userResendPhoneVerificationOtp, withParameters: [:], ofType: ResendOtpAPI.self, onSuccess: { response in

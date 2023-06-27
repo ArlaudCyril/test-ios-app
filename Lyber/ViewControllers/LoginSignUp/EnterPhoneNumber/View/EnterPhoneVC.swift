@@ -10,6 +10,7 @@ import IQKeyboardManagerSwift
 import JWTDecode
 import BigNum
 import CryptoKit
+import LocalAuthentication
 
 class EnterPhoneVC: ViewController {
     //MARK: - Variables
@@ -347,30 +348,37 @@ extension EnterPhoneVC{
     func showActiveFaceIdAlert(){
         let alert = UIAlertController(title: CommonFunctions.localisation(key: "ACTIVATE_FACE_ID"), message: CommonFunctions.localisation(key: "ACCESS_LYBER_FACE_ID"), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "DECLINE"), style: .default, handler: {(action : UIAlertAction) in
-            //            self.enterPhoneVM.enableFaceIdApi(enable: 0, completion: {[]response in
-            //                if let response = response{
-            //                    print(response)
+			
+			userData.shared.faceIdEnabled = false
+			userData.shared.dataSave()
+			
 			if userData.shared.isIdentityVerified && !GlobalVariables.isRegistering{
                 let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                 self.navigationController?.pushViewController(vc, animated: true)
+				
             }else{
                 self.GotoNextIndex()
             }
-            //                }
-            //            })
         }))
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "ACTIVATE"), style: .default, handler: {_ in
-            //            self.enterPhoneVM.enableFaceIdApi(enable: 1, completion: {[]response in
-            //                if let response = response{
-            //                    print(response)
+			let localAuthenticationContext = LAContext()
+			localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+			let authType = localAuthenticationContext.biometryType
+			if(authType == .faceID){
+				userData.shared.faceIdEnabled = true
+				userData.shared.dataSave()
+			}else{
+				CommonFunctions.toster(CommonFunctions.localisation(key: "DEVICE_NOT_SUPPORT_REGISTERED_FACEID"))
+				userData.shared.faceIdEnabled = false
+				userData.shared.dataSave()
+			}
+			
             if userData.shared.isIdentityVerified && !GlobalVariables.isRegistering{
                 let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 self.GotoNextIndex()
             }
-            //                }
-            //            })
         }))
         present(alert, animated: true, completion: nil)
     }

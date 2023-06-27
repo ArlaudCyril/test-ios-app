@@ -352,6 +352,7 @@
 "ENTER_PASSWORD" = "Enter password";
 "ENTER_PHONE_NUMBER" = "Enter phone number";
 "LANGUAGE" = "Language";
+"DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "Device do not support or is not registered with FaceID";
 
 //MARK: - STRONG AUTHENTICATION;
 "ADDED_SECURITY_LYBER_ACCOUNT" = "For added security on your Lyber account, enable strong authentication. ";

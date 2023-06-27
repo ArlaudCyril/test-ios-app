@@ -38,7 +38,6 @@ enum Assets : String{
     
     //coins
     case bitcoin
-    case dog
     case ether
     case ether1
     case sol
@@ -96,6 +95,50 @@ enum Assets : String{
     //GIF Name
     case profile_image
     case collection_one
+	
+	//icons
+	case badger
+	case bat
+	case bear_head
+	case boar
+	case cat
+	case cheetah
+	case chick_egg
+	case chick_head
+	case chick
+	case chicken
+	case chimpanzee
+	case cow_head
+	case cow
+	case dog
+	case elephant
+	case fox
+	case frog
+	case giraffe
+	case gorilla
+	case hamster
+	case hedgehog
+	case kangaroo
+	case leo
+	case monkey
+	case mouse
+	case orangutan
+	case owl
+	case panda
+	case pig
+	case pinguin
+	case poodle
+	case human_head
+	case rabbit_head
+	case rabbit
+	case raccoon
+	case shiba
+	case sloth
+	case squirrel
+	case tiger_cat
+	case unicorn
+	case wolf
+
     
     func imageName() -> String{
         return self.rawValue

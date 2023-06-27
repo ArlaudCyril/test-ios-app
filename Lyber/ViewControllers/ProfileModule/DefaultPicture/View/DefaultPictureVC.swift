@@ -9,12 +9,7 @@ import UIKit
 
 class DefaultPictureVC: SwipeGesture {
     //MARK: - Variables
-    var pictureData : [String] =
-    ["one","two","three","four","five","six","seven","eight","nine","ten",
-     "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty",
-     "twenty_one","twenty_two","twenty_three","twenty_four","twenty_five","twenty_six","twenty_seven","twenty_eight","twenty_nine","thirty",
-     "thirty_one","thirty_two","thirty_three","thirty_four","thirty_five","thirty_six","thirty_seven","thirty_eight","thirty_nine","fourty"
-    ]
+    var pictureData : [String] = []
     //MARK:- IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var collView: UICollectionView!
@@ -22,6 +17,7 @@ class DefaultPictureVC: SwipeGesture {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+		getPictureData()
     }
 
 
@@ -44,7 +40,7 @@ extension DefaultPictureVC{
     }
 }
 
-//MARK:- TABLE VIEW DELEGATE AND DATA SOURCE METHODS
+//MARK: - TABLE VIEW DELEGATE AND DATA SOURCE METHODS
 extension DefaultPictureVC: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,7 +56,7 @@ extension DefaultPictureVC: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SelectedProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
         vc.profilePicImg = UIImage(named: pictureData[indexPath.row]) ?? UIImage()
-        vc.profilePicType = .DEFAULT
+		vc.icon = Constants.Icon(rawValue: pictureData[indexPath.row]) ?? Constants.Icon.CHICK_EGG
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -76,4 +72,12 @@ extension DefaultPictureVC: UICollectionViewDelegate, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 12
     }
+}
+
+//MARK: Others functions
+
+extension DefaultPictureVC{
+	func getPictureData(){
+		self.pictureData = Constants.Icon.allCases.map{$0.rawValue}
+	}
 }

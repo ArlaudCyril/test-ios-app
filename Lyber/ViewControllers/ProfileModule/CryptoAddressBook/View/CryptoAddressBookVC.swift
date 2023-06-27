@@ -21,7 +21,6 @@ class CryptoAddressBookVC: SwipeGesture {
     @IBOutlet var whitlistingView: UIView!
     @IBOutlet var whitlistingLbl: UILabel!
     @IBOutlet var activeDuringLbl: UILabel!
-    @IBOutlet var whitlistingBtn: UIButton!
     
     @IBOutlet var searchView: UIView!
     @IBOutlet var searchTF: UITextField!
@@ -99,7 +98,10 @@ class CryptoAddressBookVC: SwipeGesture {
         self.searchTF.addTarget(self, action: #selector(searchtextChanged), for: .editingChanged)
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.addNewAddressBtn.addTarget(self, action: #selector(addNewAddressBtnAct), for: .touchUpInside)
-        self.whitlistingBtn.addTarget(self, action: #selector(whitelistingBtnAct), for: .touchUpInside)
+		
+
+		let whitlistingTap = UITapGestureRecognizer(target: self, action: #selector(whitelistingBtnAct))
+		self.whitlistingView.addGestureRecognizer(whitlistingTap)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

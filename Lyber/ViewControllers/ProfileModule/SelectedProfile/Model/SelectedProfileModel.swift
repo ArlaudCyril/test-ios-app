@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum profilePicType : String{
-    case DEFAULT = "DEFAULT"
-    case GALLERY = "GALLERY"
-}
-
 struct ImageUploadApi: Codable {
     let s3Url,file_name: String?
 }

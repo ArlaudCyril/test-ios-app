@@ -144,6 +144,7 @@ struct Constants{
         static let id = "id"
         static let include_networks = "include_networks"
         static let address_id = "address_id"
+        static let avatar = "avatar"
         
         //Main
         static let uuid = "uuid"
@@ -305,4 +306,49 @@ struct Constants{
 		static let networkServiceNetwork = "network-service/network"
 		
     }
+	
+	enum Icon: String, CaseIterable {
+		case BADGER = "badger"
+		case BAT = "bat"
+		case BEAR_HEAD = "bear_head"
+		case BOAR = "boar"
+		case CAT = "cat"
+		case CHEETAH = "cheetah"
+		case CHICK_EGG = "chick_egg"
+		case CHICK_HEAD = "chick_head"
+		case CHICK = "chick"
+		case CHICKEN = "chicken"
+		case CHIMPANZEE = "chimpanzee"
+		case COW_HEAD = "cow_head"
+		case COW = "cow"
+		case DOG = "dog"
+		case ELEPHANT = "elephant"
+		case FOX = "fox"
+		case FROG = "frog"
+		case GIRAFFE = "giraffe"
+		case GORILLA = "gorilla"
+		case HAMSTER = "hamster"
+		case HEDGEHOG = "hedgehog"
+		case KANGAROO = "kangaroo"
+		case LEO = "leo"
+		case MONKEY = "monkey"
+		case MOUSE = "mouse"
+		case ORANGUTAN = "orangutan"
+		case OWL = "owl"
+		case PANDA = "panda"
+		case PIG = "pig"
+		case PINGUIN = "pinguin"
+		case POODLE = "poodle"
+		case HUMAN_HEAD = "human_head"
+		case RABBIT_HEAD = "rabbit_head"
+		case RABBIT = "rabbit"
+		case RACCOON = "raccoon"
+		case SHIBA = "shiba"
+		case SLOTH = "sloth"
+		case SQUIRREL = "squirrel"
+		case TIGER_CAT = "tiger_cat"
+		case UNICORN = "unicorn"
+		case WOLF = "wolf"
+	}
+	
 }

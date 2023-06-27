@@ -102,11 +102,11 @@ struct ProfileAPI: Codable {
 struct ProfileData: Codable {
     var uuid, email, phoneNo, firstName, lastName, language: String?
     var nationality: String?
+    var avatar: String?
     var has2FA: Bool?
     var type2FA: String?
 	var scope2FA: [String?]
     var profilePic: String?
-    var profilePicType: String?
     
     init() {
         uuid = ""
@@ -120,7 +120,6 @@ struct ProfileData: Codable {
         type2FA = ""
         scope2FA = []
         profilePic = ""
-        profilePicType = ""
     }
 
 }

@@ -2883,7 +2883,7 @@
                                                                             <constraint firstAttribute="trailing" secondItem="Xy9-ce-nKk" secondAttribute="trailing" id="zrX-pR-5QA"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="254" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9R-v8-ZI3">
+                                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="254" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9R-v8-ZI3">
                                                                         <rect key="frame" x="306" y="14.5" width="48" height="48"/>
                                                                         <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -3105,7 +3105,6 @@
                         <outlet property="tblView" destination="4kc-c8-gqt" id="c7K-8k-UK7"/>
                         <outlet property="tblViewHeightConst" destination="9p4-Fi-awc" id="kWw-Xv-Szf"/>
                         <outlet property="topAddressView" destination="czm-Ea-jfM" id="Mct-26-KVR"/>
-                        <outlet property="whitlistingBtn" destination="U9R-v8-ZI3" id="Nej-FS-fRA"/>
                         <outlet property="whitlistingLbl" destination="34s-4W-B0F" id="zSF-rx-evD"/>
                         <outlet property="whitlistingView" destination="fSg-W3-jrg" id="ZH4-vP-taS"/>
                     </connections>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ProfileAccountTVC: UITableViewCell {
     var controller : ProfileVC?
@@ -60,11 +61,7 @@ extension ProfileAccountTVC{
                 outerView.layer.cornerRadius = 16
                 outerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
                 self.switchView.isHidden = false
-                if controller?.faceIdEnable == 1{
-                    self.switchBtn.setOn(true, animated: false)
-                }else{
-                    self.switchBtn.setOn(false, animated: false)
-                }
+				self.switchBtn.setOn(userData.shared.faceIdEnabled, animated: false)
                 
                 self.rightArrowView.isHidden = true
             }else{
@@ -79,22 +76,22 @@ extension ProfileAccountTVC{
 extension ProfileAccountTVC{
     @objc func switchBtnAct(sender : UISwitch){
         if sender.isOn == true{
-            print("on")
-            self.enableFaceId(enable: 1)
+			let localAuthenticationContext = LAContext()
+			localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+			let authType = localAuthenticationContext.biometryType
+			if(authType == .faceID){
+				userData.shared.faceIdEnabled = true
+				userData.shared.dataSave()
+			}else{
+				CommonFunctions.toster(CommonFunctions.localisation(key: "DEVICE_NOT_SUPPORT_REGISTERED_FACEID"))
+				userData.shared.faceIdEnabled = false
+				userData.shared.dataSave()
+				sender.isOn = false
+			}
         }else {
-            print("off")
-            self.enableFaceId(enable: 0)
+			userData.shared.faceIdEnabled = false
+			userData.shared.dataSave()
         }
     }
 }
 
-//MARK: - Other functions
-extension ProfileAccountTVC{
-    func enableFaceId(enable : Int){
-        EnterPhoneVM().enableFaceIdApi(enable: enable, completion: {[]response in
-            if let response = response{
-                print(response)
-            }
-        })
-    }
-}
