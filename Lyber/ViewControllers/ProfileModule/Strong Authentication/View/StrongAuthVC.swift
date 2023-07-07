@@ -153,88 +153,75 @@ extension StrongAuthVC{
     }
     
     @objc func validateWithdrawSwitchAct(sender : UISwitch){
-		var scopes : [String] = []
-		ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
-			if response != nil{
-				sender.isOn = !sender.isOn
-				let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-				vc.typeVerification = userData.shared.type2FA
-				vc.action = "verificationCallback"
-				vc.verificationCallBack = {[]code in
-					if(userData.shared.scope2FAWhiteListing){
-						scopes.append("whitelisting")
+		var scopes : [String] = ["login"]
+		if(userData.shared.scope2FAWhiteListing){
+			scopes.append("whitelisting")
+		}
+		// We do a twoFa request only if we desactive a scope
+		if(sender.isOn != true){
+			ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
+				if response != nil{
+					sender.isOn = !sender.isOn
+					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+					vc.typeVerification = userData.shared.type2FA
+					vc.action = "changeScope"
+					vc.scopes = scopes
+					vc.verificationCallBack = {[]code in
+						userData.shared.scope2FAWithdrawal = false
+						userData.shared.dataSave()
+						sender.isOn = false
 					}
-					
-					if sender.isOn == true{
-						//we desactive
-						scopes.append(contentsOf: ["login"])
-						
-						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
-							if response != nil{
-								userData.shared.scope2FAWithdrawal = false
-								userData.shared.dataSave()
-								sender.isOn = false
-							}
-						})
-					}else{
-						//we active
-						scopes.append(contentsOf: ["login", "withdrawal"])
-						
-						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
-							if response != nil{
-								userData.shared.scope2FAWithdrawal = true
-								userData.shared.dataSave()
-								sender.isOn = true
-							}
-						})
-					}
+					self?.present(vc, animated: true)
 				}
-				self?.present(vc, animated: true)
-			}
-		})
-		
+			})
+		}else{
+			//we active
+			scopes.append(contentsOf: ["withdrawal"])
+			
+			StrongAuthVM().scope2FAApi(scopes: scopes, completion: {[]response in
+				if response != nil{
+					userData.shared.scope2FAWithdrawal = true
+					userData.shared.dataSave()
+					sender.isOn = true
+				}
+			},onFailure: {_ in })
+		}
     }
     
     @objc func enableWhitelistingSwitchAct(sender : UISwitch){
-		var scopes : [String] = []
-		ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
-			if response != nil{
-				sender.isOn = !sender.isOn
-				let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-				vc.typeVerification = userData.shared.type2FA
-				vc.action = "verificationCallback"
-				vc.verificationCallBack = {[]code in
-					if(userData.shared.scope2FAWithdrawal){
-						scopes.append("withdrawal")
+		var scopes : [String] = ["login"]
+		if(userData.shared.scope2FAWithdrawal){
+			scopes.append("withdrawal")
+		}
+		// We do a twoFa request only if we desactive a scope
+		if(sender.isOn != true){
+			ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
+				if response != nil{
+					sender.isOn = !sender.isOn
+					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+					vc.typeVerification = userData.shared.type2FA
+					vc.action = "changeScope"
+					vc.scopes = scopes
+					vc.verificationCallBack = {[]code in
+						userData.shared.scope2FAWhiteListing = false
+						userData.shared.dataSave()
+						sender.isOn = false
 					}
-					
-					if sender.isOn == true{
-						//we desactive
-						scopes.append(contentsOf: ["login"])
-						
-						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
-							if response != nil{
-								userData.shared.scope2FAWhiteListing = false
-								userData.shared.dataSave()
-								sender.isOn = false
-							}
-						})
-					}else{
-						//we active
-						scopes.append(contentsOf: ["login", "whitelisting"])
-						
-						StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
-							if response != nil{
-								userData.shared.scope2FAWhiteListing = true
-								userData.shared.dataSave()
-								sender.isOn = true
-							}
-						})
-					}
+					self?.present(vc, animated: true)
 				}
-				self?.present(vc, animated: true)
-			}
-		})
+			})
+		}else{
+			//we active
+			scopes.append(contentsOf: ["whitelisting"])
+			
+			StrongAuthVM().scope2FAApi(scopes: scopes, completion: {[]response in
+				if response != nil{
+					userData.shared.scope2FAWhiteListing = true
+					userData.shared.dataSave()
+					sender.isOn = true
+				}
+			}, onFailure: {_ in})
+		}
 		
     }
 }

@@ -28,7 +28,6 @@
 		0A3E8D1B2862ED3E0063F383 /* customMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3E8D1A2862ED3E0063F383 /* customMarker.swift */; };
 		0A3E8D1D2862F26C0063F383 /* customMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3E8D1C2862F26C0063F383 /* customMarker.xib */; };
 		0A52D449290A66E400C6DD40 /* BigNum in Frameworks */ = {isa = PBXBuildFile; productRef = 0A52D448290A66E400C6DD40 /* BigNum */; settings = {ATTRIBUTES = (Required, ); }; };
-		0A53DEDF28461D590027367A /* VerificationEmailCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEDE28461D590027367A /* VerificationEmailCVC.swift */; };
 		0A53DEE5284634DC0027367A /* InvestmentExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEE4284634DC0027367A /* InvestmentExperienceVC.swift */; };
 		0A53DEE7284635010027367A /* InvestmentExperienceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEE6284635010027367A /* InvestmentExperienceTVC.swift */; };
 		0A53DEE9284635FB0027367A /* InvestmentExpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEE8284635FB0027367A /* InvestmentExpModel.swift */; };
@@ -271,6 +270,7 @@
 		1F2D541029F003610078267F /* CryptoDepositeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D540F29F003610078267F /* CryptoDepositeVM.swift */; };
 		1F2D541329F006A00078267F /* CryptoDepositeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541229F006A00078267F /* CryptoDepositeModel.swift */; };
 		1F2D541529F047200078267F /* QrCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541429F047200078267F /* QrCodeVC.swift */; };
+		1F35C2D42A52CB3200512ABD /* CountryPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */; };
 		1F432CC3297DDDD9006EBEEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1F432CC2297DDDD9006EBEEA /* .gitignore */; };
 		1F4DCC5F29D2FDFD00C3B374 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */; };
 		1F4DCC6129D2FF4500C3B374 /* LanguageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */; };
@@ -319,7 +319,6 @@
 		0A272BCF2851C6E8005CA57F /* AllocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationVC.swift; sourceTree = "<group>"; };
 		0A3E8D1A2862ED3E0063F383 /* customMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customMarker.swift; sourceTree = "<group>"; };
 		0A3E8D1C2862F26C0063F383 /* customMarker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = customMarker.xib; sourceTree = "<group>"; };
-		0A53DEDE28461D590027367A /* VerificationEmailCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEmailCVC.swift; sourceTree = "<group>"; };
 		0A53DEE4284634DC0027367A /* InvestmentExperienceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentExperienceVC.swift; sourceTree = "<group>"; };
 		0A53DEE6284635010027367A /* InvestmentExperienceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentExperienceTVC.swift; sourceTree = "<group>"; };
 		0A53DEE8284635FB0027367A /* InvestmentExpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentExpModel.swift; sourceTree = "<group>"; };
@@ -569,6 +568,7 @@
 		1F2D540F29F003610078267F /* CryptoDepositeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDepositeVM.swift; sourceTree = "<group>"; };
 		1F2D541229F006A00078267F /* CryptoDepositeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDepositeModel.swift; sourceTree = "<group>"; };
 		1F2D541429F047200078267F /* QrCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeVC.swift; sourceTree = "<group>"; };
+		1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewExtension.swift; sourceTree = "<group>"; };
 		1F432CC2297DDDD9006EBEEA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTVC.swift; sourceTree = "<group>"; };
@@ -668,7 +668,6 @@
 				0A005C212844EBFD008117D1 /* PersonalDataVC.swift */,
 				0A005C252844F251008117D1 /* PersonalDataCVC.swift */,
 				0A1A95B42845EC55001224C6 /* emailAddressCVC.swift */,
-				0A53DEDE28461D590027367A /* VerificationEmailCVC.swift */,
 				0A1A95B62845EE32001224C6 /* addressCVC.swift */,
 				0A1A95B82845EE4A001224C6 /* InvestmentExperienceCVC.swift */,
 			);
@@ -1018,6 +1017,7 @@
 				0A53DEEA28463D460027367A /* UiViewExtension.swift */,
 				0A9059202848863B003F6198 /* StringExtension.swift */,
 				0A6E936328BF62D7008FF5E7 /* UIImageExtension.swift */,
+				1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */,
 			);
 			path = ExtensionFiles;
 			sourceTree = "<group>";
@@ -2920,13 +2920,13 @@
 				1F1857792A28DA5A006F9014 /* WithdrawAddressTVC.swift in Sources */,
 				0A857C6F288592590013ED99 /* NotificationVC.swift in Sources */,
 				0A8B4AC4285721D200F64ECE /* InvestInMyStrategyModel.swift in Sources */,
-				0A53DEDF28461D590027367A /* VerificationEmailCVC.swift in Sources */,
 				0A0F5F2828756F9200D7E2AE /* AddAssetsVM.swift in Sources */,
 				0A8AE88F284A27D30090A354 /* InvestmentStrategyTVC.swift in Sources */,
 				0A7A3BEB285C8EA200646337 /* balanceTVC.swift in Sources */,
 				0A6FCB9328BCBDE7003557B0 /* RecurringDetailVM.swift in Sources */,
 				0A95DE1C289902150044EE92 /* AddressAddedPopUpVC.swift in Sources */,
 				0ABD9FF9288687F300EFF589 /* DepositFundsVC.swift in Sources */,
+				1F35C2D42A52CB3200512ABD /* CountryPickerViewExtension.swift in Sources */,
 				0A6E936428BF62D7008FF5E7 /* UIImageExtension.swift in Sources */,
 				0A95DE172898ED030044EE92 /* AddCryptoAddressVC.swift in Sources */,
 				1883D3172950798A00CEC597 /* configuration.swift in Sources */,

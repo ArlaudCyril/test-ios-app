@@ -27,3 +27,13 @@ struct Storage{
     }
 }
 
+struct GlobalVariables {
+	static var isRegistering = false
+	static var isLogin = false
+	static var language : Language = Language(id: "fr", name: "Français", image: Assets.fr_flag)
+	static var languageArray : [Language] = [Language(id:"en", name: "English", image: Assets.uk_flag),Language(id: "fr", name: "Français", image: Assets.fr_flag)]
+	static var bundle : Bundle = Bundle()
+	static var baseUrl : String = ApiEnvironment.Staging.rawValue
+	
+}
+

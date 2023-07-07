@@ -47,17 +47,18 @@ extension addressCVC{
         CommonUI.setUpViewBorder(vw: self.zipCodeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.countryVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
-        CommonUI.setUpTextField(textfield: buildingFloorTF, placeholder: CommonFunctions.localisation(key: "BUILDING_FLOOR"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: buildingFloorTF, placeholder: CommonFunctions.localisation(key: "STREET_NAME"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpTextField(textfield: streetNumberTF, placeholder: CommonFunctions.localisation(key: "STREET_NUMBER"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpTextField(textfield: cityTF, placeholder: CommonFunctions.localisation(key: "CITY"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-        CommonUI.setUpTextField(textfield: stateTF, placeholder: CommonFunctions.localisation(key: "STATE"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpTextField(textfield: stateTF, placeholder: CommonFunctions.localisation(key: "DEPARTMENT"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpTextField(textfield: zipCodeTF, placeholder: CommonFunctions.localisation(key: "ZIPCODE"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpTextField(textfield: countryTF, placeholder: CommonFunctions.localisation(key: "COUNTRY"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         countryTF.textColor = UIColor.Purple35126D
         
-        let countryTap = UITapGestureRecognizer(target: self, action: #selector(selectCountry))
-        self.countryVw.addGestureRecognizer(countryTap)
+        //let countryTap = UITapGestureRecognizer(target: self, action: #selector(selectCountry))
+        //self.countryVw.addGestureRecognizer(countryTap)
         self.countryVw.delegate = self
+        self.countryVw.customizeView()
         
         let tfs = [streetNumberTF,stateTF,buildingFloorTF,cityTF,zipCodeTF]
         for tf in tfs{
@@ -79,7 +80,7 @@ extension addressCVC{
         
         DispatchQueue.main.async {
             self.controller?.streetNumber = self.streetNumberTF.text ?? ""
-            self.controller?.buildingFloor = self.buildingFloorTF.text ?? ""
+            self.controller?.streetName = self.buildingFloorTF.text ?? ""
             self.controller?.CityName = self.cityTF.text ?? ""
             self.controller?.stateName = self.stateTF.text ?? ""
             self.controller?.zipCode = self.zipCodeTF.text ?? ""
@@ -174,7 +175,7 @@ extension addressCVC{
         if tf == streetNumberTF{
             self.controller?.streetNumber = tf.text ?? ""
         }else if tf == buildingFloorTF{
-            self.controller?.buildingFloor = tf.text ?? ""
+            self.controller?.streetName = tf.text ?? ""
         }else if tf == cityTF{
             self.controller?.CityName = tf.text ?? ""
         }else if tf == stateTF{
@@ -184,22 +185,11 @@ extension addressCVC{
         }
     }
     
-    @objc func selectCountry(){
-       
-//        picker.delegate = self
-//        let pickerNavigationController = UINavigationController(rootViewController: picker)
-//        pickerNavigationController.modalTransitionStyle = .coverVertical
-//        self.controller?.present(pickerNavigationController, animated: true, completion: nil)
-    }
 }
 
 //MARK: - COUNTRY PICKER DELEGATES
 extension addressCVC: ADCountryPickerDelegate,CountryPickerViewDelegate{
     func countryPicker(_ picker: ADCountryPicker, didSelectCountryWithName name: String, code: String, dialCode: String) {
-//        self.countryTF.text = name
-//        self.controller?.CountryName = code
-//        self.picker.dismiss(animated: true, completion: nil)
-    
     }
     
     func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country){

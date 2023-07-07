@@ -12,7 +12,7 @@ class ConfirmInvestmentVC: ViewController {
     //MARK: - Variables
     var confirmInvestmentVM = ConfirmInvestmentVM()
     var assetData : Trending?,strategyData : Strategy?
-    var totalCoinsInvested = Double(),totalEuroInvested = Double(),fromAssetId = String(),exchangeTo = String()
+    var totalCoinsInvested = Decimal(),totalEuroInvested = Double(),fromAssetId = String(),exchangeTo = String()
     var frequency = String()
     var InvestmentType : InvestStrategyModel = .activateStrategy
     var coinsData : [InvestmentStrategyAsset] = []
@@ -100,8 +100,6 @@ class ConfirmInvestmentVC: ViewController {
         CommonUI.setUpLbl(lbl: self.totalEuroLbl, text:
 							"\(CommonFunctions.formattedCurrency(from: (totalEuroInvested)+(0.08)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        CommonUI.setUpViewBorder(vw: bottomVw, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
-        self.bottomVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_INVESTMENT"), for: .normal)
         CommonUI.setUpLbl(lbl: volatilePriceLbl, text: CommonFunctions.localisation(key: "PRICE_CRYPTOCURRENCY_VOLATILE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: volatilePriceLbl, text: CommonFunctions.localisation(key: "PRICE_CRYPTOCURRENCY_VOLATILE"), lineSpacing: 6, textAlignment: .center)
@@ -126,7 +124,7 @@ class ConfirmInvestmentVC: ViewController {
             self.coinPriceVw.isHidden = false
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
-            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalCoinsInvested))"
+            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: NSDecimalNumber(decimal: totalCoinsInvested).doubleValue))"
             self.coinImg.sd_setImage(with: URL(string: self.assetData?.image ?? ""))
             if frequency == ""{
                 self.frequencyVw.isHidden = true
@@ -179,9 +177,9 @@ class ConfirmInvestmentVC: ViewController {
 			
 			self.coinPriceVw.isHidden = true
 			
-			let finalAmount = self.totalCoinsInvested - (self.fees ?? 0.0)
+			let finalAmount = self.totalCoinsInvested - Decimal(self.fees ?? 0.0)
             self.amountLbl.text = CommonFunctions.localisation(key: "AMOUNT")
-			self.euroAmountLbl.text = "\(CommonFunctions.formattedAsset(from: finalAmount, price: self.coinPrice)) \(fromAssetId.uppercased())"
+			self.euroAmountLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: Decimal(self.coinPrice ?? 0.0))) \(fromAssetId.uppercased())"
 			
             self.frequencyLbl.text = CommonFunctions.localisation(key: "ADDRESS")
 			
@@ -189,7 +187,7 @@ class ConfirmInvestmentVC: ViewController {
 			self.frequencyNameLbl.text = "\(self.address?.addressFormat ?? "")"
 			
 			self.networkVw.isHidden = false
-			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.id.uppercased(), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.fullName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
 			self.lyberFeeLbl.text = CommonFunctions.localisation(key: "LYBER_FEES")
 			self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
@@ -289,23 +287,33 @@ extension ConfirmInvestmentVC{
 			
 			let data = [
 				"assetId": self.fromAssetId,
-				"network": self.network?.fullName ?? "",
+				"network": self.network?.id ?? "",
 				"amount": self.totalCoinsInvested,
 				"destination": self.address ?? ""
 			] as [String : Any]
-			
-			self.confirmInvestmentVM.userGetOtpApi(action: "withdraw", data: data, completion: {[weak self]response in
-				self?.confirmInvestmentBtn.hideLoading()
-				if response != nil{
-					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-					vc.typeVerification = userData.shared.type2FA
-					vc.action = "withdraw"
-					vc.controller = self ?? ConfirmInvestmentVC()
-					vc.dataWithdrawal = data
-					self?.present(vc, animated: true, completion: nil)
-				}
-			})
-			
+			if(userData.shared.scope2FAWithdrawal == true){
+				self.confirmInvestmentVM.userGetOtpApi(action: "withdraw", data: data, completion: {[weak self]response in
+					self?.confirmInvestmentBtn.hideLoading()
+					if response != nil{
+						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+						vc.typeVerification = userData.shared.type2FA
+						vc.action = "withdraw"
+						vc.controller = self ?? ConfirmInvestmentVC()
+						vc.dataWithdrawal = data
+						self?.present(vc, animated: true, completion: nil)
+					}
+				})
+			}else{
+				VerificationVM().walletCreateWithdrawalRequest(data: data, onSuccess:{[]response in
+					if response != nil{
+						let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+						vc.confirmationType = .Withdraw
+						vc.confirmInvesmtentController = self
+						self.present(vc, animated: true)
+						
+					}
+				}, onFailure: {[]response in})
+			}
         }
     }
 }

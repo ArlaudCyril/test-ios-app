@@ -37,12 +37,7 @@ class InvestmentExperienceVC: ViewController {
 									   "35K_MONTH",
 									   "56K_MONTH",
 									   "*K_MONTH"]
-    var personalAssetsData = ["2_ASSETS",
-							   "22_ASSETS",
-							   "128_ASSETS",
-							   "319_ASSETS",
-							   "464_ASSETS",
-							   "465_ASSETS"]
+
 
     var investExperienceCallBack :((String)->())?
 
@@ -83,8 +78,6 @@ class InvestmentExperienceVC: ViewController {
             self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_YOUR_WORK_INDUSTRY")
         }else if investmentType == .AnnualIncome{
             self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_SALARY_RANGE_YOU_FALL_INTO")
-        }else if investmentType == .personalAssets{
-            self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "HOW_MANY_PERSONAL_ASSETS_YOU_HAVE")
         }
         let outerTapped = UITapGestureRecognizer(target: self, action: #selector(cancelBtnAct))
         self.outerVw.addGestureRecognizer(outerTapped)
@@ -102,8 +95,6 @@ extension InvestmentExperienceVC : UITableViewDelegate,UITableViewDataSource{
             return workIndustryData.count
         }else if investmentType == .AnnualIncome{
             return annualIncomeData.count
-        }else if investmentType == .personalAssets{
-            return personalAssetsData.count
         }else{
             return 2
 		}
@@ -119,8 +110,6 @@ extension InvestmentExperienceVC : UITableViewDelegate,UITableViewDataSource{
 			cell.setUpCell(data: CommonFunctions.localisation(key: workIndustryData[indexPath.row]))
         }else if investmentType == .AnnualIncome{
 			cell.setUpCell(data: CommonFunctions.localisation(key: annualIncomeData[indexPath.row]))
-        }else if investmentType == .personalAssets{
-			cell.setUpCell(data: CommonFunctions.localisation(key: personalAssetsData[indexPath.row]))
         }
 
         return cell
@@ -136,8 +125,6 @@ extension InvestmentExperienceVC : UITableViewDelegate,UITableViewDataSource{
             self.investExperienceCallBack?(workIndustryData[indexPath.row])
         }else if investmentType == .AnnualIncome{
             self.investExperienceCallBack?(annualIncomeData[indexPath.row])
-        }else if investmentType == .personalAssets{
-            self.investExperienceCallBack?(personalAssetsData[indexPath.row])
         }
         self.dismiss(animated: true, completion: nil)
     }

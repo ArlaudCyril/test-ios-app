@@ -18,7 +18,8 @@ class AddStrategyVM{
             bundle.append(assetData)
         }
         params = [Constants.ApiKeys.strategy_name : strategy.name ?? "",
-                  Constants.ApiKeys.bundle : bundle]
+                  Constants.ApiKeys.bundle : bundle,
+				  Constants.ApiKeys.strategyType: "MultiAsset"]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
@@ -40,7 +41,8 @@ class AddStrategyVM{
             bundle.append(assetData)
         }
         params = [Constants.ApiKeys.strategy_name : newStrategy.name ?? "",
-                  Constants.ApiKeys.bundle : bundle]
+				  Constants.ApiKeys.bundle : bundle,
+				  Constants.ApiKeys.strategyType: "MultiAsset"]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)

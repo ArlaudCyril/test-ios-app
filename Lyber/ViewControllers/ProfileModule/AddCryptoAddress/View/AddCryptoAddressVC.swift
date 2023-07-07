@@ -103,10 +103,11 @@ class AddCryptoAddressVC: SwipeGesture {
         self.addressTF.font = UIFont.MabryPro(Size.Medium.sizeValue())
         self.ExchangeTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         
-        let views = [addressNameView,networkview,addressView,exchangeView,walletView,selectExchangeView, networkImgLblView]
+        let views = [addressNameView,networkview,addressView,exchangeView,walletView,selectExchangeView]
         for view in views{
             CommonUI.setUpViewBorder(vw: view ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         }
+		
 //        self.exchangeView.layer.borderColor = UIColor.PurpleColor.cgColor
 //        self.exchangeRadioBtn.setImage(Assets.radio_select.image(), for: .normal)
         selectOrigin(selectBtn: self.exchangeRadioBtn, unSelectBtn: self.walletRadioBtn, selectView: self.exchangeView, unSelectView: self.walletView)
@@ -127,7 +128,7 @@ class AddCryptoAddressVC: SwipeGesture {
         CommonUI.setUpButton(btn: self.addAddressBtn, text: CommonFunctions.localisation(key: "ADD_ADRESS"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         if network != ""{
-			self.addCryptoAddressLbl.text = "\(CommonFunctions.localisation(key: "ADD")) \(self.network.uppercased()) \(CommonFunctions.localisation(key: "ADRESS"))"
+			self.addCryptoAddressLbl.text = "\(CommonFunctions.localisation(key: "ADD_CRYPTO_ADDRESS_PART1")) \(self.network.uppercased()) \(CommonFunctions.localisation(key: "ADD_CRYPTO_ADDRESS_PART2"))"
             self.addAddressBtn.setTitle(CommonFunctions.localisation(key: "ADD_USE_ADRESS"), for: .normal)
         }
         
@@ -282,6 +283,9 @@ extension AddCryptoAddressVC: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentString: NSString = textField.text! as NSString
         let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+		if string == UIPasteboard.general.string {
+			return true
+		}
         if textField == addressTF{
             let tf = textField.text ?? ""
             let validString = NSCharacterSet(charactersIn: " !@#$%^&*()_+{}[]|\"<>,.~`/:;?-=\\¥'£•¢€₹")
@@ -333,10 +337,11 @@ extension AddCryptoAddressVC{
 				self.networkDropdown.dataSource = self.networkValueArr ?? []
 				if(self.network != "")
 				{
+					CommonUI.setUpViewBorder(vw: self.networkImgLblView ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.greyDisabled.cgColor)
 					self.networkDropdown.selectionAction!(0, self.networkDropdown.dataSource[0])
-					self.networkview.backgroundColor = UIColor.gray
+					self.networkview.backgroundColor = UIColor.greyDisabled
 					self.networkview.isUserInteractionEnabled = false
-					self.networkImgLblView.backgroundColor = UIColor.gray
+					self.networkImgLblView.backgroundColor = UIColor.greyDisabled
 				}
 			}
 		})

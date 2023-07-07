@@ -8,11 +8,11 @@
 import Foundation
 // MARK:- API ENVIORMENT
 enum ApiEnvironment: String {
-//    case Dev = "https://dev.lyber.com/"
-    case Dev = "https://staging.lyber.com/"
-//            "https://lyber.com:3001/"
-    case Stage = "http://104.211.21.101:3001/"
-    case Live = "http://104.211.21.101:3002/"
+    case Dev = "https://dev.lyber.com/"
+    case Staging = "https://staging.lyber.com/"
+    case Production = "https://production.lyber.com/"
+//    case Stage = "http://104.211.21.101:3001/"
+//    case Live = "http://104.211.21.101:3002/"
     
     static var ImageUrl = "https://lyberblob.blob.core.windows.net/original/"
     static var socketBaseUrl  = "ws://ws.lyber.com:80/websocket/"
@@ -25,13 +25,4 @@ enum Image_Quality : String {
     case medium = "Medium"
     case small = "Small"
     case large = "Orig"
-}
-
-// MARK: - API URL'S CLASS
-class NetworkURL {
-    
-    var BASE_URL : String{
-        return ApiEnvironment.Dev.rawValue
-    }
-    
 }

@@ -63,7 +63,7 @@ extension PersonalDataCVC{
         CommonUI.setUpButton(btn: self.birthDateBtn, text: CommonFunctions.localisation(key: "BIRTH_DATE"), textcolor: UIColor.TFplaceholderColor, backgroundColor: UIColor.white, cornerRadius: 16, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.birthCountryLbl, text: CommonFunctions.localisation(key: "BIRTH_COUNTRY"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.NationalityLbl, text: CommonFunctions.localisation(key: "NATIONALITY"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.specifiedUSPersonLbl, text: L10n.AreYouAUSCitizen.description, textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.specifiedUSPersonLbl, text: CommonFunctions.localisation(key: "ARE_YOU_A_US_CITIZEN"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         let birthTap = UITapGestureRecognizer(target: self, action: #selector(selectBirthDate))
         self.birthDateVw.addGestureRecognizer(birthTap)
@@ -71,10 +71,12 @@ extension PersonalDataCVC{
         let birthCountryTap = UITapGestureRecognizer(target: self, action: #selector(selectNationality))
         self.birthCountryVw.addGestureRecognizer(birthCountryTap)
         self.birthCountryVw.delegate = self
+        self.birthCountryVw.customizeView()
         
         let nationalityTap = UITapGestureRecognizer(target: self, action: #selector(selectNationality(_: )))
         self.nationalityVw.addGestureRecognizer(nationalityTap)
         self.nationalityVw.delegate = self
+		self.nationalityVw.customizeView()
         
 		let specifiedUsPersonVwTap = UITapGestureRecognizer(target: self, action: #selector(IsUsPerson))
 		self.specifiedUSPersonVw.addGestureRecognizer(specifiedUsPersonVwTap)
@@ -210,7 +212,7 @@ extension PersonalDataCVC{
 //MARK: - Other functions
 extension PersonalDataCVC{
 	@objc func IsUsPerson(){
-		dropDown.dataSource = [L10n.Yes.description,L10n.No.description]
+		dropDown.dataSource = [CommonFunctions.localisation(key: "YES"),CommonFunctions.localisation(key: "NO")]
 		dropDown.selectionBackgroundColor = UIColor.LightPurple
 		dropDown.backgroundColor = UIColor.white
 		dropDown.layer.cornerRadius = 6

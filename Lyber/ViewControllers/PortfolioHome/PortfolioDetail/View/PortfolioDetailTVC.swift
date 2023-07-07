@@ -188,7 +188,8 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
 extension PortfolioDetailTVC{
     @objc func backBtnAct(){
 		if(self.controller?.previousController is ConfirmInvestmentVC){
-			self.controller?.navigationController?.popToViewController(ofClass: Storage.previousControllerPortfolioDetailObject, animated: true)
+			self.controller?.navigationController?.deleteToViewController(ofClass: Storage.previousControllerPortfolioDetailObject)
+			self.controller?.navigationController?.popViewController(animated: true)
 		}else{
 			self.controller?.navigationController?.popViewController(animated: true)
 		}

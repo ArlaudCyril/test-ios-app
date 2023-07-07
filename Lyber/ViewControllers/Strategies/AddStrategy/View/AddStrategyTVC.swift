@@ -42,7 +42,7 @@ extension AddStrategyTVC{
         //get all informations of the currency
         let currencyDetail : AssetBaseData? = Storage.getCurrency(asset : data)
         
-        self.coinImg.layer.cornerRadius = self.coinImg.bounds.height/2
+        //self.coinImg.layer.cornerRadius = self.coinImg.bounds.height/2
         self.coinImg.sd_setImage(with: URL(string: currencyDetail?.imageUrl ?? ""))
 
         CommonUI.setUpLbl(lbl: self.coinNameLbl, text: currencyDetail?.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))

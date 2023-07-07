@@ -71,7 +71,6 @@
 "VIEW_ALL_AVAILABLE_ASSETS" = "View all 16 available assets";
 "ALLOCATION" = "Allocation";
 "AUTO" = "Auto";
-"SAVE_MY_STRATEGY" = "Save my strategy";
 "YOUR_STRATEGY_READY_TO_BE_SAVED" = "Your strategy is ready to be saved.";
 "ASSET" = "Asset";
 "NETWORK" = "Network";
@@ -82,8 +81,8 @@
 "YOUR_ALLOCATION_IS_LESS_THAN" = "Your allocation is less than 100%,add ";
 "INVESTMENT_STRATEGIES" = "Investment strategies";
 "STRATEGIES_ARE_THERE_TO_HELP_YOU" = "The strategies are there to help you dilute your investments over several assets.";
-"YIELD" = "Yield: ";
-"RISK" = "Risk: ";
+"YIELD" = "Yield";
+"RISK" = "Risk";
 
 
 //MARK: - PORTFOLIO HOME;
@@ -154,9 +153,9 @@
 "ADDRESS" = "Address";
 "TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL" = "We need this information to ensure that crypto services are legal in your country of residence.";
 "STREET_NUMBER" = "Street number";
-"BUILDING_FLOOR" = "Building, floor";
+"STREET_NAME" = "Street name";
 "CITY" = "City";
-"STATE" = "State";
+"DEPARTMENT" = "Department";
 "ZIPCODE" = "ZIP code";
 "COUNTRY" = "Country";
 
@@ -340,7 +339,8 @@
 "CARD_NUMBER" = "Card number";
 "EXPIRE" = "Expire";
 "CVV" = "CVV";
-"ADD" = "Add";
+"ADD_CRYPTO_ADDRESS_PART1" = "Add a";
+"ADD_CRYPTO_ADDRESS_PART2" = "address";
 "ADDING_NEW_CARD_ACCEPT_TERMS_CONDITIONS" = "By adding a new card, you accept the terms and conditions.";
 "VERIFICATION" = "Verification";
 "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR" = "Enter the code displayed by Google Authenticator";
@@ -353,6 +353,7 @@
 "ENTER_PHONE_NUMBER" = "Enter phone number";
 "LANGUAGE" = "Language";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "Device do not support or is not registered with FaceID";
+
 
 //MARK: - STRONG AUTHENTICATION;
 "ADDED_SECURITY_LYBER_ACCOUNT" = "For added security on your Lyber account, enable strong authentication. ";
@@ -428,7 +429,7 @@
 "ALERT_VALID_EMAIL" = "Please enter valid email address";
 "ALERT_STREET_NUMBER" = "Please enter street number";
 "ALERT_FREQUENCY" = "Please select frequency";
-"ALERT_BUILDING_FLOOR" = "Please enter building, floor number";
+"ALERT_STREET_NAME" = "Please enter street name";
 "ALERT_CITY_NAME" = "Please enter city name";
 "ALERT_ZIP_CODE" = "Please enter zip code";
 "ALERT_COUNTRY" = "Please enter country name";
@@ -445,7 +446,6 @@
 "ALERT_BIRTH_PLACE" = "Please enter your birth Place";
 "ALERT_BIRTH_COUNTRY" = "Please select your birth country";
 "ALERT_US_CITIZEN" = "Please select are you US Citizen or not?";
-"ALERT_PERSONAL_ASSETS" = "Please Select your personal Assets";
 "ALERT_ADDRESS_NAME" = "Please enter your address name";
 "ALERT_NETWORK" = "Please select your network";
 "ALERT_SCAN_ADDRESS" = "Please enter or scan an address";
@@ -472,6 +472,9 @@
 
 //MARK: - Withdraw
 "DEACTIVATED" = "Deactivated";
+"AMOUNT_WITHDRAW_ACCOUNT" = "Amount has been withdrawn from your account.";
+"SEE_EFFECTS_PORTFOLIO" = "You can now see its effect on your portfolio.";
+"THANKS" = "Thanks";
 
 
 //MARK: - UNITS

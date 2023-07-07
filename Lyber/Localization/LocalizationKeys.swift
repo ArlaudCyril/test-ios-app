@@ -117,7 +117,6 @@ enum L10n {
     case CardholderName
     case BirthDate
     case BirthCountry
-    case AreYouAUSCitizen
     case Yes
     case No
     case Nationality
@@ -135,7 +134,6 @@ enum L10n {
     case StreetNumber
     case BuildingFloor
     case City
-    case State
     case ZIPCode
     case Country
     
@@ -146,8 +144,6 @@ enum L10n {
     case YourSourceOfIncome
     case YourWorkIndustry
     case YourAnnualIncome
-    case YourPersonalAssets
-    case HowManyPersonalAssetsYouHave
     case SendtoLyber
     
     case WhatYourInvestmentExperienceWithCryptos
@@ -600,8 +596,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Birth date")
         case .BirthCountry:
             return L10n.tr("Birth Country")
-        case .AreYouAUSCitizen:
-            return L10n.tr("Are you a US Citizen?")
         case .Yes:
             return L10n.tr("Yes")
         case .No:
@@ -632,8 +626,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Building, floor")
         case .City:
             return L10n.tr("City")
-        case .State:
-            return L10n.tr("State")
         case .ZIPCode:
             return L10n.tr("ZIP code")
         case .Country:
@@ -653,10 +645,6 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Your work industry")
         case .YourAnnualIncome:
             return L10n.tr("Your annual income")
-        case .YourPersonalAssets:
-            return L10n.tr("Your Personal Assets")
-        case .HowManyPersonalAssetsYouHave:
-            return L10n.tr("How many personal Assets Do you have?")
         case .SendtoLyber:
             return L10n.tr("Send to Lyber")
             
@@ -1117,7 +1105,7 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Please Select your annual Income")
         case .AreYouSureLogOut:
             return L10n.tr("Are you sure you want to Log Out?")
-        }
+		}
         
     }
     

@@ -23,7 +23,7 @@ struct Constants{
         static var enterEmail = CommonFunctions.localisation(key:"ALERT_EMAIL")
         static var enterValidEmail = CommonFunctions.localisation(key:"ALERT_VALID_EMAIL")
         static var enterStreetNumber = CommonFunctions.localisation(key:"ALERT_STREET_NUMBER")
-        static var enterBuildingFloor = CommonFunctions.localisation(key:"ALERT_BUILDING_FLOOR")
+        static var enterStreetName = CommonFunctions.localisation(key:"ALERT_STREET_NAME")
         static var enterCity = CommonFunctions.localisation(key:"ALERT_CITY_NAME")
         static var enterZipcode = CommonFunctions.localisation(key:"ALERT_ZIP_CODE")
         static var enterCountry = CommonFunctions.localisation(key:"ALERT_COUNTRY")
@@ -43,7 +43,6 @@ struct Constants{
         static var enterBirthPlace = CommonFunctions.localisation(key:"ALERT_BIRTH_PLACE")
         static var selectBirthCountry = CommonFunctions.localisation(key:"ALERT_BIRTH_COUNTRY")
         static var selectAreYouUSCitizen = CommonFunctions.localisation(key:"ALERT_US_CITIZEN")
-        static var pleaseSelectPersonalAssets = CommonFunctions.localisation(key:"ALERT_PERSONAL_ASSETS")
         
         static var PleaseEnterYourAddressName = CommonFunctions.localisation(key:"ALERT_ADDRESS_NAME")
         static var PleaseSelectYourNetwork = CommonFunctions.localisation(key:"ALERT_NETWORK")
@@ -119,6 +118,7 @@ struct Constants{
         static let toAsset = "toAsset"
         static let fromAmount = "fromAmount"
         static let bundle = "bundle"
+        static let strategyType = "strategyType"
         static let share = "share"
         static let owner_uuid = "ownerUuid"
         static let orderId = "orderId"
@@ -185,7 +185,6 @@ struct Constants{
         static let incomeSource = "incomeSource"
         static let occupation = "occupation"
         static let incomeRange = "incomeRange"
-        static let personalAssets = "personalAssets"
         
         // MARK: - Profile keys
         static let type2FA = "type2FA"

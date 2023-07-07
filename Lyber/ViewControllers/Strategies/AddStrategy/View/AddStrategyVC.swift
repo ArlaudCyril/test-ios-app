@@ -62,7 +62,7 @@ class AddStrategyVC: ViewController {
         self.tblView.dataSource = self
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.addAnAssetBtn.addTarget(self, action: #selector(addAssetBtnAct), for: .touchUpInside)
-        self.saveMyStrategyBtn.addTarget(self, action: #selector(saveStrategyBtnAct), for: .touchUpInside)
+        self.saveMyStrategyBtn.addTarget(self, action: #selector(saveMyStrategyBtnAct), for: .touchUpInside)
         handleAllocationPercentageView()
         
        
@@ -122,7 +122,7 @@ extension AddStrategyVC{
 //        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func saveStrategyBtnAct(){
+    @objc func saveMyStrategyBtnAct(){
         if(self.tailoringStrategy != nil){
             saveTailoringStrategy()
         }

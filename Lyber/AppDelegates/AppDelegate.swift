@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
 	
-
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         userData.shared.is_push_enabled = 2
         userData.shared.dataSave()
@@ -37,10 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         userData.shared.is_push_enabled = 1
         userData.shared.dataSave()
     }
-    //Called when user interact with notification (click on it etc)
-//	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//		print(response)
-//	}
+	
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 		let content = notification.request.content
 		print(content)
@@ -50,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 		let lyberId = acme2.object(forKey: "lyberId") as? Int {
 			if(lyberId == 2002)
 			{//transaction success
+				//TODO:
 				PortfolioDetailVC.transactionFinished(success: true)
 			}
 			else if(lyberId == 2003){//transaction failure

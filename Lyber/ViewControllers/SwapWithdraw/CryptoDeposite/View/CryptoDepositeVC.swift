@@ -162,13 +162,14 @@ extension CryptoDepositeVC{
 			CommonFunctions.hideLoader()
 			self?.dropDownProtocol.dataSource = []
 			self?.networkArray = response?.data?.networks ?? []
-			for network in self?.networkArray ?? []{
-				self?.dropDownProtocol.dataSource.append(network.fullName ?? "" )
-			}
+			
 			let indexNative = self?.networkArray.firstIndex(where: {$0.id == response?.data?.defaultDepositNetwork})
 			
 			if(indexNative != nil){
-				self?.dropDownProtocol.dataSource.move(fromOffsets: IndexSet(integer: indexNative ?? 0) , toOffset: 0)
+				self?.networkArray.move(fromOffsets: IndexSet(integer: indexNative ?? 0) , toOffset: 0)
+			}
+			for network in self?.networkArray ?? []{
+				self?.dropDownProtocol.dataSource.append(network.fullName ?? "" )
 			}
 			CommonUI.setUpLbl(lbl: self?.protocolNameLbl ?? UILabel(), text: self?.dropDownProtocol.dataSource[0] ?? "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		

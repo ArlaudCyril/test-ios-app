@@ -85,7 +85,7 @@ struct AssetDetailApi: Codable {
 // MARK: - DataClass
 struct AssetDetailData: Codable {
 	let id: String
-	let volume24H: String?
+	let volume24h: String?
 	let fullName: String?
 	let imageUrl: String?
 	let about: About?

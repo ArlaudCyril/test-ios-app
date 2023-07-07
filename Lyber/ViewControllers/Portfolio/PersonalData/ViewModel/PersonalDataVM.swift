@@ -40,7 +40,7 @@ class PersonalDataVM{
         
         
         if profile_info_step == 4{
-            param[Constants.ApiKeys.address1] =  "\(personalData?.streetNumber ?? ""),\(personalData?.buildingFloor ?? ""),\(personalData?.CityName ?? ""),\(personalData?.stateName ?? ""),\(personalData?.zipCode ?? "")"
+            param[Constants.ApiKeys.address1] =  "\(personalData?.streetNumber ?? ""),\(personalData?.streetName ?? ""),\(personalData?.CityName ?? ""),\(personalData?.stateName ?? ""),\(personalData?.zipCode ?? "")"
             param[Constants.ApiKeys.city] =  personalData?.CityName ?? ""
             param[Constants.ApiKeys.state] =  personalData?.stateName ?? ""
             param[Constants.ApiKeys.zip_code] =  personalData?.zipCode ?? ""
@@ -52,7 +52,6 @@ class PersonalDataVM{
             param[Constants.ApiKeys.income_source] =  personalData?.sourceOfIncome ?? ""
             param[Constants.ApiKeys.occupation] =  personalData?.workIndustry ?? ""
             param[Constants.ApiKeys.incomeRange] =  personalData?.annualIncome?.replacingOccurrences(of: "k€/month", with: "") ?? ""
-            param[Constants.ApiKeys.personalAssets] =   personalData?.personalAssets?.replacingOccurrences(of: " assets", with: "") ?? ""
         }
         
 //        param[Constants.ApiKeys.personal_info_step] =  profile_info_step
@@ -70,9 +69,8 @@ class PersonalDataVM{
         
         var param: [String: Any] = [:]
         if profile_info_step == 4{
-//            param[Constants.ApiKeys.address1] =  "\(personalData?.streetNumber ?? ""),\(personalData?.buildingFloor ?? ""),\(personalData?.CityName ?? ""),\(personalData?.stateName ?? ""),\(personalData?.zipCode ?? "")"
-            param[Constants.ApiKeys.streetNumber] =  Int(personalData?.streetNumber ?? "")
-            param[Constants.ApiKeys.street] =  personalData?.buildingFloor ?? ""
+            param[Constants.ApiKeys.streetNumber] = personalData?.streetNumber ?? ""
+            param[Constants.ApiKeys.street] =  personalData?.streetName ?? ""
             param[Constants.ApiKeys.city] =  personalData?.CityName ?? ""
             param[Constants.ApiKeys.stateOrProvince] =  personalData?.stateName ?? ""
             param[Constants.ApiKeys.zipCode] =  personalData?.zipCode ?? ""
@@ -97,7 +95,6 @@ class PersonalDataVM{
             param[Constants.ApiKeys.incomeSource] =  personalData?.sourceOfIncome ?? ""
             param[Constants.ApiKeys.occupation] =  personalData?.workIndustry ?? ""
             param[Constants.ApiKeys.incomeRange] =  personalData?.annualIncome?.replacingOccurrences(of: "k€/month", with: "") ?? ""
-            param[Constants.ApiKeys.personalAssets] =   personalData?.personalAssets?.replacingOccurrences(of: " assets", with: "") ?? ""
         }
       
         

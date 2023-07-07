@@ -14,5 +14,4 @@ enum investment{
     case sourceOfIncome
     case workIndustry
     case AnnualIncome
-    case personalAssets
 }

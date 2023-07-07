@@ -41,16 +41,16 @@ class ConfirmationVC: ViewController {
         
         CommonUI.setUpLbl(lbl: self.confirmationLbl, text: "Confirmation", textColor: UIColor.whiteColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.headingLbl, text: "Your deposit has been taken into account", textColor: UIColor.whiteColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.subHeadingLbl, text: "You can now see its effect on your portfolio.", textColor: UIColor.whiteColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        
-        CommonUI.setUpButton(btn: self.ThanksBtn, text: "Thanks", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.subHeadingLbl, text: CommonFunctions.localisation(key: "SEE_EFFECTS_PORTFOLIO"), textColor: UIColor.whiteColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.subHeadingLbl.numberOfLines = 0
+		CommonUI.setUpButton(btn: self.ThanksBtn, text: CommonFunctions.localisation(key: "THANKS"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         
         if confirmationType == .Buy{
             self.headingLbl.text = "You have successfully bought \(coinInvest ?? "")."
         }else if confirmationType == .Sell{
             self.headingLbl.text = "You have successfully sold \(coinInvest ?? "")."
         }else if confirmationType == .Withdraw{
-            self.headingLbl.text = "Amount has been withdrawn from your account."
+			self.headingLbl.text = CommonFunctions.localisation(key: "AMOUNT_WITHDRAW_ACCOUNT")
         }else{
             
         }

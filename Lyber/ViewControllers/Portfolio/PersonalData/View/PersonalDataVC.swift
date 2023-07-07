@@ -16,7 +16,7 @@ class PersonalDataVC: ViewController {
     var currentPage : Int = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
-    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),email = String(),emailPassword = String(),streetNumber = String(),buildingFloor = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),personalAssets = String(),isEditData = false
+    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),email = String(),emailPassword = String(),streetNumber = String(),streetName = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),isEditData = false
 //    var personalData : [personalDataStruct] = []
     var personalData : personalDataStruct?,userPersonalDetail : UserPersonalData?
     
@@ -72,7 +72,7 @@ class PersonalDataVC: ViewController {
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
-        self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
+        self.nextButton.addTarget(self, action: #selector(nextButtonAct), for: .touchUpInside)
         
 
         goToStep()
@@ -104,23 +104,13 @@ extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             }
             return cell
         }else if indexPath.item == 2{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VerificationEmailCVC", for: indexPath as IndexPath) as! VerificationEmailCVC
-            cell.controller = self
-            cell.setUpCell()
-            cell.verificationEmailCallBack = {[]otp in
-                self.checkEmailVerification(code : otp)
-            }
-            
-            return cell
-
-        }else if indexPath.item == 3{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addressCVC", for: indexPath as IndexPath) as! addressCVC
             cell.controller = self
             if isEditData{
                 cell.setPersonalDate(data: self.userPersonalDetail )
             }
             return cell
-        }else if indexPath.item == 4{
+        }else if indexPath.item == 3{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InvestmentExperienceCVC", for: indexPath as IndexPath) as! InvestmentExperienceCVC
             cell.controller = self
             if isEditData{
@@ -152,25 +142,17 @@ extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, 
 //MARK: - objective functions
 extension PersonalDataVC{
     @objc func backBtnAct(){
-        
-		if self.currentPage == 2{
-			GotoPreviousIndex()
-			self.nextButton.isHidden = false
-		}else{
-			self.dismiss(animated: true, completion: nil)
-		}
+		self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func nextBtnAct(){
+    @objc func nextButtonAct(){
             if currentPage == 0{
                 checkPersonalDataValidation()
             }else if currentPage == 1{
                 checkEmailAddressValidation()
             }else if currentPage == 2{
-                
-            }else if currentPage == 3{
                 checkAdddressValidation()
-            }else if currentPage == 4{
+            }else if currentPage == 3{
                 checkInvestmentExperienceValidation()
             }else{
                 GotoNextIndex()
@@ -189,12 +171,12 @@ extension PersonalDataVC{
     }
     
     func goToStep(){
-		if openFromLink == true{
+		/*if openFromLink == true{
 			DispatchQueue.main.async {
 				let indexPath = NSIndexPath(item: 2, section: 0)
 				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 			}
-		}else{
+		}else{*/
 			if userData.shared.personalDataStepComplete == 1{
 				DispatchQueue.main.async {
 					let indexPath = NSIndexPath(item: 1, section: 0)
@@ -202,16 +184,16 @@ extension PersonalDataVC{
 				}
 			}else if userData.shared.personalDataStepComplete == 3{
 				DispatchQueue.main.async {
-					let indexPath = NSIndexPath(item: 3, section: 0)
+					let indexPath = NSIndexPath(item: 2, section: 0)
 					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 				}
 			}else if userData.shared.personalDataStepComplete == 4{
 				DispatchQueue.main.async {
-					let indexPath = NSIndexPath(item: 4, section: 0)
+					let indexPath = NSIndexPath(item: 3, section: 0)
 					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 				}
 			}
-		}
+		//}
             
         
     }
@@ -259,16 +241,10 @@ extension PersonalDataVC{
 			if self.currentPage == 1{
 				self.nextButton.isUserInteractionEnabled = false
 				self.nextButton.backgroundColor = .gray
-			}else if self.currentPage == 2{
-                self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
-                self.nextButton.isHidden = true
-            }else{
+			}else{
                 self.nextButton.isHidden = false
                 self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
                 self.headerView.backBtn.setImage(Assets.close.image(), for: .normal)
-                if self.currentPage == 4{
-                    self.nextButton.setTitle(CommonFunctions.localisation(key: "SEND_TO_LYBER"), for: .normal)
-                }
             }
         
         }
@@ -325,33 +301,23 @@ extension PersonalDataVC{
 				userData.shared.dataSave()
                 self?.nextButton.isUserInteractionEnabled = true
                 if response != nil{
-                    self?.GotoNextIndex()
+					//TODO:
+					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+					vc.typeVerification = "email"
+					vc.action = "signup_email"
+					vc.personalDataController = self
+					self?.present(vc, animated: true)
                 }
             })
         }
     }
-    
-    func checkEmailVerification(code: String?){
-        CommonFunctions.showLoader(self.view)
-        personalDataVM.checkEmailVerificationApi(code: code , completion: {[self]response in
-            CommonFunctions.hideLoader(self.view)
-            if (response != nil){
-                    userData.shared.personalDataStepComplete = 3
-                    userData.shared.dataSave()
-                    self.GotoNextIndex()
-            }else{
-                CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
-            }
-            
-        })
-        
-    }
+
     
     func checkAdddressValidation(){
         if self.streetNumber.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             CommonFunctions.toster(Constants.AlertMessages.enterStreetNumber)
-        }else if self.buildingFloor.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunctions.toster(Constants.AlertMessages.enterBuildingFloor)
+        }else if self.streetName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            CommonFunctions.toster(Constants.AlertMessages.enterStreetName)
         }else if self.CityName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterCity)
         }else if self.stateName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
@@ -362,7 +328,7 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.enterCountry)
         }else{
 //            GotoNextIndex()
-            personalData = personalDataStruct(streetNumber: streetNumber, buildingFloor: buildingFloor, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName, investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, personalAssets: personalAssets)
+            personalData = personalDataStruct(streetNumber: streetNumber, streetName: streetName, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName, investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.setAddressApi(profile_info_step : 4,personalData: personalData, completion: {[weak self]response in
@@ -387,10 +353,8 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.chooseWorkIndustry)
         }else if self.annualIncome == ""{
             CommonFunctions.toster(Constants.AlertMessages.chooseAnnualIncome)
-        }else if self.personalAssets == ""{
-            CommonFunctions.toster(Constants.AlertMessages.pleaseSelectPersonalAssets)
         }else{
-            personalData = personalDataStruct(investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, personalAssets: personalAssets)
+            personalData = personalDataStruct(investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
 			personalDataVM.setInvestmentExperienceApi(profile_info_step : 5,personalData: personalData, completion: {[weak self]response in

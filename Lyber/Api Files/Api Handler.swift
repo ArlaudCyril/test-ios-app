@@ -62,8 +62,8 @@ class ApiHandler: NSObject {
         
         
         // MARK:- PRINT ALL REQUESTED DATA
-        print("Requested data :-\n URL: \(NetworkURL().BASE_URL)\(url)\n HttpMethod: \(method)\n Header: \(header)\n Requested Params: \(parameters)\n\n\n\n\n")
-        print("\(NetworkURL().BASE_URL)\(url)")
+		print("Requested data :-\n URL: \(GlobalVariables.baseUrl)\(url)\n HttpMethod: \(method)\n Header: \(header)\n Requested Params: \(parameters)\n\n\n\n\n")
+		print("\(GlobalVariables.baseUrl)\(url)")
         print(parameters)
         print(header)
         print(method)
@@ -78,7 +78,7 @@ class ApiHandler: NSObject {
         if method == .GET || method == .POST || method == .PUT || method == .DELETE{
             
             var kMehod: HTTPMethod?
-			var url = "\(NetworkURL().BASE_URL)\(url)"
+			var url = "\(GlobalVariables.baseUrl)\(url)"
 			var params = parameters
             
             switch method {
@@ -166,7 +166,7 @@ class ApiHandler: NSObject {
             
             let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
             
-			var request = URLRequest(url: URL(string: "\(NetworkURL().BASE_URL)\(url)")!)
+			var request = URLRequest(url: URL(string: "\(GlobalVariables.baseUrl)\(url)")!)
             request.httpBody = jsonData
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("Bearer \(header)", forHTTPHeaderField: "Authorization")
@@ -209,7 +209,10 @@ class ApiHandler: NSObject {
                                 if dict[Constants.ApiKeys.error].stringValue != ""{
                                     print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
 									onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue )
-                                }
+								}else{
+									print(dict[Constants.ApiKeys.message].stringValue)
+									onFailure(false,"-1", dict[Constants.ApiKeys.code].stringValue)
+								}
                             }else if (statusCode == 500 || statusCode == 503){
                                 print("Server Error")
                                 onFailure(false,"Server Error", "500")
@@ -239,7 +242,7 @@ class ApiHandler: NSObject {
                 break
             }
             
-            AF.request("\(NetworkURL().BASE_URL)\(url)", method: kMehod ?? .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseString{ response in
+			AF.request("\(GlobalVariables.baseUrl)\(url)", method: kMehod ?? .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseString{ response in
                 print(response)
                 let statusCode = response.response?.statusCode
                 switch response.result{
@@ -315,7 +318,7 @@ class ApiHandler: NSObject {
                     multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
                 }
                 
-            }, to: "\(NetworkURL().BASE_URL)\(url)", method: kMehod, headers: header).uploadProgress(queue: .main, closure: { progress in
+			}, to: "\(GlobalVariables.baseUrl)\(url)", method: kMehod, headers: header).uploadProgress(queue: .main, closure: { progress in
                 print("Upload Progress: \(progress.fractionCompleted)")
             }).responseJSON(completionHandler: { data in
                 print("upload finished: \(data)")

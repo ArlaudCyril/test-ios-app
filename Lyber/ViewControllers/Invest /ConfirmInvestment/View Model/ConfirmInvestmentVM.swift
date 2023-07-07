@@ -8,7 +8,7 @@
 import Foundation
 
 class ConfirmInvestmentVM{
-    func InvestOnAssetApi(assetId : String ,assetName : String,amount : Double,assetAmount : Double,frequency: String,completion: @escaping ( (SuccessAPI?) -> Void )){
+    func InvestOnAssetApi(assetId : String ,assetName : String,amount : Double,assetAmount : Decimal,frequency: String,completion: @escaping ( (SuccessAPI?) -> Void )){
         
         var params : [String : Any] = [:]
         params[Constants.ApiKeys.asset_id] = assetId
@@ -67,7 +67,7 @@ class ConfirmInvestmentVM{
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func SellApi(assetId: String,amount : Double,assetAmount : Double,completion: @escaping ( (SuccessAPI?) -> Void )){
+    func SellApi(assetId: String,amount : Decimal,assetAmount : Decimal,completion: @escaping ( (SuccessAPI?) -> Void )){
         var params : [String : Any] = [:]
         params[Constants.ApiKeys.asset_id] = assetId
         params[Constants.ApiKeys.amount] = "\(amount)"

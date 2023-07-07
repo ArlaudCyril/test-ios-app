@@ -16,10 +16,10 @@ class PortfolioDetailVC: SwipeGesture {
     var assetDetailData : AssetDetailApi?
     var assetId : String = ""
     var infoData : [InfoModel] = [
-        InfoModel(name: CommonFunctions.localisation(key: "MARKETCAP"), value: "72 083 593 181,6€"),
-        InfoModel(name: CommonFunctions.localisation(key: "VOLUME"), value: "72 083 593 181,6€"),
-        InfoModel(name: CommonFunctions.localisation(key: "CIRCULATING_SUPPLY"), value: "72 083 593 181,6€"),
-        InfoModel(name: CommonFunctions.localisation(key: "POPULARITY"), value: "72"),]
+        InfoModel(name: CommonFunctions.localisation(key: "MARKETCAP"), value: ""),
+        InfoModel(name: CommonFunctions.localisation(key: "VOLUME"), value: ""),
+        InfoModel(name: CommonFunctions.localisation(key: "CIRCULATING_SUPPLY"), value: ""),
+        InfoModel(name: CommonFunctions.localisation(key: "POPULARITY"), value: ""),]
     var portfolioDetailVM = PortfolioDetailVM()
     var chartData : chartData?
     var chartDurationTime = chartType.oneHour.rawValue
@@ -33,6 +33,7 @@ class PortfolioDetailVC: SwipeGesture {
 	var previousController = UIViewController()
 	static var view : UIView?
 	static var staticTblView : UITableView?
+	static var exchangeFinished = false
 	var timer = Timer()
 	
 	//ConfirmInvestmentVC
@@ -56,10 +57,10 @@ class PortfolioDetailVC: SwipeGesture {
 				CommonFunctions.showLoaderCheckbox(self.view)
 				PortfolioDetailVC.staticTblView = self.tblView
 				PortfolioDetailVC.view = self.view
-				if(userData.shared.is_push_enabled != 1)//notifications desactivated
-				{
-					self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
-				}
+				//if(userData.shared.is_push_enabled != 1)//notifications desactivated
+				//{
+				self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+				//}
 				
 			}
 		}
@@ -76,6 +77,7 @@ class PortfolioDetailVC: SwipeGesture {
 		self.callChartApi(duration: self.chartDurationTime)
 		callResoucesApi()
 		setUpUI()
+		PortfolioDetailVC.exchangeFinished = false
 	}
 	
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -317,7 +319,7 @@ extension PortfolioDetailVC{
 			if((response) != nil)
 			{
 				self.infoData[0].value = "\(response?.data?.marketCap ?? "")€"
-				self.infoData[1].value = "\(response?.data?.volume24H ?? "")€"
+				self.infoData[1].value = "\(response?.data?.volume24h ?? "")€"
 				self.infoData[2].value = "\(response?.data?.circulatingSupply ?? "") \(self.assetId.uppercased() )"
 				self.infoData[3].value = "#\(response?.data?.marketRank ?? 0)"
 			}
@@ -366,12 +368,15 @@ extension PortfolioDetailVC{
 	}
 	
 	static func transactionFinished(success: Bool){
-		if success == true  {
-			CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: true)
-			self.callWalletGetBalance()
-			
-		}else{
-			CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: false)
+		if(PortfolioDetailVC.exchangeFinished != true){
+			PortfolioDetailVC.exchangeFinished = true
+			if success == true  {
+				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: true)
+				self.callWalletGetBalance()
+				
+			}else{
+				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: false)
+			}
 		}
 	}
 }

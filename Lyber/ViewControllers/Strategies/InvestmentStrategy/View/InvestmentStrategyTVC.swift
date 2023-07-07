@@ -100,8 +100,8 @@ extension InvestmentStrategyTVC{
 			if(data?.risk != nil && data?.expectedYield != nil)
             {
                 informationHeight += 50
-                self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "RISK"), secondStr: data?.risk?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
-                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "YIELD"), secondStr: data?.expectedYield?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "RISK")) : ", secondStr: data?.risk?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "YIELD")) : ", secondStr: data?.expectedYield?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 defaultStrategyView.isHidden = false
                     
             }
@@ -110,9 +110,9 @@ extension InvestmentStrategyTVC{
             if(data?.activeStrategy != nil)
             {
                 informationHeight += 50
-                self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "FREQUENCY"), secondStr: CommonFunctions.frequenceDecoder(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr:" \(CommonFunctions.localisation(key: "FREQUENCY")) : ", secondStr: CommonFunctions.frequenceDecoder(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 
-                self.amountLbl.attributedText = CommonUI.showAttributedString(firstStr: CommonFunctions.localisation(key: "AMOUNT"), secondStr: String(data?.activeStrategy?.amount ?? 0)+"€", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.amountLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "AMOUNT")) : ", secondStr: String(data?.activeStrategy?.amount ?? 0)+"€", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 
                 activeStrategyView.isHidden = false
             }

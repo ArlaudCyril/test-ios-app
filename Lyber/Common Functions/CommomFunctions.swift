@@ -444,6 +444,32 @@ class CommonFunctions{
         let stringValue = String(format: "%.2f", number)
         return Double(stringValue)!
     }
+	static func getTwoDecimalValueDecimal(number: Decimal) -> Decimal{
+		if(number.isNaN)
+		{
+			return 0
+		}
+		let stringValue = String(format: "%.2f", number as CVarArg)
+		return Decimal(string: stringValue)!
+    }
+	
+	static func getFormatedPrice(number: Double) -> String{
+		if(number.isNaN)
+		{
+			return "0.00"
+		}
+        let stringValue = String(format: "%.2f", number)
+        return stringValue
+    }
+	
+	static func getFormatedPriceDecimal(number: Decimal) -> String{
+		if(number.isNaN)
+		{
+			return "0.00"
+		}
+		let stringValue = number.description
+        return stringValue
+    }
     
     static func formattedCurrency(from value: Double?) -> String {
         guard value != nil else { return "0.00€" }
@@ -528,6 +554,34 @@ class CommonFunctions{
 		return stringFormatted
 	}
 	
+	static func formattedAssetDecimal(from value: Decimal?, price: Decimal?, rounding : NumberFormatter.RoundingMode = .down) -> String {
+		guard value != nil else { return "0.00" }
+		guard (price != nil && price != 0 && ((price?.isNaN) != true)) else { return "0.00" }
+		let formatter = NumberFormatter()
+		
+		//To find the precision, here X
+		//Price * 10e-X >= 0.01(pennies)
+		//=> X  >= -log(0,01/Price)
+		let precision = Int(ceil(-log10(0.01/NSDecimalNumber(decimal: price ?? 1).doubleValue)))
+		if(precision > 0){
+			formatter.maximumFractionDigits = precision
+			formatter.minimumFractionDigits =  precision
+		}else{
+			formatter.maximumFractionDigits = 0
+			formatter.minimumFractionDigits =  0
+		}
+		
+		formatter.groupingSeparator = ","
+		formatter.groupingSize = 3
+		formatter.usesGroupingSeparator = true
+		formatter.decimalSeparator = "."
+		formatter.roundingMode = rounding
+	
+		//        formatter.numberStyle = .decimal
+		let stringFormatted = formatter.string(from: NSDecimalNumber(decimal: value ?? 0.00)) ?? "0"
+		
+		return stringFormatted
+	}
 	
     
     static func numberFormat(from value: Double?) -> String {

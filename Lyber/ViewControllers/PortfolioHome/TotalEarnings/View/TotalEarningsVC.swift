@@ -41,7 +41,7 @@ class TotalEarningsVC: ViewController {
         self.backBtn.layer.cornerRadius = 12
         if returnOnInvestment == true{
             CommonUI.setUpButton(btn: self.dropdownBtn, text: "  \(CommonFunctions.localisation(key: "RETURN_ON_INVESTMENT"))  ", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            CommonUI.setUpLbl(lbl: totalEarningLbl, text: "Yield", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: totalEarningLbl, text: "\(CommonFunctions.localisation(key: "YIELD")) : ", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: euroLbl, text: "5.01%", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
             CommonUI.setUpLbl(lbl: yieldLbl, text: "Total earnings: 0.00€", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))
         }else{

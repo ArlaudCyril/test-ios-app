@@ -21,8 +21,6 @@ class SocketKey {
 class SocketIOManager: NSObject {
     static let sharedInstance = SocketIOManager()
     var socket: SocketIOClient!
-   // appConstantURL().BASE_URL.replacingOccurrences(of: "/api/", with: ""))!
-//    var manager = SocketManager(socketURL: URL(string: ApiEnviorment.socketUrl)!, config: [.log(true), .forceWebsockets(true)])
     
     let manager = SocketManager(socketURL: URL(string: "ws://52.47.162.87/websocket/btceur")!, config: [.log(true), .compress])
     

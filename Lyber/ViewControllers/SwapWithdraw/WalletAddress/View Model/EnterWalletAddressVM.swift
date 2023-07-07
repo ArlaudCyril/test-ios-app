@@ -21,7 +21,7 @@ class EnterWalletAddressVM{
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func withdrawFiatApi(amount : Double,completion: @escaping ( (SuccessAPI?) -> Void )){
+    func withdrawFiatApi(amount : Decimal,completion: @escaping ( (SuccessAPI?) -> Void )){
         let params : [String : Any] = [Constants.ApiKeys.amount : amount]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.treezorWithdrawFiat, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)

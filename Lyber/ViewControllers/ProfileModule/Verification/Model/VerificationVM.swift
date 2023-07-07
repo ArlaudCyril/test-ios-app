@@ -39,13 +39,16 @@ class VerificationVM{
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 	
-	func walletCreateWithdrawalRequest(otp: String?, data: [String : Any] ,onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
-        let params : [String : Any] = [Constants.ApiKeys.otp : otp ?? "",
-									   Constants.ApiKeys.asset : data["assetId"] ?? "",
+	func walletCreateWithdrawalRequest(otp: String? = "", data: [String : Any] ,onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
+        var params : [String : Any] = [Constants.ApiKeys.asset : data["assetId"] ?? "",
 									   Constants.ApiKeys.amount : data["amount"] ?? "",
 									   Constants.ApiKeys.destination : data["destination"] ?? "",
 									   Constants.ApiKeys.network : data["network"] ?? ""]
         
+		if(otp != ""){
+			params[Constants.ApiKeys.otp] = otp ?? ""
+		}
+		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceWithdraw, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             print(response)
             onSuccess(response)

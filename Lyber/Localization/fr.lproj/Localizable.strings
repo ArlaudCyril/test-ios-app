@@ -71,7 +71,6 @@
 "VIEW_ALL_AVAILABLE_ASSETS" = "Voir les 16 actifs disponibles";
 "ALLOCATION" = "Allocation";
 "AUTO" = "Auto";
-"SAVE_MY_STRATEGY" = "Sauvegarder ma stratégie";
 "YOUR_STRATEGY_READY_TO_BE_SAVED" = "Votre stratégie est prête à être sauvegardée.";
 "ASSET" = "Actif";
 "NETWORK" = "Réseau";
@@ -82,8 +81,8 @@
 "YOUR_ALLOCATION_IS_LESS_THAN" = "Votre allocation est inférieure à 100%, ajoutez";
 "INVESTMENT_STRATEGIES" = "Stratégies d'investissement";
 "STRATEGIES_ARE_THERE_TO_HELP_YOU" = "Les stratégies sont là pour vous aider à diluer vos investissements sur plusieurs actifs.";
-"YIELD" = "Rendement : ";
-"RISK" = "Risque :";
+"YIELD" = "Rendement";
+"RISK" = "Risque";
 
 
 //MARK: - PORTFOLIO HOME;
@@ -137,7 +136,7 @@
 "FIRST_NAME" = "Prénom";
 "LAST_NAME" = "Nom";
 "BIRTH_PLACE" = "Lieu de naissance";
-"PERSONAL_DATA" = "DONNÉES PERSONNELLES";
+"PERSONAL_DATA" = "Données personnelles";
 "FOR_LEGAL_REASONS" = "Pour des raisons juridiques, nous avons besoin que vous répondiez à certaines questions et que vous nous fournissiez des informations personnelles.";
 "CARD_HOLDER_NAME" = "Nom du titulaire de la carte";
 "BIRTH_DATE" = "Date de naissance";
@@ -155,9 +154,9 @@
 "ADDRESS" = "Adresse";
 "TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL" = "Nous avons besoin de ces informations pour nous assurer que les services de crypto-monnaie sont légaux dans votre pays de résidence.";
 "STREET_NUMBER" = "Numéro de rue";
-"BUILDING_FLOOR" = "Bâtiment, étage";
+"STREET_NAME" = "Nom de la rue";
 "CITY" = "Ville";
-"STATE" = "État";
+"DEPARTMENT" = "Département";
 "ZIPCODE" = "Code postal";
 "COUNTRY" = "Pays";
 "INVESTMENT_EXPERIENCE" = "Expérience en matière d'investissement";
@@ -335,7 +334,8 @@
 "CARD_NUMBER" = "Numéro de carte";
 "EXPIRE" = "Expirer";
 "CVV" = "CVV";
-"ADD" = "Ajouter";
+"ADD_CRYPTO_ADDRESS_PART1" = "Ajouter une adresse";
+"ADD_CRYPTO_ADDRESS_PART2" = "";
 "ADDING_NEW_CARD_ACCEPT_TERMS_CONDITIONS" = "En ajoutant une nouvelle carte, vous acceptez les termes et conditions.";
 "VERIFICATION" = "Vérification";
 "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR" = "Entrez le code affiché par Google Authenticator";
@@ -424,7 +424,7 @@
 "ALERT_VALID_EMAIL" = "Veuillez saisir une adresse électronique valide";
 "ALERT_STREET_NUMBER" = "Veuillez saisir le numéro de rue";
 "ALERT_FREQUENCY" = "Veuillez sélectionner la fréquence";
-"ALERT_BUILDING_FLOOR" = "Veuillez saisir le numéro du bâtiment et de l'étage";
+"ALERT_STREET_NAME" = "Veuillez saisir le nom de la rue";
 "ALERT_CITY_NAME" = "Veuillez saisir le nom de la ville";
 "ALERT_ZIP_CODE" = "Veuillez saisir le code postal";
 "ALERT_COUNTRY" = "Veuillez saisir le nom du pays";
@@ -468,6 +468,9 @@
 
 //MARK: - Withdraw
 "DEACTIVATED" = "Désactivé";
+"AMOUNT_WITHDRAW_ACCOUNT" = "Le montant a été retiré de votre compte.";
+"SEE_EFFECTS_PORTFOLIO" = "Vous pouvez maintenant voir son effet sur votre portefeuille.";
+"THANKS" = "Merci";
 
 //MARK: - UNITS
 

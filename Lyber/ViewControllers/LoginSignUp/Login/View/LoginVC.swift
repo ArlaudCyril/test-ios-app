@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class LoginVC: ViewController {
+	let audioSession = AVAudioSession.sharedInstance()
+	private var audioLevel : Float = 0.0
+	
     //MARK: - IB OUTLETS
     @IBOutlet var backgroundImgVw: UIImageView!
     @IBOutlet var titleLbl: UILabel!
@@ -18,6 +23,45 @@ class LoginVC: ViewController {
         super.viewDidLoad()
         setUpUI()
     }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		do {
+			try audioSession.setActive(true, options: [])
+			audioSession.addObserver(self, forKeyPath: "outputVolume",
+									 options: NSKeyValueObservingOptions.new, context: nil)
+			audioLevel = audioSession.outputVolume
+		} catch {
+			print("Error")
+		}
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		audioSession.removeObserver(self, forKeyPath: "outputVolume")
+		
+	}
+
+	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+		if keyPath == "outputVolume"{
+			let audioSession = AVAudioSession.sharedInstance()
+
+			if audioSession.outputVolume < audioLevel {
+				if(GlobalVariables.baseUrl == ApiEnvironment.Staging.rawValue){
+					CommonFunctions.toster("Environnement changé à : Production")
+					GlobalVariables.baseUrl = ApiEnvironment.Production.rawValue
+	
+				}else if(GlobalVariables.baseUrl == ApiEnvironment.Production.rawValue){
+					CommonFunctions.toster("Environnement changé à : Dev")
+					GlobalVariables.baseUrl = ApiEnvironment.Dev.rawValue
+	
+				}else{
+					CommonFunctions.toster("Environnement changé à : Staging")
+					GlobalVariables.baseUrl = ApiEnvironment.Staging.rawValue
+				}
+			}
+			audioLevel = audioSession.outputVolume
+		}
+	}
 	//MARK: - SetUpUI
     override func setUpUI(){
         CommonUI.setUpLbl(lbl: titleLbl, text: CommonFunctions.localisation(key: "LYBER_REINVENTED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XVLarge.sizeValue()))
@@ -58,4 +102,12 @@ extension LoginVC{
         nav.navigationBar.isHidden = true
         self.present(nav, animated: true, completion: nil)
     }
+	
+	@objc func volumeDidChange(_ notification: Notification) {
+		// Handle the volume change
+		if let audioSession = notification.object as? AVAudioSession {
+			let newVolume = audioSession.outputVolume
+			print("New volume: \(newVolume)")
+		}
+	}
 }

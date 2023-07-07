@@ -15,7 +15,9 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 	var action : String?
 	var dataWithdrawal : [String : Any]?
 	var controller : ViewController?
+	var personalDataController : PersonalDataVC?
 	var verificationCallBack : ((String)->())?
+	var scopes : [String] = []
     
     
     //MARK: - IB OUTLETS
@@ -166,6 +168,7 @@ extension VerificationVC{
 			VerificationVM().walletCreateWithdrawalRequest(otp: code, data: dataWithdrawal ?? [:], onSuccess:{[]response in
                 if response != nil{
 					self.dismiss(animated: true)
+					CommonFunctions.callWalletGetBalance()
 					let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 					vc.confirmationType = .Withdraw
 					vc.confirmInvesmtentController = self.controller
@@ -180,6 +183,20 @@ extension VerificationVC{
 					}
 				}
 			})
+        }else if(self.action == "changeScope"){
+			StrongAuthVM().scope2FAApi(scopes: scopes, otp: code, completion: {[]response in
+				if response != nil{
+					self.dismiss(animated: true)
+					self.verificationCallBack?(code)
+				}
+				
+			}, onFailure: {[]response in
+				if response != nil{
+					if(response?.code != "24"){
+						self.dismiss(animated: true)
+					}
+				}
+			})
         }else if(self.action == "signup"){
 			EnterPhoneVM().enterOTPApi(otp: code, completion: {[weak self]response in
 				if let response = response{
@@ -191,6 +208,20 @@ extension VerificationVC{
 					vc.isDoubleAuthentified = true
 					self?.controller?.navigationController?.pushViewController(vc, animated: true)
 				}
+			})
+        }else if(self.action == "signup_email"){
+			CommonFunctions.showLoader(self.view)
+			PersonalDataVM().checkEmailVerificationApi(code: code , completion: {[self]response in
+				CommonFunctions.hideLoader(self.view)
+				if (response != nil){
+					userData.shared.personalDataStepComplete = 3
+					userData.shared.dataSave()
+					self.dismiss(animated: true)
+					self.personalDataController?.GotoNextIndex()
+				}else{
+					CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+				}
+				
 			})
         }else if(self.action == "verificationCallback"){
 			self.dismiss(animated: true)
@@ -215,26 +246,4 @@ extension VerificationVC{
     }
 
 }
-
-//MARK: - Preview
-/*struct GoogleAuthenticatorVerificationVC_Preview: PreviewProvider{
-    static var previews: some View{
-        GoogleAuthenticatorVerificationVCRep()
-    }
-}
-
-struct GoogleAuthenticatorVerificationVCRep: ViewControllerRepresentable {
-    func makeViewController(context: Context) -> VerificationVC {
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "GoogleAuthenticatorVerificationVC") as? VerificationVC else{
-            fatalError("Cannot load ViewController")
-        }
-        return vc
-
-    }
-    
-    func updateViewController(_ ViewController: VerificationVC, context: Context) {
-        
-    }
-}*/
 

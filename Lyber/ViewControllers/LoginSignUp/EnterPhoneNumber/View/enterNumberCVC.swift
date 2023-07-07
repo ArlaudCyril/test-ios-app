@@ -67,10 +67,8 @@ extension enterNumberCVC{
 		
         countryPickerVw.delegate = self
         countryPickerVw.dataSource = self
-		countryPickerVw.flagImageView.isHidden = true
-		countryPickerVw.showCountryCodeInView = false
-		countryPickerVw.showPhoneCodeInView = false
-		
+        countryPickerVw.customizeView()
+				
     }
 
 }

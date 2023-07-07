@@ -7,10 +7,10 @@
 
 import Foundation
 class InvestInMyStrategyVM{
-	func ordersGetQuoteApi(fromAssetId : String ,toAssetId : String,exchangeFromAmount : Double,completion: @escaping ( (QuoteAPI?) -> Void )){
+	func ordersGetQuoteApi(fromAssetId : String ,toAssetId : String,exchangeFromAmount : Decimal,completion: @escaping ( (QuoteAPI?) -> Void )){
 		let params : [String : Any] = [Constants.ApiKeys.fromAsset : fromAssetId,
 									   Constants.ApiKeys.toAsset : toAssetId,
-									   Constants.ApiKeys.fromAmount : String(exchangeFromAmount)]
+									   Constants.ApiKeys.fromAmount : exchangeFromAmount.description]
 		
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceQuote, withParameters: params, ofType: QuoteAPI.self, onSuccess: { response in
 			completion(response)
