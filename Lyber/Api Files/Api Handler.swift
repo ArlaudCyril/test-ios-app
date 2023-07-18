@@ -40,24 +40,21 @@ class ApiHandler: NSObject {
     // MARK:- THIS METHOD RETURN RESPONSE IN CODEABLE
     static func callApiWithParameters<T:Codable>(url: String , withParameters parameters: [String: Any], ofType : T.Type, onSuccess:@escaping (T)->(), onFailure: @escaping (Bool, String, String)->(), method: ApiMethod, img: [UIImage]? , imageParamater: [String]?, headerType: String){
         
-        var header : HTTPHeaders = [
-            
-        ]
-        
+		var header : HTTPHeaders = []
         userData.shared.getData()
         
         // MARK: - HEADER CREATED, YOU CAN ALSO SEND YOUR CUSTOM HEADER
-        
-        switch headerType {
-            case "user":
-                header = [.authorization("Bearer \(userData.shared.userToken)")]
-            case "registration":
-                header = [.authorization("Bearer \(userData.shared.registrationToken)")]
-            case "none":
-                break
-            default:
-                print("error, headerType not recognised")
-        }
+		header.add(name: "X-Api-Version", value: Constants.apiVersion)
+		switch headerType {
+			case "user":
+				header.add(name: "Authorization", value: "Bearer \(userData.shared.userToken)")
+			case "registration":
+				header.add(name: "Authorization", value: "Bearer \(userData.shared.registrationToken)")
+			case "none":
+				break
+			default:
+				print("error, headerType not recognized")
+		}
             
         
         

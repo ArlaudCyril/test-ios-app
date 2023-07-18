@@ -12,6 +12,8 @@ import Branch
 import UserNotifications
 import SDWebImage
 import SDWebImageSVGKitPlugin
+import FirebaseCore
+import FirebaseCrashlytics
 
 
 @main
@@ -21,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         IQKeyboardManager.shared.enable = true
         UNUserNotificationCenter.current().delegate = self
 		SDImageCodersManager.shared.addCoder(SDImageSVGKCoder.shared)
+		FirebaseApp.configure()
+		Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
         
         return true
     }
@@ -46,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 		let lyberId = acme2.object(forKey: "lyberId") as? Int {
 			if(lyberId == 2002)
 			{//transaction success
-				//TODO:
 				PortfolioDetailVC.transactionFinished(success: true)
 			}
 			else if(lyberId == 2003){//transaction failure

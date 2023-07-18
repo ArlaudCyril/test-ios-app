@@ -17,7 +17,7 @@ class InvestmentStrategyTVC: UITableViewCell {
     //MARK: - IB OUTLETS
     @IBOutlet var strategyVw: UIView!
     @IBOutlet var strategyTypeLbl: UILabel!
-    @IBOutlet var selectStrategyBtn: UIButton!
+    @IBOutlet var activatedLbl: UILabel!
     @IBOutlet var riskLbl: UILabel!
     @IBOutlet var riskIcon: UIImageView!
     @IBOutlet var yieldLbl: UILabel!
@@ -50,6 +50,7 @@ extension InvestmentStrategyTVC{
         defaultStrategyView.isHidden = true
         activeStrategyView.isHidden = true
         informationsView.isHidden = true
+		activatedLbl.isHidden = true
         
         CommonUI.setUpViewBorder(vw: strategyVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.greyColor.cgColor)
         CommonUI.setUpLbl(lbl: self.strategyTypeLbl, text: data?.name ?? "", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
@@ -72,24 +73,11 @@ extension InvestmentStrategyTVC{
         if data?.isSelected == true{
             strategyVw.layer.backgroundColor = UIColor.LightPurple.cgColor
             strategyVw.layer.borderColor = UIColor.PurpleColor.cgColor
-            
-            if data?.activeStrategy != nil{
-                selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
-                selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
-            }
-            else{
-                selectStrategyBtn.backgroundColor = UIColor.LightPurple
-            }
-            
-        }else{
-            if data?.activeStrategy != nil{
-                selectStrategyBtn.layer.cornerRadius = selectStrategyBtn.frame.height/2
-                selectStrategyBtn.backgroundColor = UIColor.UIColorFromRGB(rgbValue: 0x1EB35A)
-            }
-            else{
-                selectStrategyBtn.backgroundColor = UIColor.systemBackground
-            }
         }
+		if data?.activeStrategy != nil{
+			activatedLbl.isHidden = false
+			CommonUI.setUpLbl(lbl: self.activatedLbl, text: CommonFunctions.localisation(key: "ENABLED"), textColor: UIColor.green_500, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+		}
         
         //MARK: - Default strategy and Active strategy
         if(data?.activeStrategy != nil || (data?.risk != nil && data?.expectedYield != nil))

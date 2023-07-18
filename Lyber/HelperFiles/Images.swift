@@ -35,6 +35,7 @@ enum Assets : String{
     case drop_up
     case visibility
     case visibility_off
+	case sad_smiley
     
     //coins
     case bitcoin

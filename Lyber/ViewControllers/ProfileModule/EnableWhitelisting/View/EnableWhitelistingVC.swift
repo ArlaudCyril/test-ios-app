@@ -12,8 +12,8 @@ class EnableWhitelistingVC: ViewController {
     var enableWhitelistingVM = EnableWhitelistingVM()
     var timeCallBack : ((SecurityTime?)->())?
     var TimeData : [SecurityTime] = [
-        SecurityTime(id: 1, securityTime: "72_HOURS", time: "72 \(CommonFunctions.localisation(key: "HOURS"))", isSelected: false),
-        SecurityTime(id: 2, securityTime: "24_HOURS", time: "24 \(CommonFunctions.localisation(key: "HOURS"))", isSelected: false),
+        SecurityTime(id: 1, securityTime: "72_HOURS", time: CommonFunctions.localisation(key: "72_HOURS"), isSelected: false),
+        SecurityTime(id: 2, securityTime: "24_HOURS", time: CommonFunctions.localisation(key: "24_HOURS"), isSelected: false),
         SecurityTime(id: 3, securityTime: "NO_EXTRA_SECURITY", time: CommonFunctions.localisation(key: "NO_EXTRA_SECURITY"), isSelected: false)]
     var selectedTime : SecurityTime?
     //MARK: - IB OUTLETS
@@ -47,8 +47,15 @@ class EnableWhitelistingVC: ViewController {
         
         self.tblView.delegate = self
         self.tblView.dataSource = self
-        CommonUI.setUpViewBorder(vw: self.blockView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.blockLbl, text: CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+		
+		if(userData.shared.extraSecurity == "none"){
+			self.blockView.isHidden = true
+		}else{
+			self.blockView.isHidden = false
+			CommonUI.setUpViewBorder(vw: self.blockView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
+			CommonUI.setUpLbl(lbl: self.blockLbl, text: "\(CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER")) \(CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))", textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+		}
+        
         self.saveSettingsBtn.setTitle(CommonFunctions.localisation(key: "SAVE_SETTINGS"), for: .normal)
         self.saveSettingsBtn.backgroundColor = UIColor.TFplaceholderColor
         self.saveSettingsBtn.isUserInteractionEnabled = false
@@ -57,7 +64,7 @@ class EnableWhitelistingVC: ViewController {
         self.saveSettingsBtn.addTarget(self, action: #selector(saveSettingsBtnAct), for: .touchUpInside)
         
 		for index in 0...(TimeData.count - 1){
-			if TimeData[index].securityTime.decoderSecurityTime == userData.shared.extraSecurity{
+			if TimeData[index].securityTime.encoderSecurityTime == userData.shared.extraSecurity{
 				TimeData[index].isSelected = true
 				selectedTime = TimeData[index]
 				self.saveSettingsBtn.backgroundColor = UIColor.PurpleColor
@@ -75,10 +82,10 @@ extension EnableWhitelistingVC{
     
     @objc func saveSettingsBtnAct(){
         self.saveSettingsBtn.showLoading()
-		enableWhitelistingVM.changeWhitelistingSecurityApi(withdrawalLock: self.selectedTime?.securityTime.decoderSecurityTime ?? "", completion: {response in
+		enableWhitelistingVM.changeWhitelistingSecurityApi(withdrawalLock: self.selectedTime?.securityTime.encoderSecurityTime ?? "", completion: {response in
 			self.saveSettingsBtn.hideLoading()
 			if response != nil {
-				userData.shared.extraSecurity = self.selectedTime?.securityTime.decoderSecurityTime ?? ""
+				userData.shared.extraSecurity = self.selectedTime?.securityTime.encoderSecurityTime ?? ""
 				userData.shared.dataSave()
 				self.timeCallBack?(self.selectedTime)
 			}

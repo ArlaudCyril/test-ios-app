@@ -47,6 +47,9 @@ class InvestInMyStrategyVC: ViewController {
     var maxCoinExchange = Double()
 	var minPriceExchange = 1.05
 	var minAmountExchange : Double?
+	//singleCoin || activateStrategy || editActiveStrategy
+	var minInvestPerAsset : Decimal = 20
+	var requiredAmount : Decimal = 0
 	
 	
     
@@ -269,8 +272,14 @@ class InvestInMyStrategyVC: ViewController {
                 self.frequencyDropDown.image = Assets.drop_down.image()
                 self.frequencyImg.image = Assets.calendar_black.image()
                 
-                amountTF.text = "\(strategyData?.activeStrategy?.amount ?? 0) USDT"
-                totalEuroInvested = Decimal(strategyData?.activeStrategy?.amount ?? 0)
+				for asset in self.strategyCoinsData {
+					let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
+					if(newAmount > self.requiredAmount){
+						self.requiredAmount = newAmount
+					}
+				}
+                amountTF.text = "\(requiredAmount) USDT"
+                totalEuroInvested = requiredAmount
                 
                 self.previewMyInvest.backgroundColor = UIColor.PurpleColor
                 self.previewMyInvest.isUserInteractionEnabled = true
@@ -732,9 +741,12 @@ extension InvestInMyStrategyVC {
     
     func goToConfirmInvestment(){
         if strategyType == .singleCoin || strategyType == .activateStrategy || strategyType == .editActiveStrategy{
-            if totalEuroInvested > Decimal(totalEuroAvailable ?? 0){
-				CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_BALANCE"))
-            }else{
+
+			if totalEuroInvested > Decimal(totalEuroAvailable ?? 0){
+				CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDT"))
+			}else if totalEuroInvested < self.requiredAmount{
+				CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.minInvestPerAsset) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
+			}else{
                 self.goToPreviewINvest()
             }
         }else if strategyType == .Exchange{
@@ -771,10 +783,12 @@ extension InvestInMyStrategyVC {
 					vc.fromAssetId = response?.data.fromAsset ?? ""
 					vc.exchangeTo = response?.data.toAsset ?? ""
 					vc.amountFrom = response?.data.fromAmount ?? ""
+					vc.amountFromDeductedFees = response?.data.fromAmountDeductedFees ?? ""
 					vc.amountTo = response?.data.toAmount ?? ""
 					vc.timeLimit = response?.data.validTimestamp ?? 0
 					vc.ratioCoin = response?.data.ratio ?? "0"
 					vc.orderId = response?.data.orderId ?? ""
+					vc.fees = Double(response?.data.fees ?? "")
 					self.navigationController?.pushViewController(vc, animated: true)
 				}
 			})

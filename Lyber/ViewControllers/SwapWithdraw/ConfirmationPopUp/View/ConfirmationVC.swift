@@ -8,10 +8,13 @@
 import UIKit
 
 class ConfirmationVC: ViewController {
-    var controller : EnterWalletAddressVC?
+    var addStrategyController : AddStrategyVC?
     var confirmationType : confirmationPopUp?
     var coinInvest : String?
 	var confirmInvesmtentController : ViewController?
+	
+	var strategy : Strategy?
+	var requiredAmount : Decimal = 0
     //MARK:- IB OUTLETS
     @IBOutlet var outerView: UIView!
     @IBOutlet var bottomView: UIView!
@@ -22,6 +25,7 @@ class ConfirmationVC: ViewController {
     @IBOutlet var headingLbl: UILabel!
     @IBOutlet var subHeadingLbl: UILabel!
     @IBOutlet var ThanksBtn: UIButton!
+    @IBOutlet var YesBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +38,14 @@ class ConfirmationVC: ViewController {
 
     override func setUpUI(){
         self.navigationController?.navigationBar.isHidden = true
+		self.YesBtn.isHidden = true
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.headerView.headerLbl.isHidden = true
         self.headerView.backBtn.setImage(Assets.cancel_white.image(), for: .normal)
         
-        CommonUI.setUpLbl(lbl: self.confirmationLbl, text: "Confirmation", textColor: UIColor.whiteColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.headingLbl, text: "Your deposit has been taken into account", textColor: UIColor.whiteColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.confirmationLbl, text: "Confirmation", textColor: UIColor.whiteColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.headingLbl, text: CommonFunctions.localisation(key: "DEPOSIT_TAKEN_ACCOUNT"), textColor: UIColor.whiteColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.subHeadingLbl, text: CommonFunctions.localisation(key: "SEE_EFFECTS_PORTFOLIO"), textColor: UIColor.whiteColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		self.subHeadingLbl.numberOfLines = 0
 		CommonUI.setUpButton(btn: self.ThanksBtn, text: CommonFunctions.localisation(key: "THANKS"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
@@ -51,9 +56,24 @@ class ConfirmationVC: ViewController {
             self.headingLbl.text = "You have successfully sold \(coinInvest ?? "")."
         }else if confirmationType == .Withdraw{
 			self.headingLbl.text = CommonFunctions.localisation(key: "AMOUNT_WITHDRAW_ACCOUNT")
-        }else{
-            
         }
+		
+		if(self.confirmationType == .Tailoring){
+			self.bottomView.backgroundColor = UIColor.orange
+			self.headerView.backgroundColor = UIColor.orange
+			self.confirmImgView.image = Assets.sad_smiley.image()
+			
+			CommonUI.setUpLbl(lbl: self.confirmationLbl, text: CommonFunctions.localisation(key: "OH_MY"), textColor: UIColor.whiteColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+			
+			self.headingLbl.text = ""
+			self.subHeadingLbl.text = "\(CommonFunctions.localisation(key: "AMOUNT_STRATEGY_INSUFFICIENT")) \(CommonFunctions.localisation(key: "TAILOR_STRATEGY_RAISE_AMOUNT")) (\(self.strategy?.activeStrategy?.amount ?? 0) USDT) \(CommonFunctions.localisation(key: "TO_2")) \(CommonFunctions.getFormatedPriceDecimal(number: self.requiredAmount)) USDT.\n \(CommonFunctions.localisation(key: "AGREE_INCREASE_INVESTMENT"))"
+			
+			self.YesBtn.isHidden = false
+			CommonUI.setUpButton(btn: self.YesBtn, text: CommonFunctions.localisation(key: "YES"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+			CommonUI.setUpButton(btn: self.ThanksBtn, text: CommonFunctions.localisation(key: "NO"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+			
+			self.YesBtn.addTarget(self, action: #selector(YesBtnAct), for: .touchUpInside)
+		}
         
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.ThanksBtn.addTarget(self, action: #selector(ThanksBtnAct), for: .touchUpInside)
@@ -63,14 +83,50 @@ class ConfirmationVC: ViewController {
 extension ConfirmationVC{
     @objc func backBtnAct(){
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     @objc func ThanksBtnAct(){
-		CommonFunctions.callWalletGetBalance()
-        self.dismiss(animated: true, completion: nil)
-		let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-		vc.screenType = .withdraw
-		self.confirmInvesmtentController?.navigationController?.pushViewController(vc, animated: true)
+		if(confirmationType == .Tailoring){
+			self.dismiss(animated: false)
+		}else{
+			CommonFunctions.callWalletGetBalance()
+			self.dismiss(animated: true, completion: nil)
+			let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+			vc.screenType = .withdraw
+			self.confirmInvesmtentController?.navigationController?.pushViewController(vc, animated: true)
+		}
+		
+    }
+	
+	@objc func YesBtnAct(){
+		//change amount
+		if(Decimal(totalEuroAvailable ?? 0) > self.requiredAmount)
+		{
+			ConfirmInvestmentVM().editActiveStrategyApi(strategyName: self.strategy?.name ?? "", amount: NSDecimalNumber(decimal: self.requiredAmount).doubleValue, frequency: self.strategy?.activeStrategy?.frequency ?? "", ownerUuid: self.strategy?.ownerUuid ?? "",completion: {response in
+				if response != nil{
+					//update number assets
+					AddStrategyVM().tailorStrategyApi(newStrategy: self.strategy ?? Strategy(), completion: {[]response in
+						if response != nil{
+							self.dismiss(animated: true, completion: nil)
+							
+							self.addStrategyController?.dismiss(animated: true, completion: nil)
+							for i in 0...((self.addStrategyController?.investmentStrategyController?.invstStrategyData.count ?? 0) - 1) {
+								if(self.addStrategyController?.investmentStrategyController?.invstStrategyData[i].name == self.strategy?.name)
+								{
+									self.addStrategyController?.investmentStrategyController?.invstStrategyData[i] = self.strategy ?? Strategy()
+								}
+							}
+							self.addStrategyController?.investmentStrategyController?.tblView.reloadData()
+						}
+					})
+				}
+			})
+		}else{
+			self.dismiss(animated: true)
+			CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDT"))
+		}
+		
+		
+		
     }
 }

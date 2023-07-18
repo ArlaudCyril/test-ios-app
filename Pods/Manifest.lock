@@ -42,13 +42,6 @@ PODS:
   - SwiftyJSON (5.0.1)
   - SwiftySRP (3.1):
     - FFDataWrapper (~> 2.2)
-  - YYCache (1.0.4)
-  - YYImage (1.0.4):
-    - YYImage/Core (= 1.0.4)
-  - YYImage/Core (1.0.4)
-  - YYWebImage (1.0.5):
-    - YYCache
-    - YYImage
 
 DEPENDENCIES:
   - ADCountryPicker
@@ -75,7 +68,6 @@ DEPENDENCIES:
   - SwiftyGif
   - SwiftyJSON
   - SwiftySRP
-  - YYWebImage
 
 SPEC REPOS:
   trunk:
@@ -106,9 +98,6 @@ SPEC REPOS:
     - SwiftyGif
     - SwiftyJSON
     - SwiftySRP
-    - YYCache
-    - YYImage
-    - YYWebImage
 
 SPEC CHECKSUMS:
   ADCountryPicker: 502cee76a30ea1c3834eb0df170ce635691655c9
@@ -138,10 +127,7 @@ SPEC CHECKSUMS:
   SwiftyGif: 93a1cc87bf3a51916001cf8f3d63835fb64c819f
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftySRP: 628ba1b2bfa9042602989d48dd01dad828e3c9dd
-  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
-  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
-  YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: c726f61f7df51f42d1d76150187b7ce449ce9535
+PODFILE CHECKSUM: 0e9dfb9ed87d557f94db387db00dd3f6fea02a1e
 
 COCOAPODS: 1.12.0

@@ -74,6 +74,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let url = URLContexts.first?.url else {
             return
         }
+		
         let urlStr = url.absoluteString
         if urlStr == "com.lyber://"{
             let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)

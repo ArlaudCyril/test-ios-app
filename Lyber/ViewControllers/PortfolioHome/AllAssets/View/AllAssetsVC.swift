@@ -152,7 +152,7 @@ extension AllAssetsVC: UICollectionViewDelegate, UICollectionViewDataSource,UICo
 }
 
 //MARK: - table view delegates and dataSource
-extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
+extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filterCoin.count
     }
@@ -188,6 +188,11 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource{
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+	
+	func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+		// Dismiss the keyboard
+		view.endEditing(true)
+	}
 }
 
 //MARK: - objective functions
@@ -247,8 +252,10 @@ extension AllAssetsVC{
                 
                 for k in 0..<self.coinsData.count{
                     if self.coinsData[k].id == self.filteredData[i].id ?? ""{
-                        filterCoin.append(self.coinsData[k])
-                        print("filterCoin coins data",filterCoin)
+						if(!(self.fromAssetId != "" && self.coinsData[k].id == self.fromAssetId)){
+							filterCoin.append(self.coinsData[k])
+							print("filterCoin coins data",filterCoin)
+						}
                     }
                 }
             }

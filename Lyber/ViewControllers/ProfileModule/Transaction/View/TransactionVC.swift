@@ -36,6 +36,15 @@ class TransactionVC: SwipeGesture {
         CommonUI.setUpLbl(lbl: transactionLbl, text: CommonFunctions.localisation(key: "OPERATIONS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: transactionSubLbl, text: CommonFunctions.localisation(key: "LIST_ALL_OPERATIONS"), textColor: UIColor.grey877E95 , font: UIFont.MabryPro(Size.Large.sizeValue()))
         
+		tblView.es.addPullToRefresh {
+			self.totalRows = 0
+			self.numberOfTransactionsPerRequest = 50
+			self.transactionDict = [:]
+			self.transactionDictKeys = []
+			self.callTransactionApi()
+			self.tblView.es.stopPullToRefresh()
+		}
+		
         tblView.delegate = self
         tblView.dataSource = self
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)

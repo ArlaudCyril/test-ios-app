@@ -81,6 +81,7 @@ extension DepositAssetVC: UITableViewDelegate , UITableViewDataSource{
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
 		if(filterCoin[indexPath.row]?.isDepositActive == true){
 			let vc = CryptoDepositeVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 			vc.selectedAsset = filterCoin[indexPath.row]

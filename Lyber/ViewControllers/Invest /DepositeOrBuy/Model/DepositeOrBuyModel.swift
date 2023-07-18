@@ -34,4 +34,5 @@ enum confirmationPopUp{
     case Buy
     case Sell
     case Withdraw
+    case Tailoring
 }

@@ -129,6 +129,10 @@
 "READ_LESS" = "Read Less";
 "NEXT_PAYMENT" = "Next payment";
 "NO_ACTIVE_STRATEGIE" = "You do not have any active strategie yet";
+"DEPOSIT_NOW" = "Deposit now";
+"NO_ASSETS" = "You don't have any assets yet";
+"ACTIVATE_CREATE_ONE" = "Activate/create one now";
+
 
 //MARK: - PERSONAL INFO;
 "FIRST_NAME" = "First name";
@@ -267,6 +271,7 @@
 "EVERY_21ST_MONTH" = "Every 21st of the month";
 "RECOMMENDED" = "Recommended";
 "DEPOSIT" = "Deposit";
+"DEPOSIT_TRANSACTION" = "%@ Deposit";
 "MONEY_LYBER" = "Add money on Lyber";
 "ASSET_LYBER_PART1" = "Add";
 "ASSET_LYBER_PART2" = "on Lyber";
@@ -279,6 +284,7 @@
 "LYBER_PORTFOLIO" = "Lyber portfolio";
 "FROM" = "From";
 "TO" = "To";
+"TO_2" = "to";
 "PREVIEW_EXCHANGE" = "Preview exchange";
 "AVAILABLE_FLAT" = "Available FlAT";
 "EXCHANGE_TO_TITLE" = "Exchange → To";
@@ -316,15 +322,24 @@
 "CREDIT_CARD_BANK_TRANSFER" = "By credit card or bank transfer";
 "CANT_EXCHANGE_ASSET_DONT_HAVE" = "You can't exchange assets you don't have in your wallet";
 "NOT_ENOUGH_BALANCE" = "You don't have enough balance to invest";
+"NOT_ENOUGH_INVESTMENT_PART_1" = "You need to invest atleast";
+"NOT_ENOUGH_INVESTMENT_PART_2" = "USDT per asset in the strategy";
 "NOT_ENOUGH_COINS" = "You don't have enough coins to exchange";
+"NOT_ENOUGH_USDT" = "You don't have enough USDT to perform this action";
 "NOT_ENOUGH_COINS_WITHDRAW" = "You don't have enough coins to withdraw";
 "MINIMUM_AMOUNT_EXCHANGE" = "The minimum amount of assets to be exchanged is";
+"DEPOSIT_TAKEN_ACCOUNT" = "Your deposit has been taken into account";
+"AMOUNT_STRATEGY_INSUFFICIENT" = "Your amount invested in this strategy is insufficient.";
+"TAILOR_STRATEGY_RAISE_AMOUNT" = "To tailor at this strategy, you need to raise your current amount";
+"AGREE_INCREASE_INVESTMENT" = "Do you agree to increase the amount you invest ?";
+"OH_MY" = "Oh, my !";
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";
 "OPERATIONS" = "Operations";
 "EXCH" = "Exch. ";
 "WITHDRAWAL" = "Withdrawal";
+"WITHDRAWAL_TRANSACTION" = "%@ withdrawal";
 "PAYMENT_METHOD" = "Payment method";
 "ADD_PAYMENT_METHOD" = "Add payment method";
 "ACCOUNT" = "Account";
@@ -381,6 +396,8 @@
 "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS" = "Whitelisting is a feature that limits your withdrawals and deposits to addresses in your Lyber address book.";
 "EXTRA_SECURITY" = "Extra security";
 "HOURS" = "Hours";
+"72_HOURS" = "72 hours";
+"24_HOURS" = "24 hours";
 "NO_EXTRA_SECURITY" = "No extra security";
 "CHANGES_EFFECTIVE_AFTER" = "The changes will be effective after";
 "ADD_NEW_ADRESS" = "Add a new address";
@@ -390,6 +407,7 @@
 "CRYPTO_ASSET_DEPOSIT" = "Crypto asset deposit";
 "DEPOSIT_ADRESS" = "Deposit adress";
 "SEND_ONLY" = "Send only";
+"NETWORKS_ASSET_DEACTIVATED" = "All networks of this asset are currently deactivated for deposit";
 "ADDRESS_USING" = "to this address, using the";
 "PROTOCOL_CHAIN" = "protocol";
 "ON_LYBER" = "on Lyber";
@@ -476,6 +494,13 @@
 "SEE_EFFECTS_PORTFOLIO" = "You can now see its effect on your portfolio.";
 "THANKS" = "Thanks";
 
+//MARK: - Transactions
+"IN_PROGRESS" = "In progress";
+"UNDER_CONFORMITY_ANALYSIS" = "Under conformity analysis";
+"CREDITED" = "Credited";
+"PENDING" = "Pending";
+"SENT" = "Sent";
+"CANCELED" = "Canceled";
 
 //MARK: - UNITS
 

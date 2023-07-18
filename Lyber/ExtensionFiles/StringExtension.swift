@@ -57,8 +57,34 @@ extension String{
 				return self
 		}
 	}
+	var decoderStatusDeposit: String {//TODO: change returns
+		switch self {
+			case "PENDING":
+				return CommonFunctions.localisation(key: "IN_PROGRESS")
+			case "BLOCKED":
+				return CommonFunctions.localisation(key: "UNDER_CONFORMITY_ANALYSIS")
+			case "CREDITED":
+				return CommonFunctions.localisation(key: "CREDITED")
+			default:
+				return self
+		}
+	}
 	
-	var decoderSecurityTime: String{
+	//Retrait : PENDING : en attente, VALIDATE: Envoyé, CANCELED: Annulé
+	var decoderStatusWithdraw: String {//TODO: change returns
+		switch self {
+			case "PENDING":
+				return CommonFunctions.localisation(key: "PENDING")
+			case "VALIDATE":
+				return CommonFunctions.localisation(key: "SENT")
+			case "CANCELED":
+				return CommonFunctions.localisation(key: "CANCELED")
+			default:
+				return self
+		}
+	}
+	
+	var encoderSecurityTime: String{
 		switch self {
 			case "72_HOURS":
 				return "3d"
@@ -66,6 +92,19 @@ extension String{
 				return "1d"
 			case "NO_EXTRA_SECURITY":
 				return "none"
+			default:
+				return self
+		}
+	}
+	
+	var decoderSecurityTime: String{
+		switch self {
+			case "3d":
+				return "72_HOURS"
+			case "1d":
+				return "24_HOURS"
+			case "none":
+				return "NO_EXTRA_SECURITY"
 			default:
 				return self
 		}

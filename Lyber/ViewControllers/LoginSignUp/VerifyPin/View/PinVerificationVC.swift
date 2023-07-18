@@ -190,21 +190,12 @@ extension PinVerificationVC{
                     }
                     
                 } else {
-                    guard let error = evaluateError else {
-                        return
-                    }
-                    
-                    print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: error._code))
+					print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: authError?._code ?? -1))
 			
                 }
             }
         } else {
-            
-            guard let error = authError else {
-                return
-            }
-            print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: error.code))
-            
+            print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: authError?.code ?? -1))
         }
     }
 	

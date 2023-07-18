@@ -8,6 +8,7 @@
 import UIKit
 
 var totalEuroAvailable : Double? = 0
+var totalEuroAvailablePrinting : Double? = 0
 var totalPortfolio : Double = 0
 var coinDetailData : [AssetBaseData] = []
 class PortfolioHomeVC: NotSwipeGesture {
@@ -70,7 +71,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
         if section == 0{
             return 1
         }else if section == 1{
-            return Storage.balances.count
+			return Storage.balances.count == 0 ? 1: Storage.balances.count
         }else if section == 2{
             return 1
         }else if section == 3{
@@ -87,12 +88,18 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
             cell.controller = self
             return cell
         }else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
-			cell.setEuroAmount(totalAmount: totalEuroAvailable ?? 0)
+			if(Storage.balances.count > 0){
+				let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
+				cell.setEuroAmount(totalAmount: totalEuroAvailablePrinting ?? 0)
+				cell.controller = self
+				cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row)
+				return cell
+			}else{
+				let cell = tableView.dequeueReusableCell(withIdentifier: "NoAssetsTVC")as! NoAssetsTVC
 			cell.controller = self
-			cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row,lastIndex: Storage.balances.count - 1)
-            
-            return cell
+				cell.setUpCell()
+				return cell
+			}
         }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTVC")as! AnalyticsTVC
             cell.controller = self
@@ -140,9 +147,14 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.section{
-//        case 3:
+        case 3:
+				let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
+				let nav = UINavigationController(rootViewController: vc)
+				nav.modalPresentationStyle = .fullScreen
+				nav.navigationBar.isHidden = true
+				self.present(nav, animated: true, completion: nil)
 //            let vc = RecurringDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//            //vc.investmentId = recurringInvestmentData[indexPath.row].id ?? ""
+//            vc.investmentId = recurringInvestmentData[indexPath.row].id ?? ""
 //            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break

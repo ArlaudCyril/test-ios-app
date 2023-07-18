@@ -44,7 +44,7 @@ class PortfolioDetailVC: SwipeGesture {
     @IBOutlet var tblView: UITableView!
     @IBOutlet var investMoneyBtn: UIButton!
     @IBOutlet var threeDotBtn: UIButton!
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -181,7 +181,6 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
             return 80
         }
     }
-    
     
     
 }

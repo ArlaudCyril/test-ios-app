@@ -171,7 +171,6 @@ class AddCryptoAddressVC: SwipeGesture {
     func setData(){
         self.addCryptoAddressLbl.text = CommonFunctions.localisation(key: "EDIT_CRYPTO_ADRESS")
         self.addressNameTF.text = cryptoAddress?.name ?? ""
-		//TODO: Select the component to edit in the dropdown
 		self.networkChooseView.isHidden = true
 		self.networkImgLblView.isHidden = false
 		self.selectedNetworkId = self.cryptoAddress?.network ?? ""

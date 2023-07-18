@@ -45,7 +45,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 
 	//MARK: - SetUpUI
     override func setUpUI(){
-//        IQKeyboardManager.shared.enableAutoToolbar = false
+		IQKeyboardManager.shared.enableAutoToolbar = false
         switch typeVerification {
             case "google":
                 CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))

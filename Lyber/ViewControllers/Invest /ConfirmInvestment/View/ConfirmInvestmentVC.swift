@@ -21,6 +21,7 @@ class ConfirmInvestmentVC: ViewController {
 	var timeLimit : Int?
 	var ratioCoin : String?
 	var amountFrom : String?
+	var amountFromDeductedFees : String?
 	var amountTo : String?
 	var orderId: String?
 	
@@ -153,17 +154,20 @@ class ConfirmInvestmentVC: ViewController {
             self.lyberFeeLbl.text = CommonFunctions.localisation(key: "DEPOSIT_FEES")
             self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_MY_DEPOSIT")
             confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_DEPOSIT"), for: .normal)
+			
         }else if InvestmentType == .Exchange{
+			let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
+			
 			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
-			self.noOfEuroInvested.text = "\(amountTo ?? "") \(exchangeTo.uppercased())"
+			self.noOfEuroInvested.text = "\(finalAmount) \(exchangeTo.uppercased())"
 			self.coinPriceLbl.text = CommonFunctions.localisation(key: "RATIO")
 			self.euroCoinPriceLbl.text = self.ratioCoin ?? ""
             self.amountLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
-			self.euroAmountLbl.text = "\(amountFrom ?? "") \(fromAssetId.uppercased())"
+			self.euroAmountLbl.text = "\(amountFromDeductedFees ?? "") \(fromAssetId.uppercased())"
             self.frequencyLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
-            self.frequencyNameLbl.text = "\(amountTo ?? "") \(exchangeTo.uppercased())"
-			self.totalEuroLbl.text = "\(amountFrom ?? "") \(exchangeTo.uppercased())"
-			//TODO: -Ajouter frais
+            self.frequencyNameLbl.text = "\(finalAmount) \(exchangeTo.uppercased())"
+			self.euroLyberFeeLBl.text = "\(self.fees?.description ?? "0") \(fromAssetId.uppercased())"
+			self.totalEuroLbl.text = "\(amountFrom ?? "") \(fromAssetId.uppercased())"
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
 			self.fireTimer(seconds: 25)
@@ -271,7 +275,7 @@ extension ConfirmInvestmentVC{
             })
         }else if InvestmentType == .editActiveStrategy{
             self.confirmInvestmentBtn.showLoading()
-            confirmInvestmentVM.editActiveStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, ownerUuid: strategyData?.ownerUuid ?? "",completion: {[weak self]response in
+            confirmInvestmentVM.editActiveStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: CommonFunctions.frequenceEncoder(frequence: frequency), ownerUuid: strategyData?.ownerUuid ?? "",completion: {[weak self]response in
                 self?.confirmInvestmentBtn.hideLoading()
                 if let response = response{
                     print(response)

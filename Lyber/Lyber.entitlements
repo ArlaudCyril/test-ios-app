@@ -8,5 +8,9 @@
 	<array>
 		<string>applinks:lyber.com</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.Lyber</string>
+	</array>
 </dict>
 </plist>

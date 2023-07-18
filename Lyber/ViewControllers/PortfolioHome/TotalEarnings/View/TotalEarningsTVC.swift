@@ -45,7 +45,7 @@ extension TotalEarningsTVC{
         
         self.euroImg.image = Assets.euro.image()
         CommonUI.setUpLbl(lbl: self.euroWalletLbl, text: "Euro", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroInWalletLbl, text: "\((CommonFunctions.formattedCurrency(from: totalEuroAvailable)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroInWalletLbl, text: "\((CommonFunctions.formattedCurrency(from: totalEuroAvailablePrinting)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         flatVw.isHidden = true
         flatWalletVw.isHidden = true

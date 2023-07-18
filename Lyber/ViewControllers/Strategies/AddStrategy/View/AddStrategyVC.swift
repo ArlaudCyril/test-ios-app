@@ -17,6 +17,7 @@ class AddStrategyVC: ViewController {
     var tailoring : Bool?
     var tailoringStrategy : Strategy?
     var investmentStrategyController : InvestmentStrategyVC?
+	var minInvestPerAsset : Decimal = 20
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var buildMyOwnStrategyLbl: UILabel!
@@ -332,20 +333,37 @@ extension AddStrategyVC{
 				self.present(alert, animated: true, completion: nil)
 			}
 			else{
-				
 				let strategy = self.modifyStrategy(strategyName: (tailoringStrategy?.name)!, tailoringStrategy: self.tailoringStrategy!)
-				self.addStrategyVM.tailorStrategyApi(newStrategy: strategy, completion: {[]response in
-					if response != nil{
-						for i in 0...((self.investmentStrategyController?.invstStrategyData.count ?? 0) - 1) {
-							if(self.investmentStrategyController?.invstStrategyData[i].name == self.tailoringStrategy?.name)
-							{
-								self.investmentStrategyController?.invstStrategyData[i] = strategy
-							}
-						}
-						self.investmentStrategyController?.tblView.reloadData()
-						self.dismiss(animated: true, completion: nil)
+				var requiredAmount : Decimal = 0
+				for asset in strategy.bundle {
+					let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
+					if(newAmount > requiredAmount){
+						requiredAmount = newAmount
 					}
-				})
+				}
+				if(strategy.activeStrategy != nil && Decimal(strategy.activeStrategy?.amount ?? 0) < requiredAmount)
+				{
+					
+					let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+					vc.confirmationType = .Tailoring
+					vc.strategy = strategy
+					vc.addStrategyController = self
+					vc.requiredAmount = requiredAmount
+					self.present(vc, animated: true, completion: nil)
+				}else{
+					self.addStrategyVM.tailorStrategyApi(newStrategy: strategy, completion: {[]response in
+						if response != nil{
+							for i in 0...((self.investmentStrategyController?.invstStrategyData.count ?? 0) - 1) {
+								if(self.investmentStrategyController?.invstStrategyData[i].name == self.tailoringStrategy?.name)
+								{
+									self.investmentStrategyController?.invstStrategyData[i] = strategy
+								}
+							}
+							self.investmentStrategyController?.tblView.reloadData()
+							self.dismiss(animated: true, completion: nil)
+						}
+					})
+				}
 			}
 		}
         

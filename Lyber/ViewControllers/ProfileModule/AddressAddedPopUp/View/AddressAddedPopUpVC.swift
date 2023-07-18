@@ -12,7 +12,6 @@ class AddressAddedPopUpVC: ViewController {
     var controller : AddCryptoAddressVC?
     var addressBookController : CryptoAddressBookVC?
     var editAddress : Address?
-    var addressId = String()//TODO: Delete addressId
     var addressAddedPopUpVM = AddressAddedPopUpVM()
     var deleteCallback : (()->())?
     

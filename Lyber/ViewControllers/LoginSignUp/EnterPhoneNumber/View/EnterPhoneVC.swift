@@ -47,7 +47,6 @@ class EnterPhoneVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
         setUpUI()
 		if(isDoubleAuthentified == true){
 			DispatchQueue.main.async {

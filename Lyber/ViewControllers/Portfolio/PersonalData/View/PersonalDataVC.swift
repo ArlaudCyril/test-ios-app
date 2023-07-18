@@ -40,7 +40,6 @@ class PersonalDataVC: ViewController {
     
     override func viewDidLoad() {
         IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         setUpUI()
@@ -85,7 +84,7 @@ class PersonalDataVC: ViewController {
 extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -301,7 +300,6 @@ extension PersonalDataVC{
 				userData.shared.dataSave()
                 self?.nextButton.isUserInteractionEnabled = true
                 if response != nil{
-					//TODO:
 					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 					vc.typeVerification = "email"
 					vc.action = "signup_email"

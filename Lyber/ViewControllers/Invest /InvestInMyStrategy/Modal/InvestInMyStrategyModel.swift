@@ -36,9 +36,11 @@ struct QuoteAPI: Codable{
 struct Quote: Codable{
 	var toAmount: String
 	var fromAmount: String
+	var fromAmountDeductedFees: String
 	var validTimestamp: Int
 	var fromAsset: String
 	var toAsset: String
 	var ratio: String
 	var orderId: String
+	var fees: String
 }

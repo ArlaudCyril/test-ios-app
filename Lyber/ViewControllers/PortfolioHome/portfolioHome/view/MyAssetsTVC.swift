@@ -45,7 +45,7 @@ class MyAssetsTVC: UITableViewCell {
 
 //Mark:- SetUpUI
 extension MyAssetsTVC{
-    func setUpCell(data : Balance?,index : Int, lastIndex: Int){
+    func setUpCell(data : Balance?,index : Int){
 		
 		let currency = CommonFunctions.getCurrency(id: data?.id ?? "")
 		let priceCoin = (Double(data?.balanceData.euroBalance ?? "") ?? 0)/(Double(data?.balanceData.balance ?? "") ?? 1)
@@ -59,7 +59,7 @@ extension MyAssetsTVC{
 
 		flatVw.isHidden = true
 		flatWalletVw.isHidden = true
-		if index == lastIndex{
+		if index == Storage.balances.count - 1{
             assetsView.layer.cornerRadius = 16
             assetsView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
             flatVw.isHidden = false
@@ -67,6 +67,8 @@ extension MyAssetsTVC{
 		}else if index == 0{
 			assetsView.layer.cornerRadius = 16
 			assetsView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+		}else{
+			assetsView.layer.maskedCorners = []
 		}
         
         let singleAssetTap = UITapGestureRecognizer(target: self, action: #selector(singleAssetTapped))

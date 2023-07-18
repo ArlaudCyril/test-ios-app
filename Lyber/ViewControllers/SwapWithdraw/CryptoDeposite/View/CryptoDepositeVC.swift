@@ -117,7 +117,7 @@ extension CryptoDepositeVC{
 	}
     
     @objc func buyCoinBtnAct(){
-		//TODO:
+		//TODO: Later
         //self.callCoinInfoApi(assetName: self.selectedAssetName)
     }
 	@objc func copyBtnAct(){
@@ -133,10 +133,7 @@ extension CryptoDepositeVC{
 			nav.navigationBar.isHidden = true
 			self.present(nav, animated: true, completion: nil)
 		}
-		
     }
-	
-	
 }
 
 //MARK: - Other functions
@@ -161,7 +158,12 @@ extension CryptoDepositeVC{
         PortfolioDetailVM().getCoinInfoApi(Asset: assetId, isNetwork: true, completion: {[weak self]response in
 			CommonFunctions.hideLoader()
 			self?.dropDownProtocol.dataSource = []
-			self?.networkArray = response?.data?.networks ?? []
+			
+			for network in response?.data?.networks ?? []{
+				if(network.isDepositActive == true){
+					self?.networkArray.append(network)
+				}
+			}
 			
 			let indexNative = self?.networkArray.firstIndex(where: {$0.id == response?.data?.defaultDepositNetwork})
 			
@@ -171,16 +173,24 @@ extension CryptoDepositeVC{
 			for network in self?.networkArray ?? []{
 				self?.dropDownProtocol.dataSource.append(network.fullName ?? "" )
 			}
-			CommonUI.setUpLbl(lbl: self?.protocolNameLbl ?? UILabel(), text: self?.dropDownProtocol.dataSource[0] ?? "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+			
+			if(self?.networkArray.count ?? 0 > 0){
+				CommonUI.setUpLbl(lbl: self?.protocolNameLbl ?? UILabel(), text: self?.dropDownProtocol.dataSource[0] ?? "", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		
 			
-			self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", networkLabel: self?.dropDownProtocol.dataSource[0] ?? "", networkId: response?.data?.defaultDepositNetwork ?? "")
+				self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", networkLabel: self?.dropDownProtocol.dataSource[0] ?? "", networkId: self?.networkArray[0].id ?? "")
+			}
+			else{
+				let textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "NETWORKS_ASSET_DEACTIVATED"))"
+				
+				CommonUI.setUpLbl(lbl: self?.sendOnlyAssetLbl ?? UILabel(), text: textSendOnlyAssetLbl, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			}
+			
         })
     }
 	
 	func callGetWalletAdressApi(assetId: String, networkLabel: String, networkId: String){
-		var textSendOnlyAssetLbl : String = ""
-		textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(networkLabel) \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
+		let textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(networkLabel) \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
 		
 		CommonUI.setUpLbl(lbl: self.sendOnlyAssetLbl ?? UILabel(), text: textSendOnlyAssetLbl, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 		

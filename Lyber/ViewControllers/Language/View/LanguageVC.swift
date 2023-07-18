@@ -80,7 +80,7 @@ extension LanguageVC{
 		if let obj = object as? UITableView {
 			if obj == self.tblView && keyPath == "contentSize" {
 				if let newSize = change?[NSKeyValueChangeKey.newKey] as? CGSize {
-					self.tblViewHeightConst.constant = newSize.height
+					self.tblViewHeightConst.constant = newSize.height + 200
 				}
 			}
 		}

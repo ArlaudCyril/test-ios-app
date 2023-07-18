@@ -695,15 +695,18 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWP-jK-igd">
                                                                             <rect key="frame" x="24" y="0.0" width="366" height="242"/>
                                                                             <subviews>
-                                                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4H-To-bZD">
-                                                                                    <rect key="frame" x="322" y="12.5" width="28" height="28"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="height" constant="28" id="S0D-yT-KPf"/>
-                                                                                        <constraint firstAttribute="width" constant="28" id="cGy-Br-Y3e"/>
-                                                                                        <constraint firstAttribute="width" secondItem="v4H-To-bZD" secondAttribute="height" multiplier="1:1" id="ynD-qD-FxI"/>
-                                                                                    </constraints>
-                                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                                </button>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-xC-3H6">
+                                                                                    <rect key="frame" x="16" y="16" width="250" height="20.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-Ef-QK0">
+                                                                                    <rect key="frame" x="308.5" y="16" width="41.5" height="21"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1S-K9-PPl">
                                                                                     <rect key="frame" x="16" y="54" width="334" height="188"/>
                                                                                     <subviews>
@@ -911,22 +914,16 @@
                                                                                         <constraint firstItem="7Nl-0s-2UG" firstAttribute="top" secondItem="EYh-GH-jLS" secondAttribute="bottom" constant="6" id="y02-3s-Tio"/>
                                                                                     </constraints>
                                                                                 </view>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg6-xC-3H6">
-                                                                                    <rect key="frame" x="16" y="16" width="334" height="20.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <nil key="textColor"/>
-                                                                                    <nil key="highlightedColor"/>
-                                                                                </label>
                                                                             </subviews>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="kg6-xC-3H6" firstAttribute="leading" secondItem="OWP-jK-igd" secondAttribute="leading" constant="16" id="1D7-HY-wZR"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="v4H-To-bZD" secondAttribute="trailing" constant="16" id="6iF-fn-zFx"/>
                                                                                 <constraint firstItem="j1S-K9-PPl" firstAttribute="top" secondItem="OWP-jK-igd" secondAttribute="top" constant="54" id="9FV-72-HNE"/>
-                                                                                <constraint firstItem="v4H-To-bZD" firstAttribute="centerY" secondItem="kg6-xC-3H6" secondAttribute="centerY" id="HW0-qr-tc1"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="HUN-Ef-QK0" secondAttribute="trailing" constant="16" id="MuT-GU-JUn"/>
                                                                                 <constraint firstItem="j1S-K9-PPl" firstAttribute="top" secondItem="kg6-xC-3H6" secondAttribute="bottom" constant="17.5" id="NzJ-Cc-bQn"/>
                                                                                 <constraint firstAttribute="bottom" secondItem="j1S-K9-PPl" secondAttribute="bottom" id="Uur-Ca-7nQ"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="kg6-xC-3H6" secondAttribute="trailing" constant="16" id="bhO-kb-AfC"/>
+                                                                                <constraint firstItem="HUN-Ef-QK0" firstAttribute="centerY" secondItem="kg6-xC-3H6" secondAttribute="centerY" id="Zdh-iI-nZD"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="kg6-xC-3H6" secondAttribute="trailing" constant="100" id="bhO-kb-AfC"/>
                                                                                 <constraint firstItem="kg6-xC-3H6" firstAttribute="top" secondItem="OWP-jK-igd" secondAttribute="top" constant="16" id="lgy-VD-Myd"/>
                                                                                 <constraint firstItem="j1S-K9-PPl" firstAttribute="leading" secondItem="OWP-jK-igd" secondAttribute="leading" constant="16" id="q3B-XN-XTE"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="j1S-K9-PPl" secondAttribute="trailing" constant="16" id="soc-EB-t9z"/>
@@ -941,6 +938,7 @@
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
+                                                                    <outlet property="activatedLbl" destination="HUN-Ef-QK0" id="jO5-nH-x7e"/>
                                                                     <outlet property="activeStrategyView" destination="CnA-qd-zjH" id="Nu2-iK-vFd"/>
                                                                     <outlet property="amountIcon" destination="bsj-S1-JkZ" id="inZ-nV-CZC"/>
                                                                     <outlet property="amountLbl" destination="USG-cj-pCx" id="WLq-8i-wpt"/>
@@ -954,7 +952,6 @@
                                                                     <outlet property="progressVw" destination="EYh-GH-jLS" id="tjX-e5-NkI"/>
                                                                     <outlet property="riskIcon" destination="72M-dP-H9Z" id="0S6-YK-Va1"/>
                                                                     <outlet property="riskLbl" destination="WWk-A9-kZ6" id="x0X-5v-IrZ"/>
-                                                                    <outlet property="selectStrategyBtn" destination="v4H-To-bZD" id="QQ8-oU-KSd"/>
                                                                     <outlet property="strategyTypeLbl" destination="kg6-xC-3H6" id="IsQ-AE-6Bo"/>
                                                                     <outlet property="strategyVw" destination="OWP-jK-igd" id="JBg-Yx-DLb"/>
                                                                     <outlet property="yieldIcon" destination="LKp-B1-tz9" id="x2P-cu-kWL"/>

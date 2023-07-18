@@ -27,6 +27,7 @@ class ConfirmPinCVC: UICollectionViewCell {
 extension ConfirmPinCVC{
     func setUpUI(verifyPin : Bool){
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+		IQKeyboardManager.shared.enableAutoToolbar = false
         enterDigitCounts = 0
         if verifyPin == true{
             CommonUI.setUpLbl(lbl: confirmPinLbl, text: "Please enter Your Pin", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.XLarge.sizeValue()))

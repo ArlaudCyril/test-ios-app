@@ -14,6 +14,7 @@ class CommonUI{
         lbl.font = font
         lbl.textColor = textColor
     }
+	
     
     static func setUpTextField(textfield:UITextField, text: String? = nil, placeholder:String, font: UIFont) {
         textfield.text = text
@@ -166,4 +167,6 @@ class CommonUI{
 		
 		
 	}
+	
+	
 }

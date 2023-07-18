@@ -467,8 +467,11 @@ class CommonFunctions{
 		{
 			return "0.00"
 		}
-		let stringValue = number.description
-        return stringValue
+		let formatter = NumberFormatter()
+		formatter.minimumFractionDigits = 2
+		formatter.maximumFractionDigits = 2
+		
+		return formatter.string(from: NSDecimalNumber(decimal: number)) ?? "0.00"
     }
     
     static func formattedCurrency(from value: Double?) -> String {
@@ -681,8 +684,8 @@ class CommonFunctions{
         }
     }
 	
-	static func localisation(key : String) -> String{
-		return NSLocalizedString(key, bundle: GlobalVariables.bundle, comment: "")
+	static func localisation(key : String, parameter : String = "") -> String{
+		return String(format: NSLocalizedString(key, bundle: GlobalVariables.bundle, comment: ""), parameter)
 	}
     
     static func selectorStrategyColor(position : Int, totalNumber : Int) -> UIColor{

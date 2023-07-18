@@ -45,7 +45,7 @@ class ConfirmInvestmentVM{
     func editActiveStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
         let params : [String : Any] = [Constants.ApiKeys.strategy_name : strategyName,
                                        Constants.ApiKeys.amount : amount,
-                                       Constants.ApiKeys.frequency : CommonFunctions.frequenceEncoder(frequence: frequency),
+                                       Constants.ApiKeys.frequency : frequency,
                                        Constants.ApiKeys.owner_uuid : ownerUuid]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
@@ -81,7 +81,6 @@ class ConfirmInvestmentVM{
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
-	//TODO: encoder en base 64  : {"assetId":"sol", "chain":"solana","amount":0.05,"destination":"8SbqXLQEBvFD2rZSMuUizkJQZ9TN2dqwFRnRQzGp6Kax"}
 	func userGetOtpApi(action: String, data : [String : Any] = [:], completion: @escaping ( (SuccessAPI?) -> Void )){
         var params : [String : Any] = [:]
 		
