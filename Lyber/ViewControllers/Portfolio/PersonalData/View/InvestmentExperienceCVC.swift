@@ -47,6 +47,8 @@ extension InvestmentExperienceCVC{
         CommonUI.setTextWithLineSpacing(label: self.investmentExpDescLbl, text: CommonFunctions.localisation(key: "MUST_ANSWER_THESE_QUESTIONS"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpLbl(lbl: self.investExpWithCryptoLbl, text: CommonFunctions.localisation(key: "INVEST_EXPERIENCE_WITH_CRYPTOS"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		self.investExpWithCryptoLbl.numberOfLines = 0
+		
         CommonUI.setUpLbl(lbl: self.yourSourceOfIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_SOURCE_OF_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.yourWorkIndustryLbl, text: CommonFunctions.localisation(key: "YOUR_WORK_INDUSTRY"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.YourAnnualIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_ANNUAL_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))

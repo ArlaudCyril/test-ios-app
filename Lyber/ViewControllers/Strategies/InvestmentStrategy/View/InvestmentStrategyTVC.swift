@@ -76,7 +76,7 @@ extension InvestmentStrategyTVC{
         }
 		if data?.activeStrategy != nil{
 			activatedLbl.isHidden = false
-			CommonUI.setUpLbl(lbl: self.activatedLbl, text: CommonFunctions.localisation(key: "ENABLED"), textColor: UIColor.green_500, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.activatedLbl, text: CommonFunctions.localisation(key: "ENABLED"), textColor: UIColor.Green_500, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
 		}
         
         //MARK: - Default strategy and Active strategy
@@ -88,8 +88,8 @@ extension InvestmentStrategyTVC{
 			if(data?.risk != nil && data?.expectedYield != nil)
             {
                 informationHeight += 50
-                self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "RISK")) : ", secondStr: data?.risk?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
-                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "YIELD")) : ", secondStr: data?.expectedYield?.capitalizedSentence ?? "", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+				self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "RISK")) : ", secondStr: CommonFunctions.localisation(key: data?.risk?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "YIELD")) : ", secondStr: CommonFunctions.localisation(key: data?.expectedYield?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 defaultStrategyView.isHidden = false
                     
             }

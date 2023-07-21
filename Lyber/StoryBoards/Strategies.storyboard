@@ -298,7 +298,7 @@
                                         <state key="normal" image="close"/>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORt-Mj-qKX">
-                                        <rect key="frame" x="0.0" y="80" width="414" height="589"/>
+                                        <rect key="frame" x="0.0" y="80" width="414" height="613.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQs-Eu-GaN">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="473"/>
@@ -546,7 +546,7 @@
                                         </constraints>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnN-Mn-eW5">
-                                        <rect key="frame" x="0.0" y="669" width="414" height="145"/>
+                                        <rect key="frame" x="0.0" y="693.5" width="414" height="120.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1o-WT-HxB" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="24" width="366" height="48"/>
@@ -558,16 +558,10 @@
                                                 </state>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="v1d-ja-Zg4">
-                                                <rect key="frame" x="24" y="84" width="366" height="45"/>
+                                                <rect key="frame" x="24" y="84" width="366" height="20.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfd-r9-yJu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5w-ru-Kce">
-                                                        <rect key="frame" x="0.0" y="24.5" width="366" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -617,7 +611,6 @@
                         <outlet property="buildMyOwnStrategyLbl" destination="zC2-Y7-dyz" id="06G-4q-siN"/>
                         <outlet property="cancelBtn" destination="sI9-yA-u6a" id="d8S-AL-t7k"/>
                         <outlet property="isStrategyReadyLbl" destination="w5w-ru-Kce" id="ta8-Os-JiN"/>
-                        <outlet property="noOfAssetsLbl" destination="hfd-r9-yJu" id="CHv-1u-rtc"/>
                         <outlet property="saveMyStrategyBtn" destination="H1o-WT-HxB" id="k2W-1f-rnD"/>
                         <outlet property="tblView" destination="VkD-ss-R6C" id="Thj-MZ-Hjk"/>
                         <outlet property="tblViewHeightConst" destination="dDT-HC-BoI" id="09C-cK-eBg"/>
@@ -1143,7 +1136,7 @@
         <image name="risk" width="20" height="20"/>
         <image name="yield_chart" width="20" height="20"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PurpleColor">
             <color red="0.48627450980392156" green="0.2196078431372549" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

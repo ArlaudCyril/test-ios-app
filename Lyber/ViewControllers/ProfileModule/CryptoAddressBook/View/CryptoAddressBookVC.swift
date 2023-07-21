@@ -63,8 +63,8 @@ class CryptoAddressBookVC: SwipeGesture {
         self.headerView.headerLbl.isHidden = true
 		self.searchTF.placeholder = CommonFunctions.localisation(key: "SEARCH")
         CommonUI.setUpLbl(lbl: self.addressBookLbl, text: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addressBookDescLbl, text: CommonFunctions.localisation(key: "VIEW_ADD_FAVOURITE_CRYPTO_ADDRESSES_HERE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.addressBookDescLbl, text: CommonFunctions.localisation(key: "VIEW_ADD_FAVOURITE_CRYPTO_ADDRESSES_HERE"), lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.addressBookDescLbl, text: CommonFunctions.localisation(key: "ADDRESS_BOOK_ALLOW_CRYPTOCURRENCY"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.addressBookDescLbl, text: CommonFunctions.localisation(key: "ADDRESS_BOOK_ALLOW_CRYPTOCURRENCY"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpViewBorder(vw: self.whitlistingView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
         CommonUI.setUpLbl(lbl: self.whitlistingLbl, text: CommonFunctions.localisation(key: "WHITELISTING"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -82,13 +82,13 @@ class CryptoAddressBookVC: SwipeGesture {
 		if userData.shared.extraSecurity == "1d"{
 			let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 24H")
 			let range = (attributedText.string as NSString).range(of: "24H")
-			attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+			attributedText.addAttribute(.foregroundColor, value: UIColor.Green_500, range: range)
 			self.activeDuringLbl.attributedText = attributedText
 			
 		}else if userData.shared.extraSecurity == "3d"{
 			let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 72H")
 			let range = (attributedText.string as NSString).range(of: "72H")
-			attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+			attributedText.addAttribute(.foregroundColor, value: UIColor.Green_500, range: range)
 			self.activeDuringLbl.attributedText = attributedText
 			
 		}else if userData.shared.extraSecurity == "none"{
@@ -175,12 +175,12 @@ extension CryptoAddressBookVC : UITextFieldDelegate{
                 if response?.id == 1{               //72Hour
 					let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 72H")
 					let range = (attributedText.string as NSString).range(of: "72H")
-					attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+					attributedText.addAttribute(.foregroundColor, value: UIColor.Green_500, range: range)
 					self?.activeDuringLbl.attributedText = attributedText
                 }else if response?.id == 2{         //24 Hour
 					let attributedText = NSMutableAttributedString(string: "\(CommonFunctions.localisation(key: "ACTIVE_DURING")) : 24H")
 					let range = (attributedText.string as NSString).range(of: "24H")
-					attributedText.addAttribute(.foregroundColor, value: UIColor.green_500, range: range)
+					attributedText.addAttribute(.foregroundColor, value: UIColor.Green_500, range: range)
 					self?.activeDuringLbl.attributedText = attributedText
                 }else{                              //No Extra Secuirty
                     self?.activeDuringLbl.text = CommonFunctions.localisation(key: "NO_SECURITY")

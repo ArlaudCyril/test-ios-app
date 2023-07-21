@@ -27,7 +27,6 @@ class AddStrategyVC: ViewController {
     @IBOutlet var addAnAssetBtn: UIButton!
     @IBOutlet var bottomView: UIView!
     @IBOutlet var saveMyStrategyBtn: PurpleButton!
-    @IBOutlet var noOfAssetsLbl: UILabel!
     @IBOutlet var isStrategyReadyLbl: UILabel!
     
     override func viewDidLoad() {
@@ -54,8 +53,6 @@ class AddStrategyVC: ViewController {
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.saveMyStrategyBtn.setTitle(CommonFunctions.localisation(key: "SAVE_MY_STRATEGY"), for: .normal)
 //        self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
-        
-        CommonUI.setUpLbl(lbl: noOfAssetsLbl, text: "\(assetsData.count) \(CommonFunctions.localisation(key: "ASSET"))", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         CommonUI.setUpLbl(lbl: isStrategyReadyLbl, text: CommonFunctions.localisation(key: "YOUR_STRATEGY_READY_TO_BE_SAVED"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
@@ -93,7 +90,6 @@ extension AddStrategyVC : UITableViewDelegate,UITableViewDataSource{
             self.assetsData.remove(at: indexPath.row)
             self.allocation.remove(at: indexPath.row)
             self.handleAllocationPercentageView()
-            self.noOfAssetsLbl.text =  "\(self.assetsData.count) \(CommonFunctions.localisation(key: "ASSETS"))"
             completionHandler(true)
           })
       action.backgroundColor = .red
@@ -117,7 +113,6 @@ extension AddStrategyVC{
             self?.handleAllocationPercentage(asset : assets)
             self?.tblView.reloadData()
             self?.handleAllocationPercentageView()
-            self?.noOfAssetsLbl.text = self?.assetsData.count ?? 0 > 1 ? "\(self?.assetsData.count ?? 0) \(CommonFunctions.localisation(key: "ASSETS"))" : "\(self?.assetsData.count ?? 0) \(CommonFunctions.localisation(key: "ASSET"))"
         }
         self.present(vc, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(vc, animated: true)
@@ -144,30 +139,25 @@ extension AddStrategyVC{
                 print(self.totalAllocationPercentage)
             }
             
-            self.noOfAssetsLbl.isHidden = false
             if self.totalAllocationPercentage > 100{
-                self.isStrategyReadyLbl.text = "\(CommonFunctions.localisation(key: "YOUR_ALLOCATION_IS_GREATER_THAN"))\((self.totalAllocationPercentage ) - 100)%"
-                self.isStrategyReadyLbl.textColor = UIColor.RedDF5A43
-                self.noOfAssetsLbl.textColor = UIColor.RedDF5A43
+                self.isStrategyReadyLbl.text = "\(CommonFunctions.localisation(key: "YOUR_ALLOCATION_IS_GREATER_THAN")) \((self.totalAllocationPercentage ) - 100)%"
+                self.isStrategyReadyLbl.textColor = UIColor.Red_500
                 self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
                 self.saveMyStrategyBtn.isUserInteractionEnabled = false
             }
             else if self.totalAllocationPercentage < 100{
-                self.isStrategyReadyLbl.text = "\(CommonFunctions.localisation(key: "YOUR_ALLOCATION_IS_LESS_THAN"))\(100 - (self.totalAllocationPercentage ))%"
-                self.isStrategyReadyLbl.textColor = UIColor.RedDF5A43
-                self.noOfAssetsLbl.textColor = UIColor.RedDF5A43
+                self.isStrategyReadyLbl.text = "\(CommonFunctions.localisation(key: "YOUR_ALLOCATION_IS_LESS_THAN")) \(100 - (self.totalAllocationPercentage ))%"
+                self.isStrategyReadyLbl.textColor = UIColor.Red_500
                 self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
                 self.saveMyStrategyBtn.isUserInteractionEnabled = false
             }
             else{
                 self.isStrategyReadyLbl.text = CommonFunctions.localisation(key: "YOUR_STRATEGY_READY_TO_BE_SAVED")
                 self.isStrategyReadyLbl.textColor = UIColor.SecondarytextColor
-                self.noOfAssetsLbl.textColor = UIColor.ThirdTextColor
                 self.saveMyStrategyBtn.backgroundColor = UIColor.PurpleColor
                 self.saveMyStrategyBtn.isUserInteractionEnabled = true
             }
         }else{
-            self.noOfAssetsLbl.isHidden = true
             self.isStrategyReadyLbl.text = CommonFunctions.localisation(key: "YOU_MUST_ADD")
             self.saveMyStrategyBtn.backgroundColor = UIColor.TFplaceholderColor
             self.saveMyStrategyBtn.isUserInteractionEnabled = false

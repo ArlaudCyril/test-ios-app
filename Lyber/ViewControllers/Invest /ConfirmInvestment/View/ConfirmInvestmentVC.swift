@@ -24,6 +24,8 @@ class ConfirmInvestmentVC: ViewController {
 	var amountFromDeductedFees : String?
 	var amountTo : String?
 	var orderId: String?
+	var coinFromPrice: Double?
+	var coinToPrice: Decimal?
 	
 	//withdraw
 	var address : String?
@@ -132,7 +134,12 @@ class ConfirmInvestmentVC: ViewController {
             }else{
                 self.frequencyVw.isHidden = false
             }
-        }else if (InvestmentType == .activateStrategy || InvestmentType == .editActiveStrategy){
+		}else if (InvestmentType == .activateStrategy || InvestmentType == .editActiveStrategy || InvestmentType == .oneTimeInvestment){
+			//TODO : hide for oneTimeInvestment
+			if(InvestmentType == .oneTimeInvestment){
+				self.amountLbl.text = CommonFunctions.localisation(key: "INVEST")
+				self.frequencyNameLbl.text = CommonFunctions.localisation(key: "IMMEDIATE")
+			}
             self.coinPriceVw.isHidden = true
             self.allocationView.isHidden = false
             for i in 0...(coinsData.count - 1){
@@ -156,18 +163,31 @@ class ConfirmInvestmentVC: ViewController {
             confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_DEPOSIT"), for: .normal)
 			
         }else if InvestmentType == .Exchange{
-			let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
 			
 			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
-			self.noOfEuroInvested.text = "\(finalAmount) \(exchangeTo.uppercased())"
+			
 			self.coinPriceLbl.text = CommonFunctions.localisation(key: "RATIO")
-			self.euroCoinPriceLbl.text = self.ratioCoin ?? ""
+			self.euroCoinPriceLbl.text = "1 : \(self.ratioCoin ?? "")"
+			
             self.amountLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
-			self.euroAmountLbl.text = "\(amountFromDeductedFees ?? "") \(fromAssetId.uppercased())"
-            self.frequencyLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
-            self.frequencyNameLbl.text = "\(finalAmount) \(exchangeTo.uppercased())"
-			self.euroLyberFeeLBl.text = "\(self.fees?.description ?? "0") \(fromAssetId.uppercased())"
-			self.totalEuroLbl.text = "\(amountFrom ?? "") \(fromAssetId.uppercased())"
+			self.euroAmountLbl.text = "\(CommonFunctions.formattedAsset(from: Double(amountFromDeductedFees ?? "0"), price: self.coinFromPrice)) \(fromAssetId.uppercased())"
+			
+			self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinFromPrice)) \(fromAssetId.uppercased())"
+			
+			let totalFromAmount = (Decimal(string: self.euroAmountLbl.text ?? "0") ?? 0) + (Decimal(string: self.euroLyberFeeLBl.text ?? "0") ?? 0)
+			
+			self.totalEuroLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: totalFromAmount, price: Decimal(self.coinFromPrice ?? 0))) \(fromAssetId.uppercased())"
+			
+			
+			let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
+			
+			self.noOfEuroInvested.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(exchangeTo.uppercased())"
+			
+			self.frequencyLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
+			self.frequencyNameLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(exchangeTo.uppercased())"
+			
+			
+			
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
 			self.fireTimer(seconds: 25)
@@ -270,6 +290,16 @@ extension ConfirmInvestmentVC{
                     let nav = UINavigationController(rootViewController: vc)
                     nav.modalPresentationStyle = .fullScreen
                     nav.navigationBar.isHidden = true
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
+        }else if InvestmentType == .oneTimeInvestment{
+            self.confirmInvestmentBtn.showLoading()
+			OneTimeInvestmentVM().executeStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, ownerUuid: strategyData?.ownerUuid ?? "", completion: {[weak self]response in
+                self?.confirmInvestmentBtn.hideLoading()
+				if response != nil{
+                    let vc = LoadingInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+					vc.idInvestment = response?.data.id ?? ""
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             })

@@ -82,7 +82,7 @@ extension PortfolioDetailTVC{
         CommonUI.setUpLbl(lbl: percentageLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))//update percentage
         
         if (assetData?.priceChangePercentage24H ?? 0) < 0{
-            percentageLbl.textColor = UIColor.RedDF5A43
+            percentageLbl.textColor = UIColor.Red_500
             self.percentageLbl.text = "▼ \(assetData?.priceChangePercentage24H ?? 0)% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
         }else{
             percentageLbl.textColor = UIColor.GreenColor

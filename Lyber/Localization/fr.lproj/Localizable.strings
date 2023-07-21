@@ -7,8 +7,8 @@
 */
 
 //MARK: - GLOBAL
-"LYBER_REINVENTED" = "Lyber, des investissements réinventés";
-"DIVERSIFIED_REGULAR_SIMPLE" = "Diversifié. Réguliers. Simple.";
+"LYBER_CRYPTO_FINGERTIPS" = "Lyber, la crypto à portée de main.";
+"SIMPLE_SECURE_DIVERSIFIED_INVESTMENT" = "L’investissement simple, sécurisé et diversifié";
 "SIGN_UP" = "S'inscrire";
 "LOADING_MORE" = "Charger plus";
 "NO_MORE_DATA" = "Plus de données";
@@ -33,7 +33,7 @@
 "ENABLE_NOTIFICATIONS" = "Activer les notifications";
 "ACTIVATE" = "Activer";
 "ACTIVATE_FACE_ID" = "Activer Face ID";
-"ACCESS_LYBER_FACE_ID" = "Accédez à Lyber rapidement et facilement en vous connectant avec Face ID. ";
+"ACCESS_LYBER_FACE_ID" = "Accédez à Lyber rapidement en vous connectant avec Face ID";
 "DECLINE" = "Refuser";
 "ASK_ME_LATER" = "Me demander plus tard";
 "DONT_MISS_ANY_UPDATE" = "Activez les notifications pour ne manquer aucune mise à jour de Lyber.";
@@ -41,6 +41,10 @@
 "COPY" = "Copie";
 "SAVE" = "Sauvegarder";
 "COPIED" = "Copié";
+"PLEASE_ENTER_PIN" = "Veuillez saisir votre code PIN";
+"LOW" = "Faible";
+"MEDIUM" = "Moyen";
+"HIGH" = "Elevé";
 
 //MARK: - EDUCATION STRATEGY;
 
@@ -80,15 +84,23 @@
 "YOUR_ALLOCATION_IS_GREATER_THAN" = "Votre allocation est supérieure à 100%, supprimez";
 "YOUR_ALLOCATION_IS_LESS_THAN" = "Votre allocation est inférieure à 100%, ajoutez";
 "INVESTMENT_STRATEGIES" = "Stratégies d'investissement";
-"STRATEGIES_ARE_THERE_TO_HELP_YOU" = "Les stratégies sont là pour vous aider à diluer vos investissements sur plusieurs actifs.";
+"STRATEGIES_ARE_THERE_TO_HELP_YOU" = "Les stratégies sont là pour vous aider à diversifier vos investissements sur plusieurs actifs.";
 "YIELD" = "Rendement";
 "RISK" = "Risque";
+"INVEST" = "Investir";
+"IMMEDIATE" = "Immédiat";
+"EXECUTING_YOUR_STRATEGY" = "Nous exécutons votre stratégie, cela peut prendre quelques secondes.";
+"INVESTMENT_IN_PROGRESS" = "Investissement en cours";
+"INVESTMENT_FAILED" = "Investissement échoué";
+"INVESTMENT_VALIDATED" = "Investissement validé";
+"INVESTMENT_PARTIALLY_VALIDATED" = "Investissement partiellement validé";
+
 
 
 //MARK: - PORTFOLIO HOME;
 "PORTFOLIO" = "Portefeuille";
 "COMPLETE_ACCOUNT_TO_START_INVESTING" = "Complétez votre compte pour commencer à investir";
-"STEP_COMPLETED" = "étape complétée";
+"STEP_COMPLETED" = "étapes complétées";
 "CREATE_AN_ACCOUNT" = "Créer un compte";
 "FILL_PERSONAL_DATA" = "Remplir les données personnelles";
 "VERIFY_YOUR_IDENTITY" = "Vérifier votre identité";
@@ -140,7 +152,7 @@
 "LAST_NAME" = "Nom";
 "BIRTH_PLACE" = "Lieu de naissance";
 "PERSONAL_DATA" = "Données personnelles";
-"FOR_LEGAL_REASONS" = "Pour des raisons juridiques, nous avons besoin que vous répondiez à certaines questions et que vous nous fournissiez des informations personnelles.";
+"FOR_LEGAL_REASONS" = "Pour que Lyber puisse garder un niveau de sécurité maximal pour votre compte, nous avons besoin de quelques informations de votre part";
 "CARD_HOLDER_NAME" = "Nom du titulaire de la carte";
 "BIRTH_DATE" = "Date de naissance";
 "BIRTH_COUNTRY" = "Pays de naissance";
@@ -154,8 +166,8 @@
 "MAIL_ADDRESS" = "Adresse email";
 "INFORMATION_USED" = "Ces informations seront utilisées à des fins de sécurité et pour confirmer vos transactions.";
 "RESEND_EMAIL" = "Renvoi de l'email";
-"ADDRESS" = "Adresse";
-"TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL" = "Nous avons besoin de ces informations pour nous assurer que les services de crypto-monnaie sont légaux dans votre pays de résidence.";
+"POSTAL_ADDRESS" = "Adresse postale";
+"NEED_INFORMATIONS_LEGAL" = "Nous avons besoin de ces informations pour des raisons juridiques.";
 "STREET_NUMBER" = "Numéro de rue";
 "STREET_NAME" = "Nom de la rue";
 "CITY" = "Ville";
@@ -199,7 +211,7 @@
 "WHAT_SALARY_RANGE_YOU_FALL_INTO" = "Dans quelle tranche de salaire vous situez-vous ?";
 "IDENTITY_VERIFICATION" = "Vérification de l'identité";
 "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT" = "Cette étape vous protège contre la fraude et l'usurpation d'identité. Utilisez votre téléphone pour :";
-"TAKE_PICTURE_OF_YOUR_PAPERS" = "Prenez une photo de vos documents";
+"TAKE_PICTURE_OF_YOUR_PAPERS" = "Prendre une photo de vos documents";
 "NATIONAL_ID_CARD_PASSPORT_OR_DRIVING_LICENSE" = "Carte d'identité nationale, passeport ou permis de conduire";
 "TAKE_A_SELFIE" = "Prendre un selfie";
 "CAMERA" = "Appareil photo";
@@ -210,7 +222,7 @@
 "VERIFICATION_IN_PROGRESS" = "Vérification en cours";
 "START_VERIFICATION" = "Commencer la vérification";
 "PASSWORD_REQUIREMENTS" = "Le mot de passe doit comporter au moins 10 caractères, 1 caractère spécial, 1 minuscule et 1 majuscule";
-"STRONG_PASSWORD" = "Vous avez un mot de passe sécurisé";
+"STRONG_PASSWORD" = "Vous avez un mot de passe sécurisé !";
 
 //MARK: - INVEST MONEY;
 "USING_MY_STRATEGY" = "Utiliser ma stratégie";
@@ -223,7 +235,7 @@
 "INVEST_IN_STRATEGIES" = "Investir dans des stratégies";
 "BUILD_YOUR_OWN_STRATEGY" = "Construire sa propre stratégie";
 "INVEST_IN_SINGLE_ASSET" = "Investir dans un seul actif";
-"CHOOSE_AMONG_80_DIFFERENT_ASSETS" = "Choisir parmi 80 actifs différents";
+"CHOOSE_AMONG_N_DIFFERENT_ASSETS" = "Choisir parmi %@ actifs différents";
 "CREDIT_CARD" = "Carte de crédit";
 "ADD_A_FREQUENCY" = "Choix fréquence";
 "PREVIEW_MY_INVESTMENT" = "Prévisualiser mon investissement";
@@ -273,7 +285,7 @@
 "RATIO" = "Ratio";
 
 //Withdraw
-"WITHDRAW_EXCHANGE" = "Retirer ou échanger";
+"CHOOSE_OPERATION" = "Choisissez une opération";
 "EXCHANGE_FROM_TITLE" = "Echanger → De";
 "LYBER_PORTFOLIO" = "Portefeuille Lyber";
 "FROM" = "De";
@@ -354,8 +366,8 @@
 "VERIFICATION" = "Vérification";
 "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR" = "Entrez le code affiché par Google Authenticator";
 "BACK" = "Retour";
-"ENTER_CODE_RECEIVED_EMAIL" = "Saisir le code reçu par email";
-"ENTER_CODE_RECEIVED_SMS" = "Entrez le code reçu par sms";
+"ENTER_CODE_RECEIVED_EMAIL" = "Entrez le code reçu par email";
+"ENTER_CODE_RECEIVED_SMS" = "Saisir le code reçu par SMS";
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Trop de tentatives échouées, veuillez vous réauthentifier";
 "NO_TRANSACTION" = "Aucune transaction";
 "ENTER_PASSWORD" = "Entrez votre mot de passe";
@@ -370,10 +382,9 @@
 "MANAGE_APPLICATION_CASES_2FA" = "Gérer les cas d'application du 2FA";
 "VALIDATE_WITHDRAWAL" = "Valider un retrait";
 "ENABLE_DISABLE_WHITELISTING" = "Activer/Désactiver la liste blanche";
-"CRYPTO_ADRESS_BOOK" = "Carnet cryptographique";
-"VIEW_ADD_FAVOURITE_CRYPTO_ADDRESSES_HERE" = "Affichez et ajoutez ici vos adresses cryptographiques préférées, vous pouvez également activer la liste blanche pour ces adresses.";
+"CRYPTO_ADRESS_BOOK" = "Carnet d’adresses";
+"ADDRESS_BOOK_ALLOW_CRYPTOCURRENCY" = "Le carnet d’adresse permet aux retraits de crypto-monnaies de n'être effectués qu'à des adresses déjà désignées dans votre carnet d'adresses. Vous pouvez également activer votre carnet pour ces adresses.";
 "WHITELISTING" = "Liste blanche";
-"ADD_CRYPTO_ADRESS" = "Ajouter une adresse cryptographique";
 "EDIT_CRYPTO_ADRESS" = "Modifier une adresse cryptographique";
 "ADRESS_NAME" = "Nom de l'adresse";
 "NETWORK" = "Réseau";
@@ -385,15 +396,19 @@
 "YOUR_NOTE_GOES_HERE" = "Votre note va ici et va sur une grande quantité de ligne";
 "ADD_ADRESS" = "Ajouter une adresse";
 "EDIT_ADRESS" = "Modifier l'adresse";
-"WHITELISTING_SECURITY" = "Sécurité de la liste blanche";
+"NOTEBOOK_SECURITY" = "Sécurité de votre carnet";
 "SAVE_SETTINGS" = "Enregistrer les paramètres";
-"WHITELISTING_FEATURE_LIMITS_WITHDRAWLS" = "La liste blanche est une fonction qui limite vos retraits et vos dépôts aux adresses figurant dans votre carnet d'adresses Lyber. ";
+"WHITELISTING_FEATURE_LIMITS_WITHDRAWLS" = "Le carnet d’adresse limite vos retraits et dépôts aux adresses figurant dans votre carnet.";
 "EXTRA_SECURITY" = "Sécurité supplémentaire";
 "HOURS" = "Heures";
 "72_HOURS" = "72 heures";
 "24_HOURS" = "24 heures";
 "NO_EXTRA_SECURITY" = "Pas de sécurité supplémentaire";
-"CHANGES_EFFECTIVE_AFTER" = "Les changements seront effectifs au bout de";
+"CHANGES_EFFECTIVE_AFTER" = "Ces changements seront effectifs au bout de %@";
+"NHOURS_DELAY_REQUIRED" = "Un délai de %@ est requis avant de pouvoir retirer vers toute adresse nouvellement ajoutée à votre carnet d'adresse.";
+"NHOURS_DELAY_REQUIRED_FUTURE" = "Un délai de %@ sera requis avant de pouvoir retirer vers toute adresse nouvellement ajoutée à votre carnet d'adresse.";
+"CAN_WITHDRAW_IMMEDIATELY" = "Vous pouvez retirer immédiatement vers une adresse nouvellement ajoutée à votre carnet d'adresse.";
+"CAN_WITHDRAW_IMMEDIATELY_FUTURE" = "Vous pourrez retirer immédiatement vers une adresse nouvellement ajoutée à votre carnet d'adresse.";
 "ADD_NEW_ADRESS" = "Ajouter une nouvelle adresse";
 "DISABLED" = "Désactivé";
 "ENABLED" = "Activé";
@@ -420,7 +435,6 @@
 "DELETE" = "Supprimer";
 "EDIT" = "Editer";
 "CONFIRM" = "Confirmer";
-"SELECT_DEFAULT_PICTURE" = "Sélectionner l'image par défaut";
 "SELECTED_PROFILE_PICTURE" = "Sélectionner une photo de profil";
 "BY_EMAIL" = "Par e-mail";
 "GOOGLE_AUTHENTICATOR" = "Google authenticator";

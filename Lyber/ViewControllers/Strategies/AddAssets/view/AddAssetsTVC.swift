@@ -42,7 +42,7 @@ extension AddAssetsTVC{
         CommonUI.setUpLbl(lbl: self.coinNamelbl, text: data?.id.uppercased() ?? "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
 		CommonUI.formattedViewCurrency(value: Double(data?.priceServiceResumeData.lastPrice ?? "0"), labelView: self.euroLbl)
         
-		CommonUI.setUpLbl(lbl: self.percentageLbl, text: "\(Double(data?.priceServiceResumeData.change ?? "") ?? 0)%", textColor: (Double(data?.priceServiceResumeData.change ?? "") ?? 0)<0 ? UIColor.RedDF5A43 : UIColor.GreenColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.percentageLbl, text: "\(Double(data?.priceServiceResumeData.change ?? "") ?? 0)%", textColor: (Double(data?.priceServiceResumeData.change ?? "") ?? 0)<0 ? UIColor.Red_500 : UIColor.GreenColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
         for coin in coinDetailData{
             if data?.id == coin.id{
                 self.coinImg.sd_setImage(with: URL(string: coin.imageUrl ?? ""))

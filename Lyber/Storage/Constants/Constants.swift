@@ -123,6 +123,7 @@ struct Constants{
         static let share = "share"
         static let owner_uuid = "ownerUuid"
         static let orderId = "orderId"
+        static let executionId = "executionId"
         
         //MARK: - assets keys
         static let order = "order"
@@ -284,6 +285,7 @@ struct Constants{
         static let investmentStrategies = "strategy-service/strategies"
         static let strategyServiceStrategy = "strategy-service/strategy"
         static let strategyServiceActiveStrategy = "strategy-service/active-strategy"
+        static let strategyServiceStrategyExecution = "strategy-service/strategy-execution"
        
         //Notification
         static let registerDeviceToken = "notification-service/register"

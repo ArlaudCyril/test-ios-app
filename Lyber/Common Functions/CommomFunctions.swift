@@ -113,6 +113,26 @@ class CommonFunctions{
         }
     }
 	
+	static func showLoaderTransaction(_ onView : UIView){
+        let topView = onView
+		let loadingView = UIView(frame : CGRect(x: 16, y: topView.frame.height/10, width: topView.frame.width - 53, height: 36))
+        loadingView.backgroundColor = UIColor.black
+        loadingView.alpha = 0.6
+		loadingView.layer.cornerRadius = 16
+		let laodingFrame = SpinnerView(frame: CGRect(x: loadingView.frame.width/2 - 25, y: loadingView.frame.height/2 - 13, width: 25, height: 25))
+        loadingView.addSubview(laodingFrame)
+        loadingView.tag = 111
+        var present = false
+        for (_,subView) in topView.subviews.enumerated(){
+            if subView.tag == 111 {
+                present = true
+            }
+        }
+        if !present{
+            topView.addSubview(loadingView)
+        }
+    }
+	
 	static func showLoaderWhite(_ onView : UIView){
 		let topView = onView
 		let loadingView = UIView(frame : CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
@@ -194,11 +214,10 @@ class CommonFunctions{
 		var underView = UIImageView()
 		if(success == true){
 			underView = UIImageView(image:UIImage(asset: Assets.checkmark_color))
-			underView.frame = CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80)
 		}else{
 			underView = UIImageView(image:UIImage(asset: Assets.close_color))
-			underView.frame = CGRect(x: topView.frame.width/2 - 30, y: topView.frame.height/2 - 30, width: 60, height: 60)
 		}
+		underView.frame = CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80)
 		
         for (num,subView) in topView.subviews.enumerated(){
 			if subView.tag == 111{
@@ -652,7 +671,7 @@ class CommonFunctions{
     static func frequenceEncoder(frequence : String?)->(String){
         switch frequence {
         case NSLocalizedString("ONCE", comment: ""):
-            return "1d"
+            return "now"
         case NSLocalizedString("DAILY", comment: ""):
             return "1d"
         case NSLocalizedString("WEEKLY", comment: ""):

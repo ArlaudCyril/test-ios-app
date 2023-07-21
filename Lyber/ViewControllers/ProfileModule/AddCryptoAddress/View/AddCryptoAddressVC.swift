@@ -82,7 +82,7 @@ class AddCryptoAddressVC: SwipeGesture {
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
         
-        CommonUI.setUpLbl(lbl: self.addCryptoAddressLbl, text: CommonFunctions.localisation(key: "ADD_CRYPTO_ADRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addCryptoAddressLbl, text: CommonFunctions.localisation(key: "ADD_ADRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
 		self.addCryptoAddressLbl.numberOfLines = 0
         CommonUI.setUpLbl(lbl: self.addressNameLbl, text: CommonFunctions.localisation(key: "ADRESS_NAME"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))

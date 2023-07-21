@@ -32,6 +32,14 @@ class calenderVC: ViewController {
     override func setUpUI(){
         self.dateView.layer.cornerRadius = 10
         self.dateView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,]
+		
+		//datePicker
+		if(userData.shared.language == "fr"){
+			datePicker.locale = Locale(identifier: "fr_FR")
+		}else{
+			datePicker.locale = Locale(identifier: "en_US")
+		}
+		
         datePicker.tintColor = UIColor.PurpleColor
         CommonUI.setUpLbl(lbl: self.dateofBirthLbl, text: CommonFunctions.localisation(key: "SELECT_BIRTH_DATE"),textColor: UIColor.whiteColor, font: UIFont.AtypDisplayMedium(Size.XLarge.sizeValue()))
         self.datePicker.datePickerMode = .date

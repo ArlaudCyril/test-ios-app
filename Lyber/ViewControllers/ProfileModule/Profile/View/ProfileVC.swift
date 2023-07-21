@@ -16,6 +16,7 @@ class ProfileVC: ViewController {
     var paymentData : [buyDepositeModel] = []
     var AccountData : [SecurityModel] = []
     var securityData : [SecurityModel] = []
+	var transactionsLoaded = false
 
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
@@ -26,6 +27,7 @@ class ProfileVC: ViewController {
     @IBOutlet var profilePic: UIImageView!
     @IBOutlet var tblView: UITableView!
     @IBOutlet var tblViewHeightConst: NSLayoutConstraint!
+    @IBOutlet var transactionView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,7 +120,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "NoTransactionTVC")as! NoTransactionTVC
-                cell.setUpCell()
+				cell.setUpCell(loaded: self.transactionsLoaded)
                 return cell
             }
         }else if indexPath.section == 1{
@@ -239,11 +241,10 @@ extension ProfileVC{
 //MARK: - objective functions
 extension ProfileVC{
     func callTransactionApi(){
-		CommonFunctions.showLoader(self.view)
 		TransactionVM().getTransactionsApi(limit: 3, offset: 0, completion: {[]response in
-			CommonFunctions.hideLoader(self.view)
             if let response = response{
                 self.transactionData = response.data ?? []
+				self.transactionsLoaded = true
                 self.tblView.reloadData()
             }
         })

@@ -117,7 +117,7 @@ extension emailAddressCVC{
 				let pattern = /(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[^\w]+).{10,}/
 				if (passwordTF.text?.firstMatch(of: pattern) != nil)
 				{
-					CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "STRONG_PASSWORD"), textColor: UIColor(named: "green_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
+					CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "STRONG_PASSWORD"), textColor: UIColor(named: "Green_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
 					controller?.nextButton.isUserInteractionEnabled = true
 					controller?.nextButton.backgroundColor = UIColor.PurpleColor
 				}else{

@@ -9,6 +9,8 @@ import UIKit
 
 class Confetti: CAEmitterCell {
 
+	var shadesOfPurple : [UIColor] = [UIColor.purple_100, UIColor.purple_200, UIColor.purple_300, UIColor.purple_400, UIColor.purple_500, UIColor.purple_600, UIColor.purple_700, UIColor.purple_800]
+	
 	var images = [UIImage(asset: Assets.box), UIImage(asset: Assets.triangle), UIImage(asset: Assets.circle)]
 	
 	override init() {
@@ -23,7 +25,7 @@ class Confetti: CAEmitterCell {
 	
 	func setup() {
 		contents = images[Int(arc4random_uniform(UInt32(images.count)))]?.cgImage
-		color = UIColor(red: floatAleatoire(), green: floatAleatoire(), blue: floatAleatoire(), alpha: 1).cgColor
+		color = shadesOfPurple.randomElement()?.cgColor
 		birthRate = 4
 		lifetime = 10
 		lifetimeRange = 3

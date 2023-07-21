@@ -29,7 +29,7 @@ extension ConfirmNewPinCVC{
 		IQKeyboardManager.shared.enableAutoToolbar = false
         enterDigitCounts = 0
         if verifyPin == true{
-            CommonUI.setUpLbl(lbl: confirmPinLbl, text: "Please enter Your Pin", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProBold(Size.XLarge.sizeValue()))
+            CommonUI.setUpLbl(lbl: confirmPinLbl, text: CommonFunctions.localisation(key: "PLEASE_ENTER_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         }else{
             CommonUI.setUpLbl(lbl: confirmPinLbl, text: CommonFunctions.localisation(key: "CONFIRM_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         }
@@ -41,9 +41,6 @@ extension ConfirmNewPinCVC{
         }
     }
     
-    func configureWithData(){
-        
-    }
 }
 
 //MARK: - Text Field Delegates

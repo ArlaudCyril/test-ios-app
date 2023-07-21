@@ -181,7 +181,7 @@ extension CryptoDepositeVC{
 				self?.callGetWalletAdressApi(assetId: self?.selectedAsset?.id ?? "", networkLabel: self?.dropDownProtocol.dataSource[0] ?? "", networkId: self?.networkArray[0].id ?? "")
 			}
 			else{
-				let textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "NETWORKS_ASSET_DEACTIVATED"))"
+				let textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "NETWORKS_ASSET_DEACTIVATED"))."
 				
 				CommonUI.setUpLbl(lbl: self?.sendOnlyAssetLbl ?? UILabel(), text: textSendOnlyAssetLbl, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			}
@@ -190,7 +190,7 @@ extension CryptoDepositeVC{
     }
 	
 	func callGetWalletAdressApi(assetId: String, networkLabel: String, networkId: String){
-		let textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(networkLabel) \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))"
+		let textSendOnlyAssetLbl = "\(CommonFunctions.localisation(key: "SEND_ONLY")) \(self.assetNameLbl.text ?? "") \(CommonFunctions.localisation(key: "ADDRESS_USING")) \(networkLabel) \(CommonFunctions.localisation(key: "PROTOCOL_CHAIN"))."
 		
 		CommonUI.setUpLbl(lbl: self.sendOnlyAssetLbl ?? UILabel(), text: textSendOnlyAssetLbl, textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 		
@@ -214,13 +214,11 @@ extension CryptoDepositeVC{
 		CommonUI.setUpLbl(lbl: assetNameLbl, text: "\(selectedAsset?.fullName ?? "") (\(selectedAsset?.id ?? ""))", textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		
 		
-		dropDownAsset.layer.cornerRadius = 6
 		dropDownAsset.cellHeight = 44
 		dropDownAsset.anchorView = assetView
 		dropDownAsset.bottomOffset = CGPoint(x: 0, y: assetView.frame.height)
 		dropDownAsset.textFont = UIFont.MabryPro(Size.Large.sizeValue())
 		dropDownAsset.cellNib = UINib(nibName: "dropDownTableViewCell", bundle: nil)
-		
 		
 		//configuration printing dropdown
 		dropDownAsset.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
@@ -245,12 +243,12 @@ extension CryptoDepositeVC{
 		
 		CommonUI.setUpLbl(lbl: self.protocolLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
 		
-		dropDownProtocol.layer.cornerRadius = 6
 		dropDownProtocol.cellHeight = 44
 		dropDownProtocol.anchorView = protocolView
 		dropDownProtocol.bottomOffset = CGPoint(x: 0, y: protocolView.frame.height)
 		dropDownProtocol.textFont = UIFont.MabryPro(Size.Large.sizeValue())
-		dropDownProtocol.backgroundColor = UIColor.systemBackground
+		dropDownProtocol.backgroundColor = UIColor.PurpleGrey_50
+		dropDownProtocol.cornerRadius = 8
 
 		//configuration printing dropdown
 		dropDownProtocol.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in

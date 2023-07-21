@@ -24,8 +24,10 @@ class EnableWhitelistingVC: ViewController {
     @IBOutlet var extraSecurityLbl: UILabel!
     @IBOutlet var tblView: UITableView!
     @IBOutlet var tblViewHeightConst: NSLayoutConstraint!
-    @IBOutlet var blockView: UIView!
-    @IBOutlet var blockLbl: UILabel!
+	
+	@IBOutlet var informationVw: UIView!
+	@IBOutlet var informationLbl: UILabel!
+	
     @IBOutlet var saveSettingsBtn: PurpleButton!
     
     override func viewDidLoad() {
@@ -39,21 +41,23 @@ class EnableWhitelistingVC: ViewController {
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
         
-        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "WHITELISTING_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "NOTEBOOK_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpLbl(lbl: self.extraSecurityLbl, text: CommonFunctions.localisation(key: "EXTRA_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
+		
+		CommonUI.setUpViewBorder(vw: self.informationVw, radius: 16, borderWidth: 0, borderColor: UIColor.ColorFFF2D9.cgColor, backgroundColor: UIColor.ColorFFF2D9)
         
         self.tblView.delegate = self
         self.tblView.dataSource = self
 		
 		if(userData.shared.extraSecurity == "none"){
-			self.blockView.isHidden = true
+			CommonUI.setUpLbl(lbl: self.informationLbl, text: CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 		}else{
-			self.blockView.isHidden = false
-			CommonUI.setUpViewBorder(vw: self.blockView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-			CommonUI.setUpLbl(lbl: self.blockLbl, text: "\(CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER")) \(CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))", textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+//			CommonUI.setUpLbl(lbl: self.blockLbl, text: "\(CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER")) \(CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))", textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			
+			CommonUI.setUpLbl(lbl: self.informationLbl, text: CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 		}
         
         self.saveSettingsBtn.setTitle(CommonFunctions.localisation(key: "SAVE_SETTINGS"), for: .normal)
@@ -119,6 +123,9 @@ extension EnableWhitelistingVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.TimeData[indexPath.row].isSelected = !self.TimeData[indexPath.row].isSelected
+		
+		updateInformationLbl(timeDataSelected: TimeData[indexPath.row])
+		
         for i in 0...(self.TimeData.count - 1){
             if TimeData[i].id ==  self.TimeData[indexPath.row].id{
                 selectedTime = self.TimeData[indexPath.row]
@@ -135,6 +142,8 @@ extension EnableWhitelistingVC: UITableViewDelegate, UITableViewDataSource{
             self.saveSettingsBtn.backgroundColor = UIColor.TFplaceholderColor
             self.saveSettingsBtn.isUserInteractionEnabled = false
         }
+		
+		
     }
 }
 
@@ -161,5 +170,45 @@ extension EnableWhitelistingVC{
           }
       }
     }
+}
+
+// MARK: - Others functions
+extension EnableWhitelistingVC{
+	func updateInformationLbl(timeDataSelected: SecurityTime){
+		//selectedTime is the previous timeData
+		switch userData.shared.extraSecurity {
+			case "none":
+				switch timeDataSelected.securityTime{
+					case "NO_EXTRA_SECURITY":
+						self.informationLbl.text = CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY")
+					default:
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: CommonFunctions.localisation(key: timeDataSelected.securityTime))
+				}
+			case "1d":
+				switch timeDataSelected.securityTime{
+					case "72_HOURS":
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: CommonFunctions.localisation(key: timeDataSelected.securityTime))
+					case "24_HOURS":
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))
+					case "NO_EXTRA_SECURITY":
+						self.informationLbl.text = "\( CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY_FUTURE")) \( CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)))"
+					default:
+						print("not handled")
+				}
+			case "3d":
+				switch timeDataSelected.securityTime{
+					case "72_HOURS":
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))
+					case "24_HOURS":
+						self.informationLbl.text = "\(CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: CommonFunctions.localisation(key: timeDataSelected.securityTime))) \(CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)))"
+					case "NO_EXTRA_SECURITY":
+						self.informationLbl.text = "\(CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY_FUTURE")) \( CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)))"
+					default:
+						print("not handled")
+				}
+			default:
+				print("not handled")
+		}
+	}
 }
 

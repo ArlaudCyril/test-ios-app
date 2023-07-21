@@ -8,7 +8,6 @@
 import UIKit
 import ADCountryPicker
 import CountryPickerView
-import IQKeyboardManagerSwift
 import FlagPhoneNumber
 
 class enterNumberCVC: UICollectionViewCell {

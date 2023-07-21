@@ -59,11 +59,16 @@ extension MyAssetsTVC{
 
 		flatVw.isHidden = true
 		flatWalletVw.isHidden = true
-		if index == Storage.balances.count - 1{
+		if index == Storage.balances.count - 1 && index == 0{
             assetsView.layer.cornerRadius = 16
-            assetsView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            assetsView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMaxXMinYCorner]
             flatVw.isHidden = false
             flatWalletVw.isHidden = false
+		}else if index == Storage.balances.count - 1{
+			assetsView.layer.cornerRadius = 16
+			assetsView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+			flatVw.isHidden = false
+			flatWalletVw.isHidden = false
 		}else if index == 0{
 			assetsView.layer.cornerRadius = 16
 			assetsView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]

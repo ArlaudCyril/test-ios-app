@@ -23,6 +23,8 @@ enum Assets : String{
     case right_arrow_grey
     case right_arrow_grey_dull
     case checkmark_color
+	case white_checkmark
+	case white_close
     case invest_money_white
     case invest_money
     case intermediate_strategy
@@ -36,6 +38,9 @@ enum Assets : String{
     case visibility
     case visibility_off
 	case sad_smiley
+	case orange_alert
+	case red_failure
+	case green_large_tick
     
     //coins
     case bitcoin

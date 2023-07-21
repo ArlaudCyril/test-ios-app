@@ -36,9 +36,9 @@ class addressCVC: UICollectionViewCell {
 
 extension addressCVC{
     func setUpCell(){
-        CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "ADDRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.addressDescLbl, text: CommonFunctions.localisation(key: "TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.addressDescLbl, text: CommonFunctions.localisation(key: "TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL"), lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "POSTAL_ADDRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.addressDescLbl, text: CommonFunctions.localisation(key: "NEED_INFORMATIONS_LEGAL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.addressDescLbl, text: CommonFunctions.localisation(key: "NEED_INFORMATIONS_LEGAL"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpViewBorder(vw: self.streetNumberVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.buildingFloorVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)

@@ -12,6 +12,7 @@ class PinVerificationVC: ViewController {
     var pinCreatedDelegate : ((String)->())?
     var enterDigitCounts : Int! = 0
     var tryNumber : Int! = 0
+	var pins : [otpTextField] = []
     
     //MARK:- IB OUTLETS
 	@IBOutlet var logOutBtn: UIButton!
@@ -43,6 +44,8 @@ class PinVerificationVC: ViewController {
 	//MARK: - SetUpUI
 
     override func setUpUI(){
+		pins = [pinTF1,pinTF2,pinTF3,pinTF4]
+		
 		CommonUI.setUpButton(btn: self.logOutBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
 		self.logOutBtn.addTarget(self, action: #selector(LogOutAct), for: .touchUpInside)
 		
@@ -52,8 +55,8 @@ class PinVerificationVC: ViewController {
 //        self.useBiometricVw.backgroundColor = UIColor.borderColor
         CommonUI.setUpLbl(lbl: self.useFaceIdLbl, text: CommonFunctions.localisation(key: "USE_FACE_ID"), textColor: UIColor.PurpleColor, font: UIFont.AtypDisplayRegular(Size.Large.sizeValue()))
         
-        let pins : [otpTextField] = [pinTF1,pinTF2,pinTF3,pinTF4]
-        for pin in pins{
+        
+		for pin in self.pins{
             pin.textColor = UIColor.PurpleColor
 //            pin.otpDelegate = self
             pin.layer.cornerRadius = (pin.layer.bounds.width )/2
@@ -127,6 +130,7 @@ extension PinVerificationVC{
                     
                     
                 }else{
+					resetPin()
                     if(self.tryNumber == 3)
                     {
                         userData.shared.logInPinSet = 0
@@ -273,4 +277,12 @@ extension PinVerificationVC{
 		self.navigationController?.pushViewController(vc, animated: true)
 
     }
+	
+	func resetPin(){
+		enterDigitCounts = 0
+		for pin in self.pins{
+			pin.text = ""
+			pin.backgroundColor = UIColor.borderColor
+		}
+	}
 }

@@ -36,7 +36,7 @@ class DepositeOrBuyVC: ViewController {
     
     var investInStrategyOrAssetData : [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "INVEST_IN_STRATEGIES"), subName: CommonFunctions.localisation(key: "BUILD_YOUR_OWN_STRATEGY"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "INVEST_IN_SINGLE_ASSET"), subName: CommonFunctions.localisation(key: "CHOOSE_AMONG_80_DIFFERENT_ASSETS"), rightBtnName: "")
+		buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "INVEST_IN_SINGLE_ASSET"), subName: CommonFunctions.localisation(key: "CHOOSE_AMONG_N_DIFFERENT_ASSETS", parameter: Storage.currencies.count.description), rightBtnName: "")
     ]
     
     var investWithStrategiesActiveData: [buyDepositeModel] = [
@@ -98,7 +98,7 @@ class DepositeOrBuyVC: ViewController {
         }else if popupType == .PayWith{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "PAY_WITH")
         }else if popupType == .withdrawExchange{
-            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_EXCHANGE")
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "CHOOSE_OPERATION")
         }else if popupType == .withdrawTo{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_TO")
             /*self.withdrawToAccountData.append(buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""))*/
@@ -109,23 +109,14 @@ class DepositeOrBuyVC: ViewController {
         }else if popupType == .withdrawAll{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_TO")
         }else if popupType == .AssetDetailPagePopUp{
-            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_EXCHANGE")
-            
-            //check for the specific 8 coins
-            if specificAssetsArr.contains(self.assetsData?.symbol ?? ""){
-                specificAssets = true
-                self.assetPagePopUpData  = [
-                    buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "WITHDRAW")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "To your personal wallet", rightBtnName: ""),
-                    buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
-                    buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "DEPOSIT")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "To your Lyber wallet", rightBtnName: ""),
-//                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "For fiat currency", rightBtnName: ""),
-				]
-            }else{
-                self.assetPagePopUpData  = [
-                    buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
+            self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "CHOOSE_OPERATION")
+			self.assetPagePopUpData  = [
+				buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "YOUR_ASSETS_YOUR_BANK_ACCOUNT"), rightBtnName: ""),
+				buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
 //                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "", rightBtnName: ""),
-					buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT"), subName: "\(CommonFunctions.localisation(key: "ASSET_LYBER_PART1")) \(self.idAsset.uppercased()) \(CommonFunctions.localisation(key: "ASSET_LYBER_PART2"))", rightBtnName: ""),]
-            }
+				buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT"), subName: "\(CommonFunctions.localisation(key: "ASSET_LYBER_PART1")) \(self.idAsset.uppercased()) \(CommonFunctions.localisation(key: "ASSET_LYBER_PART2"))", rightBtnName: "")
+			]
+            
         }
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         let tap = UILongPressGestureRecognizer(target: self, action: #selector(dismissBottomView))
@@ -250,17 +241,11 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             }
         case .investWithStrategiesInactive:
             if indexPath.row == 0{
-                self.dismiss(animated: true, completion: nil)
-                let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                let nav = UINavigationController(rootViewController: vc)
-                nav.modalPresentationStyle = .fullScreen
-                nav.navigationBar.isHidden = true
-                if indexPath.row == 0{
-                    vc.screenType = .withdraw
-                }else if indexPath.row == 1{
-                    vc.screenType = .exchange
-                }
-                self.portfolioHomeController?.present(nav, animated: true, completion: nil)
+				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+				vc.strategyData = self.strategy
+				vc.strategyType = .oneTimeInvestment
+				self.dismiss(animated: true, completion: nil)
+				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
             }else if indexPath.row == 1{
                 let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
@@ -303,46 +288,29 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.portfolioHomeController?.navigationController?.pushViewController(vc, animated: true)
                 
             }
-        case .AssetDetailPagePopUp:                                                         //Detail Page
-            if specificAssets == true{
-                if indexPath.row == 0 || indexPath.row == 1{
-                    let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-                    if indexPath.row == 0{
-                        vc.strategyType = .withdraw
-                    }else if indexPath.row == 1{
-                        vc.strategyType = .Exchange
-						
-                    }
-//                    vc.fromCoinData?.totalBalance = assetsData?.total_balance ?? 0
-                    vc.assetsData = assetsData
-                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
-                }else if indexPath.row == 2{
-                    let vc = CryptoDepositeVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
-                }else if indexPath.row == 3{
-                    let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-                    vc.strategyType = .sell
-                    vc.assetsData = assetsData
-                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
-                }
-            }else{
-                if indexPath.row == 0{
+			case .AssetDetailPagePopUp:
+				//Detail Page
+				if indexPath.row == 0{
+					let vc = WithdrawAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+					vc.asset = CommonFunctions.getCurrency(id: self.coinId ?? "")
+					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
+
+				}else if indexPath.row == 1{
 					let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 					vc.screenType = .exchange
 					vc.fromAssetId = self.coinId ?? ""
 					Storage.previousControllerPortfolioDetailObject = type(of: self.previousController)
-                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
-//                }else if indexPath.row == 1{
-//                    let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-//                    vc.strategyType = .sell
-//                    vc.assetsData = assetsData
-//                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
+					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
+	//                }else if indexPath.row == 1{
+	//                    let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+	//                    vc.strategyType = .sell
+	//                    vc.assetsData = assetsData
+	//                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 				}else if indexPath.row == 1{
 					let vc = CryptoDepositeVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 					vc.selectedAsset = CommonFunctions.getCurrency(id: self.idAsset)
 					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 				}
-            }
         default:
             break
         }

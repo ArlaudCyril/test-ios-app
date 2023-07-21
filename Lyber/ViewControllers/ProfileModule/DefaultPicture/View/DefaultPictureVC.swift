@@ -26,7 +26,7 @@ class DefaultPictureVC: SwipeGesture {
 
     override func setUpUI(){
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
-        self.headerView.headerLbl.text = CommonFunctions.localisation(key: "SELECT_DEFAULT_PICTURE")
+        self.headerView.headerLbl.text = CommonFunctions.localisation(key: "SELECTED_PROFILE_PICTURE")
         self.collView.delegate = self
         self.collView.dataSource = self
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)

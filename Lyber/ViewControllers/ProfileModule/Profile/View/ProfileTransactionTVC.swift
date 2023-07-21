@@ -43,6 +43,7 @@ class ProfileTransactionTVC: UITableViewCell {
 
 extension ProfileTransactionTVC{
     func setUpCell(data : Transaction?,row : Int,lastIndex : Int){
+		
 		CommonUI.setUpLbl(lbl: transactionTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: euroLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: dateLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
@@ -85,9 +86,13 @@ extension ProfileTransactionTVC{
         CommonUI.setUpButton(btn: viewAllBtn, text: CommonFunctions.localisation(key: "VIEW_ALL"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 16, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         viewAllBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "VIEW_ALL")), for: .normal)
         viewAllBtn.addTarget(self, action: #selector(viewAllBtnAction), for: .touchUpInside)
-        
-        if row == 0{
-            viewAllVw.isHidden = true
+		viewAllVw.isHidden = true
+		
+		if row == 0 && row == lastIndex{
+			viewAllVw.isHidden = false
+			stackView.layer.cornerRadius = 16
+			stackView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+		}else if row == 0{
             stackView.layer.cornerRadius = 16
             stackView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         }else if row == lastIndex{
@@ -95,7 +100,6 @@ extension ProfileTransactionTVC{
             stackView.layer.cornerRadius = 16
             stackView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         }else{
-            viewAllVw.isHidden = true
 			stackView.layer.cornerRadius = 0
         }
         

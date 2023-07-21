@@ -10,6 +10,7 @@ import UIKit
 enum InvestStrategyModel{
     case singleCoin
     case activateStrategy
+    case oneTimeInvestment
     case deposit
     case Exchange
     case withdraw

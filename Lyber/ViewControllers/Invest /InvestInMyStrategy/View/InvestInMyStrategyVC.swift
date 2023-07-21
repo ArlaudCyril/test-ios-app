@@ -47,7 +47,7 @@ class InvestInMyStrategyVC: ViewController {
     var maxCoinExchange = Double()
 	var minPriceExchange = 1.05
 	var minAmountExchange : Double?
-	//singleCoin || activateStrategy || editActiveStrategy
+	//singleCoin || activateStrategy || editActiveStrategy || oneTimeInvestment
 	var minInvestPerAsset : Decimal = 20
 	var requiredAmount : Decimal = 0
 	
@@ -128,7 +128,7 @@ class InvestInMyStrategyVC: ViewController {
 			
 			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
 			
-			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.RedDF5A43, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			
 				self.exchangeAlertLbl.isHidden = false
 			
@@ -258,8 +258,12 @@ class InvestInMyStrategyVC: ViewController {
             self.frequencyLbl.text = "\(CommonFunctions.localisation(key: "ADD_A_FREQUENCY")) (\(CommonFunctions.localisation(key: "OPTIONAL")))"
             self.maximumMoneyInvest()
 			
-        }else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy){
+		}else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy || strategyType == .oneTimeInvestment){
 			self.frequencyVw.isHidden = false
+			if(strategyType == .oneTimeInvestment){
+				self.frequencyVw.isHidden = true
+			}
+			
 			self.creditCardVw.isHidden = true //it is temporary
 			self.coinsLbl.isHidden = false
 			self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_MY_INVESTMENT"), for: .normal)
@@ -543,7 +547,7 @@ extension InvestInMyStrategyVC {
 			}
 			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
 			
-			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.RedDF5A43, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			
 			self.maxCoinExchange = Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") ?? 0
 			self.fromBalanceTotal = String((Double(exchangeData?.exchangeFromCoinBalance.balanceData.euroBalance ?? "0") ?? 0))
@@ -560,15 +564,11 @@ extension InvestInMyStrategyVC {
 			
 			self.totalBalanceLbl.text = "\(self.fromBalanceTotal ?? "0") €"
 			
+			//update numbers printed
+			self.noOfCoinLbl.text = "~ 0 \(exchangeData?.exchangeToCoinId.uppercased() ?? "")"
+			amountTF.text = "0 \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
 			
-			let noOfCoinText = self.noOfCoinLbl.text
-			if(amountTF.text == "" || Int(noOfCoinText?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined() ?? "") == 0){
-				self.noOfCoinLbl.text = "~ 0 \(exchangeData?.exchangeToCoinId.uppercased() ?? "")"
-			}else{
-				self.noOfCoinLbl.text = "~\(amountTF.text ?? "")"
-			}
-			let amountText = noOfCoinText?.dropFirst(1)
-			amountTF.text = amountText.map { String($0) }
+			handlePreviewInvestButton(value: amountTF.text ?? "0")
 
 		}else{
 			CommonFunctions.toster(CommonFunctions.localisation(key: "CANT_EXCHANGE_ASSET_DONT_HAVE"))
@@ -740,8 +740,10 @@ extension InvestInMyStrategyVC {
 			
     
     func goToConfirmInvestment(){
-        if strategyType == .singleCoin || strategyType == .activateStrategy || strategyType == .editActiveStrategy{
-
+		if strategyType == .singleCoin || strategyType == .activateStrategy || strategyType == .oneTimeInvestment || strategyType == .editActiveStrategy{
+			if(CommonFunctions.frequenceEncoder(frequence: self.selectedFrequency) == "now"){
+				strategyType = .oneTimeInvestment
+			}
 			if totalEuroInvested > Decimal(totalEuroAvailable ?? 0){
 				CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDT"))
 			}else if totalEuroInvested < self.requiredAmount{
@@ -789,6 +791,8 @@ extension InvestInMyStrategyVC {
 					vc.ratioCoin = response?.data.ratio ?? "0"
 					vc.orderId = response?.data.orderId ?? ""
 					vc.fees = Double(response?.data.fees ?? "")
+					vc.coinFromPrice = Double(self.fromAssetPrice ?? "")
+					vc.coinToPrice = Decimal(string: self.toAssetPrice ?? "")
 					self.navigationController?.pushViewController(vc, animated: true)
 				}
 			})
@@ -811,16 +815,8 @@ extension InvestInMyStrategyVC {
 			vc.totalEuroInvested = NSDecimalNumber(decimal: totalEuroInvested).doubleValue
 			vc.frequency = self.selectedFrequency
 			vc.strategyData = self.strategyData
-			if strategyType == .singleCoin{
-				vc.InvestmentType = .singleCoin
-			}else if strategyType == .activateStrategy{
-				vc.InvestmentType = .activateStrategy
-			}else if strategyType == .editActiveStrategy{
-				vc.InvestmentType = .editActiveStrategy
-			}else if strategyType == .deposit{
-				vc.InvestmentType = .deposit
+			vc.InvestmentType = strategyType
 				
-			}
 			self.navigationController?.pushViewController(vc, animated: true)
 			
 		}

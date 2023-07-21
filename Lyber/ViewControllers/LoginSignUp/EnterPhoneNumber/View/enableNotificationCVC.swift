@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class enableNotificationCVC: UICollectionViewCell {
     //MARK: - Variables
@@ -32,9 +33,6 @@ extension enableNotificationCVC{
         self.askMeLater.addTarget(self, action: #selector(askMeLaterAct), for: .touchUpInside)
     }
     
-    func configureWithData(){
-        
-    }
 }
 
 

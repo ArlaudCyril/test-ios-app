@@ -7,8 +7,8 @@
  */
 
 //MARK: - GLOBAL
-"LYBER_REINVENTED" = "Lyber, investments reinvented";
-"DIVERSIFIED_REGULAR_SIMPLE" = "Diversified. Regular. Simple.";
+"LYBER_CRYPTO_FINGERTIPS" = "Lyber, crypto at your fingertips.";
+"SIMPLE_SECURE_DIVERSIFIED_INVESTMENT" = "Simple, secure and diversified investment";
 "SIGN_UP" = "Sign up";
 "LOADING_MORE" = "Loading more";
 "NO_MORE_DATA" = "No more data";
@@ -41,6 +41,11 @@
 "SAVE" = "Save";
 "OR" = "OR";
 "COPIED" = "Copied";
+"PLEASE_ENTER_PIN" = "Please enter your pin";
+"LOW" = "Low";
+"MEDIUM" = "Medium";
+"HIGH" = "High";
+
 
 //MARK: - EDUCATION STRATEGY;
 
@@ -83,6 +88,13 @@
 "STRATEGIES_ARE_THERE_TO_HELP_YOU" = "The strategies are there to help you dilute your investments over several assets.";
 "YIELD" = "Yield";
 "RISK" = "Risk";
+"INVEST" = "Invest";
+"IMMEDIATE" = "Immediate";
+"EXECUTING_YOUR_STRATEGY" = "We are executing your strategy, which may take a few seconds.";
+"INVESTMENT_IN_PROGRESS" = "Investment in progress";
+"INVESTMENT_FAILED" = "Investment failed";
+"INVESTMENT_VALIDATED" = "Investment validated";
+"INVESTMENT_PARTIALLY_VALIDATED" = "Investment partially validated";
 
 
 //MARK: - PORTFOLIO HOME;
@@ -139,7 +151,7 @@
 "LAST_NAME" = "Last name";
 "BIRTH_PLACE" = "Birth place";
 "PERSONAL_DATA" = "PERSONAL DATA";
-"FOR_LEGAL_REASONS" = "For legal reasons, we need you to answer some questions and provide us with personal information.";
+"FOR_LEGAL_REASONS" = "In order for Lyber to maintain the highest level of security for your account, we need some information from you.";
 "CARD_HOLDER_NAME" = "Cardholder's name";
 "BIRTH_DATE" = "Birth date";
 "BIRTH_COUNTRY" = "Birth Country";
@@ -154,8 +166,8 @@
 "INFORMATION_USED" = "This information will be used for security purposes and to confirm your transactions.";
 "RESEND_EMAIL" = "RESEND EMAIL";
 
-"ADDRESS" = "Address";
-"TO_ENSURE_CRYPTO_SERVICES_ARE_LEGAL" = "We need this information to ensure that crypto services are legal in your country of residence.";
+"POSTAL_ADDRESS" = "Postal address";
+"NEED_INFORMATIONS_LEGAL" = "We need this information for legal reasons.";
 "STREET_NUMBER" = "Street number";
 "STREET_NAME" = "Street name";
 "CITY" = "City";
@@ -229,7 +241,7 @@
 "INVEST_IN_STRATEGIES" = "Invest in strategies";
 "BUILD_YOUR_OWN_STRATEGY" = "Build your own strategy";
 "INVEST_IN_SINGLE_ASSET" = "Invest in a single asset";
-"CHOOSE_AMONG_80_DIFFERENT_ASSETS" = "Choose among 80 different assets";
+"CHOOSE_AMONG_N_DIFFERENT_ASSETS" = "Choose among %@ different assets";
 "CREDIT_CARD" = "Credit card";
 "ADD_A_FREQUENCY" = "Add a frequency";
 "PREVIEW_MY_INVESTMENT" = "Preview my investment";
@@ -279,7 +291,7 @@
 "RATIO" = "Ratio";
 
 //Withdraw
-"WITHDRAW_EXCHANGE" = "Withdraw or exchange";
+"CHOOSE_OPERATION" = "Choose an operation";
 "EXCHANGE_FROM_TITLE" = "Exchange → From";
 "LYBER_PORTFOLIO" = "Lyber portfolio";
 "FROM" = "From";
@@ -377,9 +389,8 @@
 "VALIDATE_WITHDRAWAL" = "Validate a withdrawal";
 "ENABLE_DISABLE_WHITELISTING" = "Enable/Disable whitelisting";
 "CRYPTO_ADRESS_BOOK" = "Crypto address book";
-"VIEW_ADD_FAVOURITE_CRYPTO_ADDRESSES_HERE" = "View and add your favorite crypto addresses here, you can also enable Whitelisting for these addresses.";
+"ADDRESS_BOOK_ALLOW_CRYPTOCURRENCY" = "The address book allows cryptocurrency withdrawals to be made only at addresses already designated in your address book. You can also activate your address book for these addresses.";
 "WHITELISTING" = "Whitelisting";
-"ADD_CRYPTO_ADRESS" = "Add a crypto address";
 "EDIT_CRYPTO_ADRESS" = "Edit crypto address";
 "ADRESS_NAME" = "Address name";
 "NETWORK" = "Network";
@@ -391,15 +402,19 @@
 "YOUR_NOTE_GOES_HERE" = "Your note goes here and goes on a big amount of line";
 "ADD_ADRESS" = "Add address";
 "EDIT_ADRESS" = "Edit address";
-"WHITELISTING_SECURITY" = "Whitelisting security";
+"NOTEBOOK_SECURITY" = "Security of your notebook";
 "SAVE_SETTINGS" = "Save Settings";
-"WHITELISTING_FEATURE_LIMITS_WITHDRAWLS" = "Whitelisting is a feature that limits your withdrawals and deposits to addresses in your Lyber address book.";
+"ADDRESS_BOOK_LIMITS_WITHDRAWLS" = "The address book limits your withdrawals and deposits to the addresses in your address book.";
 "EXTRA_SECURITY" = "Extra security";
 "HOURS" = "Hours";
 "72_HOURS" = "72 hours";
 "24_HOURS" = "24 hours";
 "NO_EXTRA_SECURITY" = "No extra security";
-"CHANGES_EFFECTIVE_AFTER" = "The changes will be effective after";
+"CHANGES_EFFECTIVE_AFTER" = "The changes will be effective after %@";
+"NHOURS_DELAY_REQUIRED" = "A %@ delay is required before you can withdraw to an address newly added to your address book.";
+"NHOURS_DELAY_REQUIRED" = "A %@ delay will be required before you can withdraw to an address newly added to your address book.";
+"CAN_WITHDRAW_IMMEDIATELY" = "You can withdraw immediately to an address that has just been added to your address book.";
+"CAN_WITHDRAW_IMMEDIATELY_FUTURE" = "You will be able to withdraw immediately to an address newly added to your address book.";
 "ADD_NEW_ADRESS" = "Add a new address";
 "DISABLED" = "Disabled";
 "ENABLED" = "Enabled";
@@ -426,7 +441,6 @@
 "DELETE" = "Delete";
 "EDIT" = "Edit";
 "CONFIRM" = "Confirm";
-"SELECT_DEFAULT_PICTURE" = "Select Default Picture";
 "SELECTED_PROFILE_PICTURE" = "Selected Profile Picture";
 "BY_EMAIL" = "By Email";
 "GOOGLE_AUTHENTICATOR" = "Google authenticator";

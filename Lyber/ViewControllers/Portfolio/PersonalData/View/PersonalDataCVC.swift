@@ -44,10 +44,18 @@ class PersonalDataCVC: UICollectionViewCell {
 extension PersonalDataCVC{
     func SetUpCell(){
         CommonUI.setUpLbl(lbl: self.personalDataLbl, text: CommonFunctions.localisation(key: "PERSONAL_DATA"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		
 		CommonUI.setUpTextField(textfield: self.nameTF, placeholder: CommonFunctions.localisation(key: "FIRST_NAME"), font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		self.nameTF.autocapitalizationType = .sentences
+		
 		CommonUI.setUpTextField(textfield: self.lastNameTF, placeholder: CommonFunctions.localisation(key: "LAST_NAME"), font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		self.lastNameTF.autocapitalizationType = .sentences
+		
 		CommonUI.setUpTextField(textfield: self.birthPlaceTF, placeholder: CommonFunctions.localisation(key: "BIRTH_PLACE"), font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		self.birthPlaceTF.autocapitalizationType = .sentences
+		
         CommonUI.setUpLbl(lbl: self.personalDataDescLbl, text: CommonFunctions.localisation(key: "FOR_LEGAL_REASONS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		
         CommonUI.setTextWithLineSpacing(label: self.personalDataDescLbl, text: CommonFunctions.localisation(key: "FOR_LEGAL_REASONS"), lineSpacing: 6, textAlignment: .left)
         let Views = [self.nameVw,self.lastNameVw,self.birthPlaceVw,self.birthDateVw,self.birthCountryVw,self.nationalityVw,self.specifiedUSPersonVw]
         for vw in Views{
@@ -61,7 +69,9 @@ extension PersonalDataCVC{
         self.lastNameTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
         self.birthPlaceTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
         CommonUI.setUpButton(btn: self.birthDateBtn, text: CommonFunctions.localisation(key: "BIRTH_DATE"), textcolor: UIColor.TFplaceholderColor, backgroundColor: UIColor.white, cornerRadius: 16, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+		
         CommonUI.setUpLbl(lbl: self.birthCountryLbl, text: CommonFunctions.localisation(key: "BIRTH_COUNTRY"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+		
         CommonUI.setUpLbl(lbl: self.NationalityLbl, text: CommonFunctions.localisation(key: "NATIONALITY"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.specifiedUSPersonLbl, text: CommonFunctions.localisation(key: "ARE_YOU_A_US_CITIZEN"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
@@ -212,10 +222,11 @@ extension PersonalDataCVC{
 //MARK: - Other functions
 extension PersonalDataCVC{
 	@objc func IsUsPerson(){
+		
 		dropDown.dataSource = [CommonFunctions.localisation(key: "YES"),CommonFunctions.localisation(key: "NO")]
-		dropDown.selectionBackgroundColor = UIColor.LightPurple
-		dropDown.backgroundColor = UIColor.white
-		dropDown.layer.cornerRadius = 6
+		dropDown.backgroundColor = UIColor.PurpleGrey_50
+		dropDown.cornerRadius = 8
+		dropDown.textFont = UIFont.MabryPro(Size.Large.sizeValue())
 		dropDown.anchorView = specifiedUSPersonVw
 		dropDown.bottomOffset = CGPoint(x: 0, y: specifiedUSPersonVw.frame.height)
 		dropDown.show()

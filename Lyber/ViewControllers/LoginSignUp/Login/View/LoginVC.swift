@@ -64,8 +64,9 @@ class LoginVC: ViewController {
 	}
 	//MARK: - SetUpUI
     override func setUpUI(){
-        CommonUI.setUpLbl(lbl: titleLbl, text: CommonFunctions.localisation(key: "LYBER_REINVENTED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XVLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: subtitleLbl, text: CommonFunctions.localisation(key: "DIVERSIFIED_REGULAR_SIMPLE"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: titleLbl, text: CommonFunctions.localisation(key: "LYBER_CRYPTO_FINGERTIPS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XVLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: subtitleLbl, text: CommonFunctions.localisation(key: "SIMPLE_SECURE_DIVERSIFIED_INVESTMENT"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+		self.subtitleLbl.numberOfLines = 0
 		CommonUI.setUpButton(btn: signUpBtn, text: CommonFunctions.localisation(key: "SIGN_UP"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         CommonUI.setUpButton(btn: LoginBtn, text: CommonFunctions.localisation(key: "LOG_IN"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         
