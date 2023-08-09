@@ -23,20 +23,32 @@ class InvestmentExperienceVC: ViewController {
                                         "FAMILLY_OTHERS"]
     var workIndustryData : [String] = ["AGRICULTURE",
                                         "ARTS_MEDIA",
-                                        "CASINOS_GAMES",
+                                        "BANKING_FINANCE_INSURANCE",
+                                        "BUSINESS_SERVICES_CONSULTING",
                                         "BUILDING",
-                                        "DEFENSE",
-                                        "ENTERTAINEMENT",
-                                        "EDUCATION",
-                                        "ENERGY",
-                                        "MEDIATV",
-                                        "NEW_TECHNOLOGIES"]
-    var annualIncomeData : [String] = ["18K_MONTH",
-									   "23K_MONTH",
-									   "27K_MONTH",
-									   "35K_MONTH",
-									   "56K_MONTH",
-									   "*K_MONTH"]
+                                        "EDUCATION_TRAINING_RESEARCH",
+										"ENERGY_ENVIRONMENT",
+										"GOVERNMENT_ADMINISTRATION_SOCIAL",
+										"HEALTH_MEDICAL_PHARMACEUTICAL",
+										"HOSPITALITY_TOURISM_CATERING",
+										"IT",
+										"MANUFACTURING_METTALURGY",
+										"MARKETING_ADVERTISING_PUBLIC_RELATIONS",
+										"REAL_ESTATE_PROPERTY_MANAGEMENT",
+										"RETAIL_ECOMMERCE",
+										"SPORTS_LEISURE_ENTERTAINMENT",
+										"TEXTILE_FASHION_APPAREL",
+										"TRANSPORT_LOGISTICS_WHOLESALE"]
+    var annualIncomeData : [String] = ["LESS_THAN_500",
+									   "500_1000",
+									   "1001_1500",
+									   "1501_2000",
+									   "2001_3000",
+									   "OVER_3001"]
+	
+	var activityData : [String] = ["BUY_SELL_DIGITAL_ASSETS",
+									   "SAVE_MONEY",
+									   "STORE_DIGITAL_ASSETS"]
 
 
     var investExperienceCallBack :((String)->())?
@@ -78,6 +90,8 @@ class InvestmentExperienceVC: ViewController {
             self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_YOUR_WORK_INDUSTRY")
         }else if investmentType == .AnnualIncome{
             self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_SALARY_RANGE_YOU_FALL_INTO")
+        }else if investmentType == .activity{
+            self.yourInvestmentExpLbl.text = CommonFunctions.localisation(key: "WHAT_DO_YOU_PLAN_MAINLY")
         }
         let outerTapped = UITapGestureRecognizer(target: self, action: #selector(cancelBtnAct))
         self.outerVw.addGestureRecognizer(outerTapped)
@@ -95,6 +109,8 @@ extension InvestmentExperienceVC : UITableViewDelegate,UITableViewDataSource{
             return workIndustryData.count
         }else if investmentType == .AnnualIncome{
             return annualIncomeData.count
+        }else if investmentType == .activity{
+            return activityData.count
         }else{
             return 2
 		}
@@ -110,6 +126,8 @@ extension InvestmentExperienceVC : UITableViewDelegate,UITableViewDataSource{
 			cell.setUpCell(data: CommonFunctions.localisation(key: workIndustryData[indexPath.row]))
         }else if investmentType == .AnnualIncome{
 			cell.setUpCell(data: CommonFunctions.localisation(key: annualIncomeData[indexPath.row]))
+        }else if investmentType == .activity{
+			cell.setUpCell(data: CommonFunctions.localisation(key: activityData[indexPath.row]))
         }
 
         return cell
@@ -125,6 +143,8 @@ extension InvestmentExperienceVC : UITableViewDelegate,UITableViewDataSource{
             self.investExperienceCallBack?(workIndustryData[indexPath.row])
         }else if investmentType == .AnnualIncome{
             self.investExperienceCallBack?(annualIncomeData[indexPath.row])
+        }else if investmentType == .activity{
+            self.investExperienceCallBack?(activityData[indexPath.row])
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -140,10 +160,11 @@ extension InvestmentExperienceVC{
 // MARK: - TABLE VIEW OBSERVER
 extension InvestmentExperienceVC{
     override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-        self.setUpUI()
-      self.tblView.reloadData()
+		super.viewWillAppear(animated)
+		self.tblView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+		self.setUpUI()
+		self.tblView.reloadData()
+		self.tblView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
       
     override func viewWillDisappear(_ animated: Bool) {
@@ -155,9 +176,12 @@ extension InvestmentExperienceVC{
       if let obj = object as? UITableView {
           if obj == self.tblView && keyPath == "contentSize" {
             if let newSize = change?[NSKeyValueChangeKey.newKey] as? CGSize {
-              self.tblViewHeightConst.constant = newSize.height
+				self.tblViewHeightConst.constant = min(self.view.frame.height/1.6, newSize.height)
             }
           }
       }
     }
 }
+
+
+

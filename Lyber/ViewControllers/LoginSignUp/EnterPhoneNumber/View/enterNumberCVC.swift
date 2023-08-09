@@ -26,6 +26,7 @@ class enterNumberCVC: UICollectionViewCell {
     @IBOutlet var passwordTF: UITextField!
     @IBOutlet var eyeBtn: UIButton!
     @IBOutlet var loginByEmailBtn: UIButton!
+    @IBOutlet var forgotPasswordBtn: UIButton!
     @IBOutlet var scrollStackVw: UIStackView!
 }
 
@@ -46,22 +47,28 @@ extension enterNumberCVC{
         self.phoneTF.delegate = self
         self.passwordTF.font = UIFont.MabryPro(Size.Large.sizeValue())
         self.passwordTF.delegate = self
-        CommonUI.setUpButton(btn: self.loginByEmailBtn, text: CommonFunctions.localisation(key: "LOGIN_EMAIL"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpButton(btn: self.loginByEmailBtn, text: "", textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.loginByEmailBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOGIN_EMAIL") ), for: .normal)
+		
+		CommonUI.setUpButton(btn: self.forgotPasswordBtn, text: "", textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        self.forgotPasswordBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "FORGOT_PASSWORD") ), for: .normal)
 		
         if GlobalVariables.isLogin == true{
             self.loginByEmailBtn.isHidden = false
+            self.forgotPasswordBtn.isHidden = false
             self.enterNumberLbl.text = CommonFunctions.localisation(key: "HAPPY_SEE_YOU_BACK")
             self.enterNumberDescLbl.text = CommonFunctions.localisation(key: "ENTER_PHONE_NUMBER_LOGIN")
             self.passwordView.isHidden = false
         }else{
             self.loginByEmailBtn.isHidden = true
+            self.forgotPasswordBtn.isHidden = true
             self.passwordView.isHidden = true
         }
         
         self.phoneTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
         self.passwordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
         self.loginByEmailBtn.addTarget(self, action: #selector(loginByEmailAct), for: .touchUpInside)
+		self.forgotPasswordBtn.addTarget(self, action: #selector(forgotPasswordAct), for: .touchUpInside)
         self.eyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
 		
         countryPickerVw.delegate = self
@@ -85,9 +92,12 @@ extension enterNumberCVC{
     
     @objc func loginByEmailAct(){
         let vc = EmailLoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        self.controller?.present(nav, animated: true, completion: nil)
+		self.controller?.navigationController?.pushViewController(vc, animated: false)
+    }
+	
+	@objc func forgotPasswordAct(){
+        let vc = ForgotPasswordVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+        self.controller?.navigationController?.pushViewController(vc, animated: false)
     }
     
     @objc func eyeBtnAct(){

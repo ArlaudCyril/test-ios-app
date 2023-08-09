@@ -114,7 +114,8 @@ extension StrongAuthVC{
 			{
 				self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone")
 			}else{
-				ConfirmInvestmentVM().userGetOtpApi(action: "type", completion: {[weak self]response in
+				let details = ["type2FA" : "phone"]
+				ConfirmInvestmentVM().userGetOtpApi(action: "type", data: details ,completion: {[weak self]response in
 					if response != nil{
 						self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone")
 					}
@@ -130,7 +131,8 @@ extension StrongAuthVC{
 			{
 				self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email")
 			}else{
-				ConfirmInvestmentVM().userGetOtpApi(action: "type", completion: {[weak self]response in
+				let details = ["type2FA" : "email"]
+				ConfirmInvestmentVM().userGetOtpApi(action: "type", data: details, completion: {[weak self]response in
 					if response != nil{
 						self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email")
 					}
@@ -153,13 +155,14 @@ extension StrongAuthVC{
     }
     
     @objc func validateWithdrawSwitchAct(sender : UISwitch){
-		var scopes : [String] = ["login"]
+		var scopes : [String] = []
 		if(userData.shared.scope2FAWhiteListing){
 			scopes.append("whitelisting")
 		}
 		// We do a twoFa request only if we desactive a scope
 		if(sender.isOn != true){
-			ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
+			let details = ["scope2FA" : scopes]
+			ConfirmInvestmentVM().userGetOtpApi(action: "scope", data: details, completion: {[weak self]response in
 				if response != nil{
 					sender.isOn = !sender.isOn
 					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
@@ -189,13 +192,14 @@ extension StrongAuthVC{
     }
     
     @objc func enableWhitelistingSwitchAct(sender : UISwitch){
-		var scopes : [String] = ["login"]
+		var scopes : [String] = []
 		if(userData.shared.scope2FAWithdrawal){
 			scopes.append("withdrawal")
 		}
 		// We do a twoFa request only if we desactive a scope
 		if(sender.isOn != true){
-			ConfirmInvestmentVM().userGetOtpApi(action: "scope", completion: {[weak self]response in
+			let details = ["scope2FA" : scopes]
+			ConfirmInvestmentVM().userGetOtpApi(action: "scope", data: details, completion: {[weak self]response in
 				if response != nil{
 					sender.isOn = !sender.isOn
 					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)

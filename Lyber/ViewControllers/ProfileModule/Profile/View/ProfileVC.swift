@@ -43,8 +43,8 @@ class ProfileVC: ViewController {
 		self.paymentData = [
 			buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "")
 		]
-		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "NOTIFICATIONS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: "")]
-		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "DISABLED")),
+		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: "")]
+		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "ENABLED")),
 			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: "")]
@@ -54,9 +54,7 @@ class ProfileVC: ViewController {
 		}else{
 			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "ENABLED"))"
 		}
-		if userData.shared.strongAuthVerified {
-			self.securityData[0].desc = CommonFunctions.localisation(key: "ENABLED")
-		}else{
+		if userData.shared.type2FA == "none" {
 			self.securityData[0].desc = CommonFunctions.localisation(key: "DISABLED")
 		}
 		

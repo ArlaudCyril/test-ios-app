@@ -1,0 +1,6 @@
+framework module FFDataWrapper {
+  umbrella header "FFDataWrapper-umbrella.h"
+
+  export *
+  module * { export * }
+}

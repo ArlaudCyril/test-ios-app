@@ -75,7 +75,9 @@ extension TransactionTVC{
 			}
 			self.coinImg.image = Assets.intermediate_strategy_outline.image()
 			self.transactionTypeLbl.text = data?.strategyName
-			self.dateLbl.text = "\(CommonFunctions.localisation(key: "NEXT_PAYMENT")):  \(CommonFunctions.getDateFormat(date: data?.nextExecution ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMMM"))"
+			if(!(data?.nextExecution?.isEmpty ?? true)){
+				self.dateLbl.text = "\(CommonFunctions.localisation(key: "NEXT_PAYMENT")):  \(CommonFunctions.getDateFormat(date: data?.nextExecution ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMMM"))"
+			}
 		}
     }
     

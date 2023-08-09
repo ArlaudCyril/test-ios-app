@@ -16,7 +16,7 @@ class PersonalDataVC: ViewController {
     var currentPage : Int = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
-    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),email = String(),emailPassword = String(),streetNumber = String(),streetName = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),isEditData = false
+    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),email = String(),emailPassword = String(),streetNumber = String(),streetName = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),activity = String(),isEditData = false
 //    var personalData : [personalDataStruct] = []
     var personalData : personalDataStruct?,userPersonalDetail : UserPersonalData?
     
@@ -326,7 +326,7 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.enterCountry)
         }else{
 //            GotoNextIndex()
-            personalData = personalDataStruct(streetNumber: streetNumber, streetName: streetName, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName, investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome)
+            personalData = personalDataStruct(streetNumber: streetNumber, streetName: streetName, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName, investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, activity: activity)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.setAddressApi(profile_info_step : 4,personalData: personalData, completion: {[weak self]response in
@@ -351,8 +351,10 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.chooseWorkIndustry)
         }else if self.annualIncome == ""{
             CommonFunctions.toster(Constants.AlertMessages.chooseAnnualIncome)
+        }else if self.activity == ""{
+            CommonFunctions.toster(Constants.AlertMessages.chooseActivity)
         }else{
-            personalData = personalDataStruct(investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome)
+            personalData = personalDataStruct(investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, activity: activity)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
 			personalDataVM.setInvestmentExperienceApi(profile_info_step : 5,personalData: personalData, completion: {[weak self]response in

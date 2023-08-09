@@ -211,17 +211,11 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             }
         case .investWithStrategiesActive:
             if indexPath.row == 0{
-                self.dismiss(animated: true, completion: nil)
-                let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                let nav = UINavigationController(rootViewController: vc)
-                nav.modalPresentationStyle = .fullScreen
-                nav.navigationBar.isHidden = true
-                if indexPath.row == 0{
-                    vc.screenType = .withdraw
-                }else if indexPath.row == 1{
-                    vc.screenType = .exchange
-                }
-                self.portfolioHomeController?.present(nav, animated: true, completion: nil)
+				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+				vc.strategyData = self.strategy
+				vc.strategyType = .oneTimeInvestment
+				self.dismiss(animated: true, completion: nil)
+				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
             }else if indexPath.row == 1{
                 let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
@@ -270,10 +264,6 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             }else{
                 accountSelectedCallback?(withdrawToAccountData[indexPath.row])
             }
-			/*else if indexPath.row == (self.withdrawToAccountData.count - 1){
-			 let vc = AddBankAccountVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-			 self.investStrategyController?.navigationController?.pushViewController(vc, animated: true)
-			 }*/
         case .InvestInStrategiesOrAsset:                                                  //Invest in Strategy Or Asset
             if indexPath.row == 0{
                 let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)

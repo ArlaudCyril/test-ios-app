@@ -74,17 +74,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let url = URLContexts.first?.url else {
             return
         }
-		
+
         let urlStr = url.absoluteString
-        if urlStr == "com.lyber://"{
-            let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            vc.openFromLink = true
-            let navController = UINavigationController(rootViewController: vc)
-            navController.navigationBar.isHidden = true
-            window?.rootViewController = navController
-            window?.makeKeyAndVisible()
+        if urlStr.hasPrefix("lyber://reset-password"){
+			let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+			let token = components?.queryItems?.first(where: { $0.name == "token" })?.value
+			let vc = ResetPasswordVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+			vc.token = token ?? ""
+			let navController = UINavigationController(rootViewController: vc)
+			navController.navigationBar.isHidden = true
+			window?.rootViewController = navController
+			window?.makeKeyAndVisible()
         }
-        BranchScene.shared().scene(scene, openURLContexts: URLContexts)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

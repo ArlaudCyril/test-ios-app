@@ -59,7 +59,7 @@ extension enableNotificationCVC{
 			vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 			CommonFunctions.loadingProfileApi()
 		}
-        self.delegate?.navigationController?.pushViewController(vc, animated: true)
+        self.delegate?.navigationController?.pushViewController(vc, animated: false)
         
     }
 }

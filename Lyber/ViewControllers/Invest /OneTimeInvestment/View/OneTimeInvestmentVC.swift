@@ -11,6 +11,7 @@ import MultiProgressView
 class OneTimeInvestmentVC: ViewController {
 	//MARK: - Variables
 	var oneInvestment : OneInvestment? = nil
+	var arrayBundleEntries : [BundleOneInvestment] = []
 	
 	//MARK: - IB OUTLETS
 	@IBOutlet var oneTimeInvestmentLbl: UILabel!
@@ -32,17 +33,34 @@ class OneTimeInvestmentVC: ViewController {
 		self.tblView.dataSource = self
 		
 		if(oneInvestment?.status == "FAILURE"){
-			
+			for entryBundle in oneInvestment?.failedBundleEntries ?? [] {
+				var entryBundleFailure = entryBundle
+				entryBundleFailure.status = "FAILURE"
+				self.arrayBundleEntries.append(entryBundleFailure)
+			}
 			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "INVESTMENT_FAILED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 			self.statusImg.image = UIImage(asset: Assets.red_failure)
 			
 		}else if(oneInvestment?.status == "PARTIAL_SUCCESS"){
-			
+			for entryBundle in oneInvestment?.successfulBundleEntries ?? [] {
+				var entryBundleSuccess = entryBundle
+				entryBundleSuccess.status = "SUCCESS"
+				self.arrayBundleEntries.append(entryBundleSuccess)
+			}
+			for entryBundle in oneInvestment?.failedBundleEntries ?? [] {
+				var entryBundleFailure = entryBundle
+				entryBundleFailure.status = "FAILURE"
+				self.arrayBundleEntries.append(entryBundleFailure)
+			}
 			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "INVESTMENT_PARTIALLY_VALIDATED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 			self.statusImg.image = UIImage(asset: Assets.orange_alert)
 			
 		}else{
-			
+			for entryBundle in oneInvestment?.successfulBundleEntries ?? [] {
+				var entryBundleSuccess = entryBundle
+				entryBundleSuccess.status = "SUCCESS"
+				self.arrayBundleEntries.append(entryBundleSuccess)
+			}
 			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "INVESTMENT_VALIDATED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 			self.statusImg.image = UIImage(asset: Assets.green_large_tick)
 		}
@@ -59,22 +77,12 @@ extension OneTimeInvestmentVC : UITableViewDelegate,UITableViewDataSource{
 		1
 	}
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if(oneInvestment?.status == "FAILURE")
-		{
-			return oneInvestment?.failedBundleEntries?.count ?? 0
-		}else{
-			return oneInvestment?.successfulBundleEntries?.count ?? 0
-		}
+		return self.arrayBundleEntries.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "OneTimeInvestmentTVC")as! OneTimeInvestmentTVC
-		if(oneInvestment?.status == "FAILURE"){
-			cell.setUpCell(data: oneInvestment?.failedBundleEntries?[indexPath.row], status: "FAILURE")
-		}else{
-			cell.setUpCell(data: oneInvestment?.successfulBundleEntries?[indexPath.row], status: "SUCCESS")
-		}
-		
+		cell.setUpCell(data: self.arrayBundleEntries[indexPath.row])
 		return cell
 		
 	}

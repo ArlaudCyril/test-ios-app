@@ -155,7 +155,7 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 //MARK: - objective functions
 extension EmailLoginVC{
     @objc func backBtnAct(){
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func nextBtnAct(){
@@ -268,22 +268,9 @@ extension EmailLoginVC{
                 vw.backgroundColor = UIColor.PurpleColor.withAlphaComponent(0.2)
                 self.indicatorViewsWidth[num].constant = 4
             }
-            if self.currentPage ?? 0 >= 1{
-                if self.currentPage ?? 0 == 2 || self.currentPage ?? 0 == 4{
-                    self.headerView.backBtn.setImage(UIImage(), for: .normal)
-                    CommonUI.setUpButton(btn: self.headerView.backBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
-                    self.headerView.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOG_OUT")), for: .normal)
-                }else{
-                    self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
-                    self.headerView.backBtn.setAttributedTitle(CommonFunctions.removeUnderlineString(str: ""), for: .normal)
-                    self.headerView.backBtn.setTitle("", for: .normal)
-                }
-                
-                self.nextBtnView.isHidden = true
-            }else{
-                self.headerView.backBtn.setImage(Assets.close.image(), for: .normal)
-                self.nextBtnView.isHidden = false
-            }
+            
+			self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
+            
         }
     }
 }

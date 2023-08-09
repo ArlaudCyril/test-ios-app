@@ -57,7 +57,7 @@ extension DefaultPictureVC: UICollectionViewDelegate, UICollectionViewDataSource
         let vc = SelectedProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
         vc.profilePicImg = UIImage(named: pictureData[indexPath.row]) ?? UIImage()
 		vc.icon = Constants.Icon(rawValue: pictureData[indexPath.row]) ?? Constants.Icon.CHICK_EGG
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: false)
         
     }
     

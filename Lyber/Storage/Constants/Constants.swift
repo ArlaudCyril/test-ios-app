@@ -32,6 +32,7 @@ struct Constants{
         static var chooseSourceOfIncome = CommonFunctions.localisation(key:"ALERT_SOURCE_INCOME")
         static var chooseWorkIndustry = CommonFunctions.localisation(key:"ALERT_WORK_INDUSTRY")
         static var chooseAnnualIncome = CommonFunctions.localisation(key:"ALERT_ANNUAL_INCOME")
+		static var chooseActivity = CommonFunctions.localisation(key:"ALERT_ACTIVITY")
         static let logOut = CommonFunctions.localisation(key:"LOG_OUT")
         static let sureLogOut = CommonFunctions.localisation(key:"ALERT_LOG_OUT")
         static let Cancel = CommonFunctions.localisation(key:"CANCEL")
@@ -187,6 +188,7 @@ struct Constants{
         static let incomeSource = "incomeSource"
         static let occupation = "occupation"
         static let incomeRange = "incomeRange"
+        static let mainUse = "mainUse"
         
         // MARK: - Profile keys
         static let type2FA = "type2FA"
@@ -260,6 +262,8 @@ struct Constants{
         static let setEmailAndPassword = "user-service/set-email-and-password"
         static let userVerifyEmail = "user-service/verify-email"
         static let finishRegistration = "user-service/finish-registration"
+        static let kycServiceKyc = "kyc-service/kyc"
+		
         
         //Login
         static let userChallenge = "user-service/challenge"
@@ -280,6 +284,9 @@ struct Constants{
         static let userServiceLanguage = "user-service/language"
 		static let userServiceTwoFaOtp = "user-service/2fa-otp"
 		static let userServiceTransactions = "user-service/transactions"
+		static let userServiceForgot = "user-service/forgot"
+		static let userServiceResetPasswordIdentifiers = "user-service/reset-password-identifiers"
+		static let userServiceResetPassword = "user-service/reset-password"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"

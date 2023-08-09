@@ -37,5 +37,6 @@ struct BundleOneInvestment : Codable {
 	let share: Int
 	let stableAmount: String?
 	let assetAmount: String?
+	var status: String?
 }
 

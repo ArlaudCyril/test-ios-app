@@ -342,7 +342,7 @@ extension ConfirmInvestmentVC{
 					if response != nil{
 						let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 						vc.confirmationType = .Withdraw
-						vc.confirmInvesmtentController = self
+						vc.previousViewController = self
 						self.present(vc, animated: true)
 						
 					}

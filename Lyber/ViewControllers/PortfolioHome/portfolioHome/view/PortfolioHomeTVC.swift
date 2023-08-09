@@ -74,7 +74,7 @@ extension PortfolioHomeTVC: ChartViewDelegate{
 extension PortfolioHomeTVC{
     @objc func profileAction(){
         let vc = ProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-		self.controller?.navigationController?.pushViewController(vc, animated: true)
+		self.controller?.navigationController?.pushViewController(vc, animated: false)
     }
 }
 

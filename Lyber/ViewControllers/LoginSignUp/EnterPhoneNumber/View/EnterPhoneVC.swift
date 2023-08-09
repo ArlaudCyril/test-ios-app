@@ -243,7 +243,6 @@ extension EnterPhoneVC{
             }
             if self.currentPage ?? 0 >= 1{
                 if self.currentPage ?? 0 == 1 || self.currentPage ?? 0 == 4{
-                    self.headerVw.backBtn.setImage(UIImage(), for: .normal)
                     CommonUI.setUpButton(btn: self.headerVw.backBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
                     self.headerVw.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOG_OUT")), for: .normal)
                 }else{
@@ -254,7 +253,7 @@ extension EnterPhoneVC{
                 
                 self.nextBtnView.isHidden = true
             }else{
-                self.headerVw.backBtn.setImage(Assets.close.image(), for: .normal)
+                self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
                 self.nextBtnView.isHidden = false
             }
         }
@@ -277,9 +276,6 @@ extension EnterPhoneVC{
                         userData.shared.phone_no = self?.phoneNumber ?? ""
                         userData.shared.time = Date()
                         userData.shared.dataSave()
-                        self?.nextBtnView.isHidden = true
-//                        let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 1, section: 0)
-//                        self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
 						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 						vc.typeVerification = "phone"
 						vc.action = "signup"
@@ -307,7 +303,7 @@ extension EnterPhoneVC{
                             let spk = SRPKey(serverPublicKey)
                             
                             do{
-                                let clientSharedSecret = try client.calculateSharedSecret(username: self?.phoneNumber ?? "", password: self?.password ?? "", salt: salt.bytes, clientKeys: clientKeys, serverPublicKey: spk)
+								let clientSharedSecret = try client.calculateSharedSecret(username: "\(self?.countryCode.dropFirst() ?? "")\(self?.phoneNumber ?? "")", password: self?.password ?? "", salt: salt.bytes, clientKeys: clientKeys, serverPublicKey: spk)
                                 let clientProof = client.calculateSimpleClientProof(clientPublicKey: clientKeys.public, serverPublicKey: spk, sharedSecret: clientSharedSecret)
                                 EnterPhoneVM().logInApi(A: BigNum(bytes: clientKeys.public.bytes).dec, M1: BigNum(bytes: clientProof).dec, method: "srp", completion: {[weak self] response in
                                     if let response = response{

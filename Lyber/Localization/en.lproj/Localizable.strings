@@ -150,7 +150,7 @@
 "FIRST_NAME" = "First name";
 "LAST_NAME" = "Last name";
 "BIRTH_PLACE" = "Birth place";
-"PERSONAL_DATA" = "PERSONAL DATA";
+"PERSONAL_DATA" = "Personal data";
 "FOR_LEGAL_REASONS" = "In order for Lyber to maintain the highest level of security for your account, we need some information from you.";
 "CARD_HOLDER_NAME" = "Cardholder's name";
 "BIRTH_DATE" = "Birth date";
@@ -182,6 +182,7 @@
 "YOUR_SOURCE_OF_INCOME" = "Your source of income";
 "YOUR_WORK_INDUSTRY" = "Your work industry";
 "YOUR_ANNUAL_INCOME" = "Your annual income";
+"YOUR_ACTIVITY_LYBER" = "Your activity on Lyber";
 "YOUR_PERSONAL_ASSETS" = "Your Personal Assets";
 "HOW_MANY_PERSONAL_ASSETS_YOU_HAVE" = "How many personal Assets Do you have?";
 "SEND_TO_LYBER" = "Send to Lyber";
@@ -202,18 +203,28 @@
 "FAMILLY_OTHERS" = "Familly or others";
 
 "WHAT_YOUR_WORK_INDUSTRY" = "What’s your work industry ?";
-"AGRICULTURE" = "Agriculture";
-"ARTS_MEDIA" = "Arts & Media";
-"CASINOS_GAMES" = "Casinos & games";
-"BUILDING" = "Building";
-"DEFENSE" = "Defense";
-"ENTERTAINEMENT" = "Entertainement";
-"EDUCATION" = "Education";
-"ENERGY" = "Energy";
-"MEDIATV" = "Media & TV";
-"NEW_TECHNOLOGIES" = "New technologies";
+
+"AGRICULTURE" = "Agriculture, Agroalimentaire et Ressources Naturelles";
+"ARTS_MEDIA" = "Art, Entertainment & Media";
+"BANKING_FINANCE_INSURANCE" = "Banking, Finance & Insurance";
+"BUSINESS_SERVICES_CONSULTING" = "Business Services & Consulting";
+"BUILDING" = "Construction, Engineering & Public Works";
+"EDUCATION_TRAINING_RESEARCH" = "Education, Training & Research";
+"ENERGY_ENVIRONMENT" = "Energy & Environment";
+"GOVERNMENT_ADMINISTRATION_SOCIAL" = "Government, Public Administration & Social Services";
+"HEALTH_MEDICAL_PHARMACEUTICAL" = "Health, Medical & Pharmaceutical";
+"HOSPITALITY_TOURISM_CATERING" = "Hospitality, Tourism & Catering";
+"IT" = "IT";
+"MANUFACTURING_METTALURGY" = "Manufacturing & Metallurgy Industry";
+"MARKETING_ADVERTISING_PUBLIC_RELATIONS" = "Marketing, Advertising & Public Relations";
+"REAL_ESTATE_PROPERTY_MANAGEMENT" = "Real Estate & Property Management";
+"RETAIL_ECOMMERCE" = "Retail & E-commerce";
+"SPORTS_LEISURE_ENTERTAINMENT" = "Sports, Leisure & Interactive Entertainment";
+"TEXTILE_FASHION_APPAREL" = "Textile, Fashion & Apparel";
+"TRANSPORT_LOGISTICS_WHOLESALE" = "Transport, Logistics & Wholesale";
 
 "WHAT_SALARY_RANGE_YOU_FALL_INTO" = "What salary range do you fall into ?";
+"WHAT_DO_YOU_PLAN_MAINLY" = "What do you plan to mainly do ?";
 
 "IDENTITY_VERIFICATION" = "Identity verification";
 "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT" = "This step protects you from fraud and identity theft. Use your phone to:";
@@ -355,7 +366,7 @@
 "PAYMENT_METHOD" = "Payment method";
 "ADD_PAYMENT_METHOD" = "Add payment method";
 "ACCOUNT" = "Account";
-"NOTIFICATIONS" = "Notifications";
+"ACTIVITY_LOGS" = "Activity logs";
 "SECURITY" = "Security";
 "NO_SECURITY" = "No security";
 "STRONG_AUTHENTIFICATION" = "Strong authentification";
@@ -377,6 +388,7 @@
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Too many failed attempts, please reauthenticate";
 "NO_TRANSACTION" = "No transaction";
 "ENTER_PASSWORD" = "Enter password";
+"ENTER_EMAIL_ADDRESS" = "Enter email address";
 "ENTER_PHONE_NUMBER" = "Enter phone number";
 "LANGUAGE" = "Language";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "Device do not support or is not registered with FaceID";
@@ -433,10 +445,14 @@
 "FUND_ACCOUNT_YOUR_BANK_ACCOUNT" = "Fund your account from your bank account";
 "MAKE_SURE_NAME_BANK_ACCOUNT" = "Make sure the name of the bank account is the same as your name on Lyber";
 "LOGIN_EMAIL" = "Login by email";
+"FORGOT_PASSWORD" = "Forgot your password ?";
 "HAPPY_SEE_YOU_BACK" = "Happy to see you back!";
 "ENTER_PHONE_NUMBER_LOGIN" = "Enter your phone number to login, we’ll send you a verification code.";
 "NICE_SEE_YOU_AGAIN" = "Nice to see you again!";
 "ENTER_EMAIL_LOGIN" = "Enter your email to login, we’ll send you a link by email.";
+"HAPPENS_EVEN_BEST" = "Happens even to the best";
+"SEND_RESET_LINK_EMAIL_ADDRESS" = "We will send you a reset link to your email address";
+"SEND_RESET_LINK" = "Send me a reset link";
 "LOGIN_PHONE" = "Login by phone";
 "DELETE" = "Delete";
 "EDIT" = "Edit";
@@ -469,6 +485,7 @@
 "ALERT_SOURCE_INCOME" = "Please select your source of income";
 "ALERT_WORK_INDUSTRY" = "Please select your work industry";
 "ALERT_ANNUAL_INCOME" = "Please Select your annual Income";
+"ALERT_ACTIVITY" = "Please Select your activity on Lyber";
 "ALERT_LOG_OUT" = "Are you sure you want to Log Out?";
 "ALERT_STRATEGY_NAMET" = "Please enter Strategy name";
 "ALERT_PASSWORD" = "Please enter password";
@@ -516,24 +533,42 @@
 "SENT" = "Sent";
 "CANCELED" = "Canceled";
 
+//MARK: - ForgotPassword
+"SENT_EMAIL_CONTAINING_RESET_LINK" = "We have sent you an email containing the reset link that you must follow in order to reset your password";
+"RESET_PASSWORD" = "Reset password";
+"ENTER_NEW_PASSWORD" = "Enter your new password";
+"SAVE_NEW_PASSWORD" = "Save my new password";
+
+
 //MARK: - UNITS
 
 "1D" = "1D";
 "1W" = "1W";
 "1Y" = "1Y";
 "MONTH" = "month";
-"18K_MONTH" = "0-18k€/month";
-"23K_MONTH" = "19-23k€/month";
-"27K_MONTH" = "24-27k€/month";
-"35K_MONTH" = "28-35k€/month";
-"56K_MONTH" = "36-56k€/month";
-"*K_MONTH" = "57-*k€/month";
+
+//MARK: Sign up
+"LESS_THAN_500" = "Less than 500€/month";
+"500_1000" = "500-1000€/month";
+"1001_1500" = "1001-1500€/month";
+"1501_2000" = "1501-2000€/month";
+"2001_3000" = "2001-3000€/month";
+"OVER_3001" = "Over 3001€/month";
+
 "2_ASSETS" = "0-2 assets";
 "22_ASSETS" = "3-22 assets";
 "128_ASSETS" = "23-128 assets";
 "319_ASSETS" = "129-319 assets";
 "464_ASSETS" = "320-464 assets";
 "465_ASSETS" = "465- assets";
+
+"BUY_SELL_DIGITAL_ASSETS" = "Buy and Sell digital assets";
+"SAVE_MONEY" = "Save money";
+"STORE_DIGITAL_ASSETS" = "Store my digital assets";
+
+"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "To finalise your registration, we need to verify your identity. In the next step, you will need to provide an electronic signature and a photograph of an identity document.";
+
+
 
 
 //MARK: - ERRORS

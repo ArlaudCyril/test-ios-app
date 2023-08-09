@@ -8,13 +8,13 @@
 import Foundation
 class KycWebVM{
     func kycDoneApi(completion: @escaping ( (SuccessAPI?) -> Void )){
-        let param: [String: Any] = [Constants.ApiKeys.status: 1]
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userTreezorStatus, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
-            completion(response)
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")
+//        let param: [String: Any] = [Constants.ApiKeys.status: 1]
+//
+//        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userTreezorStatus, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
+//            completion(response)
+//        }, onFailure: { reload, error, code in
+//            completion(nil)
+//            CommonFunctions.toster(error)
+//        }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")
     }
 }

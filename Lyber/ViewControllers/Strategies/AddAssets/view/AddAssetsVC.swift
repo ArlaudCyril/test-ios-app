@@ -193,7 +193,7 @@ extension AddAssetsVC{
 			if let response = response {
                 self.coinsData.removeAll()
                 self.coinsData.append(contentsOf: response )
-                
+				self.coinsData.remove(at: self.coinsData.firstIndex(where: {$0.id == "usdt"}) ?? 0)
                 if (response.count) < 10 {
                     self.canPaginate = false
                 }

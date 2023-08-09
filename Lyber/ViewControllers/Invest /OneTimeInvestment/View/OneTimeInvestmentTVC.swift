@@ -22,14 +22,14 @@ class OneTimeInvestmentTVC: UITableViewCell {
 
 //Mark:- SetUpUI
 extension OneTimeInvestmentTVC{
-	func setUpCell(data : BundleOneInvestment?, status: String?){
+	func setUpCell(data : BundleOneInvestment?){
 		let currency = CommonFunctions.getCurrency(id: data?.asset ?? "")
 		singleAssetVw.isUserInteractionEnabled = false
 		
 		self.coinImgView.sd_setImage(with: URL(string: currency.imageUrl ?? ""), completed: nil)
 		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
-		if(status == "FAILURE"){
+		if(data?.status == "FAILURE"){
 			self.statusImgVw.image = UIImage(asset: Assets.red_failure)
 			self.amountVw.isHidden = true
 		}else{

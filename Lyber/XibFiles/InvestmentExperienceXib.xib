@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29R-Bx-7rU">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="441"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="538"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVJ-Rb-BPE">
                                     <rect key="frame" x="24" y="0.0" width="366" height="20.5"/>
@@ -35,7 +35,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Irh-2z-OCi">
-                                    <rect key="frame" x="24" y="69" width="366" height="372"/>
+                                    <rect key="frame" x="24" y="69" width="366" height="469"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLu-Zy-GEb">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="81"/>
@@ -237,6 +237,56 @@
                                                 <constraint firstAttribute="trailing" secondItem="47Q-uh-s69" secondAttribute="trailing" id="wt5-ew-Oaz"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzs-CI-jiS">
+                                            <rect key="frame" x="0.0" y="388" width="366" height="81"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-FF-i9B">
+                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMs-JJ-DQK">
+                                                    <rect key="frame" x="0.0" y="25" width="366" height="56"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2P-CH-BuT">
+                                                            <rect key="frame" x="12" y="0.0" width="302" height="56"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFL-cs-9E3">
+                                                            <rect key="frame" x="322" y="0.0" width="44" height="56"/>
+                                                            <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                            <state key="normal" image="drop_down_grey">
+                                                                <color key="titleColor" name="AccentColor"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="lFL-cs-9E3" firstAttribute="leading" secondItem="f2P-CH-BuT" secondAttribute="trailing" constant="8" id="3yY-ex-8mg"/>
+                                                        <constraint firstAttribute="height" constant="56" id="7ka-Uc-eah"/>
+                                                        <constraint firstItem="f2P-CH-BuT" firstAttribute="top" secondItem="NMs-JJ-DQK" secondAttribute="top" id="KBe-3a-Qbi"/>
+                                                        <constraint firstItem="f2P-CH-BuT" firstAttribute="leading" secondItem="NMs-JJ-DQK" secondAttribute="leading" constant="12" id="Qcr-wt-Ea0"/>
+                                                        <constraint firstItem="lFL-cs-9E3" firstAttribute="top" secondItem="NMs-JJ-DQK" secondAttribute="top" id="ZI8-6B-e1N"/>
+                                                        <constraint firstAttribute="bottom" secondItem="f2P-CH-BuT" secondAttribute="bottom" id="hgy-Ve-eoR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="lFL-cs-9E3" secondAttribute="bottom" id="jHE-he-nQb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="lFL-cs-9E3" secondAttribute="trailing" id="kAP-2I-dvc"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="NMs-JJ-DQK" secondAttribute="bottom" id="4rk-xL-ut2"/>
+                                                <constraint firstAttribute="trailing" secondItem="NMs-JJ-DQK" secondAttribute="trailing" id="RYj-Cl-u8b"/>
+                                                <constraint firstAttribute="trailing" secondItem="EjD-FF-i9B" secondAttribute="trailing" id="Ygs-tF-Sir"/>
+                                                <constraint firstItem="EjD-FF-i9B" firstAttribute="top" secondItem="vzs-CI-jiS" secondAttribute="top" id="dxq-wb-q2X"/>
+                                                <constraint firstItem="NMs-JJ-DQK" firstAttribute="leading" secondItem="vzs-CI-jiS" secondAttribute="leading" id="i8G-Hj-UWB"/>
+                                                <constraint firstItem="EjD-FF-i9B" firstAttribute="leading" secondItem="vzs-CI-jiS" secondAttribute="leading" id="pWY-lT-232"/>
+                                                <constraint firstItem="NMs-JJ-DQK" firstAttribute="top" secondItem="EjD-FF-i9B" secondAttribute="bottom" constant="4" id="xxO-CS-1YN"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -275,6 +325,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="YourAnnualIncomeLbl" destination="gQs-fe-cIu" id="eIh-qm-2PU"/>
+                <outlet property="activityLbl" destination="f2P-CH-BuT" id="nSX-7F-KYp"/>
+                <outlet property="activityVw" destination="NMs-JJ-DQK" id="Nbr-ga-Yl0"/>
                 <outlet property="annualIncomeLbl" destination="pr8-8W-R9L" id="2Fe-LN-NdP"/>
                 <outlet property="annualIncomeVw" destination="47Q-uh-s69" id="VJw-X3-bd3"/>
                 <outlet property="experienceLbl" destination="egl-bJ-L41" id="6Vt-Af-8wR"/>
@@ -286,6 +338,7 @@
                 <outlet property="sourceOfIncomeVw" destination="1YN-uq-6MA" id="jpp-4b-022"/>
                 <outlet property="workIndustryLbl" destination="dyR-7p-fvF" id="pBm-us-DE3"/>
                 <outlet property="workIndustryVw" destination="8TR-oz-rLg" id="7k8-hD-ZWx"/>
+                <outlet property="yourActivityLbl" destination="EjD-FF-i9B" id="9X9-mO-5Gs"/>
                 <outlet property="yourSourceOfIncomeLbl" destination="ma3-fh-NqG" id="DMm-cK-wMz"/>
                 <outlet property="yourWorkIndustryLbl" destination="NFk-uc-PTa" id="FXQ-9f-sTz"/>
             </connections>
@@ -295,7 +348,7 @@
     <resources>
         <image name="drop_down_grey" width="28" height="28"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

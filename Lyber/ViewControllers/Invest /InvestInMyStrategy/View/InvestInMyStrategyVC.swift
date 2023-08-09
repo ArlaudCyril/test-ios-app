@@ -262,6 +262,12 @@ class InvestInMyStrategyVC: ViewController {
 			self.frequencyVw.isHidden = false
 			if(strategyType == .oneTimeInvestment){
 				self.frequencyVw.isHidden = true
+				for asset in self.strategyCoinsData {
+					let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
+					if(newAmount > self.requiredAmount){
+						self.requiredAmount = newAmount
+					}
+				}
 			}
 			
 			self.creditCardVw.isHidden = true //it is temporary

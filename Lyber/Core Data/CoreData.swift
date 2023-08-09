@@ -35,7 +35,6 @@ class userData : NSObject {
     var iban = ""
     var bic = ""
     var extraSecurity = "none"
-    var strongAuthVerified = false
     var scope2FALogin = false
     var scope2FAWhiteListing = false
     var scope2FAWithdrawal = false
@@ -85,7 +84,6 @@ class userData : NSObject {
         newData.setValue(bic, forKey: "bic")
         newData.setValue(faceIdEnabled, forKey: "faceIdEnabled")
         newData.setValue(extraSecurity, forKey: "extraSecurity")
-        newData.setValue(strongAuthVerified, forKey: "strongAuthVerified")
         newData.setValue(profile_image, forKey: "profile_image")
         newData.setValue(scope2FALogin, forKey: "scope2FALogin")
         newData.setValue(scope2FAWhiteListing, forKey: "scope2FAWhiteListing")
@@ -226,10 +224,6 @@ class userData : NSObject {
                         self.extraSecurity = extraSecurity
                         print("data get extraSecurity \(extraSecurity)")
                     }
-                    if let strongAuthVerified = result.value(forKey: "strongAuthVerified") as? Bool{
-                        self.strongAuthVerified = strongAuthVerified
-                        print("data get strongAuthVerified \(strongAuthVerified)")
-                    }
 					if let profile_image = result.value(forKey: "profile_image") as? String{
                         self.profile_image = profile_image
                         print("data get profile_image \(profile_image)")
@@ -301,7 +295,6 @@ class userData : NSObject {
 		self.bic = ""
 		self.faceIdEnabled = false
 		self.extraSecurity = "none"
-		self.strongAuthVerified = false
 		self.scope2FALogin = false
 		self.scope2FAWhiteListing = false
 		self.scope2FAWithdrawal = false
@@ -336,7 +329,6 @@ class userData : NSObject {
         self.bic = ""
         self.faceIdEnabled = false
         self.extraSecurity = "none"
-        self.strongAuthVerified = false
         self.scope2FALogin = false
         self.scope2FAWhiteListing = false
         self.scope2FAWithdrawal = false

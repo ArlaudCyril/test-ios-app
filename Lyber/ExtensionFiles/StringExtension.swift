@@ -84,6 +84,25 @@ extension String{
 		}
 	}
 	
+	var encoderAnnualIncome: String{
+		switch self {
+			case "Less than 500€/month":
+				return "<500"
+			case "500-1000€/month":
+				return "500-1000"
+			case "1001-1500€/month":
+				return "1001-1500"
+			case "1501-2000€/month":
+				return "1501-2000"
+			case "2001-3000€/month":
+				return "2001-3000"
+			case "Over 3001€/month":
+				return "3001+"
+			default:
+				return self
+		}
+	}
+	
 	var encoderSecurityTime: String{
 		switch self {
 			case "72_HOURS":

@@ -8,13 +8,13 @@
 import UIKit
 import WebKit
 
-class KycWebVC: ViewController,WKNavigationDelegate {
+class KycWebVC: ViewController,WKNavigationDelegate, WKUIDelegate {
     //MARK: - Variables
     var kycWebVC  = KycWebVM()
     var Ubalurl = String()
+	var webViewRedirection: WKWebView!
     //MARK: - IB OUTLETS
-    @IBOutlet var backBtn: UIButton!
-    @IBOutlet var webView: WKWebView!
+    @IBOutlet var webViewHome: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -25,37 +25,72 @@ class KycWebVC: ViewController,WKNavigationDelegate {
     override func setUpUI(){
         let myURL = URL(string: Ubalurl)
         let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
-        webView.navigationDelegate = self
-        
-        backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+		webViewHome.uiDelegate = self
+		webViewHome.load(myRequest)
+		webViewHome.navigationDelegate = self
+		if #available(iOS 16.4, *) {
+			webViewHome.isInspectable = true
+		}
     }
 }
 
 extension KycWebVC {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("didFinish URL: \(String(describing: webView.url))")
-        let webString = webView.url?.absoluteString ?? ""
-        kycWebVC.kycDoneApi(completion: {[weak self]response in
-            self?.navigationController?.popViewController(animated: true)
-        })
-        if webString.contains("https://lyber.com/kyc?"){
-            kycWebVC.kycDoneApi(completion: {[weak self]response in
-                self?.navigationController?.popViewController(animated: true)
-            })
-            
-        }
+		
+		if(webView.url?.absoluteString == "https://www.lyber.com/kyc-finished?action=OK&mode=SIGN&userAction=OK")
+		{
+			webViewHome = nil
+			webViewRedirection = nil
+			finishRegistration()
+		}
     }
+	
+	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+		if navigationAction.request.url != webView.url {
+			if ((navigationAction.request.url?.absoluteString.hasPrefix("https://test.contralia.fr/Contralia")) == true && webView.url?.absoluteString.hasPrefix("https://preprod.id360docaposte.com/static/process_ui/index.html#/enrollment") == true){
+				webViewHome.isHidden = false
+				webViewRedirection.isHidden = true
+				decisionHandler(.allow)
+				return
+			}
+		}
+		
+		decisionHandler(.allow)
+	}
+	
+	func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+		webViewRedirection = WKWebView(frame: view.bounds, configuration: configuration)
+		webViewRedirection.uiDelegate = self
+		webViewRedirection.navigationDelegate = self
+		if #available(iOS 16.4, *) {
+			webViewRedirection.isInspectable = true
+		}
+		webViewRedirection.load(navigationAction.request)
+		webViewHome.isHidden = true
+		view.addSubview(webViewRedirection)
+		return webViewRedirection
+		
+	}
+	
+	func finishRegistration(){
+		//end of register phase
+		PersonalDataVM().finishRegistrationApi(completion: {[weak self]response in
+			if response != nil {
+				userData.shared.time = Date()
+				GlobalVariables.isRegistering = false
+				userData.shared.userToken = response?.data?.access_token ?? ""
+				userData.shared.refreshToken = response?.data?.refresh_token ?? ""
+				userData.shared.dataSave()
+				CommonFunctions.loadingProfileApi()
+				userData.shared.registered()
+				let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				self?.navigationController?.pushViewController(vc, animated: true)
+			}else{
+				CommonFunctions.toster("KYC didn't work")
+			}
+		})
+	}
 }
 
-//MARK: - objective functions
-extension KycWebVC{
-    @objc func backBtnAct(){
-        if webView.canGoBack{
-            webView.goBack()
-        }else{
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-    }
-}
+

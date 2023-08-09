@@ -94,7 +94,8 @@ class PersonalDataVM{
             param[Constants.ApiKeys.investmentExperience] = personalData?.investmentExp ?? ""
             param[Constants.ApiKeys.incomeSource] =  personalData?.sourceOfIncome ?? ""
             param[Constants.ApiKeys.occupation] =  personalData?.workIndustry ?? ""
-            param[Constants.ApiKeys.incomeRange] =  personalData?.annualIncome?.replacingOccurrences(of: "k€/month", with: "") ?? ""
+            param[Constants.ApiKeys.incomeRange] =  personalData?.annualIncome?.encoderAnnualIncome
+			param[Constants.ApiKeys.mainUse] =  personalData?.activity ?? ""
         }
       
         
@@ -126,7 +127,7 @@ class PersonalDataVM{
         let client = SRPClient(configuration: configuration)
         
         let (emailSalt, emailVerifier) = client.generateSaltAndVerifier(username: email ?? "", password: password ?? "")
-        let (phoneSalt, phoneVerifier) = client.generateSaltAndVerifier(username: "\(userData.shared.phone_no)", password: password ?? "")
+        let (phoneSalt, phoneVerifier) = client.generateSaltAndVerifier(username: "\(userData.shared.countryCode)\(userData.shared.phone_no)", password: password ?? "")
         let param: [String: Any] = [Constants.ApiKeys.email: email ?? "",
                                     Constants.ApiKeys.emailSalt: BigNum(bytes: emailSalt).dec,
                                     Constants.ApiKeys.emailVerifier: emailVerifier.number.dec,

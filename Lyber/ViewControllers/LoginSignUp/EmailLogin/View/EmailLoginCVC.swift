@@ -20,6 +20,7 @@ class EmailLoginCVC: UICollectionViewCell {
     @IBOutlet var passwordTF: UITextField!
     @IBOutlet var eyeBtn: UIButton!
     @IBOutlet var loginByPhoneBtn: UIButton!
+	@IBOutlet var forgotPasswordBtn: UIButton!
     @IBOutlet var scrollStackVw: UIStackView!
 }
 
@@ -27,6 +28,7 @@ class EmailLoginCVC: UICollectionViewCell {
 extension EmailLoginCVC{
     func setUpUI(){
 //        IQKeyboardManager.shared.enableAutoToolbar = false
+		
         CommonUI.setUpLbl(lbl: enterEmailLbl, text: CommonFunctions.localisation(key: "NICE_SEE_YOU_AGAIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: enterEmailDescLbl, text: CommonFunctions.localisation(key: "ENTER_EMAIL_LOGIN"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: enterEmailDescLbl, text: CommonFunctions.localisation(key: "ENTER_EMAIL_LOGIN"), lineSpacing: 6, textAlignment: .left)
@@ -42,12 +44,16 @@ extension EmailLoginCVC{
         self.passwordTF.delegate = self
         CommonUI.setUpButton(btn: self.loginByPhoneBtn, text: CommonFunctions.localisation(key: "LOGIN_PHONE"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.loginByPhoneBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOGIN_PHONE") ), for: .normal)
+		
+		CommonUI.setUpButton(btn: self.forgotPasswordBtn, text: "", textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		self.forgotPasswordBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "FORGOT_PASSWORD") ), for: .normal)
 
         
         self.eyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
         self.emailTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
         self.passwordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
         self.loginByPhoneBtn.addTarget(self, action: #selector(loginByPhoneBtnAct), for: .touchUpInside)
+		self.forgotPasswordBtn.addTarget(self, action: #selector(forgotPasswordAct), for: .touchUpInside)
     }
     
     func configureWithData(){
@@ -67,7 +73,7 @@ extension EmailLoginCVC{
     }
     
     @objc func loginByPhoneBtnAct(){
-        self.controller?.dismiss(animated: true, completion: nil)
+        self.controller?.navigationController?.popViewController(animated: true)
     }
     
     @objc func eyeBtnAct(){
@@ -80,6 +86,11 @@ extension EmailLoginCVC{
             self.eyeBtn.setImage(Assets.visibility_off.image(), for: .normal)
         }
     }
+	
+	@objc func forgotPasswordAct(){
+		let vc = ForgotPasswordVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+		self.controller?.navigationController?.pushViewController(vc, animated: true)
+	}
 }
 
 //MARK: - Text Field Delegates

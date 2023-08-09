@@ -54,7 +54,7 @@ extension SelectedProfileVC{
 			if response != nil{
 				userData.shared.profile_image = self.icon.rawValue
 				userData.shared.dataSave()
-				self.navigationController?.popToViewController(ofClass: ProfileVC.self, animated: true)
+				self.navigationController?.popToViewController(ofClass: ProfileVC.self, animated: false)
 			}
 		})
         

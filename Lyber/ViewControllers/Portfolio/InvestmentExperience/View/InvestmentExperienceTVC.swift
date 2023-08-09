@@ -28,5 +28,6 @@ class InvestmentExperienceTVC: UITableViewCell {
 extension InvestmentExperienceTVC{
     func setUpCell(data : String){
         CommonUI.setUpLbl(lbl: self.experienceLbl, text: data, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		self.experienceLbl.numberOfLines = 0
     }
 }

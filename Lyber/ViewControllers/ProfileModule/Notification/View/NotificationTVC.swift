@@ -8,24 +8,38 @@
 import UIKit
 
 class NotificationTVC: UITableViewCell {
-
-    @IBOutlet var notificationLbl: UILabel!
+	
+	var controller : NotificationVC?
+	var notification : NotificationData?
+	
+	@IBOutlet var dateLbl: UILabel!
+	@IBOutlet var bodyLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
 
 extension NotificationTVC{
-    func setupCell(notificationBody : String){
+    func setupCell(notification : NotificationData){
+		self.notification = notification
 		
-		CommonUI.setUpLbl(lbl: self.notificationLbl, text: notificationBody, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "HH:mm"
+		
+		let date = formatter.date(from: notification.date) ?? Date()
+		let dateString = dateFormatter.string(from: date)
+				
+		CommonUI.setUpLbl(lbl: self.dateLbl, text: dateString, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.bodyLbl, text: notification.log, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		self.bodyLbl.numberOfLines = 0
     }
 }
+
+
+
+
+

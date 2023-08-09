@@ -11,7 +11,7 @@ class ConfirmationVC: ViewController {
     var addStrategyController : AddStrategyVC?
     var confirmationType : confirmationPopUp?
     var coinInvest : String?
-	var confirmInvesmtentController : ViewController?
+	var previousViewController : ViewController?
 	
 	var strategy : Strategy?
 	var requiredAmount : Decimal = 0
@@ -56,6 +56,12 @@ class ConfirmationVC: ViewController {
             self.headingLbl.text = "You have successfully sold \(coinInvest ?? "")."
         }else if confirmationType == .Withdraw{
 			self.headingLbl.text = CommonFunctions.localisation(key: "AMOUNT_WITHDRAW_ACCOUNT")
+			self.headingLbl.textAlignment = .center
+			self.subHeadingLbl.textAlignment = .center
+        }else if confirmationType == .LinkSent{
+			self.headingLbl.isHidden = true
+			self.subHeadingLbl.text = CommonFunctions.localisation(key: "SENT_EMAIL_CONTAINING_RESET_LINK")
+			self.subHeadingLbl.textAlignment = .center
         }
 		
 		if(self.confirmationType == .Tailoring){
@@ -88,12 +94,15 @@ extension ConfirmationVC{
     @objc func ThanksBtnAct(){
 		if(confirmationType == .Tailoring){
 			self.dismiss(animated: false)
+		}else if(confirmationType == .LinkSent){
+			self.dismiss(animated: false)
+			self.previousViewController?.navigationController?.popToViewController(ofClass: LoginVC.self)
 		}else{
 			CommonFunctions.callWalletGetBalance()
 			self.dismiss(animated: true, completion: nil)
 			let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 			vc.screenType = .withdraw
-			self.confirmInvesmtentController?.navigationController?.pushViewController(vc, animated: true)
+			self.previousViewController?.navigationController?.pushViewController(vc, animated: true)
 		}
 		
     }

@@ -171,7 +171,7 @@ extension VerificationVC{
 					CommonFunctions.callWalletGetBalance()
 					let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 					vc.confirmationType = .Withdraw
-					vc.confirmInvesmtentController = self.controller
+					vc.previousViewController = self.controller
 					self.controller?.present(vc, animated: true)
 
 				}

@@ -53,7 +53,7 @@ class ApiHandler: NSObject {
 			case "none":
 				break
 			default:
-				print("error, headerType not recognized")
+				header.add(name: "Authorization", value: "Bearer \(headerType)")
 		}
             
         

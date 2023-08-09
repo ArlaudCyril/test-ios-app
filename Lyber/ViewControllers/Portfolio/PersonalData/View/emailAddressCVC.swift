@@ -35,7 +35,7 @@ extension emailAddressCVC{
         CommonUI.setUpViewBorder(vw: self.enterEmailVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.passwordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
 		
-		CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor(named: "red_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor(named: "Red_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
 		requirementsLbl.numberOfLines = 0
 		
         
@@ -122,10 +122,13 @@ extension emailAddressCVC{
 					controller?.nextButton.backgroundColor = UIColor.PurpleColor
 				}else{
 					//Disable button
-					CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor(named: "red_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
+					CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor(named: "Red_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
 					controller?.nextButton.isUserInteractionEnabled = false
 					controller?.nextButton.backgroundColor = .gray
 				}
+			}else{
+				controller?.nextButton.backgroundColor = UIColor.PurpleColor
+				controller?.nextButton.isUserInteractionEnabled = true
 			}
         }
         

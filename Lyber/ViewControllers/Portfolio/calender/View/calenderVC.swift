@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class calenderVC: ViewController {
     //MARK: - Variables
     var dateCallBack : ((String,String)->())?
@@ -42,8 +43,7 @@ class calenderVC: ViewController {
 		
         datePicker.tintColor = UIColor.PurpleColor
         CommonUI.setUpLbl(lbl: self.dateofBirthLbl, text: CommonFunctions.localisation(key: "SELECT_BIRTH_DATE"),textColor: UIColor.whiteColor, font: UIFont.AtypDisplayMedium(Size.XLarge.sizeValue()))
-        self.datePicker.datePickerMode = .date
-        self.datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
+        self.datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -18, to: Date())
         self.doneBtn.setTitle(CommonFunctions.localisation(key: "DONE"), for: .normal)
         self.doneBtn.addTarget(self, action: #selector(doneAct), for: .touchUpInside)
         

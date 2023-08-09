@@ -8,6 +8,7 @@
 import UIKit
 import ADCountryPicker
 import CountryPickerView
+import IQKeyboardManagerSwift
 
 class addressCVC: UICollectionViewCell {
     //MARK: - Variables
@@ -31,6 +32,7 @@ class addressCVC: UICollectionViewCell {
     
     override func awakeFromNib() {
         setUpCell()
+		IQKeyboardManager.shared.enable = true
     }
 }
 

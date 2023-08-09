@@ -88,20 +88,21 @@ extension LoginVC{
 		}else{
 			vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
 		}
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.present(nav, animated: true, completion: nil)
+//        let nav = UINavigationController(rootViewController: vc)
+//        nav.modalPresentationStyle = .fullScreen
+//        nav.navigationBar.isHidden = true
+//        self.present(nav, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func loginBtnAct(){
 		GlobalVariables.isRegistering = false
 		GlobalVariables.isLogin = true
         let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.isHidden = true
-        self.present(nav, animated: true, completion: nil)
+//        let nav = UINavigationController(rootViewController: vc)
+//        nav.modalPresentationStyle = .fullScreen
+//        nav.navigationBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 	
 	@objc func volumeDidChange(_ notification: Notification) {

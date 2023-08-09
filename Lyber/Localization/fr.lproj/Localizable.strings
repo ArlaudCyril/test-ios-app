@@ -181,6 +181,7 @@
 "YOUR_SOURCE_OF_INCOME" = "Votre source de revenus";
 "YOUR_WORK_INDUSTRY" = "Votre secteur d'activité";
 "YOUR_ANNUAL_INCOME" = "Votre revenu annuel";
+"YOUR_ACTIVITY_LYBER" = "Votre utilisation de Lyber";
 "YOUR_PERSONAL_ASSETS" = "Votre patrimoine personnel";
 "HOW_MANY_PERSONAL_ASSETS_YOU_HAVE" = "Combien de biens personnels possédez-vous ?";
 "SEND_TO_LYBER" = "Envoyer à Lyber";
@@ -198,17 +199,30 @@
 "CREDIT_LOAN" = "Crédit/emprunt";
 "FAMILLY_OTHERS" = "Famille ou autres";
 "WHAT_YOUR_WORK_INDUSTRY" = "Quel est votre secteur d'activité ? ";
-"AGRICULTURE" = "Agriculture";
-"ARTS_MEDIA" = "Arts et médias";
-"CASINOS_GAMES" = "Casinos et jeux";
-"BUILDING" = "Bâtiment";
-"DEFENSE" = "Défense";
-"ENTERTAINEMENT" = "Divertissement";
-"EDUCATION" = "Éducation";
-"ENERGY" = "Energie";
-"MEDIATV" = "Médias et télévision";
-"NEW_TECHNOLOGIES" = "Nouvelles technologies";
+
+"AGRICULTURE" = "Agriculture, Agribusiness & Natural Resources";
+"ARTS_MEDIA" = "Art, Divertissement & Médias";
+"BANKING_FINANCE_INSURANCE" = "Banque, Finance & Assurance";
+"BUSINESS_SERVICES_CONSULTING" = "Services aux Entreprises & Conseil";
+"BUILDING" = "Construction, Ingénierie & Travaux Publics";
+"EDUCATION_TRAINING_RESEARCH" = "Éducation, Formation & Recherche";
+"ENERGY_ENVIRONMENT" = "Énergie & Environnement";
+"GOVERNMENT_ADMINISTRATION_SOCIAL" = "Gouvernement & Administration Publique";
+"HEALTH_MEDICAL_PHARMACEUTICAL" = "Santé, Médical & Services Sociaux";
+
+"HOSPITALITY_TOURISM_CATERING" = "Hôtellerie, Tourisme & Restauration";
+"IT" = "Informatique & Technologies de l'Information";
+"MANUFACTURING_METTALURGY" = "Industrie manufacturière & Métallurgie";
+"MARKETING_ADVERTISING_PUBLIC_RELATIONS" = "Marketing, Publicité & Relations Publiques";
+"REAL_ESTATE_PROPERTY_MANAGEMENT" = "Immobilier et Gestion Immobilière";
+"RETAIL_ECOMMERCE" = "Commerce de Détail & E-commerce";
+"SPORTS_LEISURE_ENTERTAINMENT" = "Sport, Loisirs & Divertissement Interactif";
+"TEXTILE_FASHION_APPAREL" = "Textile, Mode & Habillement";
+"TRANSPORT_LOGISTICS_WHOLESALE" = "Transport, Logistique & Vente en Gros";
+
+
 "WHAT_SALARY_RANGE_YOU_FALL_INTO" = "Dans quelle tranche de salaire vous situez-vous ?";
+"WHAT_DO_YOU_PLAN_MAINLY" = "Que comptez-vous faire principalement ?";
 "IDENTITY_VERIFICATION" = "Vérification de l'identité";
 "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT" = "Cette étape vous protège contre la fraude et l'usurpation d'identité. Utilisez votre téléphone pour :";
 "TAKE_PICTURE_OF_YOUR_PAPERS" = "Prendre une photo de vos documents";
@@ -349,7 +363,7 @@
 "PAYMENT_METHOD" = "Mode de paiement";
 "ADD_PAYMENT_METHOD" = "Nouveau moyen de paiement";
 "ACCOUNT" = "Compte";
-"NOTIFICATIONS" = "Notifications";
+"ACTIVITY_LOGS" = "Logs d'activité";
 "SECURITY" = "Sécurité";
 "NO_SECURITY" = "Pas de sécurité";
 "STRONG_AUTHENTIFICATION" = "Authentification forte";
@@ -371,6 +385,7 @@
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Trop de tentatives échouées, veuillez vous réauthentifier";
 "NO_TRANSACTION" = "Aucune transaction";
 "ENTER_PASSWORD" = "Entrez votre mot de passe";
+"ENTER_EMAIL_ADDRESS" = "Entrez votre adresse mail";
 "ENTER_PHONE_NUMBER" = "Numéro de téléphone";
 "LANGUAGE" = "Langues";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "L'appareil ne supporte pas ou n'est pas enregistré avec FaceID";
@@ -427,10 +442,14 @@
 "FUND_ACCOUNT_YOUR_BANK_ACCOUNT" = "Approvisionner votre compte à partir de votre compte bancaire";
 "MAKE_SURE_NAME_BANK_ACCOUNT" = "Assurez-vous que le nom du compte bancaire est le même que votre nom sur Lyber.";
 "LOGIN_EMAIL" = "Se connecter par e-mail";
+"FORGOT_PASSWORD" = "Vous avez oublié votre mot de passe ?";
 "HAPPY_SEE_YOU_BACK" = "Heureux de vous revoir !";
 "ENTER_PHONE_NUMBER_LOGIN" = "Entrez votre numéro de téléphone pour vous connecter, nous vous enverrons un code de vérification.";
 "NICE_SEE_YOU_AGAIN" = "Heureux de vous revoir !";
 "ENTER_EMAIL_LOGIN" = "Entrez votre adresse électronique pour vous connecter, nous vous enverrons un lien par courrier électronique.";
+"HAPPENS_EVEN_BEST" = "Cela arrive même aux meilleurs";
+"SEND_RESET_LINK_EMAIL_ADDRESS" = "Nous vous enverrons un lien de réinitialisation à votre adresse électronique.";
+"SEND_RESET_LINK" = "Envoyez-moi un lien de réinitialisation";
 "LOGIN_PHONE" = "Se connecter par téléphone";
 "DELETE" = "Supprimer";
 "EDIT" = "Editer";
@@ -463,6 +482,7 @@
 "ALERT_SOURCE_INCOME" = "Veuillez sélectionner votre source de revenus";
 "ALERT_WORK_INDUSTRY" = "Veuillez sélectionner votre secteur d'activité";
 "ALERT_ANNUAL_INCOME" = "Veuillez sélectionner votre revenu annuel";
+"ALERT_ANNUAL_INCOME" = "Veuillez sélectionner votre activité sur Lyber";
 "ALERT_LOG_OUT" = "Êtes-vous sûr de vouloir vous déconnecter ?";
 "ALERT_STRATEGY_NAMET" = "Veuillez saisir le nom de la stratégie";
 "ALERT_PASSWORD" = "Veuillez rentrer un mot de passe";
@@ -512,24 +532,40 @@
 "SENT" = "Envoyé";
 "CANCELED" = "Annulé";
 
+//MARK: - ForgotPassword
+"SENT_EMAIL_CONTAINING_RESET_LINK" = "Nous vous avons envoyé un e-mail contenant le lien de réinitialisation que vous devez suivre pour réinitialiser votre mot de passe";
+"RESET_PASSWORD" = "Réinitialiser le mot de passe";
+"ENTER_NEW_PASSWORD" = "Entrez votre nouveau mot de passe";
+"SAVE_NEW_PASSWORD" = "Enregistrer mon nouveau mot de passe";
+
 //MARK: - UNITS
 
 "1D" = "1J";
 "1W" = "1S";
 "1Y" = "1A";
 "MONTH" = "mois";
-"18K_MONTH" = "0-18k€/mois";
-"23K_MONTH" = "19-23k€/mois";
-"27K_MONTH" = "24-27k€/mois";
-"35K_MONTH" = "28-35k€/mois";
-"56K_MONTH" = "36-56k€/mois";
-"*K_MONTH" = "57-*k€/mois";
+
+//MARK: Sign up
+
+"LESS_THAN_500" = "Moins de 500€/mois";
+"500_1000" = "500-1000€/mois";
+"1001_1500" = "1001-1500€/mois";
+"1501_2000" = "1501-2000€/mois";
+"2001_3000" = "2001-3000€/mois";
+"OVER_3001" = "Plus de 3001€/mois";
+
 "2_ASSETS" = "0-2 actifs";
 "22_ASSETS" = "3-22 actifs";
 "128_ASSETS" = "23-128 actifs";
 "319_ASSETS" = "129-319 actifs";
 "464_ASSETS" = "320-464 actifs";
 "465_ASSETS" = "465- actifs";
+
+"BUY_SELL_DIGITAL_ASSETS" = "Acheter et vendre des actifs numériques";
+"SAVE_MONEY" = "Épargner de l'argent";
+"STORE_DIGITAL_ASSETS" = "Conserver mes actifs numériques";
+
+"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre idendité. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
 
 
 //MARK: - ERRORS

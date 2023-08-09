@@ -15,6 +15,5 @@ struct NotificationAPI: Codable{
 //MARK: Notification
 struct NotificationData: Codable{
 	var date : String
-	var subject: String
-	var body : String
+	var log: String
 }

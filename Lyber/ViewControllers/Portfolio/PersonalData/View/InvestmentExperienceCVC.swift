@@ -31,6 +31,10 @@ class InvestmentExperienceCVC: UICollectionViewCell {
     @IBOutlet var YourAnnualIncomeLbl: UILabel!
     @IBOutlet var annualIncomeVw: UIView!
     @IBOutlet var annualIncomeLbl: UILabel!
+	
+	@IBOutlet var yourActivityLbl: UILabel!
+    @IBOutlet var activityVw: UIView!
+    @IBOutlet var activityLbl: UILabel!
     
     override func awakeFromNib() {
 		let language = "en"
@@ -52,16 +56,19 @@ extension InvestmentExperienceCVC{
         CommonUI.setUpLbl(lbl: self.yourSourceOfIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_SOURCE_OF_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.yourWorkIndustryLbl, text: CommonFunctions.localisation(key: "YOUR_WORK_INDUSTRY"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.YourAnnualIncomeLbl, text: CommonFunctions.localisation(key: "YOUR_ANNUAL_INCOME"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.yourActivityLbl, text: CommonFunctions.localisation(key: "YOUR_ACTIVITY_LYBER"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.experienceView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.sourceOfIncomeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.workIndustryVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.annualIncomeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
+		CommonUI.setUpViewBorder(vw: self.activityVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
         CommonUI.setUpLbl(lbl: self.experienceLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.sourceOfIncomeLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.workIndustryLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.annualIncomeLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.activityLbl, text: CommonFunctions.localisation(key: "CHOOSE"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         let experienceTap = UITapGestureRecognizer(target: self, action: #selector(experinceVwTapped))
         self.experienceView.addGestureRecognizer(experienceTap)
@@ -71,6 +78,8 @@ extension InvestmentExperienceCVC{
         self.workIndustryVw.addGestureRecognizer(workIndustryTap)
         let annualIncomeTap = UITapGestureRecognizer(target: self, action: #selector(annualIncomeVwTapped))
         self.annualIncomeVw.addGestureRecognizer(annualIncomeTap)
+		let activityTap = UITapGestureRecognizer(target: self, action: #selector(activityVwTapped))
+        self.activityVw.addGestureRecognizer(activityTap)
     }
     
     func setPersonalDate (data : UserPersonalData?){
@@ -134,6 +143,16 @@ extension InvestmentExperienceCVC{
             self.annualIncomeLbl.text = CommonFunctions.localisation(key: experience)
             self.controller?.annualIncome = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
             self.annualIncomeLbl.textColor = UIColor.ThirdTextColor
+        }
+    }
+	@objc func activityVwTapped(){
+        let vc = InvestmentExperienceVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        controller?.present(vc, animated: true, completion: nil)
+        vc.investmentType = .activity
+        vc.investExperienceCallBack = { experience in
+            self.activityLbl.text = CommonFunctions.localisation(key: experience)
+            self.controller?.activity = self.bundleEnglish?.localizedString(forKey: experience, value:nil , table: nil) ?? ""
+            self.activityLbl.textColor = UIColor.ThirdTextColor
         }
     }
     

@@ -24,6 +24,7 @@ class NotificationHeaderTVC: UITableViewCell {
 }
 extension NotificationHeaderTVC{
     func setUpCell(data : String){
-        CommonUI.setUpLbl(lbl: headerLbl, text: data, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: headerLbl, text: data, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Large.sizeValue()))
+		
     }
 }
