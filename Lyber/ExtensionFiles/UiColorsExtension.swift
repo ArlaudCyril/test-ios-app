@@ -179,6 +179,11 @@ extension UIColor{
             return UIColor(named: "Color#FFF2D9") ?? UIColor.green
         }
     }
+	public class var blue_500 : UIColor{
+        get {
+            return UIColor(named: "blue_500") ?? UIColor.green
+        }
+    }
     
     private func makeColor(componentDelta: CGFloat) -> UIColor {
             var red: CGFloat = 0

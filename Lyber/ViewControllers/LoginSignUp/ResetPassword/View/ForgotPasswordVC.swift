@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 
 class ForgotPasswordVC: ViewController {
 	//MARK: - Variables

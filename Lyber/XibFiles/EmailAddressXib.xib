@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,19 +19,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="317"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAi-uz-p76">
-                            <rect key="frame" x="24" y="0.0" width="366" height="20.5"/>
+                            <rect key="frame" x="24" y="12" width="366" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UH6-jq-gDJ">
-                            <rect key="frame" x="24" y="24.5" width="366" height="20.5"/>
+                            <rect key="frame" x="24" y="36.5" width="366" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Uft-Qs-3h9">
-                            <rect key="frame" x="24" y="69" width="366" height="128"/>
+                            <rect key="frame" x="24" y="81" width="366" height="128"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atV-p6-qO5">
                                     <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
@@ -95,7 +95,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="YAi-uz-p76" firstAttribute="top" secondItem="mR5-aY-Bwx" secondAttribute="top" id="9FM-WN-SPx"/>
+                        <constraint firstItem="YAi-uz-p76" firstAttribute="top" secondItem="mR5-aY-Bwx" secondAttribute="top" constant="12" id="9FM-WN-SPx"/>
                         <constraint firstItem="Uft-Qs-3h9" firstAttribute="top" secondItem="UH6-jq-gDJ" secondAttribute="bottom" constant="24" id="A2M-bh-eT2"/>
                         <constraint firstItem="UH6-jq-gDJ" firstAttribute="top" secondItem="YAi-uz-p76" secondAttribute="bottom" constant="4" id="Axk-4g-1fd"/>
                         <constraint firstItem="UH6-jq-gDJ" firstAttribute="trailing" secondItem="YAi-uz-p76" secondAttribute="trailing" id="B7m-XW-fv9"/>
@@ -107,7 +107,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdy-VV-tTl">
-                    <rect key="frame" x="24" y="207" width="366" height="100"/>
+                    <rect key="frame" x="24" y="219" width="366" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="5Yd-6S-TL2"/>
                     </constraints>

@@ -15,7 +15,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 	var action : String?
 	var dataWithdrawal : [String : Any]?
 	var controller : ViewController?
-	var personalDataController : PersonalDataVC?
+	var enterPhoneController : EnterPhoneVC?
 	var verificationCallBack : ((String)->())?
 	var scopes : [String] = []
     
@@ -201,11 +201,10 @@ extension VerificationVC{
 			EnterPhoneVM().enterOTPApi(otp: code, completion: {[weak self]response in
 				if let response = response{
 					print(response)
-					userData.shared.isPhoneVerified = true
+					userData.shared.enterPhoneStepComplete = 1
 					userData.shared.dataSave()
 					self?.dismiss(animated: true)
 					let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-					vc.isDoubleAuthentified = true
 					self?.controller?.navigationController?.pushViewController(vc, animated: true)
 				}
 			})
@@ -214,10 +213,10 @@ extension VerificationVC{
 			PersonalDataVM().checkEmailVerificationApi(code: code , completion: {[self]response in
 				CommonFunctions.hideLoader(self.view)
 				if (response != nil){
-					userData.shared.personalDataStepComplete = 3
+					userData.shared.enterPhoneStepComplete = 2
 					userData.shared.dataSave()
 					self.dismiss(animated: true)
-					self.personalDataController?.GotoNextIndex()
+					self.enterPhoneController?.GotoNextIndex()
 				}else{
 					CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
 				}
@@ -229,7 +228,6 @@ extension VerificationVC{
         }else{
             VerificationVM().verify2FAApi(code: code, completion: {[]response in
                 if response != nil{
-                    userData.shared.isPhoneVerified = true
                     userData.shared.userToken = response?.data?.accessToken ?? ""
                     userData.shared.refreshToken = response?.data?.refreshToken ?? ""
                     userData.shared.time = Date()

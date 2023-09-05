@@ -39,7 +39,7 @@ extension ExchangeFromTVC{
     func setUpCell(data : Balance?,index : Int,screenType : ExchangeEnum,lastIndex : Int){
 		let currency = CommonFunctions.getCurrency(id: data?.id ?? "")
 		
-		if(currency.isWithdrawalActive ?? true){
+		if(currency.isTradeActive ?? true){
 			self.deactivatedLbl.isHidden = true
 		}else{
 			singleAssetVw.isUserInteractionEnabled = false

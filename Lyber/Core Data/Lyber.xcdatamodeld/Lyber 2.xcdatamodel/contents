@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G90" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
         <attribute name="accessToken" optional="YES" attributeType="String"/>
+        <attribute name="activityOnLyber" optional="YES" attributeType="String"/>
+        <attribute name="annualIncome" optional="YES" attributeType="String"/>
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="bic" optional="YES" attributeType="String"/>
+        <attribute name="birthDate" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="countryCode" optional="YES" attributeType="String"/>
+        <attribute name="countryOfBirth" optional="YES" attributeType="String"/>
+        <attribute name="department" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="enterPhoneStepComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="extraSecurity" optional="YES" attributeType="String"/>
         <attribute name="faceIdEnabled" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="firstname" optional="YES" attributeType="String"/>
+        <attribute name="firstnameRegistration" optional="YES" attributeType="String"/>
         <attribute name="has2FA" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="iban" optional="YES" attributeType="String"/>
+        <attribute name="investmentExperience" optional="YES" attributeType="String"/>
         <attribute name="is_push_enabled" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isAccountCreated" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isEducationStrategyRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isIdentityVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isPersonalInfoFilled" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isPhoneVerified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isUsCitizen" optional="YES" attributeType="String"/>
         <attribute name="language" optional="YES" attributeType="String"/>
         <attribute name="lastname" optional="YES" attributeType="String"/>
+        <attribute name="lastnameRegistration" optional="YES" attributeType="String"/>
         <attribute name="logInPinSet" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nationality" optional="YES" attributeType="String"/>
         <attribute name="personalDataStepComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="phone_no" optional="YES" attributeType="String"/>
+        <attribute name="placeOfBirth" optional="YES" attributeType="String"/>
         <attribute name="profile_image" optional="YES" attributeType="String"/>
         <attribute name="refreshToken" optional="YES" attributeType="String"/>
+        <attribute name="registeredAt" optional="YES" attributeType="String"/>
         <attribute name="registrationToken" optional="YES" attributeType="String"/>
         <attribute name="scope2FALogin" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="scope2FAWhiteListing" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="scope2FAWithdrawal" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sourceOfIncome" optional="YES" attributeType="String"/>
         <attribute name="step" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stepRegisteringComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="streetName" optional="YES" attributeType="String"/>
+        <attribute name="streetNumber" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="type2FA" optional="YES" attributeType="String"/>
+        <attribute name="workIndustry" optional="YES" attributeType="String"/>
+        <attribute name="zipCode" optional="YES" attributeType="String"/>
     </entity>
 </model>

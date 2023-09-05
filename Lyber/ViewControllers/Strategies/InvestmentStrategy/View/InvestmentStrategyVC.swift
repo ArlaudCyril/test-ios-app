@@ -44,9 +44,11 @@ class InvestmentStrategyVC: ViewController {
         CommonUI.setUpLbl(lbl: self.strategyDescLbl, text: CommonFunctions.localisation(key: "STRATEGIES_ARE_THERE_TO_HELP_YOU"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: self.strategyDescLbl, text: CommonFunctions.localisation(key: "STRATEGIES_ARE_THERE_TO_HELP_YOU"), lineSpacing: 6, textAlignment: .left)
         
-        CommonUI.setUpButton(btn: buildOwnStrategyBtn, text: CommonFunctions.localisation(key: "BUILD_MY_OWN_STRATEGY"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-        CommonUI.setUpViewBorder(vw: bottomView, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
-        self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        //CommonUI.setUpButton(btn: buildOwnStrategyBtn, text: CommonFunctions.localisation(key: "BUILD_MY_OWN_STRATEGY"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+		
+		CommonUI.setUpButton(btn: buildOwnStrategyBtn, text: CommonFunctions.localisation(key: "BUILD_MY_OWN_STRATEGY"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        //CommonUI.setUpViewBorder(vw: bottomView, radius: 32, borderWidth: 2, borderColor: UIColor.greyColor.cgColor)
+        //self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
        
         self.tblView.delegate = self
         self.tblView.dataSource = self
@@ -64,7 +66,12 @@ extension InvestmentStrategyVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InvestmentStrategyTVC")as! InvestmentStrategyTVC
-        cell.setUpCell(data : invstStrategyData[indexPath.row])
+		if(indexPath.row == invstStrategyData.count - 1){
+			cell.setUpCell(data : invstStrategyData[indexPath.row], isLastRow: true)
+		}else{
+			cell.setUpCell(data : invstStrategyData[indexPath.row])
+		}
+        
         return cell
     }
     

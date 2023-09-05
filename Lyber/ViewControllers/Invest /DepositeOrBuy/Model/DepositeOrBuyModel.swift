@@ -36,4 +36,6 @@ enum confirmationPopUp{
     case Withdraw
     case Tailoring
     case LinkSent
+    case exportSuccess
+	case exportFailure
 }

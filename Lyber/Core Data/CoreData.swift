@@ -11,25 +11,25 @@ import UIKit
 
 
 class userData : NSObject {
+	var firstname = ""
+	var lastname = ""
+	var registeredAt = ""
     var userToken = ""
     var refreshToken = ""
     var registrationToken = ""
 	var language = ""
     var time : Date? = nil
     var email = ""
-    var firstname = ""
-    var lastname = ""
 	var profile_image = ""
     var phone_no = ""
     var countryCode = ""
     var isAccountCreated = false
-    var isPersonalInfoFilled = false
-    var isIdentityVerified = false
     var isEducationStrategyRead = false
     var logInPinSet = 0
     var is_push_enabled = 0
-    var isPhoneVerified = false
     var personalDataStepComplete  = 0
+    var stepRegisteringComplete  = 0
+    var enterPhoneStepComplete  = 0
     var balance = 0.0
     var faceIdEnabled = false
     var iban = ""
@@ -40,7 +40,31 @@ class userData : NSObject {
     var scope2FAWithdrawal = false
     var has2FA = false
     var type2FA = "none"
-    
+	
+	//Profile informations
+	///Phase 1
+	var firstnameRegistration = ""
+	var lastnameRegistration = ""
+	var placeOfBirth = ""
+	var birthDate = ""
+	var countryOfBirth = ""
+	var nationality = ""
+	var isUsCitizen = ""
+	///Phase 2
+	var streetNumber = ""
+	var streetName = ""
+	var city = ""
+	var department = ""
+	var zipCode = ""
+	var country = ""
+	///Phase 3
+	var investmentExperience = ""
+	var sourceOfIncome = ""
+	var workIndustry = ""
+	var annualIncome = ""
+	var activityOnLyber = ""
+	
+	
     class var shared: userData{
         struct singleTon {
             static let instance = userData()
@@ -66,19 +90,16 @@ class userData : NSObject {
         newData.setValue(registrationToken, forKey: "registrationToken")
         newData.setValue(language, forKey: "language")
         newData.setValue(time, forKey: "time")
-        newData.setValue(firstname, forKey: "firstname")
-        newData.setValue(lastname, forKey: "lastname")
         newData.setValue(email, forKey: "email")
         newData.setValue(phone_no, forKey: "phone_no")
         newData.setValue(countryCode, forKey: "countryCode")
         newData.setValue(isAccountCreated, forKey: "isAccountCreated")
-        newData.setValue(isPersonalInfoFilled, forKey: "isPersonalInfoFilled")
-        newData.setValue(isIdentityVerified, forKey: "isIdentityVerified")
         newData.setValue(isEducationStrategyRead, forKey: "isEducationStrategyRead")
         newData.setValue(logInPinSet, forKey: "logInPinSet")
         newData.setValue(is_push_enabled, forKey: "is_push_enabled")
-        newData.setValue(isPhoneVerified, forKey: "isPhoneVerified")
         newData.setValue(personalDataStepComplete, forKey: "personalDataStepComplete")
+        newData.setValue(stepRegisteringComplete, forKey: "stepRegisteringComplete")
+        newData.setValue(enterPhoneStepComplete, forKey: "enterPhoneStepComplete")
         newData.setValue(balance, forKey: "balance")
         newData.setValue(iban, forKey: "iban")
         newData.setValue(bic, forKey: "bic")
@@ -90,6 +111,31 @@ class userData : NSObject {
         newData.setValue(scope2FAWithdrawal, forKey: "scope2FAWithdrawal")
         newData.setValue(has2FA, forKey: "has2FA")
         newData.setValue(type2FA, forKey: "type2FA")
+		
+		//Profil informations
+		newData.setValue(firstname, forKey: "firstname")
+		newData.setValue(lastname, forKey: "lastname")
+		newData.setValue(registeredAt, forKey: "registeredAt")
+		newData.setValue(firstnameRegistration, forKey: "firstnameRegistration")
+		newData.setValue(lastnameRegistration, forKey: "lastnameRegistration")
+		newData.setValue(placeOfBirth, forKey: "placeOfBirth")
+		newData.setValue(birthDate, forKey: "birthDate")
+		newData.setValue(countryOfBirth, forKey: "countryOfBirth")
+		newData.setValue(nationality, forKey: "nationality")
+		newData.setValue(isUsCitizen, forKey: "isUsCitizen")
+		
+		newData.setValue(streetNumber, forKey: "streetNumber")
+		newData.setValue(streetName, forKey: "streetName")
+		newData.setValue(city, forKey: "city")
+		newData.setValue(department, forKey: "department")
+		newData.setValue(zipCode, forKey: "zipCode")
+		newData.setValue(country, forKey: "country")
+		
+		newData.setValue(investmentExperience, forKey: "investmentExperience")
+		newData.setValue(sourceOfIncome, forKey: "sourceOfIncome")
+		newData.setValue(workIndustry, forKey: "workIndustry")
+		newData.setValue(annualIncome, forKey: "annualIncome")
+		newData.setValue(activityOnLyber, forKey: "activityOnLyber")
         
         do {
             try context.save()
@@ -136,14 +182,6 @@ class userData : NSObject {
                         self.isAccountCreated = isAccountCreated
                         print("data get isAccountCreated \(isAccountCreated)")
                     }
-                    if let isPersonalInfoFilled = result.value(forKey: "isPersonalInfoFilled") as? Bool{
-                        self.isPersonalInfoFilled = isPersonalInfoFilled
-                        print("data get isPersonalInfoFilled \(isPersonalInfoFilled)")
-                    }
-                    if let isIdentityVerified = result.value(forKey: "isIdentityVerified") as? Bool{
-                        self.isIdentityVerified = isIdentityVerified
-                        print("data get isIdentityVerified \(isIdentityVerified)")
-                    }
                     if let isEducationStrategyRead = result.value(forKey: "isEducationStrategyRead") as? Bool{
                         self.isEducationStrategyRead = isEducationStrategyRead
                         print("data get isEducationStrategyRead \(isEducationStrategyRead)")
@@ -168,14 +206,6 @@ class userData : NSObject {
                         self.time = time
                         print("data get time \(time)")
                     }
-                    if let firstname = result.value(forKey: "firstname") as? String{
-                        self.firstname = firstname
-                        print("data get firstname \(firstname)")
-                    }
-					if let lastname = result.value(forKey: "lastname") as? String{
-                        self.lastname = lastname
-                        print("data get lastname \(lastname)")
-                    }
                     if let email = result.value(forKey: "email") as? String{
                         self.email = email
                         print("data get email \(email)")
@@ -192,9 +222,13 @@ class userData : NSObject {
                         self.personalDataStepComplete = personalDataStepComplete
                         print("data get personal_Data_Step_Complete \(personalDataStepComplete)")
                     }
-                    if let isPhoneVerified = result.value(forKey: "isPhoneVerified") as? Bool{
-                        self.isPhoneVerified = isPhoneVerified
-                        print("data get isPhoneVerified \(isPhoneVerified)")
+					if let stepRegisteringComplete = result.value(forKey: "stepRegisteringComplete") as? Int{
+                        self.stepRegisteringComplete = stepRegisteringComplete
+                        print("data get stepRegisteringComplete \(stepRegisteringComplete)")
+                    }
+					if let enterPhoneStepComplete = result.value(forKey: "enterPhoneStepComplete") as? Int{
+                        self.enterPhoneStepComplete = enterPhoneStepComplete
+                        print("data get enterPhoneStepComplete \(enterPhoneStepComplete)")
                     }
                     if let phone_no = result.value(forKey: "phone_no") as? String{
                         self.phone_no = phone_no
@@ -248,6 +282,92 @@ class userData : NSObject {
                         self.type2FA = type2FA
                         print("data get type2FA \(type2FA)")
                     }
+					
+					//Profile informations
+					if let firstname = result.value(forKey: "firstname") as? String{
+						self.firstname = firstname
+						print("data get firstname \(firstname)")
+					}
+					if let lastname = result.value(forKey: "lastname") as? String{
+						self.lastname = lastname
+						print("data get lastname \(lastname)")
+					}
+					if let registeredAt = result.value(forKey: "registeredAt") as? String{
+						self.registeredAt = registeredAt
+						print("data get registeredAt \(registeredAt)")
+					}
+					if let firstnameRegistration = result.value(forKey: "firstnameRegistration") as? String{
+						self.firstnameRegistration = firstnameRegistration
+						print("data get firstnameRegistration \(firstnameRegistration)")
+					}
+					if let lastnameRegistration = result.value(forKey: "lastnameRegistration") as? String{
+						self.lastnameRegistration = lastnameRegistration
+						print("data get lastnameRegistration \(lastnameRegistration)")
+					}
+					if let placeOfBirth = result.value(forKey: "placeOfBirth") as? String{
+						self.placeOfBirth = placeOfBirth
+						print("data get lastname \(placeOfBirth)")
+					}
+					if let birthDate = result.value(forKey: "birthDate") as? String{
+						self.birthDate = birthDate
+						print("data get birthDate \(birthDate)")
+					}
+					if let countryOfBirth = result.value(forKey: "countryOfBirth") as? String{
+						self.countryOfBirth = countryOfBirth
+						print("data get countryOfBirth \(countryOfBirth)")
+					}
+					if let nationality = result.value(forKey: "nationality") as? String{
+						self.nationality = nationality
+						print("data get nationality \(nationality)")
+					}
+					if let isUsCitizen = result.value(forKey: "isUsCitizen") as? String{
+						self.isUsCitizen = isUsCitizen
+						print("data get isUsCitizen \(isUsCitizen)")
+					}
+					if let streetNumber = result.value(forKey: "streetNumber") as? String{
+						self.streetNumber = streetNumber
+						print("data get streetNumber \(streetNumber)")
+					}
+					if let streetName = result.value(forKey: "streetName") as? String{
+						self.streetName = streetName
+						print("data get streetName \(streetName)")
+					}
+					if let city = result.value(forKey: "city") as? String{
+						self.city = city
+						print("data get city \(city)")
+					}
+					if let department = result.value(forKey: "department") as? String{
+						self.department = department
+						print("data get department \(department)")
+					}
+					if let zipCode = result.value(forKey: "zipCode") as? String{
+						self.zipCode = zipCode
+						print("data get zipCode \(zipCode)")
+					}
+					if let country = result.value(forKey: "country") as? String{
+						self.country = country
+						print("data get country \(country)")
+					}
+					if let investmentExperience = result.value(forKey: "investmentExperience") as? String{
+						self.investmentExperience = investmentExperience
+						print("data get investmentExperience \(investmentExperience)")
+					}
+					if let sourceOfIncome = result.value(forKey: "sourceOfIncome") as? String{
+						self.sourceOfIncome = sourceOfIncome
+						print("data get sourceOfIncome \(sourceOfIncome)")
+					}
+					if let workIndustry = result.value(forKey: "workIndustry") as? String{
+						self.workIndustry = workIndustry
+						print("data get workIndustry \(workIndustry)")
+					}
+					if let annualIncome = result.value(forKey: "annualIncome") as? String{
+						self.annualIncome = annualIncome
+						print("data get annualIncome \(annualIncome)")
+					}
+					if let activityOnLyber = result.value(forKey: "activityOnLyber") as? String{
+						self.activityOnLyber = activityOnLyber
+						print("data get activityOnLyber \(activityOnLyber)")
+					}
                 }
             }
         } catch {
@@ -259,12 +379,30 @@ class userData : NSObject {
 		
 		self.isAccountCreated = true
 		
-		
-		self.isPersonalInfoFilled = false
-		self.isIdentityVerified = false
-		self.isPhoneVerified = false
 		self.personalDataStepComplete = 0
+		self.stepRegisteringComplete = 0
+		self.enterPhoneStepComplete = 0
 		self.registrationToken = ""
+		
+		//Profile informations
+		self.placeOfBirth = ""
+		self.birthDate = ""
+		self.countryOfBirth = ""
+		self.nationality = ""
+		self.isUsCitizen = ""
+		
+		self.streetNumber = ""
+		self.streetName = ""
+		self.city = ""
+		self.department = ""
+		self.zipCode = ""
+		self.country = ""
+		
+		self.investmentExperience = ""
+		self.sourceOfIncome = ""
+		self.workIndustry = ""
+		self.annualIncome = ""
+		self.activityOnLyber = ""
 		
 		self.dataSave()
 	}
@@ -272,11 +410,10 @@ class userData : NSObject {
 	func disconnect(){
 //all except following
 //		self.isAccountCreated = false
-//		self.isPersonalInfoFilled = false
-//		self.isIdentityVerified = false
 //		self.isEducationStrategyRead = false
-		self.isPhoneVerified = false
 //		self.personalDataStepComplete = 0
+//		self.stepRegisteringComplete = 0
+//		self.enterPhoneStepComplete = 0
 //		self.registrationToken = ""
 //		self.language = ""
 		self.userToken = ""
@@ -284,6 +421,7 @@ class userData : NSObject {
 		self.time = nil
 		self.firstname = ""
 		self.lastname = ""
+		self.registeredAt = ""
 		self.profile_image = ""
 		self.email = ""
 		self.phone_no = ""
@@ -307,8 +445,6 @@ class userData : NSObject {
     func deleteData(){//maybe it delete also language
 		//all except self.language = ""
         self.isAccountCreated = false
-        self.isPersonalInfoFilled = false
-        self.isIdentityVerified = false
         self.isEducationStrategyRead = false
         self.userToken = ""
         self.refreshToken = ""
@@ -316,14 +452,18 @@ class userData : NSObject {
         self.time = nil
         self.firstname = ""
         self.lastname = ""
+        self.registeredAt = ""
+		self.firstnameRegistration = ""
+        self.lastnameRegistration = ""
 		self.profile_image = ""
         self.email = ""
         self.phone_no = ""
         self.countryCode = ""
         self.logInPinSet = 0
         self.is_push_enabled = 0
-        self.isPhoneVerified = false
         self.personalDataStepComplete = 0
+        self.stepRegisteringComplete = 0
+        self.enterPhoneStepComplete = 0
         self.balance = 0
         self.iban = ""
         self.bic = ""
@@ -334,6 +474,26 @@ class userData : NSObject {
         self.scope2FAWithdrawal = false
         self.has2FA = false
         self.type2FA = "none"
+		
+		//Profile informations
+		self.placeOfBirth = ""
+		self.birthDate = ""
+		self.countryOfBirth = ""
+		self.nationality = ""
+		self.isUsCitizen = ""
+		
+		self.streetNumber = ""
+		self.streetName = ""
+		self.city = ""
+		self.department = ""
+		self.zipCode = ""
+		self.country = ""
+		
+		self.investmentExperience = ""
+		self.sourceOfIncome = ""
+		self.workIndustry = ""
+		self.annualIncome = ""
+		self.activityOnLyber = ""
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext

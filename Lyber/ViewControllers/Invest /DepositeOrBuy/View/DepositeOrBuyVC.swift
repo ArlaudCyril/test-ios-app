@@ -23,8 +23,9 @@ class DepositeOrBuyVC: ViewController {
     ]
     var withdrawExchangedata : [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "YOUR_ASSETS_YOUR_BANK_ACCOUNT"), rightBtnName: ""),
+		buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "BUY_VERB"), subName: CommonFunctions.localisation(key: "BUY_ASSETS_EUROS"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT"), subName: CommonFunctions.localisation(key: "MONEY_LYBER"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT_VERB"), subName: CommonFunctions.localisation(key: "MONEY_LYBER"), rightBtnName: ""),
 //        buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SELL"), subName: "\(CommonFunctions.localisation(key: "SELL")) \(CommonFunctions.localisation(key: "ASSETS"))", rightBtnName: "")
     ]
     var withdrawToAccountData : [buyDepositeModel] = []
@@ -49,8 +50,7 @@ class DepositeOrBuyVC: ViewController {
     var investWithStrategiesInactiveData: [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ONE_TIME_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_SINGLETIME"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.recurrent.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "RECURRENT_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_REGULAR_BASIS"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "TAILOR_STRATEGY"), subName: CommonFunctions.localisation(key: "CHANGE_ASSET_REPARTITION"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DELETE_STRATEGY"), subName: "", rightBtnName: "")
+        buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "TAILOR_STRATEGY"), subName: CommonFunctions.localisation(key: "CHANGE_ASSET_REPARTITION"), rightBtnName: "")
     ]
     
     var strategy : Strategy = Strategy()
@@ -112,12 +112,16 @@ class DepositeOrBuyVC: ViewController {
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "CHOOSE_OPERATION")
 			self.assetPagePopUpData  = [
 				buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "YOUR_ASSETS_YOUR_BANK_ACCOUNT"), rightBtnName: ""),
+				buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:"\(CommonFunctions.localisation(key: "BUY")) \(self.idAsset.uppercased())", subName: CommonFunctions.localisation(key: "BUY_SPECIFIC_ASSET_EUROS", parameter: self.idAsset.uppercased()), rightBtnName: ""),
 				buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
 //                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "", rightBtnName: ""),
 				buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT"), subName: "\(CommonFunctions.localisation(key: "ASSET_LYBER_PART1")) \(self.idAsset.uppercased()) \(CommonFunctions.localisation(key: "ASSET_LYBER_PART2"))", rightBtnName: "")
 			]
             
         }
+		if(self.strategy.publicType != "lyber"){
+			self.investWithStrategiesInactiveData.append(buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DELETE_STRATEGY"), subName: "", rightBtnName: ""))
+		}
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         let tap = UILongPressGestureRecognizer(target: self, action: #selector(dismissBottomView))
         tap.minimumPressDuration = 0.01
@@ -181,34 +185,40 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
         case .DepositeBuy:                                                              //Deposite Buy
             if indexPath.row == 0{
                 let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                vc.screenType = .singleAssets
+                vc.screenType = .singleAsset
                 self.controller?.navigationController?.pushViewController(vc, animated: true)
             }else if indexPath.row == 1{
                 let vc = DepositFundsVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 self.controller?.navigationController?.pushViewController(vc, animated: true)
             }
         case .withdrawExchange:                                                          //withdraw exchange
-            if indexPath.row == 0 || indexPath.row == 1{
+            if indexPath.row == 0 || indexPath.row == 2{
                 let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen
                 nav.navigationBar.isHidden = true
                 if indexPath.row == 0{
                     vc.screenType = .withdraw
-                }else if indexPath.row == 1{
+                }else{
 					Storage.previousControllerPortfolioDetailObject = PortfolioHomeVC.self
                     vc.screenType = .exchange
                 }
                 self.portfolioHomeController?.present(nav, animated: true, completion: nil)
                 
-            }else if indexPath.row == 2{
+			}else if indexPath.row == 1{
+				self.dismiss(animated: true, completion: nil)
+				let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				vc.screenType = .singleAsset
+				self.portfolioHomeController?.navigationController?.pushViewController(vc, animated: true)
+				
+			}else if indexPath.row == 2{
                 let vc = DepositAssetVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen
                 nav.navigationBar.isHidden = true
                 self.portfolioHomeController?.present(nav, animated: true, completion: nil)
                 
-            }
+			}
         case .investWithStrategiesActive:
             if indexPath.row == 0{
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
@@ -274,7 +284,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             }else if indexPath.row == 1{
                 self.dismiss(animated: true, completion: nil)
                 let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                vc.screenType = .singleAssets
+                vc.screenType = .singleAssetStrategy
                 self.portfolioHomeController?.navigationController?.pushViewController(vc, animated: true)
                 
             }
@@ -286,21 +296,30 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 
 				}else if indexPath.row == 1{
+					self.dismiss(animated: true, completion: nil)
+					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+					vc.strategyType = .singleCoinWithFrequence
+					//vc.asset = filterCoin[indexPath.row]
+					self.navigationController?.pushViewController(vc, animated: true)
+					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
+
+				}else if indexPath.row == 2{
 					let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 					vc.screenType = .exchange
 					vc.fromAssetId = self.coinId ?? ""
 					Storage.previousControllerPortfolioDetailObject = type(of: self.previousController)
 					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
-	//                }else if indexPath.row == 1{
-	//                    let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-	//                    vc.strategyType = .sell
-	//                    vc.assetsData = assetsData
-	//                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
-				}else if indexPath.row == 1{
+
+				}else if indexPath.row == 3{
 					let vc = CryptoDepositeVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 					vc.selectedAsset = CommonFunctions.getCurrency(id: self.idAsset)
 					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 				}
+				//                }else if indexPath.row == 1{
+				//                    let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+				//                    vc.strategyType = .sell
+				//                    vc.assetsData = assetsData
+				//                    self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

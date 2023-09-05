@@ -109,18 +109,6 @@ class PersonalDataVM{
     }
     
     
-    
-    func getPersonalDataApi(completion: @escaping ( (UserPersonalData?) -> Void )){
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userPersonal_info, withParameters: [:], ofType: UserPersonalData.self, onSuccess: { response in
-            completion(response)
-            CommonFunctions.hideLoader()
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
-    }
-    
     func sendVerificationEmailApi(email : String?,password : String?, completion: @escaping ( (OTPAPI?) -> Void )){
         // Configure SRP to work with SHA512 and safe prime 2048 bits
         let configuration = SRPConfiguration<SHA512>(.N2048)

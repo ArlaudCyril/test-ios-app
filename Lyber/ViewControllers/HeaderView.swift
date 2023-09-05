@@ -11,6 +11,7 @@ class HeaderView: UIView {
     //MARK: - IB OUTLETS
     @IBOutlet var contentView: UIView!
     @IBOutlet var backBtn: UIButton!
+    @IBOutlet var closeBtn: UIButton!
     @IBOutlet var headerLbl: UILabel!
     
     override init(frame: CGRect) {
@@ -28,6 +29,7 @@ class HeaderView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		self.closeBtn.isHidden = true
         CommonUI.setUpLbl(lbl: self.headerLbl, text: CommonFunctions.localisation(key: "ALERT_EMAIL"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
     }
 }

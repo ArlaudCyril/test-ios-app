@@ -59,4 +59,17 @@ class PortfolioDetailVM{
             CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
+	
+	func getResumeByIdApi(assetId : String,completion: @escaping ( (PriceServiceResumeDataAPI?) -> Void )){
+        
+        let params : [String : Any] = [Constants.ApiKeys.id : assetId]
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.priceServiceResume, withParameters: params, ofType: PriceServiceResumeDataAPI.self, onSuccess: { response in
+            print(response)
+            completion(response)
+        }, onFailure: { reload, error, code in
+            completion(nil)
+            CommonFunctions.toster(error)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+    }
 }

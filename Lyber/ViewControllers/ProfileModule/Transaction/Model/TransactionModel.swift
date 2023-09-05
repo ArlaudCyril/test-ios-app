@@ -13,6 +13,7 @@ struct TransactionsAPI: Codable {
 }
 // MARK: - Transaction
 struct Transaction: Codable {
+    let id: String?
     let type: String?
     let date: String?
 	//withdraw and deposit
@@ -22,14 +23,23 @@ struct Transaction: Codable {
 	let fromAmount: String?
 	let toAsset: String?
 	let toAmount: String?
+	let fees: String?
 	//order and deposit and strategy
 	let status: String?
 	//deposit
 	let asset: String?
+	let fromAddress: String?
+	let network: String?
+	let txId: String?
+	
+	//withdraw
+	let toAddress: String?
+	
 	//strategy
 	let nextExecution: String?
 	let totalStableAmountSpent: String?
 	let strategyName: String?
+	let strategyType: String?
 }
 
 /* it remains the type strategy

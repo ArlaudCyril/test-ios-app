@@ -10,7 +10,7 @@ import UIKit
 class SelectedProfileVC: ViewController {
     var profilePicImg = UIImage()
     var profileChangeCallback : ((UIImage)->())?
-	var icon : Constants.Icon = .HUMAN_HEAD
+	var icon : Constants.Icon = .CHICK_EGG
     //MARK:- IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var profilePicVw: UIView!

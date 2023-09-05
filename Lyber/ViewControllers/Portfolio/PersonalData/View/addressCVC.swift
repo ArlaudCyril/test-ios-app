@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import ADCountryPicker
 import CountryPickerView
 import IQKeyboardManagerSwift
 
 class addressCVC: UICollectionViewCell {
     //MARK: - Variables
     var controller : PersonalDataVC?
-    var picker = ADCountryPicker()
     //MARK:- IB OUTLETS
     @IBOutlet var addressLbl: UILabel!
     @IBOutlet var addressDescLbl: UILabel!
@@ -31,7 +29,6 @@ class addressCVC: UICollectionViewCell {
     @IBOutlet var countryTF: UITextField!
     
     override func awakeFromNib() {
-        setUpCell()
 		IQKeyboardManager.shared.enable = true
     }
 }
@@ -57,10 +54,10 @@ extension addressCVC{
         CommonUI.setUpTextField(textfield: countryTF, placeholder: CommonFunctions.localisation(key: "COUNTRY"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         countryTF.textColor = UIColor.Purple35126D
         
-        //let countryTap = UITapGestureRecognizer(target: self, action: #selector(selectCountry))
-        //self.countryVw.addGestureRecognizer(countryTap)
         self.countryVw.delegate = self
+        self.countryVw.dataSource = self
         self.countryVw.customizeView()
+		self.countryVw.setCountryByCode("FR")
         
         let tfs = [streetNumberTF,stateTF,buildingFloorTF,cityTF,zipCodeTF]
         for tf in tfs{
@@ -71,14 +68,13 @@ extension addressCVC{
         }
     }
     
-    func setPersonalDate (data : UserPersonalData?){
-        let addresss = data?.address1?.components(separatedBy: ",")
-        self.streetNumberTF.text = addresss?[0] ?? ""
-        self.buildingFloorTF.text = addresss?[1] ?? ""
-        self.cityTF.text = data?.city ?? ""
-        self.stateTF.text = data?.state ?? ""
-        self.zipCodeTF.text = "\(data?.zip_code ?? 0)"
-        self.countryTF.text = countryName(from: data?.country ?? "")
+    func setPersonalData(){
+		self.streetNumberTF.text = userData.shared.streetNumber
+        self.buildingFloorTF.text = userData.shared.streetName
+        self.cityTF.text = userData.shared.city
+        self.stateTF.text = userData.shared.department
+        self.zipCodeTF.text = userData.shared.zipCode
+		self.countryVw.setCountryByCode(userData.shared.country)
         
         DispatchQueue.main.async {
             self.controller?.streetNumber = self.streetNumberTF.text ?? ""
@@ -86,7 +82,7 @@ extension addressCVC{
             self.controller?.CityName = self.cityTF.text ?? ""
             self.controller?.stateName = self.stateTF.text ?? ""
             self.controller?.zipCode = self.zipCodeTF.text ?? ""
-            self.controller?.CountryName = data?.country ?? ""
+            self.controller?.CountryName = self.countryTF.text ?? ""
         }
         
     }
@@ -190,12 +186,17 @@ extension addressCVC{
 }
 
 //MARK: - COUNTRY PICKER DELEGATES
-extension addressCVC: ADCountryPickerDelegate,CountryPickerViewDelegate{
-    func countryPicker(_ picker: ADCountryPicker, didSelectCountryWithName name: String, code: String, dialCode: String) {
-    }
-    
+extension addressCVC: CountryPickerViewDelegate, CountryPickerViewDataSource{
     func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country){
         self.countryTF.text = country.name
         self.controller?.CountryName = country.code
     }
+	
+	func localeForCountryNameInList(in countryPickerView: CountryPickerView) -> Locale {
+		if userData.shared.language == "fr"{
+			return Locale(identifier: "fr_FR")
+		}else{
+			return Locale(identifier: "en_GB")
+		}
+	}
 }

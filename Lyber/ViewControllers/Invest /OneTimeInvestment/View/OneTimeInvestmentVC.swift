@@ -38,7 +38,7 @@ class OneTimeInvestmentVC: ViewController {
 				entryBundleFailure.status = "FAILURE"
 				self.arrayBundleEntries.append(entryBundleFailure)
 			}
-			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "INVESTMENT_FAILED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "STRATEGY_REJECTED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 			self.statusImg.image = UIImage(asset: Assets.red_failure)
 			
 		}else if(oneInvestment?.status == "PARTIAL_SUCCESS"){
@@ -52,7 +52,7 @@ class OneTimeInvestmentVC: ViewController {
 				entryBundleFailure.status = "FAILURE"
 				self.arrayBundleEntries.append(entryBundleFailure)
 			}
-			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "INVESTMENT_PARTIALLY_VALIDATED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "STRATEGY_PARTIALLY_EXECUTED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 			self.statusImg.image = UIImage(asset: Assets.orange_alert)
 			
 		}else{
@@ -61,7 +61,7 @@ class OneTimeInvestmentVC: ViewController {
 				entryBundleSuccess.status = "SUCCESS"
 				self.arrayBundleEntries.append(entryBundleSuccess)
 			}
-			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "INVESTMENT_VALIDATED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "STRATEGY_EXECUTED"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 			self.statusImg.image = UIImage(asset: Assets.green_large_tick)
 		}
 		

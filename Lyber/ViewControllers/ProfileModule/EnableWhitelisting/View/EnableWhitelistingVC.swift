@@ -41,9 +41,9 @@ class EnableWhitelistingVC: ViewController {
         self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         self.headerView.headerLbl.isHidden = true
         
-        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "NOTEBOOK_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "WHITELISTING_FEATURE_LIMITS_WITHDRAWLS"), lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.enableWhitelistingLbl, text: CommonFunctions.localisation(key: "ADDRESS_BOOK_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "ADDRESS_BOOK_LIMITS_WITHDRAWLS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setTextWithLineSpacing(label: self.whitlistingDescLbl, text: CommonFunctions.localisation(key: "ADDRESS_BOOK_LIMITS_WITHDRAWLS"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpLbl(lbl: self.extraSecurityLbl, text: CommonFunctions.localisation(key: "EXTRA_SECURITY"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
 		

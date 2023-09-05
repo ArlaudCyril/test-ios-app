@@ -9,7 +9,8 @@ import Foundation
 enum screenEnum{
     case portfolio
     case exchange
-    case singleAssets
+    case singleAsset
+    case singleAssetStrategy
 }
 
 
@@ -25,25 +26,24 @@ struct PriceServiceResumeAPI: Codable {
 	let data: [String:PriceServiceResumeData]
 }
 
+// MARK: - PriceServiceResumeDataAPI
+struct PriceServiceResumeDataAPI: Codable {
+	let data : PriceServiceResumeData
+}
+
 // MARK: - PriceServiceResumeData
 struct PriceServiceResumeData: Codable {
-	let lastPrice, change, squiggleURL : String?
+	let lastPrice, change, squiggleURL, midnightPrice : String?
 	var isAuto : Bool?
-	let rank: Int
+	let rank: Int?
 	
-	init(lastPrice: String?, change: String?, squiggleURL: String?, isAuto: Bool? = nil, rank: Int) {
-		self.lastPrice = lastPrice
-		self.change = change
-		self.squiggleURL = squiggleURL
-		self.isAuto = isAuto
-		self.rank = rank
-	}
 	init() {
 		self.lastPrice = ""
 		self.change = ""
 		self.squiggleURL = ""
 		self.isAuto = false
 		self.rank = 0
+		self.midnightPrice = "-1"
 	}
 }
 

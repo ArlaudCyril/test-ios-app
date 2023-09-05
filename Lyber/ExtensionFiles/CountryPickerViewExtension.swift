@@ -13,6 +13,7 @@ extension CountryPickerView {
 		flagImageView.isHidden = true
 		showCountryCodeInView = false
 		showPhoneCodeInView = false
+		
 	}
 }
 

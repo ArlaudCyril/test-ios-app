@@ -8,13 +8,15 @@
 import UIKit
 import WebKit
 
-class KycWebVC: ViewController,WKNavigationDelegate, WKUIDelegate {
+class KycWebVC: NotSwipeGesture,WKNavigationDelegate, WKUIDelegate {
     //MARK: - Variables
     var kycWebVC  = KycWebVM()
     var Ubalurl = String()
 	var webViewRedirection: WKWebView!
     //MARK: - IB OUTLETS
     @IBOutlet var webViewHome: WKWebView!
+	@IBOutlet var changeInformationsBtn: PurpleButton!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -31,10 +33,23 @@ class KycWebVC: ViewController,WKNavigationDelegate, WKUIDelegate {
 		if #available(iOS 16.4, *) {
 			webViewHome.isInspectable = true
 		}
+		
+		self.changeInformationsBtn.setTitle(CommonFunctions.localisation(key: "CHANGE_INFORMATIONS"), for: .normal)
+		
+		self.changeInformationsBtn.backgroundColor = UIColor.blue_500
+		self.changeInformationsBtn.layer.cornerRadius = self.changeInformationsBtn.frame.height / 2
+		
+		self.changeInformationsBtn.addTarget(self, action: #selector(changeInformationsBtnAct), for: .touchUpInside)
     }
 }
 
 extension KycWebVC {
+	@objc func changeInformationsBtnAct(){
+		let vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		vc.isEditData = true
+		self.navigationController?.pushViewController(vc, animated: false)
+	}
+	
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("didFinish URL: \(String(describing: webView.url))")
 		
@@ -51,6 +66,7 @@ extension KycWebVC {
 			if ((navigationAction.request.url?.absoluteString.hasPrefix("https://test.contralia.fr/Contralia")) == true && webView.url?.absoluteString.hasPrefix("https://preprod.id360docaposte.com/static/process_ui/index.html#/enrollment") == true){
 				webViewHome.isHidden = false
 				webViewRedirection.isHidden = true
+				self.changeInformationsBtn.isHidden = true
 				decisionHandler(.allow)
 				return
 			}

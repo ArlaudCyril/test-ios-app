@@ -29,8 +29,10 @@ extension EmailLoginCVC{
     func setUpUI(){
 //        IQKeyboardManager.shared.enableAutoToolbar = false
 		
-        CommonUI.setUpLbl(lbl: enterEmailLbl, text: CommonFunctions.localisation(key: "NICE_SEE_YOU_AGAIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: enterEmailLbl, text: CommonFunctions.localisation(key: "HAPPY_SEE_YOU_BACK"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: enterEmailDescLbl, text: CommonFunctions.localisation(key: "ENTER_EMAIL_LOGIN"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.enterEmailDescLbl.numberOfLines = 0
+		
         CommonUI.setTextWithLineSpacing(label: enterEmailDescLbl, text: CommonFunctions.localisation(key: "ENTER_EMAIL_LOGIN"), lineSpacing: 6, textAlignment: .left)
 		self.emailTF.placeholder = CommonFunctions.localisation(key: "MAIL_ADDRESS")
 		self.passwordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
@@ -73,7 +75,7 @@ extension EmailLoginCVC{
     }
     
     @objc func loginByPhoneBtnAct(){
-        self.controller?.navigationController?.popViewController(animated: true)
+        self.controller?.navigationController?.popViewController(animated: false)
     }
     
     @objc func eyeBtnAct(){

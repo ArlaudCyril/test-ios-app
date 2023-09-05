@@ -136,7 +136,6 @@ extension ConfirmPinCVC: UITextFieldDelegate,MyTextFieldDelegate{
 					tf?.backgroundColor = UIColor.borderColor
 					tf?.text = ""
 				}
-				self.pinTF1.becomeFirstResponder()
 			})
 			
 		}

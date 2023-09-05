@@ -34,6 +34,9 @@ PODS:
   - Socket.IO-Client-Swift (16.0.1):
     - Starscream (~> 4.0)
   - Starscream (4.0.4)
+  - StripeApplePay (23.13.0):
+    - StripeCore (= 23.13.0)
+  - StripeCore (23.13.0)
   - SVGKit (3.0.0):
     - CocoaLumberjack (~> 3.0)
   - SwiftAlgorithms (1.0.0)
@@ -63,6 +66,7 @@ DEPENDENCIES:
   - SDWebImageSVGKitPlugin
   - Socket.IO-Client-Swift
   - Starscream
+  - StripeApplePay
   - SVGKit
   - SwiftEntryKit
   - SwiftyGif
@@ -92,6 +96,8 @@ SPEC REPOS:
     - SDWebImageSVGKitPlugin
     - Socket.IO-Client-Swift
     - Starscream
+    - StripeApplePay
+    - StripeCore
     - SVGKit
     - SwiftAlgorithms
     - SwiftEntryKit
@@ -121,6 +127,8 @@ SPEC CHECKSUMS:
   SDWebImageSVGKitPlugin: 7542dd07c344ec3415ded0461a1161a6f087e0c9
   Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  StripeApplePay: 70a263e288bcf4e2011cf4027a2fc0813a6f8c09
+  StripeCore: 0f01d8c435d94b9e6bf937006a6144544e580c90
   SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
@@ -128,6 +136,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftySRP: 628ba1b2bfa9042602989d48dd01dad828e3c9dd
 
-PODFILE CHECKSUM: 0e9dfb9ed87d557f94db387db00dd3f6fea02a1e
+PODFILE CHECKSUM: 0c983e7aefbd8867ed73cbd7d6b93f748290e9f9
 
 COCOAPODS: 1.12.0

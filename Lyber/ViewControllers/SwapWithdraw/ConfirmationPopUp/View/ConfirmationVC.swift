@@ -62,9 +62,24 @@ class ConfirmationVC: ViewController {
 			self.headingLbl.isHidden = true
 			self.subHeadingLbl.text = CommonFunctions.localisation(key: "SENT_EMAIL_CONTAINING_RESET_LINK")
 			self.subHeadingLbl.textAlignment = .center
-        }
-		
-		if(self.confirmationType == .Tailoring){
+			
+        }else if confirmationType == .exportSuccess{
+			self.confirmationLbl.text = CommonFunctions.localisation(key: "SUCCESSFUL")
+			self.headingLbl.isHidden = true
+			self.subHeadingLbl.text = CommonFunctions.localisation(key: "REQUEST_BEEN_RECEIVED")
+			self.subHeadingLbl.textAlignment = .center
+			
+        }else if confirmationType == .exportFailure{
+			self.bottomView.backgroundColor = UIColor.Red_500
+			self.headerView.backgroundColor = UIColor.Red_500
+			self.confirmationLbl.text = CommonFunctions.localisation(key: "ERROR")
+			self.headingLbl.isHidden = true
+			self.subHeadingLbl.text = CommonFunctions.localisation(key: "SOMETHING_WENT_WRONG")
+			self.subHeadingLbl.textAlignment = .center
+			self.ThanksBtn.setTitle(CommonFunctions.localisation(key: "TRY_AGAIN"), for: .normal)
+			self.confirmImgView.image = Assets.red_failure_light.image()
+			
+        }else if(self.confirmationType == .Tailoring){
 			self.bottomView.backgroundColor = UIColor.orange
 			self.headerView.backgroundColor = UIColor.orange
 			self.confirmImgView.image = Assets.sad_smiley.image()
@@ -92,7 +107,7 @@ extension ConfirmationVC{
     }
     
     @objc func ThanksBtnAct(){
-		if(confirmationType == .Tailoring){
+		if(confirmationType == .Tailoring || confirmationType == .exportFailure || confirmationType == .exportSuccess){
 			self.dismiss(animated: false)
 		}else if(confirmationType == .LinkSent){
 			self.dismiss(animated: false)

@@ -9,7 +9,7 @@ import UIKit
 
 class emailAddressCVC: UICollectionViewCell {
     //MARK: - Variables
-    var controller : PersonalDataVC?
+    var controller : EnterPhoneVC?
     var eyeClicked = false
     //MARK: - IB OUTLETS
     @IBOutlet var emailAddresslbl: UILabel!
@@ -47,16 +47,10 @@ extension emailAddressCVC{
 		self.passwordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
         self.passwordTF.font = UIFont.MabryPro(Size.XLarge.sizeValue())
         self.passwordTF.textColor = UIColor.Purple35126D
+		self.passwordTF.isSecureTextEntry = true
         self.passwordTF.delegate = self
         self.passwordTF.addTarget(self, action: #selector(editChange(_:)), for: .editingChanged)
         self.eyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
-    }
-    
-    func setPersonalDate (data : UserPersonalData?){
-        self.emailTF.text = data?.email ?? ""
-        DispatchQueue.main.async {
-            self.controller?.email = self.emailTF.text ?? ""
-        }
     }
 }
 
@@ -75,7 +69,7 @@ extension emailAddressCVC: UITextFieldDelegate{
         let currentString: NSString = textField.text! as NSString
         let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
         if textField == emailTF{
-            return (newString.length <= 30 )
+            return (newString.length <= 40 )
         }else if textField == passwordTF{
             return (newString.length <= 30 )
         }
@@ -96,11 +90,6 @@ extension emailAddressCVC: UITextFieldDelegate{
             CommonUI.setUpViewBorder(vw: self.enterEmailVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
         }else if textField == passwordTF{
             CommonUI.setUpViewBorder(vw: self.passwordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
-            if eyeClicked{
-                self.passwordTF.isSecureTextEntry = false
-            }else{
-                self.passwordTF.isSecureTextEntry = true
-            }
         }
     }
     

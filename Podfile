@@ -11,6 +11,7 @@ target 'Lyber' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SwiftEntryKit'
+	pod 'StripeApplePay'
 	
 #  pod 'OTPFieldView'
   pod 'ADCountryPicker'

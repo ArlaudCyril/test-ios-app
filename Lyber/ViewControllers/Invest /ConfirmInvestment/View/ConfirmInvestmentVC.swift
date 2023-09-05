@@ -7,8 +7,11 @@
 
 import UIKit
 import MultiProgressView
+import StripeApplePay
+import PassKit
 
 class ConfirmInvestmentVC: ViewController {
+	
     //MARK: - Variables
     var confirmInvestmentVM = ConfirmInvestmentVM()
     var assetData : Trending?,strategyData : Strategy?
@@ -32,6 +35,11 @@ class ConfirmInvestmentVC: ViewController {
 	var network : NetworkAsset?
 	var fees : Double?
 	var coinPrice: Double?
+	
+	//singleCoin
+	var asset : PriceServiceResume?
+	let applePayButton: PKPaymentButton = PKPaymentButton(paymentButtonType: .plain, paymentButtonStyle: .black)
+	
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var confirmInvestmentLbl: UILabel!
@@ -43,12 +51,17 @@ class ConfirmInvestmentVC: ViewController {
     @IBOutlet var coinPriceLbl: UILabel!
     @IBOutlet var euroCoinPriceLbl: UILabel!
 	
+    @IBOutlet var amountVw: UIView!
     @IBOutlet var amountLbl: UILabel!
     @IBOutlet var euroAmountLbl: UILabel!
 	
     @IBOutlet var frequencyVw: UIView!
     @IBOutlet var frequencyLbl: UILabel!
     @IBOutlet var frequencyNameLbl: UILabel!
+	
+    @IBOutlet var paymentVw: UIView!
+    @IBOutlet var paymentLbl: UILabel!
+    @IBOutlet var paymentNameLbl: UILabel!
 	
 	@IBOutlet var networkVw: UIView!
     @IBOutlet var networkTitleLbl: UILabel!
@@ -85,23 +98,26 @@ class ConfirmInvestmentVC: ViewController {
         CommonUI.setUpLbl(lbl: self.noOfEuroInvested, text: "", textColor: UIColor.PurpleColor, font: UIFont.MabryProMedium(Size.XVLarge.sizeValue()))
         self.stackVw.layer.cornerRadius = 16
         
-        CommonUI.setUpLbl(lbl: self.coinPriceLbl, text: "\(assetData?.name ?? "") \(CommonFunctions.localisation(key: "PRICE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.coinPriceLbl, text: "\(asset?.id.uppercased() ?? "") \(CommonFunctions.localisation(key: "PRICE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.amountLbl, text: CommonFunctions.localisation(key: "AMOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.frequencyLbl, text: CommonFunctions.localisation(key: "FREQUENCY"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.paymentLbl, text: CommonFunctions.localisation(key: "PAYMENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.networkTitleLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.lyberFeeLbl, text: CommonFunctions.localisation(key: "LYBER_FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalLbl, text: CommonFunctions.localisation(key: "TOTAL"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
-		CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(CommonFunctions.formattedCurrency(from : self.assetData?.currentPrice ?? 0.0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroCoinPriceLbl, text: "\(self.asset?.priceServiceResumeData.lastPrice ?? "0.0")€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
         CommonUI.setUpLbl(lbl: self.euroAmountLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
         CommonUI.setUpLbl(lbl: self.frequencyNameLbl, text: frequency, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
-        CommonUI.setUpLbl(lbl: self.euroLyberFeeLBl, text: "0.08€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.paymentNameLbl, text: "Apple Pay", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+		CommonUI.setUpLbl(lbl: self.euroLyberFeeLBl, text: "\(self.fees ?? 0.08)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalEuroLbl, text:
-							"\(CommonFunctions.formattedCurrency(from: (totalEuroInvested)+(0.08)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+							"\(CommonFunctions.formattedCurrency(from: (totalEuroInvested)))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_INVESTMENT"), for: .normal)
         CommonUI.setUpLbl(lbl: volatilePriceLbl, text: CommonFunctions.localisation(key: "PRICE_CRYPTOCURRENCY_VOLATILE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
@@ -112,6 +128,7 @@ class ConfirmInvestmentVC: ViewController {
         self.progressBar.cornerRadius = 4
         self.progressBar.lineCap = .round
         
+		self.paymentVw.isHidden = true
         
         collView.delegate = self
         collView.dataSource = self
@@ -123,17 +140,36 @@ class ConfirmInvestmentVC: ViewController {
     }
     
     func checkInvestmentType(){
-        if InvestmentType == .singleCoin{
+		if InvestmentType == .singleCoin || InvestmentType == .singleCoinWithFrequence{
+			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE")
             self.coinPriceVw.isHidden = false
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
-            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: NSDecimalNumber(decimal: totalCoinsInvested).doubleValue))"
-            self.coinImg.sd_setImage(with: URL(string: self.assetData?.image ?? ""))
+			self.amountVw.isHidden = true
+			self.networkVw.isHidden = false
+			self.networkTitleLbl.text = CommonFunctions.localisation(key: "AMOUNT")
+			self.networkLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested - (self.fees ?? 0)))€"
+            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€"
             if frequency == ""{
                 self.frequencyVw.isHidden = true
             }else{
                 self.frequencyVw.isHidden = false
             }
+			self.view.addSubview(applePayButton)
+			applePayButton.translatesAutoresizingMaskIntoConstraints = false
+			NSLayoutConstraint.activate([
+				applePayButton.leadingAnchor.constraint(equalTo: confirmInvestmentBtn.leadingAnchor),
+				applePayButton.trailingAnchor.constraint(equalTo: confirmInvestmentBtn.trailingAnchor),
+				applePayButton.topAnchor.constraint(equalTo: confirmInvestmentBtn.topAnchor),
+				applePayButton.bottomAnchor.constraint(equalTo: confirmInvestmentBtn.bottomAnchor)
+			])
+			
+			self.paymentVw.isHidden = false
+			self.confirmInvestmentBtn.isHidden = true
+			
+			applePayButton.isHidden = !StripeAPI.deviceSupportsApplePay()
+			applePayButton.addTarget(self, action: #selector(handleApplePayButtonTapped), for: .touchUpInside)
+			
 		}else if (InvestmentType == .activateStrategy || InvestmentType == .editActiveStrategy || InvestmentType == .oneTimeInvestment){
 			//TODO : hide for oneTimeInvestment
 			if(InvestmentType == .oneTimeInvestment){
@@ -223,6 +259,25 @@ class ConfirmInvestmentVC: ViewController {
 			self.volatilePriceLbl.isHidden = true
         }
     }
+	
+	@objc func handleApplePayButtonTapped() {
+		let merchantIdentifier = "merchant.com.lyber"
+		let paymentRequest = StripeAPI.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: "FR", currency: "EUR")
+		
+		// Configure the line items on the payment request
+		paymentRequest.paymentSummaryItems = [
+			// The final line should represent your company;
+			// it'll be prepended with the word "Pay" (that is, "Pay iHats, Inc $50")
+			PKPaymentSummaryItem(label: "\(self.asset?.id.uppercased() ?? "")", amount: NSDecimalNumber(value: totalEuroInvested)),
+		]
+		// Initialize an STPApplePayContext instance
+		if let applePayContext = STPApplePayContext(paymentRequest: paymentRequest, delegate: self) {
+			// Present Apple Pay payment sheet
+			applePayContext.presentApplePay(on: self)
+		} else {
+			// There is a problem with your Apple Pay configuration
+		}
+	}
 }
 
 //MARK: - COLL VIEW DELEGATE AND DATA SOURCE METHODS
@@ -244,6 +299,35 @@ extension ConfirmInvestmentVC: UICollectionViewDelegate, UICollectionViewDataSou
     
 }
 
+//MARK: - ApplePayContextDelegate
+extension ConfirmInvestmentVC: ApplePayContextDelegate{
+	
+	func applePayContext(_ context: StripeApplePay.STPApplePayContext, didCreatePaymentMethod paymentMethod: StripeCore.StripeAPI.PaymentMethod, paymentInformation: PKPayment, completion: @escaping StripeApplePay.STPIntentClientSecretCompletionBlock) {
+		InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: Decimal(totalEuroInvested), completion: {response in
+			if response != nil{
+				completion(response?.data.clientSecret, MyError.description("Error"))
+				print("payment created")
+			}
+		})
+	}
+	
+	func applePayContext(_ context: StripeApplePay.STPApplePayContext, didCompleteWith status: StripeApplePay.STPApplePayContext.PaymentStatus, error: Error?) {
+		switch status {
+			case .success:
+				// Payment succeeded, show a receipt view
+				break
+			case .error:
+				// Payment failed, show the error
+				break
+			case .userCancellation:
+				// User canceled the payment
+				break
+			@unknown default:
+				fatalError()
+		}
+	}
+}
+
 //MARK: - objective functions
 extension ConfirmInvestmentVC{
     @objc func cancelBtnAct(){
@@ -262,24 +346,6 @@ extension ConfirmInvestmentVC{
 					self.navigationController?.pushViewController(vc, animated: true)
 				}
 			})
-        }else if InvestmentType == .singleCoin{
-            self.confirmInvestmentBtn.showLoading()
-            confirmInvestmentVM.InvestOnAssetApi(assetId: assetData?.symbol?.uppercased() ?? "", assetName: assetData?.id ?? "", amount: totalEuroInvested,assetAmount: totalCoinsInvested, frequency: frequency, completion: {[weak self]response in
-                self?.confirmInvestmentBtn.hideLoading()
-                if let response = response{
-                    print(response)
-//                    let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-//                    vc.confirmationType = .Buy
-//                    vc.coinInvest = self?.noOfEuroInvested.text
-//                    self?.present(vc, animated: true, completion: nil)
-//
-                    let vc = BuySellPopUpVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                    vc.popUpType = .Buy
-                    vc.assetData = self?.assetData
-                    vc.coinInvest = self?.noOfEuroInvested.text
-                    self?.present(vc, animated: true, completion: nil)
-                }
-            })
         }else if InvestmentType == .activateStrategy{
             self.confirmInvestmentBtn.showLoading()
             confirmInvestmentVM.activateStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, ownerUuid: strategyData?.ownerUuid ?? "",completion: {[weak self]response in

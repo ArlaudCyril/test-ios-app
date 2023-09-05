@@ -64,6 +64,25 @@ class CommonFunctions{
         navVC.setNavigationBarHidden(true , animated: true)
         userData.shared.disconnect()
     }
+	
+	static func stopRegistration(){
+		let alert = UIAlertController(title: CommonFunctions.localisation(key: "STOP_REGISTRATION"), message: CommonFunctions.localisation(key: "PROGRESS_REGISTRATION_LOST"), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
+			
+		}))
+		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "OK"), style: .default, handler: {_ in
+			let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+			let navVC = UINavigationController(rootViewController: vc)
+			UIApplication.shared.windows[0].rootViewController = navVC
+			UIApplication.shared.windows[0].makeKeyAndVisible()
+			navVC.navigationController?.popToRootViewController(animated: true)
+			navVC.setNavigationBarHidden(true , animated: true)
+			userData.shared.deleteData()
+		}))
+		getTopMostViewController()?.present(alert, animated: true, completion: nil)
+		
+        
+    }
     
     static func showLoader(){
         let topView = getTopMostViewController()?.view
@@ -441,8 +460,9 @@ class CommonFunctions{
         inputFormatter.dateFormat = inputFormat
 		let outputFormatter = DateFormatter()
 		outputFormatter.dateFormat = outputFormat
-        
-        let showDate = inputFormatter.date(from: date)
+		outputFormatter.configureLocale()
+		
+		let showDate = inputFormatter.date(from: date)
        
         let resultString = outputFormatter.string(from: showDate ?? Date())
         return resultString
@@ -464,12 +484,10 @@ class CommonFunctions{
         return Double(stringValue)!
     }
 	static func getTwoDecimalValueDecimal(number: Decimal) -> Decimal{
-		if(number.isNaN)
-		{
-			return 0
-		}
-		let stringValue = String(format: "%.2f", number as CVarArg)
-		return Decimal(string: stringValue)!
+		let nsNumber = NSDecimalNumber(decimal: number)
+		let handler = NSDecimalNumberHandler(roundingMode: .down, scale: 2, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+		let roundedNumber = nsNumber.rounding(accordingToBehavior: handler)
+		return roundedNumber.decimalValue
     }
 	
 	static func getFormatedPrice(number: Double) -> String{
@@ -494,7 +512,7 @@ class CommonFunctions{
     }
     
     static func formattedCurrency(from value: Double?) -> String {
-        guard value != nil else { return "0.00€" }
+        guard value != nil else { return "0.00" }
         let formatter = NumberFormatter()
 
 
@@ -543,6 +561,60 @@ class CommonFunctions{
         formatter.decimalSeparator = "."
 //        formatter.numberStyle = .decimal
 		let stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "0"
+		
+		return stringFormatted
+    }
+	
+	static func formattedDecimalForValue(from value: Decimal?, for result: Decimal?) -> String {
+        guard value != nil else { return "0.00" }
+        let formatter = NumberFormatter()
+
+
+		if(value ?? 0 > 10000)
+		{
+			formatter.maximumFractionDigits = 0
+			formatter.minimumFractionDigits =  0
+		}else if(value ?? 0 > 1000){
+			formatter.maximumFractionDigits = 1
+			formatter.minimumFractionDigits =  1
+		}else if(value ?? 0 > 10){
+			formatter.maximumFractionDigits = 2
+			formatter.minimumFractionDigits =  2
+		}else if(value ?? 0 > 1){
+			formatter.maximumFractionDigits = 2
+			formatter.minimumFractionDigits =  2
+		}else if(value ?? 0 > 0.1){
+			formatter.maximumFractionDigits = 3
+			formatter.minimumFractionDigits =  3
+		}else if(value ?? 0 > 0.01){
+			formatter.maximumFractionDigits = 4
+			formatter.minimumFractionDigits =  4
+		}else if(value ?? 0 > 0.001){
+			formatter.maximumFractionDigits = 5
+			formatter.minimumFractionDigits =  5
+		}else if(value ?? 0 > 0.0001){
+			formatter.maximumFractionDigits = 6
+			formatter.minimumFractionDigits =  6
+		}else if(value ?? 0 > 0.00001){
+			formatter.maximumFractionDigits = 7
+			formatter.minimumFractionDigits =  7
+		}else if(value ?? 0 > 0.000001){
+			formatter.maximumFractionDigits = 8
+			formatter.minimumFractionDigits =  8
+		}else if(value ?? 0 > 0.0000001){
+			formatter.maximumFractionDigits = 9
+			formatter.minimumFractionDigits =  9
+		}else if(value ?? 0 > 0.00000001){
+			formatter.maximumFractionDigits = 10
+			formatter.minimumFractionDigits =  10
+		}
+      
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        formatter.usesGroupingSeparator = true
+        formatter.decimalSeparator = "."
+//        formatter.numberStyle = .decimal
+		let stringFormatted = formatter.string(from: result! as NSNumber) ?? ""
 		
 		return stringFormatted
     }
@@ -657,11 +729,11 @@ class CommonFunctions{
     static func frequenceDecoder(frequence : String?)->(String){
         switch frequence {
         case "1d":
-            return NSLocalizedString("DAILY", comment: "")
+            return CommonFunctions.localisation(key: "DAILY")
         case "1w":
-            return NSLocalizedString("WEEKLY", comment: "")
+            return CommonFunctions.localisation(key: "WEEKLY")
         case "1m":
-            return NSLocalizedString("MONTHLY", comment: "")
+            return CommonFunctions.localisation(key: "MONTHLY")
         default:
             return ""
         }
@@ -670,13 +742,13 @@ class CommonFunctions{
     //MARK: - Encoder
     static func frequenceEncoder(frequence : String?)->(String){
         switch frequence {
-        case NSLocalizedString("ONCE", comment: ""):
+			case CommonFunctions.localisation(key: "ONCE"):
             return "now"
-        case NSLocalizedString("DAILY", comment: ""):
+        case CommonFunctions.localisation(key: "DAILY"):
             return "1d"
-        case NSLocalizedString("WEEKLY", comment: ""):
+        case CommonFunctions.localisation(key: "WEEKLY"):
             return "1w"
-        case NSLocalizedString("MONTHLY", comment: ""):
+        case CommonFunctions.localisation(key: "MONTHLY"):
             return "1m"
         default:
             return ""
@@ -848,6 +920,7 @@ class CommonFunctions{
 				userData.shared.firstname = response?.data?.firstName ?? ""
 				
 				userData.shared.lastname = response?.data?.lastName ?? ""
+				userData.shared.registeredAt = response?.data?.registeredAt ?? ""
 				userData.shared.has2FA = response?.data?.has2FA ?? false
 				userData.shared.type2FA = response?.data?.type2FA ?? "none"
 				userData.shared.phone_no = response?.data?.phoneNo ?? ""
@@ -862,4 +935,19 @@ class CommonFunctions{
 			}
 		})
 	}
+	
+	static func getLocalizationKey(fromLocalizedText text: String, in language: String = "en") -> String {
+		if let path = Bundle.main.path(forResource: "Localizable", ofType: "strings", inDirectory: "\(language).lproj"),
+		   let dict = NSDictionary(contentsOfFile: path) as? [String: String] {
+			if let key = dict.keys.first(where: { dict[$0] == text }) {
+				return key
+			}
+		}
+		
+		return ""
+	}
+}
+
+enum MyError: Error {
+	case description(String)
 }

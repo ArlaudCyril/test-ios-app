@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 enum InvestStrategyModel{
     case singleCoin
+    case singleCoinWithFrequence
     case activateStrategy
     case oneTimeInvestment
     case deposit
@@ -44,4 +45,5 @@ struct Quote: Codable{
 	var ratio: String
 	var orderId: String
 	var fees: String
+	var clientSecret: String?
 }

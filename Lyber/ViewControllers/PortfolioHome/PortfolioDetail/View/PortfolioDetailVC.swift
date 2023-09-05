@@ -30,7 +30,7 @@ class PortfolioDetailVC: SwipeGesture {
 	var portfolioDetailTVC : PortfolioDetailTVC?
 	
 	//navigation controller
-	var previousController = UIViewController()
+	var previousController : UIViewController?
 	static var view : UIView?
 	static var staticTblView : UITableView?
 	static var exchangeFinished = false
@@ -82,7 +82,10 @@ class PortfolioDetailVC: SwipeGesture {
 	
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
-			if(self.previousController is ConfirmInvestmentVC){
+			if(self.previousController == nil){
+				self.navigationController?.deleteToViewController(ofClass: PortfolioHomeVC.self)
+				
+			}else if(self.previousController is ConfirmInvestmentVC){
 				self.navigationController?.deleteToViewController(ofClass: Storage.previousControllerPortfolioDetailObject)
 			}
 		}
@@ -104,11 +107,6 @@ class PortfolioDetailVC: SwipeGesture {
         
         self.investMoneyBtn.addTarget(self, action: #selector(investMoneyBtnAct), for: .touchUpInside)
         self.threeDotBtn.addTarget(self, action: #selector(threeDotBtnAct), for: .touchUpInside)
-		
-		let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(moveToNextItem(_:)))
-		//rightSwipe.direction = .right
-		view.addGestureRecognizer(rightSwipe)
-		
 		
     }
     
@@ -140,10 +138,13 @@ extension PortfolioDetailVC : UITableViewDelegate,UITableViewDataSource{
 			self.portfolioDetailTVC = cell
             cell.assetName = self.assetId
 			cell.setUpCell(assetData : self.assetData,chartData : self.chartData)
+			cell.getResumeAssetAPI()
             return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyBalanceTVC")as! MyBalanceTVC
             cell.setUpCell(assetId : assetId)
+			cell.assetId = self.assetId
+			cell.controller = self
             return cell
         }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "InfosTVC")as! InfosTVC
@@ -190,7 +191,7 @@ extension PortfolioDetailVC{
     @objc func threeDotBtnAct(){
         let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
         vc.popupType = .AssetDetailPagePopUp
-		vc.previousController = self.previousController
+		vc.previousController = self.previousController ?? ViewController()
 		vc.idAsset = self.assetId
         vc.portfolioDetailScreen = true
 		vc.coinId = self.assetId
@@ -227,15 +228,6 @@ extension PortfolioDetailVC{
 		})
 	}
 	
-	@objc func moveToNextItem(_ sender:UISwipeGestureRecognizer) {
-		if sender.direction == .right{
-			if(self.previousController is ConfirmInvestmentVC){
-				self.navigationController?.popToViewController(ofClass: Storage.previousControllerPortfolioDetailObject, animated: true)
-			}else{
-				self.navigationController?.popViewController(animated: true)
-			}
-		}
-	}
 }
 
 //MARK: URLSessionWebSocketDelegate
@@ -258,7 +250,6 @@ extension PortfolioDetailVC : URLSessionWebSocketDelegate{
 								let value = Double(price ?? "")
 								DispatchQueue.main.async {
 									if value  != 0{
-										self?.portfolioDetailTVC?.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: value ))€"
 										self?.portfolioDetailTVC?.valueWebSocket = value ?? 0
 										self?.portfolioDetailTVC?.updateValueLastPoint()
 									}

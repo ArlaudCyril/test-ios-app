@@ -57,7 +57,7 @@ extension String{
 				return self
 		}
 	}
-	var decoderStatusDeposit: String {//TODO: change returns
+	var decoderStatusDeposit: String {
 		switch self {
 			case "PENDING":
 				return CommonFunctions.localisation(key: "IN_PROGRESS")
@@ -70,8 +70,21 @@ extension String{
 		}
 	}
 	
-	//Retrait : PENDING : en attente, VALIDATE: Envoyé, CANCELED: Annulé
-	var decoderStatusWithdraw: String {//TODO: change returns
+	
+	var decoderStatusWithdraw: String {
+		switch self {
+			case "PENDING":
+				return CommonFunctions.localisation(key: "PENDING")
+			case "VALIDATE":
+				return CommonFunctions.localisation(key: "SENT")
+			case "CANCELED":
+				return CommonFunctions.localisation(key: "CANCELED")
+			default:
+				return self
+		}
+	}
+	
+	var decoderStatusOrder: String {//Status : 
 		switch self {
 			case "PENDING":
 				return CommonFunctions.localisation(key: "PENDING")
@@ -135,5 +148,12 @@ extension String{
 		}
 		return self
 	}
-    
+	
+	var phoneFormat: String{
+		var phone = self
+		if phone.first == "0" {
+			phone.removeFirst()
+		}
+		return phone
+	}
 }

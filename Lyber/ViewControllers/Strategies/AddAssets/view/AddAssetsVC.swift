@@ -14,7 +14,7 @@ class AddAssetsVC: ViewController {
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     //var AssetsAddDataCallback : ((Trending?)->())?
     var AssetsAddDataCallback : ((PriceServiceResume?)->())?
-    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "TOP_GAINERS"),CommonFunctions.localisation(key: "TOP_LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
+    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "GAINERS"),CommonFunctions.localisation(key: "LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
     var coinsData : [PriceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
     var timer = Timer()

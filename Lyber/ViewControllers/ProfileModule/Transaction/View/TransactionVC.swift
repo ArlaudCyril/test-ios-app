@@ -76,6 +76,51 @@ extension TransactionVC : UITableViewDelegate,UITableViewDataSource{
         cell.setUpCell(data: transactionDictKeys[section])
         return cell
     }
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let vc = AddressAddedPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+		let transaction = self.transactionDict[transactionDictKeys[indexPath.section]]?[indexPath.row]
+		
+		if(transaction?.type == "order"){
+			vc.type = .order
+			vc.orderId = transaction?.id ?? ""
+			vc.status = transaction?.status ?? ""
+			vc.from = "\(transaction?.fromAmount ?? "") \(transaction?.fromAsset?.uppercased() ?? "")"
+			vc.to = "\(transaction?.toAmount ?? "") \(transaction?.toAsset?.uppercased() ?? "")"
+			vc.feesPaid = "\(transaction?.fees ?? "0") \(transaction?.fromAsset?.uppercased() ?? "")"
+			vc.date = transaction?.date ?? ""
+			
+		}else if(transaction?.type == "strategy"){
+			vc.type = .strategy
+			vc.executionId = transaction?.id ?? ""
+			vc.name = transaction?.strategyName ?? ""
+			if(transaction?.nextExecution != nil){
+				vc.typeStrategy = CommonFunctions.localisation(key: "RECURRENT")
+			}else{
+				vc.typeStrategy = CommonFunctions.localisation(key: "SINGLE_EXECUTION")
+			}
+			
+			
+		}else if(transaction?.type == "deposit"){
+			vc.type = .deposit
+			vc.transactionId = transaction?.id ?? ""
+			vc.status = transaction?.status ?? ""
+			vc.from = transaction?.fromAddress ?? ""
+			vc.amount = "\(transaction?.amount ?? "") \(transaction?.asset ?? "")"
+			vc.network = transaction?.network ?? ""
+			vc.transactionHash = transaction?.txId ?? ""
+			
+		}else if(transaction?.type == "withdraw"){
+			vc.type = .withdraw
+			vc.transactionId = transaction?.id ?? ""
+			vc.status = transaction?.status ?? ""
+			vc.to = transaction?.toAddress ?? ""
+			vc.amount = "\(transaction?.amount ?? "") \(transaction?.asset ?? "")"
+			vc.date = transaction?.date ?? ""
+			
+		}
+		self.present(vc, animated: true)
+	}
 }
 
 //MARK: - objective functions
@@ -105,6 +150,7 @@ extension TransactionVC{
 					}
 				}
 				let dateFormatter = DateFormatter()
+				dateFormatter.configureLocale()
 				dateFormatter.dateFormat = "dd MMMM yyyy"
 				
 				for date in Array(self.transactionDict.keys).sorted(by: { dateFormatter.date(from: $0)! > dateFormatter.date(from: $1)! }){

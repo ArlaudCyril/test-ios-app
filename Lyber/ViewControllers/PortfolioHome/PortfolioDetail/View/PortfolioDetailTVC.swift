@@ -24,6 +24,7 @@ class PortfolioDetailTVC: UITableViewCell {
 	var timer = Timer()
 	var entrySelected = ChartDataEntry()
 	var scaleYChartView : CGFloat = 0
+	var midnightPrice : Decimal = -1
     
     //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
@@ -35,7 +36,6 @@ class PortfolioDetailTVC: UITableViewCell {
     @IBOutlet var collView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
-		//setting timer for updating point
     }
 
 }
@@ -62,6 +62,9 @@ extension PortfolioDetailTVC{
             self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
             self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.graphValues[self.graphValues.count - 1].y)
             self.chartLastPoint = self.graphValues[self.graphValues.count - 1].y
+			if(self.chartLastPoint == 0){
+				print("error to resolve")
+			}
             self.customMarkerView.contentView.isHidden = false
         }
         
@@ -78,16 +81,10 @@ extension PortfolioDetailTVC{
         
         CommonUI.setUpLbl(lbl: priceLbl, text: CommonFunctions.localisation(key: "PRICE"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 
-        CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.formattedCurrency(from: self.chartLastPoint ))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
-        CommonUI.setUpLbl(lbl: percentageLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Small.sizeValue()))//update percentage
+        CommonUI.setUpLbl(lbl: euroLbl, text: "0€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+		
+        CommonUI.setUpLbl(lbl: percentageLbl, text: "0.0 %", textColor: UIColor.Green_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
-        if (assetData?.priceChangePercentage24H ?? 0) < 0{
-            percentageLbl.textColor = UIColor.Red_500
-            self.percentageLbl.text = "▼ \(assetData?.priceChangePercentage24H ?? 0)% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
-        }else{
-            percentageLbl.textColor = UIColor.GreenColor
-            self.percentageLbl.text = "▲ \(assetData?.priceChangePercentage24H ?? 0)% (\(CommonFunctions.formattedCurrency(from: assetData?.priceChange24H ?? 0))€)"
-        }
         
         self.collView.layer.cornerRadius = 12
         self.collView.delegate = self
@@ -97,7 +94,7 @@ extension PortfolioDetailTVC{
         self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
 		
 		
-        
+		
     }
     
     func getTimeValues(date : String,timeFrame: String = "1h",count : Int)->([String]){
@@ -187,7 +184,10 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
 //MARK: - objective functions
 extension PortfolioDetailTVC{
     @objc func backBtnAct(){
-		if(self.controller?.previousController is ConfirmInvestmentVC){
+		if(self.controller?.previousController == nil){
+			self.controller?.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
+			
+		}else if(self.controller?.previousController is ConfirmInvestmentVC){
 			self.controller?.navigationController?.deleteToViewController(ofClass: Storage.previousControllerPortfolioDetailObject)
 			self.controller?.navigationController?.popViewController(animated: true)
 		}else{
@@ -306,6 +306,28 @@ extension PortfolioDetailTVC{
     }
 	
 	func updateValueLastPoint(){
+		
+		self.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: self.valueWebSocket))€"
+		
+		if(midnightPrice == -1){
+			self.percentageLbl.text = "0.0 %"
+		}else{
+			let percentChange = CommonFunctions.getTwoDecimalValueDecimal(number: (Decimal(self.valueWebSocket)/self.midnightPrice - 1) * 100)
+			
+			let euroChange = CommonFunctions.formattedDecimalForValue(from: Decimal(self.valueWebSocket), for: Decimal(self.valueWebSocket) - self.midnightPrice)
+			
+			if(percentChange >= 0){
+				self.percentageLbl.text = "▲ + \(percentChange)% (\(euroChange)€)"
+				self.percentageLbl.textColor = UIColor.Green_500
+			}else{
+				self.percentageLbl.text = "▼ - \(-percentChange)% (\(euroChange)€)"
+				self.percentageLbl.textColor = UIColor.Red_500
+			}
+			
+		}
+		
+		
+		//chartview
 		let diffYCharView = Double(self.chartView.data?.yMax ?? 0) - Double(self.chartView.data?.yMin ?? 0)
 		if(diffYCharView != self.scaleYChartView){
 			self.scaleYChartView = diffYCharView
@@ -365,6 +387,29 @@ extension PortfolioDetailTVC{
 		
 		self.timer = Timer(fireAt: date, interval: interval, target: self, selector: #selector(self.updateChartView), userInfo: nil, repeats: true)
 		RunLoop.main.add(self.timer, forMode: RunLoop.Mode.common)
+	}
+	
+	func getResumeAssetAPI(){
+		self.controller?.portfolioDetailVM.getResumeByIdApi(assetId: self.assetName, completion: {response in
+			if response != nil{
+				
+				self.midnightPrice = Decimal(string: response?.data.midnightPrice ?? "-1") ?? -1
+				self.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: Double(response?.data.lastPrice ?? "0") ?? 0))€"
+				
+				let lastPrice = (Decimal(string: response?.data.lastPrice ?? "") ?? 0)
+				
+				let percentChange = CommonFunctions.getTwoDecimalValueDecimal(number: (lastPrice / self.midnightPrice - 1) * 100)
+				let euroChange = CommonFunctions.formattedDecimalForValue(from: lastPrice, for: lastPrice - self.midnightPrice)
+				
+				if(percentChange >= 0){
+					self.percentageLbl.text = "▲ + \(percentChange)% (\(euroChange)€)"
+					self.percentageLbl.textColor = UIColor.Green_500
+				}else{
+					self.percentageLbl.text = "▼ - \(-percentChange)% (\(euroChange)€)"
+					self.percentageLbl.textColor = UIColor.Red_500
+				}
+			}
+		})
 	}
 }
 

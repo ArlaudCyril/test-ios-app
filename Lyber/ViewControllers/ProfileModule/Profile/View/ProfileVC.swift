@@ -8,7 +8,7 @@
 import UIKit
 import ExpandableLabel
 import NVActivityIndicatorView
-class ProfileVC: ViewController {
+class ProfileVC: SwipeGesture {
     //MARK: - Variables
     var imagePicker = UIImagePickerController(),selectedProfile : SelectedProfileVC?
 	var headerData : [String] = []
@@ -43,8 +43,8 @@ class ProfileVC: ViewController {
 		self.paymentData = [
 			buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "")
 		]
-		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: "")]
-		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "ENABLED")),
+		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "EXPORT"), desc: "")]
+		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "ENABLED_FEMININE")),
 			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: "")]
@@ -55,12 +55,13 @@ class ProfileVC: ViewController {
 			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "ENABLED"))"
 		}
 		if userData.shared.type2FA == "none" {
-			self.securityData[0].desc = CommonFunctions.localisation(key: "DISABLED")
+			self.securityData[0].desc = CommonFunctions.localisation(key: "DISABLED_FEMININE")
 		}
 		
 		
 		//Views
         self.headerView.headerLbl.isHidden = true
+		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         CommonUI.setUpLbl(lbl: nameLbl, text: userData.shared.firstname, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: emailLbl, text: userData.shared.email, textColor: UIColor.grey877E95 , font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
@@ -167,8 +168,10 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
 			}else if(indexPath.row == 1){
 				let vc = LanguageVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 				self.navigationController?.pushViewController(vc, animated: true)
+			}else if(indexPath.row == 2){
+				let vc = ExportVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				self.navigationController?.pushViewController(vc, animated: true)
 			}
-            
         }
         if indexPath.section == 3{
             if indexPath.row == 0{

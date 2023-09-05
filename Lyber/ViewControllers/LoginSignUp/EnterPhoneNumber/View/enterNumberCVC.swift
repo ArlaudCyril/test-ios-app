@@ -63,6 +63,7 @@ extension enterNumberCVC{
             self.loginByEmailBtn.isHidden = true
             self.forgotPasswordBtn.isHidden = true
             self.passwordView.isHidden = true
+            self.passwordTF.isHidden = true
         }
         
         self.phoneTF.addTarget(self, action: #selector(editChange), for: .editingChanged)

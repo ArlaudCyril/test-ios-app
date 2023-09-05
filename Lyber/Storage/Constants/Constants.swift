@@ -170,6 +170,7 @@ struct Constants{
         static let lastName = "lastName"
         static let birthPlace = "birthPlace"
         static let birthDate = "birthDate"
+        static let date = "date"
         static let birthCountry = "birthCountry"
         static let nationality = "nationality"
         static let isUSCitizen = "isUSCitizen"
@@ -209,7 +210,6 @@ struct Constants{
         static let userResetNotification = "user/reset/notification"
         static let userActivateFaceId = "user/activate/face-id"
         static let userPersonalInfo = "user/personal-info"
-        static let userPersonal_info = "user/personal_info"
         static let userResendEmail = "user/resend/email"
         static let userCheckEmailVerification = "user/check_email_verification"
         static let userInvestEducation = "user/invest/education"
@@ -287,6 +287,7 @@ struct Constants{
 		static let userServiceForgot = "user-service/forgot"
 		static let userServiceResetPasswordIdentifiers = "user-service/reset-password-identifiers"
 		static let userServiceResetPassword = "user-service/reset-password"
+		static let userServiceExport = "user-service/export"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"
@@ -348,7 +349,6 @@ struct Constants{
 		case PIG = "pig"
 		case PINGUIN = "pinguin"
 		case POODLE = "poodle"
-		case HUMAN_HEAD = "human_head"
 		case RABBIT_HEAD = "rabbit_head"
 		case RABBIT = "rabbit"
 		case RACCOON = "raccoon"

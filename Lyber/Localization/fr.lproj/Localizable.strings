@@ -64,8 +64,8 @@
 "SAVE_MY_STRATEGY" = "Sauvegarder ma stratégie";
 "YOU_MUST_ADD" = "Vous devez ajouter un actif minimum pour créer votre stratégie. ";
 "TRENDING" = "Tendance";
-"TOP_GAINERS" = "Top hausses";
-"TOP_LOOSERS" = "Pires chutes";
+"GAINERS" = "Hausses";
+"LOOSERS" = "Baisses";
 "STABLE" = "Stable";
 "BITCOIN" = "Bitcoin";
 "BTC" = "BTC";
@@ -90,17 +90,19 @@
 "INVEST" = "Investir";
 "IMMEDIATE" = "Immédiat";
 "EXECUTING_YOUR_STRATEGY" = "Nous exécutons votre stratégie, cela peut prendre quelques secondes.";
-"INVESTMENT_IN_PROGRESS" = "Investissement en cours";
-"INVESTMENT_FAILED" = "Investissement échoué";
-"INVESTMENT_VALIDATED" = "Investissement validé";
-"INVESTMENT_PARTIALLY_VALIDATED" = "Investissement partiellement validé";
+"EXECUTION_IN_PROGRESS" = "Exécution en cours";
+"SINGLE_EXECUTION" = "Exécution unique";
+"STRATEGY_REJECTED" = "Stratégie refusée";
+"STRATEGY_EXECUTED" = "Stratégie exécutée";
+"STRATEGY_PARTIALLY_EXECUTED" = "Stratégie partiellement exécutée";
 
 
 
 //MARK: - PORTFOLIO HOME;
 "PORTFOLIO" = "Portefeuille";
 "COMPLETE_ACCOUNT_TO_START_INVESTING" = "Complétez votre compte pour commencer à investir";
-"STEP_COMPLETED" = "étapes complétées";
+"STEPS_COMPLETED" = "étapes complétées";
+"PROGRESS_REGISTRATION_SAVED_EACH_STAGE" = "La progression de votre inscription est sauvegardée à chaque étape. Vous pouvez l'interrompre et la reprendre à tout moment.";
 "CREATE_AN_ACCOUNT" = "Créer un compte";
 "FILL_PERSONAL_DATA" = "Remplir les données personnelles";
 "VERIFY_YOUR_IDENTITY" = "Vérifier votre identité";
@@ -152,7 +154,7 @@
 "LAST_NAME" = "Nom";
 "BIRTH_PLACE" = "Lieu de naissance";
 "PERSONAL_DATA" = "Données personnelles";
-"FOR_LEGAL_REASONS" = "Pour que Lyber puisse garder un niveau de sécurité maximal pour votre compte, nous avons besoin de quelques informations de votre part";
+"FOR_LEGAL_REASONS" = "Pour que Lyber puisse garder un niveau de sécurité maximal pour votre compte, nous avons besoin de quelques informations de votre part.";
 "CARD_HOLDER_NAME" = "Nom du titulaire de la carte";
 "BIRTH_DATE" = "Date de naissance";
 "BIRTH_COUNTRY" = "Pays de naissance";
@@ -200,7 +202,7 @@
 "FAMILLY_OTHERS" = "Famille ou autres";
 "WHAT_YOUR_WORK_INDUSTRY" = "Quel est votre secteur d'activité ? ";
 
-"AGRICULTURE" = "Agriculture, Agribusiness & Natural Resources";
+"AGRICULTURE" = "Agriculture, Agroalimentaire et Ressources Naturelles";
 "ARTS_MEDIA" = "Art, Divertissement & Médias";
 "BANKING_FINANCE_INSURANCE" = "Banque, Finance & Assurance";
 "BUSINESS_SERVICES_CONSULTING" = "Services aux Entreprises & Conseil";
@@ -235,7 +237,9 @@
 "EDIT_PERSONAL_DATA" = "Modifier les données personnelles";
 "VERIFICATION_IN_PROGRESS" = "Vérification en cours";
 "START_VERIFICATION" = "Commencer la vérification";
-"PASSWORD_REQUIREMENTS" = "Le mot de passe doit comporter au moins 10 caractères, 1 caractère spécial, 1 minuscule et 1 majuscule";
+"REVIEW_INFORMATIONS" = "Revoir mes informations";
+"CHANGE_INFORMATIONS" = "Changer mes informations";
+"PASSWORD_REQUIREMENTS" = "Le mot de passe doit comporter au moins 10 caractères, 1 caractère spécial, 1 minuscule et 1 majuscule.";
 "STRONG_PASSWORD" = "Vous avez un mot de passe sécurisé !";
 
 //MARK: - INVEST MONEY;
@@ -253,15 +257,20 @@
 "CREDIT_CARD" = "Carte de crédit";
 "ADD_A_FREQUENCY" = "Choix fréquence";
 "PREVIEW_MY_INVESTMENT" = "Prévisualiser mon investissement";
+"PREVIEW_MY_PURCHASE" = "Prévisualiser mon achat";
 "MONTHLY" = "Mensuel";
 "CONFIRM_INVESTMENT" = "Confirmer l'investissement";
 "CONFIRM_EXCHANGE" = "Confirmer l'échange";
+"CONFIRM_PURCHASE" = "Confirmer l'achat";
 "CONFIRM_MY_DEPOSIT" = "Confirmer mon dépôt";
 "CONFIRM_DEPOSIT" = "Confirmer le dépôt";
 "AMOUNT" = "Montant";
 "FREQUENCY" = "Fréquence";
 "PAYMENT" = "Paiement";
 "BUY" = "Acheter du";
+"BUY_VERB" = "Acheter";
+"BUY_ASSETS_EUROS" = "Acheter des actifs en euros";
+"BUY_SPECIFIC_ASSET_EUROS" = "Acheter du %@ en euros";
 "SELL" = "Vendre";
 "LYBER_FEES" = "Frais Lyber";
 "TOTAL" = "Total";
@@ -291,6 +300,7 @@
 "EVERY_21ST_MONTH" = "Tous les 21 du mois";
 "RECOMMENDED" = "Recommandé";
 "DEPOSIT" = "Dépôt";
+"DEPOSIT_VERB" = "Déposer";
 "DEPOSIT_TRANSACTION" = "Dépôt de %@";
 "MONEY_LYBER" = "Ajouter de l'argent sur Lyber";
 "ASSET_LYBER_PART1" = "Ajouter des";
@@ -329,6 +339,7 @@
 "PAUSE_STRATEGY" = "Mettre la stratégie en pause";
 "DELETE_STRATEGY" = "Supprimer la stratégie";
 "RECURRENT_INVESTMENT" = "Investissement récurrent";
+"RECURRENT" = "Récurrent";
 "EXECUTE_STRATEGY_REGULAR_BASIS" = "Exécuter une stratégie de façon régulière";
 "OPTIONAL" = "Optionnel";
 "AVAILABLE" = "Disponible";
@@ -346,6 +357,8 @@
 "NOT_ENOUGH_INVESTMENT_PART_2" = "USDT par actif dans la stratégie";
 "NOT_ENOUGH_COINS" = "Vous n'avez pas assez d'actifs pour échanger";
 "NOT_ENOUGH_USDT" = "Vous n'avez pas assez d'USDT pour effectuer cette action";
+"CANT_BUY_MORE_THAN" = "Vous ne pouvez acheter un actif pour plus de %@ euros";
+
 "NOT_ENOUGH_COINS_WITHDRAW" = "Vous n'avez pas assez d'actifs pour effectuer un retrait";
 "MINIMUM_AMOUNT_EXCHANGE" = "Le montant minimum d'assets à échanger est";
 "DEPOSIT_TAKEN_ACCOUNT" = "Votre dépôt a été pris en compte";
@@ -370,10 +383,13 @@
 "CHANGE_PIN" = "Changer de code PIN";
 "FACE_ID" = "Face ID";
 "LOG_OUT" = "Déconnexion";
+"STOP_REGISTRATION" = "Arrêter l'inscription";
+"PROGRESS_REGISTRATION_LOST" = "La progression de votre inscription sera perdue";
 "LIST_ALL_OPERATIONS" = "Liste de toutes les opérations (dépôts, échanges et retraits) effectuées sur votre compte";
 "CARD_NUMBER" = "Numéro de carte";
 "EXPIRE" = "Expirer";
 "CVV" = "CVV";
+"ADDRESS" = "Adresse";
 "ADD_CRYPTO_ADDRESS_PART1" = "Ajouter une adresse";
 "ADD_CRYPTO_ADDRESS_PART2" = "";
 "ADDING_NEW_CARD_ACCEPT_TERMS_CONDITIONS" = "En ajoutant une nouvelle carte, vous acceptez les termes et conditions.";
@@ -389,6 +405,8 @@
 "ENTER_PHONE_NUMBER" = "Numéro de téléphone";
 "LANGUAGE" = "Langues";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "L'appareil ne supporte pas ou n'est pas enregistré avec FaceID";
+"EXPORT" = "Exporter";
+"EXPORT_OPERATIONS" = "Actions d'exportation";
 
 
 //MARK: - STRONG AUTHENTICATION;
@@ -400,6 +418,7 @@
 "CRYPTO_ADRESS_BOOK" = "Carnet d’adresses";
 "ADDRESS_BOOK_ALLOW_CRYPTOCURRENCY" = "Le carnet d’adresse permet aux retraits de crypto-monnaies de n'être effectués qu'à des adresses déjà désignées dans votre carnet d'adresses. Vous pouvez également activer votre carnet pour ces adresses.";
 "WHITELISTING" = "Liste blanche";
+"WITHDRAWAL_SECURITY_SETTINGS" = "Paramètres de sécurité des retraits";
 "EDIT_CRYPTO_ADRESS" = "Modifier une adresse cryptographique";
 "ADRESS_NAME" = "Nom de l'adresse";
 "NETWORK" = "Réseau";
@@ -411,9 +430,9 @@
 "YOUR_NOTE_GOES_HERE" = "Votre note va ici et va sur une grande quantité de ligne";
 "ADD_ADRESS" = "Ajouter une adresse";
 "EDIT_ADRESS" = "Modifier l'adresse";
-"NOTEBOOK_SECURITY" = "Sécurité de votre carnet";
+"ADDRESS_BOOK_SECURITY" = "Sécurité de votre carnet";
 "SAVE_SETTINGS" = "Enregistrer les paramètres";
-"WHITELISTING_FEATURE_LIMITS_WITHDRAWLS" = "Le carnet d’adresse limite vos retraits et dépôts aux adresses figurant dans votre carnet.";
+"ADDRESS_BOOK_LIMITS_WITHDRAWLS" = "Le carnet d’adresse limite vos retraits et dépôts aux adresses figurant dans votre carnet.";
 "EXTRA_SECURITY" = "Sécurité supplémentaire";
 "HOURS" = "Heures";
 "72_HOURS" = "72 heures";
@@ -426,7 +445,9 @@
 "CAN_WITHDRAW_IMMEDIATELY_FUTURE" = "Vous pourrez retirer immédiatement vers une adresse nouvellement ajoutée à votre carnet d'adresse.";
 "ADD_NEW_ADRESS" = "Ajouter une nouvelle adresse";
 "DISABLED" = "Désactivé";
+"DISABLED_FEMININE" = "Désactivée";
 "ENABLED" = "Activé";
+"ENABLED_FEMININE" = "Activée";
 "ADD_USE_ADRESS" = "Ajouter et utiliser cette adresse";
 "CRYPTO_ASSET_DEPOSIT" = "Dépôt de crypto-actifs";
 "DEPOSIT_ADRESS" = "Adresse de dépôt";
@@ -441,16 +462,15 @@
 "ADD_CREDIT_DEBIT_CARD" = "Ajout carte de crédit/débit";
 "FUND_ACCOUNT_YOUR_BANK_ACCOUNT" = "Approvisionner votre compte à partir de votre compte bancaire";
 "MAKE_SURE_NAME_BANK_ACCOUNT" = "Assurez-vous que le nom du compte bancaire est le même que votre nom sur Lyber.";
-"LOGIN_EMAIL" = "Se connecter par e-mail";
-"FORGOT_PASSWORD" = "Vous avez oublié votre mot de passe ?";
+"LOGIN_EMAIL" = "Connection par email";
+"FORGOT_PASSWORD" = "Mot de passe oublié ?";
 "HAPPY_SEE_YOU_BACK" = "Heureux de vous revoir !";
 "ENTER_PHONE_NUMBER_LOGIN" = "Entrez votre numéro de téléphone pour vous connecter, nous vous enverrons un code de vérification.";
-"NICE_SEE_YOU_AGAIN" = "Heureux de vous revoir !";
 "ENTER_EMAIL_LOGIN" = "Entrez votre adresse électronique pour vous connecter, nous vous enverrons un lien par courrier électronique.";
 "HAPPENS_EVEN_BEST" = "Cela arrive même aux meilleurs";
-"SEND_RESET_LINK_EMAIL_ADDRESS" = "Nous vous enverrons un lien de réinitialisation à votre adresse électronique.";
+"SEND_RESET_LINK_EMAIL_ADDRESS" = "Nous vous enverrons un lien de réinitialisation sur votre adresse email.";
 "SEND_RESET_LINK" = "Envoyez-moi un lien de réinitialisation";
-"LOGIN_PHONE" = "Se connecter par téléphone";
+"LOGIN_PHONE" = "Connection par téléphone";
 "DELETE" = "Supprimer";
 "EDIT" = "Editer";
 "CONFIRM" = "Confirmer";
@@ -506,6 +526,7 @@
 "ENTER_SCAN_ADDRESS" = "Saisir ou scanner une adresse";
 "DATE_CREATION" = "Date de création";
 "ADDRESS_ORIGIN" = "Origine de l'adresse";
+"DATE_ADDED" = "Date d'ajout";
 "ADDRESS_COPIED" = "Adresse copiée";
 "ACTIVE_DURING" = "Actif durant";
 
@@ -519,7 +540,7 @@
 
 //MARK: - Withdraw
 "DEACTIVATED" = "Désactivé";
-"AMOUNT_WITHDRAW_ACCOUNT" = "Le montant a été retiré de votre compte.";
+"AMOUNT_WITHDRAW_ACCOUNT" = "Le montant a bien été retiré de votre compte Lyber.";
 "SEE_EFFECTS_PORTFOLIO" = "Vous pouvez maintenant voir son effet sur votre portefeuille.";
 "THANKS" = "Merci";
 
@@ -533,10 +554,32 @@
 "CANCELED" = "Annulé";
 
 //MARK: - ForgotPassword
-"SENT_EMAIL_CONTAINING_RESET_LINK" = "Nous vous avons envoyé un e-mail contenant le lien de réinitialisation que vous devez suivre pour réinitialiser votre mot de passe";
+"SENT_EMAIL_CONTAINING_RESET_LINK" = "Nous vous avons envoyé un e-mail contenant le lien de réinitialisation que vous devez suivre pour réinitialiser votre mot de passe.";
 "RESET_PASSWORD" = "Réinitialiser le mot de passe";
 "ENTER_NEW_PASSWORD" = "Entrez votre nouveau mot de passe";
 "SAVE_NEW_PASSWORD" = "Enregistrer mon nouveau mot de passe";
+
+
+//MARK: - Export
+"REQUEST_BEEN_RECEIVED" = "Votre demande a été reçue. L'exportation sera envoyée à votre adresse électronique dans quelques minutes.";
+"SOMETHING_WENT_WRONG" = "Oh non ! Il y a eu un problème.";
+"SUCCESSFUL" = "Réussite";
+"ERROR" = "Erreur";
+"TRY_AGAIN" = "Essayez à nouveau";
+
+
+//MARK: - AddressAddedPopUp
+"ORDER" = "Ordre";
+"STRATEGY" = "Stratégie";
+"ORDER_ID" = "Identifiant de l'ordre";
+"EXECUTION_ID" = "Identifiant d'exécution";
+"TRANSACTION_ID" = "Identifiant de transaction";
+"STATUS" = "Statut";
+"FEES_PAID" = "Frais payés";
+"DATE" = "Date";
+"NAME" = "Nom";
+"TYPE" = "Type";
+"TRANSACTION_HASH" = "Transaction Hash";
 
 //MARK: - UNITS
 

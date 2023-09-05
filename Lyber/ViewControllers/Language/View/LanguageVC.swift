@@ -27,7 +27,6 @@ final class LanguageVC: SwipeGesture{
 		CommonUI.setUpLbl(lbl: self.languageLbl, text: CommonFunctions.localisation(key: "LANGUAGE"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		self.tblView.delegate = self
 		self.tblView.dataSource = self
-		self.tblView.layer.cornerRadius = 15
 		self.tblView.tableFooterView = UIView()
 		self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
 	}
@@ -49,10 +48,8 @@ extension LanguageVC : UITableViewDelegate, UITableViewDataSource{
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "LanguageTVC", for: indexPath)as! LanguageTVC
-		cell.setupCell(language: GlobalVariables.languageArray[indexPath.row])
-		if (indexPath.row == GlobalVariables.languageArray.count-1) {
-			/*cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)*/
-		}
+		cell.setupCell(language: GlobalVariables.languageArray[indexPath.row], index: indexPath.row, lastIndex: GlobalVariables.languageArray.count-1)
+
 		return cell
 	}
 	

@@ -28,8 +28,18 @@ class LanguageTVC: UITableViewCell {
 }
 
 extension LanguageTVC{
-	func setupCell(language : Language){
+	func setupCell(language : Language, index: Int, lastIndex: Int){
 		self.view.backgroundColor = UIColor(named: "purpleGrey_50")
+		
+		if index == lastIndex{
+			view.layer.cornerRadius = 16
+			view.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+		}else if index == 0{
+			view.layer.cornerRadius = 16
+			view.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+		}else{
+			view.layer.maskedCorners = []
+		}
 		self.selectedImg.image = UIImage(asset: Assets.checkmark_color)
 		CommonUI.setUpLbl(lbl: self.languageLbl, text: language.name, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 		self.languageImg.image = UIImage(asset: language.image)
@@ -38,5 +48,6 @@ extension LanguageTVC{
 		}else{
 			self.selectedImg.isHidden = true
 		}
+		
 	}
 }

@@ -40,6 +40,7 @@ enum Assets : String{
 	case sad_smiley
 	case orange_alert
 	case red_failure
+	case red_failure_light
 	case green_large_tick
     
     //coins
@@ -134,7 +135,6 @@ enum Assets : String{
 	case pig
 	case pinguin
 	case poodle
-	case human_head
 	case rabbit_head
 	case rabbit
 	case raccoon

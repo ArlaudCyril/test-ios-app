@@ -17,7 +17,6 @@ class enableNotificationCVC: UICollectionViewCell {
     @IBOutlet var enableNotifyDescLbl: UILabel!
     @IBOutlet var activateBtn: PurpleButton!
     @IBOutlet var askMeLater: UIButton!
-    @IBOutlet var srollVw: UIScrollView!
 }
 
 extension enableNotificationCVC{
@@ -47,18 +46,19 @@ extension enableNotificationCVC{
     
     func enableNotification(enable : Int){
 		//just for simulator, normaly defined in app delegate
-		userData.shared.is_push_enabled = enable
-		userData.shared.dataSave()
         CommonFunctions.enableNotifications(enable: enable)
         
         var vc : ViewController
         if(GlobalVariables.isRegistering == true)
         {
+			userData.shared.stepRegisteringComplete = 1
             vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 		}else{
 			vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 			CommonFunctions.loadingProfileApi()
 		}
+		userData.shared.is_push_enabled = enable
+		userData.shared.dataSave()
         self.delegate?.navigationController?.pushViewController(vc, animated: false)
         
     }

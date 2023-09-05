@@ -33,7 +33,7 @@ class LoadingInvestmentVC: ViewController {
 		self.loadingVw.layer.cornerRadius = self.loadingVw.frame.width/2
 		self.SpinnerVw.showColor = UIColor.white.cgColor
 		
-		CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "INVESTMENT_IN_PROGRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.oneTimeInvestmentLbl, text: CommonFunctions.localisation(key: "EXECUTION_IN_PROGRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 		self.oneTimeInvestmentLbl.numberOfLines = 0
 		
 		CommonUI.setUpLbl(lbl: self.executingStrategyLbl, text: CommonFunctions.localisation(key: "EXECUTING_YOUR_STRATEGY"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))

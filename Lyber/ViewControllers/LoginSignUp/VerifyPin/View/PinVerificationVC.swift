@@ -269,7 +269,7 @@ extension PinVerificationVC{
     func GoToScreen(){
         var vc = ViewController()
         
-		if userData.shared.isPersonalInfoFilled != true && GlobalVariables.isRegistering == true{
+		if userData.shared.stepRegisteringComplete < 2 && GlobalVariables.isRegistering == true{
 			vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 		}else{
 			 vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)

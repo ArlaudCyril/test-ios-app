@@ -16,7 +16,7 @@ class EnterPhoneVC: ViewController {
     //MARK: - Variables
     var verifyPin = false
     var enterPhoneVM = EnterPhoneVM()
-    var phoneNumber = String() ,password = String(), countryCode = "+33", enteredPin = String()
+    var phoneNumber = String() ,password = String(), countryCode = "+33", enteredPin = String(), email = String(), emailPassword = String()
     var currentPage : Int? = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
@@ -24,7 +24,6 @@ class EnterPhoneVC: ViewController {
     
     //MARK: - IB OUTLETS
     @IBOutlet var headerVw: HeaderView!
-    //    @IBOutlet var backBtn: UIButton!
     @IBOutlet var collView: UICollectionView!
     @IBOutlet var nextBtnView: UIView!
     @IBOutlet var nextButton: PurpleButton!
@@ -44,23 +43,33 @@ class EnterPhoneVC: ViewController {
     @IBOutlet var indicatorViewsWidth4: NSLayoutConstraint!
     @IBOutlet var indicatorViewsWidth5: NSLayoutConstraint!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        IQKeyboardManager.shared.enable = false
-        setUpUI()
-		if(isDoubleAuthentified == true){
-			DispatchQueue.main.async {
-				let indexPath = NSIndexPath(item: 1, section: 0)
-				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		IQKeyboardManager.shared.enable = false
+		setUpUI()
+		if(GlobalVariables.isRegistering == true){
+			if userData.shared.enterPhoneStepComplete == 1{
+				DispatchQueue.main.async {
+					let indexPath = NSIndexPath(item: 1, section: 0)
+					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+				}
 			}
-		}else if (userData.shared.isPhoneVerified == true && GlobalVariables.isRegistering){
-			DispatchQueue.main.async {
-				let indexPath = NSIndexPath(item: 3, section: 0)
-				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+			else if(userData.shared.enterPhoneStepComplete == 2){
+				DispatchQueue.main.async {
+					let indexPath = NSIndexPath(item: 2, section: 0)
+					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+				}
+			}
+		}else if(GlobalVariables.isLogin == true){
+			if(self.isDoubleAuthentified == true){
+				DispatchQueue.main.async {
+					let indexPath = NSIndexPath(item: 2, section: 0)
+					self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
+				}
 			}
 		}
-    }
-    
+		
+	}
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -71,6 +80,11 @@ class EnterPhoneVC: ViewController {
     override func setUpUI(){
         //        self.hideKeyboardWhenTappedAround()
         self.headerVw.headerLbl.isHidden = true
+		self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
+		
+		let EmailAddressNib : UINib =  UINib(nibName: "EmailAddressXib", bundle: nil)
+		self.collView.register(EmailAddressNib, forCellWithReuseIdentifier: "emailAddressCVC")
+		
         self.collView.delegate = self
         self.collView.dataSource = self
         indicatorView = [indicator1,indicator2,indicator3,indicator4,indicator5]
@@ -81,6 +95,8 @@ class EnterPhoneVC: ViewController {
         self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
         self.headerVw.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
+		
+        self.headerVw.closeBtn.addTarget(self, action: #selector(closeBtnAct), for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -110,7 +126,11 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 cell.endEditing(true)
             }
             return cell
-        }else if indexPath.item == 1{
+		}else if indexPath.item == 1{
+			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emailAddressCVC", for: indexPath as IndexPath) as! emailAddressCVC
+			cell.controller = self
+			return cell
+		}else if indexPath.item == 2{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "createPinCVC", for: indexPath as IndexPath) as! createPinCVC
             cell.setUpUI()
             cell.configureWithData()
@@ -118,7 +138,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 self.enteredPin = pin
                 self.GotoNextIndex()
             }
-            if currentPage == 1{
+            if currentPage == 2{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
@@ -127,7 +147,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 cell.endEditing(true)
             }
             return cell
-        }else if indexPath.item == 2{
+        }else if indexPath.item == 3{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmPinCVC", for: indexPath as IndexPath) as! ConfirmPinCVC
             cell.setUpUI(verifyPin : verifyPin)
             cell.pinConfirmDelegate = {[]pin in
@@ -142,6 +162,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 				}else{
 					if self.enteredPin != pin{
 						CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+						cell.pinTF1.becomeFirstResponder()
 					}else{
 						self.setLoginPin(enteredPin: pin)
 					}
@@ -150,7 +171,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 
             }
             
-            if currentPage == 2{
+            if currentPage == 3{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
@@ -159,7 +180,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 cell.endEditing(true)
             }
             return cell
-        }else if indexPath.item == 3{
+        }else if indexPath.item == 4{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enableNotificationCVC", for: indexPath as IndexPath) as! enableNotificationCVC
             cell.setUpUI()
             cell.delegate = self
@@ -185,20 +206,24 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 //MARK: - objective functions
 extension EnterPhoneVC{
     @objc func backBtnAct(){
-        if self.currentPage ?? 0 == 0 || self.currentPage ?? 0 == 1 || self.currentPage ?? 0 == 4{
-            //userData.shared.deleteData()
-            CommonFunctions.logout()
-            //            self.navigationController?.popToRootViewController(animated: true)
-            //            self.dismiss(animated: true, completion: nil)
-            //            self.navigationController?.popViewController(animated: true)
-        }else{
+		if self.currentPage ?? 0 == 0{
+			self.navigationController?.popToViewController(ofClass: LoginVC.self)
+		}else{
             let indexPath = NSIndexPath(item: (currentPage ?? 0) - 1, section: 0)
             self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
         }
     }
+	
+	@objc func closeBtnAct(){
+		CommonFunctions.stopRegistration()
+    }
     
     @objc func nextBtnAct(){
-        self.checkValidationOnPhoneNumber()
+		if(currentPage == 0){
+			self.checkValidationOnPhoneNumber()
+		}else if currentPage == 1{
+			checkEmailAddressValidation()
+		}
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -241,21 +266,18 @@ extension EnterPhoneVC{
                 vw.backgroundColor = UIColor.PurpleColor.withAlphaComponent(0.2)
                 self.indicatorViewsWidth[num].constant = 4
             }
-            if self.currentPage ?? 0 >= 1{
-                if self.currentPage ?? 0 == 1 || self.currentPage ?? 0 == 4{
-                    CommonUI.setUpButton(btn: self.headerVw.backBtn, text: CommonFunctions.localisation(key: "LOG_OUT"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProBold(Size.Medium.sizeValue()))
-                    self.headerVw.backBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "LOG_OUT")), for: .normal)
-                }else{
-                    self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
-                    self.headerVw.backBtn.setAttributedTitle(CommonFunctions.removeUnderlineString(str: ""), for: .normal)
-                    self.headerVw.backBtn.setTitle("", for: .normal)
-                }
-                
-                self.nextBtnView.isHidden = true
-            }else{
-                self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
-                self.nextBtnView.isHidden = false
-            }
+			if(GlobalVariables.isRegistering){
+				self.headerVw.closeBtn.isHidden = false
+			}
+			
+			self.headerVw.backBtn.isHidden = true
+			if self.currentPage ?? 0 == 0{
+				self.nextBtnView.isHidden = false
+			}else if self.currentPage ?? 0 == 2{
+				self.nextBtnView.isHidden = true
+			}else if self.currentPage ?? 0 == 3{
+				self.headerVw.backBtn.isHidden = false
+			}
         }
     }
     
@@ -303,7 +325,8 @@ extension EnterPhoneVC{
                             let spk = SRPKey(serverPublicKey)
                             
                             do{
-								let clientSharedSecret = try client.calculateSharedSecret(username: "\(self?.countryCode.dropFirst() ?? "")\(self?.phoneNumber ?? "")", password: self?.password ?? "", salt: salt.bytes, clientKeys: clientKeys, serverPublicKey: spk)
+								
+								let clientSharedSecret = try client.calculateSharedSecret(username: "\(self?.countryCode.dropFirst() ?? "")\(self?.phoneNumber.phoneFormat ?? "")", password: self?.password ?? "", salt: salt.bytes, clientKeys: clientKeys, serverPublicKey: spk)
                                 let clientProof = client.calculateSimpleClientProof(clientPublicKey: clientKeys.public, serverPublicKey: spk, sharedSecret: clientSharedSecret)
                                 EnterPhoneVM().logInApi(A: BigNum(bytes: clientKeys.public.bytes).dec, M1: BigNum(bytes: clientProof).dec, method: "srp", completion: {[weak self] response in
                                     if let response = response{
@@ -347,13 +370,7 @@ extension EnterPhoneVC{
 			userData.shared.faceIdEnabled = false
 			userData.shared.dataSave()
 			
-			if userData.shared.isIdentityVerified && !GlobalVariables.isRegistering{
-                let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                self.navigationController?.pushViewController(vc, animated: true)
-				
-            }else{
-                self.GotoNextIndex()
-            }
+			self.GotoNextIndex()
         }))
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "ACTIVATE"), style: .default, handler: {_ in
 			let localAuthenticationContext = LAContext()
@@ -368,13 +385,36 @@ extension EnterPhoneVC{
 				userData.shared.dataSave()
 			}
 			
-            if userData.shared.isIdentityVerified && !GlobalVariables.isRegistering{
-                let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-                self.navigationController?.pushViewController(vc, animated: true)
-            }else{
-                self.GotoNextIndex()
-            }
+			self.GotoNextIndex()
         }))
         present(alert, animated: true, completion: nil)
     }
+	
+	func checkEmailAddressValidation(){
+		if self.email.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+			CommonFunctions.toster(Constants.AlertMessages.enterEmail)
+		}else if email.isValidEmail() == false{
+			CommonFunctions.toster(Constants.AlertMessages.enterValidEmail)
+		}else if self.emailPassword == ""{
+			CommonFunctions.toster(Constants.AlertMessages.enterPassword)
+		}else if emailPassword.count < 8{
+			CommonFunctions.toster(Constants.AlertMessages.enterValidPassword)
+		}else{
+			self.nextButton.showLoading()
+			self.nextButton.isUserInteractionEnabled = false
+			PersonalDataVM().sendVerificationEmailApi(email: self.email,password : self.emailPassword, completion: {[weak self]response in
+				self?.nextButton.hideLoading()
+				userData.shared.email = self?.email ?? ""
+				userData.shared.dataSave()
+				self?.nextButton.isUserInteractionEnabled = true
+				if response != nil{
+					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+					vc.typeVerification = "email"
+					vc.action = "signup_email"
+					vc.enterPhoneController = self
+					self?.present(vc, animated: true)
+				}
+			})
+		}
+	}
 }

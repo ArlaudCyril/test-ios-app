@@ -14,7 +14,7 @@ class AllAssetsVM{
 			print(response)
 			var priceServiceResumeDataDict : [String:PriceServiceResumeData] = response.data
 			var priceServiceResumeArray : [PriceServiceResume] = []
-			for (id, priceServiceResumeData) in priceServiceResumeDataDict.sorted(by: {$0.value.rank < $1.value.rank}){
+			for (id, priceServiceResumeData) in priceServiceResumeDataDict.sorted(by: {$0.value.rank ?? 0 < $1.value.rank ?? 0}){
 				let priceServiceResume = PriceServiceResume(id: id, priceServiceResumeData: priceServiceResumeData)
 				priceServiceResumeArray.append(priceServiceResume)
 			}

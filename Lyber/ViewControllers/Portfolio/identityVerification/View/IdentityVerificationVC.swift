@@ -18,7 +18,9 @@ class IdentityVerificationVC: ViewController {
     @IBOutlet var verificationLbl: UILabel!
     @IBOutlet var verificationDescLbl: UILabel!
     
+	@IBOutlet var reviewInformationsBtn: PurpleButton!
     @IBOutlet var kycBtn: PurpleButton!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +33,18 @@ class IdentityVerificationVC: ViewController {
 
     override func setUpUI(){
         self.headerView.headerLbl.isHidden = true
-        headerView.backBtn.layer.cornerRadius = 12
+		self.headerView.backBtn.isHidden = true
+		self.headerView.closeBtn.isHidden = false
         CommonUI.setUpLbl(lbl: self.verificationLbl, text: CommonFunctions.localisation(key: "IDENTITY_VERIFICATION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.verificationDescLbl, text: "", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: self.verificationDescLbl, text: CommonFunctions.localisation(key: "FINALISE_REGISTRATION_VERIFY_IDENTITY"), lineSpacing: 6, textAlignment: .left)
         
+        self.reviewInformationsBtn.setTitle(CommonFunctions.localisation(key: "REVIEW_INFORMATIONS"), for: .normal)
         self.kycBtn.setTitle(CommonFunctions.localisation(key: "START_VERIFICATION"), for: .normal)
         
-        self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        self.headerView.closeBtn.addTarget(self, action: #selector(closeBtnAct), for: .touchUpInside)
+		
+        self.reviewInformationsBtn.addTarget(self, action: #selector(reviewInformationsBtnAct), for: .touchUpInside)
         self.kycBtn.addTarget(self, action: #selector(kycBtnAct), for: .touchUpInside)
     }
 	
@@ -50,8 +56,8 @@ class IdentityVerificationVC: ViewController {
 
 //MARK: - objective functions
 extension IdentityVerificationVC{
-    @objc func backBtnAct(){
-        self.dismiss(animated: true, completion: nil)
+    @objc func closeBtnAct(){
+		CommonFunctions.stopRegistration()
     }
     
     @objc func kycBtnAct(){
@@ -64,6 +70,12 @@ extension IdentityVerificationVC{
 			self.kycBtn.showLoading()
 		}
 		
+    }
+	
+	@objc func reviewInformationsBtnAct(){
+		let vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		vc.isEditData = true
+		self.navigationController?.pushViewController(vc, animated: false)
     }
 	@objc func checkKycStatus() {
 		if self.urlKyc != "" {

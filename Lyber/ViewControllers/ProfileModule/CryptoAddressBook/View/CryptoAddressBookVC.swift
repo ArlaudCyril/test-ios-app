@@ -67,7 +67,7 @@ class CryptoAddressBookVC: SwipeGesture {
         CommonUI.setTextWithLineSpacing(label: self.addressBookDescLbl, text: CommonFunctions.localisation(key: "ADDRESS_BOOK_ALLOW_CRYPTOCURRENCY"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpViewBorder(vw: self.whitlistingView, radius: 16, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.whitlistingLbl, text: CommonFunctions.localisation(key: "WHITELISTING"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.whitlistingLbl, text: CommonFunctions.localisation(key: "WITHDRAWAL_SECURITY_SETTINGS"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.activeDuringLbl, text: "\(CommonFunctions.localisation(key: "SECURITY")) : 72H", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: searchView, radius: 12, borderWidth: 1, borderColor: UIColor.borderColor.cgColor)

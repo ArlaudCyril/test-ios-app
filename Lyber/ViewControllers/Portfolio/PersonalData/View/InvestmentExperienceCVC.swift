@@ -82,23 +82,26 @@ extension InvestmentExperienceCVC{
         self.activityVw.addGestureRecognizer(activityTap)
     }
     
-    func setPersonalDate (data : UserPersonalData?){
-        self.experienceLbl.text = data?.investment_experience ?? ""
-        self.sourceOfIncomeLbl.text = data?.income_source ?? ""
-        self.workIndustryLbl.text = data?.occupation ?? ""
-        self.annualIncomeLbl.text = "\(data?.incomeRange ?? "")€/month"
-        
+    func setPersonalData(){
+		self.experienceLbl.text = CommonFunctions.localisation(key: CommonFunctions.getLocalizationKey(fromLocalizedText: userData.shared.investmentExperience, in: "en"))
+        self.sourceOfIncomeLbl.text = CommonFunctions.localisation(key: CommonFunctions.getLocalizationKey(fromLocalizedText: userData.shared.sourceOfIncome, in: "en"))
+        self.workIndustryLbl.text = CommonFunctions.localisation(key: CommonFunctions.getLocalizationKey(fromLocalizedText: userData.shared.workIndustry, in: "en"))
+        self.annualIncomeLbl.text = CommonFunctions.localisation(key: CommonFunctions.getLocalizationKey(fromLocalizedText: userData.shared.annualIncome, in: "en"))
+        self.activityLbl.text = CommonFunctions.localisation(key: CommonFunctions.getLocalizationKey(fromLocalizedText: userData.shared.activityOnLyber, in: "en"))
+
         DispatchQueue.main.async {
-            self.controller?.investmentExp = self.experienceLbl.text ?? ""
-            self.controller?.sourceOfIncome = self.sourceOfIncomeLbl.text ?? ""
-            self.controller?.workIndustry = self.workIndustryLbl.text ?? ""
-            self.controller?.annualIncome = self.annualIncomeLbl.text ?? ""
+            self.controller?.investmentExp = userData.shared.investmentExperience
+            self.controller?.sourceOfIncome = userData.shared.sourceOfIncome
+            self.controller?.workIndustry = userData.shared.workIndustry
+            self.controller?.annualIncome = userData.shared.annualIncome
+            self.controller?.activity = userData.shared.activityOnLyber
             
         }
         self.experienceLbl.textColor = UIColor.ThirdTextColor
         self.sourceOfIncomeLbl.textColor = UIColor.ThirdTextColor
         self.workIndustryLbl.textColor = UIColor.ThirdTextColor
         self.annualIncomeLbl.textColor = UIColor.ThirdTextColor
+        self.activityLbl.textColor = UIColor.ThirdTextColor
 
     }
 }

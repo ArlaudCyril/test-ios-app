@@ -14,7 +14,7 @@ class AllAssetsVC: SwipeGesture {
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     var screenType : screenEnum = .portfolio
     var coinSelectedCallback : ((_ coinData : Trending?)->())?
-    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "TOP_GAINERS"),CommonFunctions.localisation(key: "TOP_LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
+    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "GAINERS"),CommonFunctions.localisation(key: "LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
 	var fromAssetId : String = ""
     
     var coinsData : [PriceServiceResume] = []
@@ -77,10 +77,11 @@ class AllAssetsVC: SwipeGesture {
             self.AllAssetsLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO_TITLE")
             self.backBtn.setImage(Assets.back.image(), for: .normal)
             self.availableFlatVw.isHidden = false
-        }else if screenType == .singleAssets{
+		}else if screenType == .singleAsset || screenType == .singleAssetStrategy{
             self.backBtn.setImage(Assets.back.image(), for: .normal)
             self.availableFlatVw.isHidden = true
             self.AllAssetsLbl.text = CommonFunctions.localisation(key: "CHOOSE_AN_ASSET")
+			self.collViewTop.constant = 30
         }else{
 			self.availableFlatVw.isHidden = true
 			//update position of collview
@@ -181,10 +182,13 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
 			vc.strategyType = .Exchange
 			//            vc.assetsData = coinsData[indexPath.row]
 			self.navigationController?.pushViewController(vc, animated: true)
-        }else if screenType == .singleAssets{
+        }else if screenType == .singleAsset || screenType == .singleAssetStrategy{
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-            vc.strategyType = .singleCoin
-//            vc.assetsData = coinsData[indexPath.row]
+			vc.strategyType = .singleCoin
+			if(screenType == .singleAssetStrategy){
+				vc.strategyType = .singleCoinWithFrequence
+			}
+			vc.asset = filterCoin[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

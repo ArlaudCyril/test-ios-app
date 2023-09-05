@@ -16,7 +16,7 @@ class EmailLoginVC: ViewController {
     var email = String() ,password = String(), enteredPin = String()
     var currentPage : Int? = 0
     //MARK: - IB OUTLETS
-    @IBOutlet var headerView: HeaderView!
+    @IBOutlet var headerVw: HeaderView!
     @IBOutlet var collView: UICollectionView!
     @IBOutlet var nextBtnView: UIView!
     @IBOutlet var nextButton: PurpleButton!
@@ -43,13 +43,13 @@ class EmailLoginVC: ViewController {
 	//MARK: - SetUpUI
 
     override func setUpUI(){
-        self.headerView.headerLbl.isHidden = true
+        self.headerVw.headerLbl.isHidden = true
         self.collView.delegate = self
         self.collView.dataSource = self
         self.collView.layer.cornerRadius = 32
         self.collView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.nextButton.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
-        self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        self.headerVw.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
         
         indicatorView = [indicator1,indicator2,indicator3,indicator4,indicator5]
@@ -155,7 +155,12 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 //MARK: - objective functions
 extension EmailLoginVC{
     @objc func backBtnAct(){
-        self.navigationController?.popViewController(animated: true)
+		if self.currentPage ?? 0 == 0{
+			self.navigationController?.popToViewController(ofClass: LoginVC.self)
+		}else{
+			let indexPath = NSIndexPath(item: (currentPage ?? 0) - 1, section: 0)
+			self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+		}
     }
     
     @objc func nextBtnAct(){
@@ -268,8 +273,13 @@ extension EmailLoginVC{
                 vw.backgroundColor = UIColor.PurpleColor.withAlphaComponent(0.2)
                 self.indicatorViewsWidth[num].constant = 4
             }
-            
-			self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
+			
+			if self.currentPage ?? 0 == 0{
+				self.nextBtnView.isHidden = false
+			}else if self.currentPage ?? 0 == 1{
+				self.nextBtnView.isHidden = true
+			}
+			self.headerVw.backBtn.setImage(Assets.back.image(), for: .normal)
             
         }
     }

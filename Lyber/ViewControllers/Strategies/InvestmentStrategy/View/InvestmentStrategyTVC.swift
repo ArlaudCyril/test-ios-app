@@ -13,6 +13,7 @@ var strategyColor : [UIColor] = [UIColor(named: "purple_800") ?? UIColor(),UICol
 class InvestmentStrategyTVC: UITableViewCell {
     //MARK: - Variables
     var investmentStrategyAssets : [InvestmentStrategyAsset] = []
+	var isLastElement = false
     
     //MARK: - IB OUTLETS
     @IBOutlet var strategyVw: UIView!
@@ -43,7 +44,8 @@ class InvestmentStrategyTVC: UITableViewCell {
 }
 
 extension InvestmentStrategyTVC{
-    func setUpCell(data : Strategy?){
+	func setUpCell(data : Strategy?, isLastRow : Bool = false){
+		self.isLastElement = isLastRow
         investmentStrategyAssets = data?.bundle ?? []
         
         var informationHeight = 0
@@ -160,7 +162,11 @@ extension InvestmentStrategyTVC{
 
         let height = CGFloat((20*((self.investmentStrategyAssets.count+1)/2)) + 12*(self.investmentStrategyAssets.count/2))
         collViewHeightConst.constant = height
-        
+		
+		if(isLastElement){
+			collViewHeightConst.constant += 50
+		}
+			
     }
     
 }

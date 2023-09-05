@@ -6,16 +6,16 @@
 //
 
 import UIKit
-import ADCountryPicker
 import DropDown
 import CountryPickerView
+import IQKeyboardManagerSwift
 
 class PersonalDataCVC: UICollectionViewCell {
     //MARK: - Variables
     var personalDataFilled : (()->())?
     var controller : PersonalDataVC?
     var dropDown = DropDown()
-    var isNationalityTap : Bool = false
+	var textFields : [UITextField] = []
     //MARK: - IB OUTLETS
     @IBOutlet var personalDataLbl: UILabel!
     @IBOutlet var personalDataDescLbl: UILabel!
@@ -36,13 +36,15 @@ class PersonalDataCVC: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        SetUpCell()
+		IQKeyboardManager.shared.enable = true
     }
     
 }
 //Mark:- SetUpUI
 extension PersonalDataCVC{
     func SetUpCell(){
+		self.textFields = [nameTF ?? UITextField(), lastNameTF ?? UITextField(), birthPlaceTF ?? UITextField()]
+		
         CommonUI.setUpLbl(lbl: self.personalDataLbl, text: CommonFunctions.localisation(key: "PERSONAL_DATA"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 		
 		CommonUI.setUpTextField(textfield: self.nameTF, placeholder: CommonFunctions.localisation(key: "FIRST_NAME"), font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
@@ -78,15 +80,16 @@ extension PersonalDataCVC{
         let birthTap = UITapGestureRecognizer(target: self, action: #selector(selectBirthDate))
         self.birthDateVw.addGestureRecognizer(birthTap)
         
-        let birthCountryTap = UITapGestureRecognizer(target: self, action: #selector(selectNationality))
-        self.birthCountryVw.addGestureRecognizer(birthCountryTap)
         self.birthCountryVw.delegate = self
+        self.birthCountryVw.dataSource = self
         self.birthCountryVw.customizeView()
         
-        let nationalityTap = UITapGestureRecognizer(target: self, action: #selector(selectNationality(_: )))
-        self.nationalityVw.addGestureRecognizer(nationalityTap)
         self.nationalityVw.delegate = self
+        self.nationalityVw.dataSource = self
 		self.nationalityVw.customizeView()
+		
+		self.birthCountryVw.setCountryByCode("FR")
+		self.nationalityVw.setCountryByCode("FR")
         
 		let specifiedUsPersonVwTap = UITapGestureRecognizer(target: self, action: #selector(IsUsPerson))
 		self.specifiedUSPersonVw.addGestureRecognizer(specifiedUsPersonVwTap)
@@ -96,22 +99,22 @@ extension PersonalDataCVC{
         self.birthPlaceTF.addTarget(self, action: #selector(editChange(_:)), for: .editingChanged)
     }
     
-    func setPersonalDate (data : UserPersonalData?){
-        self.nameTF.text = data?.first_name ?? ""
-        self.lastNameTF.text = data?.last_name ?? ""
-        self.birthPlaceTF.text = data?.birth_place ?? ""
-		self.specifiedUSPersonLbl.text = data?.specifiedUSPerson == true ? L10n.Yes.description : L10n.No.description
-		self.birthDateBtn.setTitle(CommonFunctions.getDateFormat(date: data?.dob ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMM yyyy"), for: .normal)
-        self.birthCountryLbl.text = countryName(from: data?.birth_country ?? "")
-        self.NationalityLbl.text = countryName(from: data?.birth_country ?? "")
+    func setPersonalData(){
+		self.nameTF.text = userData.shared.firstnameRegistration
+        self.lastNameTF.text = userData.shared.lastnameRegistration
+        self.birthPlaceTF.text = userData.shared.placeOfBirth
+		self.specifiedUSPersonLbl.text = userData.shared.isUsCitizen
+		self.birthDateBtn.setTitle(CommonFunctions.getDateFormat(date: userData.shared.birthDate, inputFormat: "yyyy-MM-dd", outputFormat: "dd MMM yyyy"), for: .normal)
+		self.birthCountryVw.setCountryByCode(userData.shared.countryOfBirth)
+		self.nationalityVw.setCountryByCode(userData.shared.nationality)
         
         self.controller?.firstName = self.nameTF.text ?? ""
         self.controller?.lastName = self.lastNameTF.text ?? ""
         self.controller?.birthPlace = self.birthPlaceTF.text ?? ""
 		self.controller?.isUsPerson = self.specifiedUSPersonLbl.text ?? ""
-        self.controller?.birthDate = CommonFunctions.getDateFormat(date: data?.dob ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "yyyy-mm-dd")
-        self.controller?.birthCountry = data?.birth_country ?? ""
-        self.controller?.nationality = data?.nationality ?? ""
+		self.controller?.birthDate = userData.shared.birthDate
+		self.controller?.birthCountry = self.birthCountryLbl.text ?? ""
+        self.controller?.nationality = self.NationalityLbl.text ?? ""
         
 		self.specifiedUSPersonLbl.textColor = UIColor.Purple35126D
         self.birthCountryLbl.textColor = UIColor.Purple35126D
@@ -126,6 +129,12 @@ extension PersonalDataCVC{
             return countryCode
         }
     }
+	
+	func resetTextFields(){
+		for field in self.textFields{
+			field.resignFirstResponder()
+		}
+	}
 }
 
 //MARK: - Text Field Delegates
@@ -185,6 +194,7 @@ extension PersonalDataCVC: UITextFieldDelegate{
 //MARK: - IB OUTLETS
 extension PersonalDataCVC{
     @objc func selectBirthDate(){
+		resetTextFields()
         let vc = calenderVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
         self.controller?.present(vc, animated: true, completion: nil)
         vc.dateCallBack = { birthDate,dob in
@@ -192,20 +202,6 @@ extension PersonalDataCVC{
             self.controller?.birthDate = dob
             self.birthDateBtn.setTitleColor(UIColor.Purple35126D, for: .normal)
         }
-    }
-    
-    @objc func selectNationality(_ sender : UITapGestureRecognizer){
-//        if sender.view?.tag == 1{
-//            isNationalityTap = true
-//        }
-        
-//        let picker = ADCountryPicker()
-//        picker.delegate = self
-//        let pickerNavigationController = UINavigationController(rootViewController: picker)
-//        pickerNavigationController.modalPresentationStyle = .fullScreen
-//        pickerNavigationController.modalTransitionStyle = .coverVertical
-//        self.controller?.present(pickerNavigationController, animated: true, completion: nil)
-        
     }
     
     @objc func editChange(_ tf : UITextField){
@@ -240,34 +236,37 @@ extension PersonalDataCVC{
 
 
 //MARK: - COUNTRY PICKER DELEGATES
-extension PersonalDataCVC: ADCountryPickerDelegate, CountryPickerViewDelegate{
-    func countryPicker(_ picker: ADCountryPicker, didSelectCountryWithName name: String, code: String, dialCode: String) {
-//        if isNationalityTap == true{
-//            self.NationalityLbl.text = name
-//            self.controller?.nationality = code
-//            self.NationalityLbl.textColor = UIColor.Purple35126D
-//            self.isNationalityTap = false
-//        }else{
-//            self.birthCountryLbl.text = name
-//            self.controller?.birthCountry = code
-//            self.birthCountryLbl.textColor = UIColor.Purple35126D
-//        }
-//        self.controller?.dismiss(animated: true, completion: nil)
-    }
+extension PersonalDataCVC: CountryPickerViewDelegate, CountryPickerViewDataSource{
+	
     
     func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country){
         if countryPickerView == nationalityVw{
             self.NationalityLbl.text = country.name
             self.controller?.nationality = country.code
             self.NationalityLbl.textColor = UIColor.Purple35126D
-            self.isNationalityTap = false
         }else{
             self.birthCountryLbl.text = country.name
             self.controller?.birthCountry = country.name
             self.birthCountryLbl.textColor = UIColor.Purple35126D
         }
     }
-    
+	
+	func countryPickerView(_ countryPickerView: CountryPickerView, didShow viewController: CountryPickerViewController) {
+		viewController.navigationController?.isNavigationBarHidden = true
+		
+	}
+	
+	func countryPickerView(_ countryPickerView: CountryPickerView, willShow viewController: CountryPickerViewController) {
+		resetTextFields()
+	}
+	
+	func localeForCountryNameInList(in countryPickerView: CountryPickerView) -> Locale {
+		if userData.shared.language == "fr"{
+			return Locale(identifier: "fr_FR")
+		}else{
+			return Locale(identifier: "en_GB")
+		}
+	}
 }
 
 

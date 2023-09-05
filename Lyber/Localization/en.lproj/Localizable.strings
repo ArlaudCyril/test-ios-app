@@ -47,6 +47,7 @@
 "HIGH" = "High";
 
 
+
 //MARK: - EDUCATION STRATEGY;
 
 "DIVERSIFIED_STRATEGY" = "A diversified strategy";
@@ -65,8 +66,8 @@
 "SAVE_MY_STRATEGY" = "Save my strategy";
 "YOU_MUST_ADD" = "You must add a minimum asset to create your strategy";
 "TRENDING" = "Trending";
-"TOP_GAINERS" = "Top gainers";
-"TOP_LOOSERS" = "Top loosers";
+"GAINERS" = "Gainers";
+"LOOSERS" = "Loosers";
 "STABLE" = "Stable";
 "BITCOIN" = "Bitcoin";
 "BTC" = "BTC";
@@ -91,16 +92,18 @@
 "INVEST" = "Invest";
 "IMMEDIATE" = "Immediate";
 "EXECUTING_YOUR_STRATEGY" = "We are executing your strategy, which may take a few seconds.";
-"INVESTMENT_IN_PROGRESS" = "Investment in progress";
-"INVESTMENT_FAILED" = "Investment failed";
-"INVESTMENT_VALIDATED" = "Investment validated";
-"INVESTMENT_PARTIALLY_VALIDATED" = "Investment partially validated";
+"EXECUTION_IN_PROGRESS" = "Execution in progress";
+"SINGLE_EXECUTION" = "Single execution";
+"STRATEGY_REJECTED" = "Strategy rejected";
+"STRATEGY_EXECUTED" = "Strategy executed";
+"STRATEGY_PARTIALLY_EXECUTED" = "Strategy partially executed";
 
 
 //MARK: - PORTFOLIO HOME;
 "PORTFOLIO" = "Portfolio";
 "COMPLETE_ACCOUNT_TO_START_INVESTING" = "Complete your account to start investing";
-"STEP_COMPLETED" = "step completed";
+"STEPS_COMPLETED" = "steps completed";
+"PROGRESS_REGISTRATION_SAVED_EACH_STAGE" = "The progress of your registration is saved at each stage. You can stop and start again at any time.";
 "CREATE_AN_ACCOUNT" = "Create an account";
 "FILL_PERSONAL_DATA" = "Fill personal data";
 "VERIFY_YOUR_IDENTITY" = "Verify your identity";
@@ -187,14 +190,14 @@
 "HOW_MANY_PERSONAL_ASSETS_YOU_HAVE" = "How many personal Assets Do you have?";
 "SEND_TO_LYBER" = "Send to Lyber";
 
-"WHAT_YOUR_INVESTMENT_EXPERIENCE_WITH_CRYPTOS" = "What’s your investment experience with cryptos ?";
+"WHAT_YOUR_INVESTMENT_EXPERIENCE_WITH_CRYPTOS" = "What’s your investment experience with cryptos?";
 "I_HAVE_NEVER_INVESTED" = "I have never invested";
 "LESS_THAN_1000€" = "< 1 000€";
 "BETWEEN_1000€_AND_9999€" = "Between 1 000€ and 9 999€";
 "BETWEEN_10000_€AND_99999€" = "Between 10 000€ and 99 999€";
 "GREATER_THAN_100000€" = "> 100 000€";
 
-"WHAT_YOUR_SOURCE_OF_INCOME" = "What’s your source of income ?";
+"WHAT_YOUR_SOURCE_OF_INCOME" = "What’s your source of income?";
 "SALARY" = "Salary";
 "INVESTMENTS" = "Investments";
 "SAVINGS" = "Savings";
@@ -202,9 +205,9 @@
 "CREDIT_LOAN" = "Credit/loan";
 "FAMILLY_OTHERS" = "Familly or others";
 
-"WHAT_YOUR_WORK_INDUSTRY" = "What’s your work industry ?";
+"WHAT_YOUR_WORK_INDUSTRY" = "What’s your work industry?";
 
-"AGRICULTURE" = "Agriculture, Agroalimentaire et Ressources Naturelles";
+"AGRICULTURE" = "Agriculture, Agribusiness & Natural Resources";
 "ARTS_MEDIA" = "Art, Entertainment & Media";
 "BANKING_FINANCE_INSURANCE" = "Banking, Finance & Insurance";
 "BUSINESS_SERVICES_CONSULTING" = "Business Services & Consulting";
@@ -223,8 +226,8 @@
 "TEXTILE_FASHION_APPAREL" = "Textile, Fashion & Apparel";
 "TRANSPORT_LOGISTICS_WHOLESALE" = "Transport, Logistics & Wholesale";
 
-"WHAT_SALARY_RANGE_YOU_FALL_INTO" = "What salary range do you fall into ?";
-"WHAT_DO_YOU_PLAN_MAINLY" = "What do you plan to mainly do ?";
+"WHAT_SALARY_RANGE_YOU_FALL_INTO" = "What salary range do you fall into?";
+"WHAT_DO_YOU_PLAN_MAINLY" = "What do you plan to mainly do?";
 
 "IDENTITY_VERIFICATION" = "Identity verification";
 "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT" = "This step protects you from fraud and identity theft. Use your phone to:";
@@ -238,7 +241,9 @@
 "EDIT_PERSONAL_DATA" = "Edit Personal Data";
 "VERIFICATION_IN_PROGRESS" = "Verification in progress";
 "START_VERIFICATION" = "Start verification";
-"PASSWORD_REQUIREMENTS" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case";
+"REVIEW_INFORMATIONS" = "Review my informations";
+"CHANGE_INFORMATIONS" = "Change my informations";
+"PASSWORD_REQUIREMENTS" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case.";
 "STRONG_PASSWORD" = "You have a strong password";
 
 //MARK: - INVEST MONEY;
@@ -256,15 +261,20 @@
 "CREDIT_CARD" = "Credit card";
 "ADD_A_FREQUENCY" = "Add a frequency";
 "PREVIEW_MY_INVESTMENT" = "Preview my investment";
+"PREVIEW_MY_PURCHASE" = "Preview my purchase";
 "MONTHLY" = "Monthly";
 "CONFIRM_INVESTMENT" = "Confirm investment";
 "CONFIRM_EXCHANGE" = "Confirm exchange";
+"CONFIRM_PURCHASE" = "Confirm purchase";
 "CONFIRM_MY_DEPOSIT" = "Confirm my deposit";
 "CONFIRM_DEPOSIT" = "Confirm deposit";
 "AMOUNT" = "Amount";
 "FREQUENCY" = "Frequency";
 "PAYMENT" = "Payment";
 "BUY" = "Buy";
+"BUY_VERB" = "Buy";
+"BUY_ASSETS_EUROS" = "Buy assets with euros";
+"BUY_SPECIFIC_ASSET_EUROS" = "Buy %@ with euros";
 "SELL" = "Sell";
 "LYBER_FEES" = "Lyber fees";
 "TOTAL" = "Total";
@@ -294,6 +304,7 @@
 "EVERY_21ST_MONTH" = "Every 21st of the month";
 "RECOMMENDED" = "Recommended";
 "DEPOSIT" = "Deposit";
+"DEPOSIT_VERB" = "Deposit";
 "DEPOSIT_TRANSACTION" = "%@ Deposit";
 "MONEY_LYBER" = "Add money on Lyber";
 "ASSET_LYBER_PART1" = "Add";
@@ -332,6 +343,7 @@
 "PAUSE_STRATEGY" = "Pause Strategy";
 "DELETE_STRATEGY" = "Delete Strategy";
 "RECURRENT_INVESTMENT" = "Recurrent Investment";
+"RECURRENT" = "Recurrent";
 "EXECUTE_STRATEGY_REGULAR_BASIS" = "Execute a strategy on a regular basis";
 "OPTIONAL" = "Optional";
 "AVAILABLE" = "Available";
@@ -349,12 +361,13 @@
 "NOT_ENOUGH_INVESTMENT_PART_2" = "USDT per asset in the strategy";
 "NOT_ENOUGH_COINS" = "You don't have enough coins to exchange";
 "NOT_ENOUGH_USDT" = "You don't have enough USDT to perform this action";
+"CANT_BUY_MORE_THAN" = "You can't buy for more than %@ euros in an asset";
 "NOT_ENOUGH_COINS_WITHDRAW" = "You don't have enough coins to withdraw";
 "MINIMUM_AMOUNT_EXCHANGE" = "The minimum amount of assets to be exchanged is";
 "DEPOSIT_TAKEN_ACCOUNT" = "Your deposit has been taken into account";
 "AMOUNT_STRATEGY_INSUFFICIENT" = "Your amount invested in this strategy is insufficient.";
 "TAILOR_STRATEGY_RAISE_AMOUNT" = "To tailor at this strategy, you need to raise your current amount";
-"AGREE_INCREASE_INVESTMENT" = "Do you agree to increase the amount you invest ?";
+"AGREE_INCREASE_INVESTMENT" = "Do you agree to increase the amount you invest?";
 "OH_MY" = "Oh, my !";
 
 //MARK: - PROFILE
@@ -373,10 +386,13 @@
 "CHANGE_PIN" = "Change Pin";
 "FACE_ID" = "Face ID";
 "LOG_OUT" = "Log out";
+"STOP_REGISTRATION" = "Stop registration";
+"PROGRESS_REGISTRATION_LOST" = "The progress of your registration will be lost";
 "LIST_ALL_OPERATIONS" = "List of all operations (deposit, exchange and withdrawal) made on your account";
 "CARD_NUMBER" = "Card number";
 "EXPIRE" = "Expire";
 "CVV" = "CVV";
+"ADDRESS" = "Address";
 "ADD_CRYPTO_ADDRESS_PART1" = "Add a";
 "ADD_CRYPTO_ADDRESS_PART2" = "address";
 "ADDING_NEW_CARD_ACCEPT_TERMS_CONDITIONS" = "By adding a new card, you accept the terms and conditions.";
@@ -392,6 +408,8 @@
 "ENTER_PHONE_NUMBER" = "Enter phone number";
 "LANGUAGE" = "Language";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "Device do not support or is not registered with FaceID";
+"EXPORT" = "Export";
+"EXPORT_OPERATIONS" = "Export operations";
 
 
 //MARK: - STRONG AUTHENTICATION;
@@ -403,6 +421,7 @@
 "CRYPTO_ADRESS_BOOK" = "Crypto address book";
 "ADDRESS_BOOK_ALLOW_CRYPTOCURRENCY" = "The address book allows cryptocurrency withdrawals to be made only at addresses already designated in your address book. You can also activate your address book for these addresses.";
 "WHITELISTING" = "Whitelisting";
+"WITHDRAWAL_SECURITY_SETTINGS" = "Withdrawal security settings";
 "EDIT_CRYPTO_ADRESS" = "Edit crypto address";
 "ADRESS_NAME" = "Address name";
 "NETWORK" = "Network";
@@ -414,7 +433,7 @@
 "YOUR_NOTE_GOES_HERE" = "Your note goes here and goes on a big amount of line";
 "ADD_ADRESS" = "Add address";
 "EDIT_ADRESS" = "Edit address";
-"NOTEBOOK_SECURITY" = "Security of your notebook";
+"ADDRESS_BOOK_SECURITY" = "Address book security";
 "SAVE_SETTINGS" = "Save Settings";
 "ADDRESS_BOOK_LIMITS_WITHDRAWLS" = "The address book limits your withdrawals and deposits to the addresses in your address book.";
 "EXTRA_SECURITY" = "Extra security";
@@ -424,12 +443,14 @@
 "NO_EXTRA_SECURITY" = "No extra security";
 "CHANGES_EFFECTIVE_AFTER" = "The changes will be effective after %@";
 "NHOURS_DELAY_REQUIRED" = "A %@ delay is required before you can withdraw to an address newly added to your address book.";
-"NHOURS_DELAY_REQUIRED" = "A %@ delay will be required before you can withdraw to an address newly added to your address book.";
+"NHOURS_DELAY_REQUIRED_FUTURE" = "A %@ delay will be required before you can withdraw to an address newly added to your address book.";
 "CAN_WITHDRAW_IMMEDIATELY" = "You can withdraw immediately to an address that has just been added to your address book.";
 "CAN_WITHDRAW_IMMEDIATELY_FUTURE" = "You will be able to withdraw immediately to an address newly added to your address book.";
 "ADD_NEW_ADRESS" = "Add a new address";
 "DISABLED" = "Disabled";
+"DISABLED_FEMININE" = "Disabled";
 "ENABLED" = "Enabled";
+"ENABLED_FEMININE" = "Enabled";
 "ADD_USE_ADRESS" = "Add and use this adress";
 "CRYPTO_ASSET_DEPOSIT" = "Crypto asset deposit";
 "DEPOSIT_ADRESS" = "Deposit adress";
@@ -445,10 +466,9 @@
 "FUND_ACCOUNT_YOUR_BANK_ACCOUNT" = "Fund your account from your bank account";
 "MAKE_SURE_NAME_BANK_ACCOUNT" = "Make sure the name of the bank account is the same as your name on Lyber";
 "LOGIN_EMAIL" = "Login by email";
-"FORGOT_PASSWORD" = "Forgot your password ?";
+"FORGOT_PASSWORD" = "Forgot your password?";
 "HAPPY_SEE_YOU_BACK" = "Happy to see you back!";
 "ENTER_PHONE_NUMBER_LOGIN" = "Enter your phone number to login, we’ll send you a verification code.";
-"NICE_SEE_YOU_AGAIN" = "Nice to see you again!";
 "ENTER_EMAIL_LOGIN" = "Enter your email to login, we’ll send you a link by email.";
 "HAPPENS_EVEN_BEST" = "Happens even to the best";
 "SEND_RESET_LINK_EMAIL_ADDRESS" = "We will send you a reset link to your email address";
@@ -509,6 +529,7 @@
 "ENTER_SCAN_ADDRESS" = "Enter or scan an address";
 "DATE_CREATION" = "Date of creation";
 "ADDRESS_ORIGIN" = "Adress origin";
+"DATE_ADDED" = "Date added";
 "ADDRESS_COPIED" = "Address copied";
 "ACTIVE_DURING" = "Active during";
 
@@ -534,10 +555,30 @@
 "CANCELED" = "Canceled";
 
 //MARK: - ForgotPassword
-"SENT_EMAIL_CONTAINING_RESET_LINK" = "We have sent you an email containing the reset link that you must follow in order to reset your password";
+"SENT_EMAIL_CONTAINING_RESET_LINK" = "We have sent you an email containing the reset link that you must follow in order to reset your password.";
 "RESET_PASSWORD" = "Reset password";
 "ENTER_NEW_PASSWORD" = "Enter your new password";
 "SAVE_NEW_PASSWORD" = "Save my new password";
+
+//MARK: - Export
+"REQUEST_BEEN_RECEIVED" = "Your request has been received. The export will be delivered to your email address in a few minutes.";
+"SOMETHING_WENT_WRONG" = "Oh no ! Something went wrong.";
+"SUCCESSFUL" = "Successful";
+"ERROR" = "Error";
+"TRY_AGAIN" = "Try Again";
+
+//MARK: - AddressAddedPopUp
+"ORDER" = "Order";
+"STRATEGY" = "Strategy";
+"ORDER_ID" = "Order id";
+"EXECUTION_ID" = "Execution id";
+"TRANSACTION_ID" = "Transaction id";
+"STATUS" = "Status";
+"FEES_PAID" = "Fees paid";
+"DATE" = "Date";
+"NAME" = "Name";
+"TYPE" = "Type";
+"TRANSACTION_HASH" = "Transaction Hash";
 
 
 //MARK: - UNITS
@@ -562,11 +603,11 @@
 "464_ASSETS" = "320-464 assets";
 "465_ASSETS" = "465- assets";
 
-"BUY_SELL_DIGITAL_ASSETS" = "Buy and Sell digital assets";
+"BUY_SELL_DIGITAL_ASSETS" = "Buy and sell digital assets";
 "SAVE_MONEY" = "Save money";
 "STORE_DIGITAL_ASSETS" = "Store my digital assets";
 
-"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "To finalise your registration, we need to verify your identity. In the next step, you will need to provide an electronic signature and a photograph of an identity document.";
+"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "To complete your registration, we need to verify your identity. You will need to provide an electronic signature and a photograph of an identity document.";
 
 
 

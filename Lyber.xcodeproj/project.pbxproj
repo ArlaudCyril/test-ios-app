@@ -270,6 +270,7 @@
 		1F2D541529F047200078267F /* QrCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541429F047200078267F /* QrCodeVC.swift */; };
 		1F35C2D42A52CB3200512ABD /* CountryPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */; };
 		1F432CC3297DDDD9006EBEEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1F432CC2297DDDD9006EBEEA /* .gitignore */; };
+		1F487C152AA2297700D67663 /* ExportVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F487C142AA2297700D67663 /* ExportVM.swift */; };
 		1F4DCC5F29D2FDFD00C3B374 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */; };
 		1F4DCC6129D2FF4500C3B374 /* LanguageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */; };
 		1F4DCC6429D3264500C3B374 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6329D3264500C3B374 /* LanguageModel.swift */; };
@@ -290,6 +291,9 @@
 		1F96A99B2A3B4C71006D5A61 /* NoRecurringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */; };
 		1F9E2B9E299FDEA50016CAB8 /* Portfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9728448D32007002E0 /* Portfolio.storyboard */; };
 		1F9FC3D529EECFE10084923E /* DepositAssetTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */; };
+		1FB226432AA6229000A699FE /* myBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB226422AA6229000A699FE /* myBalanceTableViewCell.xib */; };
+		1FB226452AA6243200A699FE /* myBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB226442AA6243200A699FE /* myBalanceTableViewCell.swift */; };
+		1FB5A61C2A97B79800C47AAE /* AddressAddedPopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5A61B2A97B79800C47AAE /* AddressAddedPopUpModel.swift */; };
 		1FB9A0A629B89B01008431B0 /* GoogleAuthenticatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */; };
 		1FB9A0AA29B89CF0008431B0 /* GoogleAuthenticatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */; };
 		1FB9A0AC29B8D831008431B0 /* VerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */; };
@@ -299,6 +303,8 @@
 		1FC0E2802A65437A00E4EB6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC0E27F2A65437A00E4EB6A /* FirebaseCrashlytics */; };
 		1FC9B5A429B250AB001483CF /* GoogleAuthenticatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */; };
 		1FD4A4A029D48C7E002DFC11 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */; };
+		1FDC1FE42A9CED4F00598071 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */; };
+		1FE0A80F2AA09B07005742C8 /* ExportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0A80E2AA09B07005742C8 /* ExportVC.swift */; };
 		1FE7695329C46356005141C0 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695229C46356005141C0 /* Model.xcmappingmodel */; };
 		1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
 		1FE8E54D2A0A838A0033398F /* NotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54C2A0A838A0033398F /* NotificationVM.swift */; };
@@ -579,6 +585,7 @@
 		1F2D541429F047200078267F /* QrCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeVC.swift; sourceTree = "<group>"; };
 		1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerViewExtension.swift; sourceTree = "<group>"; };
 		1F432CC2297DDDD9006EBEEA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1F487C142AA2297700D67663 /* ExportVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportVM.swift; sourceTree = "<group>"; };
 		1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTVC.swift; sourceTree = "<group>"; };
 		1F4DCC6329D3264500C3B374 /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
@@ -598,12 +605,17 @@
 		1F8BD79929D43ED100EF322A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRecurringTVC.swift; sourceTree = "<group>"; };
 		1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetTVC.swift; sourceTree = "<group>"; };
+		1FB226422AA6229000A699FE /* myBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myBalanceTableViewCell.xib; sourceTree = "<group>"; };
+		1FB226442AA6243200A699FE /* myBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myBalanceTableViewCell.swift; sourceTree = "<group>"; };
+		1FB5A61B2A97B79800C47AAE /* AddressAddedPopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAddedPopUpModel.swift; sourceTree = "<group>"; };
 		1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVM.swift; sourceTree = "<group>"; };
 		1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorModel.swift; sourceTree = "<group>"; };
 		1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVC.swift; sourceTree = "<group>"; };
 		1FC0E2782A653E3B00E4EB6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVC.swift; sourceTree = "<group>"; };
 		1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVM.swift; sourceTree = "<group>"; };
+		1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		1FE0A80E2AA09B07005742C8 /* ExportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportVC.swift; sourceTree = "<group>"; };
 		1FE7695129C45CD1005141C0 /* Lyber 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Lyber 2.xcdatamodel"; sourceTree = "<group>"; };
 		1FE7695229C46356005141C0 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Model.xcmappingmodel; sourceTree = "<group>"; };
 		1FE7695529C47144005141C0 /* StrongAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVM.swift; sourceTree = "<group>"; };
@@ -670,6 +682,8 @@
 				0A005C292844F924008117D1 /* InvestmentExperienceXib.xib */,
 				0A8DA72F289CF116000C4BC8 /* dropDownTableViewCell.swift */,
 				0A8DA730289CF116000C4BC8 /* dropDownTableViewCell.xib */,
+				1FB226422AA6229000A699FE /* myBalanceTableViewCell.xib */,
+				1FB226442AA6243200A699FE /* myBalanceTableViewCell.swift */,
 			);
 			path = XibFiles;
 			sourceTree = "<group>";
@@ -1040,6 +1054,7 @@
 				0A6E936328BF62D7008FF5E7 /* UIImageExtension.swift */,
 				1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */,
 				1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */,
+				1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */,
 			);
 			path = ExtensionFiles;
 			sourceTree = "<group>";
@@ -1173,6 +1188,7 @@
 		0A72190A28634319009F42C5 /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
+				1FE0A80C2AA09AF5005742C8 /* Export */,
 				1F5B7C5329C1D24100256438 /* Verification */,
 				1FC9B5A029B2502B001483CF /* GoogleAuthenticator */,
 				0A86AA8328A381E700C6C688 /* SelectedProfile */,
@@ -2022,7 +2038,7 @@
 		0A95DE18289901DB0044EE92 /* AddressAddedPopUp */ = {
 			isa = PBXGroup;
 			children = (
-				0A95DE1A289901F60044EE92 /* Model */,
+				1FB5A61A2A97B78600C47AAE /* Model */,
 				0A95DE19289901F10044EE92 /* View */,
 				0A7C8D0C28B4DF9100D6E057 /* ViewModel */,
 			);
@@ -2035,13 +2051,6 @@
 				0A95DE1B289902150044EE92 /* AddressAddedPopUpVC.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0A95DE1A289901F60044EE92 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0A95DE1D28990ECF0044EE92 /* EnableWhitelisting */ = {
@@ -2442,6 +2451,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1F487C132AA2296900D67663 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F487C142AA2297700D67663 /* ExportVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		1F4DCC5C29D2FDD500C3B374 /* Language */ = {
 			isa = PBXGroup;
 			children = (
@@ -2590,6 +2607,14 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		1FB5A61A2A97B78600C47AAE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FB5A61B2A97B79800C47AAE /* AddressAddedPopUpModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1FB9A0A429B89AE5008431B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2631,6 +2656,23 @@
 				1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1FE0A80C2AA09AF5005742C8 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				1F487C132AA2296900D67663 /* ViewModel */,
+				1FE0A80D2AA09AFD005742C8 /* View */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		1FE0A80D2AA09AFD005742C8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FE0A80E2AA09B07005742C8 /* ExportVC.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1FE7695429C47132005141C0 /* Model */ = {
@@ -2802,6 +2844,7 @@
 				0A71B8C3283F9275007CE9B2 /* Mabry Pro Black Italic.otf in Resources */,
 				0A71B8C4283F9275007CE9B2 /* Mabry Pro Black.otf in Resources */,
 				0A71B8C5283F9275007CE9B2 /* Mabry Pro Bold Italic.otf in Resources */,
+				1FB226432AA6229000A699FE /* myBalanceTableViewCell.xib in Resources */,
 				1F2A425A29CC7352001D71F8 /* Localizable.strings in Resources */,
 				0A71B8C6283F9275007CE9B2 /* Mabry Pro Bold.otf in Resources */,
 				0A769FDB28C2082900F15C00 /* portfolio.json in Resources */,
@@ -2918,6 +2961,7 @@
 				0A7586C6286C76EE00DC889E /* Reachability.swift in Sources */,
 				0A86AA8628A3821100C6C688 /* SelectedProfileVC.swift in Sources */,
 				1F86FBBA2A696788001A9D64 /* OneTimeInvestmentVC.swift in Sources */,
+				1F487C152AA2297700D67663 /* ExportVM.swift in Sources */,
 				0A7218FF28632562009F42C5 /* ProfileTransactionTVC.swift in Sources */,
 				1F67C0652A6A8008007BB2E1 /* OneTimeInvestmentVM.swift in Sources */,
 				0A721909286329E1009F42C5 /* ProfileModel.swift in Sources */,
@@ -3008,6 +3052,7 @@
 				0A7013D4286DBD0000BB63C5 /* PersonalDataVM.swift in Sources */,
 				0A928CBC2847392A00F17DBE /* calenderVC.swift in Sources */,
 				0A907E6C285B6235001ABD6A /* ResourcesCVC.swift in Sources */,
+				1FB5A61C2A97B79800C47AAE /* AddressAddedPopUpModel.swift in Sources */,
 				0A791E032864981A0084B104 /* ExchAnotherWalletTVC.swift in Sources */,
 				1F67C0622A6A7DE9007BB2E1 /* InvestmentModel.swift in Sources */,
 				0A72190128632574009F42C5 /* ProfilePaymentTVC.swift in Sources */,
@@ -3019,6 +3064,7 @@
 				0A1C74F82840D227003CA6A7 /* OTPTextField.swift in Sources */,
 				0AC4C2C8283F63E20086C6B8 /* CommomFunctions.swift in Sources */,
 				0AB9B2BA289E2A2700A6DCDD /* AddCryptoAddressVM.swift in Sources */,
+				1FE0A80F2AA09B07005742C8 /* ExportVC.swift in Sources */,
 				0A7246F828915AE800EBCA21 /* AddBankAccountVM.swift in Sources */,
 				0AC42BC828912026009A507E /* ProfileVM.swift in Sources */,
 				0A90592F2848A1BF003F6198 /* AddAssetsTVC.swift in Sources */,
@@ -3098,6 +3144,7 @@
 				0A907E6A285B5BCC001ABD6A /* PortfolioDetailModel.swift in Sources */,
 				0A7445872857625B00BF05EF /* FrequencyTVC.swift in Sources */,
 				0A7586C8286C794000DC889E /* ApiConstants.swift in Sources */,
+				1FB226452AA6243200A699FE /* myBalanceTableViewCell.swift in Sources */,
 				1F1DA43C2A7D53DC00BE8C61 /* ResetPasswordModel.swift in Sources */,
 				0A707D3D2890082F00C9ACA4 /* HeaderView.swift in Sources */,
 				0A8B4AC228571A5000F64ECE /* AllAssetsVC.swift in Sources */,
@@ -3107,6 +3154,7 @@
 				0AB24EEB288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift in Sources */,
 				0A005C262844F251008117D1 /* PersonalDataCVC.swift in Sources */,
 				0A6E3B9F2844A4F1007002E0 /* checkAccountCompletedTVC.swift in Sources */,
+				1FDC1FE42A9CED4F00598071 /* DateFormatterExtension.swift in Sources */,
 				0A793B1B28A3C50F003BCD45 /* ConfirmationVC.swift in Sources */,
 				0A71B7A8283F80A9007CE9B2 /* UIButtonExtension.swift in Sources */,
 				0A86AA8228A3773C00C6C688 /* DefaultPictureCVC.swift in Sources */,

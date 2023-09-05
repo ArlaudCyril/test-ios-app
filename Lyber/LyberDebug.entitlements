@@ -8,6 +8,10 @@
 	<array>
 		<string>applinks:lyber.com</string>
 	</array>
+	<key>com.apple.developer.in-app-payments</key>
+	<array>
+		<string>merchant.com.lyber</string>
+	</array>
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)com.Lyber</string>

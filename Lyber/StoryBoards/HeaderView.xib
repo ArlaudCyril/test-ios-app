@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
             <connections>
                 <outlet property="backBtn" destination="g19-Sq-VMB" id="FHC-qF-dPf"/>
+                <outlet property="closeBtn" destination="Ua3-Xj-cRg" id="9Eh-df-9B5"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="olg-dO-8ZK"/>
                 <outlet property="headerLbl" destination="5Fh-Ak-At1" id="p2g-m0-qLs"/>
             </connections>
@@ -24,24 +25,33 @@
                     <rect key="frame" x="0.0" y="0.0" width="560" height="104"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g19-Sq-VMB">
-                            <rect key="frame" x="0.0" y="52" width="66" height="44"/>
+                            <rect key="frame" x="0.0" y="56" width="66" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="contentEdgeInsets" minX="26" minY="0.0" maxX="26" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="close"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fh-Ak-At1">
-                            <rect key="frame" x="259" y="63.5" width="42" height="21"/>
+                            <rect key="frame" x="259" y="65.5" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-Xj-cRg">
+                            <rect key="frame" x="494" y="65" width="66" height="22"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="contentEdgeInsets" minX="26" minY="0.0" maxX="26" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="close"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="g19-Sq-VMB" secondAttribute="bottom" constant="8" id="CTp-0D-dUq"/>
                         <constraint firstItem="g19-Sq-VMB" firstAttribute="leading" secondItem="fTH-az-SOp" secondAttribute="leading" id="FjG-pf-i1L"/>
+                        <constraint firstItem="Ua3-Xj-cRg" firstAttribute="centerY" secondItem="g19-Sq-VMB" secondAttribute="centerY" id="L05-68-wB0"/>
                         <constraint firstItem="5Fh-Ak-At1" firstAttribute="centerX" secondItem="fTH-az-SOp" secondAttribute="centerX" id="Rie-QI-X44"/>
+                        <constraint firstAttribute="trailing" secondItem="Ua3-Xj-cRg" secondAttribute="trailing" id="qPe-SN-oXe"/>
                         <constraint firstItem="5Fh-Ak-At1" firstAttribute="centerY" secondItem="g19-Sq-VMB" secondAttribute="centerY" id="qfr-SC-0DH"/>
                     </constraints>
                 </view>

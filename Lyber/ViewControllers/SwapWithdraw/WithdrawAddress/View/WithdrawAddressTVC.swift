@@ -25,7 +25,7 @@ class WithdrawAddressTVC: UITableViewCell {
 //Mark:- SetUpUI
 extension WithdrawAddressTVC{
 	func configureWithData(data : NetworkAsset?){
-		CommonUI.setUpLbl(lbl: self.withdrawAddressNameLbl, text:" \(CommonFunctions.localisation(key: "WITHDRAW_ON")) \(data?.fullName ?? "")", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.withdrawAddressNameLbl, text:"\(data?.fullName ?? "")", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.withdrawAddressDeactivatedLbl, text:" \(CommonFunctions.localisation(key: "DEACTIVATED"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 		self.withdrawAddressImg.sd_setImage(with: URL(string: data?.imageUrl ?? ""), completed: nil)
 		
