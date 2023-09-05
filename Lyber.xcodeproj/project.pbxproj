@@ -297,7 +297,6 @@
 		1FB9A0A629B89B01008431B0 /* GoogleAuthenticatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */; };
 		1FB9A0AA29B89CF0008431B0 /* GoogleAuthenticatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */; };
 		1FB9A0AC29B8D831008431B0 /* VerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */; };
-		1FC0E2792A653E3B00E4EB6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0E2782A653E3B00E4EB6A /* GoogleService-Info.plist */; };
 		1FC0E27C2A65412B00E4EB6A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC0E27B2A65412B00E4EB6A /* FirebaseAnalytics */; };
 		1FC0E27E2A65412B00E4EB6A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC0E27D2A65412B00E4EB6A /* FirebaseAnalyticsSwift */; };
 		1FC0E2802A65437A00E4EB6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC0E27F2A65437A00E4EB6A /* FirebaseCrashlytics */; };
@@ -309,6 +308,7 @@
 		1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
 		1FE8E54D2A0A838A0033398F /* NotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54C2A0A838A0033398F /* NotificationVM.swift */; };
 		1FE8E5502A0A847B0033398F /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54F2A0A847B0033398F /* NotificationModel.swift */; };
+		1FEE5A412AA75459000B0EF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */; };
 		1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
 		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
@@ -611,7 +611,6 @@
 		1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVM.swift; sourceTree = "<group>"; };
 		1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorModel.swift; sourceTree = "<group>"; };
 		1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVC.swift; sourceTree = "<group>"; };
-		1FC0E2782A653E3B00E4EB6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVC.swift; sourceTree = "<group>"; };
 		1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVM.swift; sourceTree = "<group>"; };
 		1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
@@ -621,6 +620,7 @@
 		1FE7695529C47144005141C0 /* StrongAuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVM.swift; sourceTree = "<group>"; };
 		1FE8E54C2A0A838A0033398F /* NotificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVM.swift; sourceTree = "<group>"; };
 		1FE8E54F2A0A847B0033398F /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FFD171D29ED962C00935003 /* DepositAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetVC.swift; sourceTree = "<group>"; };
 		242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.debug.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.debug.xcconfig"; sourceTree = "<group>"; };
 		3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.release.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.release.xcconfig"; sourceTree = "<group>"; };
@@ -2187,7 +2187,7 @@
 		0AC4C2A2283F4AD80086C6B8 /* Lyber */ = {
 			isa = PBXGroup;
 			children = (
-				1FC0E2782A653E3B00E4EB6A /* GoogleService-Info.plist */,
+				1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */,
 				1F8BD79829D43EB400EF322A /* Class */,
 				1F0A372C29CB44C000B07A20 /* LyberDebug.entitlements */,
 				4C0A8C3429955D3100CCC88A /* Storage */,
@@ -2833,7 +2833,7 @@
 				0ACE98DA28C2281F00D63025 /* Boat_Loader.json in Resources */,
 				0A71B8BF283F9275007CE9B2 /* AtypDisplay-SemiboldItalic.ttf in Resources */,
 				0A71B8C0283F9275007CE9B2 /* AtypDisplay-Thin.ttf in Resources */,
-				1FC0E2792A653E3B00E4EB6A /* GoogleService-Info.plist in Resources */,
+				1FEE5A412AA75459000B0EF2 /* GoogleService-Info.plist in Resources */,
 				0A7218F628631A92009F42C5 /* Profile.storyboard in Resources */,
 				0A71B8C1283F9275007CE9B2 /* AtypDisplay-ThinItalic.ttf in Resources */,
 				0A005C242844F040008117D1 /* EmailAddressXib.xib in Resources */,

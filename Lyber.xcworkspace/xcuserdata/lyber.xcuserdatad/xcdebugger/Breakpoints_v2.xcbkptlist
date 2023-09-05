@@ -18825,6 +18825,21 @@
                   endingLineNumber = "334"
                   offsetFromSymbolStart = "932">
                </Location>
+               <Location
+                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b96b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Lyber.LogInAPI&gt;) -&gt; () in closure #2 (Swift.Optional&lt;Lyber.LoginChallengeAPI&gt;) -&gt; () in Lyber.EnterPhoneVC.checkValidationOnPhoneNumber() -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "334"
+                  endingLineNumber = "334"
+                  offsetFromSymbolStart = "508">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
