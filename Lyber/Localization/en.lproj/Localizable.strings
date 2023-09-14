@@ -45,6 +45,8 @@
 "LOW" = "Low";
 "MEDIUM" = "Medium";
 "HIGH" = "High";
+"OOPS" = "Oops!";
+"DEADLINE_CONFIRMING_PURCHASE_PASSED" = "The deadline for confirming your purchase has passed. Would you like to receive a new proposal?";
 
 
 
@@ -265,6 +267,7 @@
 "MONTHLY" = "Monthly";
 "CONFIRM_INVESTMENT" = "Confirm investment";
 "CONFIRM_EXCHANGE" = "Confirm exchange";
+"CONFIRM_PURCHASE_TIME" = "You have %@ seconds to confirm the purchase";
 "CONFIRM_PURCHASE" = "Confirm purchase";
 "CONFIRM_MY_DEPOSIT" = "Confirm my deposit";
 "CONFIRM_DEPOSIT" = "Confirm deposit";
@@ -280,6 +283,7 @@
 "TOTAL" = "Total";
 "PRICE" = "Price";
 "PRICE_CRYPTOCURRENCY_VOLATILE" = "The price of cryptocurrencies is volatile. The value of your investment can go up, down or to zero.";
+"MORE_DETAILS" = "More details";
 "EURO_DESPOSIT" = "Euro desposit";
 "PREVIEW_DEPOSIT" = "Preview deposit";
 "CHOOSE_AN_ASSET" = "Choose an asset";
@@ -615,3 +619,4 @@
 //MARK: - ERRORS
 
 "ERROR_TRANSACTION" = "The transaction could not be completed";
+"PHONE_ALREADY_REGISTERED" = "This phone number is already registered";

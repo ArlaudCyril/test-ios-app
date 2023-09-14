@@ -79,10 +79,13 @@ extension MyAssetsTVC{
         let singleAssetTap = UITapGestureRecognizer(target: self, action: #selector(singleAssetTapped))
         self.singleAssetVw.addGestureRecognizer(singleAssetTap)
         
+		//hide euros
+		self.flatVw.isHidden = true
+		self.flatWalletVw.isHidden = true
+		
         
         assetCallback = {() in
             let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			vc.previousController = self.controller ?? UIViewController()
 			vc.assetId = data?.id ?? ""
 //			let navController = UINavigationController(rootViewController: vc)
 //			navController.modalPresentationStyle = .fullScreen

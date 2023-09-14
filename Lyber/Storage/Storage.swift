@@ -10,7 +10,6 @@ import Foundation
 struct Storage{
     static var currencies : [AssetBaseData?] = []
 	static var balances : [Balance?] = []
-	static var previousControllerPortfolioDetailObject : AnyClass = PortfolioHomeVC.self
     
     /*init(currencies: [AssetDetailData?]) {
         self.currencies = currencies

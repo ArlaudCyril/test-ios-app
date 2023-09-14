@@ -153,9 +153,6 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 				nav.modalPresentationStyle = .fullScreen
 				nav.navigationBar.isHidden = true
 				self.present(nav, animated: true, completion: nil)
-//            let vc = RecurringDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-//            vc.investmentId = recurringInvestmentData[indexPath.row].id ?? ""
-//            self.navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

@@ -1626,7 +1626,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ak-pS-Gwe">
-                                                    <rect key="frame" x="104" y="10" width="294" height="30"/>
+                                                    <rect key="frame" x="104" y="10" width="280" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1637,7 +1637,7 @@
                                                 <constraint firstItem="Y03-3o-fUi" firstAttribute="centerY" secondItem="t3W-vM-oRW" secondAttribute="centerY" id="DuC-CP-vsJ"/>
                                                 <constraint firstItem="9Ak-pS-Gwe" firstAttribute="top" secondItem="t3W-vM-oRW" secondAttribute="top" constant="10" id="F5J-J2-ICh"/>
                                                 <constraint firstItem="9Ak-pS-Gwe" firstAttribute="leading" secondItem="Y03-3o-fUi" secondAttribute="trailing" constant="30" id="cfT-SC-OcO"/>
-                                                <constraint firstAttribute="trailing" secondItem="9Ak-pS-Gwe" secondAttribute="trailing" constant="16" id="h0s-5I-xSs"/>
+                                                <constraint firstAttribute="trailing" secondItem="9Ak-pS-Gwe" secondAttribute="trailing" constant="30" id="h0s-5I-xSs"/>
                                                 <constraint firstItem="Y03-3o-fUi" firstAttribute="leading" secondItem="t3W-vM-oRW" secondAttribute="leading" constant="24" id="h6q-Wb-SQm"/>
                                             </constraints>
                                         </tableViewCellContentView>

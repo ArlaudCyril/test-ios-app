@@ -63,8 +63,8 @@ class DepositeOrBuyVC: ViewController {
     var specificAssetsArr = ["btc","eth","sol","matic","bnb","usdc","usdt","euroc"]
     var specificAssets = false
 	//PortfolioDetailVC
-	var previousController = UIViewController()
 	var idAsset : String = ""
+	var asset: PriceServiceResume?
 	
 	//withdraw
 	var network: String?
@@ -200,7 +200,6 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 if indexPath.row == 0{
                     vc.screenType = .withdraw
                 }else{
-					Storage.previousControllerPortfolioDetailObject = PortfolioHomeVC.self
                     vc.screenType = .exchange
                 }
                 self.portfolioHomeController?.present(nav, animated: true, completion: nil)
@@ -211,7 +210,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				vc.screenType = .singleAsset
 				self.portfolioHomeController?.navigationController?.pushViewController(vc, animated: true)
 				
-			}else if indexPath.row == 2{
+			}else if indexPath.row == 3{
                 let vc = DepositAssetVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen
@@ -299,7 +298,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 					self.dismiss(animated: true, completion: nil)
 					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 					vc.strategyType = .singleCoinWithFrequence
-					//vc.asset = filterCoin[indexPath.row]
+					vc.asset = self.asset
 					self.navigationController?.pushViewController(vc, animated: true)
 					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 
@@ -307,7 +306,6 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 					let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 					vc.screenType = .exchange
 					vc.fromAssetId = self.coinId ?? ""
-					Storage.previousControllerPortfolioDetailObject = type(of: self.previousController)
 					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 
 				}else if indexPath.row == 3{

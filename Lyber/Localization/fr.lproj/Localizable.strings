@@ -45,6 +45,8 @@
 "LOW" = "Faible";
 "MEDIUM" = "Moyen";
 "HIGH" = "Elevé";
+"OOPS" = "Oups !";
+"DEADLINE_CONFIRMING_PURCHASE_PASSED" = "Le délai pour confirmer votre achat est dépassé. Souhaitez vous obtenir une nouvelle proposition ?";
 
 //MARK: - EDUCATION STRATEGY;
 
@@ -261,6 +263,7 @@
 "MONTHLY" = "Mensuel";
 "CONFIRM_INVESTMENT" = "Confirmer l'investissement";
 "CONFIRM_EXCHANGE" = "Confirmer l'échange";
+"CONFIRM_PURCHASE_TIME" = "Vous avez %@ secondes pour confirmer l'achat";
 "CONFIRM_PURCHASE" = "Confirmer l'achat";
 "CONFIRM_MY_DEPOSIT" = "Confirmer mon dépôt";
 "CONFIRM_DEPOSIT" = "Confirmer le dépôt";
@@ -276,6 +279,7 @@
 "TOTAL" = "Total";
 "PRICE" = "Prix";
 "PRICE_CRYPTOCURRENCY_VOLATILE" = "Le prix des crypto-monnaies est volatil. La valeur de votre investissement peut augmenter, diminuer ou être nulle.";
+"MORE_DETAILS" = "Plus de détails";
 "EURO_DESPOSIT" = "Dépôt en euros";
 "PREVIEW_DEPOSIT" = "Dépôt d'aperçu";
 "CHOOSE_AN_ASSET" = "Choisir un actif";
@@ -614,3 +618,5 @@
 //MARK: - ERRORS
 
 "ERROR_TRANSACTION" = "La transaction n'a pas pu aboutir";
+"PHONE_ALREADY_REGISTERED" = "Ce numéro de téléphone est déjà enregistré";
+

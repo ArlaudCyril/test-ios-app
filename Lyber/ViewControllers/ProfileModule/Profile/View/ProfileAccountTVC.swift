@@ -46,12 +46,13 @@ extension ProfileAccountTVC{
 			if(index.row == 0){
 				outerView.layer.cornerRadius = 16
 				outerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-			}
-			if(index.row == 1){
-				outerView.layer.cornerRadius = 16
-				outerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+			}else if(index.row == 1){
+				outerView.layer.cornerRadius = 0
 				self.valueView.isHidden = false
 				CommonUI.setUpLbl(lbl: self.valueLbl, text: CommonFunctions.nameLanguage(), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+			}else if(index.row == lastIndex){
+				outerView.layer.cornerRadius = 16
+				outerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
 			}
         }else if index.section == 3{
             if index.row == 0{

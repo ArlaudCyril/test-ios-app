@@ -30,7 +30,6 @@ class PortfolioDetailVC: SwipeGesture {
 	var portfolioDetailTVC : PortfolioDetailTVC?
 	
 	//navigation controller
-	var previousController : UIViewController?
 	static var view : UIView?
 	static var staticTblView : UITableView?
 	static var exchangeFinished = false
@@ -38,6 +37,8 @@ class PortfolioDetailVC: SwipeGesture {
 	
 	//ConfirmInvestmentVC
 	var orderId : String = ""
+	
+	var asset: PriceServiceResume?
     //MARK: - IB OUTLETS
     @IBOutlet var emptyView: UIView!
     @IBOutlet var contentView: UIView!
@@ -82,12 +83,7 @@ class PortfolioDetailVC: SwipeGesture {
 	
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer == self.navigationController?.interactivePopGestureRecognizer {
-			if(self.previousController == nil){
-				self.navigationController?.deleteToViewController(ofClass: PortfolioHomeVC.self)
-				
-			}else if(self.previousController is ConfirmInvestmentVC){
-				self.navigationController?.deleteToViewController(ofClass: Storage.previousControllerPortfolioDetailObject)
-			}
+			self.navigationController?.deleteToPortfolioHomeOrAllAsset()
 		}
 		return true
 	}
@@ -191,11 +187,10 @@ extension PortfolioDetailVC{
     @objc func threeDotBtnAct(){
         let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
         vc.popupType = .AssetDetailPagePopUp
-		vc.previousController = self.previousController ?? ViewController()
 		vc.idAsset = self.assetId
         vc.portfolioDetailScreen = true
 		vc.coinId = self.assetId
-//        vc.assetsData = self.assetData
+		vc.asset = self.asset
         vc.portfolioDetailController = self
         self.present(vc, animated: true, completion: nil)
     }

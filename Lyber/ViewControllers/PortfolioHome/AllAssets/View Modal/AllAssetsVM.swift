@@ -26,17 +26,6 @@ class AllAssetsVM{
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func getAllAssetsNewApi(completion: @escaping ( (TrendingCoinsAPI?) -> Void )){
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.coingeckoCoins, withParameters: [:], ofType: TrendingCoinsAPI.self, onSuccess: { response in
-
-                completion(response)
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
-    }
-    
     func getAllAssetsDetailApi(completion: @escaping ( ([AssetBaseData]?) -> Void )){
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assetServiceAssets, withParameters: [:], ofType: AssetBaseAPI.self, onSuccess: { response in
             print(response)

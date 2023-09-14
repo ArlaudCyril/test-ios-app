@@ -78,7 +78,6 @@ extension AllAssetsAvailableTVC: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-		vc.previousController = self.controller ?? UIViewController()
 		vc.assetId = allAssetsAvailable[indexPath.row].id
 		self.controller?.navigationController?.pushViewController(vc, animated: true)
     }

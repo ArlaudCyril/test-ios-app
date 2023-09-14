@@ -34,7 +34,6 @@ class AllAssetsVC: SwipeGesture {
     @IBOutlet var euroLbl: UILabel!
     @IBOutlet var noOfEuroLbl: UILabel!
     @IBOutlet var euroImg: UIImageView!
-    @IBOutlet var collViewTop: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +80,9 @@ class AllAssetsVC: SwipeGesture {
             self.backBtn.setImage(Assets.back.image(), for: .normal)
             self.availableFlatVw.isHidden = true
             self.AllAssetsLbl.text = CommonFunctions.localisation(key: "CHOOSE_AN_ASSET")
-			self.collViewTop.constant = 30
         }else{
 			self.availableFlatVw.isHidden = true
 			//update position of collview
-			self.collViewTop.constant = 30
-			
             self.backBtn.setImage(Assets.back.image(), for: .normal)
             
             self.AllAssetsLbl.text = CommonFunctions.localisation(key: "ALL_ASSETS")
@@ -101,6 +97,8 @@ class AllAssetsVC: SwipeGesture {
             self.callGetAssetsApi()
         }
         
+		//hide euros
+		self.availableFlatVw.isHidden = true
     }
 }
 
@@ -142,6 +140,7 @@ extension AllAssetsVC: UICollectionViewDelegate, UICollectionViewDataSource,UICo
         self.filterData()
         
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -170,7 +169,6 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if screenType == .portfolio{
             let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			vc.previousController = self
 			vc.assetId = filterCoin[indexPath.row].id
             self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .exchange{

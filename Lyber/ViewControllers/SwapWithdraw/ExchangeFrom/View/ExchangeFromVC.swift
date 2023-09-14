@@ -11,6 +11,7 @@ class ExchangeFromVC: ViewController {
     //MARK: - Variables
     var screenType : ExchangeEnum = .exchange
 	var toAssetId : String?
+	var toAssetPrice : String?
     var walletData : [assetsModel] = [
         assetsModel(coinImg: Assets.euro.image(), coinName: "Euro", euro: "\(totalEuroAvailablePrinting ?? 0)€", totalCoin: "0.001234 BTC")]
     

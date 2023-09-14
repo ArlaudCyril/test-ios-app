@@ -20,18 +20,6 @@ class InvestmentStrategyVM{
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func chooseStrategyApi(isOwnStrategy : Int ,strategyId : String,completion: @escaping ( (SuccessAPI?) -> Void )){
-        let params : [String : Any] = [Constants.ApiKeys.is_own_strategy : 0,
-                                       Constants.ApiKeys.investment_strategy_id : strategyId]
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userInvestmentStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
-            completion(response)
-            CommonFunctions.hideLoader()
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
-    }
-    
     func deleteStrategyApi(strategyName:String, completion: @escaping ( (SuccessAPI?) -> Void )){
         var params : [String : Any] = [:]
         

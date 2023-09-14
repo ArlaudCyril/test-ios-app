@@ -184,16 +184,7 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
 //MARK: - objective functions
 extension PortfolioDetailTVC{
     @objc func backBtnAct(){
-		if(self.controller?.previousController == nil){
-			self.controller?.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
-			
-		}else if(self.controller?.previousController is ConfirmInvestmentVC){
-			self.controller?.navigationController?.deleteToViewController(ofClass: Storage.previousControllerPortfolioDetailObject)
-			self.controller?.navigationController?.popViewController(animated: true)
-		}else{
-			self.controller?.navigationController?.popViewController(animated: true)
-		}
-		
+		self.controller?.navigationController?.popToPortfolioHomeOrAllAsset()
     }
     
     @objc func coinBtnAct(){
@@ -352,7 +343,7 @@ extension PortfolioDetailTVC{
 		//get current year
 		formatter.dateFormat = "yyyy"
 		let yearString = formatter.string(from: Date())
-		let dateString = (self.dateTimeArr.last?.date)! + " " + yearString
+		let dateString = (self.dateTimeArr.last?.date ?? "") + " " + yearString
 		//get date of the last index in array
 		formatter.dateFormat = "MMM. d, HH:mm yyyy"
 		var date = formatter.date(from: dateString) ?? Date()
@@ -392,7 +383,7 @@ extension PortfolioDetailTVC{
 	func getResumeAssetAPI(){
 		self.controller?.portfolioDetailVM.getResumeByIdApi(assetId: self.assetName, completion: {response in
 			if response != nil{
-				
+				self.controller?.asset = PriceServiceResume(id: self.assetName, priceServiceResumeData: response?.data ?? PriceServiceResumeData())
 				self.midnightPrice = Decimal(string: response?.data.midnightPrice ?? "-1") ?? -1
 				self.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: Double(response?.data.lastPrice ?? "0") ?? 0))€"
 				

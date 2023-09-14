@@ -29,6 +29,44 @@ extension UINavigationController {
 	  }
   }
 	
+	func popToPortfolioHomeOrPortfolioDetail(animated: Bool = false) {
+		  
+		if let vc = viewControllers.last(where: { $0.isKind(of: PortfolioHomeVC.self) || $0.isKind(of: PortfolioDetailVC.self) }) {
+			  popToViewController(vc, animated: animated)
+		  }
+	  }
+	
+	func deleteToPortfolioHomeOrPortfolioDetail(animated: Bool = false) {
+		for i in (1...viewControllers.count-2).reversed() {
+			print(type(of: viewControllers[i]))
+			if(viewControllers[i].isKind(of: PortfolioHomeVC.self) || viewControllers[i].isKind(of: PortfolioDetailVC.self)){
+				return
+			}else{
+				viewControllers.remove(at: i)
+			}
+		}
+	  }
+	
+	func popToPortfolioHomeOrAllAsset(animated: Bool = false) {
+		  
+		if let vc = viewControllers.last(where: { $0.isKind(of: PortfolioHomeVC.self) || ($0 as? AllAssetsVC)?.screenType == .portfolio }) {
+			// Pop to the found view controller
+			popToViewController(vc, animated: animated)
+		}
+	  }
+	
+	func deleteToPortfolioHomeOrAllAsset(animated: Bool = false) {
+		for i in (1...viewControllers.count-2).reversed() {
+			print(type(of: viewControllers[i]))
+			if(viewControllers[i].isKind(of: PortfolioHomeVC.self) || (viewControllers[i] as? AllAssetsVC)?.screenType == .portfolio){
+				return
+			}else{
+				viewControllers.remove(at: i)
+			}
+		}
+	  }
+	
+	
 	func deleteToViewController(ofClass: AnyClass) {
 		if(ofClass == AllAssetsVC.self){
 			for i in (1...viewControllers.count-2).reversed() {

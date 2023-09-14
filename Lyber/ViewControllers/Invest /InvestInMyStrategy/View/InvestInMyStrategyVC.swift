@@ -480,6 +480,7 @@ extension InvestInMyStrategyVC {
 		let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
         vc.screenType = .exchange
 		vc.toAssetId = self.exchangeData?.exchangeToCoinId
+		vc.toAssetPrice = self.exchangeData?.exchangeToCoinPrice.description
 		self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -774,13 +775,14 @@ extension InvestInMyStrategyVC {
                 self.goToPreviewINvest()
             }
 		}else if strategyType == .singleCoin || strategyType == .singleCoinWithFrequence{
-			if totalEuroInvested > maxAmountBuy{
-				CommonFunctions.toster(CommonFunctions.localisation(key: "CANT_BUY_MORE_THAN", parameter: maxAmountBuy.description))
-			}else if totalEuroInvested < self.minInvestPerAsset{
-				CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.minInvestPerAsset) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
-			}else{
-				self.goToPreviewINvest()
-			}
+			self.goToPreviewINvest()
+//			if totalEuroInvested > maxAmountBuy{
+//				CommonFunctions.toster(CommonFunctions.localisation(key: "CANT_BUY_MORE_THAN", parameter: maxAmountBuy.description))
+//			}else if totalEuroInvested < self.minInvestPerAsset{
+//				CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.minInvestPerAsset) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
+//			}else{
+//				self.goToPreviewINvest()
+//			}
 		}else if strategyType == .Exchange{
             if totalEuroInvested > Decimal(maxCoinExchange) {
                 CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_COINS"))
@@ -803,8 +805,8 @@ extension InvestInMyStrategyVC {
     
     
     func goToPreviewINvest(){
-		let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 		if(strategyType == .Exchange){
+			let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			self.previewMyInvest.showLoading()
 				
 			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalEuroInvested, completion: {response in
@@ -828,7 +830,7 @@ extension InvestInMyStrategyVC {
 			})
 			
 		}else if(strategyType == .withdraw){
-				
+			let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.InvestmentType = .withdraw
 			vc.totalEuroInvested = NSDecimalNumber(decimal: totalEuroInvested).doubleValue
 			vc.totalCoinsInvested = totalNoOfCoinsInvest
@@ -840,16 +842,25 @@ extension InvestInMyStrategyVC {
 			self.navigationController?.pushViewController(vc, animated: true)
 
 		}else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
-			vc.asset = asset
-			vc.fees = NSDecimalNumber(decimal: totalEuroInvested).doubleValue * 0.03
-			vc.totalEuroInvested = NSDecimalNumber(decimal: totalEuroInvested).doubleValue
-			vc.frequency = self.selectedFrequency
-			vc.InvestmentType = strategyType
-				
-			self.navigationController?.pushViewController(vc, animated: false)
+			let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+			self.previewMyInvest.showLoading()
+			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: totalEuroInvested, completion: {response in
+				self.previewMyInvest.hideLoading()
+				if response != nil{
+					vc.clientSecret = response?.data.clientSecret
+					vc.asset = self.asset
+					vc.orderId = response?.data.orderId ?? ""
+					vc.validTimeStamp = response?.data.validTimestamp
+					vc.fees = NSDecimalNumber(decimal: self.totalEuroInvested).doubleValue * 0.03
+					vc.fromAmountInvested = NSDecimalNumber(decimal: self.totalEuroInvested).doubleValue
+					vc.toAmountToObtain = NSDecimalNumber(decimal: self.totalNoOfCoinsInvest).doubleValue
+					vc.InvestmentType = self.strategyType
+					self.navigationController?.pushViewController(vc, animated: false)
+				}
+			})
 			
 		}else if(strategyType == .activateStrategy || strategyType == .oneTimeInvestment){
-			
+			let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			if(strategyType == .activateStrategy){
 				vc.frequency = self.selectedFrequency
 			}

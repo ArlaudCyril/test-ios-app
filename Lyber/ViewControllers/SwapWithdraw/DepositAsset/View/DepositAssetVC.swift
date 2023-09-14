@@ -21,6 +21,8 @@ class DepositAssetVC: ViewController, UITextFieldDelegate {
 	@IBOutlet var closeBtn: UIButton!
 	@IBOutlet var euroBtn: UIButton!
 	@IBOutlet var depositAssetLbl: UILabel!
+	@IBOutlet var fiatVw: UIView!
+	@IBOutlet var stackView: UIStackView!
 	@IBOutlet var searchView: UIView!
 	@IBOutlet var searchTF: UITextField!
 	@IBOutlet var tblView: UITableView!
@@ -38,6 +40,9 @@ class DepositAssetVC: ViewController, UITextFieldDelegate {
 	//MARK: - SetUpUI
 	
 	override func setUpUI(){
+		//euros hidden
+		self.fiatVw.isHidden = true
+		stackView.layoutIfNeeded()
 		
 		CommonUI.setUpLbl(lbl: self.depositAssetLbl, text: CommonFunctions.localisation(key: "ASSET_DEPOSIT"), textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.availbaleFlatLbl, text: CommonFunctions.localisation(key: "CRYPTO"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))

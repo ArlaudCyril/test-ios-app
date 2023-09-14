@@ -62,10 +62,12 @@ extension ExchangeFromTVC{
         
         flatVw.isHidden = true
         EuroVw.isHidden = true
-        if index == lastIndex{
-            flatVw.isHidden = false
-            EuroVw.isHidden = false
-        }
+		
+		//hide euros
+//        if index == lastIndex{
+//            flatVw.isHidden = false
+//            EuroVw.isHidden = false
+//        }
         
         let singleAssetTap = UITapGestureRecognizer(target: self, action: #selector(singleAssetTapped))
         self.singleAssetVw.addGestureRecognizer(singleAssetTap)
@@ -73,14 +75,18 @@ extension ExchangeFromTVC{
         let flatWalletVwTap = UITapGestureRecognizer(target: self, action: #selector(flatWalletVwTapped))
         self.EuroVw.addGestureRecognizer(flatWalletVwTap)
         
+		
         assetCallback = {() in
 			if(self.controller?.screenType == .exchange)
 			{
 				if(self.controller?.toAssetId != nil){
+					let balance = CommonFunctions.getBalance(id: data?.id ?? "")
 					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 					vc.strategyType = .Exchange
 					vc.fromAssetId = data?.id
+					vc.fromAssetPrice = ((Decimal(string: balance.balanceData.euroBalance) ?? 0)/(Decimal(string: balance.balanceData.balance) ?? 1)).description
 					vc.toAssetId = self.controller?.toAssetId
+					vc.toAssetPrice = self.controller?.toAssetPrice
 					self.controller?.navigationController?.pushViewController(vc, animated: true)
 				}
 				else{

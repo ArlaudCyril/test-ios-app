@@ -15,20 +15,10 @@ class ConfirmInvestmentVC: ViewController {
     //MARK: - Variables
     var confirmInvestmentVM = ConfirmInvestmentVM()
     var assetData : Trending?,strategyData : Strategy?
-    var totalCoinsInvested = Decimal(),totalEuroInvested = Double(),fromAssetId = String(),exchangeTo = String()
+    var totalCoinsInvested = Decimal(),totalEuroInvested = Double(),fromAssetId = String()
     var frequency = String()
     var InvestmentType : InvestStrategyModel = .activateStrategy
     var coinsData : [InvestmentStrategyAsset] = []
-	
-	//Exchange
-	var timeLimit : Int?
-	var ratioCoin : String?
-	var amountFrom : String?
-	var amountFromDeductedFees : String?
-	var amountTo : String?
-	var orderId: String?
-	var coinFromPrice: Double?
-	var coinToPrice: Decimal?
 	
 	//withdraw
 	var address : String?
@@ -36,15 +26,12 @@ class ConfirmInvestmentVC: ViewController {
 	var fees : Double?
 	var coinPrice: Double?
 	
-	//singleCoin
 	var asset : PriceServiceResume?
-	let applePayButton: PKPaymentButton = PKPaymentButton(paymentButtonType: .plain, paymentButtonStyle: .black)
 	
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var confirmInvestmentLbl: UILabel!
     @IBOutlet var noOfEuroInvested: UILabel!
-    @IBOutlet var coinImg: UIImageView!
     @IBOutlet var stackVw: UIStackView!
     
     @IBOutlet var coinPriceVw: UIView!
@@ -140,37 +127,7 @@ class ConfirmInvestmentVC: ViewController {
     }
     
     func checkInvestmentType(){
-		if InvestmentType == .singleCoin || InvestmentType == .singleCoinWithFrequence{
-			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE")
-            self.coinPriceVw.isHidden = false
-            self.allocationView.isHidden = true
-            self.progressView.isHidden = true
-			self.amountVw.isHidden = true
-			self.networkVw.isHidden = false
-			self.networkTitleLbl.text = CommonFunctions.localisation(key: "AMOUNT")
-			self.networkLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested - (self.fees ?? 0)))€"
-            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested))€"
-            if frequency == ""{
-                self.frequencyVw.isHidden = true
-            }else{
-                self.frequencyVw.isHidden = false
-            }
-			self.view.addSubview(applePayButton)
-			applePayButton.translatesAutoresizingMaskIntoConstraints = false
-			NSLayoutConstraint.activate([
-				applePayButton.leadingAnchor.constraint(equalTo: confirmInvestmentBtn.leadingAnchor),
-				applePayButton.trailingAnchor.constraint(equalTo: confirmInvestmentBtn.trailingAnchor),
-				applePayButton.topAnchor.constraint(equalTo: confirmInvestmentBtn.topAnchor),
-				applePayButton.bottomAnchor.constraint(equalTo: confirmInvestmentBtn.bottomAnchor)
-			])
-			
-			self.paymentVw.isHidden = false
-			self.confirmInvestmentBtn.isHidden = true
-			
-			applePayButton.isHidden = !StripeAPI.deviceSupportsApplePay()
-			applePayButton.addTarget(self, action: #selector(handleApplePayButtonTapped), for: .touchUpInside)
-			
-		}else if (InvestmentType == .activateStrategy || InvestmentType == .editActiveStrategy || InvestmentType == .oneTimeInvestment){
+		if (InvestmentType == .activateStrategy || InvestmentType == .editActiveStrategy || InvestmentType == .oneTimeInvestment){
 			//TODO : hide for oneTimeInvestment
 			if(InvestmentType == .oneTimeInvestment){
 				self.amountLbl.text = CommonFunctions.localisation(key: "INVEST")
@@ -197,36 +154,6 @@ class ConfirmInvestmentVC: ViewController {
             self.lyberFeeLbl.text = CommonFunctions.localisation(key: "DEPOSIT_FEES")
             self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_MY_DEPOSIT")
             confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_DEPOSIT"), for: .normal)
-			
-        }else if InvestmentType == .Exchange{
-			
-			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
-			
-			self.coinPriceLbl.text = CommonFunctions.localisation(key: "RATIO")
-			self.euroCoinPriceLbl.text = "1 : \(self.ratioCoin ?? "")"
-			
-            self.amountLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
-			self.euroAmountLbl.text = "\(CommonFunctions.formattedAsset(from: Double(amountFromDeductedFees ?? "0"), price: self.coinFromPrice)) \(fromAssetId.uppercased())"
-			
-			self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinFromPrice)) \(fromAssetId.uppercased())"
-			
-			let totalFromAmount = (Decimal(string: self.euroAmountLbl.text ?? "0") ?? 0) + (Decimal(string: self.euroLyberFeeLBl.text ?? "0") ?? 0)
-			
-			self.totalEuroLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: totalFromAmount, price: Decimal(self.coinFromPrice ?? 0))) \(fromAssetId.uppercased())"
-			
-			
-			let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
-			
-			self.noOfEuroInvested.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(exchangeTo.uppercased())"
-			
-			self.frequencyLbl.text = CommonFunctions.localisation(key: "EXCHANGE_TO")
-			self.frequencyNameLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(exchangeTo.uppercased())"
-			
-			
-			
-            self.allocationView.isHidden = true
-            self.progressView.isHidden = true
-			self.fireTimer(seconds: 25)
 			
         }else if InvestmentType == .withdraw{
 			
@@ -260,24 +187,6 @@ class ConfirmInvestmentVC: ViewController {
         }
     }
 	
-	@objc func handleApplePayButtonTapped() {
-		let merchantIdentifier = "merchant.com.lyber"
-		let paymentRequest = StripeAPI.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: "FR", currency: "EUR")
-		
-		// Configure the line items on the payment request
-		paymentRequest.paymentSummaryItems = [
-			// The final line should represent your company;
-			// it'll be prepended with the word "Pay" (that is, "Pay iHats, Inc $50")
-			PKPaymentSummaryItem(label: "\(self.asset?.id.uppercased() ?? "")", amount: NSDecimalNumber(value: totalEuroInvested)),
-		]
-		// Initialize an STPApplePayContext instance
-		if let applePayContext = STPApplePayContext(paymentRequest: paymentRequest, delegate: self) {
-			// Present Apple Pay payment sheet
-			applePayContext.presentApplePay(on: self)
-		} else {
-			// There is a problem with your Apple Pay configuration
-		}
-	}
 }
 
 //MARK: - COLL VIEW DELEGATE AND DATA SOURCE METHODS
@@ -299,35 +208,6 @@ extension ConfirmInvestmentVC: UICollectionViewDelegate, UICollectionViewDataSou
     
 }
 
-//MARK: - ApplePayContextDelegate
-extension ConfirmInvestmentVC: ApplePayContextDelegate{
-	
-	func applePayContext(_ context: StripeApplePay.STPApplePayContext, didCreatePaymentMethod paymentMethod: StripeCore.StripeAPI.PaymentMethod, paymentInformation: PKPayment, completion: @escaping StripeApplePay.STPIntentClientSecretCompletionBlock) {
-		InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: Decimal(totalEuroInvested), completion: {response in
-			if response != nil{
-				completion(response?.data.clientSecret, MyError.description("Error"))
-				print("payment created")
-			}
-		})
-	}
-	
-	func applePayContext(_ context: StripeApplePay.STPApplePayContext, didCompleteWith status: StripeApplePay.STPApplePayContext.PaymentStatus, error: Error?) {
-		switch status {
-			case .success:
-				// Payment succeeded, show a receipt view
-				break
-			case .error:
-				// Payment failed, show the error
-				break
-			case .userCancellation:
-				// User canceled the payment
-				break
-			@unknown default:
-				fatalError()
-		}
-	}
-}
-
 //MARK: - objective functions
 extension ConfirmInvestmentVC{
     @objc func cancelBtnAct(){
@@ -336,17 +216,7 @@ extension ConfirmInvestmentVC{
     }
     
     @objc func confirmInvestmentBtnAct(){
-        if InvestmentType == .Exchange{
-			ConfirmInvestmentVM().ordersAcceptQuoteAPI(orderId: self.orderId ?? "", completion: {response in
-				if response != nil{
-					let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-					vc.previousController = self
-					vc.assetId = self.exchangeTo
-					vc.orderId = self.orderId ?? ""
-					self.navigationController?.pushViewController(vc, animated: true)
-				}
-			})
-        }else if InvestmentType == .activateStrategy{
+        if InvestmentType == .activateStrategy{
             self.confirmInvestmentBtn.showLoading()
             confirmInvestmentVM.activateStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, ownerUuid: strategyData?.ownerUuid ?? "",completion: {[weak self]response in
                 self?.confirmInvestmentBtn.hideLoading()
@@ -432,21 +302,6 @@ extension ConfirmInvestmentVC{
         let height = CGFloat((20*((self.coinsData.count+1)/2)) + 12*(self.coinsData.count/2))
         collViewHeight.constant = height
     }
-	
-	func fireTimer(seconds: Int){
-		if(seconds == 0)
-		{
-			confirmInvestmentBtn.setTitle("\(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")) (\(seconds) sec)", for: .normal)
-			confirmInvestmentBtn.isEnabled = false
-			confirmInvestmentBtn.backgroundColor = .gray
-		}else{
-			confirmInvestmentBtn.setTitle("\(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")) (\(seconds) sec)", for: .normal)
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				self.fireTimer(seconds: seconds-1)
-			}
-		}
-		
-	}
 }
 
 //MARK: - Progress View Delegate and DataSourec

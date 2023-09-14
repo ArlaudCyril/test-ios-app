@@ -9,7 +9,7 @@ import Foundation
 
 class EnterPhoneVM {
     // MARK:- API CALL
-    func SignUpApi(phoneNumber: String,countryCode : String, completion: @escaping ( (signUpApi?) -> Void )){
+	func SignUpApi(phoneNumber: String,countryCode : String, completion: @escaping ( (signUpApi?) -> Void )){
         var phone : String = phoneNumber
         
         if(phone.first == "0" && countryCode == "+33"){
@@ -28,8 +28,8 @@ class EnterPhoneVM {
 //            CommonFunction.toster(response.message ?? "")
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
+			completion(nil)
+			CommonFunctions.toster(CommonFunctions.translate(string: error))
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
     }
     
@@ -43,18 +43,6 @@ class EnterPhoneVM {
             completion(nil)
             CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
-    }
-    
-    func setLoginPinApi(Pin: String, completion: @escaping ( (OTPAPI?) -> Void )){
-        let param: [String: Any] = [Constants.ApiKeys.login_pin: Pin]
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetLoginPin, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
-            completion(response)
-            CommonFunctions.hideLoader()
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
     
     func logInWithPhoneChallengeApi(phoneNumber: String,countryCode : String, completion: @escaping ( (LoginChallengeAPI?) -> Void )){
@@ -98,28 +86,6 @@ class EnterPhoneVM {
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func enableNotificationApi(enable: Int, completion: @escaping ( (OTPAPI?) -> Void )){
-        let param: [String: Any] = [Constants.ApiKeys.is_push_enabled: enable]
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userResetNotification, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
-            completion(response)
-            CommonFunctions.hideLoader()
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .PUT, img: nil, imageParamater: nil, headerType: "user")
-    }
-    
-    func resendOtpCodeApi(completion: @escaping ( (ResendOtpAPI?) -> Void )){
-        
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userResendPhoneVerificationOtp, withParameters: [:], ofType: ResendOtpAPI.self, onSuccess: { response in
-            completion(response)
-            CommonFunctions.hideLoader()
-        }, onFailure: { reload, error, code in
-            completion(nil)
-            CommonFunctions.toster(error)
-        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
-    }
     func sendDeviceTokenToServer(deviceToken: String){
 		var headerType = "user"
 		let param: [String: Any] = [

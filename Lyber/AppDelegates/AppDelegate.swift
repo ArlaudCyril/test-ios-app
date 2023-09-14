@@ -14,6 +14,7 @@ import SDWebImage
 import SDWebImageSVGKitPlugin
 import FirebaseCore
 import FirebaseCrashlytics
+import StripeApplePay
 
 
 @main
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 		SDImageCodersManager.shared.addCoder(SDImageSVGKCoder.shared)
 		FirebaseApp.configure()
 		Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
+		StripeAPI.defaultPublishableKey = "pk_test_51NVVY7F2A3romcuHdC3JDD9evsFhQvyZ5cYS6wpy9OznXgmYzLvWTG81Zfj2nWGQFZ2zs8RboA3uMLCNPpPV08Zk00McUdiPAt"
         
         return true
     }

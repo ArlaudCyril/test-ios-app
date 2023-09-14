@@ -10,7 +10,7 @@ import DropDown
 
 class MyBalanceTVC: UITableViewCell {
     var assetId = String()
-	var controller = ViewController()
+	var controller = PortfolioDetailVC()
 	var balanceDropdown = DropDown()
     //MARK:- IB OUTLETS
     @IBOutlet var assetsView: UIView!
@@ -70,7 +70,6 @@ extension MyBalanceTVC{
 	}
 	
 	func balanceDropdownConfiguration(){
-		CommonUI.setUpViewBorder(vw: singleAssetVw ?? UIView(), radius: 12, borderWidth: 3, borderColor: UIColor.borderColor.cgColor)
 		
 		balanceDropdown.cellHeight = 80
 		balanceDropdown.anchorView = singleAssetVw
@@ -80,6 +79,7 @@ extension MyBalanceTVC{
 		balanceDropdown.textFont = UIFont.MabryPro(Size.Large.sizeValue())
 		balanceDropdown.backgroundColor = UIColor.greyColor
 		balanceDropdown.selectionBackgroundColor = UIColor.greyColor
+		
 		balanceDropdown.cornerRadius = 8
 		balanceDropdown.cellNib = UINib(nibName: "myBalanceTableViewCell", bundle: nil)
 		
@@ -103,7 +103,6 @@ extension MyBalanceTVC{
 		//when one option is selected
 		balanceDropdown.selectionAction = {[weak self] (index: Int,item: String) in
 			let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			//vc.previousController = self.controller ?? UIViewController()
 			vc.assetId = item
 			self?.controller.navigationController?.pushViewController(vc, animated: true)
 		}

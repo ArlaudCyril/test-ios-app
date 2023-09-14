@@ -203,54 +203,11 @@ struct Constants{
     // MARK: - Requested URL Keys
     // Delete this
     struct ApiUrlKeys {
-        static let userSignup = "user/signup"
-        static let userVerifyPhone = "user/verify/phone"
-        static let userSetLoginPin = "user/set_login_pin"
-        static let userResendPhoneVerificationOtp = "user/resend/phone-verification-otp"
-        static let userResetNotification = "user/reset/notification"
-        static let userActivateFaceId = "user/activate/face-id"
-        static let userPersonalInfo = "user/personal-info"
-        static let userResendEmail = "user/resend/email"
-        static let userCheckEmailVerification = "user/check_email_verification"
         static let userInvestEducation = "user/invest/education"
-        static let userTreezorStatus = "user/treezor-status"
-        
-        //Strategies
-        
-        static let userInvestmentStrategy = "user/investment-strategy"
-        static let investOnAsset = "user/invest-on-asset"
-        static let userWithdrawCrypto = "user/withdraw-crypto"
-        
-        //Coins
         static let userSellCrypto = "user/sell-crypto"
-        static let coinTrendings = "coin/trendings"
-        static let coingeckoCoins = "coingecko/coins"
         static let userAssets = "user/assets"
-        static let userInvestment = "user/investment"
-        static let coingeckoCoinAsset = "coingecko/coin"
-        static let coingeckoPriceChart = "coingecko/price-chart"
-        
-        //Treezor
-        static let kyc_status = "treezor/kyc-status"
-        static let kyc_liveness = "treezor/kyc-liveness"
-        static let treezorUser = "treezor/user"
-        static let treezorWithdrawFiat = "treezor/withdraw-fiat"
-        
-        //Profile
-        static let userPinVerifyPhone = "user/pin/verify-phone"
-        static let userPin = "user/pin"
-        static let user = "user"
         static let userBankInfo = "user/bank-info"
-        static let userEnableStrongAuth = "user/enable/strong-auth"
-        static let userVerifyStrongAuth = "user/verify/strong-auth"
-        static let userNetworks = "user/networks"
-        static let aploVenues = "aplo/venues"
-        static let upload = "upload"
-        
-        
-        //Assets
-        static let assets = "assets"
-        
+		
         //MARK: - New Routes
         
         //SignUp

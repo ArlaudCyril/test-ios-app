@@ -10,7 +10,6 @@ import WebKit
 
 class KycWebVC: NotSwipeGesture,WKNavigationDelegate, WKUIDelegate {
     //MARK: - Variables
-    var kycWebVC  = KycWebVM()
     var Ubalurl = String()
 	var webViewRedirection: WKWebView!
     //MARK: - IB OUTLETS

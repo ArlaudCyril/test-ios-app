@@ -778,6 +778,21 @@ class CommonFunctions{
 	static func localisation(key : String, parameter : String = "") -> String{
 		return String(format: NSLocalizedString(key, bundle: GlobalVariables.bundle, comment: ""), parameter)
 	}
+	
+	static func getLocalizationKey(fromLocalizedText text: String, in language: String = "en") -> String {
+		if let path = Bundle.main.path(forResource: "Localizable", ofType: "strings", inDirectory: "\(language).lproj"),
+		   let dict = NSDictionary(contentsOfFile: path) as? [String: String] {
+			if let key = dict.keys.first(where: { dict[$0] == text }) {
+				return key
+			}
+		}
+		
+		return ""
+	}
+	
+	static func translate(string : String) -> String{
+		return self.localisation(key: self.getLocalizationKey(fromLocalizedText: string))
+	}
     
     static func selectorStrategyColor(position : Int, totalNumber : Int) -> UIColor{
         if(totalNumber > 8)
@@ -936,16 +951,6 @@ class CommonFunctions{
 		})
 	}
 	
-	static func getLocalizationKey(fromLocalizedText text: String, in language: String = "en") -> String {
-		if let path = Bundle.main.path(forResource: "Localizable", ofType: "strings", inDirectory: "\(language).lproj"),
-		   let dict = NSDictionary(contentsOfFile: path) as? [String: String] {
-			if let key = dict.keys.first(where: { dict[$0] == text }) {
-				return key
-			}
-		}
-		
-		return ""
-	}
 }
 
 enum MyError: Error {

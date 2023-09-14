@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A005C172844CC6A008117D1 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C162844CC6A008117D1 /* CoreData.swift */; };
-		0A005C1B2844D8F2008117D1 /* InvestMethodBottomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C1A2844D8F2008117D1 /* InvestMethodBottomVC.swift */; };
 		0A005C1E2844E89F008117D1 /* personalDataXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C1D2844E89F008117D1 /* personalDataXib.xib */; };
 		0A005C222844EBFD008117D1 /* PersonalDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C212844EBFD008117D1 /* PersonalDataVC.swift */; };
 		0A005C242844F040008117D1 /* EmailAddressXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C232844F040008117D1 /* EmailAddressXib.xib */; };
@@ -42,8 +41,6 @@
 		0A6E3BA22844ABAB007002E0 /* AccountCompletedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3BA12844ABAB007002E0 /* AccountCompletedModel.swift */; };
 		0A6E936428BF62D7008FF5E7 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E936328BF62D7008FF5E7 /* UIImageExtension.swift */; };
 		0A6FA81D28F575F700E17E7B /* chartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FA81C28F575F700E17E7B /* chartVC.swift */; };
-		0A6FCB9328BCBDE7003557B0 /* RecurringDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FCB9228BCBDE7003557B0 /* RecurringDetailVM.swift */; };
-		0A6FCB9528BCBFF1003557B0 /* RecurringDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FCB9428BCBFF1003557B0 /* RecurringDetailModel.swift */; };
 		0A6FCB9A28BCDB48003557B0 /* BuySellPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FCB9928BCDB48003557B0 /* BuySellPopUpVC.swift */; };
 		0A6FD4062849D390003A2AA0 /* AddStrategyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FD4052849D390003A2AA0 /* AddStrategyVC.swift */; };
 		0A6FD4082849D3B3003A2AA0 /* AddStrategyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FD4072849D3B3003A2AA0 /* AddStrategyTVC.swift */; };
@@ -102,7 +99,6 @@
 		0A71B8DE283F9708007CE9B2 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8DD283F9708007CE9B2 /* Images.swift */; };
 		0A71B8E0283FA2E9007CE9B2 /* createPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8DF283FA2E9007CE9B2 /* createPinCVC.swift */; };
 		0A71B8E2283FA3BD007CE9B2 /* ConfirmPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8E1283FA3BD007CE9B2 /* ConfirmPinCVC.swift */; };
-		0A71F67A28B8DB7A00FB6188 /* RecurringDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71F67928B8DB7A00FB6188 /* RecurringDetailVC.swift */; };
 		0A7218F628631A92009F42C5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7218F528631A92009F42C5 /* Profile.storyboard */; };
 		0A7218FB286324BC009F42C5 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7218FA286324BC009F42C5 /* ProfileVC.swift */; };
 		0A7218FD28632540009F42C5 /* ProfileHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7218FC28632540009F42C5 /* ProfileHeaderTVC.swift */; };
@@ -123,13 +119,11 @@
 		0A7256512874506400E8322A /* InvestmentStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7256502874506400E8322A /* InvestmentStrategyVM.swift */; };
 		0A728FE228CEF4D900977DDF /* NoTransactionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A728FE128CEF4D900977DDF /* NoTransactionTVC.swift */; };
 		0A73AB952875B37C00A92D1D /* AddStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A73AB942875B37C00A92D1D /* AddStrategyVM.swift */; };
-		0A73D7962865A5040037F346 /* EnterWalletAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A73D7952865A5040037F346 /* EnterWalletAddressVC.swift */; };
 		0A74457C285740AA00BF05EF /* DepositeOrBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74457B285740AA00BF05EF /* DepositeOrBuyVC.swift */; };
 		0A74457E2857414E00BF05EF /* DepositeOrBuyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74457D2857414E00BF05EF /* DepositeOrBuyTVC.swift */; };
 		0A7445812857428F00BF05EF /* DepositeOrBuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7445802857428F00BF05EF /* DepositeOrBuyModel.swift */; };
 		0A7445852857624800BF05EF /* FrequencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7445842857624800BF05EF /* FrequencyVC.swift */; };
 		0A7445872857625B00BF05EF /* FrequencyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7445862857625B00BF05EF /* FrequencyTVC.swift */; };
-		0A74E3EA288813BC002BE4CA /* EnterWalletAddressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74E3E9288813BC002BE4CA /* EnterWalletAddressVM.swift */; };
 		0A7502022859F32200D68BAB /* PortfolioHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502012859F32200D68BAB /* PortfolioHomeVC.swift */; };
 		0A7502042859F63F00D68BAB /* PortfolioHomeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502032859F63F00D68BAB /* PortfolioHomeCVC.swift */; };
 		0A7502062859F6C700D68BAB /* MyAssetsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502052859F6C700D68BAB /* MyAssetsTVC.swift */; };
@@ -149,14 +143,10 @@
 		0A759D3F2852021C00E59580 /* InvestMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A759D3E2852021C00E59580 /* InvestMoneyVC.swift */; };
 		0A759D412852029600E59580 /* InvestStrategy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A759D402852029600E59580 /* InvestStrategy.storyboard */; };
 		0A76840C2876DFBA00A5BC7C /* KycWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76840B2876DFBA00A5BC7C /* KycWebVC.swift */; };
-		0A7684102876EFBC00A5BC7C /* KycWebVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76840F2876EFBC00A5BC7C /* KycWebVM.swift */; };
 		0A769FDB28C2082900F15C00 /* portfolio.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A769FDA28C2082900F15C00 /* portfolio.json */; };
 		0A76C596291BC8FC00C603B9 /* PinVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76C595291BC8FC00C603B9 /* PinVerificationVM.swift */; };
 		0A76E701288973FC0021A7A6 /* TransactionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76E700288973FC0021A7A6 /* TransactionVM.swift */; };
 		0A76E703288974FE0021A7A6 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76E702288974FE0021A7A6 /* TransactionModel.swift */; };
-		0A77D54128B79FA500A2C684 /* SearchAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77D54028B79FA500A2C684 /* SearchAssetVC.swift */; };
-		0A77D54328B7A4BC00A2C684 /* SearchAssetTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77D54228B7A4BC00A2C684 /* SearchAssetTVC.swift */; };
-		0A77D54528B7A94B00A2C684 /* SearchAssetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A77D54428B7A94B00A2C684 /* SearchAssetVM.swift */; };
 		0A78F19E28B640550094DBA1 /* Lyber.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 0A78F19D28B63ABB0094DBA1 /* Lyber.entitlements */; };
 		0A791DFA28646E6F0084B104 /* AddPaymentMethodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791DF928646E6F0084B104 /* AddPaymentMethodVC.swift */; };
 		0A791DFC28646E8E0084B104 /* AddPaymentMethodTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791DFB28646E8E0084B104 /* AddPaymentMethodTVC.swift */; };
@@ -244,7 +234,6 @@
 		0AC5B5FE2840ACA500533ED3 /* EducationStrategyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5FD2840ACA500533ED3 /* EducationStrategyModel.swift */; };
 		0AC721A328521CD7003E7FD9 /* InvestMoneyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC721A228521CD7003E7FD9 /* InvestMoneyCVC.swift */; };
 		0ACC70262893A96500C96679 /* BalanceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACC70252893A96500C96679 /* BalanceVM.swift */; };
-		0ACE98D828C2200D00D63025 /* RecurringDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE98D728C2200D00D63025 /* RecurringDetailTVC.swift */; };
 		0ACE98DA28C2281F00D63025 /* Boat_Loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ACE98D928C2281F00D63025 /* Boat_Loader.json */; };
 		0AD0985E28979EDA00C0551F /* StrongAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0985D28979EDA00C0551F /* StrongAuthVC.swift */; };
 		0AD6C0C828A0E44900C2A184 /* CryptoAddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6C0C728A0E44900C2A184 /* CryptoAddressBookModel.swift */; };
@@ -268,6 +257,7 @@
 		1F2D541029F003610078267F /* CryptoDepositeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D540F29F003610078267F /* CryptoDepositeVM.swift */; };
 		1F2D541329F006A00078267F /* CryptoDepositeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541229F006A00078267F /* CryptoDepositeModel.swift */; };
 		1F2D541529F047200078267F /* QrCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541429F047200078267F /* QrCodeVC.swift */; };
+		1F3291A42AA87B8200ADE91A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */; };
 		1F35C2D42A52CB3200512ABD /* CountryPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */; };
 		1F432CC3297DDDD9006EBEEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1F432CC2297DDDD9006EBEEA /* .gitignore */; };
 		1F487C152AA2297700D67663 /* ExportVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F487C142AA2297700D67663 /* ExportVM.swift */; };
@@ -279,6 +269,7 @@
 		1F5B7C5229C1BDA100256438 /* VerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B7C5129C1BDA100256438 /* VerificationVM.swift */; };
 		1F67C0622A6A7DE9007BB2E1 /* InvestmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67C0612A6A7DE9007BB2E1 /* InvestmentModel.swift */; };
 		1F67C0652A6A8008007BB2E1 /* OneTimeInvestmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67C0642A6A8008007BB2E1 /* OneTimeInvestmentVM.swift */; };
+		1F6B1DBF2AA9D0EC00A11A5C /* ConfirmExecutionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B1DBE2AA9D0EC00A11A5C /* ConfirmExecutionVC.swift */; };
 		1F6E77BF2A586D8E009E04DE /* NoAssetsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E77BE2A586D8E009E04DE /* NoAssetsTVC.swift */; };
 		1F8049E22A77E4DC00E4BB11 /* IdentityVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8049E12A77E4DC00E4BB11 /* IdentityVerificationVM.swift */; };
 		1F83382129F9617600E41F61 /* InvestInMyStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382029F9617600E41F61 /* InvestInMyStrategyVM.swift */; };
@@ -308,7 +299,6 @@
 		1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
 		1FE8E54D2A0A838A0033398F /* NotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54C2A0A838A0033398F /* NotificationVM.swift */; };
 		1FE8E5502A0A847B0033398F /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54F2A0A847B0033398F /* NotificationModel.swift */; };
-		1FEE5A412AA75459000B0EF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */; };
 		1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
 		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
@@ -317,7 +307,6 @@
 
 /* Begin PBXFileReference section */
 		0A005C162844CC6A008117D1 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
-		0A005C1A2844D8F2008117D1 /* InvestMethodBottomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestMethodBottomVC.swift; sourceTree = "<group>"; };
 		0A005C1D2844E89F008117D1 /* personalDataXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = personalDataXib.xib; sourceTree = "<group>"; };
 		0A005C212844EBFD008117D1 /* PersonalDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataVC.swift; sourceTree = "<group>"; };
 		0A005C232844F040008117D1 /* EmailAddressXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailAddressXib.xib; sourceTree = "<group>"; };
@@ -351,8 +340,6 @@
 		0A6E3BA12844ABAB007002E0 /* AccountCompletedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCompletedModel.swift; sourceTree = "<group>"; };
 		0A6E936328BF62D7008FF5E7 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		0A6FA81C28F575F700E17E7B /* chartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chartVC.swift; sourceTree = "<group>"; };
-		0A6FCB9228BCBDE7003557B0 /* RecurringDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDetailVM.swift; sourceTree = "<group>"; };
-		0A6FCB9428BCBFF1003557B0 /* RecurringDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDetailModel.swift; sourceTree = "<group>"; };
 		0A6FCB9928BCDB48003557B0 /* BuySellPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySellPopUpVC.swift; sourceTree = "<group>"; };
 		0A6FD4052849D390003A2AA0 /* AddStrategyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStrategyVC.swift; sourceTree = "<group>"; };
 		0A6FD4072849D3B3003A2AA0 /* AddStrategyTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStrategyTVC.swift; sourceTree = "<group>"; };
@@ -411,7 +398,6 @@
 		0A71B8DD283F9708007CE9B2 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		0A71B8DF283FA2E9007CE9B2 /* createPinCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPinCVC.swift; sourceTree = "<group>"; };
 		0A71B8E1283FA3BD007CE9B2 /* ConfirmPinCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPinCVC.swift; sourceTree = "<group>"; };
-		0A71F67928B8DB7A00FB6188 /* RecurringDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDetailVC.swift; sourceTree = "<group>"; };
 		0A7218F528631A92009F42C5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		0A7218FA286324BC009F42C5 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		0A7218FC28632540009F42C5 /* ProfileHeaderTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderTVC.swift; sourceTree = "<group>"; };
@@ -432,13 +418,11 @@
 		0A7256502874506400E8322A /* InvestmentStrategyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentStrategyVM.swift; sourceTree = "<group>"; };
 		0A728FE128CEF4D900977DDF /* NoTransactionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTransactionTVC.swift; sourceTree = "<group>"; };
 		0A73AB942875B37C00A92D1D /* AddStrategyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStrategyVM.swift; sourceTree = "<group>"; };
-		0A73D7952865A5040037F346 /* EnterWalletAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWalletAddressVC.swift; sourceTree = "<group>"; };
 		0A74457B285740AA00BF05EF /* DepositeOrBuyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositeOrBuyVC.swift; sourceTree = "<group>"; };
 		0A74457D2857414E00BF05EF /* DepositeOrBuyTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositeOrBuyTVC.swift; sourceTree = "<group>"; };
 		0A7445802857428F00BF05EF /* DepositeOrBuyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositeOrBuyModel.swift; sourceTree = "<group>"; };
 		0A7445842857624800BF05EF /* FrequencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyVC.swift; sourceTree = "<group>"; };
 		0A7445862857625B00BF05EF /* FrequencyTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyTVC.swift; sourceTree = "<group>"; };
-		0A74E3E9288813BC002BE4CA /* EnterWalletAddressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWalletAddressVM.swift; sourceTree = "<group>"; };
 		0A7502012859F32200D68BAB /* PortfolioHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioHomeVC.swift; sourceTree = "<group>"; };
 		0A7502032859F63F00D68BAB /* PortfolioHomeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioHomeCVC.swift; sourceTree = "<group>"; };
 		0A7502052859F6C700D68BAB /* MyAssetsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAssetsTVC.swift; sourceTree = "<group>"; };
@@ -458,14 +442,10 @@
 		0A759D3E2852021C00E59580 /* InvestMoneyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestMoneyVC.swift; sourceTree = "<group>"; };
 		0A759D402852029600E59580 /* InvestStrategy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InvestStrategy.storyboard; sourceTree = "<group>"; };
 		0A76840B2876DFBA00A5BC7C /* KycWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycWebVC.swift; sourceTree = "<group>"; };
-		0A76840F2876EFBC00A5BC7C /* KycWebVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycWebVM.swift; sourceTree = "<group>"; };
 		0A769FDA28C2082900F15C00 /* portfolio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = portfolio.json; sourceTree = "<group>"; };
 		0A76C595291BC8FC00C603B9 /* PinVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinVerificationVM.swift; sourceTree = "<group>"; };
 		0A76E700288973FC0021A7A6 /* TransactionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionVM.swift; sourceTree = "<group>"; };
 		0A76E702288974FE0021A7A6 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
-		0A77D54028B79FA500A2C684 /* SearchAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssetVC.swift; sourceTree = "<group>"; };
-		0A77D54228B7A4BC00A2C684 /* SearchAssetTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssetTVC.swift; sourceTree = "<group>"; };
-		0A77D54428B7A94B00A2C684 /* SearchAssetVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssetVM.swift; sourceTree = "<group>"; };
 		0A78F19D28B63ABB0094DBA1 /* Lyber.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lyber.entitlements; sourceTree = "<group>"; };
 		0A791DF928646E6F0084B104 /* AddPaymentMethodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodVC.swift; sourceTree = "<group>"; };
 		0A791DFB28646E8E0084B104 /* AddPaymentMethodTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodTVC.swift; sourceTree = "<group>"; };
@@ -554,7 +534,6 @@
 		0AC5B5FD2840ACA500533ED3 /* EducationStrategyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationStrategyModel.swift; sourceTree = "<group>"; };
 		0AC721A228521CD7003E7FD9 /* InvestMoneyCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestMoneyCVC.swift; sourceTree = "<group>"; };
 		0ACC70252893A96500C96679 /* BalanceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceVM.swift; sourceTree = "<group>"; };
-		0ACE98D728C2200D00D63025 /* RecurringDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDetailTVC.swift; sourceTree = "<group>"; };
 		0ACE98D928C2281F00D63025 /* Boat_Loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Boat_Loader.json; sourceTree = "<group>"; };
 		0AD0985D28979EDA00C0551F /* StrongAuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVC.swift; sourceTree = "<group>"; };
 		0AD6C0C728A0E44900C2A184 /* CryptoAddressBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAddressBookModel.swift; sourceTree = "<group>"; };
@@ -594,6 +573,7 @@
 		1F5B7C5129C1BDA100256438 /* VerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVM.swift; sourceTree = "<group>"; };
 		1F67C0612A6A7DE9007BB2E1 /* InvestmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentModel.swift; sourceTree = "<group>"; };
 		1F67C0642A6A8008007BB2E1 /* OneTimeInvestmentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeInvestmentVM.swift; sourceTree = "<group>"; };
+		1F6B1DBE2AA9D0EC00A11A5C /* ConfirmExecutionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVC.swift; sourceTree = "<group>"; };
 		1F6E77BE2A586D8E009E04DE /* NoAssetsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoAssetsTVC.swift; sourceTree = "<group>"; };
 		1F8049E12A77E4DC00E4BB11 /* IdentityVerificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityVerificationVM.swift; sourceTree = "<group>"; };
 		1F83382029F9617600E41F61 /* InvestInMyStrategyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestInMyStrategyVM.swift; sourceTree = "<group>"; };
@@ -654,22 +634,6 @@
 				0A005C162844CC6A008117D1 /* CoreData.swift */,
 			);
 			path = "Core Data";
-			sourceTree = "<group>";
-		};
-		0A005C182844D8B8008117D1 /* InvestMethod */ = {
-			isa = PBXGroup;
-			children = (
-				0A005C192844D8C4008117D1 /* View */,
-			);
-			path = InvestMethod;
-			sourceTree = "<group>";
-		};
-		0A005C192844D8C4008117D1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0A005C1A2844D8F2008117D1 /* InvestMethodBottomVC.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		0A005C1C2844E859008117D1 /* XibFiles */ = {
@@ -889,14 +853,6 @@
 				0A6E3BA12844ABAB007002E0 /* AccountCompletedModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		0A6FCB9128BCBDC5003557B0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				0A6FCB9228BCBDE7003557B0 /* RecurringDetailVM.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0A6FCB9628BCDB07003557B0 /* BuySellPopUp */ = {
@@ -1125,33 +1081,6 @@
 			path = HelperFiles;
 			sourceTree = "<group>";
 		};
-		0A71F67628B8DB4700FB6188 /* RecurringDetail */ = {
-			isa = PBXGroup;
-			children = (
-				0A71F67828B8DB5A00FB6188 /* Model */,
-				0A71F67728B8DB5400FB6188 /* View */,
-				0A6FCB9128BCBDC5003557B0 /* ViewModel */,
-			);
-			path = RecurringDetail;
-			sourceTree = "<group>";
-		};
-		0A71F67728B8DB5400FB6188 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0A71F67928B8DB7A00FB6188 /* RecurringDetailVC.swift */,
-				0ACE98D728C2200D00D63025 /* RecurringDetailTVC.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		0A71F67828B8DB5A00FB6188 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0A6FCB9428BCBFF1003557B0 /* RecurringDetailModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0A7218F72863248B009F42C5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1303,23 +1232,6 @@
 			path = "View Modal";
 			sourceTree = "<group>";
 		};
-		0A73D7932865A4DC0037F346 /* WalletAddress */ = {
-			isa = PBXGroup;
-			children = (
-				0A73D7942865A4E80037F346 /* View */,
-				0A74E3E828881396002BE4CA /* View Model */,
-			);
-			path = WalletAddress;
-			sourceTree = "<group>";
-		};
-		0A73D7942865A4E80037F346 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0A73D7952865A5040037F346 /* EnterWalletAddressVC.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		0A7445792857408000BF05EF /* DepositeOrBuy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1361,14 +1273,6 @@
 				0A7445862857625B00BF05EF /* FrequencyTVC.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0A74E3E828881396002BE4CA /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-				0A74E3E9288813BC002BE4CA /* EnterWalletAddressVM.swift */,
-			);
-			path = "View Model";
 			sourceTree = "<group>";
 		};
 		0A7501FE2859F2CB00D68BAB /* portfolioHome */ = {
@@ -1447,6 +1351,7 @@
 		0A759D3A2851FFB300E59580 /* Invest  */ = {
 			isa = PBXGroup;
 			children = (
+				1F6B1DBC2AA9D0CF00A11A5C /* ConfirmExecution */,
 				1F86FBBB2A696799001A9D64 /* OneTimeInvestment */,
 				0AE67F3F285301CE00F13D2E /* investMoney */,
 				0AE67F40285301DD00F13D2E /* InvestInMyStrategy */,
@@ -1470,7 +1375,6 @@
 			isa = PBXGroup;
 			children = (
 				0A76840A2876DF8D00A5BC7C /* View */,
-				0A76840D2876EFA200A5BC7C /* View Modal */,
 			);
 			path = KYCWebView;
 			sourceTree = "<group>";
@@ -1481,14 +1385,6 @@
 				0A76840B2876DFBA00A5BC7C /* KycWebVC.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0A76840D2876EFA200A5BC7C /* View Modal */ = {
-			isa = PBXGroup;
-			children = (
-				0A76840F2876EFBC00A5BC7C /* KycWebVM.swift */,
-			);
-			path = "View Modal";
 			sourceTree = "<group>";
 		};
 		0A769FD928C2081200F15C00 /* Animations */ = {
@@ -1529,45 +1425,8 @@
 				0A7A3BE5285C8BFB00646337 /* Balance */,
 				0A7A3BEC285C9C7200646337 /* TotalEarnings */,
 				0A8B4ABF28571A0E00F64ECE /* AllAssets */,
-				0A005C182844D8B8008117D1 /* InvestMethod */,
-				0A77D53C28B79F5800A2C684 /* SearchAsset */,
-				0A71F67628B8DB4700FB6188 /* RecurringDetail */,
 			);
 			path = PortfolioHome;
-			sourceTree = "<group>";
-		};
-		0A77D53C28B79F5800A2C684 /* SearchAsset */ = {
-			isa = PBXGroup;
-			children = (
-				0A77D53E28B79F7900A2C684 /* Model */,
-				0A77D53D28B79F7100A2C684 /* View */,
-				0A77D53F28B79F7F00A2C684 /* ViewModel */,
-			);
-			path = SearchAsset;
-			sourceTree = "<group>";
-		};
-		0A77D53D28B79F7100A2C684 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0A77D54028B79FA500A2C684 /* SearchAssetVC.swift */,
-				0A77D54228B7A4BC00A2C684 /* SearchAssetTVC.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		0A77D53E28B79F7900A2C684 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		0A77D53F28B79F7F00A2C684 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				0A77D54428B7A94B00A2C684 /* SearchAssetVM.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0A791DF628646E330084B104 /* AddPaymentMethod */ = {
@@ -1742,7 +1601,6 @@
 				1FFD171B29ED960E00935003 /* DepositAsset */,
 				0A7B0D5E2861EE090030C4D8 /* WithdrawAll */,
 				0A7C378F286098FE00E238D8 /* ExchangeFrom */,
-				0A73D7932865A4DC0037F346 /* WalletAddress */,
 				0ABD9FF5288687B300EFF589 /* DepositeFunds */,
 				0A6A9EFB289A4E13001BB63E /* CryptoDeposite */,
 				0A6A9EFF289A58F8001BB63E /* PaymentMethodOrFunds */,
@@ -2554,6 +2412,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1F6B1DBC2AA9D0CF00A11A5C /* ConfirmExecution */ = {
+			isa = PBXGroup;
+			children = (
+				1F6B1DBD2AA9D0D900A11A5C /* View */,
+			);
+			path = ConfirmExecution;
+			sourceTree = "<group>";
+		};
+		1F6B1DBD2AA9D0D900A11A5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F6B1DBE2AA9D0EC00A11A5C /* ConfirmExecutionVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1F8049E02A77E4C100E4BB11 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2818,6 +2692,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3291A42AA87B8200ADE91A /* GoogleService-Info.plist in Resources */,
 				0A78F19E28B640550094DBA1 /* Lyber.entitlements in Resources */,
 				0A71B8B6283F9275007CE9B2 /* AtypDisplay-Bold.ttf in Resources */,
 				0A707D3B2890037000C9ACA4 /* HeaderView.xib in Resources */,
@@ -2833,7 +2708,6 @@
 				0ACE98DA28C2281F00D63025 /* Boat_Loader.json in Resources */,
 				0A71B8BF283F9275007CE9B2 /* AtypDisplay-SemiboldItalic.ttf in Resources */,
 				0A71B8C0283F9275007CE9B2 /* AtypDisplay-Thin.ttf in Resources */,
-				1FEE5A412AA75459000B0EF2 /* GoogleService-Info.plist in Resources */,
 				0A7218F628631A92009F42C5 /* Profile.storyboard in Resources */,
 				0A71B8C1283F9275007CE9B2 /* AtypDisplay-ThinItalic.ttf in Resources */,
 				0A005C242844F040008117D1 /* EmailAddressXib.xib in Resources */,
@@ -2955,7 +2829,6 @@
 				1F4DCC6129D2FF4500C3B374 /* LanguageTVC.swift in Sources */,
 				0A75020C2859F76300D68BAB /* AllAssetsAvailableTVC.swift in Sources */,
 				0A71B7A0283F7D7C007CE9B2 /* LoginVC.swift in Sources */,
-				0A77D54528B7A94B00A2C684 /* SearchAssetVM.swift in Sources */,
 				0A7256512874506400E8322A /* InvestmentStrategyVM.swift in Sources */,
 				1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */,
 				0A7586C6286C76EE00DC889E /* Reachability.swift in Sources */,
@@ -2966,7 +2839,6 @@
 				1F67C0652A6A8008007BB2E1 /* OneTimeInvestmentVM.swift in Sources */,
 				0A721909286329E1009F42C5 /* ProfileModel.swift in Sources */,
 				1F8049E22A77E4DC00E4BB11 /* IdentityVerificationVM.swift in Sources */,
-				0A6FCB9528BCBFF1003557B0 /* RecurringDetailModel.swift in Sources */,
 				0A74457C285740AA00BF05EF /* DepositeOrBuyVC.swift in Sources */,
 				1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */,
 				0A53DEE9284635FB0027367A /* InvestmentExpModel.swift in Sources */,
@@ -2984,7 +2856,6 @@
 				0A6FA81D28F575F700E17E7B /* chartVC.swift in Sources */,
 				0A716B032848B52C00451BD3 /* AddStrategyModel.swift in Sources */,
 				1FB9A0AC29B8D831008431B0 /* VerificationVC.swift in Sources */,
-				0A77D54328B7A4BC00A2C684 /* SearchAssetTVC.swift in Sources */,
 				0AC5B5FA2840A8D700533ED3 /* EducationStrategyVC.swift in Sources */,
 				1F9FC3D529EECFE10084923E /* DepositAssetTVC.swift in Sources */,
 				0A1C74FA2840E3F3003CA6A7 /* ViewControllerExtension.swift in Sources */,
@@ -3006,7 +2877,6 @@
 				0A6FCB9A28BCDB48003557B0 /* BuySellPopUpVC.swift in Sources */,
 				0A1E9FC4293887420047D307 /* SwipeGesture.swift in Sources */,
 				0AC2B930289B8513001DC4F7 /* EmailLoginCVC.swift in Sources */,
-				0ACE98D828C2200D00D63025 /* RecurringDetailTVC.swift in Sources */,
 				0A71B7A3283F803E007CE9B2 /* UIFontsExtension.swift in Sources */,
 				0A907E68285B5886001ABD6A /* ResourcesTVC.swift in Sources */,
 				0A7C379428609A6600E238D8 /* ExchangeFromTVC.swift in Sources */,
@@ -3015,7 +2885,6 @@
 				0A8AE891284A27EA0090A354 /* InvestmentStrategyVC.swift in Sources */,
 				0A71B8DE283F9708007CE9B2 /* Images.swift in Sources */,
 				0AC5B5F52840979B00533ED3 /* enableNotificationCVC.swift in Sources */,
-				0A73D7962865A5040037F346 /* EnterWalletAddressVC.swift in Sources */,
 				0A7502022859F32200D68BAB /* PortfolioHomeVC.swift in Sources */,
 				0A907E5E285B57FD001ABD6A /* PortfolioDetailTVC.swift in Sources */,
 				1886C7E62959A53600D28828 /* Socket.swift in Sources */,
@@ -3040,7 +2909,6 @@
 				0A0F5F2828756F9200D7E2AE /* AddAssetsVM.swift in Sources */,
 				0A8AE88F284A27D30090A354 /* InvestmentStrategyTVC.swift in Sources */,
 				0A7A3BEB285C8EA200646337 /* balanceTVC.swift in Sources */,
-				0A6FCB9328BCBDE7003557B0 /* RecurringDetailVM.swift in Sources */,
 				0A95DE1C289902150044EE92 /* AddressAddedPopUpVC.swift in Sources */,
 				0ABD9FF9288687F300EFF589 /* DepositFundsVC.swift in Sources */,
 				1F35C2D42A52CB3200512ABD /* CountryPickerViewExtension.swift in Sources */,
@@ -3096,7 +2964,6 @@
 				0A907E60285B5824001ABD6A /* PortfolioDetailHeaderTVC.swift in Sources */,
 				4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */,
 				1F86FBC02A6978D0001A9D64 /* LoadingInvestmentVC.swift in Sources */,
-				0A7684102876EFBC00A5BC7C /* KycWebVM.swift in Sources */,
 				1F4DCC5F29D2FDFD00C3B374 /* LanguageVC.swift in Sources */,
 				0A7C379728609BCE00E238D8 /* ExchangeModel.swift in Sources */,
 				0A8DA73E289D04F3000C4BC8 /* EnableWhitelistingVM.swift in Sources */,
@@ -3112,7 +2979,6 @@
 				0A7B0D622861EE3F0030C4D8 /* WithdrawAllVC.swift in Sources */,
 				0AE67F442853021D00F13D2E /* InvestInMyStrategyVC.swift in Sources */,
 				0A7586CC286C7C9600DC889E /* LoginVM.swift in Sources */,
-				0A77D54128B79FA500A2C684 /* SearchAssetVC.swift in Sources */,
 				1F96A99B2A3B4C71006D5A61 /* NoRecurringTVC.swift in Sources */,
 				0A70BC5C28992FBB00577C0B /* EnableWhitelistingModel.swift in Sources */,
 				0A6E3B9D2844A084007002E0 /* checkAccountCompletedVC.swift in Sources */,
@@ -3150,7 +3016,6 @@
 				0A8B4AC228571A5000F64ECE /* AllAssetsVC.swift in Sources */,
 				0AB24EEF288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift in Sources */,
 				1F83382329F97D3F00E41F61 /* Confetti.swift in Sources */,
-				0A71F67A28B8DB7A00FB6188 /* RecurringDetailVC.swift in Sources */,
 				0AB24EEB288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift in Sources */,
 				0A005C262844F251008117D1 /* PersonalDataCVC.swift in Sources */,
 				0A6E3B9F2844A4F1007002E0 /* checkAccountCompletedTVC.swift in Sources */,
@@ -3159,6 +3024,7 @@
 				0A71B7A8283F80A9007CE9B2 /* UIButtonExtension.swift in Sources */,
 				0A86AA8228A3773C00C6C688 /* DefaultPictureCVC.swift in Sources */,
 				0A53DEE7284635010027367A /* InvestmentExperienceTVC.swift in Sources */,
+				1F6B1DBF2AA9D0EC00A11A5C /* ConfirmExecutionVC.swift in Sources */,
 				0A71B8B5283F88EF007CE9B2 /* LocalizationKeys.swift in Sources */,
 				1F2D541529F047200078267F /* QrCodeVC.swift in Sources */,
 				0A7AAB18285378EE00D2E25D /* ConfirmInvestmentVC.swift in Sources */,
@@ -3181,8 +3047,6 @@
 				0A7586D1286C7D8C00DC889E /* EnterPhoneModel.swift in Sources */,
 				0A95DE2128990EFF0044EE92 /* EnableWhitelistingVC.swift in Sources */,
 				0A7586CF286C7CD900DC889E /* EnterPhoneVM.swift in Sources */,
-				0A74E3EA288813BC002BE4CA /* EnterWalletAddressVM.swift in Sources */,
-				0A005C1B2844D8F2008117D1 /* InvestMethodBottomVC.swift in Sources */,
 				0AC4C2A6283F4AD80086C6B8 /* SceneDelegate.swift in Sources */,
 				1F83382629F97EF100E41F61 /* Launcher.swift in Sources */,
 				0A907E57285B3543001ABD6A /* PortfolioHeaderTVC.swift in Sources */,
@@ -3384,7 +3248,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -3423,7 +3287,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -59,7 +59,6 @@ extension ExportVC{
 	}
 	
 	@objc func exportBtnAct(){
-		//TODO: Export put date
 		ExportVm().exportApi(date: self.dateToExport, completion: {response in
 			let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 			vc.previousViewController = self
@@ -96,8 +95,8 @@ extension ExportVC{
 			self.dropDownExport.dataSource.append(month)
 		}
 		
-		CommonUI.setUpLbl(lbl: self.exportNameLbl ?? UILabel(), text: CommonFunctions.getDateFormat(date: self.dropDownExport.dataSource[0], inputFormat: "yyyy-MM", outputFormat: "MMMM yyyy") , textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-		self.dateToExport = self.dropDownExport.dataSource[0]
+		CommonUI.setUpLbl(lbl: self.exportNameLbl ?? UILabel(), text: CommonFunctions.getDateFormat(date: self.dropDownExport.dataSource[self.dropDownExport.dataSource.count-1], inputFormat: "yyyy-MM", outputFormat: "MMMM yyyy") , textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.dateToExport = self.dropDownExport.dataSource[self.dropDownExport.dataSource.count-1]
 		
 		//configuration printing dropdown
 		dropDownExport.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
