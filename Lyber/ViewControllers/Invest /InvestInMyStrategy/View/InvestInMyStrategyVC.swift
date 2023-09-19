@@ -395,17 +395,17 @@ extension InvestInMyStrategyVC {
             goToConfirmInvestment()
         }else if strategyType == .sell{
             SellCoinApi()
-        }else if strategyType == .withdrawEuro{
-            self.previewMyInvest.showLoading()
-            EnterWalletAddressVM().withdrawFiatApi(amount: totalEuroInvested, completion: {[weak self]response in
-                self?.previewMyInvest.hideLoading()
-                if let response = response{
-                    print(response)
-                    let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                    vc.confirmationType = .Withdraw
-                    self?.present(vc, animated: true, completion: nil)
-                }
-            })
+//        }else if strategyType == .withdrawEuro{
+//            self.previewMyInvest.showLoading()
+//            EnterWalletAddressVM().withdrawFiatApi(amount: totalEuroInvested, completion: {[weak self] response in
+//                self?.previewMyInvest.hideLoading()
+//                if let response = response{
+//                    print(response)
+//                    let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+//                    vc.confirmationType = .Withdraw
+//                    self?.present(vc, animated: true, completion: nil)
+//                }
+//            })
         }else{
             if self.frequencyVw.isHidden == false{
                 if selectedFrequency == ""{
