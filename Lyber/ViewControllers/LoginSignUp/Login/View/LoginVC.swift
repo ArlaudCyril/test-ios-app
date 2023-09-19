@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import AppsFlyerLib
 
 
 class LoginVC: ViewController {
@@ -86,6 +87,9 @@ extension LoginVC{
 		}else{
 			vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 		}
+        AppsFlyerLib.shared().logEvent(AFEventContentView, withValues: [
+          AFEventParamContent: "RegistrationPage",
+        ]);
 		self.navigationController?.pushViewController(vc, animated: true)
     }
     

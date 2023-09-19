@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import AppsFlyerLib
 
 class KycWebVC: NotSwipeGesture,WKNavigationDelegate, WKUIDelegate {
     //MARK: - Variables
@@ -101,6 +102,9 @@ extension KycWebVC {
 				userData.shared.registered()
 				let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 				self?.navigationController?.pushViewController(vc, animated: true)
+                AppsFlyerLib.shared().logEvent(AFEventCompleteRegistration, withValues: [
+                  AFEventParamRegistrationMethod: "Lyber", // Type of signup method
+                ]);
 			}else{
 				CommonFunctions.toster("KYC didn't work")
 			}

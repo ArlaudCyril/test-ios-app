@@ -12,6 +12,9 @@ target 'Lyber' do
   pod 'SwiftyJSON'
   pod 'SwiftEntryKit'
 	pod 'StripeApplePay'
+  
+  # Pods for AppsFlyer
+  pod 'AppsFlyerFramework'
 	
 #  pod 'OTPFieldView'
   pod 'ADCountryPicker'

@@ -110,5 +110,11 @@
 		<key>test</key>
 		<string>key_test_pnZ5fOm43ccP5fvDtOkfjppnytfI7a63</string>
 	</dict>
+    <key>NSAdvertisingAttributionReportEndpoint</key>
+    <string>https://appsflyer-skadnetwork.com/</string>
+    <key>NSUserTrackingUsageDescription</key>
+    <string>
+        We use activity tracking to enhance your user experience.
+    </string>
 </dict>
 </plist>

@@ -397,7 +397,7 @@ extension InvestInMyStrategyVC {
             SellCoinApi()
         }else if strategyType == .withdrawEuro{
             self.previewMyInvest.showLoading()
-            EnterWalletAddressVM().withdrawFiatApi(amount: totalEuroInvested, completion: {[weak self]response in
+            EnterWalletAddressVM().withdrawFiatApi(amount: totalEuroInvested, completion: {[weak self] response in
                 self?.previewMyInvest.hideLoading()
                 if let response = response{
                     print(response)
