@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         AppsFlyerLib.shared().appsFlyerDevKey = "G9y3U7W29YR7RSCN6AdBRC"
         AppsFlyerLib.shared().appleAppID = "1609050369"
         //  Set isDebug to true to see AppsFlyer debug logs
-        AppsFlyerLib.shared().isDebug = true
+        //AppsFlyerLib.shared().isDebug = true
       
         //Optional
         AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 60)
