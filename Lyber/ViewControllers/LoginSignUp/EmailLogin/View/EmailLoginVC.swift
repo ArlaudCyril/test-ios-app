@@ -89,7 +89,6 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         }else if indexPath.item == 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "createPinCVC", for: indexPath as IndexPath) as! createPinCVC
             cell.setUpUI()
-            cell.configureWithData()
             cell.pinCreatedDelegate = {[]pin in
                 self.enteredPin = pin
                 self.GotoNextIndex()

@@ -818,108 +818,108 @@ class CommonFunctions{
         if(totalNumber > 8)
         {
             let percentage = Double(position) / Double(totalNumber)
-            let color = UIColor(named: "purple_800")?.lighter(componentDelta: CGFloat(percentage)) ?? UIColor()
+			let color = UIColor.purple_800.lighter(componentDelta: CGFloat(percentage))
             return color
         }
         else
         {
             switch totalNumber {
             case 1:
-                return UIColor(named: "purple_600") ?? UIColor()
+					return UIColor.purple_600
             case 2:
                 switch position{
                 case 0:
-                    return UIColor(named: "purple_600") ?? UIColor()
+                    return UIColor.purple_600
                 default:
-                    return UIColor(named: "purple_400") ?? UIColor()
+						return UIColor.purple_400
                 }
             case 3:
                 switch position{
                 case 0:
-                    return UIColor(named: "purple_600") ?? UIColor()
+                    return UIColor.purple_600
                 case 1:
-                    return UIColor(named: "purple_400") ?? UIColor()
+                    return UIColor.purple_400
                 default:
-                    return UIColor(named: "purple_200") ?? UIColor()
+                    return UIColor.purple_200
                 }
             case 4:
                 switch position{
                 case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
+                    return UIColor.purple_800
                 case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
+                    return UIColor.purple_600
                 case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
+                    return UIColor.purple_400
                 default:
-                    return UIColor(named: "purple_200") ?? UIColor()
+                    return UIColor.purple_200
                 }
             case 5:
                 switch position{
                 case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
+                    return UIColor.purple_800
                 case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
+                    return UIColor.purple_600
                 case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
+                    return UIColor.purple_400
                 case 3:
-                    return UIColor(named: "purple_200") ?? UIColor()
+                    return UIColor.purple_200
                 default:
-                    return UIColor(named: "purple_00") ?? UIColor()
+						return UIColor.purple_00
                 }
             case 6:
                 switch position{
                 case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
+						return UIColor.purple_800
                 case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
+                    return UIColor.purple_600
                 case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
+                    return UIColor.purple_400
                 case 3:
-                    return UIColor(named: "purple_200") ?? UIColor()
+                    return UIColor.purple_200
                 case 4:
-                    return UIColor(named: "purple_100") ?? UIColor()
+                    return UIColor.purple_100
                 default:
-                    return UIColor(named: "purple_00") ?? UIColor()
+                    return UIColor.purple_00
                 }
             case 7:
                 switch position{
                 case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
+                    return UIColor.purple_800
                 case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
+                    return UIColor.purple_600
                 case 2:
-                    return UIColor(named: "purple_400") ?? UIColor()
+                    return UIColor.purple_400
                 case 3:
-                    return UIColor(named: "purple_300") ?? UIColor()
+                    return UIColor.purple_300
                 case 4:
-                    return UIColor(named: "purple_200") ?? UIColor()
+                    return UIColor.purple_200
                 case 5:
-                    return UIColor(named: "purple_100") ?? UIColor()
+                    return UIColor.purple_100
                 default:
-                    return UIColor(named: "purple_00") ?? UIColor()
+                    return UIColor.purple_00
                 }
             case 8:
                 switch position{
                 case 0:
-                    return UIColor(named: "purple_800") ?? UIColor()
+                    return UIColor.purple_800
                 case 1:
-                    return UIColor(named: "purple_600") ?? UIColor()
+                    return UIColor.purple_600
                 case 2:
-                    return UIColor(named: "purple_500") ?? UIColor()
+                    return UIColor.purple_500
                 case 3:
-                    return UIColor(named: "purple_400") ?? UIColor()
+                    return UIColor.purple_400
                 case 4:
-                    return UIColor(named: "purple_300") ?? UIColor()
+                    return UIColor.purple_300
                 case 5:
-                    return UIColor(named: "purple_200") ?? UIColor()
+                    return UIColor.purple_200
                 case 6:
-                    return UIColor(named: "purple_100") ?? UIColor()
+                    return UIColor.purple_100
                 default:
-                    return UIColor(named: "purple_00") ?? UIColor()
+                    return UIColor.purple_00
                 }
                 
             default:
-                return UIColor(named: "purple_400") ?? UIColor()
+                return UIColor.purple_400
             }
         }
         

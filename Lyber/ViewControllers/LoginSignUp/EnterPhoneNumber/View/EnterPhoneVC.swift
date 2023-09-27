@@ -134,16 +134,15 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 		}else if indexPath.item == 2{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "createPinCVC", for: indexPath as IndexPath) as! createPinCVC
             cell.setUpUI()
-            cell.configureWithData()
             cell.pinCreatedDelegate = {[]pin in
                 self.enteredPin = pin
                 self.GotoNextIndex()
             }
             if currentPage == 2{
-                DispatchQueue.main.async {
-                    cell.pinTF1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
-                }
+				DispatchQueue.main.async {
+					cell.pinTF1.becomeFirstResponder()
+					IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+				}
             }else{
                 cell.endEditing(true)
             }

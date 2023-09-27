@@ -29,7 +29,7 @@ class LanguageTVC: UITableViewCell {
 
 extension LanguageTVC{
 	func setupCell(language : Language, index: Int, lastIndex: Int){
-		self.view.backgroundColor = UIColor(named: "purpleGrey_50")
+		self.view.backgroundColor = UIColor.PurpleGrey_50
 		
 		if index == lastIndex{
 			view.layer.cornerRadius = 16

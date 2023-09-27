@@ -40,7 +40,6 @@ class PortfolioDetailVC: SwipeGesture {
 	
 	var asset: PriceServiceResume?
     //MARK: - IB OUTLETS
-    @IBOutlet var emptyView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet var tblView: UITableView!
     @IBOutlet var investMoneyBtn: UIButton!
@@ -299,7 +298,6 @@ extension PortfolioDetailVC{
 		CommonFunctions.showLoader(self.view)
 		portfolioDetailVM.getCoinInfoApi(Asset: assetId, completion: {[self]response in
 			
-			self.emptyView.isHidden = true
 			self.assetDetailData = response
 			if((response) != nil)
 			{

@@ -2053,7 +2053,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-ko-zc7">
-                                <rect key="frame" x="0.0" y="828" width="414" height="68"/>
+                                <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sre-RQ-LPR">
                                         <rect key="frame" x="116" y="0.0" width="274" height="56"/>
@@ -2081,6 +2081,8 @@
                                 <constraints>
                                     <constraint firstItem="sre-RQ-LPR" firstAttribute="top" secondItem="ft1-ko-zc7" secondAttribute="top" id="8b5-ln-8Xd"/>
                                     <constraint firstItem="Prc-wu-Lfc" firstAttribute="leading" secondItem="ft1-ko-zc7" secondAttribute="leading" constant="48" id="DXm-AB-VSv"/>
+                                    <constraint firstAttribute="bottom" secondItem="sre-RQ-LPR" secondAttribute="bottom" id="N05-3I-eaC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Prc-wu-Lfc" secondAttribute="bottom" id="PAD-9A-JMg"/>
                                     <constraint firstAttribute="trailing" secondItem="sre-RQ-LPR" secondAttribute="trailing" constant="24" id="ULE-ah-49c"/>
                                     <constraint firstItem="sre-RQ-LPR" firstAttribute="leading" secondItem="Prc-wu-Lfc" secondAttribute="trailing" constant="12" id="iBp-Ki-FVK"/>
                                     <constraint firstItem="Prc-wu-Lfc" firstAttribute="top" secondItem="ft1-ko-zc7" secondAttribute="top" id="pnx-zv-bDW"/>
@@ -2092,15 +2094,13 @@
                         <constraints>
                             <constraint firstItem="nNk-Fd-4nK" firstAttribute="leading" secondItem="e7p-mJ-bdu" secondAttribute="leading" id="EiE-cj-QL2"/>
                             <constraint firstItem="ft1-ko-zc7" firstAttribute="leading" secondItem="e7p-mJ-bdu" secondAttribute="leading" id="MAR-3l-fUi"/>
-                            <constraint firstAttribute="bottom" secondItem="Prc-wu-Lfc" secondAttribute="bottom" constant="12" id="S8q-Pj-PsF"/>
                             <constraint firstAttribute="bottom" secondItem="hgA-ZX-ENG" secondAttribute="bottom" id="XCu-lE-pfq"/>
                             <constraint firstAttribute="trailing" secondItem="hgA-ZX-ENG" secondAttribute="trailing" id="ZWT-5V-M9W"/>
                             <constraint firstAttribute="trailing" secondItem="ft1-ko-zc7" secondAttribute="trailing" id="Zpq-6X-Y3n"/>
                             <constraint firstItem="nNk-Fd-4nK" firstAttribute="top" secondItem="e7p-mJ-bdu" secondAttribute="top" id="d9Y-8M-pBg"/>
                             <constraint firstAttribute="trailing" secondItem="nNk-Fd-4nK" secondAttribute="trailing" id="g4P-VM-L6p"/>
-                            <constraint firstAttribute="bottom" secondItem="sre-RQ-LPR" secondAttribute="bottom" constant="12" id="mIi-he-tCd"/>
+                            <constraint firstItem="e25-k8-yR3" firstAttribute="bottom" secondItem="ft1-ko-zc7" secondAttribute="bottom" id="mE2-9A-2T6"/>
                             <constraint firstItem="e25-k8-yR3" firstAttribute="top" secondItem="hgA-ZX-ENG" secondAttribute="top" id="nmm-Xj-n6A"/>
-                            <constraint firstAttribute="bottom" secondItem="ft1-ko-zc7" secondAttribute="bottom" id="xLJ-Aw-Xbd"/>
                             <constraint firstItem="hgA-ZX-ENG" firstAttribute="leading" secondItem="e7p-mJ-bdu" secondAttribute="leading" id="y0E-em-uTU"/>
                         </constraints>
                     </view>
@@ -2219,7 +2219,7 @@
                                                                         <state key="normal" image="info_medium"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmG-2m-Rmk">
-                                                                        <rect key="frame" x="12" y="81" width="155" height="103"/>
+                                                                        <rect key="frame" x="12" y="163.5" width="155" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>

@@ -32,9 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
         NotificationCenter.default.addObserver(self,
                 selector: #selector(didBecomeActiveNotification),
-                // For Swift version < 4.2 replace name argument with the commented out code
-                name: UIApplication.didBecomeActiveNotification, //.UIApplicationDidBecomeActive for Swift < 4.2
-                object: nil)
+                name: UIApplication.didBecomeActiveNotification, object: nil)
         
         IQKeyboardManager.shared.enable = true
         UNUserNotificationCenter.current().delegate = self

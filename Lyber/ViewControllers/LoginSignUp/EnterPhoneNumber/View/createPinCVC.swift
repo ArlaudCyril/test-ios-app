@@ -44,9 +44,6 @@ class createPinCVC: UICollectionViewCell {
         }
     }
     
-    func configureWithData(){
-        
-    }
 }
 
 extension createPinCVC: UITextFieldDelegate,MyTextFieldDelegate{

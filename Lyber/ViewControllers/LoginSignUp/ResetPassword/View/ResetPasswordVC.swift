@@ -38,7 +38,7 @@ class ResetPasswordVC: ViewController {
 		CommonUI.setUpLbl(lbl: titleLbl, text: CommonFunctions.localisation(key: "RESET_PASSWORD"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
 		CommonUI.setUpLbl(lbl: subtitleLbl, text: "", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		CommonUI.setTextWithLineSpacing(label: subtitleLbl, text: CommonFunctions.localisation(key: "ENTER_NEW_PASSWORD"), lineSpacing: 6, textAlignment: .left)
-		CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor(named: "Red_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		
 		self.nextButton.setTitle(CommonFunctions.localisation(key: "SAVE_NEW_PASSWORD"), for: .normal)
 		self.nextButton.backgroundColor = UIColor.gray
@@ -81,11 +81,11 @@ extension ResetPasswordVC : UITextFieldDelegate{
 			let pattern = /(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[^\w]+).{10,}/
 			if (passwordTF.text?.firstMatch(of: pattern) != nil)
 			{
-				CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "STRONG_PASSWORD"), textColor: UIColor(named: "Green_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
+				CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "STRONG_PASSWORD"), textColor: UIColor.Green_500, font: UIFont.MabryPro(Size.Large.sizeValue()))
 				self.nextButton.backgroundColor = UIColor.PurpleColor
 				self.nextButton.isUserInteractionEnabled = true
 			}else{
-				CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor(named: "Red_500") ?? UIColor(), font: UIFont.MabryPro(Size.Large.sizeValue()))
+				CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Large.sizeValue()))
 				self.nextButton.isUserInteractionEnabled = false
 				self.nextButton.backgroundColor = .gray
 			}

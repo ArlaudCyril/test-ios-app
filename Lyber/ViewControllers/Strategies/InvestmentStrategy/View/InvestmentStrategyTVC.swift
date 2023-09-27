@@ -8,7 +8,7 @@
 import UIKit
 import MultiProgressView
 
-var strategyColor : [UIColor] = [UIColor(named: "purple_800") ?? UIColor(),UIColor(named: "purple_600") ?? UIColor(),UIColor(named: "purple_400") ?? UIColor(),UIColor(named: "purple_200") ?? UIColor(),UIColor(named: "purple_100") ?? UIColor(),UIColor(named: "purple_00") ?? UIColor(),UIColor.LightPurple,UIColor.LightPurple,UIColor.LightPurple,UIColor.LightPurple]
+var strategyColor : [UIColor] = [UIColor.purple_800,UIColor.purple_600,UIColor.purple_400,UIColor.purple_200,UIColor.purple_100,UIColor.purple_00,UIColor.LightPurple,UIColor.LightPurple,UIColor.LightPurple,UIColor.LightPurple]
 
 class InvestmentStrategyTVC: UITableViewCell {
     //MARK: - Variables
