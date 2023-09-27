@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppsFlyerLib
 
 class OneTimeInvestmentVM{
 	
@@ -15,6 +16,10 @@ class OneTimeInvestmentVM{
 									   Constants.ApiKeys.owner_uuid : ownerUuid]
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceStrategyExecution, withParameters: params, ofType: ExecutionOneInvestmentAPI.self, onSuccess: { response in
 			completion(response)
+            AppsFlyerLib.shared().logEvent(AFEventPurchase, withValues: [
+                AFEventParamPrice: amount,
+                AFEventParamContentType: "ExecuteStrategy"
+            ]);
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(code: code, error: error)

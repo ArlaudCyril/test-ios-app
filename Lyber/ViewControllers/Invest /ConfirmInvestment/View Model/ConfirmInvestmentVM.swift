@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppsFlyerLib
 
 class ConfirmInvestmentVM{
     func activateStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -15,6 +16,10 @@ class ConfirmInvestmentVM{
                                        Constants.ApiKeys.owner_uuid : ownerUuid]
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
+            AppsFlyerLib.shared().logEvent(AFEventPurchase, withValues: [
+                AFEventParamPrice: amount,
+                AFEventParamContentType: "ActivateStrategy"
+            ]);
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(code: code, error: error)
@@ -41,6 +46,10 @@ class ConfirmInvestmentVM{
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceAcceptQuote, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
+            AppsFlyerLib.shared().logEvent(AFEventPurchase, withValues: [
+                AFEventParamContentId: orderId,
+                AFEventParamContentType: "Order"
+            ]);
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
