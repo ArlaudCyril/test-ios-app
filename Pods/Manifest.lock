@@ -2,6 +2,9 @@ PODS:
   - ADCountryPicker (2.1.0)
   - Alamofire (5.7.1)
   - Algorithm (3.1.1)
+  - AppsFlyerFramework (6.12.2):
+    - AppsFlyerFramework/Main (= 6.12.2)
+  - AppsFlyerFramework/Main (6.12.2)
   - Branch (1.45.2)
   - Charts (4.1.0):
     - Charts/Core (= 4.1.0)
@@ -50,6 +53,7 @@ DEPENDENCIES:
   - ADCountryPicker
   - Alamofire
   - Algorithm
+  - AppsFlyerFramework
   - Branch
   - Charts
   - CountryPickerView
@@ -78,6 +82,7 @@ SPEC REPOS:
     - ADCountryPicker
     - Alamofire
     - Algorithm
+    - AppsFlyerFramework
     - Branch
     - Charts
     - CocoaLumberjack
@@ -109,6 +114,7 @@ SPEC CHECKSUMS:
   ADCountryPicker: 502cee76a30ea1c3834eb0df170ce635691655c9
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   Algorithm: c4a5475259f6de29134843e5e44b534e0bbfeec9
+  AppsFlyerFramework: 6eb4d89d2eb9a6632317f1055b359d9fd85fd5ff
   Branch: c1a7fa1811ef9203c01bc6c2588a229eb3ee1a84
   Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
   CocoaLumberjack: 78abfb691154e2a9df8ded4350d504ee19d90732
@@ -136,6 +142,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   SwiftySRP: 628ba1b2bfa9042602989d48dd01dad828e3c9dd
 
-PODFILE CHECKSUM: 0c983e7aefbd8867ed73cbd7d6b93f748290e9f9
+PODFILE CHECKSUM: 7a1e3bcdc749166c8e9e0a7b1586a95c9a4f3943
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1
