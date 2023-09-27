@@ -16,9 +16,8 @@ class CryptoDepositeVM{
 			print("success api correct")
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
 			completion(nil)
-			print("error api not correct")
-			CommonFunctions.toster(error)
 		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")
 	}
 }

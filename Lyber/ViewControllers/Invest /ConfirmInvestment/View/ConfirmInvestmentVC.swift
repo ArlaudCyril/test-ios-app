@@ -256,7 +256,7 @@ extension ConfirmInvestmentVC{
             self.confirmInvestmentBtn.showLoading()
 			
 			let data = [
-				"assetId": self.fromAssetId,
+				"asset": self.fromAssetId,
 				"network": self.network?.id ?? "",
 				"amount": self.totalCoinsInvested,
 				"destination": self.address ?? ""

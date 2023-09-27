@@ -64,6 +64,7 @@ extension addressCVC{
             tf?.delegate = self
             tf?.textColor = UIColor.Purple35126D
             tf?.tintColor = UIColor.Purple35126D
+			tf?.autocapitalizationType = .words
             tf?.addTarget(self, action: #selector(editChange(_:)), for: .editingChanged)
         }
     }
@@ -121,9 +122,9 @@ extension addressCVC: UITextFieldDelegate{
         }else if textField == buildingFloorTF{
             return (newString.length <= 30 )
         }else if textField == cityTF{
-            if (string.rangeOfCharacter(from: NSCharacterSet.letters.inverted)) != nil && string.rangeOfCharacter(from: NSCharacterSet.whitespaces) == nil{
-                return false
-            }
+//            if (string.rangeOfCharacter(from: NSCharacterSet.letters.inverted)) != nil && string.rangeOfCharacter(from: NSCharacterSet.whitespaces) == nil{
+//                return false
+//            }
             return (newString.length <= 30 )
         }else if textField == stateTF{
             return (newString.length <= 30 )

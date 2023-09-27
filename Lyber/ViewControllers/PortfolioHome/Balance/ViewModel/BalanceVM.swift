@@ -15,8 +15,8 @@ class BalanceVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 }

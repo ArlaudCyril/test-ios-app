@@ -15,8 +15,8 @@ class EducationStrategyVM{
 //            CommonFunction.toster(response.message ?? "")
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
     }
 }

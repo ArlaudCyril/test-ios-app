@@ -11,8 +11,8 @@ class AddCryptoAddressVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.networkServiceNetworks, withParameters: [:], ofType: NetworkDataAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 	
@@ -22,8 +22,8 @@ class AddCryptoAddressVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.networkServiceNetwork, withParameters: param, ofType: NetworkDataByIdAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     

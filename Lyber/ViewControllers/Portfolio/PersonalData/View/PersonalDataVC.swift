@@ -274,7 +274,7 @@ extension PersonalDataVC{
         }else if self.CityName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterCity)
         }else if self.stateName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunctions.toster(Constants.AlertMessages.enterState)
+            CommonFunctions.toster(Constants.AlertMessages.enterDepartment)
         }else if self.zipCode.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterZipcode)
         }else if self.CountryName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{

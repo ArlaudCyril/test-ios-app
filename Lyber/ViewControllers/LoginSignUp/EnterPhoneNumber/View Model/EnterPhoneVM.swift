@@ -25,11 +25,10 @@ class EnterPhoneVM {
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetPhone, withParameters: param, ofType: signUpApi.self, onSuccess: { response in
             completion(response)
-//            CommonFunction.toster(response.message ?? "")
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
 			completion(nil)
-			CommonFunctions.toster(CommonFunctions.translate(string: error))
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
     }
     
@@ -40,8 +39,8 @@ class EnterPhoneVM {
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
@@ -53,8 +52,8 @@ class EnterPhoneVM {
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
@@ -66,8 +65,8 @@ class EnterPhoneVM {
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
     }
     
@@ -81,8 +80,8 @@ class EnterPhoneVM {
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     

@@ -15,6 +15,7 @@ class EmailLoginVC: ViewController {
     //MARK: - Variables
     var email = String() ,password = String(), enteredPin = String()
     var currentPage : Int? = 0
+    var emailLoginCVC : EmailLoginCVC?
     //MARK: - IB OUTLETS
     @IBOutlet var headerVw: HeaderView!
     @IBOutlet var collView: UICollectionView!
@@ -75,6 +76,7 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmailLoginCVC", for: indexPath as IndexPath) as! EmailLoginCVC
             cell.controller = self
             cell.setUpUI()
+			self.emailLoginCVC = cell
             if currentPage == 0{
                 DispatchQueue.main.async {
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = true
@@ -220,7 +222,9 @@ extension EmailLoginVC{
 									vc.controller = self
 									self?.present(vc, animated: true)
                                 }
-                            }
+							}else{
+								self?.emailLoginCVC?.passwordTF.text = ""
+							}
                         })
                     }catch{
                         print("error")

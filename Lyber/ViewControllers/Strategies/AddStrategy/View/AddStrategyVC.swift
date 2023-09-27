@@ -363,7 +363,7 @@ extension AddStrategyVC{
         print(self.addAssetsVC.coinsData)
         
         //MARK: - Loading resume cryptocurrencies
-        self.addAssetsVC.addAssetsVM.getAllAssetsApi(order: "volume_desc", completion: {[]response in
+		AllAssetsVM().getAllAssetsApi(completion: {[]response in
             if let response = response {
                 self.addAssetsVC.coinsData.removeAll()
 				self.addAssetsVC.coinsData.append(contentsOf: response )

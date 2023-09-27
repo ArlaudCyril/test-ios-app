@@ -19,8 +19,8 @@ class StrongAuthVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceUser, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

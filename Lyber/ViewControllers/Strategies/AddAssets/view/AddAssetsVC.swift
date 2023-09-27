@@ -10,12 +10,17 @@ import ESPullToRefresh
 
 class AddAssetsVC: ViewController {
     //MARK: - Variables
-    var addAssetsVM = AddAssetsVM()
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     //var AssetsAddDataCallback : ((Trending?)->())?
     var AssetsAddDataCallback : ((PriceServiceResume?)->())?
     var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "GAINERS"),CommonFunctions.localisation(key: "LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
-    var coinsData : [PriceServiceResume] = []
+	
+	var fromAssetId : String = ""
+	
+	var coinsData : [PriceServiceResume] = []
+	var originalData : [PriceServiceResume] = []
+	var filteredData : [AssetBaseData] = []
+	var filterCoin : [PriceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
     var timer = Timer()
     //MARK: - IB OUTLETS
@@ -40,13 +45,10 @@ class AddAssetsVC: ViewController {
 	//MARK: - SetUpUI
 
     override func setUpUI(){
-        self.addAssetsVM.controller = self
         self.bottomVw.layer.cornerRadius = 32
         self.bottomVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
         CommonUI.setUpLbl(lbl: self.addAssetLbl, text: CommonFunctions.localisation(key: "ADD_AN_ASSET"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-//        CommonUI.setUpButton(btn: self.viewAllAssetsBtn, text: CommonFunctions.localisation(key: "VIEW_ALL_AVAILABLE_ASSETS"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.whiteColor, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-//        self.viewAllAssetsBtn.setAttributedTitle(CommonFunction.underlineString(str: CommonFunctions.localisation(key: "VIEW_ALL_AVAILABLE_ASSETS")), for: .normal)
         self.collView.delegate = self
         self.collView.dataSource = self
         self.tblView.delegate = self
@@ -55,7 +57,6 @@ class AddAssetsVC: ViewController {
         self.cancelBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         
         tblView.es.addPullToRefresh {
-//            self.coinsData = []
             self.pageNumber  = 1
             self.apiHitOnce = false
             self.apiHitting = false
@@ -98,25 +99,18 @@ extension AddAssetsVC: UICollectionViewDelegate, UICollectionViewDataSource,UICo
         return CGSize(width: collView.layer.bounds.width/4, height: collView.layer.bounds.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collView.scrollToItem(at: IndexPath(item: indexPath.row, section: 0), at: .centeredHorizontally, animated: true)
-        if indexPath.item == 0{
-            self.selectedCoinsType = .Trending
-        }else if indexPath.row == 1{
-            self.selectedCoinsType = .TopGainers
-        }else if indexPath.row == 2{
-            self.selectedCoinsType = .TopLoosers
-        }else if indexPath.row == 3{
-            self.selectedCoinsType = .Stable
-        }
-//        self.coinsData = []
-        self.pageNumber  = 1
-        self.apiHitOnce = false
-        self.apiHitting = false
-        self.canPaginate = true
-        self.tblView.tableFooterView?.isHidden = true
-        self.showSpinnerOnTableHeader()
-        self.callGetAssetsApi(isEmpty: true)
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		if indexPath.item == 0{
+			self.selectedCoinsType = .Trending
+		}else if indexPath.row == 1{
+			self.selectedCoinsType = .TopGainers
+		}else if indexPath.row == 2{
+			self.selectedCoinsType = .TopLoosers
+		}else if indexPath.row == 3{
+			self.selectedCoinsType = .Stable
+		}
+		self.filterData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -130,18 +124,18 @@ extension AddAssetsVC: UICollectionViewDelegate, UICollectionViewDataSource,UICo
 //MARK: - table view delegates and dataSource
 extension AddAssetsVC: UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coinsData.count
+        return filterCoin.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddAssetsTVC", for: indexPath as IndexPath) as! AddAssetsTVC
-        cell.configureWithData(data : coinsData[indexPath.row] )
+        cell.configureWithData(data : filterCoin[indexPath.row] )
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var newAsset = coinsData[indexPath.row]
+        var newAsset = filterCoin[indexPath.row]
         newAsset.priceServiceResumeData.isAuto = true
         self.AssetsAddDataCallback?(newAsset)
         self.dismiss(animated: true, completion: nil)
@@ -149,7 +143,7 @@ extension AddAssetsVC: UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if self.apiHitOnce == true {
-            if  indexPath.row == (coinsData.count-7) && canPaginate && apiHitting == false {
+            if  indexPath.row == (filterCoin.count-7) && canPaginate && apiHitting == false {
 //                self.showSpinnerOnTableFooter()
 //
             }
@@ -179,33 +173,20 @@ extension AddAssetsVC{
     }
 	
     func callGetAssetsApi(isEmpty : Bool = false){
-        var order = String()
-        if self.selectedCoinsType == .Trending{
-            order = "volume_desc"
-        }else if self.selectedCoinsType == .TopGainers{
-            order = "hour_24_desc"
-        }else if self.selectedCoinsType == .TopLoosers{
-            order = "hour_24_asc"
-        }else if self.selectedCoinsType == .Stable{
-            order = "stable_coins"
-        }
-        addAssetsVM.getAllAssetsApi(order: order, completion: {[]response in
+		AllAssetsVM().getAllAssetsApi(completion: {[]response in
 			if let response = response {
-                self.coinsData.removeAll()
-                self.coinsData.append(contentsOf: response )
-				self.coinsData.remove(at: self.coinsData.firstIndex(where: {$0.id == "usdt"}) ?? 0)
-                if (response.count) < 10 {
-                    self.canPaginate = false
-                }
-                self.apiHitOnce = true
-                self.apiHitting = false
-                self.tblView.reloadData()
-            }
-            self.tblView.es.stopPullToRefresh()
-            self.tblView.tableFooterView?.isHidden = true
-            self.tblView.tableHeaderView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tblView.bounds.width, height: CGFloat(0)))
-            CommonFunctions.hideLoader(self.view)
-            self.tblView.reloadData()
+				print(response)
+				self.originalData = response
+				self.coinsData = response
+				self.filterData()
+			}
+			self.tblView.tableHeaderView = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tblView.bounds.width, height: CGFloat(0)))
+			self.tblView.tableHeaderView?.isHidden = true
+			self.tblView.es.stopPullToRefresh()
+			self.tblView.tableFooterView?.isHidden = true
+			CommonFunctions.hideLoader(self.view)
+			
+			self.tblView.reloadData()
         })
     }
     
@@ -216,4 +197,30 @@ extension AddAssetsVC{
         self.tblView.tableHeaderView = spinner
         self.tblView.tableHeaderView?.isHidden = false
     }
+	
+	func filterData(){
+		if self.selectedCoinsType == .Stable{
+			self.filterCoin = self.coinsData.filter({CommonFunctions.getCurrency(id: $0.id).isStablecoin ?? false})
+		}
+		else{
+			if self.selectedCoinsType == .TopGainers{
+				self.filterCoin = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) > (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
+			}else if self.selectedCoinsType == .TopLoosers{
+				self.filterCoin = self.coinsData.sorted(by: {(Double($0.priceServiceResumeData.change ?? "") ?? 0) < (Double($1.priceServiceResumeData.change ?? "") ?? 0)})
+			}else{
+				self.filterCoin = self.originalData
+			}
+			self.filterCoin = self.filterCoin.filter({!(CommonFunctions.getCurrency(id: $0.id).isStablecoin ?? false)})
+		}
+		if(self.fromAssetId != ""){
+			let indexAssetToRemove = filterCoin.firstIndex(where: {$0.id == self.fromAssetId})
+			if(indexAssetToRemove != nil){
+				filterCoin.remove(at: indexAssetToRemove!)
+			}
+			
+		}
+		
+		self.tblView.reloadData()
+	}
+	
 }

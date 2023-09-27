@@ -103,6 +103,7 @@
 
 //MARK: - PORTFOLIO HOME;
 "PORTFOLIO" = "Portfolio";
+"REGISTRATION" = "Registration";
 "COMPLETE_ACCOUNT_TO_START_INVESTING" = "Complete your account to start investing";
 "STEPS_COMPLETED" = "steps completed";
 "PROGRESS_REGISTRATION_SAVED_EACH_STAGE" = "The progress of your registration is saved at each stage. You can stop and start again at any time.";
@@ -199,7 +200,7 @@
 "BETWEEN_10000_€AND_99999€" = "Between 10 000€ and 99 999€";
 "GREATER_THAN_100000€" = "> 100 000€";
 
-"WHAT_YOUR_SOURCE_OF_INCOME" = "What’s your source of income?";
+"WHAT_YOUR_SOURCE_OF_INCOME" = "What's your main source of income?";
 "SALARY" = "Salary";
 "INVESTMENTS" = "Investments";
 "SAVINGS" = "Savings";
@@ -228,7 +229,7 @@
 "TEXTILE_FASHION_APPAREL" = "Textile, Fashion & Apparel";
 "TRANSPORT_LOGISTICS_WHOLESALE" = "Transport, Logistics & Wholesale";
 
-"WHAT_SALARY_RANGE_YOU_FALL_INTO" = "What salary range do you fall into?";
+"WHAT_SALARY_RANGE_YOU_FALL_INTO" = "What salary range do you fall into (net salary)?";
 "WHAT_DO_YOU_PLAN_MAINLY" = "What do you plan to mainly do?";
 
 "IDENTITY_VERIFICATION" = "Identity verification";
@@ -514,7 +515,7 @@
 "ALERT_STRATEGY_NAMET" = "Please enter Strategy name";
 "ALERT_PASSWORD" = "Please enter password";
 "ALERT_VALID_PASSWORD" = "Password should be of minimum 8 characters";
-"ALERT_STATE_NAME" = "Please enter state name";
+"ALERT_DEPARTMENT" = "Please enter the department";
 "ALERT_VALID_ZIPCODE" = "Please enter valid zipcode";
 "ALERT_BIRTH_PLACE" = "Please enter your birth Place";
 "ALERT_BIRTH_COUNTRY" = "Please select your birth country";
@@ -611,12 +612,51 @@
 "SAVE_MONEY" = "Save money";
 "STORE_DIGITAL_ASSETS" = "Store my digital assets";
 
-"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "To complete your registration, we need to verify your identity. You will need to provide an electronic signature and a photograph of an identity document.";
+"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "To complete your registration, we need to verify your identity through our partner Docaposte. You will need to provide an electronic signature and a photograph of an identity document.";
 
 
 
 
 //MARK: - ERRORS
 
+"FATAL_ERROR" = "Fatal error (%@)";
+"UNKNOWN_ERROR" = "Unknown error";
+"UNKNOWN_ERROR_PARAMETER" = "Unknown error (%@)";
 "ERROR_TRANSACTION" = "The transaction could not be completed";
 "PHONE_ALREADY_REGISTERED" = "This phone number is already registered";
+"COULD_NOT_FIND_PHONE" = "Couldn't find phone number";
+"EMAIL_ALREADY_EXIST" = "Email already exists, you must choose another one";
+"NO_ACCOUNT_CREATED" = "Please create your user account with email and password first";
+"NO_PASSWORD_CREATED" = "First need to create a password";
+"PHONE_NOT_VERIFIED" = "Phone not verified";
+"EMAIL_NOT_VERIFIED" = "Email not verified";
+"NO_USER_EMAIL" = "No user account exists with this email";
+"NO_USER_PHONE" = "No user account exists with this phone number";
+"USER_BLOCKED_FROM_LOGIN" = "This account is blocked. Contact support for more informations.";
+"WRONG_PASSWORD" = "Incorrect password";
+"EXPIRED_CHALLENGE" = "Expired challenge";
+"CODE_ALREADY_USED" = "Google OTP already used. Please wait 30s and try again with a new OTP";
+"TWO_FA_NOT_ACTIVATED" = "2FA not activated";
+"INCORRECT_OTP" = "Incorrect OTP";
+"USER_BINANCE_ID_NOT_FOUND" = "Couldn't find user with this binance id";
+"USER_NOT_EXIST" = "Fatal ! User no longer exist !";
+"INVALID_AUTHORIZATION" = "Invalid authorization";
+"INCORRECT_TOKEN" = "Incorrect JWT";
+"INVALID_AUTHORIZATION_TYPE" = "Invalid authorization type";
+"UNEXPECTED_OTP" = "Please first ask for an OTP";
+"TOO_MANY_OTP_FAILURE" =
+"You made too much failed OTP attempt for today. You will be able to try again tomorrow. If this was not you or for urgent changes, please contact support";
+"ONLY_EMAIL_AND_SMS" =
+"This method is only supported if the user has 2FA configured for email or sms but google 2FA is configured";
+"EXPIRED_OTP" = "This OTP token has expired";
+"UNEXPECTED_ACTION" = "Actions do not match";
+"INVALID_BASE64" = "Invalid base64";
+"NOT_IN_GOOGLE_AUTHENTICATOR_FLOW" = "Not in a Google Authenticator flow";
+"WRONG_GOOGLE_OTP" = "Wrong Google OTP verification";
+"GOOGLE_OTP_ACTIVE" = "Can't request a new Google OTP secret because it is active";
+"MISSING_OTP" = "OTP is required but missing";
+"UNSUPPORTED_AUTH_METHOD" = "This authentication method is not supported";
+"INCORRECT_SCOPE_2FA" = "Incorrect scope 2FA";
+"KYC_NOT_OK" = "We were not able to validate your KYC. Please try again";
+"USER_ALREADY_VERIFIED" = "User is already verified";
+"FAILED_RESET_PASSWORD" = "This link was already used to reset your password!";

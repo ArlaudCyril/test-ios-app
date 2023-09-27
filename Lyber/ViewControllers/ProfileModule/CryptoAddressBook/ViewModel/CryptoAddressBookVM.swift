@@ -23,8 +23,8 @@ class CryptoAddressBookVM{
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceWithdrawalAddress, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
 			completion(response)
 		}, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
 			completion(nil)
-			CommonFunctions.toster(error)
 		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
 	}
 	
@@ -33,8 +33,8 @@ class CryptoAddressBookVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceWithdrawalAddress, withParameters: [:], ofType: CryptoAddressesAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 }

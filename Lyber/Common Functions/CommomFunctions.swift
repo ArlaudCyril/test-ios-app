@@ -83,6 +83,26 @@ class CommonFunctions{
 		
         
     }
+	
+	static func fatalErrorAction(){
+		let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+		let navVC = UINavigationController(rootViewController: vc)
+		UIApplication.shared.windows[0].rootViewController = navVC
+		UIApplication.shared.windows[0].makeKeyAndVisible()
+		navVC.navigationController?.popToRootViewController(animated: true)
+		navVC.setNavigationBarHidden(true , animated: true)
+		userData.shared.deleteData()
+        
+    }
+	
+	static func goHome(){
+		let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+		let navVC = UINavigationController(rootViewController: vc)
+		UIApplication.shared.windows[0].rootViewController = navVC
+		UIApplication.shared.windows[0].makeKeyAndVisible()
+		navVC.navigationController?.popToRootViewController(animated: true)
+		navVC.setNavigationBarHidden(true , animated: true)
+    }
     
     static func showLoader(){
         let topView = getTopMostViewController()?.view
@@ -940,15 +960,63 @@ class CommonFunctions{
 				userData.shared.type2FA = response?.data?.type2FA ?? "none"
 				userData.shared.phone_no = response?.data?.phoneNo ?? ""
 				userData.shared.email = response?.data?.email ?? ""
-				//userData.shared.profile_image = response.data?.profilePic ?? ""
-				userData.shared.scope2FALogin = (response?.data?.scope2FA.contains("login") == true)
-				userData.shared.scope2FAWhiteListing =  (response?.data?.scope2FA.contains("whitelisting") == true)
-				userData.shared.scope2FAWithdrawal = (response?.data?.scope2FA.contains("withdrawal") == true)
+				
+				userData.shared.scope2FALogin = ((response?.data?.scope2FA.contains("login")) != nil)
+				userData.shared.scope2FAWhiteListing =  ((response?.data?.scope2FA.contains("whitelisting")) != nil)
+				userData.shared.scope2FAWithdrawal = ((response?.data?.scope2FA.contains("withdrawal")) != nil)
 				userData.shared.profile_image = response?.data?.avatar ?? ""
 				
 				userData.shared.dataSave()
 			}
 		})
+	}
+	
+	static func handleErrors(code: String, error: String, controller: UIViewController = UIViewController()){
+		switch code {
+			case "-1":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR"))
+			case "15", "25", "28", "30", "34", "40", "41", "42", "45", "50":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+			case "1":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "PHONE_ALREADY_REGISTERED"))
+			case "3", "8", "9", "26", "29", "46", "52":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "FATAL_ERROR", parameter: code))
+				CommonFunctions.fatalErrorAction()
+			case "5":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "EMAIL_ALREADY_EXIST"))
+			case "6", "7":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+				controller.dismiss(animated: false)
+			case "10":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_EMAIL"))
+			case "11":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_PHONE"))
+			case "12":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "USER_BLOCKED_FROM_LOGIN"))
+			case "14":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "WRONG_PASSWORD"))
+			case "18":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "CODE_ALREADY_USED"))
+			case "24":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "INCORRECT_OTP"))
+			case "27":
+				CommonFunctions.goHome()
+				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+			case "35":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "TOO_MANY_OTP_FAILURE"))
+			case "37", "44":
+				self.loadingProfileApi()
+				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+			case "47":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "FAILED_RESET_PASSWORD"))
+			case "51":
+				CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_NOT_OK"))
+				let vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				controller.navigationController?.pushViewController(vc, animated: false)
+				
+			default:
+				CommonFunctions.toster(error)
+		}
 	}
 	
 }

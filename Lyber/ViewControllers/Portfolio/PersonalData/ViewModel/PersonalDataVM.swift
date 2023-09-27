@@ -8,6 +8,7 @@
 import Foundation
 import BigNum
 import CryptoKit
+import UIKit
 
 class PersonalDataVM{
     func personalDataApi(profile_info_step : Int,personalData : personalDataStruct?, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -60,8 +61,8 @@ class PersonalDataVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
@@ -82,8 +83,8 @@ class PersonalDataVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
@@ -103,8 +104,8 @@ class PersonalDataVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
@@ -125,29 +126,31 @@ class PersonalDataVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.setEmailAndPassword, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
-    func checkEmailVerificationApi(code : String?, completion: @escaping ( (OTPAPI?) -> Void )){
+	func checkEmailVerificationApi(controller: UIViewController, code : String?, completion: @escaping ( (OTPAPI?) -> Void )){
         let params : [String : Any] = [Constants.ApiKeys.code : code ?? ""]
 
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyEmail, withParameters: params, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error, controller: controller)
             completion(nil)
-//            CommonFunction.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
-    func finishRegistrationApi(completion: @escaping ( (SuccessAPI?) -> Void )){
+	func finishRegistrationApi(controller: UIViewController, completion: @escaping ( (SuccessAPI?) -> Void )){
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.finishRegistration, withParameters: [:], ofType: SuccessAPI.self, onSuccess: { response in
-            completion(response)
+			CommonFunctions.handleErrors(code: "51", error: "error", controller: controller)
+			completion(nil)
+//            completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error, controller: controller)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
 }

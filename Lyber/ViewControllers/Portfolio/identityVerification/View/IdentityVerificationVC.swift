@@ -97,23 +97,4 @@ extension IdentityVerificationVC{
 			}
 		})
 	}
-	
-	func finishRegistration(){
-		//end of register phase
-		PersonalDataVM().finishRegistrationApi(completion: {[weak self]response in
-			if response != nil {
-				userData.shared.time = Date()
-				GlobalVariables.isRegistering = false
-				userData.shared.userToken = response?.data?.access_token ?? ""
-				userData.shared.refreshToken = response?.data?.refresh_token ?? ""
-				userData.shared.dataSave()
-				CommonFunctions.loadingProfileApi()
-				userData.shared.registered()
-				let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-				self?.navigationController?.pushViewController(vc, animated: true)
-			}else{
-				CommonFunctions.toster("KYC didn't work")
-			}
-		})
-	}
 }

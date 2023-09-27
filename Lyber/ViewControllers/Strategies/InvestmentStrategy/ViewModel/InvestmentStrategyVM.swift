@@ -14,9 +14,8 @@ class InvestmentStrategyVM{
             print("success api correct")
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            print("error api not correct")
-            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
     
@@ -29,8 +28,8 @@ class InvestmentStrategyVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
@@ -44,8 +43,8 @@ class InvestmentStrategyVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

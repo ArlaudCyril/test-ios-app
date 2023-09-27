@@ -210,17 +210,14 @@ extension VerificationVC{
 			})
         }else if(self.action == "signup_email"){
 			CommonFunctions.showLoader(self.view)
-			PersonalDataVM().checkEmailVerificationApi(code: code , completion: {[self]response in
+			PersonalDataVM().checkEmailVerificationApi(controller: self, code: code , completion: {[self]response in
 				CommonFunctions.hideLoader(self.view)
 				if (response != nil){
 					userData.shared.enterPhoneStepComplete = 2
 					userData.shared.dataSave()
 					self.dismiss(animated: true)
 					self.enterPhoneController?.GotoNextIndex()
-				}else{
-					CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
 				}
-				
 			})
         }else if(self.action == "verificationCallback"){
 			self.dismiss(animated: true)

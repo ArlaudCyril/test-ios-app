@@ -17,7 +17,6 @@ class checkAccountCompletedVC: ViewController {
     ]
     //MARK:- IB OUTLETS
     @IBOutlet var portfolioLbl: UILabel!
-    @IBOutlet var euroLbl: UILabel!
     @IBOutlet var profilePic: UIImageView!
     @IBOutlet var bottomVw: UIView!
     @IBOutlet var completeYourAccountLbl: UILabel!
@@ -51,8 +50,7 @@ class checkAccountCompletedVC: ViewController {
 	//MARK: - SetUpUI
 
     override func setUpUI(){
-        CommonUI.setUpLbl(lbl: self.portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroLbl, text: "0.00€", textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.extraLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.portfolioLbl, text: CommonFunctions.localisation(key: "REGISTRATION"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.width/2
         
         self.bottomVw.layer.cornerRadius = 32

@@ -17,8 +17,8 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
@@ -31,8 +31,8 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
@@ -42,8 +42,8 @@ class ConfirmInvestmentVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceAcceptQuote, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
@@ -57,8 +57,8 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 	func userGetOtpApi(action: String, data : [String : Any] = [:], completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -82,8 +82,8 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 }

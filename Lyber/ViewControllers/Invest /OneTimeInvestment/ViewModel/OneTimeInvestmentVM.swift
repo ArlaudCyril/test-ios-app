@@ -17,8 +17,8 @@ class OneTimeInvestmentVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
 			completion(nil)
-			CommonFunctions.toster(error)
 		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
 	}
 	
@@ -30,8 +30,8 @@ class OneTimeInvestmentVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
 			completion(nil)
-			//CommonFunctions.toster(error)
 		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")
 	}
 

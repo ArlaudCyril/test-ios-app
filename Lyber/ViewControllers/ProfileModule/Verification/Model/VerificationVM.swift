@@ -21,8 +21,8 @@ class VerificationVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
@@ -34,13 +34,13 @@ class VerificationVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
             completion(nil)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 	
 	func walletCreateWithdrawalRequest(otp: String? = "", data: [String : Any] ,onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
-        var params : [String : Any] = [Constants.ApiKeys.asset : data["assetId"] ?? "",
+        var params : [String : Any] = [Constants.ApiKeys.asset : data["asset"] ?? "",
 									   Constants.ApiKeys.amount : data["amount"] ?? "",
 									   Constants.ApiKeys.destination : data["destination"] ?? "",
 									   Constants.ApiKeys.network : data["network"] ?? ""]
@@ -50,12 +50,11 @@ class VerificationVM{
 		}
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceWithdraw, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
-            print(response)
             onSuccess(response)
 		}, onFailure: { reload, error, code  in
 			let failure = FailureAPI(message: error, code: code)
+			CommonFunctions.handleErrors(code: code, error: error)
 			onFailure(failure)
-            CommonFunctions.toster(error)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 }

@@ -21,6 +21,7 @@ class EnterPhoneVC: ViewController {
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
 	var isDoubleAuthentified = false
+	var enterNumberCVC : enterNumberCVC?
     
     //MARK: - IB OUTLETS
     @IBOutlet var headerVw: HeaderView!
@@ -117,7 +118,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enterNumberCVC", for: indexPath as IndexPath) as! enterNumberCVC
             cell.controller = self
             cell.setUpUI()
-            
+			self.enterNumberCVC = cell
             if currentPage == 0{
                 DispatchQueue.main.async {
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = true
@@ -273,6 +274,7 @@ extension EnterPhoneVC{
 			self.headerVw.backBtn.isHidden = true
 			if self.currentPage ?? 0 == 0{
 				self.nextBtnView.isHidden = false
+				self.headerVw.backBtn.isHidden = false
 			}else if self.currentPage ?? 0 == 2{
 				self.nextBtnView.isHidden = true
 			}else if self.currentPage ?? 0 == 3{
@@ -344,7 +346,9 @@ extension EnterPhoneVC{
 											vc.controller = self
 											self?.present(vc, animated: true)
                                         }
-                                    }
+									}else{
+										self?.enterNumberCVC?.passwordTF.text = ""
+									}
                                 })
                             }catch{
                                 print("error")

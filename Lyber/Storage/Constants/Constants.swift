@@ -40,7 +40,7 @@ struct Constants{
         
         static var enterPassword = CommonFunctions.localisation(key:"ALERT_PASSWORD")
         static var enterValidPassword = CommonFunctions.localisation(key:"ALERT_VALID_PASSWORD")
-        static var enterState = CommonFunctions.localisation(key:"ALERT_STATE_NAME")
+        static var enterDepartment = CommonFunctions.localisation(key:"ALERT_DEPARTMENT")
         static var enterValidZipcode = CommonFunctions.localisation(key:"ALERT_VALID_ZIPCODE")
         static var enterBirthPlace = CommonFunctions.localisation(key:"ALERT_BIRTH_PLACE")
         static var selectBirthCountry = CommonFunctions.localisation(key:"ALERT_BIRTH_COUNTRY")

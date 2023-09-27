@@ -102,6 +102,7 @@
 
 //MARK: - PORTFOLIO HOME;
 "PORTFOLIO" = "Portefeuille";
+"REGISTRATION" = "Inscription";
 "COMPLETE_ACCOUNT_TO_START_INVESTING" = "Complétez votre compte pour commencer à investir";
 "STEPS_COMPLETED" = "étapes complétées";
 "PROGRESS_REGISTRATION_SAVED_EACH_STAGE" = "La progression de votre inscription est sauvegardée à chaque étape. Vous pouvez l'interrompre et la reprendre à tout moment.";
@@ -195,7 +196,7 @@
 "BETWEEN_1000€_AND_9999€" = "Entre 1 000€ et 9 999€";
 "BETWEEN_10000_€AND_99999€" = "Entre 10 000€ et 99 999€";
 "GREATER_THAN_100000€" = "> 100 000€";
-"WHAT_YOUR_SOURCE_OF_INCOME" = "Quelle est votre source de revenus ?";
+"WHAT_YOUR_SOURCE_OF_INCOME" = "Quelle est votre principale source de revenus ?";
 "SALARY" = "Salaire";
 "INVESTMENTS" = "Placements";
 "SAVINGS" = "Epargne";
@@ -225,7 +226,7 @@
 "TRANSPORT_LOGISTICS_WHOLESALE" = "Transport, Logistique & Vente en Gros";
 
 
-"WHAT_SALARY_RANGE_YOU_FALL_INTO" = "Dans quelle tranche de salaire vous situez-vous ?";
+"WHAT_SALARY_RANGE_YOU_FALL_INTO" = "Dans quelle tranche de salaire vous situez-vous (salaire net) ?";
 "WHAT_DO_YOU_PLAN_MAINLY" = "Que comptez-vous faire principalement ?";
 "IDENTITY_VERIFICATION" = "Vérification de l'identité";
 "STEPS_PROTECT_YOU_FROM_FRAUDS_AND_THEFT" = "Cette étape vous protège contre la fraude et l'usurpation d'identité. Utilisez votre téléphone pour :";
@@ -511,7 +512,7 @@
 "ALERT_STRATEGY_NAMET" = "Veuillez saisir le nom de la stratégie";
 "ALERT_PASSWORD" = "Veuillez rentrer un mot de passe";
 "ALERT_VALID_PASSWORD" = "Le mot de passe doit comporter au moins 8 caractères.";
-"ALERT_STATE_NAME" = "Veuillez saisir le nom de l'État";
+"ALERT_DEPARTMENT" = "Veuillez saisir le département";
 "ALERT_VALID_ZIPCODE" = "Veuillez saisir un code postal valide";
 "ALERT_BIRTH_PLACE" = "Veuillez saisir votre lieu de naissance";
 "ALERT_BIRTH_COUNTRY" = "Veuillez sélectionner votre pays de naissance";
@@ -612,11 +613,49 @@
 "SAVE_MONEY" = "Épargner de l'argent";
 "STORE_DIGITAL_ASSETS" = "Conserver mes actifs numériques";
 
-"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre idendité. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
+"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre identité via notre partenaire Docaposte. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
 
 
 //MARK: - ERRORS
 
+"FATAL_ERROR" = "Erreur fatale (%@)";
+"UNKNOWN_ERROR_PARAMETER" = "Erreur inconnue (%@)";
 "ERROR_TRANSACTION" = "La transaction n'a pas pu aboutir";
 "PHONE_ALREADY_REGISTERED" = "Ce numéro de téléphone est déjà enregistré";
+"COULD_NOT_FIND_PHONE" = "Impossible de trouver le numéro de téléphone";
+"EMAIL_ALREADY_EXIST" = "L'email existe déjà, vous devez en choisir un autre";
+"NO_ACCOUNT_CREATED" = "Veuillez d'abord créer votre compte d'utilisateur avec un e-mail et un mot de passe";
+"NO_PASSWORD_CREATED" = "Vous devez d'abord créer un mot de passe";
+"PHONE_NOT_VERIFIED" = "Téléphone non vérifié";
+"EMAIL_NOT_VERIFIED" = "Email non vérifié";
+"NO_USER_EMAIL" = "Aucun compte d'utilisateur n'existe avec cet email";
+"NO_USER_PHONE" = "Aucun utilisateur n'est enregistré avec ce numéro de téléphone";
+"USER_BLOCKED_FROM_LOGIN" = "Ce compte est bloqué. Contactez le support pour plus d'informations.";
+"WRONG_PASSWORD" = "Mot de passe incorrect";
+"EXPIRED_CHALLENGE" = "Défi expiré";
+"CODE_ALREADY_USED" = "Google OTP déjà utilisé. Veuillez attendre 30 secondes et réessayer avec un nouvel OTP.";
+"TWO_FA_NOT_ACTIVATED" = "2FA non activé";
+"INCORRECT_OTP" = "OTP incorrect";
+"USER_BINANCE_ID_NOT_FOUND" = "Impossible de trouver un utilisateur avec cet identifiant binance";
+"USER_NOT_EXIST" = "Fatal ! L'utilisateur n'existe plus !";
+"INVALID_AUTHORIZATION" = "Autorisation non valide";
+"INCORRECT_TOKEN" = "JWT incorrect";
+"INVALID_AUTHORIZATION_TYPE" = "Type d'autorisation non valide";
+"UNEXPECTED_OTP" = "Veuillez d'abord demander un OTP";
+"TOO_MANY_OTP_FAILURE" =
+"Vous avez fait trop de tentatives d'OTP ratées pour aujourd'hui. Vous pourrez réessayer demain. S'il ne s'agit pas de vous ou pour des changements urgents, veuillez contacter l'assistance.";
+"ONLY_EMAIL_AND_SMS" =
+"Cette méthode n'est prise en charge que si l'utilisateur a configuré 2FA pour l'email ou le sms mais que google 2FA est configuré";
+"EXPIRED_OTP" = "Ce jeton OTP a expiré";
+"UNEXPECTED_ACTION" = "Les actions ne correspondent pas";
+"INVALID_BASE64" = "Base64 invalide";
+"NOT_IN_GOOGLE_AUTHENTICATOR_FLOW" = "Pas dans un flux Google Authenticator";
+"WRONG_GOOGLE_OTP" = "Vérification OTP Google erronée";
+"GOOGLE_OTP_ACTIVE" = "Impossible de demander un nouveau secret Google OTP car il est actif";
+"MISSING_OTP" = "L'OTP est nécessaire mais manquant";
+"UNSUPPORTED_AUTH_METHOD" = "Cette méthode d'authentification n'est pas prise en charge";
+"INCORRECT_SCOPE_2FA" = "Portée 2FA incorrecte";
+"KYC_NOT_OK" = "Nous n'avons pas pu valider votre KYC. Veuillez réessayer";
+"USER_ALREADY_VERIFIED" = "L'utilisateur est déjà vérifié";
+"FAILED_RESET_PASSWORD" = "Ce lien a déjà été utilisé pour réinitialiser votre mot de passe !";
 

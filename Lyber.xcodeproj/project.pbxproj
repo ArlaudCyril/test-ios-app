@@ -14,7 +14,6 @@
 		0A005C262844F251008117D1 /* PersonalDataCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C252844F251008117D1 /* PersonalDataCVC.swift */; };
 		0A005C282844F74A008117D1 /* addressXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C272844F74A008117D1 /* addressXib.xib */; };
 		0A005C2A2844F924008117D1 /* InvestmentExperienceXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C292844F924008117D1 /* InvestmentExperienceXib.xib */; };
-		0A0F5F2828756F9200D7E2AE /* AddAssetsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F5F2728756F9200D7E2AE /* AddAssetsVM.swift */; };
 		0A1A95B52845EC55001224C6 /* emailAddressCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95B42845EC55001224C6 /* emailAddressCVC.swift */; };
 		0A1A95B72845EE32001224C6 /* addressCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95B62845EE32001224C6 /* addressCVC.swift */; };
 		0A1A95B92845EE4A001224C6 /* InvestmentExperienceCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95B82845EE4A001224C6 /* InvestmentExperienceCVC.swift */; };
@@ -313,7 +312,6 @@
 		0A005C252844F251008117D1 /* PersonalDataCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataCVC.swift; sourceTree = "<group>"; };
 		0A005C272844F74A008117D1 /* addressXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressXib.xib; sourceTree = "<group>"; };
 		0A005C292844F924008117D1 /* InvestmentExperienceXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestmentExperienceXib.xib; sourceTree = "<group>"; };
-		0A0F5F2728756F9200D7E2AE /* AddAssetsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAssetsVM.swift; sourceTree = "<group>"; };
 		0A1A95B42845EC55001224C6 /* emailAddressCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emailAddressCVC.swift; sourceTree = "<group>"; };
 		0A1A95B62845EE32001224C6 /* addressCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressCVC.swift; sourceTree = "<group>"; };
 		0A1A95B82845EE4A001224C6 /* InvestmentExperienceCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentExperienceCVC.swift; sourceTree = "<group>"; };
@@ -672,14 +670,6 @@
 				0A1A95B82845EE4A001224C6 /* InvestmentExperienceCVC.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0A0F5F2628756F6900D7E2AE /* viewModal */ = {
-			isa = PBXGroup;
-			children = (
-				0A0F5F2728756F9200D7E2AE /* AddAssetsVM.swift */,
-			);
-			path = viewModal;
 			sourceTree = "<group>";
 		};
 		0A272BCC2851C6AE005CA57F /* Allocation */ = {
@@ -1786,7 +1776,6 @@
 			children = (
 				0A716B012848B51200451BD3 /* Modal */,
 				0A9059292848A15F003F6198 /* view */,
-				0A0F5F2628756F6900D7E2AE /* viewModal */,
 			);
 			path = AddAssets;
 			sourceTree = "<group>";
@@ -2906,7 +2895,6 @@
 				1F1857792A28DA5A006F9014 /* WithdrawAddressTVC.swift in Sources */,
 				0A857C6F288592590013ED99 /* NotificationVC.swift in Sources */,
 				0A8B4AC4285721D200F64ECE /* InvestInMyStrategyModel.swift in Sources */,
-				0A0F5F2828756F9200D7E2AE /* AddAssetsVM.swift in Sources */,
 				0A8AE88F284A27D30090A354 /* InvestmentStrategyTVC.swift in Sources */,
 				0A7A3BEB285C8EA200646337 /* balanceTVC.swift in Sources */,
 				0A95DE1C289902150044EE92 /* AddressAddedPopUpVC.swift in Sources */,
@@ -3227,6 +3215,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Lyber/LyberDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
@@ -3251,6 +3240,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
@@ -3266,6 +3256,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Lyber/Lyber.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
@@ -3290,6 +3281,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

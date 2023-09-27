@@ -205,8 +205,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/PortfolioDetail/View model/PortfolioDetailVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "getCoinInfoApi(Asset:isNetwork:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -237,8 +237,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
             <Locations>
@@ -301,8 +301,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EmailLogin/View/EmailLoginVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -317,8 +317,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EmailLogin/View/EmailLoginVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -447,6 +447,38 @@
             endingLineNumber = "31"
             landmarkName = "SignUpApi(phoneNumber:countryCode:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0A880464-C090-4022-9C3D-2366229B9C81 - 367e388e7c77d25a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Lyber.signUpApi) -&gt; () in Lyber.EnterPhoneVM.SignUpApi(phoneNumber: Swift.String, countryCode: Swift.String, completion: (Swift.Optional&lt;Lyber.signUpApi&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View%20Model/EnterPhoneVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "0A880464-C090-4022-9C3D-2366229B9C81 - b4de0d7353cdfda2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool, Swift.String, Swift.String) -&gt; () in Lyber.EnterPhoneVM.SignUpApi(phoneNumber: Swift.String, countryCode: Swift.String, completion: (Swift.Optional&lt;Lyber.signUpApi&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View%20Model/EnterPhoneVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -507,9 +539,9 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "checkEmailVerificationApi(code:completion:)"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "checkEmailVerificationApi(controller:code:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -523,9 +555,9 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "checkEmailVerificationApi(code:completion:)"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "checkEmailVerificationApi(controller:code:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -539,9 +571,9 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "checkEmailVerificationApi(code:completion:)"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "checkEmailVerificationApi(controller:code:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -587,8 +619,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
@@ -619,8 +651,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -699,8 +731,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "logInApi(A:M1:method:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -715,8 +747,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -731,8 +763,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
@@ -747,8 +779,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
@@ -763,8 +795,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
@@ -811,8 +843,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EmailLogin/View/EmailLoginVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "checkValidationOnEmail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -827,8 +859,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EmailLogin/View/EmailLoginVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -859,8 +891,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/CheckAccountCreateCompleted/View/checkAccountCompletedVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "checkAccountInfoCompleted()"
             landmarkType = "7">
          </BreakpointContent>
@@ -875,8 +907,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/CheckAccountCreateCompleted/View/checkAccountCompletedVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1035,8 +1067,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
             <Locations>
@@ -1173,8 +1205,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
             <Locations>
@@ -1221,8 +1253,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1285,8 +1317,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1301,8 +1333,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
             <Locations>
@@ -1445,8 +1477,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1860,8 +1892,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "sendDeviceTokenToServer(deviceToken:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1876,8 +1908,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "sendDeviceTokenToServer(deviceToken:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2004,8 +2036,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "762"
-            endingLineNumber = "762"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
             landmarkName = "enableNotifications(enable:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2307,6 +2339,21 @@
                   endingLineNumber = "53"
                   offsetFromSymbolStart = "496">
                </Location>
+               <Location
+                  uuid = "11CC6F1F-57F5-438A-A702-910AFBBEF658 - 53125bc3fa9064c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.CreateNewPinCVC.textFieldDidDelete(__C.UITextField) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/ProfileModule/ChangePin/View/CreateNewPinCVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "488">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -2416,8 +2463,8 @@
             filePath = "Lyber/ViewControllers/Language/ViewModel/LanguageVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "setLanguageAPI(language:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2448,8 +2495,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "908"
-            endingLineNumber = "908"
+            startingLineNumber = "928"
+            endingLineNumber = "928"
             landmarkName = "CommonFunctions"
             landmarkType = "3">
          </BreakpointContent>
@@ -2544,42 +2591,10 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EmailLogin/View/EmailLoginVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1F9272C3-B483-4DB5-9387-8D88B1BC03A1 - 1c36a1273ca0c5d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.String) -&gt; () in Lyber.EmailLoginVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EmailLogin/View/EmailLoginVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  uuid = "1F9272C3-B483-4DB5-9387-8D88B1BC03A1 - 1c36a1273ca0c5d7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 (Swift.String) -&gt; () in Lyber.EmailLoginVC.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EmailLogin/View/EmailLoginVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "180">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2848,8 +2863,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "personalDataApi(profile_info_step:personalData:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2864,8 +2879,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "personalDataApi(profile_info_step:personalData:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2960,8 +2975,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "sendDeviceTokenToServer(deviceToken:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2976,8 +2991,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "sendDeviceTokenToServer(deviceToken:)"
             landmarkType = "7">
             <Locations>
@@ -3182,8 +3197,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
             landmarkName = "personalDataApi(profile_info_step:personalData:completion:)"
             landmarkType = "7">
             <Locations>
@@ -3230,8 +3245,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "personalDataApi(profile_info_step:personalData:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3246,13 +3261,13 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "personalDataApi(profile_info_step:personalData:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83d1"
+                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83f0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -3262,57 +3277,12 @@
                   urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "11452">
-               </Location>
-               <Location
-                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83d1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "11428">
-               </Location>
-               <Location
-                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83d1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "11444">
-               </Location>
-               <Location
-                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83d1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
                   offsetFromSymbolStart = "11420">
                </Location>
                <Location
-                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83d1"
+                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83f0"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -3322,9 +3292,39 @@
                   urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
                   offsetFromSymbolStart = "11436">
+               </Location>
+               <Location
+                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "11428">
+               </Location>
+               <Location
+                  uuid = "CFB80C49-6789-4CE6-B21F-EA1BE5D3AF5A - ca67219bd63d83f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "11412">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -4037,8 +4037,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4324,8 +4324,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/View Model/PortfolioHomeVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "walletGetBalanceHistoryApi(limit:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4466,8 +4466,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "getBalance(id:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4530,8 +4530,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "exchangeToTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4546,8 +4546,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "680"
-            endingLineNumber = "680"
+            startingLineNumber = "669"
+            endingLineNumber = "669"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4562,8 +4562,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "596"
-            endingLineNumber = "596"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "switchPriceAssetBtnAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4610,8 +4610,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
+            startingLineNumber = "677"
+            endingLineNumber = "677"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4626,8 +4626,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "exchangeBtnAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4658,8 +4658,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "729"
-            endingLineNumber = "729"
+            startingLineNumber = "718"
+            endingLineNumber = "718"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
             <Locations>
@@ -4722,8 +4722,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "683"
-            endingLineNumber = "683"
+            startingLineNumber = "672"
+            endingLineNumber = "672"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4754,8 +4754,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "590"
-            endingLineNumber = "590"
+            startingLineNumber = "579"
+            endingLineNumber = "579"
             landmarkName = "exchangeBtnAction()"
             landmarkType = "7">
             <Locations>
@@ -4946,8 +4946,8 @@
             filePath = "Lyber/ViewControllers/Invest /ConfirmInvestment/View Model/ConfirmInvestmentVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "ordersAcceptQuoteAPI(orderId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5147,8 +5147,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "787"
-            endingLineNumber = "787"
+            startingLineNumber = "776"
+            endingLineNumber = "776"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5903,15 +5903,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FD3B94B4-BF31-4F28-9960-B0A7762216C1"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "finishRegistrationApi(completion:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "finishRegistrationApi(controller:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -5944,6 +5944,36 @@
                   endingLineNumber = "161"
                   offsetFromSymbolStart = "176">
                </Location>
+               <Location
+                  uuid = "FD3B94B4-BF31-4F28-9960-B0A7762216C1 - 3b9906344833e0f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PersonalDataVM.finishRegistrationApi(controller: __C.UIViewController, completion: (Swift.Optional&lt;Lyber.SuccessAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "FD3B94B4-BF31-4F28-9960-B0A7762216C1 - b4cc798af7733c9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Lyber.SuccessAPI) -&gt; () in Lyber.PersonalDataVM.finishRegistrationApi(controller: __C.UIViewController, completion: (Swift.Optional&lt;Lyber.SuccessAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "160">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -5957,10 +5987,42 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "finishRegistrationApi(completion:)"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "finishRegistrationApi(controller:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9678D0FF-EEF7-4182-BB9D-0BE657A66FD3 - d93d2a85aa14a7ee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PersonalDataVM.finishRegistrationApi(completion: (Swift.Optional&lt;Lyber.SuccessAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "9678D0FF-EEF7-4182-BB9D-0BE657A66FD3 - 23e92a7e521adc3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Lyber.SuccessAPI) -&gt; () in Lyber.PersonalDataVM.finishRegistrationApi(completion: (Swift.Optional&lt;Lyber.SuccessAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5973,9 +6035,9 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "finishRegistrationApi(completion:)"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "finishRegistrationApi(controller:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6209,8 +6271,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6225,8 +6287,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "logInApi(A:M1:method:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6366,8 +6428,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/ViewModel/InvestmentStrategyVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "deleteStrategyApi(strategyName:completion:)"
             landmarkType = "7">
             <Locations>
@@ -6414,8 +6476,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/ViewModel/InvestmentStrategyVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "deleteStrategyApi(strategyName:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6446,8 +6508,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/ViewModel/InvestmentStrategyVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "deleteStrategyApi(strategyName:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6622,8 +6684,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "showActiveFaceIdAlert()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6812,8 +6874,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "logInWithPhoneChallengeApi(phoneNumber:countryCode:completion:)"
             landmarkType = "7">
             <Locations>
@@ -6860,8 +6922,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "sendVerificationEmailApi(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6956,8 +7018,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "setIndicatorViews()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7035,8 +7097,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -8498,8 +8560,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "573"
-            endingLineNumber = "573"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
             landmarkName = "formattedDecimalForValue(from:for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -8578,8 +8640,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "formattedCurrency(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -8594,8 +8656,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "589"
+            endingLineNumber = "589"
             landmarkName = "formattedDecimalForValue(from:for:)"
             landmarkType = "7">
             <Locations>
@@ -8769,8 +8831,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "keyTyped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -8785,8 +8847,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "519"
-            endingLineNumber = "519"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "keyTyped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -8801,8 +8863,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "879"
-            endingLineNumber = "879"
+            startingLineNumber = "868"
+            endingLineNumber = "868"
             landmarkName = "handlePreviewInvestButton(value:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -8926,8 +8988,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/CryptoAddressBook/ViewModel/CryptoAddressBookVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "getWithdrawalAdressAPI(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9233,6 +9295,21 @@
                   endingLineNumber = "113"
                   offsetFromSymbolStart = "124">
                </Location>
+               <Location
+                  uuid = "A7AEE8B5-F053-4D10-A55C-DDDC74091D3C - 486080007dfa2a54"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.QRCodeScanVC.found(code: Swift.String) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/ProfileModule/QRCodeScan/View/QRCodeScanVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "144">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -9357,8 +9434,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "logInWithPhoneChallengeApi(phoneNumber:countryCode:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9453,8 +9530,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "getImgFromUrl(urlString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9469,8 +9546,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "getImgFromUrl(urlString:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9485,8 +9562,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "getImage(id:)"
             landmarkType = "7">
             <Locations>
@@ -9533,8 +9610,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "920"
-            endingLineNumber = "920"
+            startingLineNumber = "909"
+            endingLineNumber = "909"
             landmarkName = "getAddresses()"
             landmarkType = "7">
          </BreakpointContent>
@@ -9549,8 +9626,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "699"
-            endingLineNumber = "699"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9565,8 +9642,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
+            startingLineNumber = "480"
+            endingLineNumber = "480"
             landmarkName = "keyTyped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9581,8 +9658,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "700"
-            endingLineNumber = "700"
+            startingLineNumber = "689"
+            endingLineNumber = "689"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -9804,8 +9881,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "previewMyInvestAction()"
             landmarkType = "7">
             <Locations>
@@ -9838,6 +9915,21 @@
                   startingLineNumber = "409"
                   endingLineNumber = "409"
                   offsetFromSymbolStart = "1060">
+               </Location>
+               <Location
+                  uuid = "251939BE-AB9F-48E3-8041-1584D79384F2 - f96b813ff701a9d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.InvestInMyStrategyVC.previewMyInvestAction() -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "398"
+                  endingLineNumber = "398"
+                  offsetFromSymbolStart = "468">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -9915,8 +10007,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "834"
-            endingLineNumber = "834"
+            startingLineNumber = "823"
+            endingLineNumber = "823"
             landmarkName = "goToPreviewINvest()"
             landmarkType = "7">
             <Locations>
@@ -9963,8 +10055,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "617"
-            endingLineNumber = "617"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "maximumBtnAct()"
             landmarkType = "7">
             <Locations>
@@ -10026,8 +10118,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "793"
-            endingLineNumber = "793"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
             <Locations>
@@ -10074,8 +10166,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "697"
-            endingLineNumber = "697"
+            startingLineNumber = "686"
+            endingLineNumber = "686"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10090,8 +10182,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "707"
-            endingLineNumber = "707"
+            startingLineNumber = "696"
+            endingLineNumber = "696"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10106,8 +10198,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "710"
-            endingLineNumber = "710"
+            startingLineNumber = "699"
+            endingLineNumber = "699"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
             <Locations>
@@ -10154,8 +10246,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "708"
-            endingLineNumber = "708"
+            startingLineNumber = "697"
+            endingLineNumber = "697"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10281,8 +10373,8 @@
             filePath = "Lyber/ViewControllers/Invest /ConfirmInvestment/View Model/ConfirmInvestmentVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "userGetOtpApi(action:data:completion:)"
             landmarkType = "7">
             <Locations>
@@ -10409,8 +10501,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/Verification/Model/VerificationVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "walletCreateWithdrawalRequest(otp:data:onSuccess:onFailure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10425,8 +10517,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "489"
-            endingLineNumber = "489"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
             landmarkName = "keyTyped(sender:)"
             landmarkType = "7">
             <Locations>
@@ -10488,8 +10580,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
+            startingLineNumber = "498"
+            endingLineNumber = "498"
             landmarkName = "keyTyped(sender:)"
             landmarkType = "7">
             <Locations>
@@ -10536,8 +10628,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "583"
-            endingLineNumber = "583"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
             landmarkName = "exchangeBtnAction()"
             landmarkType = "7">
             <Locations>
@@ -10677,8 +10769,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "711"
-            endingLineNumber = "711"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -10693,8 +10785,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "730"
-            endingLineNumber = "730"
+            startingLineNumber = "719"
+            endingLineNumber = "719"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
             <Locations>
@@ -10741,8 +10833,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "742"
-            endingLineNumber = "742"
+            startingLineNumber = "731"
+            endingLineNumber = "731"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
             <Locations>
@@ -10791,6 +10883,66 @@
                   endingLineNumber = "742"
                   offsetFromSymbolStart = "21428">
                </Location>
+               <Location
+                  uuid = "7038DA76-42B3-4335-8928-69E326F256EC - 4eca4927fd9f2592"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.InvestInMyStrategyVC.noOfCoins(value: Swift.String, subValue: Swift.String) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "731"
+                  endingLineNumber = "731"
+                  offsetFromSymbolStart = "21392">
+               </Location>
+               <Location
+                  uuid = "7038DA76-42B3-4335-8928-69E326F256EC - 4eca4927fd9f2592"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.InvestInMyStrategyVC.noOfCoins(value: Swift.String, subValue: Swift.String) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "731"
+                  endingLineNumber = "731"
+                  offsetFromSymbolStart = "21428">
+               </Location>
+               <Location
+                  uuid = "7038DA76-42B3-4335-8928-69E326F256EC - 4eca4927fd9f2592"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.InvestInMyStrategyVC.noOfCoins(value: Swift.String, subValue: Swift.String) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "731"
+                  endingLineNumber = "731"
+                  offsetFromSymbolStart = "21108">
+               </Location>
+               <Location
+                  uuid = "7038DA76-42B3-4335-8928-69E326F256EC - 4eca4927fd9f2592"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.InvestInMyStrategyVC.noOfCoins(value: Swift.String, subValue: Swift.String) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "731"
+                  endingLineNumber = "731"
+                  offsetFromSymbolStart = "21072">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -10804,8 +10956,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "798"
-            endingLineNumber = "798"
+            startingLineNumber = "787"
+            endingLineNumber = "787"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
@@ -10996,8 +11148,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
+            startingLineNumber = "588"
+            endingLineNumber = "588"
             landmarkName = "switchPriceAssetBtnAction()"
             landmarkType = "7">
             <Locations>
@@ -11059,8 +11211,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "597"
+            endingLineNumber = "597"
             landmarkName = "switchPriceAssetBtnAction()"
             landmarkType = "7">
             <Locations>
@@ -11152,8 +11304,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "909"
-            endingLineNumber = "909"
+            startingLineNumber = "898"
+            endingLineNumber = "898"
             landmarkName = "getAddresses()"
             landmarkType = "7">
          </BreakpointContent>
@@ -11168,8 +11320,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "808"
-            endingLineNumber = "808"
+            startingLineNumber = "797"
+            endingLineNumber = "797"
             landmarkName = "goToPreviewINvest()"
             landmarkType = "7">
             <Locations>
@@ -11232,8 +11384,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "getDateFormat(date:inputFormat:outputFormat:)"
             landmarkType = "7">
             <Locations>
@@ -11598,8 +11750,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
             <Locations>
@@ -11646,8 +11798,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/Verification/View/VerificationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "verifyCode(code:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -11662,8 +11814,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "enterOTPApi(otp:completion:)"
             landmarkType = "7">
             <Locations>
@@ -11710,8 +11862,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "enterOTPApi(otp:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -11726,8 +11878,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/Verification/View/VerificationVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "verifyCode(code:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -11742,8 +11894,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "GotoNextIndex()"
             landmarkType = "7">
          </BreakpointContent>
@@ -12284,8 +12436,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/EnableWhitelisting/ViewModel/EnableWhitelistingVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "changeWhitelistingSecurityApi(withdrawalLock:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -12746,8 +12898,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/View Model/PortfolioHomeVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "getMyAssetsApi(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -13113,8 +13265,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/GoogleAuthenticator/ViewModel/GoogleAuthenticatorVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "getGoogleOTPUrlApi(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -13385,8 +13537,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/Strong Authentication/Model/StrongAuthVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "scope2FAApi(scopes:otp:completion:onFailure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -13417,8 +13569,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "766"
-            endingLineNumber = "766"
+            startingLineNumber = "755"
+            endingLineNumber = "755"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
             <Locations>
@@ -13544,8 +13696,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "drawDetailChart(with:on:gradientColors:lineColor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -13576,8 +13728,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "drawDetailChart(with:on:gradientColors:lineColor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -13942,6 +14094,36 @@
                   endingLineNumber = "124"
                   offsetFromSymbolStart = "4056">
                </Location>
+               <Location
+                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "3956">
+               </Location>
+               <Location
+                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "3908">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -14019,8 +14201,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "setBalances(balances:)"
             landmarkType = "7">
             <Locations>
@@ -14067,8 +14249,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "setBalances(balances:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14083,8 +14265,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "641"
-            endingLineNumber = "641"
+            startingLineNumber = "630"
+            endingLineNumber = "630"
             landmarkName = "maximumBtnAct()"
             landmarkType = "7">
          </BreakpointContent>
@@ -14099,8 +14281,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "880"
-            endingLineNumber = "880"
+            startingLineNumber = "869"
+            endingLineNumber = "869"
             landmarkName = "handlePreviewInvestButton(value:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14115,8 +14297,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "694"
-            endingLineNumber = "694"
+            startingLineNumber = "683"
+            endingLineNumber = "683"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
             <Locations>
@@ -14211,8 +14393,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/Profile/ViewModel/ProfileVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "saveProfilePictureApi(imageName:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14435,8 +14617,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/AllAssets/View Modal/AllAssetsVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "getAllAssetsApi(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14451,8 +14633,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/View Model/PortfolioHomeVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "callWalletGetBalanceApi(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14467,8 +14649,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/AllAssets/View Modal/AllAssetsVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "getAllAssetsDetailApi(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14659,8 +14841,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/Transaction/View Model/TransactionVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "getTransactionsApi(limit:offset:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14771,8 +14953,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "449"
-            endingLineNumber = "449"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "selectAddress()"
             landmarkType = "7">
          </BreakpointContent>
@@ -14930,8 +15112,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "showActiveFaceIdAlert()"
             landmarkType = "7">
             <Locations>
@@ -14993,8 +15175,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "showActiveFaceIdAlert()"
             landmarkType = "7">
             <Locations>
@@ -15041,8 +15223,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
             landmarkName = "showActiveFaceIdAlert()"
             landmarkType = "7">
             <Locations>
@@ -15297,8 +15479,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "624"
-            endingLineNumber = "624"
+            startingLineNumber = "613"
+            endingLineNumber = "613"
             landmarkName = "maximumBtnAct()"
             landmarkType = "7">
          </BreakpointContent>
@@ -15313,8 +15495,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "620"
-            endingLineNumber = "620"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
             landmarkName = "maximumBtnAct()"
             landmarkType = "7">
          </BreakpointContent>
@@ -15329,8 +15511,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "621"
-            endingLineNumber = "621"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "maximumBtnAct()"
             landmarkType = "7">
          </BreakpointContent>
@@ -15345,8 +15527,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "maximumBtnAct()"
             landmarkType = "7">
             <Locations>
@@ -15408,8 +15590,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "696"
-            endingLineNumber = "696"
+            startingLineNumber = "685"
+            endingLineNumber = "685"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -15440,8 +15622,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "796"
-            endingLineNumber = "796"
+            startingLineNumber = "785"
+            endingLineNumber = "785"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
             <Locations>
@@ -15630,13 +15812,13 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "personalDataApi(profile_info_step:personalData:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8064"
+                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8007"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -15646,42 +15828,12 @@
                   urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "8412">
-               </Location>
-               <Location
-                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8064"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "8428">
-               </Location>
-               <Location
-                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8064"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
                   offsetFromSymbolStart = "8404">
                </Location>
                <Location
-                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8064"
+                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8007"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -15691,9 +15843,39 @@
                   urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
                   offsetFromSymbolStart = "8420">
+               </Location>
+               <Location
+                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8007"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "8412">
+               </Location>
+               <Location
+                  uuid = "C91372FA-F205-481A-9E0B-628AC3C6E828 - ca67219bd63d8007"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PersonalDataVM.personalDataApi(profile_info_step: Swift.Int, personalData: Swift.Optional&lt;Lyber.personalDataStruct&gt;, completion: (Swift.Optional&lt;Lyber.OTPAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "8396">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -15708,8 +15890,8 @@
             filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "setAddressApi(profile_info_step:personalData:completion:)"
             landmarkType = "7">
             <Locations>
@@ -15883,8 +16065,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
             landmarkName = "selectAddress()"
             landmarkType = "7">
             <Locations>
@@ -15946,8 +16128,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "918"
-            endingLineNumber = "918"
+            startingLineNumber = "907"
+            endingLineNumber = "907"
             landmarkName = "getAddresses()"
             landmarkType = "7">
             <Locations>
@@ -16090,6 +16272,36 @@
                   endingLineNumber = "101"
                   offsetFromSymbolStart = "336">
                </Location>
+               <Location
+                  uuid = "EF494ABF-747C-4C45-9884-B60F78C2BEDD - eb580f798fec40de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.LoginVC.volumeDidChange(Foundation.Notification) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/Login/View/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "EF494ABF-747C-4C45-9884-B60F78C2BEDD - eb580f798fec40de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.LoginVC.volumeDidChange(Foundation.Notification) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/Login/View/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "132">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -16135,8 +16347,8 @@
             filePath = "Lyber/ViewControllers/ProfileModule/Verification/Model/VerificationVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "verify2FAApi(code:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -16597,8 +16809,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "772"
-            endingLineNumber = "772"
+            startingLineNumber = "761"
+            endingLineNumber = "761"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
@@ -16948,8 +17160,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "hideLoaderCheckbox(_:success:)"
             landmarkType = "7">
             <Locations>
@@ -17184,8 +17396,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "826"
-            endingLineNumber = "826"
+            startingLineNumber = "815"
+            endingLineNumber = "815"
             landmarkName = "goToPreviewINvest()"
             landmarkType = "7">
             <Locations>
@@ -17232,8 +17444,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "825"
-            endingLineNumber = "825"
+            startingLineNumber = "814"
+            endingLineNumber = "814"
             landmarkName = "goToPreviewINvest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -17248,8 +17460,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "hideLoaderCheckbox(_:success:)"
             landmarkType = "7">
             <Locations>
@@ -17296,8 +17508,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "showLoaderCheckbox(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -17695,8 +17907,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "767"
-            endingLineNumber = "767"
+            startingLineNumber = "756"
+            endingLineNumber = "756"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
@@ -17759,8 +17971,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "showLoaderTransaction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -17838,8 +18050,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "sendDeviceTokenToServer(deviceToken:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -18000,8 +18212,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "KycWebVC"
-            landmarkType = "21">
+            landmarkName = "webView(_:createWebViewWith:for:windowFeatures:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -18080,8 +18292,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "KycWebVC"
-            landmarkType = "21">
+            landmarkName = "webView(_:didFinish:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -18126,8 +18338,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "923"
-            endingLineNumber = "923"
+            startingLineNumber = "943"
+            endingLineNumber = "943"
             landmarkName = "loadingProfileApi()"
             landmarkType = "7">
             <Locations>
@@ -18205,8 +18417,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "926"
-            endingLineNumber = "926"
+            startingLineNumber = "946"
+            endingLineNumber = "946"
             landmarkName = "loadingProfileApi()"
             landmarkType = "7">
             <Locations>
@@ -18381,8 +18593,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
             <Locations>
@@ -18444,8 +18656,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
@@ -18460,8 +18672,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
          </BreakpointContent>
@@ -18476,13 +18688,13 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "checkValidationOnPhoneNumber()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b96b"
+                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b925"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -18492,12 +18704,12 @@
                   urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "334"
-                  endingLineNumber = "334"
-                  offsetFromSymbolStart = "848">
+                  startingLineNumber = "336"
+                  endingLineNumber = "336"
+                  offsetFromSymbolStart = "920">
                </Location>
                <Location
-                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b96b"
+                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b925"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -18507,12 +18719,12 @@
                   urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "334"
-                  endingLineNumber = "334"
-                  offsetFromSymbolStart = "932">
+                  startingLineNumber = "336"
+                  endingLineNumber = "336"
+                  offsetFromSymbolStart = "580">
                </Location>
                <Location
-                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b96b"
+                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b925"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -18522,24 +18734,9 @@
                   urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "334"
-                  endingLineNumber = "334"
-                  offsetFromSymbolStart = "508">
-               </Location>
-               <Location
-                  uuid = "C798C472-6275-47DE-951B-C99AC0D59C30 - 22a7129d6d1b96b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Lyber.LogInAPI&gt;) -&gt; () in closure #2 (Swift.Optional&lt;Lyber.LoginChallengeAPI&gt;) -&gt; () in Lyber.EnterPhoneVC.checkValidationOnPhoneNumber() -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "334"
-                  endingLineNumber = "334"
-                  offsetFromSymbolStart = "528">
+                  startingLineNumber = "336"
+                  endingLineNumber = "336"
+                  offsetFromSymbolStart = "560">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -18595,85 +18792,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CB4B2ABB-7F43-419D-AD3B-9EA3D7E420EA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/Strategies/AddAssets/view/AddAssetsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "callGetAssetsApi(isEmpty:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CB4B2ABB-7F43-419D-AD3B-9EA3D7E420EA - a3dd95daf385c51f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Lyber.PriceServiceResume&gt;&gt;) -&gt; () in Lyber.AddAssetsVC.callGetAssetsApi(isEmpty: Swift.Bool) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Strategies/AddAssets/view/AddAssetsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197"
-                  offsetFromSymbolStart = "384">
-               </Location>
-               <Location
-                  uuid = "CB4B2ABB-7F43-419D-AD3B-9EA3D7E420EA - a3dd95daf385c6fe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Lyber.PriceServiceResume&gt;&gt;) -&gt; () in Lyber.AddAssetsVC.callGetAssetsApi(isEmpty: Swift.Bool) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Strategies/AddAssets/view/AddAssetsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "196"
-                  endingLineNumber = "196"
-                  offsetFromSymbolStart = "396">
-               </Location>
-               <Location
-                  uuid = "CB4B2ABB-7F43-419D-AD3B-9EA3D7E420EA - f0429c9c8bd58b97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Lyber.PriceServiceResume) -&gt; Swift.Bool in closure #1 (Swift.Optional&lt;Swift.Array&lt;Lyber.PriceServiceResume&gt;&gt;) -&gt; () in Lyber.AddAssetsVC.callGetAssetsApi(isEmpty: Swift.Bool) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Strategies/AddAssets/view/AddAssetsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "196"
-                  endingLineNumber = "196"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "487299FA-9A68-436E-97BA-8E06B4450F19"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/Strategies/AddAssets/view/AddAssetsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "callGetAssetsApi(isEmpty:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E9A29B5F-25C1-45E3-B05C-8582ADC4FC5A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -18713,8 +18831,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "745"
-            endingLineNumber = "745"
+            startingLineNumber = "765"
+            endingLineNumber = "765"
             landmarkName = "frequenceEncoder(frequence:)"
             landmarkType = "7">
             <Locations>
@@ -18761,8 +18879,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "744"
-            endingLineNumber = "744"
+            startingLineNumber = "764"
+            endingLineNumber = "764"
             landmarkName = "frequenceEncoder(frequence:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -18777,8 +18895,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "746"
-            endingLineNumber = "746"
+            startingLineNumber = "766"
+            endingLineNumber = "766"
             landmarkName = "frequenceEncoder(frequence:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -18793,8 +18911,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "768"
-            endingLineNumber = "768"
+            startingLineNumber = "757"
+            endingLineNumber = "757"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
@@ -19013,8 +19131,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "770"
-            endingLineNumber = "770"
+            startingLineNumber = "759"
+            endingLineNumber = "759"
             landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
             <Locations>
@@ -19061,8 +19179,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
             landmarkName = "getTwoDecimalValueDecimal(number:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -19077,8 +19195,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "714"
-            endingLineNumber = "714"
+            startingLineNumber = "703"
+            endingLineNumber = "703"
             landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -19841,8 +19959,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/PortfolioDetail/View model/PortfolioDetailVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "getResumeByIdApi(assetId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -19857,8 +19975,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/PortfolioDetail/View model/PortfolioDetailVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "getResumeByIdApi(assetId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -19985,8 +20103,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -20001,8 +20119,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "checkEmailAddressValidation()"
             landmarkType = "7">
             <Locations>
@@ -20064,8 +20182,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
             landmarkName = "checkEmailAddressValidation()"
             landmarkType = "7">
             <Locations>
@@ -20112,8 +20230,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -20240,8 +20358,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -20256,8 +20374,8 @@
             filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/EnterPhoneVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -20384,8 +20502,8 @@
             filePath = "Lyber/Common Functions/CommomFunctions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "938"
-            endingLineNumber = "938"
+            startingLineNumber = "958"
+            endingLineNumber = "958"
             landmarkName = "loadingProfileApi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -20590,8 +20708,8 @@
             filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "817"
-            endingLineNumber = "817"
+            startingLineNumber = "806"
+            endingLineNumber = "806"
             landmarkName = "goToPreviewINvest()"
             landmarkType = "7">
             <Locations>
@@ -21003,6 +21121,277 @@
                   startingLineNumber = "60"
                   endingLineNumber = "60"
                   offsetFromSymbolStart = "584">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "382D535F-A644-4151-842E-3239892C799E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "enterOTPApi(otp:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0289B05C-EC43-4155-A3AD-AFE95CEBF51E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/Common Functions/CommomFunctions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "975"
+            endingLineNumber = "975"
+            landmarkName = "handleErrors(code:error:controller:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94E620EE-1164-4D53-9B88-CA720F5BBBA6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Portfolio/PersonalData/ViewModel/PersonalDataVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "finishRegistrationApi(controller:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3C17089-26C4-4A18-A61E-181485E9826C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/Common Functions/CommomFunctions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "965"
+            endingLineNumber = "965"
+            landmarkName = "loadingProfileApi()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B3C17089-26C4-4A18-A61E-181485E9826C - 893d53ee917bb57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Lyber.ProfileAPI&gt;) -&gt; () in static Lyber.CommonFunctions.loadingProfileApi() -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/Common%20Functions/CommomFunctions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "956"
+                  endingLineNumber = "956"
+                  offsetFromSymbolStart = "5492">
+               </Location>
+               <Location
+                  uuid = "B3C17089-26C4-4A18-A61E-181485E9826C - 893d53ee917bb57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Lyber.ProfileAPI&gt;) -&gt; () in static Lyber.CommonFunctions.loadingProfileApi() -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/Common%20Functions/CommomFunctions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "956"
+                  endingLineNumber = "956"
+                  offsetFromSymbolStart = "5412">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B264EEE1-B334-4869-97BD-4F10915D573B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/Common Functions/CommomFunctions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "966"
+            endingLineNumber = "966"
+            landmarkName = "loadingProfileApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3DC4CF78-D233-491D-81B6-D67E3FDD8C9F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/enableNotificationCVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "enableNotification(enable:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57576541-45BE-4DC8-BC7F-047918E8D1F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View Model/EnterPhoneVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "logInApi(A:M1:method:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "57576541-45BE-4DC8-BC7F-047918E8D1F4 - 5847e4c38c194c9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Lyber.LogInAPI) -&gt; () in Lyber.EnterPhoneVM.logInApi(A: Swift.String, M1: Swift.String, method: Swift.String, completion: (Swift.Optional&lt;Lyber.LogInAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View%20Model/EnterPhoneVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "57576541-45BE-4DC8-BC7F-047918E8D1F4 - 5847e4c38c194c9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Lyber.LogInAPI) -&gt; () in Lyber.EnterPhoneVM.logInApi(A: Swift.String, M1: Swift.String, method: Swift.String, completion: (Swift.Optional&lt;Lyber.LogInAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View%20Model/EnterPhoneVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "400">
+               </Location>
+               <Location
+                  uuid = "57576541-45BE-4DC8-BC7F-047918E8D1F4 - 86cb272f9434b7af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool, Swift.String, Swift.String) -&gt; () in Lyber.EnterPhoneVM.logInApi(A: Swift.String, M1: Swift.String, method: Swift.String, completion: (Swift.Optional&lt;Lyber.LogInAPI&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View%20Model/EnterPhoneVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "108">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D4275212-F348-4C83-B9C6-50B8CDE79223"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/LoginSignUp/EnterPhoneNumber/View/enableNotificationCVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "enableNotification(enable:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D0D90DD-E7DC-426A-AC45-720A7BC7F9C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/Common Functions/CommomFunctions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "976"
+            endingLineNumber = "976"
+            landmarkName = "handleErrors(code:error:controller:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF734A8D-D26B-4FE6-96C6-29B41FC5DD05"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Portfolio/PersonalData/View/addressCVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "textField(_:shouldChangeCharactersIn:replacementString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AF734A8D-D26B-4FE6-96C6-29B41FC5DD05 - 62625d2e082ae337"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.addressCVC.textField(_: __C.UITextField, shouldChangeCharactersIn: __C._NSRange, replacementString: Swift.String) -&gt; Swift.Bool"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/View/addressCVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "1980">
+               </Location>
+               <Location
+                  uuid = "AF734A8D-D26B-4FE6-96C6-29B41FC5DD05 - 62625d2e082ae337"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.addressCVC.textField(_: __C.UITextField, shouldChangeCharactersIn: __C._NSRange, replacementString: Swift.String) -&gt; Swift.Bool"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Portfolio/PersonalData/View/addressCVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "1920">
                </Location>
             </Locations>
          </BreakpointContent>
