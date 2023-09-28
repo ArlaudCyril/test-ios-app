@@ -270,14 +270,17 @@ class InvestInMyStrategyVC: ViewController {
 			self.frequencyImg.image = Assets.calendar_black.image()
 			
 		}else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy || strategyType == .oneTimeInvestment){
-			self.frequencyVw.isHidden = false
+			
 			if(strategyType == .oneTimeInvestment){
 				self.frequencyVw.isHidden = true
-				for asset in self.strategyCoinsData {
-					let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
-					if(newAmount > self.requiredAmount){
-						self.requiredAmount = newAmount
-					}
+			}else{
+				self.frequencyVw.isHidden = false
+			}
+			
+			for asset in self.strategyCoinsData {
+				let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
+				if(newAmount > self.requiredAmount){
+					self.requiredAmount = newAmount
 				}
 			}
 			

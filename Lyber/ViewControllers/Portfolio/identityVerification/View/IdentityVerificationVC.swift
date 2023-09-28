@@ -17,6 +17,8 @@ class IdentityVerificationVC: ViewController {
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var verificationLbl: UILabel!
     @IBOutlet var verificationDescLbl: UILabel!
+    @IBOutlet var disclaimerTitleLbl: UILabel!
+    @IBOutlet var disclaimerDescLbl: UILabel!
     
 	@IBOutlet var reviewInformationsBtn: PurpleButton!
     @IBOutlet var kycBtn: PurpleButton!
@@ -37,7 +39,12 @@ class IdentityVerificationVC: ViewController {
 		self.headerView.closeBtn.isHidden = false
         CommonUI.setUpLbl(lbl: self.verificationLbl, text: CommonFunctions.localisation(key: "IDENTITY_VERIFICATION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.verificationDescLbl, text: "", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setTextWithLineSpacing(label: self.verificationDescLbl, text: CommonFunctions.localisation(key: "FINALISE_REGISTRATION_VERIFY_IDENTITY"), lineSpacing: 6, textAlignment: .left)
+		CommonUI.setTextWithLineSpacing(label: self.verificationDescLbl, text: CommonFunctions.localisation(key: "FINALISE_REGISTRATION_VERIFY_IDENTITY"), lineSpacing: 4, textAlignment: .left)
+		
+		CommonUI.setUpLbl(lbl: self.disclaimerTitleLbl, text: CommonFunctions.localisation(key: "DISCLAIMER"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.XXlarge.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.disclaimerDescLbl, text:"", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		CommonUI.setTextWithLineSpacing(label: self.disclaimerDescLbl, text: CommonFunctions.localisation(key: "INFORMATION_PROVIDED_APPLICATION_NOT_INVESTMENT_ADVICE"), lineSpacing: 4, textAlignment: .left)
+        
         
         self.reviewInformationsBtn.setTitle(CommonFunctions.localisation(key: "REVIEW_INFORMATIONS"), for: .normal)
         self.kycBtn.setTitle(CommonFunctions.localisation(key: "START_VERIFICATION"), for: .normal)
