@@ -104,6 +104,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTVC")as! AnalyticsTVC
             cell.controller = self
             cell.setUpCell()
+			cell.callWalletGetPerformance()
             return cell
         }else if indexPath.section == 3{
 			if(recurringInvestmentData.count != 0){
@@ -251,5 +252,4 @@ extension PortfolioHomeVC{
             }
         })
     }
-
 }

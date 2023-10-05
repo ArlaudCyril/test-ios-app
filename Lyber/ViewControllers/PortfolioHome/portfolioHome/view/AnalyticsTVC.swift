@@ -13,12 +13,10 @@ class AnalyticsTVC: UITableViewCell {
     @IBOutlet var earningVw: UIView!
     @IBOutlet var totalEarningLbl: UILabel!
     @IBOutlet var totalEuroLbl: UILabel!
-    @IBOutlet var earningGraphVw: LineChartView!
     
     @IBOutlet var yieldVw: UIView!
     @IBOutlet var yieldLbl: UILabel!
     @IBOutlet var yieldPercentageLbl: UILabel!
-    @IBOutlet var yieldGraphVw: LineChartView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,30 +33,19 @@ class AnalyticsTVC: UITableViewCell {
 extension AnalyticsTVC{
     func setUpCell(){
         CommonUI.setUpViewBorder(vw: self.earningVw, radius: 12, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.totalEarningLbl, text: CommonFunctions.localisation(key: "TOTAL_EARNINGS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "0.00€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalEarningLbl, text: CommonFunctions.localisation(key: "TOTAL_EARNINGS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "0.00€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.yieldVw, radius: 12, borderWidth: 0, borderColor: UIColor.greyColor.cgColor, backgroundColor: UIColor.greyColor)
-        CommonUI.setUpLbl(lbl: self.yieldLbl, text: CommonFunctions.localisation(key: "RETURN_ON_INVESTMENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.yieldPercentageLbl, text: "0.00%", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.yieldLbl, text: CommonFunctions.localisation(key: "RETURN_ON_INVESTMENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.yieldPercentageLbl, text: "0.00%", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         var graphValues: [ChartDataEntry] = []
         for index in 0..<8 {
 			_ = Double(arc4random_uniform(15000))
             graphValues.append(ChartDataEntry(x: Double(index), y: 0))
         }
-        extractedFunc(graphValues, UIColor.PurpleColor)
-        
-//        let earningVwTap = UITapGestureRecognizer(target: self, action: #selector(earningVwAction))
-//        self.earningVw.addGestureRecognizer(earningVwTap)
-//        let roiVwTap = UITapGestureRecognizer(target: self, action: #selector(ROIViewAction))
-//        self.yieldVw.addGestureRecognizer(roiVwTap)
-        
     }
     
-    fileprivate func extractedFunc(_ graphValues: [ChartDataEntry],_ graphColor : UIColor) {
-        CommonFunctions.drawChart(with: graphValues, on: earningGraphVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
-        CommonFunctions.drawChart(with: graphValues, on: yieldGraphVw, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
-    }
 }
 
 //MARK: - objective functions
@@ -73,4 +60,28 @@ extension AnalyticsTVC{
         vc.returnOnInvestment = true
         self.controller?.navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+//MARK: - other functions
+extension AnalyticsTVC{
+	func callWalletGetPerformance(){
+		PortfolioHomeVM().walletGetPerformanceApi(completion: {[]response in
+			if response != nil {
+				self.totalEuroLbl.text = "\(String(response?.totalGain ?? 0))€"
+				self.yieldPercentageLbl.text = "\(String(response?.roi ?? 0))%"
+				
+				if(response?.totalGain ?? 0 > 0){
+					self.totalEuroLbl.textColor = UIColor.Green_500
+					self.yieldPercentageLbl.textColor = UIColor.Green_500
+					
+				}else if(response?.totalGain ?? 0 == 0){
+					self.totalEuroLbl.textColor = UIColor.ThirdTextColor
+					self.yieldPercentageLbl.textColor = UIColor.ThirdTextColor
+				}else{
+					self.totalEuroLbl.textColor = UIColor.Red_500
+					self.yieldPercentageLbl.textColor = UIColor.Red_500
+				}
+			}
+		})
+	}
 }

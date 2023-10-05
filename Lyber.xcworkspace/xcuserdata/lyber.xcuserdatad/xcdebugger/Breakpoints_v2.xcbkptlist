@@ -3101,8 +3101,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "getTotalAvailableAssetsApi()"
             landmarkType = "7">
             <Locations>
@@ -4085,8 +4085,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "getTotalAvailableAssetsApi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4253,22 +4253,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1573D540-1531-4D68-B9FB-4ADF99C1BE5A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "callWalletGetBalance()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B0479A27-BE3A-41AC-820F-C1786185AD37"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -4285,70 +4269,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2E2B8B3F-2ECF-42C7-ADEA-0A5AEF8EFC32"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "callWalletGetBalance()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2E2B8B3F-2ECF-42C7-ADEA-0A5AEF8EFC32 - e963111a5626edc3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.callWalletGetBalance() -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "257"
-                  endingLineNumber = "257"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "2E2B8B3F-2ECF-42C7-ADEA-0A5AEF8EFC32 - 4566328d101c5bcc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Lyber.Balance&gt;&gt;) -&gt; () in Lyber.PortfolioHomeVC.callWalletGetBalance() -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "258"
-                  endingLineNumber = "258"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "55D50FF7-27A4-44F9-AEF8-A950CBBE4F54"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "callWalletGetBalance()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D3194DF5-92E0-4FDD-8F33-80C3072737F2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -4356,9 +4276,9 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/View Model/PortfolioHomeVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "walletGetBalanceHistoryApi(limit:completion:)"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "walletGetPerformanceApi(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4372,103 +4292,9 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/View Model/PortfolioHomeVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "walletGetBalanceHistoryApi(limit:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "12187180-6698-456A-A4BA-B92271EAC6E8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/View Model/PortfolioHomeVM.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "walletGetBalanceHistoryApi(limit:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "12187180-6698-456A-A4BA-B92271EAC6E8 - c557160b9cb34156"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVM.callWalletGetBalanceApi(completion: (Swift.Optional&lt;Swift.Array&lt;Lyber.Balance&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/View%20Model/PortfolioHomeVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "12187180-6698-456A-A4BA-B92271EAC6E8 - 5cf3f3934cf42234"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Lyber.BalanceAPI) -&gt; () in Lyber.PortfolioHomeVM.callWalletGetBalanceApi(completion: (Swift.Optional&lt;Swift.Array&lt;Lyber.Balance&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/View%20Model/PortfolioHomeVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  uuid = "12187180-6698-456A-A4BA-B92271EAC6E8 - 320eb99dd937e100"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVM.walletGetBalanceHistoryApi(completion: (Swift.Optional&lt;Lyber.BalanceHistoryAPI&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/View%20Model/PortfolioHomeVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "12187180-6698-456A-A4BA-B92271EAC6E8 - e95b09e0dadd8d11"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Lyber.BalanceHistoryAPI) -&gt; () in Lyber.PortfolioHomeVM.walletGetBalanceHistoryApi(completion: (Swift.Optional&lt;Lyber.BalanceHistoryAPI&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/View%20Model/PortfolioHomeVM.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "64">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1CBEDB73-0298-4933-A8E0-395F7CD3308F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "callWalletGetBalance()"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "walletGetPerformanceApi(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4882,8 +4708,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "investMoneyBtnAct()"
             landmarkType = "7">
             <Locations>
@@ -7526,8 +7352,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "getAllAssetsDetail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -12035,9 +11861,9 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/View Model/PortfolioHomeVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "walletGetBalanceHistoryApi(limit:completion:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "walletGetPerformanceApi(completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -12928,8 +12754,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "callActiveStrategies()"
             landmarkType = "7">
          </BreakpointContent>
@@ -12976,8 +12802,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "callActiveStrategies()"
             landmarkType = "7">
          </BreakpointContent>
@@ -13056,8 +12882,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14029,8 +13855,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14045,8 +13871,8 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -14061,11 +13887,26 @@
             filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
+               <Location
+                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a57e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Lyber"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "3932">
+               </Location>
                <Location
                   uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5789"
                   shouldBeEnabled = "Yes"
@@ -14079,112 +13920,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
                   endingLineNumber = "125"
-                  offsetFromSymbolStart = "4160">
-               </Location>
-               <Location
-                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "4136">
-               </Location>
-               <Location
-                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "4184">
-               </Location>
-               <Location
-                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "4020">
-               </Location>
-               <Location
-                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "4068">
-               </Location>
-               <Location
-                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "4056">
-               </Location>
-               <Location
-                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "3956">
-               </Location>
-               <Location
-                  uuid = "638E56D2-4AB0-4054-BDCA-F69BDB8B5CF4 - b2197a52105a5656"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Lyber.PortfolioHomeVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "Lyber"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lyber/Documents/Lyber/IOS/ios-app-master/Lyber/ViewControllers/PortfolioHome/portfolioHome/view/PortfolioHomeVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "3908">
+                  offsetFromSymbolStart = "3916">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -21629,6 +21365,22 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "backBtnAct()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29ED6185-75BA-4813-993F-2C2CBAB42F0F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/PortfolioHome/portfolioHome/view/AnalyticsTVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "callWalletGetPerformance()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

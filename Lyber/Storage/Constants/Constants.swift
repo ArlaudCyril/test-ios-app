@@ -267,6 +267,7 @@ struct Constants{
 		static let walletServiceWithdrawalAddress = "wallet-service/withdrawal-address"
 		static let walletServiceWithdraw = "wallet-service/withdraw"
 		static let walletServiceHistory = "wallet-service/history"
+		static let walletServicePerformance = "wallet-service/performance"
 		
 		//Network
 		static let networkServiceNetworks = "network-service/networks"

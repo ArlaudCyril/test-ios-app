@@ -116,7 +116,7 @@ extension UIColor{
     }
 	public class var Red_500 : UIColor{
         get {
-            return UIColor(named: "Red_500") ?? UIColor.gray
+            return UIColor(named: "red_500") ?? UIColor.gray
         }
     }
 	public class var Grey423D33 : UIColor{

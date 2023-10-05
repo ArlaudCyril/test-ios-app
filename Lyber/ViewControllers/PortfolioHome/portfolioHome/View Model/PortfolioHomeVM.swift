@@ -59,4 +59,14 @@ class PortfolioHomeVM{
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
+	
+	func walletGetPerformanceApi(completion: @escaping ( (PerformanceAPI?) -> Void )){
+		
+		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServicePerformance, withParameters: [:], ofType: PerformanceAPI.self, onSuccess: { response in
+            completion(response)
+        }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(code: code, error: error)
+            completion(nil)
+        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+    }
 }

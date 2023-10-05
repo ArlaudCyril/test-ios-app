@@ -93,3 +93,8 @@ enum TypeEnum: String, Codable {
     case stratBased = "STRAT_BASED"
 }
 
+struct PerformanceAPI: Codable {
+	let totalGain: Int?
+	let roi: Int?
+}
+
