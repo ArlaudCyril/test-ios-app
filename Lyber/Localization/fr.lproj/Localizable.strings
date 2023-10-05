@@ -389,6 +389,7 @@
 "STRONG_AUTHENTIFICATION" = "Authentification forte";
 "CHANGE_PIN" = "Changer de code PIN";
 "FACE_ID" = "Face ID";
+"CONTACT_FORM" = "Formulaire de contact";
 "LOG_OUT" = "Déconnexion";
 "STOP_REGISTRATION" = "Arrêter l'inscription";
 "PROGRESS_REGISTRATION_LOST" = "La progression de votre inscription sera perdue";
@@ -616,6 +617,16 @@
 "STORE_DIGITAL_ASSETS" = "Conserver mes actifs numériques";
 
 "FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre identité via notre partenaire Docaposte. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
+
+//MARK: - ERRORS
+"CONTACT_US" = "Contactez nous";
+"EMAIL" = "Email";
+"SEND_US_OR_FILL_OUT" = "Envoyez-nous un courriel à contact@lyber.com ou remplissez le formulaire de contact ci-dessous :";
+"CONTACT_FORM" = "Formulaire de contact";
+"MESSAGE" = "Message";
+"SEND" = "Envoyer";
+"CONTACT_LYBER_ADDRESS" = "Vous pouvez également nous contacter par courrier à l'adresse 274 ter/3, Avenue de la Marne, 59700 Marcq-en-Baroeul, Lille, France.";
+"WILL_GET_BACK_TO_YOU" = "Nous vous répondrons à l'adresse suivante : %@";
 
 
 //MARK: - ERRORS

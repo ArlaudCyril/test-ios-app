@@ -470,6 +470,24 @@ class CommonFunctions{
         myString.removeAttribute(NSAttributedString.Key.underlineStyle, range: NSRange(location: 0, length: myString.length))
         return myString
     }
+	
+	static func underlineStringInText(str: String, text: String) -> (NSAttributedString){
+		var attributedString = NSMutableAttributedString()
+		if let range = text.range(of: str) {
+			let nsRange = NSRange(range, in: text)
+			
+			// Create an attributed string
+			attributedString = NSMutableAttributedString(string: text)
+			
+			// Add underline attribute to the specific range
+			attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: nsRange)
+			
+			// Add purple color to the specific range
+			attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple_500, range: nsRange)
+		}
+		
+		return attributedString
+	}
     
 
     static func getDateFormat(date: String, inputFormat: String, outputFormat: String) -> String {
@@ -975,44 +993,63 @@ class CommonFunctions{
 		switch code {
 			case "-1":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR"))
+				break
 			case "15", "25", "28", "30", "34", "40", "41", "42", "45", "50":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+				break
 			case "1":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "PHONE_ALREADY_REGISTERED"))
+				break
 			case "3", "8", "9", "26", "29", "46", "52":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "FATAL_ERROR", parameter: code))
 				CommonFunctions.fatalErrorAction()
+				break
 			case "5":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "EMAIL_ALREADY_EXIST"))
+				break
 			case "6", "7":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
 				controller.dismiss(animated: false)
+				break
 			case "10":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_EMAIL"))
+				break
 			case "11":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_PHONE"))
+				break
 			case "12":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "USER_BLOCKED_FROM_LOGIN"))
+				break
 			case "14":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "WRONG_PASSWORD"))
+				break
 			case "18":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "CODE_ALREADY_USED"))
+				break
 			case "24":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "INCORRECT_OTP"))
+				break
 			case "27":
 				CommonFunctions.goHome()
 				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+				break
 			case "35":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "TOO_MANY_OTP_FAILURE"))
+				break
 			case "37", "44":
 				self.loadingProfileApi()
 				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+				break
 			case "47":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "FAILED_RESET_PASSWORD"))
+				break
 			case "51":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_NOT_OK"))
 				let vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 				controller.navigationController?.pushViewController(vc, animated: false)
+				break
+			case "13014":
+				break
 				
 			default:
 				CommonFunctions.toster(error)

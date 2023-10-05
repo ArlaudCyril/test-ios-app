@@ -189,6 +189,21 @@ extension UIColor{
             return UIColor(named: "blue_500") ?? UIColor.green
         }
     }
+	public class var descFontColor : UIColor{
+        get {
+			return UIColor(named: "descFontColor") ?? UIColor.gray
+        }
+    }
+	public class var titleFontColor : UIColor{
+        get {
+			return UIColor(named: "titleFontColor") ?? UIColor.gray
+        }
+    }
+	public class var greyBackgroundColor : UIColor{
+        get {
+			return UIColor(named: "greyBackgroundColor") ?? UIColor.gray
+        }
+    }
     
     private func makeColor(componentDelta: CGFloat) -> UIColor {
             var red: CGFloat = 0

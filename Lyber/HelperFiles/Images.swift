@@ -42,6 +42,8 @@ enum Assets : String{
 	case red_failure
 	case red_failure_light
 	case green_large_tick
+	case locationIcon
+	case mail
     
     //coins
     case bitcoin

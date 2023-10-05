@@ -47,6 +47,7 @@ class ProfileVC: SwipeGesture {
 		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "ENABLED_FEMININE")),
 			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
+			SecurityModel(name: CommonFunctions.localisation(key: "CONTACT_FORM"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: "")]
         
 		if userData.shared.extraSecurity == "none"{
@@ -181,21 +182,13 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
                 let vc = CryptoAddressBookVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else if indexPath.row == 2{
-                /*CommonFunctions.showLoader(self.view)
-                ChangePinVM().sendOtpApi(completion: {[]response in
-                    CommonFunctions.hideLoader(self.view)
-                    if let response = response{
-                        print(response)
-                        let vc = ChangePinVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                        let nav = UINavigationController(rootViewController: vc)
-                        nav.modalPresentationStyle = .fullScreen
-                        self.present(nav, animated: true, completion: nil)
-                    }
-                })*/
 				let vc = ChangePinVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 				let nav = UINavigationController(rootViewController: vc)
 				nav.modalPresentationStyle = .fullScreen
 				self.present(nav, animated: true, completion: nil)
+            }else if indexPath.row == 3{
+				let vc = ContactFormVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				self.navigationController?.pushViewController(vc, animated: false)
             }
         }
     }

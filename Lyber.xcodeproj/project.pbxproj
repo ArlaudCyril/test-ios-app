@@ -279,6 +279,7 @@
 		1F86FBC02A6978D0001A9D64 /* LoadingInvestmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86FBBF2A6978D0001A9D64 /* LoadingInvestmentVC.swift */; };
 		1F8BD79A29D43ED100EF322A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BD79929D43ED100EF322A /* ViewController.swift */; };
 		1F96A99B2A3B4C71006D5A61 /* NoRecurringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */; };
+		1F9B43BD2ACAF57A00A13733 /* ContactFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B43BC2ACAF57A00A13733 /* ContactFormVC.swift */; };
 		1F9E2B9E299FDEA50016CAB8 /* Portfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9728448D32007002E0 /* Portfolio.storyboard */; };
 		1F9FC3D529EECFE10084923E /* DepositAssetTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */; };
 		1FB226432AA6229000A699FE /* myBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB226422AA6229000A699FE /* myBalanceTableViewCell.xib */; };
@@ -582,6 +583,7 @@
 		1F86FBBF2A6978D0001A9D64 /* LoadingInvestmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInvestmentVC.swift; sourceTree = "<group>"; };
 		1F8BD79929D43ED100EF322A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRecurringTVC.swift; sourceTree = "<group>"; };
+		1F9B43BC2ACAF57A00A13733 /* ContactFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormVC.swift; sourceTree = "<group>"; };
 		1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetTVC.swift; sourceTree = "<group>"; };
 		1FB226422AA6229000A699FE /* myBalanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myBalanceTableViewCell.xib; sourceTree = "<group>"; };
 		1FB226442AA6243200A699FE /* myBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myBalanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -2086,6 +2088,7 @@
 		0AC4C2BC283F4B400086C6B8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F9B43BA2ACAF55B00A13733 /* ContactForm */,
 				1F4DCC5C29D2FDD500C3B374 /* Language */,
 				0A707D3C2890082F00C9ACA4 /* HeaderView.swift */,
 				0A770CF328478E5E00DBAE66 /* LoginSignUp */,
@@ -2468,6 +2471,22 @@
 				1F8BD79929D43ED100EF322A /* ViewController.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		1F9B43BA2ACAF55B00A13733 /* ContactForm */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B43BB2ACAF56B00A13733 /* View */,
+			);
+			path = ContactForm;
+			sourceTree = "<group>";
+		};
+		1F9B43BB2ACAF56B00A13733 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F9B43BC2ACAF57A00A13733 /* ContactFormVC.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1FB5A61A2A97B78600C47AAE /* Model */ = {
@@ -2911,6 +2930,7 @@
 				1FB5A61C2A97B79800C47AAE /* AddressAddedPopUpModel.swift in Sources */,
 				0A791E032864981A0084B104 /* ExchAnotherWalletTVC.swift in Sources */,
 				1F67C0622A6A7DE9007BB2E1 /* InvestmentModel.swift in Sources */,
+				1F9B43BD2ACAF57A00A13733 /* ContactFormVC.swift in Sources */,
 				0A72190128632574009F42C5 /* ProfilePaymentTVC.swift in Sources */,
 				0A75020A2859F74700D68BAB /* RecurringTVC.swift in Sources */,
 				0AA95B5028EFEA3300BB48FB /* GIF.swift in Sources */,

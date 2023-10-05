@@ -1,0 +1,100 @@
+//
+//  ContactFormVC.swift
+//  Lyber
+//
+//  Created by Lyber on 02/10/2023.
+//
+
+import Foundation
+import UIKit
+
+class ContactFormVC: SwipeGesture{
+	
+	//MARK: - Variables
+	
+	//MARK:- IB OUTLETS
+	@IBOutlet var backBtn: UIButton!
+	@IBOutlet var contactFormLbl: UILabel!
+	
+	@IBOutlet var emailVw: UIView!
+	@IBOutlet var emailIcon: UIImageView!
+	@IBOutlet var emailTitleLbl: UILabel!
+	@IBOutlet var emailDescLbl: UILabel!
+	
+	@IBOutlet var contactVw: UIView!
+	@IBOutlet var contactLbl: UILabel!
+	@IBOutlet var messageTF: UITextField!
+	
+	@IBOutlet var sendBtn: PurpleButton!
+	
+	@IBOutlet var addressVw: UIView!
+	@IBOutlet var addressIcon: UIImageView!
+	@IBOutlet var addressTitleLbl: UILabel!
+	@IBOutlet var addressDescLbl: UILabel!
+	
+	@IBOutlet var footerLbl: UILabel!
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setUpUI()
+	}
+	
+	override func setUpUI(){
+		CommonUI.setUpLbl(lbl: self.contactFormLbl, text: CommonFunctions.localisation(key: "CONTACT_US"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+		self.emailVw.backgroundColor = UIColor.greyBackgroundColor
+		self.emailVw.layer.cornerRadius = 16
+		
+		CommonUI.setUpLbl(lbl: self.emailTitleLbl, text: CommonFunctions.localisation(key: "EMAIL"), textColor: UIColor.titleFontColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+		self.emailIcon.image = UIImage(asset: Assets.mail)
+		
+		CommonUI.setUpLbl(lbl: self.emailDescLbl, text: CommonFunctions.localisation(key: "SEND_US_OR_FILL_OUT"), textColor: UIColor.descFontColor, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+		
+		self.emailDescLbl.attributedText = CommonFunctions.underlineStringInText(str: "contact@lyber.com", text: self.emailDescLbl.text ?? "")
+		
+		self.emailDescLbl.numberOfLines = 0
+		
+		self.contactVw.backgroundColor = UIColor.greyBackgroundColor
+		self.contactVw.layer.cornerRadius = 16
+		
+		CommonUI.setUpLbl(lbl: self.contactLbl, text: CommonFunctions.localisation(key: "CONTACT_FORM"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+		self.messageTF.placeholder = CommonFunctions.localisation(key: "MESSAGE")
+		
+		self.sendBtn.setTitle(CommonFunctions.localisation(key: "SEND"), for: .normal)
+		
+		self.addressVw.backgroundColor = UIColor.greyBackgroundColor
+		self.addressVw.layer.cornerRadius = 16
+		
+		CommonUI.setUpLbl(lbl: self.addressTitleLbl, text: CommonFunctions.localisation(key: "ADDRESS"), textColor: UIColor.titleFontColor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		
+		self.addressIcon.image = UIImage(asset: Assets.locationIcon)
+		
+		CommonUI.setUpLbl(lbl: self.addressDescLbl, text: CommonFunctions.localisation(key: "CONTACT_LYBER_ADDRESS"), textColor: UIColor.descFontColor, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+		self.addressDescLbl.numberOfLines = 0
+		
+		self.addressDescLbl.attributedText = CommonFunctions.underlineStringInText(str: "274 ter/3, Avenue de la Marne, 59700 Marcq-en-Baroeul, Lille, France.", text: self.addressDescLbl.text ?? "")
+		
+		CommonUI.setUpLbl(lbl: self.footerLbl, text: CommonFunctions.localisation(key: "WILL_GET_BACK_TO_YOU", parameter: userData.shared.email), textColor: UIColor.descFontColor, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+		self.footerLbl.numberOfLines = 0
+		
+		self.backBtn.setImage(Assets.back.image(), for: .normal)
+		
+		self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+	}
+	
+	
+	
+}
+
+//MARK: - objective functions
+extension ContactFormVC{
+	@objc func backBtnAct(){
+		self.navigationController?.popViewController(animated: false)
+	}
+}
+
+//MARK: - others functions
+extension ContactFormVC{
+}
