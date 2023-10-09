@@ -21,7 +21,7 @@ class AllAssetsVM{
 		
 			completion(priceServiceResumeArray)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getAllAssetsApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -33,7 +33,7 @@ class AllAssetsVM{
             self.controller?.filteredData = response.data ?? []
             completion(response.data)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getAllAssetsDetailApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }

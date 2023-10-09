@@ -14,7 +14,7 @@ class PortfolioHomeVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getMyAssetsApi",code: code, error: error)
             completion(nil)
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -25,7 +25,7 @@ class PortfolioHomeVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getActiveStrategiesApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -43,7 +43,7 @@ class PortfolioHomeVM{
             
             completion(balances)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "callWalletGetBalanceApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -55,7 +55,7 @@ class PortfolioHomeVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceHistory, withParameters: param, ofType: BalanceHistoryAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "walletGetBalanceHistoryApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -65,7 +65,7 @@ class PortfolioHomeVM{
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServicePerformance, withParameters: [:], ofType: PerformanceAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "walletGetPerformanceApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }

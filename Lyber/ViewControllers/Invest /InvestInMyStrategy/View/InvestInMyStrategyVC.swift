@@ -708,7 +708,7 @@ extension InvestInMyStrategyVC {
 				let coinPrice = Decimal(string: asset?.priceServiceResumeData.lastPrice ?? "0") ?? 0
 				totalEuroInvested = Decimal(string: cleanedValue) ?? 0
 				totalNoOfCoinsInvest = totalEuroInvested/coinPrice
-				self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: totalNoOfCoinsInvest, price: coinPrice))\(self.asset?.id.uppercased() ?? "")"
+				self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: totalNoOfCoinsInvest, price: coinPrice)) \(self.asset?.id.uppercased() ?? "")"
 			}else{
 				self.amountTF.text = "\(cleanedValue) \(self.asset?.id.uppercased() ?? "")"
 				let coinPrice = Decimal(string: asset?.priceServiceResumeData.lastPrice ?? "0") ?? 0

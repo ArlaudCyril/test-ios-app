@@ -344,13 +344,13 @@ class CommonFunctions{
 		})
 	}
 	
-	static func getBalance(id: String) -> Balance{
+	static func getBalance(id: String) -> Balance?{
 		for balance in Storage.balances {
 			if(balance?.id == id){
 				return balance ?? Balance()
 			}
 		}
-		return Balance()
+		return nil
 	}
     
 	static func setBalances(balances: [Balance])
@@ -989,7 +989,7 @@ class CommonFunctions{
 		})
 	}
 	
-	static func handleErrors(code: String, error: String, controller: UIViewController = UIViewController()){
+	static func handleErrors(caller: String, code: String, error: String, controller: UIViewController = UIViewController()){
 		switch code {
 			case "-1":
 				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR"))

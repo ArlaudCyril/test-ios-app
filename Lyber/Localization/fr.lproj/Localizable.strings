@@ -34,6 +34,8 @@
 "ACTIVATE" = "Activer";
 "ACTIVATE_FACE_ID" = "Activer Face ID";
 "ACCESS_LYBER_FACE_ID" = "Accédez à Lyber rapidement en vous connectant avec Face ID";
+"INVEST_IN_ASSET_USDT" = "Pour investir dans un actif, vous devez d'abord acheter des USDT, puis utiliser les USDT achetés et les échanger contre l'actif souhaité.";
+"BUY_USDT" = "Acheter de l’USDT";
 "DECLINE" = "Refuser";
 "ASK_ME_LATER" = "Me demander plus tard";
 "DONT_MISS_ANY_UPDATE" = "Activez les notifications pour ne manquer aucune mise à jour de Lyber.";
@@ -275,8 +277,8 @@
 "PAYMENT" = "Paiement";
 "BUY" = "Acheter du";
 "BUY_VERB" = "Acheter";
-"BUY_ASSETS_EUROS" = "Acheter des actifs en euros";
-"BUY_SPECIFIC_ASSET_EUROS" = "Acheter du %@ en euros";
+"BUY_ASSETS_USDT" = "Acheter des actifs avec des USDT";
+"BUY_SPECIFIC_ASSET_USDT" = "Acheter du %@ en USDT";
 "SELL" = "Vendre";
 "LYBER_FEES" = "Frais Lyber";
 "TOTAL" = "Total";

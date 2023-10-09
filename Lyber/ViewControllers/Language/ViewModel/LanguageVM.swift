@@ -16,7 +16,7 @@ class LanguageVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "setLanguageAPI",code: code, error: error)
 			completion(nil)
 		}, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
 	}

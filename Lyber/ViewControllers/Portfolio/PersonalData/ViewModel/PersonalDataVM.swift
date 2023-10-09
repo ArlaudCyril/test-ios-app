@@ -61,7 +61,7 @@ class PersonalDataVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "personalDataApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
@@ -83,7 +83,7 @@ class PersonalDataVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "setAddressApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
@@ -104,7 +104,7 @@ class PersonalDataVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "setInvestmentExperienceApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
@@ -126,7 +126,7 @@ class PersonalDataVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.setEmailAndPassword, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "sendVerificationEmailApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
@@ -137,7 +137,7 @@ class PersonalDataVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyEmail, withParameters: params, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error, controller: controller)
+			CommonFunctions.handleErrors(caller: "checkEmailVerificationApi",code: code, error: error, controller: controller)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
@@ -145,11 +145,9 @@ class PersonalDataVM{
 	func finishRegistrationApi(controller: UIViewController, completion: @escaping ( (SuccessAPI?) -> Void )){
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.finishRegistration, withParameters: [:], ofType: SuccessAPI.self, onSuccess: { response in
-			CommonFunctions.handleErrors(code: "51", error: "error", controller: controller)
-			completion(nil)
-//            completion(response)
+            completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error, controller: controller)
+			CommonFunctions.handleErrors(caller: "finishRegistrationApi",code: code, error: error, controller: controller)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }

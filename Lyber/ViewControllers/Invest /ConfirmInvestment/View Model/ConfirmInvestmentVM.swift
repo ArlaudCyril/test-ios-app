@@ -22,7 +22,7 @@ class ConfirmInvestmentVM{
             ]);
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "activateStrategyApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -36,7 +36,7 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "editActiveStrategyApi",code: code, error: error)
             completion(nil)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -51,7 +51,7 @@ class ConfirmInvestmentVM{
                 AFEventParamContentType: "Order"
             ]);
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "ordersAcceptQuoteAPI",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -66,7 +66,7 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "SellApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -91,7 +91,7 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "userGetOtpApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }

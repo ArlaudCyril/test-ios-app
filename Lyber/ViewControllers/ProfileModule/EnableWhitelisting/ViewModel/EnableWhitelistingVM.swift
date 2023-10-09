@@ -14,7 +14,7 @@ class EnableWhitelistingVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceUser, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "changeWhitelistingSecurityApi",code: code, error: error)
             completion(nil)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }

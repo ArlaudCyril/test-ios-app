@@ -25,7 +25,7 @@ class AddStrategyVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "addStrategyApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -48,7 +48,7 @@ class AddStrategyVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "tailorStrategyApi",code: code, error: error)
             completion(nil)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }

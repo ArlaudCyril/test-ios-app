@@ -39,13 +39,13 @@ class MyBalanceTVC: UITableViewCell {
 extension MyBalanceTVC{
     func setUpCell(assetId : String?){
 		let balance = CommonFunctions.getBalance(id: assetId ?? "")
-		let priceCoin = (Double(balance.balanceData.euroBalance ) ?? 0)/(Double(balance.balanceData.balance ) ?? 1)
+		let priceCoin = (Double(balance?.balanceData.euroBalance ?? "" ) ?? 0)/(Double(balance?.balanceData.balance ?? "" ) ?? 1)
         self.assetsView.layer.cornerRadius = 16
         self.singleAssetVw.layer.cornerRadius = 16
         
         CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(balance.balanceData.euroBalance) ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(balance.balanceData.balance), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(balance?.balanceData.euroBalance ?? "") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(balance?.balanceData.balance ?? ""), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.percentageLbl.isHidden = true
         for coin in coinDetailData{
@@ -91,10 +91,10 @@ extension MyBalanceTVC{
 			guard let cell = cell as? myBalanceTableViewCell else { return }
 			let balance = CommonFunctions.getBalance(id: item)
 			let currency = CommonFunctions.getCurrency(id: item)
-			let priceCoin = (Double(balance.balanceData.euroBalance ) ?? 0)/(Double(balance.balanceData.balance ) ?? 1)
+			let priceCoin = (Double(balance?.balanceData.euroBalance ?? "" ) ?? 0)/(Double(balance?.balanceData.balance ?? "" ) ?? 1)
 			
-			CommonUI.setUpLbl(lbl: cell.euroLbl, text: "\(Double(balance.balanceData.euroBalance) ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: cell.nbOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(balance.balanceData.balance), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+			CommonUI.setUpLbl(lbl: cell.euroLbl, text: "\(Double(balance?.balanceData.euroBalance ?? "") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: cell.nbOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(balance?.balanceData.balance ?? ""), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 			
 			CommonUI.setUpLbl(lbl: cell.optionLabel, text: currency.fullName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			cell.coinImgVw.sd_setImage(with: URL(string: currency.imageUrl ?? ""), completed: nil)

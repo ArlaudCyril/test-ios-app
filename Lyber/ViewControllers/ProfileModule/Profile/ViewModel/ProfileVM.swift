@@ -13,7 +13,7 @@ class ProfileVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getProfileDataApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -25,7 +25,7 @@ class ProfileVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "saveProfilePictureApi",code: code, error: error)
             completion(nil)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }

@@ -16,7 +16,7 @@ class ResetPasswordVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "forgotPasswordAPI",code: code, error: error)
 			completion(nil)
 		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
 	}
@@ -28,7 +28,7 @@ class ResetPasswordVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "resetPasswordIdentifierAPI",code: code, error: error)
 			completion(nil)
 		}, method: .GET, img: nil, imageParamater: nil, headerType: token)
 	}
@@ -49,7 +49,7 @@ class ResetPasswordVM{
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceResetPassword, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
 			completion(response)
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "resetPasswordApi",code: code, error: error)
 			completion(nil)
 		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: token)
 	}

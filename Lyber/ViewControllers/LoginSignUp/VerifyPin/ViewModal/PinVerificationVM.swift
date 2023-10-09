@@ -14,7 +14,7 @@ class PinVerificationVM{
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userLogin, withParameters: param, ofType: LogInAPI.self, onSuccess: { response in
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "refreshTokenApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
     }

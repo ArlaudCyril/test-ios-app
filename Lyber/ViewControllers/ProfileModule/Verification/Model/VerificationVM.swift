@@ -21,7 +21,7 @@ class VerificationVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "TwoFAApi",code: code, error: error)
             completion(nil)
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -34,7 +34,7 @@ class VerificationVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "verify2FAApi",code: code, error: error)
             completion(nil)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -53,7 +53,7 @@ class VerificationVM{
             onSuccess(response)
 		}, onFailure: { reload, error, code  in
 			let failure = FailureAPI(message: error, code: code)
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "walletCreateWithdrawalRequest",code: code, error: error)
 			onFailure(failure)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }

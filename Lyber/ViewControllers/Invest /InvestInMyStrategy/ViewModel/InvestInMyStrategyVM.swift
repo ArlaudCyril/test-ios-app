@@ -16,7 +16,7 @@ class InvestInMyStrategyVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "ordersGetQuoteApi",code: code, error: error)
 			completion(nil)
 		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
 	}

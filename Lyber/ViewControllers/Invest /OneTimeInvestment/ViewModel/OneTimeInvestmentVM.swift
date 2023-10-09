@@ -22,7 +22,7 @@ class OneTimeInvestmentVM{
             ]);
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "executeStrategyApi",code: code, error: error)
 			completion(nil)
 		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
 	}
@@ -35,7 +35,7 @@ class OneTimeInvestmentVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getStrategyExecutionApi",code: code, error: error)
 			completion(nil)
 		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")
 	}

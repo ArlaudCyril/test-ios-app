@@ -33,6 +33,8 @@
 "ACTIVATE" = "Activate";
 "ACTIVATE_FACE_ID" = "Activate Face ID";
 "ACCESS_LYBER_FACE_ID" = "Access Lyber fast and easily by logging with Face ID.";
+"INVEST_IN_ASSET_USDT" = "To invest in an asset, you must first buy USDT, then use the purchased USDT and exchange it for the desired asset.";
+"BUY_USDT" = "Buy USDT";
 "DECLINE" = "Decline";
 "ASK_ME_LATER" = "Ask me later";
 "DONT_MISS_ANY_UPDATE" = "Enable notifications so you don't miss any updates from Lyber.";
@@ -279,8 +281,8 @@
 "PAYMENT" = "Payment";
 "BUY" = "Buy";
 "BUY_VERB" = "Buy";
-"BUY_ASSETS_EUROS" = "Buy assets with euros";
-"BUY_SPECIFIC_ASSET_EUROS" = "Buy %@ with euros";
+"BUY_ASSETS_USDT" = "Buy assets with USDT";
+"BUY_SPECIFIC_ASSET_USDT" = "Buy %@ with USDT";
 "SELL" = "Sell";
 "LYBER_FEES" = "Lyber fees";
 "TOTAL" = "Total";

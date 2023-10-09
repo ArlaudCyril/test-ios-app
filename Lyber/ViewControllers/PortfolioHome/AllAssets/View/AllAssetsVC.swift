@@ -181,13 +181,17 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
 			//            vc.assetsData = coinsData[indexPath.row]
 			self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .singleAsset || screenType == .singleAssetStrategy{
-            let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-			vc.strategyType = .singleCoin
-			if(screenType == .singleAssetStrategy){
-				vc.strategyType = .singleCoinWithFrequence
+			if(CommonFunctions.getBalance(id: "usdt") != nil){
+				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+				vc.fromAssetId = "usdt"
+				vc.toAssetId = filterCoin[indexPath.row].id
+				vc.fromAssetPrice = coinsData.first(where: {$0.id == "usdt"})?.priceServiceResumeData.lastPrice
+				vc.toAssetPrice = filterCoin[indexPath.row].priceServiceResumeData.lastPrice
+				vc.strategyType = .Exchange
+				self.navigationController?.pushViewController(vc, animated: true)
+			}else{
+				presentAlertBuyUsdt(toAsset: coinsData.first(where: {$0.id == "usdt"}) ?? filterCoin[indexPath.row])
 			}
-			vc.asset = filterCoin[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 	
@@ -307,6 +311,22 @@ extension AllAssetsVC{
         
         self.tblView.reloadData()
     }
+	
+	func presentAlertBuyUsdt(toAsset : PriceServiceResume){
+		let alert = UIAlertController(title: CommonFunctions.localisation(key: "BUY_USDT"), message: CommonFunctions.localisation(key: "INVEST_IN_ASSET_USDT"), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
+		}))
+		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "BUY_USDT"), style: .default, handler: {_ in
+			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+			vc.strategyType = .singleCoin
+			if(self.screenType == .singleAssetStrategy){
+				vc.strategyType = .singleCoinWithFrequence
+			}
+			vc.asset = toAsset
+			self.navigationController?.pushViewController(vc, animated: true)
+		}))
+		present(alert, animated: true, completion: nil)
+	}
 }
 
 extension AllAssetsVC: UITextFieldDelegate{

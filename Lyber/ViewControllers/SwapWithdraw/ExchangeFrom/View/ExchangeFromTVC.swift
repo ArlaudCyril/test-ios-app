@@ -84,7 +84,7 @@ extension ExchangeFromTVC{
 					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 					vc.strategyType = .Exchange
 					vc.fromAssetId = data?.id
-					vc.fromAssetPrice = ((Decimal(string: balance.balanceData.euroBalance) ?? 0)/(Decimal(string: balance.balanceData.balance) ?? 1)).description
+					vc.fromAssetPrice = ((Decimal(string: balance?.balanceData.euroBalance ?? "") ?? 0)/(Decimal(string: balance?.balanceData.balance ?? "") ?? 1)).description
 					vc.toAssetId = self.controller?.toAssetId
 					vc.toAssetPrice = self.controller?.toAssetPrice
 					self.controller?.navigationController?.pushViewController(vc, animated: true)

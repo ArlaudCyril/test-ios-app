@@ -16,7 +16,7 @@ class ExportVm{
 			print(response)
 			completion(response)
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "exportApi",code: code, error: error)
 			completion(nil)
 		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")
 	}

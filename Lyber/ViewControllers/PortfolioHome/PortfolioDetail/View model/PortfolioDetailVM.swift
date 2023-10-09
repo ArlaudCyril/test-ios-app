@@ -17,7 +17,7 @@ class PortfolioDetailVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getCoinInfoApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -29,7 +29,7 @@ class PortfolioDetailVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getChartDataApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -42,7 +42,7 @@ class PortfolioDetailVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getAssetsNewsApi",code: code, error: error)
             completion(nil)
         }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -55,7 +55,7 @@ class PortfolioDetailVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "OrderGetOrderApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
@@ -68,7 +68,7 @@ class PortfolioDetailVM{
             print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(code: code, error: error)
+			CommonFunctions.handleErrors(caller: "getResumeByIdApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
