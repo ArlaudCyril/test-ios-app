@@ -38,7 +38,6 @@ class PersonalDataCVC: UICollectionViewCell {
         super.awakeFromNib()
 		IQKeyboardManager.shared.enable = true
     }
-    
 }
 //Mark:- SetUpUI
 extension PersonalDataCVC{
@@ -87,9 +86,6 @@ extension PersonalDataCVC{
         self.nationalityVw.delegate = self
         self.nationalityVw.dataSource = self
 		self.nationalityVw.customizeView()
-		
-		self.birthCountryVw.setCountryByCode("FR")
-		self.nationalityVw.setCountryByCode("FR")
         
 		let specifiedUsPersonVwTap = UITapGestureRecognizer(target: self, action: #selector(IsUsPerson))
 		self.specifiedUSPersonVw.addGestureRecognizer(specifiedUsPersonVwTap)
@@ -252,12 +248,12 @@ extension PersonalDataCVC: CountryPickerViewDelegate, CountryPickerViewDataSourc
     }
 	
 	func countryPickerView(_ countryPickerView: CountryPickerView, didShow viewController: CountryPickerViewController) {
-		viewController.navigationController?.isNavigationBarHidden = true
 		
 	}
 	
 	func countryPickerView(_ countryPickerView: CountryPickerView, willShow viewController: CountryPickerViewController) {
 		resetTextFields()
+		controller?.navigationController?.navigationBar.isHidden = false
 	}
 	
 	func localeForCountryNameInList(in countryPickerView: CountryPickerView) -> Locale {

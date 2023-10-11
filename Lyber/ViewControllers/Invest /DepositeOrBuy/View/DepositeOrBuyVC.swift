@@ -22,7 +22,7 @@ class DepositeOrBuyVC: ViewController {
         buyDepositeModel(icon: Assets.credit_card.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_CREDIT_CARD"), subName: CommonFunctions.localisation(key: "LIMITED_25000€_WEEK"), rightBtnName: ""),
     ]
     var withdrawExchangedata : [buyDepositeModel] = [
-        buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "YOUR_ASSETS_YOUR_BANK_ACCOUNT"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "SEND_ASSETS_ANOTHER_ACCOUNT"), rightBtnName: ""),
 		buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "BUY_VERB"), subName: CommonFunctions.localisation(key: "BUY_ASSETS_USDT"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT_VERB"), subName: CommonFunctions.localisation(key: "MONEY_LYBER"), rightBtnName: ""),
@@ -111,7 +111,7 @@ class DepositeOrBuyVC: ViewController {
         }else if popupType == .AssetDetailPagePopUp{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "CHOOSE_OPERATION")
 			self.assetPagePopUpData  = [
-				buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "YOUR_ASSETS_YOUR_BANK_ACCOUNT"), rightBtnName: ""),
+				buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "SEND_ASSETS_ANOTHER_ACCOUNT"), rightBtnName: ""),
 				buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:"\(CommonFunctions.localisation(key: "BUY")) \(self.idAsset.uppercased())", subName: CommonFunctions.localisation(key: "BUY_SPECIFIC_ASSET_USDT", parameter: self.idAsset.uppercased()), rightBtnName: ""),
 				buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
 //                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "", rightBtnName: ""),

@@ -57,8 +57,6 @@ extension addressCVC{
         self.countryVw.delegate = self
         self.countryVw.dataSource = self
         self.countryVw.customizeView()
-		self.countryVw.setCountryByCode("FR")
-        
         let tfs = [streetNumberTF,stateTF,buildingFloorTF,cityTF,zipCodeTF]
         for tf in tfs{
             tf?.delegate = self

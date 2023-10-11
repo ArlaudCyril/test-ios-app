@@ -67,14 +67,14 @@ extension AnalyticsTVC{
 	func callWalletGetPerformance(){
 		PortfolioHomeVM().walletGetPerformanceApi(completion: {[]response in
 			if response != nil {
-				self.totalEuroLbl.text = "\(String(response?.totalGain ?? 0))€"
-				self.yieldPercentageLbl.text = "\(String(response?.roi ?? 0))%"
+				self.totalEuroLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: Double(response?.data.totalGain ?? "0") ?? 0))€"
+				self.yieldPercentageLbl.text = "\(CommonFunctions.getTwoDecimalValue(number: Double(response?.data.roi ?? "0") ?? 0))%"
 				
-				if(response?.totalGain ?? 0 > 0){
+				if(Double(response?.data.totalGain ?? "0") ?? 0 > 0){
 					self.totalEuroLbl.textColor = UIColor.Green_500
 					self.yieldPercentageLbl.textColor = UIColor.Green_500
 					
-				}else if(response?.totalGain ?? 0 == 0){
+				}else if(Int(response?.data.totalGain ?? "0") ?? 0 == 0){
 					self.totalEuroLbl.textColor = UIColor.ThirdTextColor
 					self.yieldPercentageLbl.textColor = UIColor.ThirdTextColor
 				}else{

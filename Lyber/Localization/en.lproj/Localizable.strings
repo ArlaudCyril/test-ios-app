@@ -119,7 +119,7 @@
 "TO_START_INVESTING" = "To start investing";
 "WITHDRAW" = "Withdraw";
 "WITHDRAW_ON" = "Withdraw on";
-"YOUR_ASSETS_YOUR_BANK_ACCOUNT" = "Send assets to your bank account";
+"SEND_ASSETS_ANOTHER_ACCOUNT" = "Send assets to another account";
 "EXCHANGE" = "Exchange";
 "EXCHANGE_NOUN" = "Exchange";
 "EXCHANGE_PLATFORM" = "Exchange Platform";
@@ -333,7 +333,7 @@
 "EXCHANGE_TO_TITLE" = "Exchange → To";
 "WANT_WITHDRAW" = "I want to withdraw";
 "ALL_PORTFOLIO" = "All my portfolio";
-"PRECISE_ASSET" = "A precise asset";
+"YOUR_ASSETS" = "Your assets";
 "WITHDRAW_TO" = "Withdraw → To";
 "WITHDRAW_ALL_MY_PORTFOLIO" = "Withdraw all my portfolio";
 "PREVIEW_WITHDRAW" = "Preview withdraw";
@@ -552,7 +552,7 @@
 
 //MARK: - Withdraw
 "DEACTIVATED" = "Deactivated";
-"AMOUNT_WITHDRAW_ACCOUNT" = "Amount has been withdrawn from your account.";
+"AMOUNT_WITHDRAW_ACCOUNT" = "The amount has been withdrawn from your account.";
 "SEE_EFFECTS_PORTFOLIO" = "You can now see its effect on your portfolio.";
 "THANKS" = "Thanks";
 

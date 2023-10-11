@@ -94,7 +94,11 @@ enum TypeEnum: String, Codable {
 }
 
 struct PerformanceAPI: Codable {
-	let totalGain: Int?
-	let roi: Int?
+	let data: Performance
+}
+
+struct Performance: Codable {
+	let totalGain: String?
+	let roi: String?
 }
 

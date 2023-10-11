@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -66,6 +66,7 @@
                                                 <rect key="frame" x="366" y="8" width="48" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="vFe-lJ-bl2" secondAttribute="height" multiplier="1:1" id="7YC-I6-kj7"/>
                                                     <constraint firstAttribute="width" constant="48" id="Zfd-lt-mA0"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -76,7 +77,6 @@
                                         <constraints>
                                             <constraint firstItem="trn-cw-oYJ" firstAttribute="centerY" secondItem="6Ic-OI-jr5" secondAttribute="centerY" id="4jH-Wk-4D3"/>
                                             <constraint firstItem="6Ic-OI-jr5" firstAttribute="leading" secondItem="cGK-bF-9iC" secondAttribute="leading" constant="24" id="5jT-mb-H5O"/>
-                                            <constraint firstItem="vFe-lJ-bl2" firstAttribute="width" secondItem="vFe-lJ-bl2" secondAttribute="height" multiplier="1:1" id="7YC-I6-kj7"/>
                                             <constraint firstAttribute="trailing" secondItem="vFe-lJ-bl2" secondAttribute="trailing" id="KEq-2I-9Es"/>
                                             <constraint firstItem="vFe-lJ-bl2" firstAttribute="leading" secondItem="KJw-xZ-3gQ" secondAttribute="trailing" id="Oeo-sk-Qrc"/>
                                             <constraint firstItem="trn-cw-oYJ" firstAttribute="leading" secondItem="6Ic-OI-jr5" secondAttribute="trailing" constant="12" id="Uky-GG-DNb"/>
@@ -391,6 +391,7 @@
                                         <rect key="frame" x="16" y="60" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="2HJ-fT-sBz"/>
+                                            <constraint firstAttribute="width" secondItem="7jD-d8-bzP" secondAttribute="height" multiplier="1:1" id="gm9-X0-o0c"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="back"/>
@@ -420,7 +421,6 @@
                                     <constraint firstItem="67I-VB-d7O" firstAttribute="centerX" secondItem="WWv-7v-RDZ" secondAttribute="centerX" id="JkB-dX-XGi"/>
                                     <constraint firstAttribute="bottom" secondItem="7jD-d8-bzP" secondAttribute="bottom" constant="12" id="Ph0-ta-f6J"/>
                                     <constraint firstItem="7jD-d8-bzP" firstAttribute="centerY" secondItem="67I-VB-d7O" secondAttribute="centerY" id="abg-36-AM9"/>
-                                    <constraint firstItem="7jD-d8-bzP" firstAttribute="width" secondItem="7jD-d8-bzP" secondAttribute="height" multiplier="1:1" id="gm9-X0-o0c"/>
                                     <constraint firstAttribute="bottom" secondItem="67I-VB-d7O" secondAttribute="bottom" constant="12" id="hI9-lg-kH8"/>
                                 </constraints>
                             </view>
@@ -584,6 +584,7 @@
                                         <rect key="frame" x="16" y="60" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="MB9-AI-szR"/>
+                                            <constraint firstAttribute="width" secondItem="V5O-WZ-mLM" secondAttribute="height" multiplier="1:1" id="jY6-eD-Xif"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="back"/>
@@ -611,7 +612,6 @@
                                 <constraints>
                                     <constraint firstItem="V5O-WZ-mLM" firstAttribute="leading" secondItem="yCN-sW-oCI" secondAttribute="leading" constant="16" id="ZFK-dZ-wm0"/>
                                     <constraint firstAttribute="bottom" secondItem="V5O-WZ-mLM" secondAttribute="bottom" constant="12" id="iSD-vH-aa4"/>
-                                    <constraint firstItem="V5O-WZ-mLM" firstAttribute="width" secondItem="V5O-WZ-mLM" secondAttribute="height" multiplier="1:1" id="jY6-eD-Xif"/>
                                     <constraint firstItem="IiF-3a-Nnq" firstAttribute="centerX" secondItem="yCN-sW-oCI" secondAttribute="centerX" id="mYD-X9-y0o"/>
                                     <constraint firstAttribute="bottom" secondItem="IiF-3a-Nnq" secondAttribute="bottom" constant="12" id="vgr-mh-5Mv"/>
                                     <constraint firstItem="V5O-WZ-mLM" firstAttribute="centerY" secondItem="IiF-3a-Nnq" secondAttribute="centerY" id="z7u-3O-j0D"/>
@@ -1024,6 +1024,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="48" id="rpH-i0-5Zl"/>
+                                        <constraint firstAttribute="width" secondItem="UDn-vc-qpA" secondAttribute="height" multiplier="1:1" id="s5a-d7-bI5"/>
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="right_arrow_grey"/>
@@ -1040,7 +1041,6 @@
                                 <constraint firstItem="wbZ-Iu-RNN" firstAttribute="leading" secondItem="MA5-KX-GzC" secondAttribute="trailing" constant="12" id="pJQ-oi-mJ4"/>
                                 <constraint firstItem="bIY-m0-wZx" firstAttribute="bottom" secondItem="Vl8-a7-pw4" secondAttribute="bottom" constant="16" id="qLS-lJ-RJo"/>
                                 <constraint firstItem="wbZ-Iu-RNN" firstAttribute="centerY" secondItem="Vl8-a7-pw4" secondAttribute="centerY" id="rex-ya-SaB"/>
-                                <constraint firstItem="UDn-vc-qpA" firstAttribute="width" secondItem="UDn-vc-qpA" secondAttribute="height" multiplier="1:1" id="s5a-d7-bI5"/>
                                 <constraint firstItem="Vl8-a7-pw4" firstAttribute="leading" secondItem="2lV-jt-Inf" secondAttribute="leading" constant="24" id="tXk-eE-4R3"/>
                             </constraints>
                         </view>
@@ -2251,6 +2251,7 @@
                                         <rect key="frame" x="16" y="60" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="Czk-cv-F0m"/>
+                                            <constraint firstAttribute="width" secondItem="lHv-2W-E1i" secondAttribute="height" multiplier="1:1" id="UfS-j6-4tN"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="close"/>
@@ -2278,7 +2279,6 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="PgI-ld-T9G" secondAttribute="bottom" constant="12" id="1rB-sv-pIA"/>
                                     <constraint firstItem="lHv-2W-E1i" firstAttribute="centerY" secondItem="PgI-ld-T9G" secondAttribute="centerY" id="Fhu-OD-1ZD"/>
-                                    <constraint firstItem="lHv-2W-E1i" firstAttribute="width" secondItem="lHv-2W-E1i" secondAttribute="height" multiplier="1:1" id="UfS-j6-4tN"/>
                                     <constraint firstItem="lHv-2W-E1i" firstAttribute="leading" secondItem="mTp-dx-7TX" secondAttribute="leading" constant="16" id="ia1-yM-nkQ"/>
                                     <constraint firstItem="PgI-ld-T9G" firstAttribute="centerX" secondItem="mTp-dx-7TX" secondAttribute="centerX" id="wUh-0v-UCb"/>
                                     <constraint firstAttribute="bottom" secondItem="lHv-2W-E1i" secondAttribute="bottom" constant="12" id="yjG-R1-Zbk"/>
@@ -2313,6 +2313,7 @@
                                                 <rect key="frame" x="358" y="8" width="48" height="48"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="TlO-2W-vh4" secondAttribute="height" multiplier="1:1" id="Cf0-3w-Gch"/>
                                                     <constraint firstAttribute="width" constant="48" id="uSs-Fh-JRe"/>
                                                 </constraints>
                                                 <inset key="contentEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
@@ -2323,7 +2324,6 @@
                                         <viewLayoutGuide key="safeArea" id="iJB-Fy-Qrp"/>
                                         <constraints>
                                             <constraint firstItem="h4v-KF-1fP" firstAttribute="leading" secondItem="mgT-FN-9xO" secondAttribute="trailing" constant="26" id="Cdd-kS-k0x"/>
-                                            <constraint firstItem="TlO-2W-vh4" firstAttribute="width" secondItem="TlO-2W-vh4" secondAttribute="height" multiplier="1:1" id="Cf0-3w-Gch"/>
                                             <constraint firstAttribute="trailing" secondItem="TlO-2W-vh4" secondAttribute="trailing" constant="8" id="HZH-L5-FFK"/>
                                             <constraint firstItem="TlO-2W-vh4" firstAttribute="centerY" secondItem="mgT-FN-9xO" secondAttribute="centerY" constant="-3" id="NVc-gK-Bp4"/>
                                             <constraint firstItem="mgT-FN-9xO" firstAttribute="top" secondItem="iJB-Fy-Qrp" secondAttribute="top" constant="16" id="Zvb-oF-1HZ"/>
@@ -2583,6 +2583,7 @@
                                         <rect key="frame" x="16" y="60" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="JNL-4w-IAA"/>
+                                            <constraint firstAttribute="width" secondItem="f3c-BF-Esu" secondAttribute="height" multiplier="1:1" id="ekx-yW-eZS"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="back"/>
@@ -2610,7 +2611,6 @@
                                 <constraints>
                                     <constraint firstItem="Zz6-Jh-INe" firstAttribute="centerX" secondItem="5I4-3n-9jz" secondAttribute="centerX" id="Let-zE-8ya"/>
                                     <constraint firstAttribute="bottom" secondItem="f3c-BF-Esu" secondAttribute="bottom" constant="12" id="Z22-GM-x2j"/>
-                                    <constraint firstItem="f3c-BF-Esu" firstAttribute="width" secondItem="f3c-BF-Esu" secondAttribute="height" multiplier="1:1" id="ekx-yW-eZS"/>
                                     <constraint firstItem="f3c-BF-Esu" firstAttribute="leading" secondItem="5I4-3n-9jz" secondAttribute="leading" constant="16" id="fLR-qR-ylI"/>
                                     <constraint firstItem="f3c-BF-Esu" firstAttribute="centerY" secondItem="Zz6-Jh-INe" secondAttribute="centerY" id="kB4-Im-4SD"/>
                                     <constraint firstAttribute="bottom" secondItem="Zz6-Jh-INe" secondAttribute="bottom" constant="12" id="nrL-5V-4oB"/>
@@ -2772,7 +2772,7 @@
             <color red="0.90588235294117647" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -37,13 +37,13 @@ class PersonalDataVC: ViewController {
         IQKeyboardManager.shared.enable = true
 		IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
         setUpUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         goToStep()
+		self.navigationController?.navigationBar.isHidden = true
     }
 
 

@@ -45,9 +45,9 @@ class ExchangeFromVC: ViewController {
         if screenType == .exchange{
             self.allPortfolioVw.isHidden = true
         }else if screenType == .withdraw{
-            self.allPortfolioVw.isHidden = false
+            self.allPortfolioVw.isHidden = true
             self.headerView.headerLbl.text = CommonFunctions.localisation(key: "WANT_WITHDRAW")
-            self.lyberPortfolioLbl.text = CommonFunctions.localisation(key: "PRECISE_ASSET")
+            self.lyberPortfolioLbl.text = CommonFunctions.localisation(key: "YOUR_ASSETS")
         }
         
         self.tblView.delegate = self
