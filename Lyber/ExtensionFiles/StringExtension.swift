@@ -88,8 +88,12 @@ extension String{
 		switch self {
 			case "PENDING":
 				return CommonFunctions.localisation(key: "PENDING")
-			case "VALIDATE":
-				return CommonFunctions.localisation(key: "SENT")
+			case "PROCESSED":
+				return CommonFunctions.localisation(key: "PROCESSED")
+			case "VALIDATED":
+				return CommonFunctions.localisation(key: "VALIDATED")
+			case "FAILED_SEND":
+				return CommonFunctions.localisation(key: "FAILED_SEND")
 			case "CANCELED":
 				return CommonFunctions.localisation(key: "CANCELED")
 			default:

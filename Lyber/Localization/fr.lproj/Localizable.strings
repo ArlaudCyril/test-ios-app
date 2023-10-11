@@ -560,6 +560,9 @@
 "UNDER_CONFORMITY_ANALYSIS" = "En cours d'analyse de conformité";
 "CREDITED" = "Crédité";
 "PENDING" = "En attente";
+"PROCESSED" = "En cours de traitement";
+"VALIDATED" = "Validé";
+"FAILED_SEND" = "Echec de l'envoi";
 "SENT" = "Envoyé";
 "CANCELED" = "Annulé";
 

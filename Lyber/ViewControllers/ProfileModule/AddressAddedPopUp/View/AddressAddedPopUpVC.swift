@@ -194,7 +194,7 @@ extension AddressAddedPopUpVC{
 			self.addressImg.isHidden = false
 			
 			CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "STATUS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.networkNameLbl, text: self.status.decoderStatusDeposit, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.networkNameLbl, text: self.status.decoderStatusOrder, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
 			CommonUI.setUpLbl(lbl: self.addressOriginLbl, text: "\(CommonFunctions.localisation(key: "FROM"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: self.from, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))

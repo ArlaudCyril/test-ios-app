@@ -561,6 +561,9 @@
 "UNDER_CONFORMITY_ANALYSIS" = "Under conformity analysis";
 "CREDITED" = "Credited";
 "PENDING" = "Pending";
+"PROCESSED" = "Processed";
+"VALIDATED" = "Validated";
+"FAILED_SEND" = "Sending failed";
 "SENT" = "Sent";
 "CANCELED" = "Canceled";
 
