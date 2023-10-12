@@ -57,8 +57,11 @@ class CryptoDepositeVC: ViewController {
 	//MARK: - SetUpUI
 
     override func setUpUI(){
-        self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
+		self.orLbl.isHidden = true
+		self.buyCoinBtn.isHidden = true
         self.headerView.headerLbl.isHidden = true
+		
+		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         CommonUI.setUpLbl(lbl: cryptoAssetLbl, text: CommonFunctions.localisation(key: "CRYPTO_ASSET_DEPOSIT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         
         CommonUI.setUpLbl(lbl: self.depositeAddressLbl, text: CommonFunctions.localisation(key: "DEPOSIT_ADRESS"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
@@ -73,11 +76,18 @@ class CryptoDepositeVC: ViewController {
         self.depositeAddresTextVw.font = UIFont.MabryPro(Size.Large.sizeValue())
         
         CommonUI.setUpViewBorder(vw: self.sendOnlyAssetView, radius: 16, borderWidth: 0, borderColor: UIColor.ColorFFF2D9.cgColor, backgroundColor: UIColor.ColorFFF2D9)
-		CommonUI.setUpLbl(lbl: orLbl, text: CommonFunctions.localisation(key: "OR"), textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        
-        
+		
+		if(self.selectedAsset?.id == "usdt"){
+			self.orLbl.isHidden = false
+			self.buyCoinBtn.isHidden = false
+			CommonUI.setUpLbl(lbl: orLbl, text: CommonFunctions.localisation(key: "OR"), textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+			
+			let textBuyCoinBtn = "\(CommonFunctions.localisation(key: "BUY")) \(self.selectedAsset?.fullName ?? "") \(CommonFunctions.localisation(key: "ON_LYBER"))"
+			CommonUI.setUpButton(btn: self.buyCoinBtn ?? UIButton(), text: textBuyCoinBtn, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			self.buyCoinBtn.addTarget(self, action: #selector(buyCoinBtnAct), for: .touchUpInside)
+		}
+		
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        self.buyCoinBtn.addTarget(self, action: #selector(buyCoinBtnAct), for: .touchUpInside)
         self.copyBtn.addTarget(self, action: #selector(copyBtnAct), for: .touchUpInside)
         self.scanBtn.addTarget(self, action: #selector(scanBtnAct), for: .touchUpInside)
 		
@@ -117,8 +127,12 @@ extension CryptoDepositeVC{
 	}
     
     @objc func buyCoinBtnAct(){
-		//TODO: Later
-        //self.callCoinInfoApi(assetName: self.selectedAssetName)
+		PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+			vc.strategyType = .singleCoin
+			vc.asset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+			self.navigationController?.pushViewController(vc, animated: true)
+		})
     }
 	@objc func copyBtnAct(){
 		UIPasteboard.general.string = self.depositeAddresTextVw.text
@@ -151,9 +165,6 @@ extension CryptoDepositeVC{
     
 	
 	func callCoinInfoApi(assetId: String){
-		let textBuyCoinBtn = "\(CommonFunctions.localisation(key: "BUY")) \(self.selectedAsset?.fullName ?? "") \(CommonFunctions.localisation(key: "ON_LYBER"))"
-		
-		CommonUI.setUpButton(btn: self.buyCoinBtn ?? UIButton(), text: textBuyCoinBtn, textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonFunctions.showLoader()
         PortfolioDetailVM().getCoinInfoApi(Asset: assetId, isNetwork: true, completion: {[weak self]response in
 			CommonFunctions.hideLoader()

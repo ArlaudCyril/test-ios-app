@@ -119,6 +119,9 @@ class DepositeOrBuyVC: ViewController {
 			]
             
         }
+		if(self.idAsset == "usdt"){
+			self.assetPagePopUpData[1] = buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:"\(CommonFunctions.localisation(key: "BUY")) \(self.idAsset.uppercased())", subName: CommonFunctions.localisation(key: "BUY_USDT_EUROS"), rightBtnName: "")
+		}
 		if(self.strategy.publicType != "lyber"){
 			self.investWithStrategiesInactiveData.append(buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DELETE_STRATEGY"), subName: "", rightBtnName: ""))
 		}
@@ -298,6 +301,13 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 					self.dismiss(animated: true, completion: nil)
 					
 					PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+						let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+						if(self.idAsset == "usdt"){
+							let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+							vc.strategyType = .singleCoin
+							vc.asset = toAsset
+							self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
+						}else{
 							if(CommonFunctions.getBalance(id: "usdt") != nil){
 								let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 								vc.fromAssetId = "usdt"
@@ -307,8 +317,10 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 								vc.strategyType = .Exchange
 								self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: false)
 							}else{
-								self.presentAlertBuyUsdt(toAsset: PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData()), controller: self.portfolioDetailController ?? UIViewController())
+								self.presentAlertBuyUsdt(toAsset: toAsset, controller: self.portfolioDetailController ?? UIViewController())
 							}
+						}
+							
 					})
 					
 				}else if indexPath.row == 2{

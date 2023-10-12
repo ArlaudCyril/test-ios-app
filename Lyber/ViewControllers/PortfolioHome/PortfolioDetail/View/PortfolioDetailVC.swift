@@ -195,10 +195,27 @@ extension PortfolioDetailVC{
     }
     
     @objc func investMoneyBtnAct(){
-        let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-//        vc.assetsData = self.assetData
-        vc.strategyType = .singleCoin
-        self.navigationController?.pushViewController(vc, animated: true)
+		PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+			let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+			if(self.asset?.id == "usdt"){
+				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+				vc.strategyType = .singleCoin
+				vc.asset = toAsset
+				self.navigationController?.pushViewController(vc, animated: true)
+			}else{
+				if(CommonFunctions.getBalance(id: "usdt") != nil){
+					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+					vc.fromAssetId = "usdt"
+					vc.toAssetId = self.asset?.id
+					vc.fromAssetPrice = response?.data.lastPrice
+					vc.toAssetPrice = self.asset?.priceServiceResumeData.lastPrice
+					vc.strategyType = .Exchange
+					self.navigationController?.pushViewController(vc, animated: false)
+				}else{
+					self.presentAlertBuyUsdt(toAsset: toAsset, controller: self)
+				}
+			}
+		})
     }
 	
 	@objc func fireTimer(){
@@ -335,6 +352,19 @@ extension PortfolioDetailVC{
 			}
 			self.tblView.reloadData()
 		})
+	}
+	
+	func presentAlertBuyUsdt(toAsset : PriceServiceResume, controller: UIViewController){
+		let alert = UIAlertController(title: CommonFunctions.localisation(key: "BUY_USDT"), message: CommonFunctions.localisation(key: "INVEST_IN_ASSET_USDT"), preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
+		}))
+		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "BUY_USDT"), style: .default, handler: {_ in
+			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+			vc.strategyType = .singleCoin
+			vc.asset = toAsset
+			controller.navigationController?.pushViewController(vc, animated: true)
+		}))
+		controller.present(alert, animated: true, completion: nil)
 	}
 }
 	
