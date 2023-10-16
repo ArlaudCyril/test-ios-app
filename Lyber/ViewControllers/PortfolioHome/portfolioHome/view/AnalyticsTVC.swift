@@ -74,7 +74,7 @@ extension AnalyticsTVC{
 					self.totalEuroLbl.textColor = UIColor.Green_500
 					self.yieldPercentageLbl.textColor = UIColor.Green_500
 					
-				}else if(Int(response?.data.totalGain ?? "0") ?? 0 == 0){
+				}else if(Double(response?.data.totalGain ?? "0") ?? 0 == 0){
 					self.totalEuroLbl.textColor = UIColor.ThirdTextColor
 					self.yieldPercentageLbl.textColor = UIColor.ThirdTextColor
 				}else{

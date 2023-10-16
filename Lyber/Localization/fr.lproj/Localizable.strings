@@ -633,6 +633,7 @@
 "SEND" = "Envoyer";
 "CONTACT_LYBER_ADDRESS" = "Vous pouvez également nous contacter par courrier à l'adresse 274 ter/3, Avenue de la Marne, 59700 Marcq-en-Baroeul, Lille, France.";
 "WILL_GET_BACK_TO_YOU" = "Nous vous répondrons à l'adresse suivante : %@";
+"MESSAGE_SENT_SUCCESSFULLY" = "Le message a bien été envoyé";
 
 
 //MARK: - ERRORS

@@ -15,7 +15,7 @@ enum ApiEnvironment: String {
 //    case Live = "http://104.211.21.101:3002/"
     
     static var ImageUrl = "https://lyberblob.blob.core.windows.net/original/"
-    static var socketBaseUrl  = "wss://ws.lyber.com:80/websocket/"
+    static var socketBaseUrl  = "wss://ws.lyber.com/websocket/"
     //static var socketUrl  = "ws://ws.lyber.com:80/websocket/btceur"
 }
 

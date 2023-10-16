@@ -62,60 +62,35 @@ struct Constants{
         static let error = "error"
         static let error_description = "error_description"
         static let message = "message"
-        static let statusCode = "statusCode"
         
         // MARK: - Login keys
-        static let phone_no = "phone_no"
-        static let country_code = "country_code"
         static let device_type = "device_type"
         static let device_id = "device_id"
-        static let device_token = "device_token"
         static let otp = "otp"
-        static let login_pin = "login_pin"
-        static let is_push_enabled = "is_push_enabled"
-        static let newPin = "newPin"
-        static let face_id = "face_id"
-        static let enable_face_id = "enable_face_id"
-        static let enable = "enable"
         static let withdrawalLock = "withdrawalLock"
         
         // MARK: - personal Data keys
         static let personal_info_step = "personal_info_step"
         static let name = "name"
-        static let first_name = "first_name"
-        static let last_name = "last_name"
 		static let language = "language"
         static let state = "state"
-        static let countryName = "countryName"
         static let zip_code = "zip_code"
-        static let dob = "dob"
-        static let birth_place = "birth_place"
-        static let birth_country = "birth_country"
         static let address1 = "address1"
-        static let specifiedUSPerson = "specifiedUSPerson"
         static let investment_experience = "investment_experience"
         static let income_source = "income_source"
-        static let status = "status"
-		
+
 		//User
 		static let action = "action"
 		static let details = "details"
 		static let destination = "destination"
-		static let chain = "chain"
         
         // MARK: - investment Strategy keys
-        static let is_own_strategy = "is_own_strategy"
-        static let investment_strategy_id = "investment_strategy_id"
-        static let assets = "assets"
         static let asset = "asset"
-        static let asset_symbol = "asset_symbol"
         static let asset_id = "asset_id"
-        static let asset_name = "asset_name"
         static let strategy_name = "strategyName"
         static let amount = "amount"
         static let asset_amount = "asset_amount"
         static let frequency = "frequency"
-        static let wallet_address = "wallet_address"
         static let fromAsset = "fromAsset"
         static let toAsset = "toAsset"
         static let fromAmount = "fromAmount"
@@ -131,30 +106,17 @@ struct Constants{
         static let page = "page"
         static let limit = "limit"
         static let offset = "offset"
-        static let keyword = "keyword"
-        static let duration = "duration"
         
         //Profile
-        static let profile_pic = "profile_pic"
-        static let profile_pic_type = "profile_pic_type"
         static let iban = "iban"
         static let bic = "bic"
         static let network = "network"
         static let address = "address"
         static let origin = "origin"
         static let exchange = "exchange"
-        static let logo = "logo"
         static let id = "id"
         static let include_networks = "include_networks"
-        static let address_id = "address_id"
         static let avatar = "avatar"
-        
-        //Main
-        static let uuid = "uuid"
-        
-        
-        
-        // MARK: - New backend
         
         // MARK: - New Login keys
         static let phoneNo = "phoneNo"
@@ -197,7 +159,7 @@ struct Constants{
 		
 		// MARK: - User keys
 		static let scope2FA = "scope2FA"
-        
+		
     }
     
     // MARK: - Requested URL Keys
@@ -272,6 +234,9 @@ struct Constants{
 		//Network
 		static let networkServiceNetworks = "network-service/networks"
 		static let networkServiceNetwork = "network-service/network"
+		
+		//ContactForm
+		static let userServiceContactSupport = "user-service/contact-support"
 		
     }
 	

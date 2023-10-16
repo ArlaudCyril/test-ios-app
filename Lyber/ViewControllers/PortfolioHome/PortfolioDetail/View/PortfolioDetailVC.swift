@@ -282,7 +282,10 @@ extension PortfolioDetailVC : URLSessionWebSocketDelegate{
 	}
 	
 	func openWebSocket(assetId : String) {
-		let urlString = ApiEnvironment.socketBaseUrl + "\(assetId)eur"
+		var urlString = ApiEnvironment.socketBaseUrl + "\(assetId)eur"
+		if(assetId == "pepe"){
+			urlString = ApiEnvironment.socketBaseUrl + "\(assetId)usdt"
+		}
 		if let url = URL(string: urlString) {
 			let request = URLRequest(url: url)
 			let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)

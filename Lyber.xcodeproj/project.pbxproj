@@ -34,7 +34,6 @@
 		0A6A9F02289A5937001BB63E /* PaymentFundsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A9F01289A5937001BB63E /* PaymentFundsVC.swift */; };
 		0A6A9F06289A61C5001BB63E /* FundAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A9F05289A61C5001BB63E /* FundAccountVC.swift */; };
 		0A6B29DD2878446200674860 /* PinVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B29DC2878446200674860 /* PinVerificationVC.swift */; };
-		0A6D69CB28AD169D00BFB186 /* SelectedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6D69CA28AD169D00BFB186 /* SelectedProfileModel.swift */; };
 		0A6E3B9D2844A084007002E0 /* checkAccountCompletedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9C2844A084007002E0 /* checkAccountCompletedVC.swift */; };
 		0A6E3B9F2844A4F1007002E0 /* checkAccountCompletedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9E2844A4F1007002E0 /* checkAccountCompletedTVC.swift */; };
 		0A6E3BA22844ABAB007002E0 /* AccountCompletedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3BA12844ABAB007002E0 /* AccountCompletedModel.swift */; };
@@ -292,6 +291,7 @@
 		1FC0E27E2A65412B00E4EB6A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC0E27D2A65412B00E4EB6A /* FirebaseAnalyticsSwift */; };
 		1FC0E2802A65437A00E4EB6A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC0E27F2A65437A00E4EB6A /* FirebaseCrashlytics */; };
 		1FC9B5A429B250AB001483CF /* GoogleAuthenticatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */; };
+		1FCD42CB2AD7F9DA0076A706 /* ContactFormVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD42CA2AD7F9DA0076A706 /* ContactFormVM.swift */; };
 		1FD4A4A029D48C7E002DFC11 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */; };
 		1FDC1FE42A9CED4F00598071 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */; };
 		1FE0A80F2AA09B07005742C8 /* ExportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0A80E2AA09B07005742C8 /* ExportVC.swift */; };
@@ -332,7 +332,6 @@
 		0A6A9F01289A5937001BB63E /* PaymentFundsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFundsVC.swift; sourceTree = "<group>"; };
 		0A6A9F05289A61C5001BB63E /* FundAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundAccountVC.swift; sourceTree = "<group>"; };
 		0A6B29DC2878446200674860 /* PinVerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinVerificationVC.swift; sourceTree = "<group>"; };
-		0A6D69CA28AD169D00BFB186 /* SelectedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProfileModel.swift; sourceTree = "<group>"; };
 		0A6E3B9728448D32007002E0 /* Portfolio.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Portfolio.storyboard; sourceTree = "<group>"; };
 		0A6E3B9C2844A084007002E0 /* checkAccountCompletedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkAccountCompletedVC.swift; sourceTree = "<group>"; };
 		0A6E3B9E2844A4F1007002E0 /* checkAccountCompletedTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkAccountCompletedTVC.swift; sourceTree = "<group>"; };
@@ -592,6 +591,7 @@
 		1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorModel.swift; sourceTree = "<group>"; };
 		1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationVC.swift; sourceTree = "<group>"; };
 		1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthenticatorVC.swift; sourceTree = "<group>"; };
+		1FCD42CA2AD7F9DA0076A706 /* ContactFormVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormVM.swift; sourceTree = "<group>"; };
 		1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVM.swift; sourceTree = "<group>"; };
 		1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		1FE0A80E2AA09B07005742C8 /* ExportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportVC.swift; sourceTree = "<group>"; };
@@ -798,14 +798,6 @@
 				0A76C595291BC8FC00C603B9 /* PinVerificationVM.swift */,
 			);
 			path = ViewModal;
-			sourceTree = "<group>";
-		};
-		0A6D69C928AD168400BFB186 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				0A6D69CA28AD169D00BFB186 /* SelectedProfileModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0A6E3B992844A00A007002E0 /* Portfolio */ = {
@@ -1694,7 +1686,6 @@
 		0A86AA8328A381E700C6C688 /* SelectedProfile */ = {
 			isa = PBXGroup;
 			children = (
-				0A6D69C928AD168400BFB186 /* Model */,
 				0A86AA8428A381F800C6C688 /* View */,
 			);
 			path = SelectedProfile;
@@ -2476,6 +2467,7 @@
 		1F9B43BA2ACAF55B00A13733 /* ContactForm */ = {
 			isa = PBXGroup;
 			children = (
+				1FCD42C92AD7F9BB0076A706 /* ViewModel */,
 				1F9B43BB2ACAF56B00A13733 /* View */,
 			);
 			path = ContactForm;
@@ -2530,6 +2522,14 @@
 				1F0988B929B9E86A0075B000 /* Test.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1FCD42C92AD7F9BB0076A706 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1FCD42CA2AD7F9DA0076A706 /* ContactFormVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1FD4A49E29D48C69002DFC11 /* ViewModel */ = {
@@ -2875,7 +2875,6 @@
 				0A86AA8028A3762A00C6C688 /* DefaultPictureVC.swift in Sources */,
 				0A75020F2859F94400D68BAB /* PortfolioHomeModel.swift in Sources */,
 				0A53DEE5284634DC0027367A /* InvestmentExperienceVC.swift in Sources */,
-				0A6D69CB28AD169D00BFB186 /* SelectedProfileModel.swift in Sources */,
 				1F83382129F9617600E41F61 /* InvestInMyStrategyVM.swift in Sources */,
 				1FE8E5502A0A847B0033398F /* NotificationModel.swift in Sources */,
 				1F2D541329F006A00078267F /* CryptoDepositeModel.swift in Sources */,
@@ -2918,6 +2917,7 @@
 				0A7A3BEB285C8EA200646337 /* balanceTVC.swift in Sources */,
 				0A95DE1C289902150044EE92 /* AddressAddedPopUpVC.swift in Sources */,
 				0ABD9FF9288687F300EFF589 /* DepositFundsVC.swift in Sources */,
+				1FCD42CB2AD7F9DA0076A706 /* ContactFormVM.swift in Sources */,
 				1F35C2D42A52CB3200512ABD /* CountryPickerViewExtension.swift in Sources */,
 				0A6E936428BF62D7008FF5E7 /* UIImageExtension.swift in Sources */,
 				0A95DE172898ED030044EE92 /* AddCryptoAddressVC.swift in Sources */,

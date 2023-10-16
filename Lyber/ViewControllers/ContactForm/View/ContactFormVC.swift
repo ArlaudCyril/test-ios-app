@@ -62,8 +62,6 @@ class ContactFormVC: SwipeGesture{
 		
 		self.messageTF.placeholder = CommonFunctions.localisation(key: "MESSAGE")
 		
-		self.sendBtn.setTitle(CommonFunctions.localisation(key: "SEND"), for: .normal)
-		
 		self.addressVw.backgroundColor = UIColor.greyBackgroundColor
 		self.addressVw.layer.cornerRadius = 16
 		
@@ -82,6 +80,10 @@ class ContactFormVC: SwipeGesture{
 		self.backBtn.setImage(Assets.back.image(), for: .normal)
 		
 		self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+		
+		self.sendBtn.setTitle(CommonFunctions.localisation(key: "SEND"), for: .normal)
+		
+		self.sendBtn.addTarget(self, action: #selector(sendBtnAct), for: .touchUpInside)
 	}
 	
 	
@@ -92,6 +94,15 @@ class ContactFormVC: SwipeGesture{
 extension ContactFormVC{
 	@objc func backBtnAct(){
 		self.navigationController?.popViewController(animated: false)
+	}
+	
+	@objc func sendBtnAct(){
+		ContactFormVM().contactSupportAPI(message: self.messageTF.text ?? "", completion:{response in
+			if(response != nil){
+				CommonFunctions.toster(CommonFunctions.localisation(key: "MESSAGE_SENT_SUCCESSFULLY"))
+				self.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
+			}
+		})
 	}
 }
 
