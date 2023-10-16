@@ -97,7 +97,9 @@ extension ContactFormVC{
 	}
 	
 	@objc func sendBtnAct(){
+		sendBtn.isUserInteractionEnabled = false
 		ContactFormVM().contactSupportAPI(message: self.messageTF.text ?? "", completion:{response in
+			self.sendBtn.isUserInteractionEnabled = true
 			if(response != nil){
 				CommonFunctions.toster(CommonFunctions.localisation(key: "MESSAGE_SENT_SUCCESSFULLY"))
 				self.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)

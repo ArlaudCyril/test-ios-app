@@ -22,7 +22,7 @@ extension UIViewController {
 }
 
 extension UINavigationController {
-  func popToViewController(ofClass: AnyClass, animated: Bool = true) {
+  func popToViewController(ofClass: AnyClass, animated: Bool = false) {
 	  
 	  if let vc = viewControllers.first(where: { $0.isKind(of: ofClass) }) {
 		  popToViewController(vc, animated: animated)
