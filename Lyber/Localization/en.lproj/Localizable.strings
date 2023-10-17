@@ -68,7 +68,7 @@
 "ADD_MANY_ASSETS_AS_YOU_WISH" = "Add as many assets as you wish and choose their respective allocation.";
 "ADD_AN_ASSET" = "Add an asset";
 "SAVE_MY_STRATEGY" = "Save my strategy";
-"YOU_MUST_ADD" = "You must add a minimum asset to create your strategy";
+"YOU_MUST_ADD" = "You must add at least one asset to create your strategy.";
 "TRENDING" = "Trending";
 "GAINERS" = "Gainers";
 "LOOSERS" = "Loosers";
@@ -352,7 +352,7 @@
 "CHANGE_ASSET_REPARTITION" = "Change asset repartition";
 "PAUSE_STRATEGY" = "Pause Strategy";
 "DELETE_STRATEGY" = "Delete Strategy";
-"RECURRENT_INVESTMENT" = "Recurrent Investment";
+"RECURRING_INVESTMENT" = "Recurring Investment";
 "RECURRENT" = "Recurrent";
 "EXECUTE_STRATEGY_REGULAR_BASIS" = "Execute a strategy on a regular basis";
 "OPTIONAL" = "Optional";

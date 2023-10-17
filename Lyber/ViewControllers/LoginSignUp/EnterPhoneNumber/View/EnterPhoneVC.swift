@@ -138,14 +138,12 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 self.enteredPin = pin
                 self.GotoNextIndex()
             }
-            if currentPage == 2{
+			if currentPage == 2{
 				DispatchQueue.main.async {
 					cell.pinTF1.becomeFirstResponder()
 					IQKeyboardManager.shared.shouldResignOnTouchOutside = false
 				}
-            }else{
-                cell.endEditing(true)
-            }
+			}
             return cell
         }else if indexPath.item == 3{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmPinCVC", for: indexPath as IndexPath) as! ConfirmPinCVC

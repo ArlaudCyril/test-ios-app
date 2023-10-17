@@ -49,7 +49,7 @@ class DepositeOrBuyVC: ViewController {
     
     var investWithStrategiesInactiveData: [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.flash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ONE_TIME_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_SINGLETIME"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.recurrent.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "RECURRENT_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_REGULAR_BASIS"), rightBtnName: ""),
+        buyDepositeModel(icon: Assets.recurrent.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "RECURRING_INVESTMENT"), subName: CommonFunctions.localisation(key: "EXECUTE_STRATEGY_REGULAR_BASIS"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.coins.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "TAILOR_STRATEGY"), subName: CommonFunctions.localisation(key: "CHANGE_ASSET_REPARTITION"), rightBtnName: "")
     ]
     
