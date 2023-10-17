@@ -312,7 +312,7 @@ extension EnterPhoneVC{
                 }else{
                     self.nextButton.isUserInteractionEnabled = false
                     self.nextButton.showLoading()
-                    self.enterPhoneVM.logInWithPhoneChallengeApi(phoneNumber: self.phoneNumber, countryCode: self.countryCode, completion: { [weak self] response in
+					self.enterPhoneVM.logInWithPhoneChallengeApi(phoneNumber: self.phoneNumber.phoneFormat, countryCode: self.countryCode, completion: { [weak self] response in
                         self?.nextButton.hideLoading()
                         self?.nextButton.isUserInteractionEnabled = true
                         if let response = response{
