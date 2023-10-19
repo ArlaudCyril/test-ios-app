@@ -10,6 +10,9 @@ import UIKit
 import Starscream
 
 class WebSockets : NSObject, WebSocketDelegate, URLSessionDelegate{
+	func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
+	}
+	
     static let sharedInstance = WebSockets()
     var isConnected : Bool = false
  
@@ -59,7 +62,9 @@ class WebSockets : NSObject, WebSocketDelegate, URLSessionDelegate{
             case .error(let error):
                 self.isConnected = false
 //                handleError(error)
-            }
+				case .peerClosed:
+					self.isConnected = false
+			}
         }
     }
 }
@@ -90,7 +95,9 @@ extension WebSockets {
 			case .error(_):
                 isConnected = false
 //                handleError(error)
-            }
+			case .peerClosed:
+				isConnected = false
+		}
         
     }
     

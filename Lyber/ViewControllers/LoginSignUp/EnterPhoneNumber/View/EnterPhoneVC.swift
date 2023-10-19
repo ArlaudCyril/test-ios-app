@@ -3,7 +3,6 @@
 //  Lyber
 //
 //  Created by sonam's Mac on 26/05/22.
-//
 
 import UIKit
 import IQKeyboardManagerSwift
@@ -117,15 +116,9 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if indexPath.item == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "enterNumberCVC", for: indexPath as IndexPath) as! enterNumberCVC
             cell.controller = self
-            cell.setUpUI()
+			cell.setUpUI(currentPage: self.currentPage ?? 1)
 			self.enterNumberCVC = cell
-            if currentPage == 0{
-                DispatchQueue.main.async {
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-                }
-            }else{
-                cell.endEditing(true)
-            }
+            
             return cell
 		}else if indexPath.item == 1{
 			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "emailAddressCVC", for: indexPath as IndexPath) as! emailAddressCVC
@@ -139,9 +132,9 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 self.GotoNextIndex()
             }
 			if currentPage == 2{
-				DispatchQueue.main.async {
-					cell.pinTF1.becomeFirstResponder()
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 					IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+					cell.pinTF1.becomeFirstResponder()
 				}
 			}
             return cell
@@ -174,8 +167,6 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
                 }
-            }else{
-                cell.endEditing(true)
             }
             return cell
         }else if indexPath.item == 4{
@@ -250,8 +241,10 @@ extension EnterPhoneVC{
 extension EnterPhoneVC{
     
     func GotoNextIndex(){
-        let indexPath = NSIndexPath(item: (self.currentPage ?? 0) + 1, section: 0)
-        self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+		DispatchQueue.main.async {
+			let indexPath = NSIndexPath(item: (self.currentPage ?? 0) + 1, section: 0)
+			self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
+		}
     }
     
     func setIndicatorViews(){

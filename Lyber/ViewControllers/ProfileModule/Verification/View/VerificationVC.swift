@@ -19,7 +19,6 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 	var verificationCallBack : ((String)->())?
 	var scopes : [String] = []
     
-    
     //MARK: - IB OUTLETS
     @IBOutlet var containerView: UIView!
     
@@ -34,13 +33,11 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
     @IBOutlet var Tf6: otpTextField!
     @IBOutlet var backBtn: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
         Tf1.becomeFirstResponder()
     }
-
 
 
 	//MARK: - SetUpUI
@@ -71,7 +68,6 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
         }
         CommonUI.setUpButton(btn: backBtn, text: CommonFunctions.localisation(key: "BACK"), textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        
         
     }
 

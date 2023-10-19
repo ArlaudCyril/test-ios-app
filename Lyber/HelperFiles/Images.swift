@@ -101,10 +101,6 @@ enum Assets : String{
 	case fr_flag
     
     
-    //GIF Name
-    case profile_image
-    case collection_one
-	
 	//icons
 	case badger
 	case bat

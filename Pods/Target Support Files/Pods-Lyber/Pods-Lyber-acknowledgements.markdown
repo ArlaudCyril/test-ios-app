@@ -312,7 +312,7 @@ Apache License
 
 BSD 3-Clause License
 
-Copyright (c) 2010-2022, Deusty, LLC
+Copyright (c) 2010-2023, Deusty, LLC
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -1056,7 +1056,7 @@ Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
-   Copyright (c) 2014-2016 Dalton Cherry.
+   Copyright (c) 2014-2023 Dalton Cherry.
 
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 

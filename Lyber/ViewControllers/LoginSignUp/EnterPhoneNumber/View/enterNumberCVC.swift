@@ -9,6 +9,7 @@ import UIKit
 import ADCountryPicker
 import CountryPickerView
 import FlagPhoneNumber
+import IQKeyboardManagerSwift
 
 class enterNumberCVC: UICollectionViewCell {
     var controller : EnterPhoneVC?
@@ -32,7 +33,12 @@ class enterNumberCVC: UICollectionViewCell {
 
 //Mark: - SetUpUI
 extension enterNumberCVC{
-    func setUpUI(){
+	func setUpUI(currentPage: Int){
+		if currentPage == 0{
+			DispatchQueue.main.async {
+				IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+			}
+		}
 //        IQKeyboardManager.shared.enableAutoToolbar = false
 		self.phoneTF.placeholder = CommonFunctions.localisation(key: "ENTER_PHONE_NUMBER")
 		self.passwordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")

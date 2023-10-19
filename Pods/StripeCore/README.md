@@ -28,6 +28,7 @@ Table of contents
    * [Card scanning](#card-scanning)
    * [Contributing](#contributing)
    * [Migrating](#migrating-from-older-versions)
+   * [Code Stye](#code-style)
    * [Licenses](#licenses)
 
 <!--te-->
@@ -97,7 +98,7 @@ If you're reading this on GitHub.com, please make sure you are looking at the [t
 
 ## Requirements
 
-The Stripe iOS SDK requires Xcode 14.1 or later and is compatible with apps targeting iOS 13 or above. We support Catalyst on macOS 10.16 or later.
+The Stripe iOS SDK requires Xcode 14.1 or later and is compatible with apps targeting iOS 13 or above. We support Catalyst on macOS 11 or later.
 
 For iOS 12 support, please use [v22.8.4](https://github.com/stripe/stripe-ios/tree/v22.8.4). For iOS 11 support, please use [v21.13.0](https://github.com/stripe/stripe-ios/tree/v21.13.0). For iOS 10, please use [v19.4.0](https://github.com/stripe/stripe-ios/tree/v19.4.0). If you need to support iOS 9, use [v17.0.2](https://github.com/stripe/stripe-ios/tree/v17.0.2).
 
@@ -148,6 +149,17 @@ We welcome contributions of any kind including new features, bug fixes, and docu
 ## Migrating from older versions
 
 See [MIGRATING.md](https://github.com/stripe/stripe-ios/blob/master/MIGRATING.md)
+
+## Code style
+We use [swiftlint](https://github.com/realm/SwiftLint) to enforce code style.
+
+To install it, run `brew install swiftlint`
+
+To lint your code before pushing you can run `ci_scripts/lint_modified_files.sh`
+
+You can also add this script as a pre-push hook by running `ln -s "$(pwd)/ci_scripts/lint_modified_files.sh" .git/hooks/pre-push && chmod +x .git/hooks/pre-push`
+
+To format modified files automatically, you can use `ci_scripts/format_modified_files.sh` and you can add it as a pre-commit hook using `ln -s "$(pwd)/ci_scripts/format_modified_files.sh" .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`
 
 ## Licenses
 

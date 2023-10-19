@@ -1,6 +1,6 @@
 PODS:
   - ADCountryPicker (2.1.0)
-  - Alamofire (5.7.1)
+  - Alamofire (5.8.0)
   - Algorithm (3.1.1)
   - AppsFlyerFramework (6.12.2):
     - AppsFlyerFramework/Main (= 6.12.2)
@@ -10,9 +10,9 @@ PODS:
     - Charts/Core (= 4.1.0)
   - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
-  - CocoaLumberjack (3.8.0):
-    - CocoaLumberjack/Core (= 3.8.0)
-  - CocoaLumberjack/Core (3.8.0)
+  - CocoaLumberjack (3.8.1):
+    - CocoaLumberjack/Core (= 3.8.1)
+  - CocoaLumberjack/Core (3.8.1)
   - CountryPickerView (3.3.0)
   - DropDown (2.3.13)
   - ESPullToRefresh (2.9.3)
@@ -21,25 +21,25 @@ PODS:
   - FlagPhoneNumber (0.8.0):
     - FlagPhoneNumber/libPhoneNumberiOS (= 0.8.0)
   - FlagPhoneNumber/libPhoneNumberiOS (0.8.0)
-  - IQKeyboardManagerSwift (6.5.12)
+  - IQKeyboardManagerSwift (6.5.15)
   - JWTDecode (3.1.0)
-  - lottie-ios (4.2.0)
+  - lottie-ios (4.3.3)
   - MultiProgressView (1.3.0)
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
-  - SDWebImage (5.17.0):
-    - SDWebImage/Core (= 5.17.0)
-  - SDWebImage/Core (5.17.0)
+  - SDWebImage (5.18.3):
+    - SDWebImage/Core (= 5.18.3)
+  - SDWebImage/Core (5.18.3)
   - SDWebImageSVGKitPlugin (1.4.0):
     - SDWebImage/Core (~> 5.10)
     - SVGKit (~> 3.0)
-  - Socket.IO-Client-Swift (16.0.1):
-    - Starscream (~> 4.0)
-  - Starscream (4.0.4)
-  - StripeApplePay (23.13.0):
-    - StripeCore (= 23.13.0)
-  - StripeCore (23.13.0)
+  - Socket.IO-Client-Swift (16.1.0):
+    - Starscream (~> 4.0.6)
+  - Starscream (4.0.6)
+  - StripeApplePay (23.17.2):
+    - StripeCore (= 23.17.2)
+  - StripeCore (23.17.2)
   - SVGKit (3.0.0):
     - CocoaLumberjack (~> 3.0)
   - SwiftAlgorithms (1.0.0)
@@ -112,29 +112,29 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ADCountryPicker: 502cee76a30ea1c3834eb0df170ce635691655c9
-  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
   Algorithm: c4a5475259f6de29134843e5e44b534e0bbfeec9
   AppsFlyerFramework: 6eb4d89d2eb9a6632317f1055b359d9fd85fd5ff
   Branch: c1a7fa1811ef9203c01bc6c2588a229eb3ee1a84
   Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
-  CocoaLumberjack: 78abfb691154e2a9df8ded4350d504ee19d90732
+  CocoaLumberjack: 5c7e64cdb877770859bddec4d3d5a0d7c9299df9
   CountryPickerView: 6322ada32a80b0cd721b0267282a5c24f406f263
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   ESPullToRefresh: 0d68daa602b343c81753a1b95e09fd0bfcddfd40
   ExpandableLabel: c2fab6d27860c572d67134b30522a5917746171d
   FFDataWrapper: 3ca01693843256ccc2e904874bbd987866002b77
   FlagPhoneNumber: 3712455b95f66cb0f2016fef7d9e34cddf8c7f9a
-  IQKeyboardManagerSwift: 371b08cb39664fb56030f5345c815a4ffc74bbc0
+  IQKeyboardManagerSwift: 79fab21f451441935788dc5d80ded21c32685904
   JWTDecode: 3eaab1e06b6f4dcbdd6716aff09ba4c2104ca8b7
-  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
+  lottie-ios: 25e7b2675dad5c3ddad369ac9baab03560c5bfdd
   MultiProgressView: 65e5bb8181687099ade56d16d85d245a92fafa96
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
-  SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
+  SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
   SDWebImageSVGKitPlugin: 7542dd07c344ec3415ded0461a1161a6f087e0c9
-  Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
-  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  StripeApplePay: 70a263e288bcf4e2011cf4027a2fc0813a6f8c09
-  StripeCore: 0f01d8c435d94b9e6bf937006a6144544e580c90
+  Socket.IO-Client-Swift: ee4b8f80a3db18dd7f32b266ddf273310609443c
+  Starscream: fb2c4510bebf908c62bd383bcf05e673720e91fd
+  StripeApplePay: f7c6962657ca6e43e16d0c73bc128a5ef014bb51
+  StripeCore: f93a26f947bad20babbabd2b7adac2d1f44a63d2
   SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
@@ -144,4 +144,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7a1e3bcdc749166c8e9e0a7b1586a95c9a4f3943
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.12.0
