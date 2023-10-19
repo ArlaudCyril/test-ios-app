@@ -132,7 +132,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 self.GotoNextIndex()
             }
 			if currentPage == 2{
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 					IQKeyboardManager.shared.shouldResignOnTouchOutside = false
 					cell.pinTF1.becomeFirstResponder()
 				}
@@ -163,7 +163,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             }
             
             if currentPage == 3{
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
                 }
