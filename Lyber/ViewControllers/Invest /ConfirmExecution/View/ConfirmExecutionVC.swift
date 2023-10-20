@@ -37,6 +37,7 @@ class ConfirmExecutionVC: ViewController {
 	var asset : PriceServiceResume?
 	let applePayButton: PKPaymentButton = PKPaymentButton(paymentButtonType: .plain, paymentButtonStyle: .black)
 	var clientSecret: String?
+	var timer: Timer?
 	
 	//MARK: - IB OUTLETS
 	@IBOutlet var backBtn: UIButton!
@@ -86,6 +87,10 @@ class ConfirmExecutionVC: ViewController {
 		self.fireTimer(seconds: Int(differenceInSeconds))
 	}
 	
+	override func viewWillDisappear(_ animated: Bool) {
+		timer?.invalidate()
+		timer = nil
+	}
 	
 	
 	//MARK: - SetUpUI
@@ -298,10 +303,10 @@ extension ConfirmExecutionVC{
 		}
 	}
 	
-	func fireTimer(seconds: Int){
-		timeToConfirmPurchaseLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE_TIME",parameter: String(seconds))
-		if(seconds == 0)
-		{
+	func fireTimer(seconds: Int) {
+		timeToConfirmPurchaseLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE_TIME", parameter: String(seconds))
+		
+		if seconds == 0 {
 			applePayButton.isUserInteractionEnabled = false
 			let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 			vc.asset = self.asset
@@ -312,12 +317,15 @@ extension ConfirmExecutionVC{
 			vc.confirmationType = .buyFailure
 			vc.previousViewController = self
 			self.present(vc, animated: true)
-		}else{
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				self.fireTimer(seconds: seconds-1)
+		} else {
+			// Check if the timer is already running and invalidate it
+			timer?.invalidate()
+			
+			// Start a new timer
+			timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
+				self?.fireTimer(seconds: seconds - 1)
 			}
 		}
-		
 	}
 	
 	func fireTimerExchange(seconds: Int){

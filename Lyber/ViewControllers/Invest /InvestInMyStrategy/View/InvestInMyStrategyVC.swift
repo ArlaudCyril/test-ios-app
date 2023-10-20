@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import StripeApplePay
 
 class InvestInMyStrategyVC: ViewController {
     //MARK: - Variables
@@ -255,6 +256,8 @@ class InvestInMyStrategyVC: ViewController {
         if strategyType == .singleCoin || strategyType == .singleCoinWithFrequence{
 			if(strategyType == .singleCoinWithFrequence){
 				self.frequencyVw.isHidden = false
+			}else{
+				self.frequencyVw.isHidden = true
 			}
             self.noOfCoinVw.isHidden = false
             self.maximumBtn.isHidden = true
@@ -767,7 +770,20 @@ extension InvestInMyStrategyVC {
                 self.goToPreviewINvest()
             }
 		}else if strategyType == .singleCoin || strategyType == .singleCoinWithFrequence{
-			self.goToPreviewINvest()
+			if(self.strategyType == .singleCoin){
+				if(StripeAPI.deviceSupportsApplePay() == false){
+					let alert = UIAlertController(title: CommonFunctions.localisation(key: "APPLE_PAY_ERROR"), message: CommonFunctions.localisation(key: "MUST_HAVE_CARD_REGISTERED_APPLE_PAY"), preferredStyle: .alert)
+					alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "UNDERSTAND"), style: .default, handler: {(action : UIAlertAction) in
+						
+					}))
+					present(alert, animated: true, completion: nil)
+				}else{
+					self.goToPreviewINvest()
+				}
+			}else{
+				self.goToPreviewINvest()
+			}
+			
 //			if totalEuroInvested > maxAmountBuy{
 //				CommonFunctions.toster(CommonFunctions.localisation(key: "CANT_BUY_MORE_THAN", parameter: maxAmountBuy.description))
 //			}else if totalEuroInvested < self.minInvestPerAsset{

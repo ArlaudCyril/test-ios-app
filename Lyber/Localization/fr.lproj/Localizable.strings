@@ -376,6 +376,9 @@
 "TAILOR_STRATEGY_RAISE_AMOUNT" = "Pour adapter cette stratégie, vous devez augmenter votre montant actuel";
 "AGREE_INCREASE_INVESTMENT" = "Acceptez-vous d'augmenter votre montant à investir ?";
 "OH_MY" = "Oh, zut !";
+"MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "Vous devez avoir Apple Pay activé et une carte enregistrée pour pouvoir acheter des USDT avec des euros.";
+"UNDERSTAND" = "J'ai compris";
+"APPLE_PAY_ERROR" = "Erreur Apple Pay";
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";

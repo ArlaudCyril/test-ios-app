@@ -138,11 +138,11 @@ struct OrderAPI: Codable {
 // MARK: - Order
 struct Order: Codable {
 	let orderId: String
-	let quoteId: String
+	let quoteId: String?
 	let fromAsset: String
 	let fromAmount: String
 	let toAsset: String
 	let toAmount: String
-	let orderStatus: String
+	let orderStatus: String?
 }
 

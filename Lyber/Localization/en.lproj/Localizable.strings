@@ -379,6 +379,10 @@
 "TAILOR_STRATEGY_RAISE_AMOUNT" = "To tailor at this strategy, you need to raise your current amount";
 "AGREE_INCREASE_INVESTMENT" = "Do you agree to increase the amount you invest?";
 "OH_MY" = "Oh, my !";
+"MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "You must have Apple Pay activated and a registered card to be able to buy USDT with euros.";
+"UNDERSTAND" = "I understand";
+"APPLE_PAY_ERROR" = "Apple Pay error";
+
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";

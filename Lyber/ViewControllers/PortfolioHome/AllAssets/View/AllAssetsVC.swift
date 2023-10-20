@@ -327,9 +327,9 @@ extension AllAssetsVC{
 		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "BUY_USDT"), style: .default, handler: {_ in
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.strategyType = .singleCoin
-			if(self.screenType == .singleAssetStrategy){
-				vc.strategyType = .singleCoinWithFrequence
-			}
+//			if(self.screenType == .singleAssetStrategy){
+//				vc.strategyType = .singleCoinWithFrequence
+//			}
 			vc.asset = toAsset
 			self.navigationController?.pushViewController(vc, animated: true)
 		}))
