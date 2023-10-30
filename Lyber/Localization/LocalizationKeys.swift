@@ -159,7 +159,7 @@ enum L10n {
     case Savings
     case Inheritance
     case CreditLoan
-    case FamillyOthers
+    case FamilyOthers
     
     case WhatYourWorkIndustry
     case Agriculture
@@ -673,8 +673,8 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Inheritance")
         case .CreditLoan:
             return L10n.tr("Credit/loan")
-        case .FamillyOthers:
-            return L10n.tr("Familly or others")
+        case .FamilyOthers:
+            return L10n.tr("Family or others")
             
         case .WhatYourWorkIndustry:
             return L10n.tr("What’s your work industry ?")

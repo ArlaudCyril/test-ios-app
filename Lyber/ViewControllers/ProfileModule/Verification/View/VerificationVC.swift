@@ -218,7 +218,15 @@ extension VerificationVC{
         }else if(self.action == "verificationCallback"){
 			self.dismiss(animated: true)
 			self.verificationCallBack?(code)
-        }else{
+        }else if(self.action == "close-account"){
+            VerificationVM().userCloseAccountRequest(otp: code,
+            onSuccess:{[]response in
+                if response != nil{
+                    CommonFunctions.logout();
+                }
+            }, onFailure: {[]response in})
+        }
+        else{
             VerificationVM().verify2FAApi(code: code, completion: {[]response in
                 if response != nil{
                     userData.shared.userToken = response?.data?.accessToken ?? ""

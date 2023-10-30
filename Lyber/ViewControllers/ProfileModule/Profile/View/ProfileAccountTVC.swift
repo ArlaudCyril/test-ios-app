@@ -58,13 +58,16 @@ extension ProfileAccountTVC{
             if index.row == 0{
                 outerView.layer.cornerRadius = 16
                 outerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-            }else if index.row == lastIndex{
+            }else if index.row == lastIndex - 1 {
+                outerView.layer.cornerRadius = 0
+                self.switchView.isHidden = false
+                self.switchBtn.setOn(userData.shared.faceIdEnabled, animated: false)
+                self.rightArrowView.isHidden = true
+            }else if index.row == lastIndex {
                 outerView.layer.cornerRadius = 16
                 outerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-                self.switchView.isHidden = false
-				self.switchBtn.setOn(userData.shared.faceIdEnabled, animated: false)
-                
                 self.rightArrowView.isHidden = true
+                self.nameLbl.textColor = UIColor.Red_500
             }else{
                 outerView.layer.cornerRadius = 0
             }
