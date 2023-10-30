@@ -177,7 +177,7 @@
                                                                                         <constraint firstAttribute="width" secondItem="TH2-gM-vZr" secondAttribute="height" multiplier="1:1" id="yaF-1w-tLZ"/>
                                                                                     </constraints>
                                                                                 </imageView>
-                                                                                <view contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="247" translatesAutoresizingMaskIntoConstraints="NO" id="tCJ-rO-rKJ">
+                                                                                <view contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="247" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCJ-rO-rKJ">
                                                                                     <rect key="frame" x="56" y="16" width="244.5" height="45"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGj-WI-QIY">

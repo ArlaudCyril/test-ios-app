@@ -48,7 +48,9 @@ class ProfileVC: SwipeGesture {
 			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "CONTACT_FORM"), desc: ""),
-			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: "")]
+			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: ""),
+            SecurityModel(name: CommonFunctions.localisation(key: "CLOSE_ACCOUNT"), desc: "")]
+            
         
 		if userData.shared.extraSecurity == "none"{
 			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"
@@ -189,6 +191,8 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
             }else if indexPath.row == 3{
 				let vc = ContactFormVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 				self.navigationController?.pushViewController(vc, animated: false)
+            }else if indexPath.row == securityData.count - 1{
+                self.presentAlertCloseAccount()
             }
         }
     }
@@ -255,5 +259,23 @@ extension ProfileVC{
             }
             present(imagePicker, animated: true, completion: nil)
         }
+    
+    func presentAlertCloseAccount(){
+        let alert = UIAlertController(title: CommonFunctions.localisation(key: "CLOSE_ACCOUNT"), message: CommonFunctions.localisation(key: "CLOSE_ACCOUNT_MESSAGE"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
+        }))
+        alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CONFIRM"), style: .default, handler: {_ in
+            ConfirmInvestmentVM().userGetOtpApi(action: "close-account", completion: {[weak self]response in
+                if response != nil{
+                    let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                    vc.typeVerification = userData.shared.type2FA
+                    vc.action = "close-account"
+                    vc.controller = self ?? ConfirmInvestmentVC()
+                    self?.present(vc, animated: true, completion: nil)
+                }
+            })
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

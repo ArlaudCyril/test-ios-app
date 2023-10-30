@@ -20,7 +20,7 @@ class InvestmentExperienceVC: ViewController {
                                         "SAVINGS",
                                         "INHERITANCE",
                                         "CREDIT_LOAN",
-                                        "FAMILLY_OTHERS"]
+                                        "FAMILY_OTHERS"]
     var workIndustryData : [String] = ["AGRICULTURE",
                                         "ARTS_MEDIA",
                                         "BANKING_FINANCE_INSURANCE",

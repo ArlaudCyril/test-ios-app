@@ -207,6 +207,7 @@ struct Constants{
 		static let userServiceResetPasswordIdentifiers = "user-service/reset-password-identifiers"
 		static let userServiceResetPassword = "user-service/reset-password"
 		static let userServiceExport = "user-service/export"
+        static let userCloseAccount = "user-service/close-account"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"

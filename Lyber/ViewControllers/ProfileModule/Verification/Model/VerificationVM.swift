@@ -57,4 +57,17 @@ class VerificationVM{
 			onFailure(failure)
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
+    
+    func userCloseAccountRequest(otp: String, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
+        var params : [String : Any] = [Constants.ApiKeys.otp : otp]
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userCloseAccount, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            onSuccess(response)
+        }, onFailure: { reload, error, code  in
+            let failure = FailureAPI(message: error, code: code)
+            CommonFunctions.handleErrors(caller: "userCloseAccountRequest", code: code, error: error)
+            onFailure(failure)
+        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        
+    }
 }

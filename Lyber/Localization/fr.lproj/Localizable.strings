@@ -49,6 +49,7 @@
 "HIGH" = "Elevé";
 "OOPS" = "Oups !";
 "DEADLINE_CONFIRMING_PURCHASE_PASSED" = "Le délai pour confirmer votre achat est dépassé. Souhaitez vous obtenir une nouvelle proposition ?";
+"CLOSE_ACCOUNT_MESSAGE" = "Êtes-vous sûr de vouloir fermer votre compte ? Toutes vos données, y compris les préférences enregistrées, l'historique des transactions et les informations personnelles, seront définitivement supprimées et ne pourront pas être récupérées. Si vous êtes certain, veuillez confirmer ci-dessous.";
 
 //MARK: - EDUCATION STRATEGY;
 
@@ -204,7 +205,7 @@
 "SAVINGS" = "Epargne";
 "INHERITANCE" = "Héritage";
 "CREDIT_LOAN" = "Crédit/emprunt";
-"FAMILLY_OTHERS" = "Famille ou autres";
+"FAMILY_OTHERS" = "Famille ou autres";
 "WHAT_YOUR_WORK_INDUSTRY" = "Quel est votre secteur d'activité ? ";
 
 "AGRICULTURE" = "Agriculture, Agroalimentaire et Ressources Naturelles";
@@ -396,6 +397,7 @@
 "CHANGE_PIN" = "Changer de code PIN";
 "FACE_ID" = "Face ID";
 "CONTACT_FORM" = "Formulaire de contact";
+"CLOSE_ACCOUNT" = "Fermeture du compte";
 "LOG_OUT" = "Déconnexion";
 "STOP_REGISTRATION" = "Arrêter l'inscription";
 "PROGRESS_REGISTRATION_LOST" = "La progression de votre inscription sera perdue";

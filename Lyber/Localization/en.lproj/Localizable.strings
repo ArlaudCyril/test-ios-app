@@ -49,6 +49,7 @@
 "HIGH" = "High";
 "OOPS" = "Oops!";
 "DEADLINE_CONFIRMING_PURCHASE_PASSED" = "The deadline for confirming your purchase has passed. Would you like to receive a new proposal?";
+"CLOSE_ACCOUNT_MESSAGE" = "Are you sure you want to close your account? All your data, including saved preferences, transaction history, and personal details, will be deleted permanently and cannot be recovered. If you're certain, please confirm below.";
 
 
 
@@ -208,7 +209,7 @@
 "SAVINGS" = "Savings";
 "INHERITANCE" = "Inheritance";
 "CREDIT_LOAN" = "Credit/loan";
-"FAMILLY_OTHERS" = "Familly or others";
+"FAMILY_OTHERS" = "Family or others";
 
 "WHAT_YOUR_WORK_INDUSTRY" = "What’s your work industry?";
 
@@ -399,6 +400,7 @@
 "STRONG_AUTHENTIFICATION" = "Strong authentification";
 "CHANGE_PIN" = "Change Pin";
 "FACE_ID" = "Face ID";
+"CLOSE_ACCOUNT" = "Close account";
 "CONTACT_FORM" = "Contact form";
 "LOG_OUT" = "Log out";
 "STOP_REGISTRATION" = "Stop registration";
