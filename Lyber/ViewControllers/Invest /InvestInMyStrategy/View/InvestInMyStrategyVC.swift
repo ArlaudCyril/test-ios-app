@@ -49,7 +49,7 @@ class InvestInMyStrategyVC: ViewController {
 	var minPriceExchange = 1.05
 	var minAmountExchange : Double?
 	//singleCoin || activateStrategy || editActiveStrategy || oneTimeInvestment
-	var minInvestPerAsset : Decimal = 5
+	var minInvestPerAsset : Decimal = 10
 	var requiredAmount : Decimal = 0
 	var asset : PriceServiceResume?
 	var maxAmountBuy : Decimal = 1000
