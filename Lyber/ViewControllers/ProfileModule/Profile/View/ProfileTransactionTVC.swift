@@ -48,6 +48,7 @@ extension ProfileTransactionTVC{
 		CommonUI.setUpLbl(lbl: euroLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: dateLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 		CommonUI.setUpLbl(lbl: noOfCoinLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		self.dateLbl.numberOfLines = 0
 		
 		
 		if data?.type == "order"{
@@ -105,9 +106,7 @@ extension ProfileTransactionTVC{
 			stackView.layer.cornerRadius = 0
         }
         
-        if row == lastIndex{
-            viewAllVw.isHidden = false
-        }
+	
         self.noTransactionVw.isHidden = true
     }
 }

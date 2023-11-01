@@ -39,7 +39,8 @@ class ProfileVC: SwipeGesture {
     override func setUpUI(){
 
 		//Writings
-		self.headerData = [CommonFunctions.localisation(key: "OPERATIONS"),CommonFunctions.localisation(key: "PAYMENT_METHOD"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
+		//self.headerData = [CommonFunctions.localisation(key: "OPERATIONS"),CommonFunctions.localisation(key: "PAYMENT_METHOD"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
+		self.headerData = [CommonFunctions.localisation(key: "OPERATIONS"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
 		self.paymentData = [
 			buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "")
 		]
@@ -66,6 +67,7 @@ class ProfileVC: SwipeGesture {
         self.headerView.headerLbl.isHidden = true
 		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         CommonUI.setUpLbl(lbl: nameLbl, text: userData.shared.firstname, textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+		self.nameLbl.numberOfLines = 0
         CommonUI.setUpLbl(lbl: emailLbl, text: userData.shared.email, textColor: UIColor.grey877E95 , font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.profileOuterVw.layer.cornerRadius = self.profileOuterVw.layer.bounds.height/2
@@ -92,7 +94,7 @@ class ProfileVC: SwipeGesture {
 //MARK: - table view delegates and dataSource
 extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
@@ -101,13 +103,13 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
             }else{
                 return transactionData.count == 0 ? 1: transactionData.count
             }
+//        }else if section == 1{
+//            return paymentData.count
         }else if section == 1{
-            return paymentData.count
-        }else if section == 2{
             return AccountData.count
-        }else if section == 3{
+        }else if section == 2{
             return securityData.count
-        }else if section == 4{
+        }else if section == 3{
             return 1
         }
         return 1
@@ -125,21 +127,21 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
 				cell.setUpCell(loaded: self.transactionsLoaded)
                 return cell
             }
+//        }else if indexPath.section == 1{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfilePaymentTVC")as! ProfilePaymentTVC
+//            cell.setUpCell(data: paymentData[indexPath.row], row: indexPath.row,lastIndex: paymentData.count - 1 )
+//            cell.controller = self
+//            return cell
         }else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfilePaymentTVC")as! ProfilePaymentTVC
-            cell.setUpCell(data: paymentData[indexPath.row], row: indexPath.row,lastIndex: paymentData.count - 1 )
-            cell.controller = self
-            return cell
-        }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileAccountTVC")as! ProfileAccountTVC
             cell.setUpCell(data: AccountData[indexPath.row], index: indexPath,lastIndex: AccountData.count - 1 )
             return cell
-        }else if indexPath.section == 3{
+        }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileAccountTVC")as! ProfileAccountTVC
             cell.setUpCell(data: securityData[indexPath.row], index: indexPath,lastIndex: securityData.count - 1 )
             cell.controller = self
             return cell
-        }else if indexPath.section == 4{
+        }else if indexPath.section == 3{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileLogoutTVC")as! ProfileLogoutTVC
             cell.setUpCell()
             cell.controller = self
@@ -150,7 +152,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 4{
+        if section == 3{
             return UIView()
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHeaderTVC")as! ProfileHeaderTVC
@@ -164,7 +166,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2{
+        if indexPath.section == 1{
 			if(indexPath.row == 0){
 				let vc = NotificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 				self.navigationController?.pushViewController(vc, animated: true)
@@ -176,7 +178,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
 				self.navigationController?.pushViewController(vc, animated: true)
 			}
         }
-        if indexPath.section == 3{
+        if indexPath.section == 2{
             if indexPath.row == 0{
                 let vc = StrongAuthVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                 self.navigationController?.pushViewController(vc, animated: true)

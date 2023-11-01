@@ -222,7 +222,7 @@ extension VerificationVC{
             VerificationVM().userCloseAccountRequest(otp: code,
             onSuccess:{[]response in
                 if response != nil{
-                    CommonFunctions.logout();
+                    CommonFunctions.deleteAccount()
                 }
             }, onFailure: {[]response in})
         }

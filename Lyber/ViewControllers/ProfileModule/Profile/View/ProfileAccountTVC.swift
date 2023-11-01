@@ -41,7 +41,7 @@ extension ProfileAccountTVC{
         self.rightArrowView.isHidden = false
         self.switchView.isHidden = true
         self.switchBtn.addTarget(self, action: #selector(switchBtnAct), for: .touchUpInside)
-        if index.section == 2{
+        if index.section == 1{
             self.nameDescLbl.isHidden = true
 			if(index.row == 0){
 				outerView.layer.cornerRadius = 16
@@ -54,7 +54,7 @@ extension ProfileAccountTVC{
 				outerView.layer.cornerRadius = 16
 				outerView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
 			}
-        }else if index.section == 3{
+        }else if index.section == 2{
             if index.row == 0{
                 outerView.layer.cornerRadius = 16
                 outerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]

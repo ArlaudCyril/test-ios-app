@@ -65,19 +65,23 @@ class CommonFunctions{
         userData.shared.disconnect()
     }
 	
+	static func deleteAccount(){
+		let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+		let navVC = UINavigationController(rootViewController: vc)
+		UIApplication.shared.windows[0].rootViewController = navVC
+		UIApplication.shared.windows[0].makeKeyAndVisible()
+		navVC.navigationController?.popToRootViewController(animated: true)
+		navVC.setNavigationBarHidden(true , animated: true)
+		userData.shared.deleteData()
+    }
+	
 	static func stopRegistration(){
 		let alert = UIAlertController(title: CommonFunctions.localisation(key: "STOP_REGISTRATION"), message: CommonFunctions.localisation(key: "PROGRESS_REGISTRATION_LOST"), preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
 			
 		}))
 		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "OK"), style: .default, handler: {_ in
-			let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-			let navVC = UINavigationController(rootViewController: vc)
-			UIApplication.shared.windows[0].rootViewController = navVC
-			UIApplication.shared.windows[0].makeKeyAndVisible()
-			navVC.navigationController?.popToRootViewController(animated: true)
-			navVC.setNavigationBarHidden(true , animated: true)
-			userData.shared.deleteData()
+			self.deleteAccount()
 		}))
 		getTopMostViewController()?.present(alert, animated: true, completion: nil)
 		
