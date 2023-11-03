@@ -399,6 +399,7 @@
 "NO_SECURITY" = "No security";
 "STRONG_AUTHENTIFICATION" = "Strong authentification";
 "CHANGE_PIN" = "Change Pin";
+"CHANGE_PASSWORD" = "Change Password";
 "FACE_ID" = "Face ID";
 "CLOSE_ACCOUNT" = "Close account";
 "CONTACT_FORM" = "Contact form";
@@ -577,8 +578,12 @@
 //MARK: - ForgotPassword
 "SENT_EMAIL_CONTAINING_RESET_LINK" = "We have sent you an email containing the reset link that you must follow in order to reset your password.";
 "RESET_PASSWORD" = "Reset password";
+"CHANGE_PASSWORD" = "Change password";
 "ENTER_NEW_PASSWORD" = "Enter your new password";
+"ENTER_OLD_PASSWORD" = "Enter your old password";
 "SAVE_NEW_PASSWORD" = "Save my new password";
+"NEW_PASSWORD_CANNOT_SAME" = "Your new password cannot be the same as your old one.";
+
 
 //MARK: - Export
 "REQUEST_BEEN_RECEIVED" = "Your request has been received. The export will be delivered to your email address in a few minutes.";

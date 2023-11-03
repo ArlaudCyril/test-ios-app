@@ -277,6 +277,18 @@
         }
       }
     },
+    "Cjv-7v-GeM.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"Cjv-7v-GeM\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "Crc-6U-IqO.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"Crc-6U-IqO\";",
       "extractionState" : "extracted_with_value",
@@ -853,6 +865,18 @@
         }
       }
     },
+    "o7B-aS-GGV.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"o7B-aS-GGV\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "O7t-ep-RNd.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"O7t-ep-RNd\";",
       "extractionState" : "extracted_with_value",
@@ -975,6 +999,18 @@
     },
     "Qpc-7H-ZIQ.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"Qpc-7H-ZIQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
+    "QvO-le-6jY.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"QvO-le-6jY\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -1213,6 +1249,18 @@
         }
       }
     },
+    "U5S-iI-FOf.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"U5S-iI-FOf\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "Ucy-nn-U4F.configuration.title" : {
       "comment" : "Class = \"UIButton\"; configuration.title = \"Button\"; ObjectID = \"Ucy-nn-U4F\";",
       "extractionState" : "extracted_with_value",
@@ -1341,6 +1389,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Label"
+          }
+        }
+      }
+    },
+    "vPN-U9-DD7.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"vPN-U9-DD7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
           }
         }
       }

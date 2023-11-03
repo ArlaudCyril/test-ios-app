@@ -71,7 +71,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
         if section == 0{
             return 1
         }else if section == 1{
-			return Storage.balances.count == 0 ? 1: Storage.balances.count
+			return Storage.balances.count == 0 ? 4: Storage.balances.count
         }else if section == 2{
             return 1
         }else if section == 3{
@@ -92,13 +92,36 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 				let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
 				cell.setEuroAmount(totalAmount: totalEuroAvailablePrinting ?? 0)
 				cell.controller = self
-				cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row)
+				cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row, lastIndex: Storage.balances.count - 1)
 				return cell
 			}else{
-				let cell = tableView.dequeueReusableCell(withIdentifier: "NoAssetsTVC")as! NoAssetsTVC
-			cell.controller = self
-				cell.setUpCell()
-				return cell
+				if(indexPath.row == 0){
+					let cell = tableView.dequeueReusableCell(withIdentifier: "NoAssetsTVC")as! NoAssetsTVC
+					cell.controller = self
+					cell.setUpCell()
+					return cell
+				}else if(indexPath.row == 1){
+					let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
+					let balanceData = BalanceData(balance: "0", euroBalance: "0")
+					let balance = Balance(id: "btc", balanceData: balanceData)
+					cell.controller = self
+					cell.setUpCell(data: balance,index : 0, lastIndex: 2)
+					return cell
+				}else if(indexPath.row == 2){
+					let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
+					let balanceData = BalanceData(balance: "0", euroBalance: "0")
+					let balance = Balance(id: "eth", balanceData: balanceData)
+					cell.controller = self
+					cell.setUpCell(data: balance,index : 1, lastIndex: 2)
+					return cell
+				}else{
+					let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
+					let balanceData = BalanceData(balance: "0", euroBalance: "0")
+					let balance = Balance(id: "usdt", balanceData: balanceData)
+					cell.controller = self
+					cell.setUpCell(data: balance,index : 2, lastIndex: 2)
+					return cell
+				}
 			}
         }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTVC")as! AnalyticsTVC

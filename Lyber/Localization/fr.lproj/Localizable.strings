@@ -310,7 +310,7 @@
 "EVERY_THURSDAY" = "Tous les jeudis";
 "EVERY_21ST_MONTH" = "Tous les 21 du mois";
 "RECOMMENDED" = "Recommandé";
-"DEPOSIT" = "Dépôt";
+"DEPOSIT" = "Déposer";
 "DEPOSIT_VERB" = "Déposer";
 "DEPOSIT_TRANSACTION" = "Dépôt de %@";
 "MONEY_LYBER" = "Ajouter de l'argent sur Lyber";
@@ -395,6 +395,7 @@
 "NO_SECURITY" = "Pas de sécurité";
 "STRONG_AUTHENTIFICATION" = "Authentification forte";
 "CHANGE_PIN" = "Changer de code PIN";
+"CHANGE_PASSWORD" = "Changer de mot de passe";
 "FACE_ID" = "Face ID";
 "CONTACT_FORM" = "Formulaire de contact";
 "CLOSE_ACCOUNT" = "Fermeture du compte";
@@ -575,8 +576,11 @@
 //MARK: - ForgotPassword
 "SENT_EMAIL_CONTAINING_RESET_LINK" = "Nous vous avons envoyé un e-mail contenant le lien de réinitialisation que vous devez suivre pour réinitialiser votre mot de passe.";
 "RESET_PASSWORD" = "Réinitialiser le mot de passe";
+"CHANGE_PASSWORD" = "Modification du mot de passe";
+"ENTER_OLD_PASSWORD" = "Entrez votre ancien mot de passe";
 "ENTER_NEW_PASSWORD" = "Entrez votre nouveau mot de passe";
 "SAVE_NEW_PASSWORD" = "Enregistrer mon nouveau mot de passe";
+"NEW_PASSWORD_CANNOT_SAME" = "Votre nouveau mot de passe ne peut pas être le même que l'ancien.";
 
 
 //MARK: - Export

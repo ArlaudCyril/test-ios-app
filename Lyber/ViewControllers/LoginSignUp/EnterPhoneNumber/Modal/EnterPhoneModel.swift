@@ -155,7 +155,7 @@ struct signUpData: Codable {
 
 //mark :- new apis
 // MARK: - LoginChallengeAPI
-struct LoginChallengeAPI: Codable {
+struct ChallengeAPI: Codable {
     let data: challengeClass?
 }
 

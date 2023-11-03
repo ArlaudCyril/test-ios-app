@@ -45,7 +45,7 @@ class MyAssetsTVC: UITableViewCell {
 
 //Mark:- SetUpUI
 extension MyAssetsTVC{
-    func setUpCell(data : Balance?,index : Int){
+	func setUpCell(data : Balance?,index : Int, lastIndex : Int){
 		
 		let currency = CommonFunctions.getCurrency(id: data?.id ?? "")
 		let priceCoin = (Double(data?.balanceData.euroBalance ?? "") ?? 0)/(Double(data?.balanceData.balance ?? "") ?? 1)
@@ -59,12 +59,12 @@ extension MyAssetsTVC{
 
 		flatVw.isHidden = true
 		flatWalletVw.isHidden = true
-		if index == Storage.balances.count - 1 && index == 0{
+		if index == lastIndex && index == 0{
             assetsView.layer.cornerRadius = 16
             assetsView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMaxXMinYCorner]
             flatVw.isHidden = false
             flatWalletVw.isHidden = false
-		}else if index == Storage.balances.count - 1{
+		}else if index == lastIndex{
 			assetsView.layer.cornerRadius = 16
 			assetsView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
 			flatVw.isHidden = false

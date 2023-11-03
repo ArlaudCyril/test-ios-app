@@ -225,6 +225,14 @@ extension VerificationVC{
                     CommonFunctions.deleteAccount()
                 }
             }, onFailure: {[]response in})
+        }else if(self.action == "setNewPassword"){
+            VerificationVM().verifyPasswordChangeAPI(code: code,
+            onSuccess:{[]response in
+                if response != nil{
+					self.dismiss(animated: false)
+					self.controller?.navigationController?.popViewController(animated: false)
+                }
+            }, onFailure: {[]response in})
         }
         else{
             VerificationVM().verify2FAApi(code: code, completion: {[]response in

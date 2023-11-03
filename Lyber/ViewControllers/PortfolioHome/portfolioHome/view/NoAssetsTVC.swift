@@ -22,7 +22,7 @@ extension NoAssetsTVC{
 		CommonUI.setUpLbl(lbl: self.noAssetsLbl, text: CommonFunctions.localisation(key: "NO_ASSETS"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
 		CommonUI.setUpButton(btn: noAssetsBtn, text: "", textcolor: UIColor.PurpleColor, backgroundColor: UIColor.clear, cornerRadius: 0, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		noAssetsBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "DEPOSIT_NOW")), for: .normal)
+		noAssetsBtn.setAttributedTitle(CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "BUY_USDT")), for: .normal)
 		noAssetsBtn.addTarget(self, action: #selector(noAssetsBtnAct), for: .touchUpInside)
 		
 	}
@@ -30,10 +30,12 @@ extension NoAssetsTVC{
 
 extension NoAssetsTVC{
 	@objc func noAssetsBtnAct(){
-		let vc = DepositAssetVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-		let nav = UINavigationController(rootViewController: vc)
-		nav.modalPresentationStyle = .fullScreen
-		nav.navigationBar.isHidden = true
-		self.controller?.present(nav, animated: false, completion: nil)
+		PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+			let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+			vc.strategyType = .singleCoin
+			vc.asset = toAsset
+			self.controller?.navigationController?.pushViewController(vc, animated: true)
+		})
 	}
 }

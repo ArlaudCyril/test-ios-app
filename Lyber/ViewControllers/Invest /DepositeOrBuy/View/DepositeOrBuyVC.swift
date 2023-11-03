@@ -120,7 +120,7 @@ class DepositeOrBuyVC: ViewController {
             
         }
 		if(self.idAsset == "usdt"){
-			self.assetPagePopUpData[1] = buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:"\(CommonFunctions.localisation(key: "BUY")) \(self.idAsset.uppercased())", subName: CommonFunctions.localisation(key: "BUY_USDT_EUROS"), rightBtnName: "")
+			self.assetPagePopUpData[1] = buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:CommonFunctions.localisation(key: "BUY_USDT"), subName: CommonFunctions.localisation(key: "BUY_USDT_EUROS"), rightBtnName: "")
 		}
 		if(self.strategy.publicType != "lyber"){
 			self.investWithStrategiesInactiveData.append(buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DELETE_STRATEGY"), subName: "", rightBtnName: ""))

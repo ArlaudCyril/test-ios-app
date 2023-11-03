@@ -97,6 +97,9 @@ class PortfolioDetailVC: SwipeGesture {
             tblView.sectionHeaderTopPadding = 0
         }
 		CommonUI.setUpButton(btn: investMoneyBtn, text: "\(CommonFunctions.localisation(key: "INVEST_IN"))\(self.assetId.uppercased())", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+		if(self.assetId == "usdt"){
+			self.investMoneyBtn.setTitle(CommonFunctions.localisation(key: "BUY_USDT"), for: .normal)
+		}
         self.threeDotBtn.layer.cornerRadius = 16
         self.threeDotBtn.threeDotButtonShadow()
         

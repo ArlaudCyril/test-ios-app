@@ -369,7 +369,7 @@ class InvestInMyStrategyVC: ViewController {
 			
 			CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0) \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
-			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(fromBalance?.balanceData.balance ?? "0") \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAsset(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAsset(from: self.feeWithdrawal ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
@@ -610,7 +610,7 @@ extension InvestInMyStrategyVC {
 	
 	@objc func maximumBtnAct(){
         if strategyType == .withdraw{
-			let maxAmountWithdrawableString = CommonFunctions.formattedAsset(from: max(0,(Double(fromBalance?.balanceData.balance ?? "") ?? 0.0)-(self.feeWithdrawal ?? 0.0)), price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)
+			let maxAmountWithdrawableString = CommonFunctions.formattedAsset(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)
 			var enteredSubText = ""
 			
 			self.maxAmountWithdraw = Decimal(string:maxAmountWithdrawableString) ?? 0.0

@@ -47,6 +47,7 @@ class ProfileVC: SwipeGesture {
 		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "EXPORT"), desc: "")]
 		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "ENABLED_FEMININE")),
 			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
+			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PASSWORD"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "CONTACT_FORM"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: ""),
@@ -186,11 +187,14 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
                 let vc = CryptoAddressBookVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                 self.navigationController?.pushViewController(vc, animated: true)
             }else if indexPath.row == 2{
+				let vc = ChangePasswordVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+				self.navigationController?.pushViewController(vc, animated: true)
+            }else if indexPath.row == 3{
 				let vc = ChangePinVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 				let nav = UINavigationController(rootViewController: vc)
 				nav.modalPresentationStyle = .fullScreen
 				self.present(nav, animated: true, completion: nil)
-            }else if indexPath.row == 3{
+            }else if indexPath.row == 4{
 				let vc = ContactFormVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 				self.navigationController?.pushViewController(vc, animated: false)
             }else if indexPath.row == securityData.count - 1{

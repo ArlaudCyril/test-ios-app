@@ -208,6 +208,7 @@ struct Constants{
 		static let userServiceResetPassword = "user-service/reset-password"
 		static let userServiceExport = "user-service/export"
         static let userCloseAccount = "user-service/close-account"
+        static let userVerifyPasswordChange = "user-service/verify-password-change"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"
@@ -238,6 +239,11 @@ struct Constants{
 		
 		//ContactForm
 		static let userServiceContactSupport = "user-service/contact-support"
+		
+		//Change password
+		static let userServicePasswordChangeChallenge = "user-service/password-change-challenge"
+		static let userServicePassword = "user-service/password"
+		
 		
     }
 	

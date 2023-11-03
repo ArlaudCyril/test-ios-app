@@ -44,11 +44,11 @@ class EnterPhoneVM {
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
     }
     
-    func logInWithPhoneChallengeApi(phoneNumber: String,countryCode : String, completion: @escaping ( (LoginChallengeAPI?) -> Void )){
+    func logInWithPhoneChallengeApi(phoneNumber: String,countryCode : String, completion: @escaping ( (ChallengeAPI?) -> Void )){
         let param: [String: Any] = [
             Constants.ApiKeys.phoneNo: "\(Int(countryCode) ?? 0)\(phoneNumber)"
         ]
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userChallenge, withParameters: param, ofType: LoginChallengeAPI.self, onSuccess: { response in
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userChallenge, withParameters: param, ofType: ChallengeAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
@@ -57,11 +57,11 @@ class EnterPhoneVM {
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
     
-    func logInChallengeApi(email: String, completion: @escaping ( (LoginChallengeAPI?) -> Void )){
+    func logInChallengeApi(email: String, completion: @escaping ( (ChallengeAPI?) -> Void )){
         let param: [String: Any] = [
             Constants.ApiKeys.email: email
         ]
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userChallenge, withParameters: param, ofType: LoginChallengeAPI.self, onSuccess: { response in
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userChallenge, withParameters: param, ofType: ChallengeAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in

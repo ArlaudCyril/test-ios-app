@@ -70,4 +70,17 @@ class VerificationVM{
         }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
         
     }
+	
+	func verifyPasswordChangeAPI(code: String, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
+		let params : [String : Any] = [Constants.ApiKeys.code : code]
+        
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyPasswordChange, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            onSuccess(response)
+        }, onFailure: { reload, error, code  in
+            let failure = FailureAPI(message: error, code: code)
+            CommonFunctions.handleErrors(caller: "verifyPasswordChangeAPI", code: code, error: error)
+            onFailure(failure)
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        
+    }
 }
