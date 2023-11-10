@@ -41,26 +41,23 @@ class LoginVC: ViewController {
 		audioSession.removeObserver(self, forKeyPath: "outputVolume")
 		
 	}
-
+	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 		if keyPath == "outputVolume"{
 			let audioSession = AVAudioSession.sharedInstance()
-
-			if audioSession.outputVolume < audioLevel {
-				if(GlobalVariables.baseUrl == ApiEnvironment.Staging.rawValue){
-					CommonFunctions.toster("Environnement changé à : Production")
-					GlobalVariables.baseUrl = ApiEnvironment.Production.rawValue
-	
-				}else if(GlobalVariables.baseUrl == ApiEnvironment.Production.rawValue){
-					CommonFunctions.toster("Environnement changé à : Dev")
-					GlobalVariables.baseUrl = ApiEnvironment.Dev.rawValue
-	
-				}else{
-					CommonFunctions.toster("Environnement changé à : Staging")
-					GlobalVariables.baseUrl = ApiEnvironment.Staging.rawValue
+			if(AppConfig.dictEnvVariables["ENV"] as? String == "DEV"){
+				if audioSession.outputVolume < audioLevel {
+					if(GlobalVariables.baseUrl == ApiEnvironment.Staging.rawValue){
+						CommonFunctions.toster("Environnement changé à : Dev")
+						GlobalVariables.baseUrl = ApiEnvironment.Dev.rawValue
+					}else{
+						CommonFunctions.toster("Environnement changé à : Staging")
+						GlobalVariables.baseUrl = ApiEnvironment.Staging.rawValue
+					}
 				}
+				audioLevel = audioSession.outputVolume
 			}
-			audioLevel = audioSession.outputVolume
+			
 		}
 	}
 	//MARK: - SetUpUI

@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UISupportsDocumentBrowser</key>
-	<true/>
-	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -60,6 +56,8 @@
 		<string>comLyber2</string>
 		<string>googlegmail</string>
 	</array>
+	<key>NSAdvertisingAttributionReportEndpoint</key>
+	<string>https://appsflyer-skadnetwork.com/</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -114,11 +112,5 @@
 		<key>test</key>
 		<string>key_test_pnZ5fOm43ccP5fvDtOkfjppnytfI7a63</string>
 	</dict>
-	<key>CFBundleIdentifier</key>
-	<string>com.Lyber</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Your data will be used to improve user experience. This helps us understand how you downloaded our app and what features you mainly use.</string>
-	<key>NSAdvertisingAttributionReportEndpoint</key>
-	<string>https://appsflyer-skadnetwork.com/</string>
 </dict>
 </plist>

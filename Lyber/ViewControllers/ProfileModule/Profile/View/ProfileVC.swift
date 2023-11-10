@@ -271,15 +271,19 @@ extension ProfileVC{
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
         }))
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CONFIRM"), style: .default, handler: {_ in
-            ConfirmInvestmentVM().userGetOtpApi(action: "close-account", completion: {[weak self]response in
-                if response != nil{
-                    let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                    vc.typeVerification = userData.shared.type2FA
-                    vc.action = "close-account"
-                    vc.controller = self ?? ConfirmInvestmentVC()
-                    self?.present(vc, animated: true, completion: nil)
-                }
-            })
+			if(totalPortfolio >= 5){
+				CommonFunctions.toster(CommonFunctions.localisation(key: "MAKE_SURE_WITHDRAW"))
+			}else{
+				ConfirmInvestmentVM().userGetOtpApi(action: "close-account", completion: {[weak self]response in
+					if response != nil{
+						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+						vc.typeVerification = userData.shared.type2FA
+						vc.action = "close-account"
+						vc.controller = self ?? ConfirmInvestmentVC()
+						self?.present(vc, animated: true, completion: nil)
+					}
+				})
+			}
         }))
         self.present(alert, animated: true, completion: nil)
     }

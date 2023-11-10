@@ -49,7 +49,10 @@
 "HIGH" = "High";
 "OOPS" = "Oops!";
 "DEADLINE_CONFIRMING_PURCHASE_PASSED" = "The deadline for confirming your purchase has passed. Would you like to receive a new proposal?";
-"CLOSE_ACCOUNT_MESSAGE" = "Are you sure you want to close your account? All your data, including saved preferences, transaction history, and personal details, will be deleted permanently and cannot be recovered. If you're certain, please confirm below.";
+"CLOSE_ACCOUNT_MESSAGE" = "Are you sure you want to close your account? All your data, including saved preferences, transaction history and personal information will be retained for 5 years from the date of account closure. If you are sure, please confirm below.
+
+Make sure to withdraw all the money you have in your account before closing it.";
+"MAKE_SURE_WITHDRAW" = "Make sure to withdraw all the money you have in your account before closing it.";
 
 
 
@@ -286,7 +289,6 @@
 "BUY_SPECIFIC_ASSET_USDT" = "Buy %@ with USDT";
 "BUY_USDT_EUROS" = "Buy USDT with euros";
 "SELL" = "Sell";
-"LYBER_FEES" = "Lyber fees";
 "TOTAL" = "Total";
 "PRICE" = "Price";
 "PRICE_CRYPTOCURRENCY_VOLATILE" = "The price of cryptocurrencies is volatile. The value of your investment can go up, down or to zero.";
@@ -604,6 +606,11 @@
 "NAME" = "Name";
 "TYPE" = "Type";
 "TRANSACTION_HASH" = "Transaction Hash";
+
+//MARK: KYC
+"FEATURE_SOON_AVAILABLE" = "This feature will soon be available";
+"DOWNLOAD_ERROR" = "Download error";
+"DOWNLOAD_COMPLETED" = "Download completed";
 
 
 //MARK: - UNITS

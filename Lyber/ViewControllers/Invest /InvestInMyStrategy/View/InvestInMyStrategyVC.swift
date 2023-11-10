@@ -486,16 +486,13 @@ extension InvestInMyStrategyVC {
             if enteredText.count == 0{
 				enteredText = "\(enteredText)\(sender.tag)"
 				updateValues(value: enteredText)
+				
                 
             }else{
-                if enteredText.count >= 10{
-                    
-                }else{
-                    enteredText = "\(enteredText)\(sender.tag)"
-					updateValues(value: enteredText)
-                }
-                
+				enteredText = "\(enteredText)\(sender.tag)"
+				updateValues(value: enteredText)
             }
+				
             if enteredText != ""{
 				handlePreviewInvestButton(value: enteredText)
             }
@@ -686,7 +683,7 @@ extension InvestInMyStrategyVC {
 			
 			totalNoOfCoinsInvest = Decimal(string: fromBalance?.balanceData.balance ?? "0") ?? 0
 			
-			self.noOfCoinLbl.text = "~\(String(CommonFunctions.getTwoDecimalValue(number:(NSDecimalNumber(decimal: totalEuroInvested).doubleValue * coinFromPrice)/coinToPrice))) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
+			self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: totalEuroInvested * Decimal(coinFromPrice/coinToPrice), price: Decimal(coinToPrice))) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
             
         }else if strategyType == .withdraw{
 			
@@ -698,12 +695,15 @@ extension InvestInMyStrategyVC {
 				amountTF.text = "\(cleanedValue)€"
 				self.noOfCoinLbl.text = "~\(totalNoOfCoinsInvest) \(self.fromAssetId?.uppercased() ?? "")"
 				
+				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0) + (0.01 * totalNoOfCoinsInvest), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
             }else{
 				totalNoOfCoinsInvest = Decimal(string:cleanedValue) ?? 0.0
 				totalEuroInvested = (Decimal(string: subValue) ?? 0.0)
 				
 				amountTF.text = "\(cleanedValue) \(fromAssetId?.uppercased() ?? "")"
                 self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: NSDecimalNumber(decimal: totalEuroInvested).doubleValue))€"
+				
+				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0) + (0.01 * totalNoOfCoinsInvest), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
             }
 		}else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
 			if exchangeCoinToEuro == false{
@@ -750,6 +750,7 @@ extension InvestInMyStrategyVC {
 				enteredSubText = CommonFunctions.getFormatedPriceDecimal(number: (Decimal(string: value) ?? 0.0) * self.coinWithdrawPrice)
 			}
 			noOfCoins(value: enteredText, subValue: enteredSubText)
+			
 		}else{
 			noOfCoins(value: value)
 		}
@@ -844,7 +845,7 @@ extension InvestInMyStrategyVC {
 			vc.totalCoinsInvested = totalNoOfCoinsInvest
 			vc.address = self.addressLbl.text
 			vc.network = self.network
-			vc.fees = self.feeWithdrawal
+			vc.fees = (self.feeWithdrawal ?? 0) + NSDecimalNumber(decimal: 0.01 * totalNoOfCoinsInvest).doubleValue
 			vc.fromAssetId = self.fromAssetId ?? ""
 			vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
 			self.navigationController?.pushViewController(vc, animated: true)

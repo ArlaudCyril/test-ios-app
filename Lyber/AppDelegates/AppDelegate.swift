@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         AppsFlyerLib.shared().appsFlyerDevKey = "G9y3U7W29YR7RSCN6AdBRC"
-        AppsFlyerLib.shared().appleAppID = "1609050369"
+        AppsFlyerLib.shared().appleAppID = AppConfig.dictEnvVariables["APPSFLYER_APP_ID"] as? String ?? "1609050369"
         //  Set isDebug to true to see AppsFlyer debug logs
         //AppsFlyerLib.shared().isDebug = true
       
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 		FirebaseApp.configure()
 		Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
         
-		StripeAPI.defaultPublishableKey = "pk_test_51NVVY7F2A3romcuHdC3JDD9evsFhQvyZ5cYS6wpy9OznXgmYzLvWTG81Zfj2nWGQFZ2zs8RboA3uMLCNPpPV08Zk00McUdiPAt"
+		StripeAPI.defaultPublishableKey = AppConfig.dictEnvVariables["STRIPE_KEY"] as? String ?? "pk_test_51NVVY7F2A3romcuHdC3JDD9evsFhQvyZ5cYS6wpy9OznXgmYzLvWTG81Zfj2nWGQFZ2zs8RboA3uMLCNPpPV08Zk00McUdiPAt"
         
         return true
     }

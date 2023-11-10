@@ -32,7 +32,17 @@ struct GlobalVariables {
 	static var language : Language = Language(id: "fr", name: "Français", image: Assets.fr_flag)
 	static var languageArray : [Language] = [Language(id:"en", name: "English", image: Assets.uk_flag),Language(id: "fr", name: "Français", image: Assets.fr_flag)]
 	static var bundle : Bundle = Bundle()
-	static var baseUrl : String = ApiEnvironment.Staging.rawValue
+	static var baseUrl : String = AppConfig.dictEnvVariables["API_URL"] as? String ?? "https://staging.lyber.com/"
 	
 }
 
+struct AppConfig {
+	static var dictEnvVariables: NSDictionary {
+#if STAGING
+		return NSDictionary(contentsOfFile: Bundle.main.path(forResource: "lyberStaging", ofType: "plist"))
+#else
+		return NSDictionary(contentsOfFile: Bundle.main.path(forResource: "lyberProd", ofType: "plist") ?? "") ?? NSDictionary()
+#endif
+	}
+	
+}

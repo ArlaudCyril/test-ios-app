@@ -109,7 +109,7 @@ class ConfirmExecutionVC: ViewController {
 		CommonUI.setUpLbl(lbl: self.moreDetailsLbl, text: "> \(CommonFunctions.localisation(key: "MORE_DETAILS"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.toAssetPriceTitleLbl, text: "\(asset?.id.uppercased() ?? "") \(CommonFunctions.localisation(key: "PRICE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.amountTitleLbl, text: CommonFunctions.localisation(key: "AMOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.lyberFeesTitleLbl, text: CommonFunctions.localisation(key: "LYBER_FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.lyberFeesTitleLbl, text: CommonFunctions.localisation(key: "FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.totalTitleLbl, text: CommonFunctions.localisation(key: "TOTAL"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 
 		//Values
@@ -160,17 +160,18 @@ class ConfirmExecutionVC: ViewController {
 			self.toAssetPriceValueLbl.text = "1 : \(self.ratioCoin ?? "")"
 			
 			self.amountTitleLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
-			self.amountValueLbl.text = "\(CommonFunctions.formattedAsset(from: Double(amountFromDeductedFees ?? "0"), price: self.coinFromPrice)) \(fromAssetId?.uppercased() ?? "")"
+			self.amountValueLbl.text = "~\(CommonFunctions.formattedAsset(from: Double(amountFromDeductedFees ?? "0"), price: self.coinFromPrice)) \(fromAssetId?.uppercased() ?? "")"
 			
-			self.lyberFeesValueLbl.text = "\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinFromPrice)) \(self.fromAssetId?.uppercased() ?? "")"
-			
-			let totalFromAmount = (Decimal(string: self.amountValueLbl.text ?? "0") ?? 0) + (Decimal(string: self.lyberFeesValueLbl.text ?? "0") ?? 0)
+			self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinFromPrice)) \(self.fromAssetId?.uppercased() ?? "")"
+		
+			let totalFromAmount = (Decimal(string: self.amountFromDeductedFees ?? "0") ?? 0) + Decimal(self.fees ?? 0)
 			
 			self.totalValueLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: totalFromAmount, price: Decimal(self.coinFromPrice ?? 0))) \(self.fromAssetId?.uppercased() ?? "")"
 			
 			self.fromAmountExecution.text = self.totalValueLbl.text
 			
-			let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
+			//let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
+			let finalAmount = Decimal(string: self.amountTo ?? "0") ?? 0
 			
 			self.toAmountExecution.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(exchangeTo.uppercased())"
 			

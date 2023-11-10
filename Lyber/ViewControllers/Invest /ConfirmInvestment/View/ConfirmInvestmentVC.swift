@@ -90,7 +90,7 @@ class ConfirmInvestmentVC: ViewController {
         CommonUI.setUpLbl(lbl: self.frequencyLbl, text: CommonFunctions.localisation(key: "FREQUENCY"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.paymentLbl, text: CommonFunctions.localisation(key: "PAYMENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.networkTitleLbl, text: CommonFunctions.localisation(key: "NETWORK"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.lyberFeeLbl, text: CommonFunctions.localisation(key: "LYBER_FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.lyberFeeLbl, text: CommonFunctions.localisation(key: "FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalLbl, text: CommonFunctions.localisation(key: "TOTAL"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
@@ -166,7 +166,7 @@ class ConfirmInvestmentVC: ViewController {
 			
 			let finalAmount = self.totalCoinsInvested - Decimal(self.fees ?? 0.0)
             self.amountLbl.text = CommonFunctions.localisation(key: "AMOUNT")
-			self.euroAmountLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: Decimal(self.coinPrice ?? 0.0))) \(fromAssetId.uppercased())"
+			self.euroAmountLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: Decimal(self.coinPrice ?? 0.0))) \(fromAssetId.uppercased())"
 			
             self.frequencyLbl.text = CommonFunctions.localisation(key: "ADDRESS")
 			
@@ -176,8 +176,8 @@ class ConfirmInvestmentVC: ViewController {
 			self.networkVw.isHidden = false
 			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.fullName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
-			self.lyberFeeLbl.text = CommonFunctions.localisation(key: "LYBER_FEES")
-			self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
+			self.lyberFeeLbl.text = CommonFunctions.localisation(key: "FEES")
+			self.euroLyberFeeLBl.text = "~\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
 			
 			self.totalEuroLbl.text = "\(totalCoinsInvested) \(fromAssetId.uppercased())"
 

@@ -51,9 +51,14 @@ extension WithdrawAddressVC: UITableViewDelegate , UITableViewDataSource{
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawAddressTVC", for: indexPath as IndexPath) as! WithdrawAddressTVC
-		cell.configureWithData(data : networksArray[indexPath.row])
-		return cell
+		if(networksArray[indexPath.row].isWithdrawalActive == true){
+			let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawAddressTVC", for: indexPath as IndexPath) as! WithdrawAddressTVC
+			cell.configureWithData(data : networksArray[indexPath.row])
+			return cell
+		}else{
+			return UITableViewCell()
+		}
+		
 	}
 	
 	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -87,7 +92,6 @@ extension WithdrawAddressVC{
 				self.networksArray = response?.data?.networks ?? []
 				self.tblView.reloadData()
 			}
-			
 		})
 	}
 	

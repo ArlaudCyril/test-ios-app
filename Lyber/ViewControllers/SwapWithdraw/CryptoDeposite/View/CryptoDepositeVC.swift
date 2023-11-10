@@ -169,6 +169,7 @@ extension CryptoDepositeVC{
         PortfolioDetailVM().getCoinInfoApi(Asset: assetId, isNetwork: true, completion: {[weak self]response in
 			CommonFunctions.hideLoader()
 			self?.dropDownProtocol.dataSource = []
+			self?.networkArray = []
 			
 			for network in response?.data?.networks ?? []{
 				if(network.isDepositActive == true){

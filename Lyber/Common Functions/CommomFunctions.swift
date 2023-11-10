@@ -1054,6 +1054,8 @@ class CommonFunctions{
 				break
 			case "13014":
 				break
+			case "19002":
+				break
 				
 			default:
 				CommonFunctions.toster(error)

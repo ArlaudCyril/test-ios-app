@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CONTRALIA_CONFIDENTIALITY_ID360</key>
+	<string>https://id360docaposte.com/static/process_ui/assets/pdf/politiqueconfidentialite</string>
+	<key>CONTRALIA_CGUID_URL</key>
+	<string>https://id360docaposte.com/static/process_ui/assets/pdf/cguid360</string>
+	<key>CONTRALIA_PSAN_CONTRACT_URL</key>
+	<string>https://contralia.fr/eDoc/user-api/document/coreDocument?coreDocUrl</string>
+	<key>CONTRALIA_KYC_URL</key>
+	<string>https://id360docaposte.com/static/process_ui/index.html#/enrollment</string>
+	<key>CONTRALIA_URL</key>
+	<string>https://www.contralia.fr/Contralia</string>
+	<key>ENV</key>
+	<string>PROD</string>
+	<key>APPSFLYER_APP_ID</key>
+	<string>6471418349</string>
+	<key>STRIPE_KEY</key>
+	<string>pk_live_51NVVY7F2A3romcuHShL3mg16ls7OVvdPNIQkPuU14mCEZNKfci5BLj0eEjcxQyi5MkD5wf9AF0lajeYhjo8OFpkb00akLPszlE</string>
+	<key>API_URL</key>
+	<string>https://prod.lyber.com/</string>
+</dict>
+</plist>

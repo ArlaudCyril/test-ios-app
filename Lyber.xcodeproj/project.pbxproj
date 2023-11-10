@@ -245,6 +245,8 @@
 		1886C7E62959A53600D28828 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E52959A53600D28828 /* Socket.swift */; };
 		1886C7E82959BFE000D28828 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E72959BFE000D28828 /* WebSocket.swift */; };
 		1F0988BA29B9E86A0075B000 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0988B929B9E86A0075B000 /* Test.storyboard */; };
+		1F105CE22AFE80A40052D21E /* lyberStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CE02AFE7F900052D21E /* lyberStaging.plist */; };
+		1F105CE32AFE80A70052D21E /* lyberProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CDD2AFE7D020052D21E /* lyberProd.plist */; };
 		1F1857772A28D0BD006F9014 /* WithdrawAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */; };
 		1F1857792A28DA5A006F9014 /* WithdrawAddressTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */; };
 		1F1DA4372A7CF6A000BE8C61 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */; };
@@ -301,6 +303,305 @@
 		1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
 		1FE8E54D2A0A838A0033398F /* NotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54C2A0A838A0033398F /* NotificationVM.swift */; };
 		1FE8E5502A0A847B0033398F /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54F2A0A847B0033398F /* NotificationModel.swift */; };
+		1FF380962AFD297600CCF1A6 /* PortfolioHomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A721A4B288EB1FA0092FBED /* PortfolioHomeVM.swift */; };
+		1FF380972AFD297600CCF1A6 /* LanguageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6029D2FF4500C3B374 /* LanguageTVC.swift */; };
+		1FF380982AFD297600CCF1A6 /* AllAssetsAvailableTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75020B2859F76300D68BAB /* AllAssetsAvailableTVC.swift */; };
+		1FF380992AFD297600CCF1A6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B79F283F7D7C007CE9B2 /* LoginVC.swift */; };
+		1FF3809A2AFD297600CCF1A6 /* InvestmentStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7256502874506400E8322A /* InvestmentStrategyVM.swift */; };
+		1FF3809B2AFD297600CCF1A6 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
+		1FF3809C2AFD297600CCF1A6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586C5286C76EE00DC889E /* Reachability.swift */; };
+		1FF3809D2AFD297600CCF1A6 /* SelectedProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86AA8528A3821100C6C688 /* SelectedProfileVC.swift */; };
+		1FF3809E2AFD297600CCF1A6 /* OneTimeInvestmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86FBB92A696788001A9D64 /* OneTimeInvestmentVC.swift */; };
+		1FF3809F2AFD297600CCF1A6 /* ExportVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F487C142AA2297700D67663 /* ExportVM.swift */; };
+		1FF380A02AFD297600CCF1A6 /* ProfileTransactionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7218FE28632562009F42C5 /* ProfileTransactionTVC.swift */; };
+		1FF380A12AFD297600CCF1A6 /* OneTimeInvestmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67C0642A6A8008007BB2E1 /* OneTimeInvestmentVM.swift */; };
+		1FF380A22AFD297600CCF1A6 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A721908286329E1009F42C5 /* ProfileModel.swift */; };
+		1FF380A32AFD297600CCF1A6 /* IdentityVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8049E12A77E4DC00E4BB11 /* IdentityVerificationVM.swift */; };
+		1FF380A42AFD297600CCF1A6 /* DepositeOrBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74457B285740AA00BF05EF /* DepositeOrBuyVC.swift */; };
+		1FF380A52AFD297600CCF1A6 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
+		1FF380A62AFD297600CCF1A6 /* InvestmentExpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEE8284635FB0027367A /* InvestmentExpModel.swift */; };
+		1FF380A72AFD297600CCF1A6 /* VerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B7C5129C1BDA100256438 /* VerificationVM.swift */; };
+		1FF380A82AFD297600CCF1A6 /* WithdrawAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */; };
+		1FF380A92AFD297600CCF1A6 /* CryptoDepositeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D540F29F003610078267F /* CryptoDepositeVM.swift */; };
+		1FF380AA2AFD297600CCF1A6 /* error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30C2950798A00CEC597 /* error.swift */; };
+		1FF380AB2AFD297600CCF1A6 /* enterNumberCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2C2283F5DDF0086C6B8 /* enterNumberCVC.swift */; };
+		1FF380AC2AFD297600CCF1A6 /* AddStrategyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FD4072849D3B3003A2AA0 /* AddStrategyTVC.swift */; };
+		1FF380AD2AFD297600CCF1A6 /* EmailLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2B92D289B83D0001DC4F7 /* EmailLoginVC.swift */; };
+		1FF380AE2AFD297600CCF1A6 /* MyAssetsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502052859F6C700D68BAB /* MyAssetsTVC.swift */; };
+		1FF380AF2AFD297600CCF1A6 /* CryptoAddressesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95DE112898E2650044EE92 /* CryptoAddressesTVC.swift */; };
+		1FF380B02AFD297600CCF1A6 /* ExchangeFromVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C37912860992B00E238D8 /* ExchangeFromVC.swift */; };
+		1FF380B12AFD297600CCF1A6 /* BalanceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACC70252893A96500C96679 /* BalanceVM.swift */; };
+		1FF380B22AFD297600CCF1A6 /* chartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FA81C28F575F700E17E7B /* chartVC.swift */; };
+		1FF380B32AFD297600CCF1A6 /* AddStrategyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A716B022848B52C00451BD3 /* AddStrategyModel.swift */; };
+		1FF380B42AFD297600CCF1A6 /* VerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */; };
+		1FF380B52AFD297600CCF1A6 /* EducationStrategyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5F92840A8D700533ED3 /* EducationStrategyVC.swift */; };
+		1FF380B62AFD297600CCF1A6 /* DepositAssetTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9FC3D429EECFE10084923E /* DepositAssetTVC.swift */; };
+		1FF380B72AFD297600CCF1A6 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1C74F92840E3F3003CA6A7 /* ViewControllerExtension.swift */; };
+		1FF380B82AFD297600CCF1A6 /* CryptoAddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6C0C728A0E44900C2A184 /* CryptoAddressBookModel.swift */; };
+		1FF380B92AFD297600CCF1A6 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C162844CC6A008117D1 /* CoreData.swift */; };
+		1FF380BA2AFD297600CCF1A6 /* NoTransactionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A728FE128CEF4D900977DDF /* NoTransactionTVC.swift */; };
+		1FF380BB2AFD297600CCF1A6 /* InvestmentExperienceCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95B82845EE4A001224C6 /* InvestmentExperienceCVC.swift */; };
+		1FF380BC2AFD297600CCF1A6 /* NotificationHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A857C72288592FD0013ED99 /* NotificationHeaderTVC.swift */; };
+		1FF380BD2AFD297600CCF1A6 /* DefaultPictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86AA7F28A3762A00C6C688 /* DefaultPictureVC.swift */; };
+		1FF380BE2AFD297600CCF1A6 /* PortfolioHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A75020E2859F94400D68BAB /* PortfolioHomeModel.swift */; };
+		1FF380BF2AFD297600CCF1A6 /* InvestmentExperienceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEE4284634DC0027367A /* InvestmentExperienceVC.swift */; };
+		1FF380C02AFD297600CCF1A6 /* InvestInMyStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382029F9617600E41F61 /* InvestInMyStrategyVM.swift */; };
+		1FF380C12AFD297600CCF1A6 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54F2A0A847B0033398F /* NotificationModel.swift */; };
+		1FF380C22AFD297600CCF1A6 /* CryptoDepositeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541229F006A00078267F /* CryptoDepositeModel.swift */; };
+		1FF380C32AFD297600CCF1A6 /* UiViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEEA28463D460027367A /* UiViewExtension.swift */; };
+		1FF380C42AFD297600CCF1A6 /* TransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7219102863436F009F42C5 /* TransactionVC.swift */; };
+		1FF380C52AFD297600CCF1A6 /* TransactionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72190E2863435D009F42C5 /* TransactionTVC.swift */; };
+		1FF380C62AFD297600CCF1A6 /* BuySellPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FCB9928BCDB48003557B0 /* BuySellPopUpVC.swift */; };
+		1FF380C72AFD297600CCF1A6 /* SwipeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E9FC3293887420047D307 /* SwipeGesture.swift */; };
+		1FF380C82AFD297600CCF1A6 /* EmailLoginCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2B92F289B8513001DC4F7 /* EmailLoginCVC.swift */; };
+		1FF380C92AFD297600CCF1A6 /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B7A2283F803E007CE9B2 /* UIFontsExtension.swift */; };
+		1FF380CA2AFD297600CCF1A6 /* ResourcesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E67285B5886001ABD6A /* ResourcesTVC.swift */; };
+		1FF380CB2AFD297600CCF1A6 /* ExchangeFromTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C379328609A6600E238D8 /* ExchangeFromTVC.swift */; };
+		1FF380CC2AFD297600CCF1A6 /* PersonalDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C212844EBFD008117D1 /* PersonalDataVC.swift */; };
+		1FF380CD2AFD297600CCF1A6 /* dropDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA72F289CF116000C4BC8 /* dropDownTableViewCell.swift */; };
+		1FF380CE2AFD297600CCF1A6 /* InvestmentStrategyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AE890284A27EA0090A354 /* InvestmentStrategyVC.swift */; };
+		1FF380CF2AFD297600CCF1A6 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8DD283F9708007CE9B2 /* Images.swift */; };
+		1FF380D02AFD297600CCF1A6 /* enableNotificationCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5F42840979B00533ED3 /* enableNotificationCVC.swift */; };
+		1FF380D12AFD297600CCF1A6 /* PortfolioHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502012859F32200D68BAB /* PortfolioHomeVC.swift */; };
+		1FF380D22AFD297600CCF1A6 /* PortfolioDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E5D285B57FD001ABD6A /* PortfolioDetailTVC.swift */; };
+		1FF380D32AFD297600CCF1A6 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E52959A53600D28828 /* Socket.swift */; };
+		1FF380D42AFD297600CCF1A6 /* client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30F2950798A00CEC597 /* client.swift */; };
+		1FF380D52AFD297600CCF1A6 /* ChangePinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EE8288A7C2300B7BAE8 /* ChangePinVC.swift */; };
+		1FF380D62AFD297600CCF1A6 /* DepositeOrBuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7445802857428F00BF05EF /* DepositeOrBuyModel.swift */; };
+		1FF380D72AFD297600CCF1A6 /* ConfirmInvestmentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A857C6A288585290013ED99 /* ConfirmInvestmentVM.swift */; };
+		1FF380D82AFD297600CCF1A6 /* PaymentFundsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A9F01289A5937001BB63E /* PaymentFundsVC.swift */; };
+		1FF380D92AFD297600CCF1A6 /* ProfileSecurityTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A721904286325A0009F42C5 /* ProfileSecurityTVC.swift */; };
+		1FF380DA2AFD297600CCF1A6 /* TotalEarningsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A3BF1285CBFB000646337 /* TotalEarningsTVC.swift */; };
+		1FF380DB2AFD297600CCF1A6 /* PortfolioHomeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502032859F63F00D68BAB /* PortfolioHomeCVC.swift */; };
+		1FF380DC2AFD297600CCF1A6 /* EducationStrategyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5FD2840ACA500533ED3 /* EducationStrategyModel.swift */; };
+		1FF380DD2AFD297600CCF1A6 /* PinVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B29DC2878446200674860 /* PinVerificationVC.swift */; };
+		1FF380DE2AFD297600CCF1A6 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2C9283F64040086C6B8 /* SpinnerView.swift */; };
+		1FF380DF2AFD297600CCF1A6 /* LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD4A49F29D48C7E002DFC11 /* LanguageVM.swift */; };
+		1FF380E02AFD297600CCF1A6 /* PinVerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76C595291BC8FC00C603B9 /* PinVerificationVM.swift */; };
+		1FF380E12AFD297600CCF1A6 /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
+		1FF380E22AFD297600CCF1A6 /* TotalEarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A3BEF285C9CB400646337 /* TotalEarningsVC.swift */; };
+		1FF380E32AFD297600CCF1A6 /* WithdrawAddressTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */; };
+		1FF380E42AFD297600CCF1A6 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A857C6E288592590013ED99 /* NotificationVC.swift */; };
+		1FF380E52AFD297600CCF1A6 /* InvestInMyStrategyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B4AC3285721D200F64ECE /* InvestInMyStrategyModel.swift */; };
+		1FF380E62AFD297600CCF1A6 /* InvestmentStrategyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AE88E284A27D30090A354 /* InvestmentStrategyTVC.swift */; };
+		1FF380E72AFD297600CCF1A6 /* balanceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A3BEA285C8EA200646337 /* balanceTVC.swift */; };
+		1FF380E82AFD297600CCF1A6 /* AddressAddedPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95DE1B289902150044EE92 /* AddressAddedPopUpVC.swift */; };
+		1FF380E92AFD297600CCF1A6 /* DepositFundsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABD9FF8288687F300EFF589 /* DepositFundsVC.swift */; };
+		1FF380EA2AFD297600CCF1A6 /* ContactFormVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD42CA2AD7F9DA0076A706 /* ContactFormVM.swift */; };
+		1FF380EB2AFD297600CCF1A6 /* CountryPickerViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */; };
+		1FF380EC2AFD297600CCF1A6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E936328BF62D7008FF5E7 /* UIImageExtension.swift */; };
+		1FF380ED2AFD297600CCF1A6 /* AddCryptoAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95DE162898ED030044EE92 /* AddCryptoAddressVC.swift */; };
+		1FF380EE2AFD297600CCF1A6 /* configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D3102950798A00CEC597 /* configuration.swift */; };
+		1FF380EF2AFD297600CCF1A6 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30B2950798A00CEC597 /* keys.swift */; };
+		1FF380F02AFD297600CCF1A6 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95BA2845F1E2001224C6 /* TextFieldExtension.swift */; };
+		1FF380F12AFD297600CCF1A6 /* PersonalDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7013D3286DBD0000BB63C5 /* PersonalDataVM.swift */; };
+		1FF380F22AFD297600CCF1A6 /* calenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A928CBB2847392A00F17DBE /* calenderVC.swift */; };
+		1FF380F32AFD297600CCF1A6 /* ResourcesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E6B285B6235001ABD6A /* ResourcesCVC.swift */; };
+		1FF380F42AFD297600CCF1A6 /* AddressAddedPopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5A61B2A97B79800C47AAE /* AddressAddedPopUpModel.swift */; };
+		1FF380F52AFD297600CCF1A6 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD2190F2AF3B101000F6FC5 /* ChangePasswordVC.swift */; };
+		1FF380F62AFD297600CCF1A6 /* ExchAnotherWalletTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791E022864981A0084B104 /* ExchAnotherWalletTVC.swift */; };
+		1FF380F72AFD297600CCF1A6 /* InvestmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67C0612A6A7DE9007BB2E1 /* InvestmentModel.swift */; };
+		1FF380F82AFD297600CCF1A6 /* ContactFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B43BC2ACAF57A00A13733 /* ContactFormVC.swift */; };
+		1FF380F92AFD297600CCF1A6 /* ProfilePaymentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72190028632574009F42C5 /* ProfilePaymentTVC.swift */; };
+		1FF380FA2AFD297600CCF1A6 /* RecurringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502092859F74700D68BAB /* RecurringTVC.swift */; };
+		1FF380FB2AFD297600CCF1A6 /* GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA95B4F28EFEA3300BB48FB /* GIF.swift */; };
+		1FF380FC2AFD297600CCF1A6 /* addressCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95B62845EE32001224C6 /* addressCVC.swift */; };
+		1FF380FD2AFD297600CCF1A6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9059202848863B003F6198 /* StringExtension.swift */; };
+		1FF380FE2AFD297600CCF1A6 /* CryptoDepositeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A9EFD289A4E4D001BB63E /* CryptoDepositeVC.swift */; };
+		1FF380FF2AFD297600CCF1A6 /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1C74F72840D227003CA6A7 /* OTPTextField.swift */; };
+		1FF381002AFD297600CCF1A6 /* CommomFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2C7283F63E20086C6B8 /* CommomFunctions.swift */; };
+		1FF381012AFD297600CCF1A6 /* AddCryptoAddressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9B2B9289E2A2700A6DCDD /* AddCryptoAddressVM.swift */; };
+		1FF381022AFD297600CCF1A6 /* ExportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE0A80E2AA09B07005742C8 /* ExportVC.swift */; };
+		1FF381032AFD297600CCF1A6 /* AddBankAccountVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7246F728915AE800EBCA21 /* AddBankAccountVM.swift */; };
+		1FF381042AFD297600CCF1A6 /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC42BC728912026009A507E /* ProfileVM.swift */; };
+		1FF381052AFD297600CCF1A6 /* AddAssetsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592E2848A1BF003F6198 /* AddAssetsTVC.swift */; };
+		1FF381062AFD297600CCF1A6 /* DepositeOrBuyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A74457D2857414E00BF05EF /* DepositeOrBuyTVC.swift */; };
+		1FF381072AFD297600CCF1A6 /* PortfolioDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A721A49288E9CC50092FBED /* PortfolioDetailVM.swift */; };
+		1FF381082AFD297600CCF1A6 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54C9A32A7BE139009A43F7 /* ForgotPasswordVC.swift */; };
+		1FF381092AFD297600CCF1A6 /* IdentityVerificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A928CB728472CF000F17DBE /* IdentityVerificationVC.swift */; };
+		1FF3810A2AFD297600CCF1A6 /* AddStrategyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6FD4052849D390003A2AA0 /* AddStrategyVC.swift */; };
+		1FF3810B2AFD297600CCF1A6 /* server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30E2950798A00CEC597 /* server.swift */; };
+		1FF3810C2AFD297600CCF1A6 /* NotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A857C70288592710013ED99 /* NotificationTVC.swift */; };
+		1FF3810D2AFD297600CCF1A6 /* AddAssetsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592C2848A1A3003F6198 /* AddAssetsCVC.swift */; };
+		1FF3810E2AFD297600CCF1A6 /* GoogleAuthenticatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A529B89B01008431B0 /* GoogleAuthenticatorVM.swift */; };
+		1FF3810F2AFD297600CCF1A6 /* Lyber.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2AC283F4AD80086C6B8 /* Lyber.xcdatamodeld */; };
+		1FF381102AFD297600CCF1A6 /* CryptoAddressBookVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA73A289D0469000C4BC8 /* CryptoAddressBookVM.swift */; };
+		1FF381112AFD297600CCF1A6 /* InfosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E63285B585F001ABD6A /* InfosTVC.swift */; };
+		1FF381122AFD297600CCF1A6 /* AboutTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E65285B5874001ABD6A /* AboutTVC.swift */; };
+		1FF381132AFD297600CCF1A6 /* GoogleAuthenticatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9A0A929B89CF0008431B0 /* GoogleAuthenticatorModel.swift */; };
+		1FF381142AFD297600CCF1A6 /* srp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30D2950798A00CEC597 /* srp.swift */; };
+		1FF381152AFD297600CCF1A6 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */; };
+		1FF381162AFD297600CCF1A6 /* FrequencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7445842857624800BF05EF /* FrequencyVC.swift */; };
+		1FF381172AFD297600CCF1A6 /* AddStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A73AB942875B37C00A92D1D /* AddStrategyVM.swift */; };
+		1FF381182AFD297600CCF1A6 /* emailAddressCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95B42845EC55001224C6 /* emailAddressCVC.swift */; };
+		1FF381192AFD297600CCF1A6 /* EnableWhitelistingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A70BC59289920D700577C0B /* EnableWhitelistingTVC.swift */; };
+		1FF3811A2AFD297600CCF1A6 /* KycWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76840B2876DFBA00A5BC7C /* KycWebVC.swift */; };
+		1FF3811B2AFD297600CCF1A6 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8DB283F96E4007CE9B2 /* AppStoryboard.swift */; };
+		1FF3811C2AFD297600CCF1A6 /* EductaionStrategyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5FB2840AA4B00533ED3 /* EductaionStrategyCVC.swift */; };
+		1FF3811D2AFD297600CCF1A6 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76E702288974FE0021A7A6 /* TransactionModel.swift */; };
+		1FF3811E2AFD297600CCF1A6 /* AddBankAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7246F52891570F00EBCA21 /* AddBankAccountVC.swift */; };
+		1FF3811F2AFD297600CCF1A6 /* PortfolioDetailHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E5F285B5824001ABD6A /* PortfolioDetailHeaderTVC.swift */; };
+		1FF381202AFD297600CCF1A6 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
+		1FF381212AFD297600CCF1A6 /* LoadingInvestmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86FBBF2A6978D0001A9D64 /* LoadingInvestmentVC.swift */; };
+		1FF381222AFD297600CCF1A6 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC5E29D2FDFD00C3B374 /* LanguageVC.swift */; };
+		1FF381232AFD297600CCF1A6 /* ExchangeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C379628609BCE00E238D8 /* ExchangeModel.swift */; };
+		1FF381242AFD297600CCF1A6 /* EnableWhitelistingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DA73D289D04F3000C4BC8 /* EnableWhitelistingVM.swift */; };
+		1FF381252AFD297600CCF1A6 /* AllAssetsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71A1B22886B8090030FE23 /* AllAssetsVM.swift */; };
+		1FF381262AFD297600CCF1A6 /* AllAssetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B0D5C2861C6700030C4D8 /* AllAssetsModel.swift */; };
+		1FF381272AFD297600CCF1A6 /* CryptoAddressBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7060C52897EB8D009011D9 /* CryptoAddressBookVC.swift */; };
+		1FF381282AFD297600CCF1A6 /* ResetPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54C9A62A7C0967009A43F7 /* ResetPasswordVM.swift */; };
+		1FF381292AFD297600CCF1A6 /* BalanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A3BE8285C8C2E00646337 /* BalanceVC.swift */; };
+		1FF3812A2AFD297600CCF1A6 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30A2950798A00CEC597 /* Array.swift */; };
+		1FF3812B2AFD297600CCF1A6 /* AddPaymentMethodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791DF928646E6F0084B104 /* AddPaymentMethodVC.swift */; };
+		1FF3812C2AFD297600CCF1A6 /* Api Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586C3286C769F00DC889E /* Api Handler.swift */; };
+		1FF3812D2AFD297600CCF1A6 /* createPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8DF283FA2E9007CE9B2 /* createPinCVC.swift */; };
+		1FF3812E2AFD297600CCF1A6 /* WithdrawAllVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B0D612861EE3F0030C4D8 /* WithdrawAllVC.swift */; };
+		1FF3812F2AFD297600CCF1A6 /* InvestInMyStrategyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE67F432853021D00F13D2E /* InvestInMyStrategyVC.swift */; };
+		1FF381302AFD297600CCF1A6 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586CB286C7C9600DC889E /* LoginVM.swift */; };
+		1FF381312AFD297600CCF1A6 /* NoRecurringTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */; };
+		1FF381322AFD297600CCF1A6 /* ChangePasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F56DD792AF502B800AB22EA /* ChangePasswordVM.swift */; };
+		1FF381332AFD297600CCF1A6 /* EnableWhitelistingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A70BC5B28992FBB00577C0B /* EnableWhitelistingModel.swift */; };
+		1FF381342AFD297600CCF1A6 /* checkAccountCompletedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9C2844A084007002E0 /* checkAccountCompletedVC.swift */; };
+		1FF381352AFD297600CCF1A6 /* QRCodeScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A70175828CB3AF30024FECE /* QRCodeScanVC.swift */; };
+		1FF381362AFD297600CCF1A6 /* PortfolioHomeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E54285B306A001ABD6A /* PortfolioHomeTVC.swift */; };
+		1FF381372AFD297600CCF1A6 /* PortfolioDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E5B285B57D7001ABD6A /* PortfolioDetailVC.swift */; };
+		1FF381382AFD297600CCF1A6 /* TransactionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76E700288973FC0021A7A6 /* TransactionVM.swift */; };
+		1FF381392AFD297600CCF1A6 /* AddressAddedPopUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C8D0D28B4DFBF00D6E057 /* AddressAddedPopUpVM.swift */; };
+		1FF3813A2AFD297600CCF1A6 /* AddCreditCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791E00286480420084B104 /* AddCreditCardVC.swift */; };
+		1FF3813B2AFD297600CCF1A6 /* ProfileAccountTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7219022863258B009F42C5 /* ProfileAccountTVC.swift */; };
+		1FF3813C2AFD297600CCF1A6 /* NoAssetsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6E77BE2A586D8E009E04DE /* NoAssetsTVC.swift */; };
+		1FF3813D2AFD297600CCF1A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2A3283F4AD80086C6B8 /* AppDelegate.swift */; };
+		1FF3813E2AFD297600CCF1A6 /* CreateNewPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEC288A7DAF00B7BAE8 /* CreateNewPinCVC.swift */; };
+		1FF3813F2AFD297600CCF1A6 /* StrongAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0985D28979EDA00C0551F /* StrongAuthVC.swift */; };
+		1FF381402AFD297600CCF1A6 /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2C5283F63C70086C6B8 /* CommonUI.swift */; };
+		1FF381412AFD297600CCF1A6 /* ProfileHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7218FC28632540009F42C5 /* ProfileHeaderTVC.swift */; };
+		1FF381422AFD297600CCF1A6 /* OneTimeInvestmentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86FBBD2A69717A001A9D64 /* OneTimeInvestmentTVC.swift */; };
+		1FF381432AFD297600CCF1A6 /* UiColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B7A5283F807E007CE9B2 /* UiColorsExtension.swift */; };
+		1FF381442AFD297600CCF1A6 /* AccountCompletedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3BA12844ABAB007002E0 /* AccountCompletedModel.swift */; };
+		1FF381452AFD297600CCF1A6 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695229C46356005141C0 /* Model.xcmappingmodel */; };
+		1FF381462AFD297600CCF1A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8BD79929D43ED100EF322A /* ViewController.swift */; };
+		1FF381472AFD297600CCF1A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592328488884003F6198 /* Constants.swift */; };
+		1FF381482AFD297600CCF1A6 /* PersonalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7013D5286DC12000BB63C5 /* PersonalDataModel.swift */; };
+		1FF381492AFD297600CCF1A6 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1886C7E72959BFE000D28828 /* WebSocket.swift */; };
+		1FF3814A2AFD297600CCF1A6 /* AddPaymentMethodTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791DFB28646E8E0084B104 /* AddPaymentMethodTVC.swift */; };
+		1FF3814B2AFD297600CCF1A6 /* InvestmentStrategyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7073092850B466001B48D9 /* InvestmentStrategyModel.swift */; };
+		1FF3814C2AFD297600CCF1A6 /* FundAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6A9F05289A61C5001BB63E /* FundAccountVC.swift */; };
+		1FF3814D2AFD297600CCF1A6 /* customMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3E8D1A2862ED3E0063F383 /* customMarker.swift */; };
+		1FF3814E2AFD297600CCF1A6 /* PortfolioDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E69285B5BCC001ABD6A /* PortfolioDetailModel.swift */; };
+		1FF3814F2AFD297600CCF1A6 /* FrequencyTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7445862857625B00BF05EF /* FrequencyTVC.swift */; };
+		1FF381502AFD297600CCF1A6 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586C7286C794000DC889E /* ApiConstants.swift */; };
+		1FF381512AFD297600CCF1A6 /* myBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB226442AA6243200A699FE /* myBalanceTableViewCell.swift */; };
+		1FF381522AFD297600CCF1A6 /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DA43B2A7D53DC00BE8C61 /* ResetPasswordModel.swift */; };
+		1FF381532AFD297600CCF1A6 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A707D3C2890082F00C9ACA4 /* HeaderView.swift */; };
+		1FF381542AFD297600CCF1A6 /* AllAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B4AC128571A5000F64ECE /* AllAssetsVC.swift */; };
+		1FF381552AFD297600CCF1A6 /* ConfirmNewPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEE288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift */; };
+		1FF381562AFD297600CCF1A6 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382229F97D3F00E41F61 /* Confetti.swift */; };
+		1FF381572AFD297600CCF1A6 /* ChangePinOtpCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEA288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift */; };
+		1FF381582AFD297600CCF1A6 /* PersonalDataCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C252844F251008117D1 /* PersonalDataCVC.swift */; };
+		1FF381592AFD297600CCF1A6 /* checkAccountCompletedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9E2844A4F1007002E0 /* checkAccountCompletedTVC.swift */; };
+		1FF3815A2AFD297600CCF1A6 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */; };
+		1FF3815B2AFD297600CCF1A6 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A793B1A28A3C50F003BCD45 /* ConfirmationVC.swift */; };
+		1FF3815C2AFD297600CCF1A6 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B7A7283F80A9007CE9B2 /* UIButtonExtension.swift */; };
+		1FF3815D2AFD297600CCF1A6 /* DefaultPictureCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A86AA8128A3773C00C6C688 /* DefaultPictureCVC.swift */; };
+		1FF3815E2AFD297600CCF1A6 /* InvestmentExperienceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEE6284635010027367A /* InvestmentExperienceTVC.swift */; };
+		1FF3815F2AFD297600CCF1A6 /* ConfirmExecutionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B1DBE2AA9D0EC00A11A5C /* ConfirmExecutionVC.swift */; };
+		1FF381602AFD297600CCF1A6 /* LocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8B4283F88EF007CE9B2 /* LocalizationKeys.swift */; };
+		1FF381612AFD297600CCF1A6 /* QrCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541429F047200078267F /* QrCodeVC.swift */; };
+		1FF381622AFD297600CCF1A6 /* ConfirmInvestmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AAB17285378EE00D2E25D /* ConfirmInvestmentVC.swift */; };
+		1FF381632AFD297600CCF1A6 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6329D3264500C3B374 /* LanguageModel.swift */; };
+		1FF381642AFD297600CCF1A6 /* InvestMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A759D3E2852021C00E59580 /* InvestMoneyVC.swift */; };
+		1FF381652AFD297600CCF1A6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7218FA286324BC009F42C5 /* ProfileVC.swift */; };
+		1FF381662AFD297600CCF1A6 /* ConfirmPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8E1283FA3BD007CE9B2 /* ConfirmPinCVC.swift */; };
+		1FF381672AFD297600CCF1A6 /* MyBalanceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E61285B5849001ABD6A /* MyBalanceTVC.swift */; };
+		1FF381682AFD297600CCF1A6 /* EducationStrategyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72564D2874479D00E8322A /* EducationStrategyVM.swift */; };
+		1FF381692AFD297600CCF1A6 /* TransactionHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72191228634590009F42C5 /* TransactionHeaderTVC.swift */; };
+		1FF3816A2AFD297600CCF1A6 /* InvestmentStrategyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AE892284A2A800090A354 /* InvestmentStrategyCVC.swift */; };
+		1FF3816B2AFD297600CCF1A6 /* AllocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A272BCF2851C6E8005CA57F /* AllocationVC.swift */; };
+		1FF3816C2AFD297600CCF1A6 /* InvestMoneyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC721A228521CD7003E7FD9 /* InvestMoneyCVC.swift */; };
+		1FF3816D2AFD297600CCF1A6 /* AllCoinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A750210285A01E600D68BAB /* AllCoinCVC.swift */; };
+		1FF3816E2AFD297600CCF1A6 /* AnalyticsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502072859F71D00D68BAB /* AnalyticsTVC.swift */; };
+		1FF3816F2AFD297600CCF1A6 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DA4382A7D489A00BE8C61 /* ResetPasswordVC.swift */; };
+		1FF381702AFD297600CCF1A6 /* NotificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E54C2A0A838A0033398F /* NotificationVM.swift */; };
+		1FF381712AFD297600CCF1A6 /* ProfileLogoutTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A721906286325BB009F42C5 /* ProfileLogoutTVC.swift */; };
+		1FF381722AFD297600CCF1A6 /* EnterPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2C0283F5D210086C6B8 /* EnterPhoneVC.swift */; };
+		1FF381732AFD297600CCF1A6 /* EnterPhoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586D0286C7D8C00DC889E /* EnterPhoneModel.swift */; };
+		1FF381742AFD297600CCF1A6 /* EnableWhitelistingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95DE2028990EFF0044EE92 /* EnableWhitelistingVC.swift */; };
+		1FF381752AFD297600CCF1A6 /* EnterPhoneVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586CE286C7CD900DC889E /* EnterPhoneVM.swift */; };
+		1FF381762AFD297600CCF1A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2A5283F4AD80086C6B8 /* SceneDelegate.swift */; };
+		1FF381772AFD297600CCF1A6 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382529F97EF100E41F61 /* Launcher.swift */; };
+		1FF381782AFD297600CCF1A6 /* PortfolioHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E56285B3543001ABD6A /* PortfolioHeaderTVC.swift */; };
+		1FF381792AFD297600CCF1A6 /* AddCryptoAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9B2BB289E2B2000A6DCDD /* AddCryptoAddressModel.swift */; };
+		1FF3817A2AFD297600CCF1A6 /* GoogleAuthenticatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC9B5A329B250AB001483CF /* GoogleAuthenticatorVC.swift */; };
+		1FF3817C2AFD297600CCF1A6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF380922AFD297600CCF1A6 /* FirebaseAnalyticsSwift */; };
+		1FF3817D2AFD297600CCF1A6 /* BigNum in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF3808E2AFD297600CCF1A6 /* BigNum */; settings = {ATTRIBUTES = (Required, ); }; };
+		1FF3817E2AFD297600CCF1A6 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF3808B2AFD297600CCF1A6 /* Crypto */; };
+		1FF3817F2AFD297600CCF1A6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF380932AFD297600CCF1A6 /* FirebaseCrashlytics */; };
+		1FF381802AFD297600CCF1A6 /* _CryptoExtras in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF3808D2AFD297600CCF1A6 /* _CryptoExtras */; };
+		1FF381812AFD297600CCF1A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF380902AFD297600CCF1A6 /* FirebaseAnalytics */; };
+		1FF381822AFD297600CCF1A6 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
+		1FF381842AFD297600CCF1A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */; };
+		1FF381852AFD297600CCF1A6 /* Lyber.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 0A78F19D28B63ABB0094DBA1 /* Lyber.entitlements */; };
+		1FF381862AFD297600CCF1A6 /* AtypDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B898283F84F2007CE9B2 /* AtypDisplay-Bold.ttf */; };
+		1FF381872AFD297600CCF1A6 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A707D3A2890037000C9ACA4 /* HeaderView.xib */; };
+		1FF381882AFD297600CCF1A6 /* AtypDisplay-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B89B283F84F2007CE9B2 /* AtypDisplay-BoldItalic.ttf */; };
+		1FF381892AFD297600CCF1A6 /* AtypDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B891283F84F1007CE9B2 /* AtypDisplay-Italic.ttf */; };
+		1FF3818A2AFD297600CCF1A6 /* AtypDisplay-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A0283F84F2007CE9B2 /* AtypDisplay-Light.ttf */; };
+		1FF3818B2AFD297600CCF1A6 /* AtypDisplay-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B89A283F84F2007CE9B2 /* AtypDisplay-LightItalic.ttf */; };
+		1FF3818C2AFD297600CCF1A6 /* AtypDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A7283F84F2007CE9B2 /* AtypDisplay-Medium.ttf */; };
+		1FF3818D2AFD297600CCF1A6 /* AtypDisplay-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B892283F84F1007CE9B2 /* AtypDisplay-MediumItalic.ttf */; };
+		1FF3818E2AFD297600CCF1A6 /* AtypDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B895283F84F2007CE9B2 /* AtypDisplay-Regular.ttf */; };
+		1FF3818F2AFD297600CCF1A6 /* AtypDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B899283F84F2007CE9B2 /* AtypDisplay-Semibold.ttf */; };
+		1FF381902AFD297600CCF1A6 /* InvestmentExperienceXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C292844F924008117D1 /* InvestmentExperienceXib.xib */; };
+		1FF381912AFD297600CCF1A6 /* Boat_Loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ACE98D928C2281F00D63025 /* Boat_Loader.json */; };
+		1FF381922AFD297600CCF1A6 /* AtypDisplay-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A1283F84F2007CE9B2 /* AtypDisplay-SemiboldItalic.ttf */; };
+		1FF381932AFD297600CCF1A6 /* AtypDisplay-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B89F283F84F2007CE9B2 /* AtypDisplay-Thin.ttf */; };
+		1FF381942AFD297600CCF1A6 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9AB0972AEBBDA300B3E36C /* Profile.storyboard */; };
+		1FF381952AFD297600CCF1A6 /* AtypDisplay-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B896283F84F2007CE9B2 /* AtypDisplay-ThinItalic.ttf */; };
+		1FF381962AFD297600CCF1A6 /* EmailAddressXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C232844F040008117D1 /* EmailAddressXib.xib */; };
+		1FF381972AFD297600CCF1A6 /* AtypRegularVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B897283F84F2007CE9B2 /* AtypRegularVariable.ttf */; };
+		1FF381982AFD297600CCF1A6 /* VerificationEmailXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A95BC284601D8001224C6 /* VerificationEmailXib.xib */; };
+		1FF381992AFD297600CCF1A6 /* personalDataXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C1D2844E89F008117D1 /* personalDataXib.xib */; };
+		1FF3819A2AFD297600CCF1A6 /* SwapWithdraw.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C378C286094E400E238D8 /* SwapWithdraw.storyboard */; };
+		1FF3819B2AFD297600CCF1A6 /* Mabry Pro Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AE283F8500007CE9B2 /* Mabry Pro Black Italic.otf */; };
+		1FF3819C2AFD297600CCF1A6 /* Mabry Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AF283F8500007CE9B2 /* Mabry Pro Black.otf */; };
+		1FF3819D2AFD297600CCF1A6 /* Mabry Pro Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AB283F8500007CE9B2 /* Mabry Pro Bold Italic.otf */; };
+		1FF3819E2AFD297600CCF1A6 /* myBalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB226422AA6229000A699FE /* myBalanceTableViewCell.xib */; };
+		1FF3819F2AFD297600CCF1A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A425C29CC7352001D71F8 /* Localizable.strings */; };
+		1FF381A02AFD297600CCF1A6 /* Mabry Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A9283F84FF007CE9B2 /* Mabry Pro Bold.otf */; };
+		1FF381A12AFD297600CCF1A6 /* portfolio.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A769FDA28C2082900F15C00 /* portfolio.json */; };
+		1FF381A22AFD297600CCF1A6 /* Animation_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0A7546F4290152B4008BBC07 /* Animation_1.mp4 */; };
+		1FF381A32AFD297600CCF1A6 /* Mabry Pro Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AD283F8500007CE9B2 /* Mabry Pro Italic.otf */; };
+		1FF381A42AFD297600CCF1A6 /* addressXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C272844F74A008117D1 /* addressXib.xib */; };
+		1FF381A52AFD297600CCF1A6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1F432CC2297DDDD9006EBEEA /* .gitignore */; };
+		1FF381A62AFD297600CCF1A6 /* Mabry Pro Light Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AC283F8500007CE9B2 /* Mabry Pro Light Italic.otf */; };
+		1FF381A72AFD297600CCF1A6 /* Animation_1.mov in Resources */ = {isa = PBXBuildFile; fileRef = 0A7546F6290154BE008BBC07 /* Animation_1.mov */; };
+		1FF381A82AFD297600CCF1A6 /* Mabry Pro Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8B2283F8500007CE9B2 /* Mabry Pro Light.otf */; };
+		1FF381A92AFD297600CCF1A6 /* Mabry Pro Medium Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8B0283F8500007CE9B2 /* Mabry Pro Medium Italic.otf */; };
+		1FF381AA2AFD297600CCF1A6 /* Mabry Pro Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8B1283F8500007CE9B2 /* Mabry Pro Medium.otf */; };
+		1FF381AB2AFD297600CCF1A6 /* dropDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8DA730289CF116000C4BC8 /* dropDownTableViewCell.xib */; };
+		1FF381AC2AFD297600CCF1A6 /* Mabry Pro.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AA283F8500007CE9B2 /* Mabry Pro.otf */; };
+		1FF381AD2AFD297600CCF1A6 /* AtypText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A3283F84F2007CE9B2 /* AtypText-Bold.ttf */; };
+		1FF381AE2AFD297600CCF1A6 /* Strategies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A905925284897EA003F6198 /* Strategies.storyboard */; };
+		1FF381AF2AFD297600CCF1A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F56DD7F2AF5467500AB22EA /* InfoPlist.strings */; };
+		1FF381B02AFD297600CCF1A6 /* AtypText-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A5283F84F2007CE9B2 /* AtypText-BoldItalic.ttf */; };
+		1FF381B12AFD297600CCF1A6 /* AtypText-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A2283F84F2007CE9B2 /* AtypText-Italic.ttf */; };
+		1FF381B22AFD297600CCF1A6 /* AtypText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B894283F84F1007CE9B2 /* AtypText-Light.ttf */; };
+		1FF381B32AFD297600CCF1A6 /* Portfolio.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9728448D32007002E0 /* Portfolio.storyboard */; };
+		1FF381B42AFD297600CCF1A6 /* AtypText-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B893283F84F1007CE9B2 /* AtypText-LightItalic.ttf */; };
+		1FF381B52AFD297600CCF1A6 /* AtypText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A6283F84F2007CE9B2 /* AtypText-Medium.ttf */; };
+		1FF381B62AFD297600CCF1A6 /* AtypText-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B89E283F84F2007CE9B2 /* AtypText-MediumItalic.ttf */; };
+		1FF381B72AFD297600CCF1A6 /* AtypText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B89C283F84F2007CE9B2 /* AtypText-Regular.ttf */; };
+		1FF381B82AFD297600CCF1A6 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0988B929B9E86A0075B000 /* Test.storyboard */; };
+		1FF381B92AFD297600CCF1A6 /* AtypText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A4283F84F2007CE9B2 /* AtypText-Semibold.ttf */; };
+		1FF381BA2AFD297600CCF1A6 /* InvestStrategy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A759D402852029600E59580 /* InvestStrategy.storyboard */; };
+		1FF381BB2AFD297600CCF1A6 /* AtypText-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B89D283F84F2007CE9B2 /* AtypText-SemiboldItalic.ttf */; };
+		1FF381BC2AFD297600CCF1A6 /* AtypText-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B890283F84F1007CE9B2 /* AtypText-Thin.ttf */; };
+		1FF381BD2AFD297600CCF1A6 /* AtypText-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8A8283F84F2007CE9B2 /* AtypText-ThinItalic.ttf */; };
+		1FF381BE2AFD297600CCF1A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4C2B1283F4AD90086C6B8 /* LaunchScreen.storyboard */; };
+		1FF381BF2AFD297600CCF1A6 /* template_deserts_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A7A8A3028C5FE4A0022632C /* template_deserts_1.json */; };
+		1FF381C02AFD297600CCF1A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4C2AF283F4AD90086C6B8 /* Assets.xcassets */; };
+		1FF381C12AFD297600CCF1A6 /* customMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3E8D1C2862F26C0063F383 /* customMarker.xib */; };
+		1FF381C22AFD297600CCF1A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AC4C2A9283F4AD80086C6B8 /* Main.storyboard */; };
 		1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
 		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
@@ -515,7 +816,7 @@
 		0AC2B92D289B83D0001DC4F7 /* EmailLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginVC.swift; sourceTree = "<group>"; };
 		0AC2B92F289B8513001DC4F7 /* EmailLoginCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginCVC.swift; sourceTree = "<group>"; };
 		0AC42BC728912026009A507E /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
-		0AC4C2A0283F4AD80086C6B8 /* Lyber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lyber.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AC4C2A0283F4AD80086C6B8 /* Lyber prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lyber prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AC4C2A3283F4AD80086C6B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AC4C2A5283F4AD80086C6B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0AC4C2AA283F4AD80086C6B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -550,6 +851,8 @@
 		1886C7E72959BFE000D28828 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		1F0988B929B9E86A0075B000 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		1F0A372C29CB44C000B07A20 /* LyberDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LyberDebug.entitlements; sourceTree = "<group>"; };
+		1F105CDD2AFE7D020052D21E /* lyberProd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = lyberProd.plist; sourceTree = "<group>"; };
+		1F105CE02AFE7F900052D21E /* lyberStaging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lyberStaging.plist; sourceTree = "<group>"; };
 		1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAddressVC.swift; sourceTree = "<group>"; };
 		1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAddressTVC.swift; sourceTree = "<group>"; };
 		1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
@@ -607,6 +910,8 @@
 		1FE8E54C2A0A838A0033398F /* NotificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVM.swift; sourceTree = "<group>"; };
 		1FE8E54F2A0A847B0033398F /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1FF381C82AFD297600CCF1A6 /* Lyber dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lyber dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FF381C92AFD297600CCF1A6 /* Lyber copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Lyber copy-Info.plist"; path = "/Users/lyber/Documents/Code/Lyber/IOS/ios-app-master/Lyber copy-Info.plist"; sourceTree = "<absolute>"; };
 		1FFD171D29ED962C00935003 /* DepositAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetVC.swift; sourceTree = "<group>"; };
 		242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.debug.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.debug.xcconfig"; sourceTree = "<group>"; };
 		3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.release.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.release.xcconfig"; sourceTree = "<group>"; };
@@ -628,6 +933,20 @@
 				0A92916B290013B700E23409 /* _CryptoExtras in Frameworks */,
 				1FC0E27C2A65412B00E4EB6A /* FirebaseAnalytics in Frameworks */,
 				A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FF3817B2AFD297600CCF1A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FF3817C2AFD297600CCF1A6 /* FirebaseAnalyticsSwift in Frameworks */,
+				1FF3817D2AFD297600CCF1A6 /* BigNum in Frameworks */,
+				1FF3817E2AFD297600CCF1A6 /* Crypto in Frameworks */,
+				1FF3817F2AFD297600CCF1A6 /* FirebaseCrashlytics in Frameworks */,
+				1FF381802AFD297600CCF1A6 /* _CryptoExtras in Frameworks */,
+				1FF381812AFD297600CCF1A6 /* FirebaseAnalytics in Frameworks */,
+				1FF381822AFD297600CCF1A6 /* Pods_Lyber.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2022,13 +2341,15 @@
 				0AC4C2A1283F4AD80086C6B8 /* Products */,
 				6327262FE15A12287A1F7838 /* Pods */,
 				957629037FF178AD1110FB14 /* Frameworks */,
+				1FF381C92AFD297600CCF1A6 /* Lyber copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		0AC4C2A1283F4AD80086C6B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0AC4C2A0283F4AD80086C6B8 /* Lyber.app */,
+				0AC4C2A0283F4AD80086C6B8 /* Lyber prod.app */,
+				1FF381C82AFD297600CCF1A6 /* Lyber dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2036,6 +2357,8 @@
 		0AC4C2A2283F4AD80086C6B8 /* Lyber */ = {
 			isa = PBXGroup;
 			children = (
+				1F105CE02AFE7F900052D21E /* lyberStaging.plist */,
+				1F105CDD2AFE7D020052D21E /* lyberProd.plist */,
 				1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */,
 				1F8BD79829D43EB400EF322A /* Class */,
 				1F0A372C29CB44C000B07A20 /* LyberDebug.entitlements */,
@@ -2663,9 +2986,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0AC4C29F283F4AD80086C6B8 /* Lyber */ = {
+		0AC4C29F283F4AD80086C6B8 /* Lyber prod */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0AC4C2B7283F4AD90086C6B8 /* Build configuration list for PBXNativeTarget "Lyber" */;
+			buildConfigurationList = 0AC4C2B7283F4AD90086C6B8 /* Build configuration list for PBXNativeTarget "Lyber prod" */;
 			buildPhases = (
 				FF38909A11B29FCC0E958D5D /* [CP] Check Pods Manifest.lock */,
 				0AC4C29C283F4AD80086C6B8 /* Sources */,
@@ -2678,7 +3001,7 @@
 			);
 			dependencies = (
 			);
-			name = Lyber;
+			name = "Lyber prod";
 			packageProductDependencies = (
 				0A929168290013B700E23409 /* Crypto */,
 				0A92916A290013B700E23409 /* _CryptoExtras */,
@@ -2688,7 +3011,35 @@
 				1FC0E27F2A65437A00E4EB6A /* FirebaseCrashlytics */,
 			);
 			productName = Lyber;
-			productReference = 0AC4C2A0283F4AD80086C6B8 /* Lyber.app */;
+			productReference = 0AC4C2A0283F4AD80086C6B8 /* Lyber prod.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1FF3808A2AFD297600CCF1A6 /* Lyber dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FF381C52AFD297600CCF1A6 /* Build configuration list for PBXNativeTarget "Lyber dev" */;
+			buildPhases = (
+				1FF380942AFD297600CCF1A6 /* [CP] Check Pods Manifest.lock */,
+				1FF380952AFD297600CCF1A6 /* Sources */,
+				1FF3817B2AFD297600CCF1A6 /* Frameworks */,
+				1FF381832AFD297600CCF1A6 /* Resources */,
+				1FF381C32AFD297600CCF1A6 /* [CP] Embed Pods Frameworks */,
+				1FF381C42AFD297600CCF1A6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Lyber dev";
+			packageProductDependencies = (
+				1FF3808B2AFD297600CCF1A6 /* Crypto */,
+				1FF3808D2AFD297600CCF1A6 /* _CryptoExtras */,
+				1FF3808E2AFD297600CCF1A6 /* BigNum */,
+				1FF380902AFD297600CCF1A6 /* FirebaseAnalytics */,
+				1FF380922AFD297600CCF1A6 /* FirebaseAnalyticsSwift */,
+				1FF380932AFD297600CCF1A6 /* FirebaseCrashlytics */,
+			);
+			productName = Lyber;
+			productReference = 1FF381C82AFD297600CCF1A6 /* Lyber dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2725,7 +3076,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0AC4C29F283F4AD80086C6B8 /* Lyber */,
+				0AC4C29F283F4AD80086C6B8 /* Lyber prod */,
+				1FF3808A2AFD297600CCF1A6 /* Lyber dev */,
 			);
 		};
 /* End PBXProject section */
@@ -2763,6 +3115,7 @@
 				0A71B8C5283F9275007CE9B2 /* Mabry Pro Bold Italic.otf in Resources */,
 				1FB226432AA6229000A699FE /* myBalanceTableViewCell.xib in Resources */,
 				1F2A425A29CC7352001D71F8 /* Localizable.strings in Resources */,
+				1F105CE32AFE80A70052D21E /* lyberProd.plist in Resources */,
 				0A71B8C6283F9275007CE9B2 /* Mabry Pro Bold.otf in Resources */,
 				0A769FDB28C2082900F15C00 /* portfolio.json in Resources */,
 				0A7546F5290152B4008BBC07 /* Animation_1.mp4 in Resources */,
@@ -2801,10 +3154,139 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FF381832AFD297600CCF1A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FF381842AFD297600CCF1A6 /* GoogleService-Info.plist in Resources */,
+				1FF381852AFD297600CCF1A6 /* Lyber.entitlements in Resources */,
+				1FF381862AFD297600CCF1A6 /* AtypDisplay-Bold.ttf in Resources */,
+				1FF381872AFD297600CCF1A6 /* HeaderView.xib in Resources */,
+				1FF381882AFD297600CCF1A6 /* AtypDisplay-BoldItalic.ttf in Resources */,
+				1FF381892AFD297600CCF1A6 /* AtypDisplay-Italic.ttf in Resources */,
+				1FF3818A2AFD297600CCF1A6 /* AtypDisplay-Light.ttf in Resources */,
+				1FF3818B2AFD297600CCF1A6 /* AtypDisplay-LightItalic.ttf in Resources */,
+				1FF3818C2AFD297600CCF1A6 /* AtypDisplay-Medium.ttf in Resources */,
+				1FF3818D2AFD297600CCF1A6 /* AtypDisplay-MediumItalic.ttf in Resources */,
+				1FF3818E2AFD297600CCF1A6 /* AtypDisplay-Regular.ttf in Resources */,
+				1FF3818F2AFD297600CCF1A6 /* AtypDisplay-Semibold.ttf in Resources */,
+				1FF381902AFD297600CCF1A6 /* InvestmentExperienceXib.xib in Resources */,
+				1FF381912AFD297600CCF1A6 /* Boat_Loader.json in Resources */,
+				1FF381922AFD297600CCF1A6 /* AtypDisplay-SemiboldItalic.ttf in Resources */,
+				1FF381932AFD297600CCF1A6 /* AtypDisplay-Thin.ttf in Resources */,
+				1FF381942AFD297600CCF1A6 /* Profile.storyboard in Resources */,
+				1FF381952AFD297600CCF1A6 /* AtypDisplay-ThinItalic.ttf in Resources */,
+				1FF381962AFD297600CCF1A6 /* EmailAddressXib.xib in Resources */,
+				1FF381972AFD297600CCF1A6 /* AtypRegularVariable.ttf in Resources */,
+				1FF381982AFD297600CCF1A6 /* VerificationEmailXib.xib in Resources */,
+				1F105CE22AFE80A40052D21E /* lyberStaging.plist in Resources */,
+				1FF381992AFD297600CCF1A6 /* personalDataXib.xib in Resources */,
+				1FF3819A2AFD297600CCF1A6 /* SwapWithdraw.storyboard in Resources */,
+				1FF3819B2AFD297600CCF1A6 /* Mabry Pro Black Italic.otf in Resources */,
+				1FF3819C2AFD297600CCF1A6 /* Mabry Pro Black.otf in Resources */,
+				1FF3819D2AFD297600CCF1A6 /* Mabry Pro Bold Italic.otf in Resources */,
+				1FF3819E2AFD297600CCF1A6 /* myBalanceTableViewCell.xib in Resources */,
+				1FF3819F2AFD297600CCF1A6 /* Localizable.strings in Resources */,
+				1FF381A02AFD297600CCF1A6 /* Mabry Pro Bold.otf in Resources */,
+				1FF381A12AFD297600CCF1A6 /* portfolio.json in Resources */,
+				1FF381A22AFD297600CCF1A6 /* Animation_1.mp4 in Resources */,
+				1FF381A32AFD297600CCF1A6 /* Mabry Pro Italic.otf in Resources */,
+				1FF381A42AFD297600CCF1A6 /* addressXib.xib in Resources */,
+				1FF381A52AFD297600CCF1A6 /* .gitignore in Resources */,
+				1FF381A62AFD297600CCF1A6 /* Mabry Pro Light Italic.otf in Resources */,
+				1FF381A72AFD297600CCF1A6 /* Animation_1.mov in Resources */,
+				1FF381A82AFD297600CCF1A6 /* Mabry Pro Light.otf in Resources */,
+				1FF381A92AFD297600CCF1A6 /* Mabry Pro Medium Italic.otf in Resources */,
+				1FF381AA2AFD297600CCF1A6 /* Mabry Pro Medium.otf in Resources */,
+				1FF381AB2AFD297600CCF1A6 /* dropDownTableViewCell.xib in Resources */,
+				1FF381AC2AFD297600CCF1A6 /* Mabry Pro.otf in Resources */,
+				1FF381AD2AFD297600CCF1A6 /* AtypText-Bold.ttf in Resources */,
+				1FF381AE2AFD297600CCF1A6 /* Strategies.storyboard in Resources */,
+				1FF381AF2AFD297600CCF1A6 /* InfoPlist.strings in Resources */,
+				1FF381B02AFD297600CCF1A6 /* AtypText-BoldItalic.ttf in Resources */,
+				1FF381B12AFD297600CCF1A6 /* AtypText-Italic.ttf in Resources */,
+				1FF381B22AFD297600CCF1A6 /* AtypText-Light.ttf in Resources */,
+				1FF381B32AFD297600CCF1A6 /* Portfolio.storyboard in Resources */,
+				1FF381B42AFD297600CCF1A6 /* AtypText-LightItalic.ttf in Resources */,
+				1FF381B52AFD297600CCF1A6 /* AtypText-Medium.ttf in Resources */,
+				1FF381B62AFD297600CCF1A6 /* AtypText-MediumItalic.ttf in Resources */,
+				1FF381B72AFD297600CCF1A6 /* AtypText-Regular.ttf in Resources */,
+				1FF381B82AFD297600CCF1A6 /* Test.storyboard in Resources */,
+				1FF381B92AFD297600CCF1A6 /* AtypText-Semibold.ttf in Resources */,
+				1FF381BA2AFD297600CCF1A6 /* InvestStrategy.storyboard in Resources */,
+				1FF381BB2AFD297600CCF1A6 /* AtypText-SemiboldItalic.ttf in Resources */,
+				1FF381BC2AFD297600CCF1A6 /* AtypText-Thin.ttf in Resources */,
+				1FF381BD2AFD297600CCF1A6 /* AtypText-ThinItalic.ttf in Resources */,
+				1FF381BE2AFD297600CCF1A6 /* LaunchScreen.storyboard in Resources */,
+				1FF381BF2AFD297600CCF1A6 /* template_deserts_1.json in Resources */,
+				1FF381C02AFD297600CCF1A6 /* Assets.xcassets in Resources */,
+				1FF381C12AFD297600CCF1A6 /* customMarker.xib in Resources */,
+				1FF381C22AFD297600CCF1A6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1FC0E2772A6527FA00E4EB6A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		1FF380942AFD297600CCF1A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lyber-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1FF381C32AFD297600CCF1A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1FF381C42AFD297600CCF1A6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3101,6 +3583,242 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1FF380952AFD297600CCF1A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FF380962AFD297600CCF1A6 /* PortfolioHomeVM.swift in Sources */,
+				1FF380972AFD297600CCF1A6 /* LanguageTVC.swift in Sources */,
+				1FF380982AFD297600CCF1A6 /* AllAssetsAvailableTVC.swift in Sources */,
+				1FF380992AFD297600CCF1A6 /* LoginVC.swift in Sources */,
+				1FF3809A2AFD297600CCF1A6 /* InvestmentStrategyVM.swift in Sources */,
+				1FF3809B2AFD297600CCF1A6 /* DepositAssetVC.swift in Sources */,
+				1FF3809C2AFD297600CCF1A6 /* Reachability.swift in Sources */,
+				1FF3809D2AFD297600CCF1A6 /* SelectedProfileVC.swift in Sources */,
+				1FF3809E2AFD297600CCF1A6 /* OneTimeInvestmentVC.swift in Sources */,
+				1FF3809F2AFD297600CCF1A6 /* ExportVM.swift in Sources */,
+				1FF380A02AFD297600CCF1A6 /* ProfileTransactionTVC.swift in Sources */,
+				1FF380A12AFD297600CCF1A6 /* OneTimeInvestmentVM.swift in Sources */,
+				1FF380A22AFD297600CCF1A6 /* ProfileModel.swift in Sources */,
+				1FF380A32AFD297600CCF1A6 /* IdentityVerificationVM.swift in Sources */,
+				1FF380A42AFD297600CCF1A6 /* DepositeOrBuyVC.swift in Sources */,
+				1FF380A52AFD297600CCF1A6 /* StrongAuthVM.swift in Sources */,
+				1FF380A62AFD297600CCF1A6 /* InvestmentExpModel.swift in Sources */,
+				1FF380A72AFD297600CCF1A6 /* VerificationVM.swift in Sources */,
+				1FF380A82AFD297600CCF1A6 /* WithdrawAddressVC.swift in Sources */,
+				1FF380A92AFD297600CCF1A6 /* CryptoDepositeVM.swift in Sources */,
+				1FF380AA2AFD297600CCF1A6 /* error.swift in Sources */,
+				1FF380AB2AFD297600CCF1A6 /* enterNumberCVC.swift in Sources */,
+				1FF380AC2AFD297600CCF1A6 /* AddStrategyTVC.swift in Sources */,
+				1FF380AD2AFD297600CCF1A6 /* EmailLoginVC.swift in Sources */,
+				1FF380AE2AFD297600CCF1A6 /* MyAssetsTVC.swift in Sources */,
+				1FF380AF2AFD297600CCF1A6 /* CryptoAddressesTVC.swift in Sources */,
+				1FF380B02AFD297600CCF1A6 /* ExchangeFromVC.swift in Sources */,
+				1FF380B12AFD297600CCF1A6 /* BalanceVM.swift in Sources */,
+				1FF380B22AFD297600CCF1A6 /* chartVC.swift in Sources */,
+				1FF380B32AFD297600CCF1A6 /* AddStrategyModel.swift in Sources */,
+				1FF380B42AFD297600CCF1A6 /* VerificationVC.swift in Sources */,
+				1FF380B52AFD297600CCF1A6 /* EducationStrategyVC.swift in Sources */,
+				1FF380B62AFD297600CCF1A6 /* DepositAssetTVC.swift in Sources */,
+				1FF380B72AFD297600CCF1A6 /* ViewControllerExtension.swift in Sources */,
+				1FF380B82AFD297600CCF1A6 /* CryptoAddressBookModel.swift in Sources */,
+				1FF380B92AFD297600CCF1A6 /* CoreData.swift in Sources */,
+				1FF380BA2AFD297600CCF1A6 /* NoTransactionTVC.swift in Sources */,
+				1FF380BB2AFD297600CCF1A6 /* InvestmentExperienceCVC.swift in Sources */,
+				1FF380BC2AFD297600CCF1A6 /* NotificationHeaderTVC.swift in Sources */,
+				1FF380BD2AFD297600CCF1A6 /* DefaultPictureVC.swift in Sources */,
+				1FF380BE2AFD297600CCF1A6 /* PortfolioHomeModel.swift in Sources */,
+				1FF380BF2AFD297600CCF1A6 /* InvestmentExperienceVC.swift in Sources */,
+				1FF380C02AFD297600CCF1A6 /* InvestInMyStrategyVM.swift in Sources */,
+				1FF380C12AFD297600CCF1A6 /* NotificationModel.swift in Sources */,
+				1FF380C22AFD297600CCF1A6 /* CryptoDepositeModel.swift in Sources */,
+				1FF380C32AFD297600CCF1A6 /* UiViewExtension.swift in Sources */,
+				1FF380C42AFD297600CCF1A6 /* TransactionVC.swift in Sources */,
+				1FF380C52AFD297600CCF1A6 /* TransactionTVC.swift in Sources */,
+				1FF380C62AFD297600CCF1A6 /* BuySellPopUpVC.swift in Sources */,
+				1FF380C72AFD297600CCF1A6 /* SwipeGesture.swift in Sources */,
+				1FF380C82AFD297600CCF1A6 /* EmailLoginCVC.swift in Sources */,
+				1FF380C92AFD297600CCF1A6 /* UIFontsExtension.swift in Sources */,
+				1FF380CA2AFD297600CCF1A6 /* ResourcesTVC.swift in Sources */,
+				1FF380CB2AFD297600CCF1A6 /* ExchangeFromTVC.swift in Sources */,
+				1FF380CC2AFD297600CCF1A6 /* PersonalDataVC.swift in Sources */,
+				1FF380CD2AFD297600CCF1A6 /* dropDownTableViewCell.swift in Sources */,
+				1FF380CE2AFD297600CCF1A6 /* InvestmentStrategyVC.swift in Sources */,
+				1FF380CF2AFD297600CCF1A6 /* Images.swift in Sources */,
+				1FF380D02AFD297600CCF1A6 /* enableNotificationCVC.swift in Sources */,
+				1FF380D12AFD297600CCF1A6 /* PortfolioHomeVC.swift in Sources */,
+				1FF380D22AFD297600CCF1A6 /* PortfolioDetailTVC.swift in Sources */,
+				1FF380D32AFD297600CCF1A6 /* Socket.swift in Sources */,
+				1FF380D42AFD297600CCF1A6 /* client.swift in Sources */,
+				1FF380D52AFD297600CCF1A6 /* ChangePinVC.swift in Sources */,
+				1FF380D62AFD297600CCF1A6 /* DepositeOrBuyModel.swift in Sources */,
+				1FF380D72AFD297600CCF1A6 /* ConfirmInvestmentVM.swift in Sources */,
+				1FF380D82AFD297600CCF1A6 /* PaymentFundsVC.swift in Sources */,
+				1FF380D92AFD297600CCF1A6 /* ProfileSecurityTVC.swift in Sources */,
+				1FF380DA2AFD297600CCF1A6 /* TotalEarningsTVC.swift in Sources */,
+				1FF380DB2AFD297600CCF1A6 /* PortfolioHomeCVC.swift in Sources */,
+				1FF380DC2AFD297600CCF1A6 /* EducationStrategyModel.swift in Sources */,
+				1FF380DD2AFD297600CCF1A6 /* PinVerificationVC.swift in Sources */,
+				1FF380DE2AFD297600CCF1A6 /* SpinnerView.swift in Sources */,
+				1FF380DF2AFD297600CCF1A6 /* LanguageVM.swift in Sources */,
+				1FF380E02AFD297600CCF1A6 /* PinVerificationVM.swift in Sources */,
+				1FF380E12AFD297600CCF1A6 /* AddAssetsVC.swift in Sources */,
+				1FF380E22AFD297600CCF1A6 /* TotalEarningsVC.swift in Sources */,
+				1FF380E32AFD297600CCF1A6 /* WithdrawAddressTVC.swift in Sources */,
+				1FF380E42AFD297600CCF1A6 /* NotificationVC.swift in Sources */,
+				1FF380E52AFD297600CCF1A6 /* InvestInMyStrategyModel.swift in Sources */,
+				1FF380E62AFD297600CCF1A6 /* InvestmentStrategyTVC.swift in Sources */,
+				1FF380E72AFD297600CCF1A6 /* balanceTVC.swift in Sources */,
+				1FF380E82AFD297600CCF1A6 /* AddressAddedPopUpVC.swift in Sources */,
+				1FF380E92AFD297600CCF1A6 /* DepositFundsVC.swift in Sources */,
+				1FF380EA2AFD297600CCF1A6 /* ContactFormVM.swift in Sources */,
+				1FF380EB2AFD297600CCF1A6 /* CountryPickerViewExtension.swift in Sources */,
+				1FF380EC2AFD297600CCF1A6 /* UIImageExtension.swift in Sources */,
+				1FF380ED2AFD297600CCF1A6 /* AddCryptoAddressVC.swift in Sources */,
+				1FF380EE2AFD297600CCF1A6 /* configuration.swift in Sources */,
+				1FF380EF2AFD297600CCF1A6 /* keys.swift in Sources */,
+				1FF380F02AFD297600CCF1A6 /* TextFieldExtension.swift in Sources */,
+				1FF380F12AFD297600CCF1A6 /* PersonalDataVM.swift in Sources */,
+				1FF380F22AFD297600CCF1A6 /* calenderVC.swift in Sources */,
+				1FF380F32AFD297600CCF1A6 /* ResourcesCVC.swift in Sources */,
+				1FF380F42AFD297600CCF1A6 /* AddressAddedPopUpModel.swift in Sources */,
+				1FF380F52AFD297600CCF1A6 /* ChangePasswordVC.swift in Sources */,
+				1FF380F62AFD297600CCF1A6 /* ExchAnotherWalletTVC.swift in Sources */,
+				1FF380F72AFD297600CCF1A6 /* InvestmentModel.swift in Sources */,
+				1FF380F82AFD297600CCF1A6 /* ContactFormVC.swift in Sources */,
+				1FF380F92AFD297600CCF1A6 /* ProfilePaymentTVC.swift in Sources */,
+				1FF380FA2AFD297600CCF1A6 /* RecurringTVC.swift in Sources */,
+				1FF380FB2AFD297600CCF1A6 /* GIF.swift in Sources */,
+				1FF380FC2AFD297600CCF1A6 /* addressCVC.swift in Sources */,
+				1FF380FD2AFD297600CCF1A6 /* StringExtension.swift in Sources */,
+				1FF380FE2AFD297600CCF1A6 /* CryptoDepositeVC.swift in Sources */,
+				1FF380FF2AFD297600CCF1A6 /* OTPTextField.swift in Sources */,
+				1FF381002AFD297600CCF1A6 /* CommomFunctions.swift in Sources */,
+				1FF381012AFD297600CCF1A6 /* AddCryptoAddressVM.swift in Sources */,
+				1FF381022AFD297600CCF1A6 /* ExportVC.swift in Sources */,
+				1FF381032AFD297600CCF1A6 /* AddBankAccountVM.swift in Sources */,
+				1FF381042AFD297600CCF1A6 /* ProfileVM.swift in Sources */,
+				1FF381052AFD297600CCF1A6 /* AddAssetsTVC.swift in Sources */,
+				1FF381062AFD297600CCF1A6 /* DepositeOrBuyTVC.swift in Sources */,
+				1FF381072AFD297600CCF1A6 /* PortfolioDetailVM.swift in Sources */,
+				1FF381082AFD297600CCF1A6 /* ForgotPasswordVC.swift in Sources */,
+				1FF381092AFD297600CCF1A6 /* IdentityVerificationVC.swift in Sources */,
+				1FF3810A2AFD297600CCF1A6 /* AddStrategyVC.swift in Sources */,
+				1FF3810B2AFD297600CCF1A6 /* server.swift in Sources */,
+				1FF3810C2AFD297600CCF1A6 /* NotificationTVC.swift in Sources */,
+				1FF3810D2AFD297600CCF1A6 /* AddAssetsCVC.swift in Sources */,
+				1FF3810E2AFD297600CCF1A6 /* GoogleAuthenticatorVM.swift in Sources */,
+				1FF3810F2AFD297600CCF1A6 /* Lyber.xcdatamodeld in Sources */,
+				1FF381102AFD297600CCF1A6 /* CryptoAddressBookVM.swift in Sources */,
+				1FF381112AFD297600CCF1A6 /* InfosTVC.swift in Sources */,
+				1FF381122AFD297600CCF1A6 /* AboutTVC.swift in Sources */,
+				1FF381132AFD297600CCF1A6 /* GoogleAuthenticatorModel.swift in Sources */,
+				1FF381142AFD297600CCF1A6 /* srp.swift in Sources */,
+				1FF381152AFD297600CCF1A6 /* URLExtension.swift in Sources */,
+				1FF381162AFD297600CCF1A6 /* FrequencyVC.swift in Sources */,
+				1FF381172AFD297600CCF1A6 /* AddStrategyVM.swift in Sources */,
+				1FF381182AFD297600CCF1A6 /* emailAddressCVC.swift in Sources */,
+				1FF381192AFD297600CCF1A6 /* EnableWhitelistingTVC.swift in Sources */,
+				1FF3811A2AFD297600CCF1A6 /* KycWebVC.swift in Sources */,
+				1FF3811B2AFD297600CCF1A6 /* AppStoryboard.swift in Sources */,
+				1FF3811C2AFD297600CCF1A6 /* EductaionStrategyCVC.swift in Sources */,
+				1FF3811D2AFD297600CCF1A6 /* TransactionModel.swift in Sources */,
+				1FF3811E2AFD297600CCF1A6 /* AddBankAccountVC.swift in Sources */,
+				1FF3811F2AFD297600CCF1A6 /* PortfolioDetailHeaderTVC.swift in Sources */,
+				1FF381202AFD297600CCF1A6 /* Storage.swift in Sources */,
+				1FF381212AFD297600CCF1A6 /* LoadingInvestmentVC.swift in Sources */,
+				1FF381222AFD297600CCF1A6 /* LanguageVC.swift in Sources */,
+				1FF381232AFD297600CCF1A6 /* ExchangeModel.swift in Sources */,
+				1FF381242AFD297600CCF1A6 /* EnableWhitelistingVM.swift in Sources */,
+				1FF381252AFD297600CCF1A6 /* AllAssetsVM.swift in Sources */,
+				1FF381262AFD297600CCF1A6 /* AllAssetsModel.swift in Sources */,
+				1FF381272AFD297600CCF1A6 /* CryptoAddressBookVC.swift in Sources */,
+				1FF381282AFD297600CCF1A6 /* ResetPasswordVM.swift in Sources */,
+				1FF381292AFD297600CCF1A6 /* BalanceVC.swift in Sources */,
+				1FF3812A2AFD297600CCF1A6 /* Array.swift in Sources */,
+				1FF3812B2AFD297600CCF1A6 /* AddPaymentMethodVC.swift in Sources */,
+				1FF3812C2AFD297600CCF1A6 /* Api Handler.swift in Sources */,
+				1FF3812D2AFD297600CCF1A6 /* createPinCVC.swift in Sources */,
+				1FF3812E2AFD297600CCF1A6 /* WithdrawAllVC.swift in Sources */,
+				1FF3812F2AFD297600CCF1A6 /* InvestInMyStrategyVC.swift in Sources */,
+				1FF381302AFD297600CCF1A6 /* LoginVM.swift in Sources */,
+				1FF381312AFD297600CCF1A6 /* NoRecurringTVC.swift in Sources */,
+				1FF381322AFD297600CCF1A6 /* ChangePasswordVM.swift in Sources */,
+				1FF381332AFD297600CCF1A6 /* EnableWhitelistingModel.swift in Sources */,
+				1FF381342AFD297600CCF1A6 /* checkAccountCompletedVC.swift in Sources */,
+				1FF381352AFD297600CCF1A6 /* QRCodeScanVC.swift in Sources */,
+				1FF381362AFD297600CCF1A6 /* PortfolioHomeTVC.swift in Sources */,
+				1FF381372AFD297600CCF1A6 /* PortfolioDetailVC.swift in Sources */,
+				1FF381382AFD297600CCF1A6 /* TransactionVM.swift in Sources */,
+				1FF381392AFD297600CCF1A6 /* AddressAddedPopUpVM.swift in Sources */,
+				1FF3813A2AFD297600CCF1A6 /* AddCreditCardVC.swift in Sources */,
+				1FF3813B2AFD297600CCF1A6 /* ProfileAccountTVC.swift in Sources */,
+				1FF3813C2AFD297600CCF1A6 /* NoAssetsTVC.swift in Sources */,
+				1FF3813D2AFD297600CCF1A6 /* AppDelegate.swift in Sources */,
+				1FF3813E2AFD297600CCF1A6 /* CreateNewPinCVC.swift in Sources */,
+				1FF3813F2AFD297600CCF1A6 /* StrongAuthVC.swift in Sources */,
+				1FF381402AFD297600CCF1A6 /* CommonUI.swift in Sources */,
+				1FF381412AFD297600CCF1A6 /* ProfileHeaderTVC.swift in Sources */,
+				1FF381422AFD297600CCF1A6 /* OneTimeInvestmentTVC.swift in Sources */,
+				1FF381432AFD297600CCF1A6 /* UiColorsExtension.swift in Sources */,
+				1FF381442AFD297600CCF1A6 /* AccountCompletedModel.swift in Sources */,
+				1FF381452AFD297600CCF1A6 /* Model.xcmappingmodel in Sources */,
+				1FF381462AFD297600CCF1A6 /* ViewController.swift in Sources */,
+				1FF381472AFD297600CCF1A6 /* Constants.swift in Sources */,
+				1FF381482AFD297600CCF1A6 /* PersonalDataModel.swift in Sources */,
+				1FF381492AFD297600CCF1A6 /* WebSocket.swift in Sources */,
+				1FF3814A2AFD297600CCF1A6 /* AddPaymentMethodTVC.swift in Sources */,
+				1FF3814B2AFD297600CCF1A6 /* InvestmentStrategyModel.swift in Sources */,
+				1FF3814C2AFD297600CCF1A6 /* FundAccountVC.swift in Sources */,
+				1FF3814D2AFD297600CCF1A6 /* customMarker.swift in Sources */,
+				1FF3814E2AFD297600CCF1A6 /* PortfolioDetailModel.swift in Sources */,
+				1FF3814F2AFD297600CCF1A6 /* FrequencyTVC.swift in Sources */,
+				1FF381502AFD297600CCF1A6 /* ApiConstants.swift in Sources */,
+				1FF381512AFD297600CCF1A6 /* myBalanceTableViewCell.swift in Sources */,
+				1FF381522AFD297600CCF1A6 /* ResetPasswordModel.swift in Sources */,
+				1FF381532AFD297600CCF1A6 /* HeaderView.swift in Sources */,
+				1FF381542AFD297600CCF1A6 /* AllAssetsVC.swift in Sources */,
+				1FF381552AFD297600CCF1A6 /* ConfirmNewPinCVC.swift in Sources */,
+				1FF381562AFD297600CCF1A6 /* Confetti.swift in Sources */,
+				1FF381572AFD297600CCF1A6 /* ChangePinOtpCVC.swift in Sources */,
+				1FF381582AFD297600CCF1A6 /* PersonalDataCVC.swift in Sources */,
+				1FF381592AFD297600CCF1A6 /* checkAccountCompletedTVC.swift in Sources */,
+				1FF3815A2AFD297600CCF1A6 /* DateFormatterExtension.swift in Sources */,
+				1FF3815B2AFD297600CCF1A6 /* ConfirmationVC.swift in Sources */,
+				1FF3815C2AFD297600CCF1A6 /* UIButtonExtension.swift in Sources */,
+				1FF3815D2AFD297600CCF1A6 /* DefaultPictureCVC.swift in Sources */,
+				1FF3815E2AFD297600CCF1A6 /* InvestmentExperienceTVC.swift in Sources */,
+				1FF3815F2AFD297600CCF1A6 /* ConfirmExecutionVC.swift in Sources */,
+				1FF381602AFD297600CCF1A6 /* LocalizationKeys.swift in Sources */,
+				1FF381612AFD297600CCF1A6 /* QrCodeVC.swift in Sources */,
+				1FF381622AFD297600CCF1A6 /* ConfirmInvestmentVC.swift in Sources */,
+				1FF381632AFD297600CCF1A6 /* LanguageModel.swift in Sources */,
+				1FF381642AFD297600CCF1A6 /* InvestMoneyVC.swift in Sources */,
+				1FF381652AFD297600CCF1A6 /* ProfileVC.swift in Sources */,
+				1FF381662AFD297600CCF1A6 /* ConfirmPinCVC.swift in Sources */,
+				1FF381672AFD297600CCF1A6 /* MyBalanceTVC.swift in Sources */,
+				1FF381682AFD297600CCF1A6 /* EducationStrategyVM.swift in Sources */,
+				1FF381692AFD297600CCF1A6 /* TransactionHeaderTVC.swift in Sources */,
+				1FF3816A2AFD297600CCF1A6 /* InvestmentStrategyCVC.swift in Sources */,
+				1FF3816B2AFD297600CCF1A6 /* AllocationVC.swift in Sources */,
+				1FF3816C2AFD297600CCF1A6 /* InvestMoneyCVC.swift in Sources */,
+				1FF3816D2AFD297600CCF1A6 /* AllCoinCVC.swift in Sources */,
+				1FF3816E2AFD297600CCF1A6 /* AnalyticsTVC.swift in Sources */,
+				1FF3816F2AFD297600CCF1A6 /* ResetPasswordVC.swift in Sources */,
+				1FF381702AFD297600CCF1A6 /* NotificationVM.swift in Sources */,
+				1FF381712AFD297600CCF1A6 /* ProfileLogoutTVC.swift in Sources */,
+				1FF381722AFD297600CCF1A6 /* EnterPhoneVC.swift in Sources */,
+				1FF381732AFD297600CCF1A6 /* EnterPhoneModel.swift in Sources */,
+				1FF381742AFD297600CCF1A6 /* EnableWhitelistingVC.swift in Sources */,
+				1FF381752AFD297600CCF1A6 /* EnterPhoneVM.swift in Sources */,
+				1FF381762AFD297600CCF1A6 /* SceneDelegate.swift in Sources */,
+				1FF381772AFD297600CCF1A6 /* Launcher.swift in Sources */,
+				1FF381782AFD297600CCF1A6 /* PortfolioHeaderTVC.swift in Sources */,
+				1FF381792AFD297600CCF1A6 /* AddCryptoAddressModel.swift in Sources */,
+				1FF3817A2AFD297600CCF1A6 /* GoogleAuthenticatorVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -3215,6 +3933,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3277,6 +3996,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -3297,7 +4017,7 @@
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Lyber/Info.plist;
+				INFOPLIST_FILE = Lyber/info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " wants to access your photo library for profile picture.";
@@ -3314,7 +4034,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS PRODUCTION";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -3338,7 +4058,7 @@
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Lyber/Info.plist;
+				INFOPLIST_FILE = Lyber/info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " wants to access your photo library for profile picture.";
@@ -3355,7 +4075,96 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS PRODUCTION";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = NO;
+			};
+			name = Release;
+		};
+		1FF381C62AFD297600CCF1A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lyber/LyberDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LBHZQ28V9P;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Lyber/info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " wants to access your photo library for profile picture.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to improve user experience. This helps us understand how you downloaded our app and what features you mainly use.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS STAGING";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber.dev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = NO;
+			};
+			name = Debug;
+		};
+		1FF381C72AFD297600CCF1A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lyber/Lyber.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LBHZQ28V9P;
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Lyber/info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " wants to access your photo library for profile picture.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to improve user experience. This helps us understand how you downloaded our app and what features you mainly use.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS STAGING";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -3377,11 +4186,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0AC4C2B7283F4AD90086C6B8 /* Build configuration list for PBXNativeTarget "Lyber" */ = {
+		0AC4C2B7283F4AD90086C6B8 /* Build configuration list for PBXNativeTarget "Lyber prod" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0AC4C2B8283F4AD90086C6B8 /* Debug */,
 				0AC4C2B9283F4AD90086C6B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FF381C52AFD297600CCF1A6 /* Build configuration list for PBXNativeTarget "Lyber dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FF381C62AFD297600CCF1A6 /* Debug */,
+				1FF381C72AFD297600CCF1A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3406,6 +4224,30 @@
 			};
 		};
 		1FC0E27A2A65412B00E4EB6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		1FF3808F2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "big-num" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adam-fowler/big-num";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		1FF380912AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -3444,6 +4286,36 @@
 		1FC0E27F2A65437A00E4EB6A /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1FC0E27A2A65412B00E4EB6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		1FF3808B2AFD297600CCF1A6 /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+		1FF3808D2AFD297600CCF1A6 /* _CryptoExtras */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = _CryptoExtras;
+		};
+		1FF3808E2AFD297600CCF1A6 /* BigNum */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FF3808F2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "big-num" */;
+			productName = BigNum;
+		};
+		1FF380902AFD297600CCF1A6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FF380912AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		1FF380922AFD297600CCF1A6 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FF380912AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		1FF380932AFD297600CCF1A6 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FF380912AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */

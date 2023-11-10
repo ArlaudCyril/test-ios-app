@@ -118,7 +118,7 @@ extension addressCVC: UITextFieldDelegate{
         if textField == streetNumberTF{
             return (newString.length <= 30 )
         }else if textField == buildingFloorTF{
-            return (newString.length <= 30 )
+            return true
         }else if textField == cityTF{
 //            if (string.rangeOfCharacter(from: NSCharacterSet.letters.inverted)) != nil && string.rangeOfCharacter(from: NSCharacterSet.whitespaces) == nil{
 //                return false

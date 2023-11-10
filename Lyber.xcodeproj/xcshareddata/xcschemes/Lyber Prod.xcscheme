@@ -7,20 +7,6 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0AC4C29F283F4AD80086C6B8"
-               BuildableName = "Lyber prod.app"
-               BlueprintName = "Lyber prod"
-               ReferencedContainer = "container:Lyber.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
@@ -28,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1FF3808A2AFD297600CCF1A6"
-               BuildableName = "Lyber dev.app"
-               BlueprintName = "Lyber dev"
+               BlueprintIdentifier = "0AC4C29F283F4AD80086C6B8"
+               BuildableName = "Lyber prod.app"
+               BlueprintName = "Lyber prod"
                ReferencedContainer = "container:Lyber.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -58,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1FF3808A2AFD297600CCF1A6"
-            BuildableName = "Lyber dev.app"
-            BlueprintName = "Lyber dev"
+            BlueprintIdentifier = "0AC4C29F283F4AD80086C6B8"
+            BuildableName = "Lyber prod.app"
+            BlueprintName = "Lyber prod"
             ReferencedContainer = "container:Lyber.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,9 +67,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1FF3808A2AFD297600CCF1A6"
-            BuildableName = "Lyber dev.app"
-            BlueprintName = "Lyber dev"
+            BlueprintIdentifier = "0AC4C29F283F4AD80086C6B8"
+            BuildableName = "Lyber prod.app"
+            BlueprintName = "Lyber prod"
             ReferencedContainer = "container:Lyber.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -92,7 +78,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

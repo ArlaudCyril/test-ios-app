@@ -10,13 +10,9 @@ import Foundation
 enum ApiEnvironment: String {
     case Dev = "https://dev.lyber.com/"
     case Staging = "https://staging.lyber.com/"
-    case Production = "https://production.lyber.com/"
-//    case Stage = "http://104.211.21.101:3001/"
-//    case Live = "http://104.211.21.101:3002/"
     
     static var ImageUrl = "https://lyberblob.blob.core.windows.net/original/"
     static var socketBaseUrl  = "wss://ws.lyber.com/websocket/"
-    //static var socketUrl  = "ws://ws.lyber.com:80/websocket/btceur"
 }
 
 

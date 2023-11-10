@@ -16,8 +16,7 @@ class checkAccountCompletedVC: ViewController {
 //     AccountCompletedModel(index: 4, text: CommonFunctions.localisation(key: "MAKE_YOUR_FIRST_INVESTMENT"), isCompleted: false, isPending: false, rightIcon: Assets.right_arrow_grey.image())
     ]
     //MARK:- IB OUTLETS
-    @IBOutlet var portfolioLbl: UILabel!
-    @IBOutlet var profilePic: UIImageView!
+	@IBOutlet var headerView: HeaderView!
     @IBOutlet var bottomVw: UIView!
     @IBOutlet var completeYourAccountLbl: UILabel!
     @IBOutlet var stepcompletedLbl: UILabel!
@@ -50,8 +49,7 @@ class checkAccountCompletedVC: ViewController {
 	//MARK: - SetUpUI
 
     override func setUpUI(){
-        CommonUI.setUpLbl(lbl: self.portfolioLbl, text: CommonFunctions.localisation(key: "REGISTRATION"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.width/2
+        CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: CommonFunctions.localisation(key: "REGISTRATION"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         self.bottomVw.layer.cornerRadius = 32
         self.bottomVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
@@ -68,6 +66,9 @@ class checkAccountCompletedVC: ViewController {
         self.tblView.layer.cornerRadius = 16
         tblView.delegate = self
         tblView.dataSource  = self
+		
+		self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
     }
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -143,4 +144,8 @@ extension checkAccountCompletedVC{
                 self.tblView.reloadData()
         })
     }
+	
+	@objc func backBtnAct(){
+		self.navigationController?.popViewController(animated: false)
+	}
 }

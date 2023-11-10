@@ -52,7 +52,11 @@ extension UINavigationController {
 		if let vc = viewControllers.last(where: { $0.isKind(of: PortfolioHomeVC.self) || ($0 as? AllAssetsVC)?.screenType == .portfolio }) {
 			// Pop to the found view controller
 			popToViewController(vc, animated: animated)
+			return
 		}
+		let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+			pushViewController(vc, animated: false)
+		
 	  }
 	
 	func deleteToPortfolioHomeOrAllAsset(animated: Bool = false) {
