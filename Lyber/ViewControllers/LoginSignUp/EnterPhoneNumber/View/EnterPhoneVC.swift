@@ -288,6 +288,7 @@ extension EnterPhoneVC{
                     if let response = response{
                         userData.shared.registrationToken = response.data?.token ?? ""
                         userData.shared.phone_no = self?.phoneNumber ?? ""
+                        userData.shared.countryCode = self?.countryCode ?? ""
                         userData.shared.time = Date()
                         userData.shared.dataSave()
 						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
