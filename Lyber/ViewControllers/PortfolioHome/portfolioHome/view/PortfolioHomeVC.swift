@@ -41,7 +41,7 @@ class PortfolioHomeVC: NotSwipeGesture {
 
 	//MARK: - SetUpUI
     override func setUpUI(){
-		self.headerData = [CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "ANALYTICS"),CommonFunctions.localisation(key: "RECURRING_INVESTMENT"),CommonFunctions.localisation(key: "ALL_ASSETS_AVAILABLE")]
+		self.headerData = [CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "MY_ASSETS")/*,CommonFunctions.localisation(key: "ANALYTICS")*/,CommonFunctions.localisation(key: "RECURRING_INVESTMENT"),CommonFunctions.localisation(key: "ALL_ASSETS_AVAILABLE")]
 		
 		
         self.tblView.delegate = self
@@ -65,7 +65,7 @@ class PortfolioHomeVC: NotSwipeGesture {
 //Mark: - table view delegates and dataSource
 extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4 //5
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
@@ -123,13 +123,15 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 					return cell
 				}
 			}
-        }else if indexPath.section == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTVC")as! AnalyticsTVC
-            cell.controller = self
-            cell.setUpCell()
-			cell.callWalletGetPerformance()
-            return cell
-        }else if indexPath.section == 3{
+        }
+//        else if indexPath.section == 2{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "AnalyticsTVC")as! AnalyticsTVC
+//            cell.controller = self
+//            cell.setUpCell()
+//			cell.callWalletGetPerformance()
+//            return cell
+//        }
+    else if indexPath.section == 2 { //3
 			if(recurringInvestmentData.count != 0){
 				let cell = tableView.dequeueReusableCell(withIdentifier: "RecurringTVC")as! RecurringTVC
 				cell.setUpCell(data: recurringInvestmentData[indexPath.row],index : indexPath.row,lastIndex: (recurringInvestmentData.count - 1))
@@ -139,7 +141,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 				cell.setUpCell()
 				return cell
 			}
-        }else if indexPath.section == 4{
+        }else if indexPath.section == 3{ //4
             let cell = tableView.dequeueReusableCell(withIdentifier: "AllAssetsAvailableTVC")as! AllAssetsAvailableTVC
             cell.controller = self
             cell.setUpCell()
