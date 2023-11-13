@@ -50,7 +50,6 @@ class InvestInMyStrategyVC: ViewController {
 	var minAmountExchange : Double?
 	//singleCoin || activateStrategy || editActiveStrategy || oneTimeInvestment
 	var minInvestPerAsset : Decimal = 10
-	var requiredAmount : Decimal = 0
 	var asset : PriceServiceResume?
 	var maxAmountBuy : Decimal = 1000
 	
@@ -280,13 +279,6 @@ class InvestInMyStrategyVC: ViewController {
 				self.frequencyVw.isHidden = false
 			}
 			
-			for asset in self.strategyCoinsData {
-				let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
-				if(newAmount > self.requiredAmount){
-					self.requiredAmount = newAmount
-				}
-			}
-			
 			self.creditCardVw.isHidden = true //it is temporary
 			self.coinsLbl.isHidden = false
 			self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_MY_INVESTMENT"), for: .normal)
@@ -299,14 +291,8 @@ class InvestInMyStrategyVC: ViewController {
                 self.frequencyDropDown.image = Assets.drop_down.image()
                 self.frequencyImg.image = Assets.calendar_black.image()
                 
-				for asset in self.strategyCoinsData {
-					let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
-					if(newAmount > self.requiredAmount){
-						self.requiredAmount = newAmount
-					}
-				}
-                amountTF.text = "\(requiredAmount) USDT"
-                totalEuroInvested = requiredAmount
+                amountTF.text = "\(self.strategyData?.minAmount ?? 0) USDT"
+                totalEuroInvested = Decimal(self.strategyData?.minAmount ?? 0)
                 
                 self.previewMyInvest.backgroundColor = UIColor.PurpleColor
                 self.previewMyInvest.isUserInteractionEnabled = true
@@ -765,8 +751,8 @@ extension InvestInMyStrategyVC {
 			}
 			if totalEuroInvested > Decimal(totalEuroAvailable ?? 0){
 				CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDT"))
-			}else if totalEuroInvested < self.requiredAmount{
-				CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.minInvestPerAsset) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
+            }else if totalEuroInvested < Decimal(self.strategyData?.minAmount ?? 0){
+                CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.strategyData?.minAmount ?? 0) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
 			}else{
                 self.goToPreviewINvest()
             }

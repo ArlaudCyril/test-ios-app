@@ -375,7 +375,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "CANT_EXCHANGE_ASSET_DONT_HAVE" = "You can't exchange assets you don't have in your wallet";
 "NOT_ENOUGH_BALANCE" = "You don't have enough balance to invest";
 "NOT_ENOUGH_INVESTMENT_PART_1" = "You need to invest atleast";
-"NOT_ENOUGH_INVESTMENT_PART_2" = "USDT per asset in the strategy";
+"NOT_ENOUGH_INVESTMENT_PART_2" = "USDT in the strategy";
 "NOT_ENOUGH_COINS" = "You don't have enough coins to exchange";
 "NOT_ENOUGH_USDT" = "You don't have enough USDT to perform this action";
 "CANT_BUY_MORE_THAN" = "You can't buy for more than %@ euros in an asset";
