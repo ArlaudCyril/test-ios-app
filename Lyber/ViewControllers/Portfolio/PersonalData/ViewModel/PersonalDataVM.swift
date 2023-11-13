@@ -116,7 +116,7 @@ class PersonalDataVM{
         let client = SRPClient(configuration: configuration)
         
         let (emailSalt, emailVerifier) = client.generateSaltAndVerifier(username: email ?? "", password: password ?? "")
-		let (phoneSalt, phoneVerifier) = client.generateSaltAndVerifier(username: "\(userData.shared.countryCode)\(userData.shared.phone_no.phoneFormat)", password: password ?? "")
+		let (phoneSalt, phoneVerifier) = client.generateSaltAndVerifier(username: "\(Int(userData.shared.countryCode) ?? 0)\(userData.shared.phone_no.phoneFormat)", password: password ?? "")
         let param: [String: Any] = [Constants.ApiKeys.email: email ?? "",
                                     Constants.ApiKeys.emailSalt: BigNum(bytes: emailSalt).dec,
                                     Constants.ApiKeys.emailVerifier: emailVerifier.number.dec,
