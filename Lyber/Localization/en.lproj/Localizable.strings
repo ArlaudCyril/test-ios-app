@@ -96,6 +96,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "INVESTMENT_STRATEGIES" = "Investment strategies";
 "STRATEGIES_ARE_THERE_TO_HELP_YOU" = "The strategies are there to help you dilute your investments over several assets.";
 "YIELD" = "Yield";
+"MINIMUM_INVESTMENT" = "Minimum Investment";
 "RISK" = "Risk";
 "INVEST" = "Invest";
 "IMMEDIATE" = "Immediate";
@@ -255,7 +256,10 @@ Make sure to withdraw all the money you have in your account before closing it."
 "REVIEW_INFORMATIONS" = "Review my informations";
 "CHANGE_INFORMATIONS" = "Change my informations";
 "PASSWORD_REQUIREMENTS" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case.";
-"STRONG_PASSWORD" = "You have a strong password";
+"LABEL_CGU_CONDITIONS" = "I have read and accept the General Terms and Conditions of Sale";
+"LABEL_PRIVACY_POLICY" = "I have read and accept the privacy policy";
+"CGU_CONDITIONS" = "General Terms and Conditions of Sale";
+"PRIVACY_POLICY" = "privacy policy";
 
 //MARK: - INVEST MONEY;
 "USING_MY_STRATEGY" = "Using my strategy";

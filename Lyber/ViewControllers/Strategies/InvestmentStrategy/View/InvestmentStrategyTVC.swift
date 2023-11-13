@@ -19,14 +19,20 @@ class InvestmentStrategyTVC: UITableViewCell {
     @IBOutlet var strategyVw: UIView!
     @IBOutlet var strategyTypeLbl: UILabel!
     @IBOutlet var activatedLbl: UILabel!
+	
     @IBOutlet var riskLbl: UILabel!
     @IBOutlet var riskIcon: UIImageView!
     @IBOutlet var yieldLbl: UILabel!
     @IBOutlet var yieldIcon: UIImageView!
+	
+	@IBOutlet var minInvestLbl: UILabel!
+    @IBOutlet var minInvestIcon: UIImageView!
+	
     @IBOutlet var amountLbl: UILabel!
     @IBOutlet var amountIcon: UIImageView!
     @IBOutlet var frequenceLbl: UILabel!
     @IBOutlet var frequenceIcon: UIImageView!
+	
     @IBOutlet var informationsView: UIView!
     @IBOutlet var defaultStrategyView: UIView!
     @IBOutlet var activeStrategyView: UIView!
@@ -48,7 +54,7 @@ extension InvestmentStrategyTVC{
 		self.isLastElement = isLastRow
         investmentStrategyAssets = data?.bundle ?? []
         
-        var informationHeight = 0
+        var informationHeight = 25
         defaultStrategyView.isHidden = true
         activeStrategyView.isHidden = true
         informationsView.isHidden = true
@@ -56,6 +62,8 @@ extension InvestmentStrategyTVC{
         
         CommonUI.setUpViewBorder(vw: strategyVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.greyColor.cgColor)
         CommonUI.setUpLbl(lbl: self.strategyTypeLbl, text: data?.name ?? "", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+		
+		self.minInvestLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "MINIMUM_INVESTMENT")) : ", secondStr: CommonFunctions.localisation(key: data?.expectedYield?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
          
         collView.delegate = self
         collView.dataSource = self

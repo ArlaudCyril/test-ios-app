@@ -13,12 +13,20 @@ class IdentityVerificationVC: ViewController {
 	var urlKyc : String = ""
 	var timer: Timer?
 	var btnPressed = false
+	var isCGUChecked = false
+	var isPrivacyChecked = false
+	
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
     @IBOutlet var verificationLbl: UILabel!
     @IBOutlet var verificationDescLbl: UILabel!
     @IBOutlet var disclaimerTitleLbl: UILabel!
     @IBOutlet var disclaimerDescLbl: UILabel!
+    
+	@IBOutlet var labelCGU: UILabel!
+    @IBOutlet var checkBoxCGU: UIImageView!
+	@IBOutlet var labelPrivacy: UILabel!
+    @IBOutlet var checkBoxPrivacy: UIImageView!
     
 	@IBOutlet var reviewInformationsBtn: PurpleButton!
     @IBOutlet var kycBtn: PurpleButton!
@@ -45,7 +53,44 @@ class IdentityVerificationVC: ViewController {
 		CommonUI.setUpLbl(lbl: self.disclaimerDescLbl, text:"", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		CommonUI.setTextWithLineSpacing(label: self.disclaimerDescLbl, text: CommonFunctions.localisation(key: "INFORMATION_PROVIDED_APPLICATION_NOT_INVESTMENT_ADVICE"), lineSpacing: 4, textAlignment: .left)
         
-        
+		let tapGestureCGU = UITapGestureRecognizer(target: self, action: #selector(checkBoxCGUTapped))
+		let tapGesturePrivacy = UITapGestureRecognizer(target: self, action: #selector(checkBoxPrivacyTapped))
+		
+		checkBoxCGU.addGestureRecognizer(tapGestureCGU)
+		checkBoxPrivacy.addGestureRecognizer(tapGesturePrivacy)
+		
+		//labelCGU
+		CommonUI.setUpLbl(lbl: self.labelCGU, text: "", textColor: UIColor.PurpleColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.labelCGU.numberOfLines = 0
+		
+		let attributedTextCGU = NSMutableAttributedString(string: CommonFunctions.localisation(key: "LABEL_CGU_CONDITIONS"))
+		
+		let underlineRangeCGU = (CommonFunctions.localisation(key: "LABEL_CGU_CONDITIONS") as NSString).range(of: CommonFunctions.localisation(key: "CGU_CONDITIONS"))
+		
+		attributedTextCGU.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: underlineRangeCGU)
+		
+		self.labelCGU.attributedText = attributedTextCGU
+		
+		let tapGestureLabelCGU = UITapGestureRecognizer(target: self, action: #selector(labelCGUTapped))
+		self.labelCGU.addGestureRecognizer(tapGestureLabelCGU)
+		
+		//labelPrivacy
+		CommonUI.setUpLbl(lbl: self.labelPrivacy, text: "", textColor: UIColor.PurpleColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		self.labelPrivacy.numberOfLines = 0
+		
+		let attributedTextPrivacy = NSMutableAttributedString(string: CommonFunctions.localisation(key: "LABEL_PRIVACY_POLICY"))
+		
+		let underlineRangePrivacy = (CommonFunctions.localisation(key: "LABEL_PRIVACY_POLICY") as NSString).range(of: CommonFunctions.localisation(key: "PRIVACY_POLICY"))
+		
+		attributedTextPrivacy.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: underlineRangePrivacy)
+		
+		self.labelPrivacy.attributedText = attributedTextPrivacy
+		
+		let tapGestureLabelPrivacy = UITapGestureRecognizer(target: self, action: #selector(labelPrivacyTapped))
+		self.labelPrivacy.addGestureRecognizer(tapGestureLabelPrivacy)
+		
+		
+		//other
         self.reviewInformationsBtn.setTitle(CommonFunctions.localisation(key: "REVIEW_INFORMATIONS"), for: .normal)
         self.kycBtn.setTitle(CommonFunctions.localisation(key: "START_VERIFICATION"), for: .normal)
         
@@ -53,6 +98,9 @@ class IdentityVerificationVC: ViewController {
 		
         self.reviewInformationsBtn.addTarget(self, action: #selector(reviewInformationsBtnAct), for: .touchUpInside)
         self.kycBtn.addTarget(self, action: #selector(kycBtnAct), for: .touchUpInside)
+		
+		self.kycBtn.backgroundColor = UIColor.greyDisabled
+		self.kycBtn.isUserInteractionEnabled = false
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -84,6 +132,7 @@ extension IdentityVerificationVC{
 		vc.isEditData = true
 		self.navigationController?.pushViewController(vc, animated: false)
     }
+	
 	@objc func checkKycStatus() {
 		if self.urlKyc != "" {
 			timer?.invalidate()
@@ -91,6 +140,55 @@ extension IdentityVerificationVC{
 				self.kycBtn.hideLoading()
 				kycBtnAct()
 			}
+		}
+	}
+	
+	@objc func labelCGUTapped() {
+		if let url = URL(string: "https://www.lyber.com/terms-conditions") {
+			UIApplication.shared.open(url)
+		}
+	}
+	
+	@objc func labelPrivacyTapped() {
+		if let url = URL(string: "https://www.lyber.com/privacy") {
+			UIApplication.shared.open(url)
+		}
+	}
+	
+	@objc func checkBoxCGUTapped() {
+		
+		self.isCGUChecked = !self.isCGUChecked
+		
+		if(self.isCGUChecked){
+			checkBoxCGU.setImage(Assets.purple_checkbox.image())
+		}else{
+			checkBoxCGU.setImage(Assets.purple_circle.image())
+		}
+			
+		if(self.isCGUChecked && self.isPrivacyChecked){
+			self.kycBtn.backgroundColor = UIColor.purple_500
+			self.kycBtn.isUserInteractionEnabled = true
+		}else{
+			self.kycBtn.backgroundColor = UIColor.greyDisabled
+			self.kycBtn.isUserInteractionEnabled = false
+		}
+	}
+
+	@objc func checkBoxPrivacyTapped() {
+		self.isPrivacyChecked = !self.isPrivacyChecked
+		
+		if(self.isPrivacyChecked){
+			checkBoxPrivacy.setImage(Assets.purple_checkbox.image())
+		}else{
+			checkBoxPrivacy.setImage(Assets.purple_circle.image())
+		}
+		
+		if(self.isCGUChecked && self.isPrivacyChecked){
+			self.kycBtn.backgroundColor = UIColor.purple_500
+			self.kycBtn.isUserInteractionEnabled = true
+		}else{
+			self.kycBtn.backgroundColor = UIColor.greyDisabled
+			self.kycBtn.isUserInteractionEnabled = false
 		}
 	}
 }

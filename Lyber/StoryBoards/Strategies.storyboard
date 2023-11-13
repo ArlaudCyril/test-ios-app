@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,7 +14,7 @@
         <!--Add AssetsVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="AddAssetsVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Y6W-OH-hqX" customClass="AddAssetsVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAssetsVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Y6W-OH-hqX" customClass="AddAssetsVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,6 +27,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="3ji-zk-iqR"/>
+                                            <constraint firstAttribute="width" secondItem="ynE-uM-Joh" secondAttribute="height" multiplier="1:1" id="dp4-uz-4lQ"/>
                                             <constraint firstAttribute="width" secondItem="ynE-uM-Joh" secondAttribute="height" multiplier="1:1" id="iR6-g3-fcT"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -51,7 +52,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetsCVC" id="lMZ-Lb-KkI" customClass="AddAssetsCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetsCVC" id="lMZ-Lb-KkI" customClass="AddAssetsCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="1.5" width="148" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qlN-QN-RH2">
@@ -96,7 +97,7 @@
                                         <rect key="frame" x="0.0" y="132" width="414" height="493"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAssetsTVC" rowHeight="75" id="t7p-eX-hfd" customClass="AddAssetsTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAssetsTVC" rowHeight="75" id="t7p-eX-hfd" customClass="AddAssetsTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="414" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t7p-eX-hfd" id="SWE-Zs-oST">
@@ -147,6 +148,7 @@
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y7j-aC-hyk">
                                                                                     <rect key="frame" x="15" y="22" width="85" height="30"/>
                                                                                     <constraints>
+                                                                                        <constraint firstAttribute="width" secondItem="Y7j-aC-hyk" secondAttribute="height" multiplier="17:6" id="1BG-8x-LIf"/>
                                                                                         <constraint firstAttribute="width" constant="85" id="PDh-df-t90"/>
                                                                                         <constraint firstAttribute="width" secondItem="Y7j-aC-hyk" secondAttribute="height" multiplier="17:6" id="XL8-rk-x2R"/>
                                                                                         <constraint firstAttribute="height" constant="30" id="bwq-t0-WHf"/>
@@ -154,7 +156,6 @@
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <constraints>
-                                                                                <constraint firstItem="Y7j-aC-hyk" firstAttribute="width" secondItem="Y7j-aC-hyk" secondAttribute="height" multiplier="17:6" id="1BG-8x-LIf"/>
                                                                                 <constraint firstItem="Y7j-aC-hyk" firstAttribute="leading" secondItem="Rm0-qm-E3G" secondAttribute="leading" constant="15" id="Szg-AQ-esV"/>
                                                                                 <constraint firstItem="Y7j-aC-hyk" firstAttribute="top" secondItem="Rm0-qm-E3G" secondAttribute="top" constant="22" id="bGn-oP-QP6"/>
                                                                                 <constraint firstAttribute="width" constant="100" id="kp5-YZ-PMf"/>
@@ -246,7 +247,6 @@
                                     <constraint firstItem="Fnk-fh-zns" firstAttribute="leading" secondItem="W2f-AF-XYW" secondAttribute="leading" id="WmQ-pJ-a0i"/>
                                     <constraint firstAttribute="trailing" secondItem="ENz-1C-eU9" secondAttribute="trailing" constant="12" id="ZWm-FV-4hj"/>
                                     <constraint firstItem="ENz-1C-eU9" firstAttribute="top" secondItem="ynE-uM-Joh" secondAttribute="bottom" constant="20" id="bMd-db-v1W"/>
-                                    <constraint firstItem="ynE-uM-Joh" firstAttribute="width" secondItem="ynE-uM-Joh" secondAttribute="height" multiplier="1:1" id="dp4-uz-4lQ"/>
                                     <constraint firstItem="Hdg-nA-bJn" firstAttribute="centerX" secondItem="W2f-AF-XYW" secondAttribute="centerX" id="edB-cC-euF"/>
                                     <constraint firstItem="ynE-uM-Joh" firstAttribute="top" secondItem="W2f-AF-XYW" secondAttribute="top" constant="12" id="eqz-VX-86m"/>
                                     <constraint firstItem="Hdg-nA-bJn" firstAttribute="centerY" secondItem="ynE-uM-Joh" secondAttribute="centerY" id="uN9-br-etw"/>
@@ -279,7 +279,7 @@
         <!--Add StrategyVC-->
         <scene sceneID="m28-cs-voB">
             <objects>
-                <viewController storyboardIdentifier="AddStrategyVC" id="H6i-pl-lEc" customClass="AddStrategyVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddStrategyVC" id="H6i-pl-lEc" customClass="AddStrategyVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q0N-Fe-UfG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,7 +316,7 @@
                                                             <constraint firstAttribute="height" constant="340" id="dDT-HC-BoI"/>
                                                         </constraints>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddStrategyTVC" rowHeight="191" id="Auu-LW-HPb" customClass="AddStrategyTVC" customModule="Lyber" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddStrategyTVC" rowHeight="191" id="Auu-LW-HPb" customClass="AddStrategyTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="50" width="414" height="191"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Auu-LW-HPb" id="VMA-Kb-h0T">
@@ -548,7 +548,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnN-Mn-eW5">
                                         <rect key="frame" x="0.0" y="693.5" width="414" height="120.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1o-WT-HxB" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1o-WT-HxB" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="24" width="366" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="al1-7s-2I1"/>
@@ -623,7 +623,7 @@
         <!--Investment StrategyVC-->
         <scene sceneID="GMv-Yr-52b">
             <objects>
-                <viewController storyboardIdentifier="InvestmentStrategyVC" id="GrB-Tf-Uft" customClass="InvestmentStrategyVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvestmentStrategyVC" id="GrB-Tf-Uft" customClass="InvestmentStrategyVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hk3-rD-SoW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -631,7 +631,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELM-3T-DfO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDG-z1-a3K" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDG-z1-a3K" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -678,7 +678,7 @@
                                                             <constraint firstAttribute="height" constant="489" id="ibP-Hw-yBA"/>
                                                         </constraints>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvestmentStrategyTVC" rowHeight="250" id="YnW-f9-inz" customClass="InvestmentStrategyTVC" customModule="Lyber" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvestmentStrategyTVC" rowHeight="250" id="YnW-f9-inz" customClass="InvestmentStrategyTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="50" width="414" height="250"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YnW-f9-inz" id="hRe-hh-xJu">
@@ -750,6 +750,32 @@
                                                                                                         <constraint firstItem="WWk-A9-kZ6" firstAttribute="leading" secondItem="Xft-Xd-cgk" secondAttribute="leading" constant="24" id="sMd-Pc-gEf"/>
                                                                                                     </constraints>
                                                                                                 </view>
+                                                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1x-CT-8d6">
+                                                                                                    <rect key="frame" x="0.0" y="48" width="334" height="7"/>
+                                                                                                    <subviews>
+                                                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amount" translatesAutoresizingMaskIntoConstraints="NO" id="HaX-Wl-miQ">
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                                                                            <constraints>
+                                                                                                                <constraint firstAttribute="width" constant="16" id="13M-0d-AnL"/>
+                                                                                                                <constraint firstAttribute="width" secondItem="HaX-Wl-miQ" secondAttribute="height" multiplier="1:1" id="jBa-wr-BEw"/>
+                                                                                                            </constraints>
+                                                                                                        </imageView>
+                                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXh-Y6-VBb">
+                                                                                                            <rect key="frame" x="24" y="-2.5" width="185" height="21"/>
+                                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                                            <nil key="textColor"/>
+                                                                                                            <nil key="highlightedColor"/>
+                                                                                                        </label>
+                                                                                                    </subviews>
+                                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                    <constraints>
+                                                                                                        <constraint firstItem="HaX-Wl-miQ" firstAttribute="top" secondItem="l1x-CT-8d6" secondAttribute="top" id="2Qi-aB-WOm"/>
+                                                                                                        <constraint firstItem="vXh-Y6-VBb" firstAttribute="centerY" secondItem="HaX-Wl-miQ" secondAttribute="centerY" id="YEf-ig-cEP"/>
+                                                                                                        <constraint firstAttribute="trailing" secondItem="vXh-Y6-VBb" secondAttribute="trailing" constant="125" id="ZQ8-DM-TVF"/>
+                                                                                                        <constraint firstItem="vXh-Y6-VBb" firstAttribute="leading" secondItem="l1x-CT-8d6" secondAttribute="leading" constant="24" id="jBh-WQ-FLt"/>
+                                                                                                        <constraint firstItem="HaX-Wl-miQ" firstAttribute="leading" secondItem="l1x-CT-8d6" secondAttribute="leading" id="kgM-1M-m0A"/>
+                                                                                                    </constraints>
+                                                                                                </view>
                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-qd-zjH">
                                                                                                     <rect key="frame" x="0.0" y="55" width="334" height="43"/>
                                                                                                     <subviews>
@@ -800,11 +826,15 @@
                                                                                             </subviews>
                                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>
+                                                                                                <constraint firstItem="l1x-CT-8d6" firstAttribute="top" secondItem="Xft-Xd-cgk" secondAttribute="bottom" id="0it-Jg-Xhb"/>
                                                                                                 <constraint firstItem="WWk-A9-kZ6" firstAttribute="top" secondItem="dqR-ec-InS" secondAttribute="top" constant="2.5" id="AQz-Zx-pia"/>
-                                                                                                <constraint firstAttribute="height" constant="101" id="H9J-e0-Kyr"/>
+                                                                                                <constraint firstAttribute="height" constant="121" id="H9J-e0-Kyr"/>
+                                                                                                <constraint firstAttribute="trailing" secondItem="l1x-CT-8d6" secondAttribute="trailing" id="JeT-bV-s3A"/>
+                                                                                                <constraint firstItem="l1x-CT-8d6" firstAttribute="leading" secondItem="dqR-ec-InS" secondAttribute="leading" id="Oyc-Jb-YQu"/>
                                                                                                 <constraint firstAttribute="trailing" secondItem="CnA-qd-zjH" secondAttribute="trailing" id="X6c-6J-m7g"/>
                                                                                                 <constraint firstItem="CnA-qd-zjH" firstAttribute="leading" secondItem="dqR-ec-InS" secondAttribute="leading" id="xA9-hB-KJU"/>
                                                                                                 <constraint firstAttribute="bottom" secondItem="CnA-qd-zjH" secondAttribute="bottom" constant="3" id="yGh-oe-NC0"/>
+                                                                                                <constraint firstItem="CnA-qd-zjH" firstAttribute="top" secondItem="l1x-CT-8d6" secondAttribute="bottom" id="zVO-Z1-FIP"/>
                                                                                             </constraints>
                                                                                         </view>
                                                                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYh-GH-jLS" customClass="MultiProgressView" customModule="MultiProgressView">
@@ -829,7 +859,7 @@
                                                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                                             </collectionViewFlowLayout>
                                                                                             <cells>
-                                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InvestmentStrategyCVC" id="anL-qe-R8x" customClass="InvestmentStrategyCVC" customModule="Lyber" customModuleProvider="target">
+                                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InvestmentStrategyCVC" id="anL-qe-R8x" customClass="InvestmentStrategyCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                                                     <rect key="frame" x="32.5" y="0.0" width="269" height="29"/>
                                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lpU-8i-5mC">
@@ -942,6 +972,8 @@
                                                                     <outlet property="frequenceLbl" destination="rO7-Hm-1lg" id="I4q-cM-G44"/>
                                                                     <outlet property="informationViewHeightConst" destination="H9J-e0-Kyr" id="zzQ-Xm-Rm6"/>
                                                                     <outlet property="informationsView" destination="dqR-ec-InS" id="in4-aL-5VO"/>
+                                                                    <outlet property="minInvestIcon" destination="HaX-Wl-miQ" id="vi8-Qb-MZA"/>
+                                                                    <outlet property="minInvestLbl" destination="vXh-Y6-VBb" id="spE-hj-ivy"/>
                                                                     <outlet property="progressVw" destination="EYh-GH-jLS" id="tjX-e5-NkI"/>
                                                                     <outlet property="riskIcon" destination="72M-dP-H9Z" id="0S6-YK-Va1"/>
                                                                     <outlet property="riskLbl" destination="WWk-A9-kZ6" id="x0X-5v-IrZ"/>
@@ -1037,7 +1069,7 @@
         <!--AllocationVC-->
         <scene sceneID="ZFv-md-ZjP">
             <objects>
-                <viewController storyboardIdentifier="AllocationVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="91J-iC-eyv" customClass="AllocationVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllocationVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="91J-iC-eyv" customClass="AllocationVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="efW-uO-Jq3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1085,7 +1117,7 @@
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9U-us-7oi">
                                         <rect key="frame" x="0.0" y="76" width="414" height="216"/>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r53-em-i4r" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r53-em-i4r" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="24" y="308" width="366" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="p18-6W-Bgv"/>

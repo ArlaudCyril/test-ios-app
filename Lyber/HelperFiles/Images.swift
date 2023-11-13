@@ -99,6 +99,10 @@ enum Assets : String{
     //Flags
 	case uk_flag
 	case fr_flag
+	
+	//IdentityVerification
+	case purple_circle
+	case purple_checkbox
     
     
 	//icons

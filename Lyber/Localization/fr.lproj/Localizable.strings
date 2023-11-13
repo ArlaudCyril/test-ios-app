@@ -94,6 +94,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "INVESTMENT_STRATEGIES" = "Stratégies d'investissement";
 "STRATEGIES_ARE_THERE_TO_HELP_YOU" = "Les stratégies sont là pour vous aider à diversifier vos investissements sur plusieurs actifs.";
 "YIELD" = "Rendement";
+"MINIMUM_INVESTMENT" = "Investissement minimum";
 "RISK" = "Risque";
 "INVEST" = "Investir";
 "IMMEDIATE" = "Immédiat";
@@ -252,6 +253,10 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "CHANGE_INFORMATIONS" = "Changer mes informations";
 "PASSWORD_REQUIREMENTS" = "Le mot de passe doit comporter au moins 10 caractères, 1 caractère spécial, 1 minuscule et 1 majuscule.";
 "STRONG_PASSWORD" = "Vous avez un mot de passe sécurisé !";
+"LABEL_CGU_CONDITIONS" = "J'ai lu et j'accepte les Conditions Générales de Vente";
+"LABEL_PRIVACY_POLICY" = "J'ai lu et j'accepte la politique de confidentialité";
+"CGU_CONDITIONS" = "Conditions Générales de Vente";
+"PRIVACY_POLICY" = "politique de confidentialité";
 
 //MARK: - INVEST MONEY;
 "USING_MY_STRATEGY" = "Utiliser ma stratégie";

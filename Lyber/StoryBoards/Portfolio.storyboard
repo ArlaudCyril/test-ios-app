@@ -14,7 +14,7 @@
         <!--Check Account CompletedVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="checkAccountCompletedVC" id="Y6W-OH-hqX" customClass="checkAccountCompletedVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="checkAccountCompletedVC" id="Y6W-OH-hqX" customClass="checkAccountCompletedVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_background" translatesAutoresizingMaskIntoConstraints="NO" id="tJj-Tz-HVm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2h-lA-Vq7" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2h-lA-Vq7" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -61,7 +61,7 @@
                                                     <constraint firstAttribute="height" constant="300" id="JSg-gV-bIy"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checkAccountCompletedTVC" rowHeight="92" id="rIR-JW-3nz" customClass="checkAccountCompletedTVC" customModule="Lyber" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checkAccountCompletedTVC" rowHeight="92" id="rIR-JW-3nz" customClass="checkAccountCompletedTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="50" width="366" height="92"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rIR-JW-3nz" id="H4P-gF-qsH">
@@ -204,7 +204,7 @@
         <!--All AssetsVC-->
         <scene sceneID="TeI-7A-fET">
             <objects>
-                <viewController storyboardIdentifier="AllAssetsVC" id="dEl-Im-uf1" customClass="AllAssetsVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllAssetsVC" id="dEl-Im-uf1" customClass="AllAssetsVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zza-BU-eUq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -325,7 +325,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetsCVC" id="0Yz-1t-qV9" customClass="AddAssetsCVC" customModule="Lyber" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddAssetsCVC" id="0Yz-1t-qV9" customClass="AddAssetsCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1.5" width="148" height="29"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FpX-kD-1nM">
@@ -409,7 +409,7 @@
                                                 <rect key="frame" x="0.0" y="238" width="398" height="485"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAssetsTVC" rowHeight="75" id="tUL-qo-ZEt" customClass="AddAssetsTVC" customModule="Lyber" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAssetsTVC" rowHeight="75" id="tUL-qo-ZEt" customClass="AddAssetsTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="50" width="398" height="75"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tUL-qo-ZEt" id="kMS-Gg-fws">
@@ -600,7 +600,7 @@
         <!--Portfolio HomeVC-->
         <scene sceneID="EFD-K8-e7D">
             <objects>
-                <viewController storyboardIdentifier="PortfolioHomeVC" id="Btl-0L-XNM" customClass="PortfolioHomeVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PortfolioHomeVC" id="Btl-0L-XNM" customClass="PortfolioHomeVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="riK-cB-3oQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -615,7 +615,7 @@
                                         <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioHomeTVC" rowHeight="350" id="9gq-NP-zaQ" customClass="PortfolioHomeTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioHomeTVC" rowHeight="350" id="9gq-NP-zaQ" customClass="PortfolioHomeTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="414" height="350"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9gq-NP-zaQ" id="1cS-jy-BGB">
@@ -681,7 +681,7 @@
                                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     </collectionViewFlowLayout>
                                                                     <cells>
-                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.40000000000000002" contentMode="center" reuseIdentifier="PortfolioHomeCVC" id="daS-hk-BZB" customClass="PortfolioHomeCVC" customModule="Lyber" customModuleProvider="target">
+                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.40000000000000002" contentMode="center" reuseIdentifier="PortfolioHomeCVC" id="daS-hk-BZB" customClass="PortfolioHomeCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="138" height="49"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qXk-s7-P0s">
@@ -761,7 +761,7 @@
                                                     <outlet property="profilePicVw" destination="5Wa-qb-QfO" id="Qlz-tG-d1T"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyAssetsTVC" rowHeight="195" id="bJP-IB-1vK" customClass="MyAssetsTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyAssetsTVC" rowHeight="195" id="bJP-IB-1vK" customClass="MyAssetsTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="400" width="414" height="195"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bJP-IB-1vK" id="B9a-YO-kKj">
@@ -947,7 +947,7 @@
                                                     <outlet property="singleAssetVw" destination="2zO-Hq-qRx" id="iI5-qc-0ld"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoAssetsTVC" rowHeight="72" id="Y1K-9O-x9l" customClass="NoAssetsTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoAssetsTVC" rowHeight="72" id="Y1K-9O-x9l" customClass="NoAssetsTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="595" width="414" height="72"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y1K-9O-x9l" id="Zq7-Z3-1Li">
@@ -993,7 +993,7 @@
                                                     <outlet property="noAssetsVw" destination="QOI-lh-Dc0" id="AXq-zU-mqz"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnalyticsTVC" rowHeight="196" id="ncl-lU-1gp" customClass="AnalyticsTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnalyticsTVC" rowHeight="196" id="ncl-lU-1gp" customClass="AnalyticsTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="667" width="414" height="196"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ncl-lU-1gp" id="ye9-pe-vJ7">
@@ -1104,7 +1104,7 @@
                                                     <outlet property="yieldVw" destination="Hae-9a-3u2" id="xAG-yR-P6j"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecurringTVC" rowHeight="210" id="VLE-Uo-P4X" customClass="RecurringTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecurringTVC" rowHeight="210" id="VLE-Uo-P4X" customClass="RecurringTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="863" width="414" height="210"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VLE-Uo-P4X" id="IYV-cu-Zca">
@@ -1195,7 +1195,7 @@
                                                     <outlet property="strategyLbl" destination="FHW-PV-djZ" id="iOI-SE-3FE"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AllAssetsAvailableTVC" rowHeight="290" id="Abe-9I-org" customClass="AllAssetsAvailableTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AllAssetsAvailableTVC" rowHeight="290" id="Abe-9I-org" customClass="AllAssetsAvailableTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="1073" width="414" height="290"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Abe-9I-org" id="Y9c-aJ-1D7">
@@ -1222,7 +1222,7 @@
                                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                             </collectionViewFlowLayout>
                                                                             <cells>
-                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AllCoinCVC" id="OaB-S0-OH1" customClass="AllCoinCVC" customModule="Lyber" customModuleProvider="target">
+                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AllCoinCVC" id="OaB-S0-OH1" customClass="AllCoinCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="160" height="150"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="zWL-8d-JNP">
@@ -1326,7 +1326,7 @@
                                                     <outlet property="viewAllBtn" destination="IvL-Wb-lw0" id="hoL-gy-dUt"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoRecurringTVC" rowHeight="72" id="Y6V-dY-Ppw" customClass="NoRecurringTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoRecurringTVC" rowHeight="72" id="Y6V-dY-Ppw" customClass="NoRecurringTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="1363" width="414" height="72"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y6V-dY-Ppw" id="eKA-A4-1Jg">
@@ -1372,7 +1372,7 @@
                                                     <outlet property="noRecurringVw" destination="ywy-mu-5bK" id="wsh-l2-oco"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioHeaderTVC" rowHeight="69" id="lQF-nz-HdJ" customClass="PortfolioHeaderTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioHeaderTVC" rowHeight="69" id="lQF-nz-HdJ" customClass="PortfolioHeaderTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="1435" width="414" height="69"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lQF-nz-HdJ" id="9Zd-MJ-9l4">
@@ -1492,7 +1492,7 @@
         <!--Portfolio DetailVC-->
         <scene sceneID="4qf-E7-m0k">
             <objects>
-                <viewController storyboardIdentifier="PortfolioDetailVC" id="wz5-yv-rh8" customClass="PortfolioDetailVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PortfolioDetailVC" id="wz5-yv-rh8" customClass="PortfolioDetailVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e7p-mJ-bdu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1507,7 +1507,7 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioDetailTVC" rowHeight="503" id="j6k-m3-iGO" customClass="PortfolioDetailTVC" customModule="Lyber" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioDetailTVC" rowHeight="503" id="j6k-m3-iGO" customClass="PortfolioDetailTVC" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="503"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j6k-m3-iGO" id="CoE-JJ-mId">
@@ -1583,7 +1583,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PortfolioHomeCVC" id="ar2-6L-fwn" customClass="PortfolioHomeCVC" customModule="Lyber" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PortfolioHomeCVC" id="ar2-6L-fwn" customClass="PortfolioHomeCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="138" height="49"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1NM-0W-oXZ">
@@ -1669,7 +1669,7 @@
                                             <outlet property="priceLbl" destination="1fA-SB-mgH" id="7zU-72-hT9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyBalanceTVC" rowHeight="92" id="zDh-xy-qfi" customClass="MyBalanceTVC" customModule="Lyber" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyBalanceTVC" rowHeight="92" id="zDh-xy-qfi" customClass="MyBalanceTVC" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="553" width="414" height="92"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zDh-xy-qfi" id="gsA-5m-5sX">
@@ -1798,7 +1798,7 @@
                                             <outlet property="singleAssetVw" destination="mc4-4g-kKi" id="zQg-TG-nWJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InfosTVC" rowHeight="196" id="7bQ-Om-eeX" customClass="InfosTVC" customModule="Lyber" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InfosTVC" rowHeight="196" id="7bQ-Om-eeX" customClass="InfosTVC" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="645" width="414" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7bQ-Om-eeX" id="Ux0-Wt-HMe">
@@ -1846,7 +1846,7 @@
                                             <outlet property="valueLbl" destination="e5B-Kh-9kz" id="RzD-50-jLU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutTVC" rowHeight="196" id="UFk-C6-F2y" customClass="AboutTVC" customModule="Lyber" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutTVC" rowHeight="196" id="UFk-C6-F2y" customClass="AboutTVC" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="841" width="414" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UFk-C6-F2y" id="kap-oq-Umo">
@@ -1884,7 +1884,7 @@
                                             <outlet property="descvw" destination="IZG-Ox-OOY" id="kRd-5W-wcl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResourcesTVC" rowHeight="128" id="caE-H2-Edd" customClass="ResourcesTVC" customModule="Lyber" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResourcesTVC" rowHeight="128" id="caE-H2-Edd" customClass="ResourcesTVC" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1037" width="414" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="caE-H2-Edd" id="uuO-sa-0uB">
@@ -1907,7 +1907,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResourcesCVC" id="yq3-1L-atX" customClass="ResourcesCVC" customModule="Lyber" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResourcesCVC" id="yq3-1L-atX" customClass="ResourcesCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="-64.5" width="180" height="172"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="6lO-0B-ZIH">
@@ -1978,7 +1978,7 @@
                                             <outlet property="coinCollView" destination="8yq-Be-noa" id="sej-4x-cRB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioDetailHeaderTVC" rowHeight="196" id="FBB-EO-r1g" customClass="PortfolioDetailHeaderTVC" customModule="Lyber" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioDetailHeaderTVC" rowHeight="196" id="FBB-EO-r1g" customClass="PortfolioDetailHeaderTVC" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1165" width="414" height="196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FBB-EO-r1g" id="VJ6-jg-MrV">
@@ -2088,7 +2088,7 @@
         <!--BalanceVC-->
         <scene sceneID="OOE-i2-Cqe">
             <objects>
-                <viewController storyboardIdentifier="BalanceVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Qbf-zS-WvR" customClass="BalanceVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BalanceVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Qbf-zS-WvR" customClass="BalanceVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vRY-gB-G6G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2189,7 +2189,7 @@
                                                                         <state key="normal" image="info_medium"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmG-2m-Rmk">
-                                                                        <rect key="frame" x="12" y="163.5" width="155" height="20.5"/>
+                                                                        <rect key="frame" x="12" y="81" width="155" height="103"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -2275,7 +2275,7 @@
                                                 <rect key="frame" x="24" y="346.5" width="366" height="371.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="balanceTVC" rowHeight="160" id="57G-6t-oEA" customClass="balanceTVC" customModule="Lyber" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="balanceTVC" rowHeight="160" id="57G-6t-oEA" customClass="balanceTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="50" width="366" height="160"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="57G-6t-oEA" id="chF-Vy-iRp">
@@ -2416,7 +2416,7 @@
         <!--Total EarningsVC-->
         <scene sceneID="jIa-My-Ors">
             <objects>
-                <viewController storyboardIdentifier="TotalEarningsVC" id="txi-6P-tXb" customClass="TotalEarningsVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TotalEarningsVC" id="txi-6P-tXb" customClass="TotalEarningsVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Baz-g5-V0e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2516,7 +2516,7 @@
                                                             <constraint firstAttribute="height" constant="800" id="IaO-QX-V7o"/>
                                                         </constraints>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TotalEarningsTVC" rowHeight="153" id="c79-gZ-yF7" customClass="TotalEarningsTVC" customModule="Lyber" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TotalEarningsTVC" rowHeight="153" id="c79-gZ-yF7" customClass="TotalEarningsTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="50" width="366" height="153"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c79-gZ-yF7" id="eg4-oK-OLY">
@@ -2761,14 +2761,14 @@
         <!--Personal DataVC-->
         <scene sceneID="nAO-yL-8ti">
             <objects>
-                <viewController storyboardIdentifier="PersonalDataVC" id="e9E-lt-i8j" customClass="PersonalDataVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalDataVC" id="e9E-lt-i8j" customClass="PersonalDataVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdF-bP-RZg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNU-6v-hSR">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6nR-SZ-4Mu" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6nR-SZ-4Mu" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2813,7 +2813,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0J-Zx-dkl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-HE-xdK" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-HE-xdK" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="12" width="366" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2910,7 +2910,7 @@
         <!--Investment ExperienceVC-->
         <scene sceneID="IlU-50-jVH">
             <objects>
-                <viewController storyboardIdentifier="InvestmentExperienceVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="VPw-pb-qJO" customClass="InvestmentExperienceVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvestmentExperienceVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="VPw-pb-qJO" customClass="InvestmentExperienceVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j12-8x-gxr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2945,7 +2945,7 @@
                                             <constraint firstAttribute="height" constant="200" id="yqS-di-e3i"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvestmentExperienceTVC" rowHeight="88" id="IM3-rL-HcE" customClass="InvestmentExperienceTVC" customModule="Lyber" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InvestmentExperienceTVC" rowHeight="88" id="IM3-rL-HcE" customClass="InvestmentExperienceTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="366" height="88"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IM3-rL-HcE" id="6dd-yH-NdV">
@@ -3035,7 +3035,7 @@
         <!--Identity VerificationVC-->
         <scene sceneID="bjH-hl-1Ma">
             <objects>
-                <viewController storyboardIdentifier="IdentityVerificationVC" id="5So-Ex-gNs" customClass="IdentityVerificationVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdentityVerificationVC" id="5So-Ex-gNs" customClass="IdentityVerificationVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vnC-jq-ESe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3043,7 +3043,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yb8-0q-ncK">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyO-4m-dhC" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyO-4m-dhC" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -3051,7 +3051,7 @@
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaQ-5S-s9j">
-                                        <rect key="frame" x="0.0" y="132" width="414" height="558"/>
+                                        <rect key="frame" x="0.0" y="132" width="414" height="422"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6y-LC-cxK">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -3120,7 +3120,76 @@
                                         <viewLayoutGuide key="contentLayoutGuide" id="aj7-dr-KVQ"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="sHI-KA-Mzz"/>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1p-41-Hp5" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOj-MU-fcP">
+                                        <rect key="frame" x="0.0" y="578" width="414" height="112"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3O-AN-Mdi">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="purple_circle" translatesAutoresizingMaskIntoConstraints="NO" id="6u8-Rp-NFE">
+                                                        <rect key="frame" x="24" y="12" width="32" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="32" id="gS5-uo-8KX"/>
+                                                            <constraint firstAttribute="width" secondItem="6u8-Rp-NFE" secondAttribute="height" multiplier="1:1" id="h9Q-Di-pmj"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-qh-EOV">
+                                                        <rect key="frame" x="68" y="17.5" width="322" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="6u8-Rp-NFE" firstAttribute="leading" secondItem="W3O-AN-Mdi" secondAttribute="leading" constant="24" id="5MK-Vu-LZL"/>
+                                                    <constraint firstItem="6u8-Rp-NFE" firstAttribute="top" secondItem="W3O-AN-Mdi" secondAttribute="top" constant="12" id="9Hz-jj-lgx"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Lv4-qh-EOV" secondAttribute="trailing" constant="24" id="M9i-tx-oVM"/>
+                                                    <constraint firstItem="Lv4-qh-EOV" firstAttribute="centerY" secondItem="6u8-Rp-NFE" secondAttribute="centerY" id="P8x-NV-Y6f"/>
+                                                    <constraint firstItem="Lv4-qh-EOV" firstAttribute="leading" secondItem="6u8-Rp-NFE" secondAttribute="trailing" constant="12" id="nB7-Zr-ETg"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6u8-Rp-NFE" secondAttribute="bottom" constant="12" id="tFL-V3-o5U"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKP-Me-6JK">
+                                                <rect key="frame" x="0.0" y="56" width="414" height="56"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="purple_circle" translatesAutoresizingMaskIntoConstraints="NO" id="Mgs-BQ-01q">
+                                                        <rect key="frame" x="24" y="12" width="32" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Mgs-BQ-01q" secondAttribute="height" multiplier="1:1" id="B2I-nU-Bws"/>
+                                                            <constraint firstAttribute="width" constant="32" id="Rks-eX-Vt7"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2b-tx-4T2">
+                                                        <rect key="frame" x="68" y="17.5" width="322" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="S2b-tx-4T2" secondAttribute="trailing" constant="24" id="Fca-2l-67K"/>
+                                                    <constraint firstItem="Mgs-BQ-01q" firstAttribute="top" secondItem="TKP-Me-6JK" secondAttribute="top" constant="12" id="G3v-Em-L4I"/>
+                                                    <constraint firstItem="Mgs-BQ-01q" firstAttribute="centerY" secondItem="S2b-tx-4T2" secondAttribute="centerY" id="f78-mi-l66"/>
+                                                    <constraint firstItem="Mgs-BQ-01q" firstAttribute="leading" secondItem="TKP-Me-6JK" secondAttribute="leading" constant="24" id="hHS-0j-XHX"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Mgs-BQ-01q" secondAttribute="bottom" constant="12" id="hgf-35-hZT"/>
+                                                    <constraint firstItem="S2b-tx-4T2" firstAttribute="leading" secondItem="Mgs-BQ-01q" secondAttribute="trailing" constant="12" id="jB6-vd-r1x"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="W3O-AN-Mdi" firstAttribute="leading" secondItem="TOj-MU-fcP" secondAttribute="leading" id="7Yy-hh-hLf"/>
+                                            <constraint firstItem="TKP-Me-6JK" firstAttribute="top" secondItem="W3O-AN-Mdi" secondAttribute="bottom" id="IVp-wx-f9g"/>
+                                            <constraint firstAttribute="trailing" secondItem="TKP-Me-6JK" secondAttribute="trailing" id="LVv-yz-APU"/>
+                                            <constraint firstItem="TKP-Me-6JK" firstAttribute="leading" secondItem="TOj-MU-fcP" secondAttribute="leading" id="UBP-gz-FFS"/>
+                                            <constraint firstItem="W3O-AN-Mdi" firstAttribute="top" secondItem="TOj-MU-fcP" secondAttribute="top" id="Voq-RJ-Mn4"/>
+                                            <constraint firstAttribute="bottom" secondItem="TKP-Me-6JK" secondAttribute="bottom" id="l9a-8a-D5F"/>
+                                            <constraint firstAttribute="trailing" secondItem="W3O-AN-Mdi" secondAttribute="trailing" id="rV4-lw-RzJ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1p-41-Hp5" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="24" y="714" width="366" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Law-VU-Dhg"/>
@@ -3128,7 +3197,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E32-2S-dND" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E32-2S-dND" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="24" y="794" width="366" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="Nrp-Da-k6E"/>
@@ -3141,14 +3210,17 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="p1p-41-Hp5" secondAttribute="trailing" constant="24" id="58f-dV-3qR"/>
                                     <constraint firstAttribute="bottom" secondItem="E32-2S-dND" secondAttribute="bottom" constant="12" id="C0a-vc-EDj"/>
-                                    <constraint firstItem="p1p-41-Hp5" firstAttribute="top" secondItem="qaQ-5S-s9j" secondAttribute="bottom" constant="24" id="CGl-mz-WGj"/>
                                     <constraint firstItem="E32-2S-dND" firstAttribute="leading" secondItem="Yb8-0q-ncK" secondAttribute="leading" constant="24" id="CYO-On-cwH"/>
+                                    <constraint firstItem="TOj-MU-fcP" firstAttribute="top" secondItem="qaQ-5S-s9j" secondAttribute="bottom" constant="24" id="D3g-jt-tW3"/>
                                     <constraint firstItem="qaQ-5S-s9j" firstAttribute="leading" secondItem="Yb8-0q-ncK" secondAttribute="leading" id="Hxr-tv-QG3"/>
                                     <constraint firstItem="E32-2S-dND" firstAttribute="top" secondItem="p1p-41-Hp5" secondAttribute="bottom" constant="24" id="Hyg-5f-UNI"/>
+                                    <constraint firstItem="TOj-MU-fcP" firstAttribute="leading" secondItem="Yb8-0q-ncK" secondAttribute="leading" id="INU-KJ-pvd"/>
                                     <constraint firstItem="K6y-LC-cxK" firstAttribute="trailing" secondItem="EyO-4m-dhC" secondAttribute="trailing" id="JTq-zR-jyD"/>
+                                    <constraint firstItem="p1p-41-Hp5" firstAttribute="top" secondItem="TOj-MU-fcP" secondAttribute="bottom" constant="24" id="Jx3-uc-nAh"/>
                                     <constraint firstItem="EyO-4m-dhC" firstAttribute="leading" secondItem="Yb8-0q-ncK" secondAttribute="leading" id="K18-dn-umB"/>
                                     <constraint firstAttribute="trailing" secondItem="qaQ-5S-s9j" secondAttribute="trailing" id="brX-fN-eOW"/>
                                     <constraint firstItem="qaQ-5S-s9j" firstAttribute="top" secondItem="EyO-4m-dhC" secondAttribute="bottom" constant="24" id="n0U-Y1-IaV"/>
+                                    <constraint firstAttribute="trailing" secondItem="TOj-MU-fcP" secondAttribute="trailing" id="o5T-FF-aTV"/>
                                     <constraint firstAttribute="trailing" secondItem="E32-2S-dND" secondAttribute="trailing" constant="24" id="rd1-0Y-STb"/>
                                     <constraint firstItem="p1p-41-Hp5" firstAttribute="leading" secondItem="Yb8-0q-ncK" secondAttribute="leading" constant="24" id="sDr-qc-oVW"/>
                                     <constraint firstAttribute="trailing" secondItem="EyO-4m-dhC" secondAttribute="trailing" id="uNM-0b-etf"/>
@@ -3166,10 +3238,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkBoxCGU" destination="6u8-Rp-NFE" id="ihn-I2-bJH"/>
+                        <outlet property="checkBoxPrivacy" destination="Mgs-BQ-01q" id="Cmg-hZ-nsr"/>
                         <outlet property="disclaimerDescLbl" destination="968-7B-gio" id="okL-gZ-DrB"/>
                         <outlet property="disclaimerTitleLbl" destination="hf4-aF-H2N" id="IzD-O4-fY9"/>
                         <outlet property="headerView" destination="EyO-4m-dhC" id="I1Q-CI-taS"/>
                         <outlet property="kycBtn" destination="E32-2S-dND" id="DaH-PG-cJi"/>
+                        <outlet property="labelCGU" destination="Lv4-qh-EOV" id="jiP-Pj-DHA"/>
+                        <outlet property="labelPrivacy" destination="S2b-tx-4T2" id="Lqp-5A-fZF"/>
                         <outlet property="reviewInformationsBtn" destination="p1p-41-Hp5" id="UW3-mO-yV2"/>
                         <outlet property="verificationDescLbl" destination="sC2-3Q-XIa" id="ECK-bu-Fhk"/>
                         <outlet property="verificationLbl" destination="Oc4-hE-vn1" id="gFr-eS-AyY"/>
@@ -3182,7 +3258,7 @@
         <!--Kyc WebVC-->
         <scene sceneID="ERM-5i-dsz">
             <objects>
-                <viewController storyboardIdentifier="KycWebVC" id="fBR-kU-m1H" customClass="KycWebVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KycWebVC" id="fBR-kU-m1H" customClass="KycWebVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BNw-Ra-3rp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3195,7 +3271,7 @@
                                     <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="YES"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aL6-0c-dvs" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aL6-0c-dvs" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                 <rect key="frame" x="24" y="798" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="W2T-KT-535"/>
@@ -3228,7 +3304,7 @@
         <!--CalenderVC-->
         <scene sceneID="Syl-RS-Xok">
             <objects>
-                <viewController storyboardIdentifier="calenderVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="YgX-Jp-JLo" customClass="calenderVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calenderVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="YgX-Jp-JLo" customClass="calenderVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uic-rQ-6K6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3274,7 +3350,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="me6-kg-NNB" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="me6-kg-NNB" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="177" y="0.0" width="157" height="44"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
@@ -3333,6 +3409,7 @@
         <image name="info_medium" width="20" height="20"/>
         <image name="invest_money_white" width="28" height="28"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="purple_circle" width="24" height="24"/>
         <image name="right_arrow_color" width="24" height="24"/>
         <image name="right_arrow_grey" width="24" height="24"/>
         <image name="search" width="24" height="24"/>
