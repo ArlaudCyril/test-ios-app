@@ -367,7 +367,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "CANT_EXCHANGE_ASSET_DONT_HAVE" = "Vous ne pouvez pas échanger un actif non présent dans votre portefeuille";
 "NOT_ENOUGH_BALANCE" = "Votre solde est insuffisant pour investir";
 "NOT_ENOUGH_INVESTMENT_PART_1" = "Vous devez investir au moins";
-"NOT_ENOUGH_INVESTMENT_PART_2" = "USDT par actif dans la stratégie";
+"NOT_ENOUGH_INVESTMENT_PART_2" = "USDT dans la stratégie";
 "NOT_ENOUGH_COINS" = "Vous n'avez pas assez d'actifs pour échanger";
 "NOT_ENOUGH_USDT" = "Vous n'avez pas assez d'USDT pour effectuer cette action";
 "CANT_BUY_MORE_THAN" = "Vous ne pouvez acheter un actif pour plus de %@ euros";

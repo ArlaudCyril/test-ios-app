@@ -41,6 +41,8 @@ struct Strategy: Codable {
     var risk : String?
     var expectedYield : String?
     var publicType : String?
+    var minAmount: Int?
+    
               
     init() {
         self.name = ""
@@ -51,6 +53,7 @@ struct Strategy: Codable {
         self.isOwnStrategy = nil
         self.ownerUuid = ""
         self.publicType = nil
+        self.minAmount = 0
     }
     init(name: String, bundle: [InvestmentStrategyAsset])
     {
@@ -62,6 +65,7 @@ struct Strategy: Codable {
         self.isOwnStrategy = nil
         self.ownerUuid = ""
         self.publicType = nil
+        self.minAmount = 0
     }
     
     init(name: String, bundle: [InvestmentStrategyAsset], strategy: Strategy) {
@@ -73,6 +77,7 @@ struct Strategy: Codable {
         self.isOwnStrategy = strategy.isOwnStrategy
         self.ownerUuid = strategy.ownerUuid
         self.publicType = nil
+        self.minAmount = strategy.minAmount
     }
   
 }

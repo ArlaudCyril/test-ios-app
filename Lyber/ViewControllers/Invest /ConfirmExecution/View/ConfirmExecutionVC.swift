@@ -235,7 +235,7 @@ extension ConfirmExecutionVC{
 					let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 					vc.assetId = self.exchangeTo
 					vc.orderId = self.orderId ?? ""
-					self.navigationController?.pushViewController(vc, animated: true)
+                    self.navigationController?.pushViewController(vc, animated: true)
 				}
 			})
 		}
