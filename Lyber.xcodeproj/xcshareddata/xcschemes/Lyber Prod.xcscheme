@@ -79,6 +79,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Lyber"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

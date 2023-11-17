@@ -34,7 +34,7 @@ extension OneTimeInvestmentTVC{
 			self.amountVw.isHidden = true
 		}else{
 			self.statusImgVw.image = UIImage(asset: Assets.green_large_tick)
-			CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String(Double(data?.stableAmount ?? "0") ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String(Double(data?.stableAmount ?? "0") ?? 0)) USDT", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(data?.assetAmount ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 		}
 		

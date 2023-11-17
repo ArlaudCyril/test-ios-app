@@ -4018,6 +4018,7 @@
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lyber/info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lyber;
 				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " wants to access your photo library for profile picture.";
@@ -4059,6 +4060,7 @@
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lyber/info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lyber;
 				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = " wants to access your photo library for profile picture.";
@@ -4099,6 +4101,7 @@
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lyber/info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lyber dev";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
@@ -4118,7 +4121,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS STAGING";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4144,6 +4147,7 @@
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lyber/info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lyber dev";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = " wants to access your camera to take a Picture";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Lyber uses face Id to Log You In";
@@ -4163,7 +4167,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS STAGING";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

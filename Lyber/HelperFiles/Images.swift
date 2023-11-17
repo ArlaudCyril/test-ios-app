@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum Assets : String{
+	case grey_coins
 	case box
 	case circle
 	case triangle

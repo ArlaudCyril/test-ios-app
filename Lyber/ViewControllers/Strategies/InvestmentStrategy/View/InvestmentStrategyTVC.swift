@@ -36,8 +36,10 @@ class InvestmentStrategyTVC: UITableViewCell {
     @IBOutlet var informationsView: UIView!
     @IBOutlet var defaultStrategyView: UIView!
     @IBOutlet var activeStrategyView: UIView!
-    @IBOutlet var informationViewHeightConst: NSLayoutConstraint!
-    
+	
+    @IBOutlet var viewBottomToInformationView: NSLayoutConstraint!
+    @IBOutlet var viewBottomToActiveStrategyView: NSLayoutConstraint!
+	
     @IBOutlet var progressVw: MultiProgressView!
     
     @IBOutlet var collView: UICollectionView!
@@ -54,16 +56,14 @@ extension InvestmentStrategyTVC{
 		self.isLastElement = isLastRow
         investmentStrategyAssets = data?.bundle ?? []
         
-        var informationHeight = 25
         defaultStrategyView.isHidden = true
         activeStrategyView.isHidden = true
-        informationsView.isHidden = true
 		activatedLbl.isHidden = true
         
         CommonUI.setUpViewBorder(vw: strategyVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.greyColor.cgColor)
         CommonUI.setUpLbl(lbl: self.strategyTypeLbl, text: data?.name ?? "", textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
 		
-		self.minInvestLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "MINIMUM_INVESTMENT")) : ", secondStr: CommonFunctions.localisation(key: data?.expectedYield?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
+		self.minInvestLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "MINIMUM_INVESTMENT")) : ", secondStr: "\(data?.minAmount ?? 0) USDT", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
          
         collView.delegate = self
         collView.dataSource = self
@@ -88,16 +88,22 @@ extension InvestmentStrategyTVC{
 			activatedLbl.isHidden = false
 			CommonUI.setUpLbl(lbl: self.activatedLbl, text: CommonFunctions.localisation(key: "ENABLED"), textColor: UIColor.Green_500, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
 		}
+		
+		if(data?.activeStrategy == nil && data?.risk == nil && data?.expectedYield == nil){
+			viewBottomToInformationView.constant = 0
+		}else if(data?.activeStrategy == nil){
+			viewBottomToInformationView.constant = 50
+		}else if(data?.risk == nil && data?.expectedYield == nil){
+			viewBottomToInformationView.constant = 50
+			viewBottomToActiveStrategyView.constant = 3.5
+		}
         
         //MARK: - Default strategy and Active strategy
         if(data?.activeStrategy != nil || (data?.risk != nil && data?.expectedYield != nil))
         {
-            informationsView.isHidden = false
-            
             //Default strategy
 			if(data?.risk != nil && data?.expectedYield != nil)
             {
-                informationHeight += 50
 				self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "RISK")) : ", secondStr: CommonFunctions.localisation(key: data?.risk?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "YIELD")) : ", secondStr: CommonFunctions.localisation(key: data?.expectedYield?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 defaultStrategyView.isHidden = false
@@ -107,7 +113,6 @@ extension InvestmentStrategyTVC{
             //Active strategy
             if(data?.activeStrategy != nil)
             {
-                informationHeight += 50
                 self.frequenceLbl.attributedText = CommonUI.showAttributedString(firstStr:" \(CommonFunctions.localisation(key: "FREQUENCY")) : ", secondStr: CommonFunctions.frequenceDecoder(frequence: data?.activeStrategy?.frequency), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 
                 self.amountLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "AMOUNT")) : ", secondStr: String(data?.activeStrategy?.amount ?? 0)+"€", firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
@@ -115,7 +120,7 @@ extension InvestmentStrategyTVC{
                 activeStrategyView.isHidden = false
             }
         }
-        informationViewHeightConst.constant = CGFloat(informationHeight)
+        
         
         
     }

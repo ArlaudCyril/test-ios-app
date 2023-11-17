@@ -271,7 +271,7 @@ extension ProfileVC{
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
         }))
         alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CONFIRM"), style: .default, handler: {_ in
-			if(totalPortfolio >= 5){
+			if(totalPortfolio >= 1){
 				CommonFunctions.toster(CommonFunctions.localisation(key: "MAKE_SURE_WITHDRAW"))
 			}else{
 				ConfirmInvestmentVM().userGetOtpApi(action: "close-account", completion: {[weak self]response in

@@ -249,7 +249,10 @@ extension ConfirmExecutionVC{
 		paymentRequest.paymentSummaryItems = [
 			// The final line should represent your company;
 			// it'll be prepended with the word "Pay" (that is, "Pay iHats, Inc $50")
+			// Ajouter cette ligne pour inclure le nom de ta société
+			
 			PKPaymentSummaryItem(label: "\(self.asset?.id.uppercased() ?? "")", amount: NSDecimalNumber(value: fromAmountInvested)),
+			PKPaymentSummaryItem(label: "Lyber", amount: NSDecimalNumber(value: fromAmountInvested))
 		]
 		// Initialize an STPApplePayContext instance
 		if let applePayContext = STPApplePayContext(paymentRequest: paymentRequest, delegate: self) {

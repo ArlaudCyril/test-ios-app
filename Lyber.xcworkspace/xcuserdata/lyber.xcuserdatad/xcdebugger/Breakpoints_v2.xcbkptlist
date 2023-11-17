@@ -1891,8 +1891,8 @@
             filePath = "Lyber/ViewControllers/Strategies/InvestmentStrategy/View/InvestmentStrategyTVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "progressView(_:viewForSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4650,7 +4650,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "456"
             endingLineNumber = "456"
-            landmarkName = "frequencyBtnAction()"
+            landmarkName = "exchangeToTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4666,7 +4666,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "661"
             endingLineNumber = "661"
-            landmarkName = "SellCoinApi()"
+            landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4682,7 +4682,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "577"
             endingLineNumber = "577"
-            landmarkName = "exchangeBtnAction()"
+            landmarkName = "switchPriceAssetBtnAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4730,8 +4730,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "669"
             endingLineNumber = "669"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "noOfCoins(value:subValue:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4746,7 +4746,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "526"
             endingLineNumber = "526"
-            landmarkName = "keyTyped(sender:)"
+            landmarkName = "exchangeBtnAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4842,7 +4842,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "664"
             endingLineNumber = "664"
-            landmarkName = "SellCoinApi()"
+            landmarkName = "noOfCoins(value:subValue:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -8993,7 +8993,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "471"
             endingLineNumber = "471"
-            landmarkName = "exchangeToTapped()"
+            landmarkName = "keyTyped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9025,7 +9025,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "877"
             endingLineNumber = "877"
-            landmarkName = "goToPreviewINvest()"
+            landmarkName = "handlePreviewInvestButton(value:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9041,7 +9041,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "396"
             endingLineNumber = "396"
-            landmarkName = "cancelBtnAct()"
+            landmarkName = "previewMyInvestAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -9864,7 +9864,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "475"
             endingLineNumber = "475"
-            landmarkName = "exchangeFromTapped()"
+            landmarkName = "keyTyped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -10055,7 +10055,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "404"
             endingLineNumber = "404"
-            landmarkName = "previewMyInvestAction()"
+            landmarkName = "selectCard()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -10102,6 +10102,36 @@
                   startingLineNumber = "405"
                   endingLineNumber = "405"
                   offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  uuid = "251939BE-AB9F-48E3-8041-1584D79384F2 - a442e4e4c5ef9d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber_dev.InvestInMyStrategyVC.selectCard() -&gt; ()"
+                  moduleName = "Lyber dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Code/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "404"
+                  endingLineNumber = "404"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "251939BE-AB9F-48E3-8041-1584D79384F2 - 1f31a0bdfab276f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber_prod.InvestInMyStrategyVC.selectCard() -&gt; ()"
+                  moduleName = "Lyber prod"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Code/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "404"
+                  endingLineNumber = "404"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -10229,7 +10259,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "598"
             endingLineNumber = "598"
-            landmarkName = "switchPriceAssetBtnAction()"
+            landmarkName = "maximumBtnAct()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -10691,8 +10721,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "473"
             endingLineNumber = "473"
-            landmarkName = "InvestInMyStrategyVC"
-            landmarkType = "21">
+            landmarkName = "keyTyped(sender:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "C67B9A13-33CC-4C1F-BE6A-B68C5EF07204 - 5b6563cd80c7004a"
@@ -11304,7 +11334,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "580"
             endingLineNumber = "580"
-            landmarkName = "exchangeBtnAction()"
+            landmarkName = "switchPriceAssetBtnAction()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -11460,7 +11490,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "907"
             endingLineNumber = "907"
-            landmarkName = "handlePreviewInvestButton(value:)"
+            landmarkName = "getAddresses()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -11476,7 +11506,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "806"
             endingLineNumber = "806"
-            landmarkName = "goToConfirmInvestment()"
+            landmarkName = "goToPreviewINvest()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -13849,7 +13879,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "750"
             endingLineNumber = "750"
-            landmarkName = "updateValues(value:)"
+            landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -14575,8 +14605,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "622"
             endingLineNumber = "622"
-            landmarkName = "maximumBtnAct()"
-            landmarkType = "7">
+            landmarkName = "InvestInMyStrategyVC"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -14591,7 +14621,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "878"
             endingLineNumber = "878"
-            landmarkName = "goToPreviewINvest()"
+            landmarkName = "handlePreviewInvestButton(value:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -15339,7 +15369,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "433"
             endingLineNumber = "433"
-            landmarkName = "selectCard()"
+            landmarkName = "selectAddress()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -15865,7 +15895,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "605"
             endingLineNumber = "605"
-            landmarkName = "switchPriceAssetBtnAction()"
+            landmarkName = "maximumBtnAct()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -15881,7 +15911,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "601"
             endingLineNumber = "601"
-            landmarkName = "switchPriceAssetBtnAction()"
+            landmarkName = "maximumBtnAct()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -15897,7 +15927,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "602"
             endingLineNumber = "602"
-            landmarkName = "switchPriceAssetBtnAction()"
+            landmarkName = "maximumBtnAct()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -15913,7 +15943,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "599"
             endingLineNumber = "599"
-            landmarkName = "switchPriceAssetBtnAction()"
+            landmarkName = "maximumBtnAct()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -16573,7 +16603,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "435"
             endingLineNumber = "435"
-            landmarkName = "selectCard()"
+            landmarkName = "selectAddress()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -17379,7 +17409,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "757"
             endingLineNumber = "757"
-            landmarkName = "updateValues(value:)"
+            landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -18445,7 +18475,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "setUpCell(data:status:)"
+            landmarkName = "setUpCell(data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -18477,7 +18507,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "751"
             endingLineNumber = "751"
-            landmarkName = "updateValues(value:)"
+            landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -19504,7 +19534,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "752"
             endingLineNumber = "752"
-            landmarkName = "updateValues(value:)"
+            landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -19814,6 +19844,51 @@
                   endingLineNumber = "189"
                   offsetFromSymbolStart = "148">
                </Location>
+               <Location
+                  uuid = "A0321036-04F9-4ED8-9A1E-7FE172CE8A92 - 9ebb99ead0e4199a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber_dev.DepositeOrBuyVC.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Lyber dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Code/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/DepositeOrBuy/View/DepositeOrBuyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "A0321036-04F9-4ED8-9A1E-7FE172CE8A92 - 9e4dc8e911789535"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of Lyber_prod.DepositeOrBuyVC.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Lyber prod"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Code/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/DepositeOrBuy/View/DepositeOrBuyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "A0321036-04F9-4ED8-9A1E-7FE172CE8A92 - 9ebb99ead0e4199a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Lyber_dev.DepositeOrBuyVC.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Lyber dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lyber/Documents/Code/Lyber/IOS/ios-app-master/Lyber/ViewControllers/Invest%20/DepositeOrBuy/View/DepositeOrBuyVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "432">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -19861,7 +19936,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "755"
             endingLineNumber = "755"
-            landmarkName = "updateValues(value:)"
+            landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -21422,8 +21497,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "815"
             endingLineNumber = "815"
-            landmarkName = "InvestInMyStrategyVC"
-            landmarkType = "21">
+            landmarkName = "goToPreviewINvest()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "1A4BDDF8-E66B-4D6B-BD3D-488A2EC2656B - 4768ac16b74a48ac"
@@ -21500,8 +21575,8 @@
             filePath = "Lyber/ViewControllers/Invest /ConfirmExecution/View/ConfirmExecutionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "fireTimerExchange(seconds:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -21516,8 +21591,8 @@
             filePath = "Lyber/ViewControllers/Invest /ConfirmExecution/View/ConfirmExecutionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "fireTimerExchange(seconds:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23167,8 +23242,8 @@
             filePath = "Lyber/ViewControllers/Invest /ConfirmExecution/View/ConfirmExecutionVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "fireTimer(seconds:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -24529,6 +24604,38 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "setUpUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55A147BC-9D9D-4186-B0A0-350B30A30352"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "754"
+            endingLineNumber = "754"
+            landmarkName = "goToConfirmInvestment()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0EF19997-15A9-4E6F-B04F-45A031B33905"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Lyber/ViewControllers/Invest /InvestInMyStrategy/View/InvestInMyStrategyVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "748"
+            endingLineNumber = "748"
+            landmarkName = "goToConfirmInvestment()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
