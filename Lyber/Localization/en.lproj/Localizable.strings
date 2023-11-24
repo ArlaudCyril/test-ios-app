@@ -94,9 +94,9 @@ Make sure to withdraw all the money you have in your account before closing it."
 "YOUR_ALLOCATION_IS_GREATER_THAN" = "Your allocation is greater than 100%,remove ";
 "YOUR_ALLOCATION_IS_LESS_THAN" = "Your allocation is less than 100%,add ";
 "INVESTMENT_STRATEGIES" = "Investment strategies";
-"STRATEGIES_ARE_THERE_TO_HELP_YOU" = "The strategies are there to help you dilute your investments over several assets.";
+"STRATEGIES_ARE_THERE_TO_HELP_YOU" = "The strategies are there to help you dilute your investments over several assets.\nThe strategies proposed by Lyber do not represent investment advice. Users are solely responsible for their choice of strategy.";
 "YIELD" = "Yield";
-"MINIMUM_INVESTMENT" = "Minimum Investment";
+"MINIMUM_INVESTMENT" = "Min Invest";
 "RISK" = "Risk";
 "INVEST" = "Invest";
 "IMMEDIATE" = "Immediate";
@@ -256,6 +256,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "REVIEW_INFORMATIONS" = "Review my informations";
 "CHANGE_INFORMATIONS" = "Change my informations";
 "PASSWORD_REQUIREMENTS" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case.";
+"STRONG_PASSWORD" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case.";
 "LABEL_CGU_CONDITIONS" = "I have read and accept the General Terms and Conditions of Sale";
 "LABEL_PRIVACY_POLICY" = "I have read and accept the privacy policy";
 "CGU_CONDITIONS" = "General Terms and Conditions of Sale";

@@ -139,6 +139,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 			}else{
 				let cell = tableView.dequeueReusableCell(withIdentifier: "NoRecurringTVC")as! NoRecurringTVC
 				cell.setUpCell()
+				cell.controller = self
 				return cell
 			}
         }else if indexPath.section == 3{ //4

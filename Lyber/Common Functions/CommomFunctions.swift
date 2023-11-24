@@ -983,9 +983,9 @@ class CommonFunctions{
 				userData.shared.phone_no = response?.data?.phoneNo ?? ""
 				userData.shared.email = response?.data?.email ?? ""
 				
-				userData.shared.scope2FALogin = ((response?.data?.scope2FA.contains("login")) != nil)
-				userData.shared.scope2FAWhiteListing =  ((response?.data?.scope2FA.contains("whitelisting")) != nil)
-				userData.shared.scope2FAWithdrawal = ((response?.data?.scope2FA.contains("withdrawal")) != nil)
+				userData.shared.scope2FALogin = ((response?.data?.scope2FA.contains("login")) == true)
+				userData.shared.scope2FAWhiteListing =  ((response?.data?.scope2FA.contains("whitelisting")) == true)
+				userData.shared.scope2FAWithdrawal = ((response?.data?.scope2FA.contains("withdrawal")) == true)
 				userData.shared.profile_image = response?.data?.avatar ?? ""
 				
 				userData.shared.dataSave()

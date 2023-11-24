@@ -56,7 +56,8 @@ extension addressCVC{
         
         self.countryVw.delegate = self
         self.countryVw.dataSource = self
-        self.countryVw.customizeView()
+        
+		self.countryVw.customizeView()
         let tfs = [streetNumberTF,stateTF,buildingFloorTF,cityTF,zipCodeTF]
         for tf in tfs{
             tf?.delegate = self
@@ -197,5 +198,13 @@ extension addressCVC: CountryPickerViewDelegate, CountryPickerViewDataSource{
 		}else{
 			return Locale(identifier: "en_GB")
 		}
+	}
+	
+	func preferredCountries(in countryPickerView: CountryPickerView) -> [Country] {
+		return ["FR"].compactMap { countryPickerView.getCountryByCode($0) }
+	}
+	
+	func sectionTitleForPreferredCountries(in countryPickerView: CountryPickerView) -> String? {
+		return "Preferred country"
 	}
 }

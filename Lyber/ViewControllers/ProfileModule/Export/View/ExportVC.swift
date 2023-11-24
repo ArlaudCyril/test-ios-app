@@ -90,13 +90,14 @@ extension ExportVC{
 		dropDownExport.cornerRadius = 8
 		
 		self.dropDownExport.dataSource = []
-		//TODO: set dataSource
 		for month in monthsFromDateToDateNow(dateString: userData.shared.registeredAt) ?? []{
 			self.dropDownExport.dataSource.append(month)
 		}
 		
-		CommonUI.setUpLbl(lbl: self.exportNameLbl ?? UILabel(), text: CommonFunctions.getDateFormat(date: self.dropDownExport.dataSource[self.dropDownExport.dataSource.count-1], inputFormat: "yyyy-MM", outputFormat: "MMMM yyyy") , textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-		self.dateToExport = self.dropDownExport.dataSource[self.dropDownExport.dataSource.count-1]
+		if(self.dropDownExport.dataSource.count > 0){
+			CommonUI.setUpLbl(lbl: self.exportNameLbl ?? UILabel(), text: CommonFunctions.getDateFormat(date: self.dropDownExport.dataSource[self.dropDownExport.dataSource.count-1], inputFormat: "yyyy-MM", outputFormat: "MMMM yyyy") , textColor: UIColor.ThirdTextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+			self.dateToExport = self.dropDownExport.dataSource[self.dropDownExport.dataSource.count-1]
+		}
 		
 		//configuration printing dropdown
 		dropDownExport.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in

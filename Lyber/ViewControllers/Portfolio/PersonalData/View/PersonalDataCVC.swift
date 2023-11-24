@@ -101,7 +101,7 @@ extension PersonalDataCVC{
         self.birthPlaceTF.text = userData.shared.placeOfBirth
 		self.specifiedUSPersonLbl.text = userData.shared.isUsCitizen
 		self.birthDateBtn.setTitle(CommonFunctions.getDateFormat(date: userData.shared.birthDate, inputFormat: "yyyy-MM-dd", outputFormat: "dd MMM yyyy"), for: .normal)
-		self.birthCountryVw.setCountryByCode(userData.shared.countryOfBirth)
+		self.birthCountryVw.setCountryByName(userData.shared.countryOfBirth)
 		self.nationalityVw.setCountryByCode(userData.shared.nationality)
         
         self.controller?.firstName = self.nameTF.text ?? ""
@@ -262,6 +262,14 @@ extension PersonalDataCVC: CountryPickerViewDelegate, CountryPickerViewDataSourc
 		}else{
 			return Locale(identifier: "en_GB")
 		}
+	}
+	
+	func preferredCountries(in countryPickerView: CountryPickerView) -> [Country] {
+		return ["FR"].compactMap { countryPickerView.getCountryByCode($0) }
+	}
+	
+	func sectionTitleForPreferredCountries(in countryPickerView: CountryPickerView) -> String? {
+		return "Preferred country"
 	}
 }
 

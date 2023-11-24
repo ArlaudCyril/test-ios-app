@@ -92,9 +92,9 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "YOUR_ALLOCATION_IS_GREATER_THAN" = "Votre allocation est supérieure à 100%, supprimez";
 "YOUR_ALLOCATION_IS_LESS_THAN" = "Votre allocation est inférieure à 100%, ajoutez";
 "INVESTMENT_STRATEGIES" = "Stratégies d'investissement";
-"STRATEGIES_ARE_THERE_TO_HELP_YOU" = "Les stratégies sont là pour vous aider à diversifier vos investissements sur plusieurs actifs.";
+"STRATEGIES_ARE_THERE_TO_HELP_YOU" = "Les stratégies sont là pour vous aider à diversifier vos investissements sur plusieurs actifs.\nLes stratégies proposées par Lyber ne représentent en aucun cas un conseil en investissement. L’utilisateur est seul responsable de son choix de stratégie.";
 "YIELD" = "Rendement";
-"MINIMUM_INVESTMENT" = "Investissement minimum";
+"MINIMUM_INVESTMENT" = "Invest min";
 "RISK" = "Risque";
 "INVEST" = "Investir";
 "IMMEDIATE" = "Immédiat";
@@ -252,7 +252,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "REVIEW_INFORMATIONS" = "Revoir mes informations";
 "CHANGE_INFORMATIONS" = "Changer mes informations";
 "PASSWORD_REQUIREMENTS" = "Le mot de passe doit comporter au moins 10 caractères, 1 caractère spécial, 1 minuscule et 1 majuscule.";
-"STRONG_PASSWORD" = "Vous avez un mot de passe sécurisé !";
+"STRONG_PASSWORD" = "You have a strong password!";
 "LABEL_CGU_CONDITIONS" = "J'ai lu et j'accepte les Conditions Générales de Vente";
 "LABEL_PRIVACY_POLICY" = "J'ai lu et j'accepte la politique de confidentialité";
 "CGU_CONDITIONS" = "Conditions Générales de Vente";
