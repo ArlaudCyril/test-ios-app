@@ -33,7 +33,7 @@ class EnterPhoneVM {
     }
     
     func enterOTPApi(otp: String, completion: @escaping ( (OTPAPI?) -> Void )){
-        let param: [String: Any] = [Constants.ApiKeys.code: otp]
+        let param: [String: Any] = [Constants.ApiKeys.errorCode: otp]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyPhoneNo, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)

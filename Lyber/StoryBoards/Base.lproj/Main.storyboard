@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pUK-Bp-7Fg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pUK-Bp-7Fg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,7 +14,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
         <!--Enter PhoneVC-->
         <scene sceneID="7MR-KG-L1C">
             <objects>
-                <viewController storyboardIdentifier="EnterPhoneVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VgN-ie-SCA" customClass="EnterPhoneVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterPhoneVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VgN-ie-SCA" customClass="EnterPhoneVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DU3-nU-wJT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,7 +120,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87X-zD-GHI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sg3-WW-Uxw" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sg3-WW-Uxw" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -137,7 +137,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="enterNumberCVC" id="Ayt-gm-L5b" customClass="enterNumberCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="enterNumberCVC" id="Ayt-gm-L5b" customClass="enterNumberCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="7.5" y="0.0" width="423" height="385"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="anj-6v-7rm">
@@ -322,7 +322,7 @@
                                                     <outlet property="scrollStackVw" destination="6Zg-Ms-LI2" id="bnU-Hu-ZfA"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="createPinCVC" id="vPA-qS-wYS" customClass="createPinCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="createPinCVC" id="vPA-qS-wYS" customClass="createPinCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="541.5" width="438" height="40"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dcW-fe-MpC">
@@ -350,7 +350,7 @@
                                                                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bC0-ze-JYI">
                                                                             <rect key="frame" x="163" y="149" width="112" height="16"/>
                                                                             <subviews>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-Qv-fbZ" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5wV-Qv-fbZ" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -361,7 +361,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-O2-y6J" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6k-O2-y6J" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="32" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -373,7 +373,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1kL-yy-nY7" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1kL-yy-nY7" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="64" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -385,7 +385,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXp-Tt-ecE" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXp-Tt-ecE" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="96" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -440,7 +440,7 @@
                                                     <outlet property="secureAccountLbl" destination="Cdo-uq-fy1" id="uc0-3J-luA"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ConfirmPinCVC" id="qox-BW-1Y3" customClass="ConfirmPinCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ConfirmPinCVC" id="qox-BW-1Y3" customClass="ConfirmPinCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="64.5" y="738" width="309" height="12"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="D9J-cN-UGn">
@@ -462,7 +462,7 @@
                                                                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5np-Wx-fZo">
                                                                             <rect key="frame" x="98.5" y="168.5" width="112" height="16"/>
                                                                             <subviews>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKV-Ka-eab" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKV-Ka-eab" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -473,7 +473,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-WA-GwH" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-WA-GwH" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="32" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -484,7 +484,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eop-XI-H0U" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eop-XI-H0U" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="64" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -495,7 +495,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCl-Xs-cas" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zCl-Xs-cas" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="96" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -545,7 +545,7 @@
                                                     <outlet property="pinTF4" destination="zCl-Xs-cas" id="Pao-PR-k4h"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="enableNotificationCVC" id="a42-Db-rqs" customClass="enableNotificationCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="enableNotificationCVC" id="a42-Db-rqs" customClass="enableNotificationCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="438" y="0.0" width="416" height="559"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="2Re-zU-w0B">
@@ -585,7 +585,7 @@
                                                                         <constraint firstAttribute="trailing" secondItem="SLd-Id-aEv" secondAttribute="trailing" id="sH8-BR-Fsy"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxB-cO-kTo" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxB-cO-kTo" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                                     <rect key="frame" x="24" y="387" width="368" height="56"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="56" id="EUK-Dv-L22"/>
@@ -657,7 +657,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17r-Wz-MEr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bl-Ym-J4C" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bl-Ym-J4C" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="0.0" width="366" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -782,7 +782,7 @@
         <!--Education StrategyVC-->
         <scene sceneID="kDe-1h-gLa">
             <objects>
-                <viewController storyboardIdentifier="EducationStrategyVC" id="7rI-fk-bTS" customClass="EducationStrategyVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EducationStrategyVC" id="7rI-fk-bTS" customClass="EducationStrategyVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zsh-1G-Dv9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -800,7 +800,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EductaionStrategyCVC" id="5lU-lE-uOH" customClass="EductaionStrategyCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EductaionStrategyCVC" id="5lU-lE-uOH" customClass="EductaionStrategyCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="19" width="414" height="704"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tjk-je-2uV">
@@ -857,7 +857,7 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-D7-lwS" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-D7-lwS" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="24" y="766" width="366" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="jjj-Yz-jUZ"/>
@@ -949,7 +949,7 @@
         <!--Pin VerificationVC-->
         <scene sceneID="zlX-ry-r8i">
             <objects>
-                <viewController storyboardIdentifier="PinVerificationVC" id="o14-KP-Z4m" customClass="PinVerificationVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PinVerificationVC" id="o14-KP-Z4m" customClass="PinVerificationVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sfg-fQ-baG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -979,7 +979,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TxT-HW-pnl">
                                         <rect key="frame" x="135" y="156.5" width="144" height="24"/>
                                         <subviews>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZa-JR-K02" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZa-JR-K02" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                 <color key="backgroundColor" name="borderColor"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -990,7 +990,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wt-Fk-H8h" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wt-Fk-H8h" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="0.0" width="24" height="24"/>
                                                 <color key="backgroundColor" name="borderColor"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1002,7 +1002,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCp-iI-d6e" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCp-iI-d6e" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="80" y="0.0" width="24" height="24"/>
                                                 <color key="backgroundColor" name="borderColor"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1014,7 +1014,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GGf-Pw-TzA" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GGf-Pw-TzA" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="120" y="0.0" width="24" height="24"/>
                                                 <color key="backgroundColor" name="borderColor"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1229,7 +1229,7 @@
         <!--Email LoginVC-->
         <scene sceneID="T4y-SU-RJr">
             <objects>
-                <viewController storyboardIdentifier="EmailLoginVC" modalPresentationStyle="overFullScreen" id="yqW-IF-uP4" customClass="EmailLoginVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailLoginVC" modalPresentationStyle="overFullScreen" id="yqW-IF-uP4" customClass="EmailLoginVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mdA-Zv-ONg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1240,7 +1240,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RbM-8o-Qy4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeK-BT-fPb" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeK-BT-fPb" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1257,7 +1257,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmailLoginCVC" id="ld4-b8-lj0" customClass="EmailLoginCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmailLoginCVC" id="ld4-b8-lj0" customClass="EmailLoginCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="6.5" y="0.0" width="425" height="400"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1HG-jb-S3s">
@@ -1402,7 +1402,7 @@
                                                     <outlet property="scrollStackVw" destination="Goc-Y2-UhO" id="wVv-lK-gZQ"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="createPinCVC" id="MEJ-br-ckx" customClass="createPinCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="createPinCVC" id="MEJ-br-ckx" customClass="createPinCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="540.5" width="438" height="40"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="c7q-0k-hPa">
@@ -1430,7 +1430,7 @@
                                                                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="1Lw-x6-HOV">
                                                                             <rect key="frame" x="163" y="149" width="112" height="16"/>
                                                                             <subviews>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-GC-OAf" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-GC-OAf" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1441,7 +1441,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tnj-j7-tSd" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tnj-j7-tSd" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="32" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1453,7 +1453,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAX-Mp-5lV" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gAX-Mp-5lV" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="64" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1465,7 +1465,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-oK-pbr" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-oK-pbr" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="96" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1520,7 +1520,7 @@
                                                     <outlet property="secureAccountLbl" destination="Ik5-Op-lWC" id="e7r-IC-ifk"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ConfirmPinCVC" id="RlV-RW-iCa" customClass="ConfirmPinCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ConfirmPinCVC" id="RlV-RW-iCa" customClass="ConfirmPinCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="64.5" y="721" width="309" height="29"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jCq-xo-N1G">
@@ -1542,7 +1542,7 @@
                                                                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7vD-qh-4q4">
                                                                             <rect key="frame" x="98.5" y="168.5" width="112" height="16"/>
                                                                             <subviews>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fpq-o3-nlt" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fpq-o3-nlt" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1553,7 +1553,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pzg-qT-cHC" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pzg-qT-cHC" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="32" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1564,7 +1564,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-AY-6Tp" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-AY-6Tp" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="64" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1575,7 +1575,7 @@
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                                 </textField>
-                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GUF-IN-1jH" customClass="otpTextField" customModule="Lyber" customModuleProvider="target">
+                                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GUF-IN-1jH" customClass="otpTextField" customModule="Lyber_dev" customModuleProvider="target">
                                                                                     <rect key="frame" x="96" y="0.0" width="16" height="16"/>
                                                                                     <color key="backgroundColor" name="borderColor"/>
                                                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1625,7 +1625,7 @@
                                                     <outlet property="pinTF4" destination="GUF-IN-1jH" id="ITw-2b-eaR"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="enableNotificationCVC" id="Cr8-QY-c3M" customClass="enableNotificationCVC" customModule="Lyber" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="enableNotificationCVC" id="Cr8-QY-c3M" customClass="enableNotificationCVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="438" y="0.0" width="416" height="559"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="OBd-c4-xm2">
@@ -1665,7 +1665,7 @@
                                                                         <constraint firstAttribute="trailing" secondItem="AmW-Yf-7Yb" secondAttribute="trailing" id="qkK-Dr-X0d"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBH-Xl-cX5" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBH-Xl-cX5" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                                     <rect key="frame" x="24" y="387" width="368" height="56"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="56" id="7Hy-4j-XAa"/>
@@ -1739,7 +1739,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEt-uY-I1N">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AR9-S4-Lsc" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AR9-S4-Lsc" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="0.0" width="366" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -1861,7 +1861,7 @@
         <!--ChartVC-->
         <scene sceneID="9CG-nv-vb2">
             <objects>
-                <viewController storyboardIdentifier="chartVC" id="k4w-ti-eNY" customClass="chartVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chartVC" id="k4w-ti-eNY" customClass="chartVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b3h-a7-fpM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1893,7 +1893,7 @@
         <!--Forgot PasswordVC-->
         <scene sceneID="5Ue-Ev-lac">
             <objects>
-                <viewController storyboardIdentifier="ForgotPasswordVC" modalPresentationStyle="overFullScreen" id="MmB-Fc-zfH" customClass="ForgotPasswordVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordVC" modalPresentationStyle="overFullScreen" id="MmB-Fc-zfH" customClass="ForgotPasswordVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O2X-J0-TL1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1904,7 +1904,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CD8-MA-ZvO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tue-GI-1aE" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tue-GI-1aE" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1962,7 +1962,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blo-5Q-FJr">
                                         <rect key="frame" x="0.0" y="782" width="414" height="80"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8M-zl-ahB" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8M-zl-ahB" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="0.0" width="366" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2028,7 +2028,7 @@
         <!--Reset PasswordVC-->
         <scene sceneID="SR1-DQ-Agj">
             <objects>
-                <viewController storyboardIdentifier="ResetPasswordVC" modalPresentationStyle="overFullScreen" id="CFv-Ct-nwb" customClass="ResetPasswordVC" customModule="Lyber" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPasswordVC" modalPresentationStyle="overFullScreen" id="CFv-Ct-nwb" customClass="ResetPasswordVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3zr-9n-CXc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2039,7 +2039,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-EN-Agq">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HlF-Vc-q5x" customClass="HeaderView" customModule="Lyber" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HlF-Vc-q5x" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2109,7 +2109,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpV-c2-TfR">
                                         <rect key="frame" x="0.0" y="782" width="414" height="80"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTX-95-4F9" customClass="PurpleButton" customModule="Lyber" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTX-95-4F9" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="0.0" width="366" height="56"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2173,6 +2173,75 @@
             </objects>
             <point key="canvasLocation" x="6090" y="753"/>
         </scene>
+        <!--MaintenanceVC-->
+        <scene sceneID="gkj-aZ-Ksd">
+            <objects>
+                <viewController storyboardIdentifier="MaintenanceVC" id="ufV-Ln-9O5" customClass="MaintenanceVC" customModule="Lyber_dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b9Y-6f-TAB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discovery_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DLw-9F-yM4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="493"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-fE-No5">
+                                <rect key="frame" x="334" y="64" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bWA-fE-No5" secondAttribute="height" multiplier="1:1" id="A0K-DB-kpy"/>
+                                    <constraint firstAttribute="height" constant="60" id="jYK-mg-mdo"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maintenance_icon" translatesAutoresizingMaskIntoConstraints="NO" id="5qN-LO-FI6">
+                                <rect key="frame" x="143" y="423" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="iIf-e3-Ssd"/>
+                                    <constraint firstAttribute="width" secondItem="5qN-LO-FI6" secondAttribute="height" multiplier="1:1" id="lSw-lK-nlC"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRW-2h-YtB">
+                                <rect key="frame" x="0.0" y="599" width="414" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcq-Wa-LBX">
+                                        <rect key="frame" x="24" y="0.0" width="366" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fcq-Wa-LBX" secondAttribute="bottom" id="AFQ-9k-bJp"/>
+                                    <constraint firstItem="fcq-Wa-LBX" firstAttribute="leading" secondItem="hRW-2h-YtB" secondAttribute="leading" constant="24" id="sE8-Of-sgc"/>
+                                    <constraint firstAttribute="trailing" secondItem="fcq-Wa-LBX" secondAttribute="trailing" constant="24" id="uWc-Jj-00v"/>
+                                    <constraint firstItem="fcq-Wa-LBX" firstAttribute="top" secondItem="hRW-2h-YtB" secondAttribute="top" id="ysu-Te-FjV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vg2-ol-Fbd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vg2-ol-Fbd" firstAttribute="trailing" secondItem="hRW-2h-YtB" secondAttribute="trailing" id="BuQ-b0-xRC"/>
+                            <constraint firstItem="hRW-2h-YtB" firstAttribute="top" secondItem="5qN-LO-FI6" secondAttribute="bottom" constant="48" id="ETZ-AD-4eB"/>
+                            <constraint firstItem="DLw-9F-yM4" firstAttribute="top" secondItem="b9Y-6f-TAB" secondAttribute="top" id="Gcj-CT-asp"/>
+                            <constraint firstItem="hRW-2h-YtB" firstAttribute="leading" secondItem="Vg2-ol-Fbd" secondAttribute="leading" id="XCv-Rz-kvW"/>
+                            <constraint firstItem="Vg2-ol-Fbd" firstAttribute="trailing" secondItem="DLw-9F-yM4" secondAttribute="trailing" id="YwT-KB-IXv"/>
+                            <constraint firstItem="DLw-9F-yM4" firstAttribute="height" secondItem="b9Y-6f-TAB" secondAttribute="height" multiplier="0.55" id="nEw-Xq-j5J"/>
+                            <constraint firstItem="bWA-fE-No5" firstAttribute="top" secondItem="Vg2-ol-Fbd" secondAttribute="top" constant="16" id="nbc-5o-0eQ"/>
+                            <constraint firstItem="5qN-LO-FI6" firstAttribute="centerX" secondItem="Vg2-ol-Fbd" secondAttribute="centerX" id="qWP-Tl-YWg"/>
+                            <constraint firstItem="5qN-LO-FI6" firstAttribute="top" secondItem="Vg2-ol-Fbd" secondAttribute="top" constant="375" id="uC7-SJ-qFp"/>
+                            <constraint firstItem="Vg2-ol-Fbd" firstAttribute="trailing" secondItem="bWA-fE-No5" secondAttribute="trailing" constant="20" id="vQh-6I-h6r"/>
+                            <constraint firstItem="DLw-9F-yM4" firstAttribute="leading" secondItem="Vg2-ol-Fbd" secondAttribute="leading" id="y7A-dE-ePA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5tf-sI-6HW"/>
+                    <connections>
+                        <outlet property="backgroundImgVw" destination="DLw-9F-yM4" id="pVo-yj-rbo"/>
+                        <outlet property="titleLbl" destination="fcq-Wa-LBX" id="faj-K5-RcS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gr4-aa-VTz" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774" y="753"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Group 1853" width="220" height="63"/>
@@ -2183,6 +2252,7 @@
         <image name="drop_down" width="28" height="28"/>
         <image name="enable_notifications" width="302" height="170.5"/>
         <image name="face_id" width="28" height="28"/>
+        <image name="maintenance_icon" width="124" height="124"/>
         <image name="splash_background" width="375" height="812"/>
         <image name="visibility_off" width="20" height="20"/>
         <namedColor name="LightPurple">

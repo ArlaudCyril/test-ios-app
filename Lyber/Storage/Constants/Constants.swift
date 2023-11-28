@@ -9,7 +9,7 @@ import Foundation
 
 struct Constants{
     
-	static let apiVersion = "0.1"
+	static let apiVersion = "0.001"
     static let deviceType = "IOS"
     static let deviceID = "df"
 
@@ -121,7 +121,7 @@ struct Constants{
         // MARK: - New Login keys
         static let phoneNo = "phoneNo"
         static let countryCode = "countryCode"
-        static let code = "code"
+        static let errorCode = "errorCode"
         static let method = "method"
         static let A = "A"
         static let M1 = "M1"

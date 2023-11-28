@@ -45,6 +45,7 @@ enum Assets : String{
 	case green_large_tick
 	case locationIcon
 	case mail
+	case maintenance_icon
     
     //coins
     case bitcoin

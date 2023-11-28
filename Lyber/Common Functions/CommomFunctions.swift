@@ -107,6 +107,15 @@ class CommonFunctions{
 		navVC.navigationController?.popToRootViewController(animated: true)
 		navVC.setNavigationBarHidden(true , animated: true)
     }
+	
+	static func goToMaintenance(){
+		let vc = MaintenanceVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+		let navVC = UINavigationController(rootViewController: vc)
+		UIApplication.shared.windows[0].rootViewController = navVC
+		UIApplication.shared.windows[0].makeKeyAndVisible()
+		navVC.navigationController?.popToRootViewController(animated: true)
+		navVC.setNavigationBarHidden(true , animated: true)
+    }
     
     static func showLoader(){
         let topView = getTopMostViewController()?.view
@@ -1054,7 +1063,8 @@ class CommonFunctions{
 				break
 			case "13014":
 				break
-			case "19002":
+			case "19002", "19003": // DEPRECATED_API_VERSION = 19002, UNDER_MAINTENANCE = 19003
+				CommonFunctions.goToMaintenance()
 				break
 				
 			default:
