@@ -28,7 +28,7 @@ class VerificationVM{
     
     func verify2FAApi(code:String?, completion: @escaping ( (LogInAPI?) -> Void )){
         
-        let params : [String : Any] = [Constants.ApiKeys.errorCode : code ?? ""]
+        let params : [String : Any] = [Constants.ApiKeys.code : code ?? ""]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceVerify2FA, withParameters: params, ofType: LogInAPI.self, onSuccess: { response in
             print(response)
@@ -72,7 +72,7 @@ class VerificationVM{
     }
 	
 	func verifyPasswordChangeAPI(code: String, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
-		let params : [String : Any] = [Constants.ApiKeys.errorCode : code]
+		let params : [String : Any] = [Constants.ApiKeys.code : code]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyPasswordChange, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             onSuccess(response)

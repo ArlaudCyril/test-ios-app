@@ -324,12 +324,14 @@ class InvestInMyStrategyVC: ViewController {
 			self.exchangeView.isHidden = false
             self.maximumBtn.isHidden = false
 			self.coinsLbl.isHidden = false
+			self.feesLbl.isHidden = false
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_EXCHANGE"), for: .normal)
 			self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "EXCHANGE")) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
 			
 			
 			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.ToCoinNameLbl.text ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.feesLbl, text: "~0.00 €", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
 			self.amountTF.placeholder = "0 \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
             self.fromView.layer.cornerRadius = 16
@@ -670,6 +672,8 @@ extension InvestInMyStrategyVC {
 			totalNoOfCoinsInvest = Decimal(string: fromBalance?.balanceData.balance ?? "0") ?? 0
 			
 			self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: totalEuroInvested * Decimal(coinFromPrice/coinToPrice), price: Decimal(coinToPrice))) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
+			
+			self.feesLbl.text = "~\(CommonFunctions.getTwoDecimalValueDecimal(number: totalEuroInvested * Decimal(coinFromPrice))) €"
             
         }else if strategyType == .withdraw{
 			

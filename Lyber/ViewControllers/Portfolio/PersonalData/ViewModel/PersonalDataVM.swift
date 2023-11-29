@@ -132,7 +132,7 @@ class PersonalDataVM{
     }
     
 	func checkEmailVerificationApi(controller: UIViewController, code : String?, completion: @escaping ( (OTPAPI?) -> Void )){
-        let params : [String : Any] = [Constants.ApiKeys.errorCode : code ?? ""]
+        let params : [String : Any] = [Constants.ApiKeys.code : code ?? ""]
 
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyEmail, withParameters: params, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
