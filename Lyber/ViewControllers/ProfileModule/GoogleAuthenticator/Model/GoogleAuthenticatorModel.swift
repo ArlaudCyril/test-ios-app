@@ -16,3 +16,14 @@ struct UrlAPI: Codable {
 struct Url: Codable {
     let url: String?
 }
+
+// MARK: - KycAPI
+struct KycAPI: Codable {
+	let data: Kyc?
+}
+
+// MARK: - Kyc
+struct Kyc: Codable {
+	let url: String?
+	let didSign: Bool?
+}

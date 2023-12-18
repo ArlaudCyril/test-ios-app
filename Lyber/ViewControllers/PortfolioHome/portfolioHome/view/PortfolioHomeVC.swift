@@ -17,6 +17,9 @@ class PortfolioHomeVC: NotSwipeGesture {
     var assetsData : [Asset] = []
     var recurringInvestmentData : [RecurrentInvestmentStrategy] = []
     var allAvailableAssets : [PriceServiceResume] = []
+    var hasToShowLoader = false
+	var typeLoader = ""
+	var timer = Timer()
     
     //MARK: - IB OUTLETS
     @IBOutlet var tblView: UITableView!
@@ -27,6 +30,10 @@ class PortfolioHomeVC: NotSwipeGesture {
         super.viewDidLoad()
 		self.getTotalAvailableAssetsApi()
 		GlobalVariables.isLogin = false
+		if(self.hasToShowLoader == true){
+            CommonFunctions.showLoader()
+			self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+		}
 		
     }
 
@@ -37,6 +44,10 @@ class PortfolioHomeVC: NotSwipeGesture {
 		self.getAllAssetsDetail()
 		self.callActiveStrategies()
     }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		self.timer.invalidate()
+	}
 
 
 	//MARK: - SetUpUI
@@ -193,8 +204,6 @@ extension PortfolioHomeVC{
         vc.popupType = .withdrawExchange
         vc.portfolioHomeController = self
         self.present(vc, animated: true, completion: nil)
-//        self.threeDotBtn.backgroundColor = .PurpleColor
-//        self.animateBtn()
       
     }
     
@@ -232,6 +241,25 @@ extension PortfolioHomeVC{
             self.present(vc, animated: true, completion: nil)
       
     }
+	
+	@objc func fireTimer(){
+        
+        ProfileVM().getProfileDataApi(completion: {[]response in
+            if response != nil{
+                if(self.typeLoader == "kyc"){
+                    if(response?.data?.kycStatus != "NOT_STARTED"){
+                        CommonFunctions.hideLoader()
+                        self.timer.invalidate()
+                    }
+                }else{
+                    if(response?.data?.docusignStatus == "SIGNED"){
+                        CommonFunctions.hideLoader()
+                        self.timer.invalidate()
+                    }
+                }
+            }
+        })
+	}
 }
 
 //MARK: - Other functions

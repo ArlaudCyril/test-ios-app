@@ -530,7 +530,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "ALERT_INVESTMENT_EXP" = "Please choose your investment experience with Cryptos";
 "ALERT_SOURCE_INCOME" = "Please select your source of income";
 "ALERT_WORK_INDUSTRY" = "Please select your work industry";
-"ALERT_ANNUAL_INCOME" = "Please Select your annual Income";
+"ALERT_MONTHLY_INCOME" = "Please select your monthly Income";
 "ALERT_ACTIVITY" = "Please Select your activity on Lyber";
 "ALERT_LOG_OUT" = "Are you sure you want to Log Out?";
 "ALERT_STRATEGY_NAMET" = "Please enter Strategy name";
@@ -701,5 +701,11 @@ Make sure to withdraw all the money you have in your account before closing it."
 "UNSUPPORTED_AUTH_METHOD" = "This authentication method is not supported";
 "INCORRECT_SCOPE_2FA" = "Incorrect scope 2FA";
 "KYC_NOT_OK" = "We were not able to validate your KYC. Please try again";
+"SIGN_NOT_OK" = "We were unable to validate your signature. You will be asked to try again.";
 "USER_ALREADY_VERIFIED" = "User is already verified";
 "FAILED_RESET_PASSWORD" = "This link was already used to reset your password!";
+"KYC_UNDER_VERIFICATION" = "Your KYC is under verification. Please try again in five minutes.";
+"PLEASE_VALIDATE_KYC" = "Your kyc has been refused. Please validate your kyc to be able to carry out the operation.";
+"VALIDATE_KYC" = "Validate my kyc";
+"USER_NOT_SIGNED_CONTRACT" = "Your contract has not been signed. Please sign it before you can proceed.";
+"SIGN_CONTRACT" = "Sign my contract";

@@ -698,6 +698,12 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "UNSUPPORTED_AUTH_METHOD" = "Cette méthode d'authentification n'est pas prise en charge";
 "INCORRECT_SCOPE_2FA" = "Portée 2FA incorrecte";
 "KYC_NOT_OK" = "Nous n'avons pas pu valider votre KYC. Veuillez réessayer";
+"SIGN_NOT_OK" = "Nous n'avons pas pu valider votre signature. Il vous sera demandé de réessayer.";
 "USER_ALREADY_VERIFIED" = "L'utilisateur est déjà vérifié";
 "FAILED_RESET_PASSWORD" = "Ce lien a déjà été utilisé pour réinitialiser votre mot de passe !";
+"KYC_UNDER_VERIFICATION" = "Votre KYC est en cours de vérification. Veuillez réessayer dans cinq minutes.";
+"PLEASE_VALIDATE_KYC" = "Votre kyc a été refusé. Veuillez valider votre kyc pour pouvoir effectuer l'opération.";
+"VALIDATE_KYC" = "Valider mon kyc";
+"USER_NOT_SIGNED_CONTRACT" = "Votre contrat n'a pas été signé. Veuillez le signer pour pouvoir effectuer l'opération";
+"SIGN_CONTRACT" = "Signer mon contrat";
 

@@ -26,6 +26,8 @@ struct ProfileData: Codable {
     var type2FA: String?
 	var scope2FA: [String?]
     var profilePic: String?
+    var docusignStatus: String?
+    var kycStatus: String?
     
     init() {
         uuid = ""
@@ -39,6 +41,8 @@ struct ProfileData: Codable {
         type2FA = ""
         scope2FA = []
         profilePic = ""
+        docusignStatus = ""
+        kycStatus = ""
     }
 
 }

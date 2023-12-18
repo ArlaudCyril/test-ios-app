@@ -194,12 +194,12 @@ extension PinVerificationVC{
                     }
                     
                 } else {
-					print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: authError?._code ?? -1))
+					print(self.evaluateAuthenticationPolicyMessageForLA(code: authError?._code ?? -1))
 			
                 }
             }
         } else {
-            print(self.evaluateAuthenticationPolicyMessageForLA(errorCode: authError?.code ?? -1))
+            print(self.evaluateAuthenticationPolicyMessageForLA(code: authError?.code ?? -1))
         }
     }
 	
@@ -210,10 +210,10 @@ extension PinVerificationVC{
 	
 	//MARK: Other functions
 	
-    func evaluatePolicyFailErrorMessageForLA(errorCode: Int) -> String {
+    func evaluatePolicyFailErrorMessageForLA(code: Int) -> String {
         var message = ""
         if #available(iOS 11.0, macOS 10.13, *) {
-            switch errorCode {
+            switch code {
             case LAError.biometryNotAvailable.rawValue:
                 message = "Authentication could not start because the device does not support biometric authentication."
             case LAError.biometryLockout.rawValue:
@@ -224,7 +224,7 @@ extension PinVerificationVC{
                 message = "Did not find error code on LAError object"
             }
         } else {
-            switch errorCode {
+            switch code {
             case LAError.touchIDLockout.rawValue:
                 message = "Too many failed attempts."
             case LAError.touchIDNotAvailable.rawValue:
@@ -239,9 +239,9 @@ extension PinVerificationVC{
         return message;
     }
     
-    func evaluateAuthenticationPolicyMessageForLA(errorCode: Int) -> String {
+    func evaluateAuthenticationPolicyMessageForLA(code: Int) -> String {
         var message = ""
-        switch errorCode {
+        switch code {
         case LAError.authenticationFailed.rawValue:
             message = "The user failed to provide valid credentials"
         case LAError.appCancel.rawValue:
@@ -260,7 +260,7 @@ extension PinVerificationVC{
             message = "The user chose to use the fallback"
             
         default:
-            message = evaluatePolicyFailErrorMessageForLA(errorCode: errorCode)
+            message = evaluatePolicyFailErrorMessageForLA(code: code)
         }
         
         return message

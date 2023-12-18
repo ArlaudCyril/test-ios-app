@@ -7,13 +7,13 @@
 
 import Foundation
 class IdentityVerificationVM{
-	func startKycApi(completion: @escaping ( (UrlAPI?) -> Void )){
+	func startKycApi(headerType: String, completion: @escaping ( (KycAPI?) -> Void )){
 		
-		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.kycServiceKyc, withParameters: [:], ofType: UrlAPI.self, onSuccess: { response in
+		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.kycServiceKyc, withParameters: [:], ofType: KycAPI.self, onSuccess: { response in
 			completion(response)
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "startKycApi",code: code, error: error)
 			completion(nil)
-		}, method: .POST, img: nil, imageParamater: nil, headerType: "registration")
+		}, method: .POST, img: nil, imageParamater: nil, headerType: headerType)
 	}
 }

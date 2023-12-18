@@ -110,7 +110,6 @@ extension QRCodeScanVC : AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func found(code: String) {
-        print(code)
 		var address = code
 		let index = code.firstIndex(where: {$0 == ":"})
 		if(index != nil){

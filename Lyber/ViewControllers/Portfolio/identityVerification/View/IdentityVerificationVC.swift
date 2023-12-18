@@ -11,6 +11,7 @@ import JWTDecode
 class IdentityVerificationVC: ViewController {
     //MARK: - Variables
 	var urlKyc : String = ""
+	var didSign : Bool = false
 	var timer: Timer?
 	var btnPressed = false
 	var isCGUChecked = false
@@ -119,7 +120,7 @@ extension IdentityVerificationVC{
 		self.btnPressed = true
 		if(self.urlKyc != ""){
 			let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			vc.Ubalurl = self.urlKyc
+			vc.kycUrl = self.urlKyc
 			self.navigationController?.pushViewController(vc, animated: true)
 		}else{
 			self.kycBtn.showLoading()
@@ -196,9 +197,10 @@ extension IdentityVerificationVC{
 //MARK: - Other functions
 extension IdentityVerificationVC{
 	func startKyc(){
-		IdentityVerificationVM().startKycApi(completion: {response in
+		IdentityVerificationVM().startKycApi(headerType: "registration", completion: {response in
 			if response != nil {
 				self.urlKyc = response?.data?.url ?? ""
+				self.didSign = response?.data?.didSign ?? false
 			}
 		})
 	}

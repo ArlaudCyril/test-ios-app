@@ -108,6 +108,15 @@ class CommonFunctions{
 		navVC.setNavigationBarHidden(true , animated: true)
     }
 	
+	static func goPortfolioHome(){
+		let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+		let navVC = UINavigationController(rootViewController: vc)
+		UIApplication.shared.windows[0].rootViewController = navVC
+		UIApplication.shared.windows[0].makeKeyAndVisible()
+		navVC.navigationController?.popToRootViewController(animated: true)
+		navVC.setNavigationBarHidden(true , animated: true)
+    }
+	
 	static func goToMaintenance(){
 		let vc = MaintenanceVC.instantiateFromAppStoryboard(appStoryboard: .Main)
 		let navVC = UINavigationController(rootViewController: vc)
@@ -1061,6 +1070,16 @@ class CommonFunctions{
 				let vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 				controller.navigationController?.pushViewController(vc, animated: false)
 				break
+			case "7023", "10041"://USER_NOT_KYC
+				showActiveFaceIdAlert(title: localisation(key: "VALIDATE_KYC"), subTitle: localisation(key: "PLEASE_VALIDATE_KYC"), acceptButtonTitle: localisation(key: "VALIDATE_KYC"), type: "validate_kyc")
+				break
+			case "7024", "10042"://KYC_UNDER_VERIFICATION
+				CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_UNDER_VERIFICATION"))
+				CommonFunctions.goPortfolioHome()
+				break
+			case "7025", "10043"://USER_NOT_SIGNED_CONTRACT
+				showActiveFaceIdAlert(title: localisation(key: "SIGN_CONTRACT"), subTitle: localisation(key: "USER_NOT_SIGNED_CONTRACT"), acceptButtonTitle: localisation(key: "SIGN_CONTRACT"), type: "sign_contract")
+				break
 			case "13014":
 				break
 			case "19002", "19003": // DEPRECATED_API_VERSION = 19002, UNDER_MAINTENANCE = 19003
@@ -1070,6 +1089,45 @@ class CommonFunctions{
 			default:
 				CommonFunctions.toster(error)
 		}
+	}
+	
+	static func showActiveFaceIdAlert(title: String, subTitle: String, acceptButtonTitle: String, type: String){
+		let alert = UIAlertController(title: title, message: subTitle, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
+			//No option
+		}))
+		alert.addAction(UIAlertAction(title: acceptButtonTitle, style: .default, handler: {_ in
+			//Yes option
+			if(type == "validate_kyc"){
+				let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				IdentityVerificationVM().startKycApi(headerType: "user", completion: {response in
+					if response != nil {
+						vc.kycUrl = response?.data?.url ?? ""
+                        vc.revalidation = true
+						let navVC = UINavigationController(rootViewController: vc)
+						UIApplication.shared.windows[0].rootViewController = navVC
+						UIApplication.shared.windows[0].makeKeyAndVisible()
+						navVC.navigationController?.popToRootViewController(animated: true)
+						navVC.setNavigationBarHidden(true , animated: true)
+					}
+				})
+				
+			}else{
+				let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+				KycWebVM().getSignUrlApi(completion:{ response in
+					if(response != nil){
+						vc.kycUrl = response?.data?.url ?? ""
+						let navVC = UINavigationController(rootViewController: vc)
+						UIApplication.shared.windows[0].rootViewController = navVC
+						UIApplication.shared.windows[0].makeKeyAndVisible()
+						navVC.navigationController?.popToRootViewController(animated: true)
+						navVC.setNavigationBarHidden(true , animated: true)
+						
+					}
+				})
+			}
+		}))
+		getTopMostViewController()?.present(alert, animated: true, completion: nil)
 	}
 	
 }

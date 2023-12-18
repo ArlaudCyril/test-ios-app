@@ -80,19 +80,20 @@ class PersonalDataVC: ViewController {
 extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonalDataCVC", for: indexPath as IndexPath) as! PersonalDataCVC
-            cell.controller = self
-			cell.SetUpCell()
-            if isEditData{
-                cell.setPersonalData()
-            }
-            return cell
-        }else if indexPath.item == 1{
+//        if indexPath.item == 0{
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonalDataCVC", for: indexPath as IndexPath) as! PersonalDataCVC
+//            cell.controller = self
+//			cell.SetUpCell()
+//            if isEditData{
+//                cell.setPersonalData()
+//            }
+//            return cell
+//        }else 
+		if indexPath.item == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addressCVC", for: indexPath as IndexPath) as! addressCVC
             cell.controller = self
 			cell.setUpCell()
@@ -100,7 +101,7 @@ extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 cell.setPersonalData()
             }
             return cell
-        }else if indexPath.item == 2{
+        }else if indexPath.item == 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InvestmentExperienceCVC", for: indexPath as IndexPath) as! InvestmentExperienceCVC
             cell.controller = self
             if isEditData{
@@ -141,11 +142,12 @@ extension PersonalDataVC{
 	}
     
     @objc func nextButtonAct(){
-            if currentPage == 0{
-                checkPersonalDataValidation()
-            }else if currentPage == 1{
+//            if currentPage == 0{
+//                checkPersonalDataValidation()
+//            }else
+			if currentPage == 0{
                 checkAdddressValidation()
-            }else if currentPage == 2{
+            }else if currentPage == 1{
                 checkInvestmentExperienceValidation()
             }else{
                 GotoNextIndex()
@@ -166,12 +168,12 @@ extension PersonalDataVC{
     func goToStep(){
 		if userData.shared.personalDataStepComplete == 1{
 			DispatchQueue.main.async {
-				let indexPath = NSIndexPath(item: 1, section: 0)
+				let indexPath = NSIndexPath(item: 0, section: 0)
 				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 			}
 		}else if userData.shared.personalDataStepComplete == 2{
 			DispatchQueue.main.async {
-				let indexPath = NSIndexPath(item: 2, section: 0)
+				let indexPath = NSIndexPath(item: 1, section: 0)
 				self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 			}
 		}
@@ -181,8 +183,8 @@ extension PersonalDataVC{
 //MARK: - Other functions
 extension PersonalDataVC{
     func LoadNibFiles(){
-        let personalDataNib : UINib =  UINib(nibName: "personalDataXib", bundle: nil)
-        collView.register(personalDataNib, forCellWithReuseIdentifier: "PersonalDataCVC")
+//        let personalDataNib : UINib =  UINib(nibName: "personalDataXib", bundle: nil)
+//        collView.register(personalDataNib, forCellWithReuseIdentifier: "PersonalDataCVC")
         
         let addressNib : UINib =  UINib(nibName: "addressXib", bundle: nil)
         collView.register(addressNib, forCellWithReuseIdentifier: "addressCVC")
@@ -244,24 +246,24 @@ extension PersonalDataVC{
 			personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, isUsPerson: isUsPerson, language: userData.shared.language)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
-            personalDataVM.personalDataApi(profile_info_step : 1,personalData: personalData, completion: {[weak self]response in
-                self?.nextButton.hideLoading()
-                self?.nextButton.isUserInteractionEnabled = true
-                if let response = response{
-                    print(response)
-                    userData.shared.personalDataStepComplete = 1
-					
-					userData.shared.firstnameRegistration = self?.firstName ?? ""
-					userData.shared.lastnameRegistration = self?.lastName ?? ""
-					userData.shared.placeOfBirth = self?.birthPlace ?? ""
-					userData.shared.birthDate = self?.birthDate ?? ""
-					userData.shared.countryOfBirth = self?.birthCountry ?? ""
-					userData.shared.nationality = self?.nationality ?? ""
-					userData.shared.isUsCitizen = self?.isUsPerson ?? ""
-                    userData.shared.dataSave()
-                    self?.GotoNextIndex()
-                }
-            })
+//            personalDataVM.personalDataApi(profile_info_step : 1,personalData: personalData, completion: {[weak self]response in
+//                self?.nextButton.hideLoading()
+//                self?.nextButton.isUserInteractionEnabled = true
+//                if let response = response{
+//                    print(response)
+//                    userData.shared.personalDataStepComplete = 1
+//					
+//					userData.shared.firstnameRegistration = self?.firstName ?? ""
+//					userData.shared.lastnameRegistration = self?.lastName ?? ""
+//					userData.shared.placeOfBirth = self?.birthPlace ?? ""
+//					userData.shared.birthDate = self?.birthDate ?? ""
+//					userData.shared.countryOfBirth = self?.birthCountry ?? ""
+//					userData.shared.nationality = self?.nationality ?? ""
+//					userData.shared.isUsCitizen = self?.isUsPerson ?? ""
+//                    userData.shared.dataSave()
+//                    self?.GotoNextIndex()
+//                }
+//            })
         }
     }
     
@@ -284,7 +286,7 @@ extension PersonalDataVC{
             personalData = personalDataStruct(streetNumber: streetNumber, streetName: streetName, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
-            personalDataVM.setAddressApi(profile_info_step : 4,personalData: personalData, completion: {[weak self]response in
+            personalDataVM.setAddressApi(personalData: personalData, completion: {[weak self]response in
                 self?.nextButton.hideLoading()
                 self?.nextButton.isUserInteractionEnabled = true
                 if let response = response{
@@ -312,14 +314,14 @@ extension PersonalDataVC{
         }else if self.workIndustry == ""{
             CommonFunctions.toster(Constants.AlertMessages.chooseWorkIndustry)
         }else if self.annualIncome == ""{
-            CommonFunctions.toster(Constants.AlertMessages.chooseAnnualIncome)
+            CommonFunctions.toster(Constants.AlertMessages.chooseMonthlyIncome)
         }else if self.activity == ""{
             CommonFunctions.toster(Constants.AlertMessages.chooseActivity)
         }else{
             personalData = personalDataStruct(investmentExp: investmentExp, sourceOfIncome: sourceOfIncome, workIndustry: workIndustry, annualIncome: annualIncome, activity: activity)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
-			personalDataVM.setInvestmentExperienceApi(profile_info_step : 5,personalData: personalData, completion: {[weak self]response in
+			personalDataVM.setInvestmentExperienceApi(personalData: personalData, completion: {[weak self]response in
                 if let response = response{
                     print(response)
 					self?.nextButton.hideLoading()

@@ -31,7 +31,7 @@ struct Constants{
         static var chooseInvestmentExp = CommonFunctions.localisation(key:"ALERT_INVESTMENT_EXP")
         static var chooseSourceOfIncome = CommonFunctions.localisation(key:"ALERT_SOURCE_INCOME")
         static var chooseWorkIndustry = CommonFunctions.localisation(key:"ALERT_WORK_INDUSTRY")
-        static var chooseAnnualIncome = CommonFunctions.localisation(key:"ALERT_ANNUAL_INCOME")
+        static var chooseMonthlyIncome = CommonFunctions.localisation(key:"ALERT_MONTHLY_INCOME")
 		static var chooseActivity = CommonFunctions.localisation(key:"ALERT_ACTIVITY")
         static let logOut = CommonFunctions.localisation(key:"LOG_OUT")
         static let sureLogOut = CommonFunctions.localisation(key:"ALERT_LOG_OUT")
@@ -121,7 +121,6 @@ struct Constants{
         // MARK: - New Login keys
         static let phoneNo = "phoneNo"
         static let countryCode = "countryCode"
-        static let errorCode = "errorCode"
         static let code = "code"
         static let method = "method"
         static let A = "A"
@@ -183,6 +182,7 @@ struct Constants{
         static let userVerifyEmail = "user-service/verify-email"
         static let finishRegistration = "user-service/finish-registration"
         static let kycServiceKyc = "kyc-service/kyc"
+        static let kycServiceSignUrl = "kyc-service/sign-url"
 		
         
         //Login

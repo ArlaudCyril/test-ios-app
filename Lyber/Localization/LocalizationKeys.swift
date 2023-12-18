@@ -379,7 +379,7 @@ enum L10n {
     case chooseInvestmentExp
     case chooseSourceOfIncome
     case chooseWorkIndustry
-    case chooseAnnualIncome
+    case chooseMonthlyIncome
     case AreYouSureLogOut
     
 }
@@ -1101,8 +1101,8 @@ extension L10n: CustomStringConvertible{
             return L10n.tr("Please select your source of income")
         case .chooseWorkIndustry:
             return L10n.tr("Please select your work industry")
-        case .chooseAnnualIncome:
-            return L10n.tr("Please Select your annual Income")
+        case .chooseMonthlyIncome:
+            return L10n.tr("Please Select your monthly Income")
         case .AreYouSureLogOut:
             return L10n.tr("Are you sure you want to Log Out?")
 		}

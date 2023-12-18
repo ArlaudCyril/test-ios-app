@@ -115,7 +115,7 @@ class ApiHandler: NSObject {
                                 print(jsondata)
 
                                 let json = try JSONDecoder().decode(T.self, from: data)
-
+								print("json")
                                 print(json)
 								onSuccess(json)
 
@@ -129,17 +129,18 @@ class ApiHandler: NSObject {
                     }else{
                         let dict = JSON(response.data ?? Data())
                         if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 404){
+							print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.code].stringValue)
                             if dict[Constants.ApiKeys.error_description].stringValue == "you are not authorized to perform this action." || dict[Constants.ApiKeys.message].stringValue == "Your account is blocked, please contact admin to unblock."{
                                 CommonFunctions.logout()
                                 userData.shared.deleteData()
                             }else if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.message].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }else if dict[Constants.ApiKeys.error_description].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error_description].stringValue)
-								onFailure(false,dict[Constants.ApiKeys.error_description].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
-                            }else if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.errorCode].stringValue != ""{
-								onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+								onFailure(false,dict[Constants.ApiKeys.error_description].stringValue, dict[Constants.ApiKeys.code].stringValue)
+                            }else if dict[Constants.ApiKeys.error].stringValue != "" && dict[Constants.ApiKeys.code].stringValue != ""{
+								onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue)
 							}else{
 								onFailure(false, dict[Constants.ApiKeys.error].stringValue, "-1")
 							}
@@ -150,7 +151,7 @@ class ApiHandler: NSObject {
                         }else{
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }
                     }
@@ -206,10 +207,10 @@ class ApiHandler: NSObject {
                                 }
                                 if dict[Constants.ApiKeys.error].stringValue != ""{
                                     print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-									onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.errorCode].stringValue )
+									onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue )
 								}else{
 									print(dict[Constants.ApiKeys.message].stringValue)
-									onFailure(false,"-1", dict[Constants.ApiKeys.errorCode].stringValue)
+									onFailure(false,"-1", dict[Constants.ApiKeys.code].stringValue)
 								}
                             }else if (statusCode == 500 || statusCode == 503){
                                 print("Server Error")
@@ -217,7 +218,7 @@ class ApiHandler: NSObject {
                             }else{
                                 if dict[Constants.ApiKeys.error].stringValue != ""{
                                     print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-									onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+									onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue)
                                 }
                             }
                         }
@@ -267,7 +268,7 @@ class ApiHandler: NSObject {
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }else if (statusCode == 500 || statusCode == 503){
                             print("Server Error")
@@ -275,7 +276,7 @@ class ApiHandler: NSObject {
                         }else{
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }
                     }
@@ -345,14 +346,14 @@ class ApiHandler: NSObject {
                             }
                             if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+								onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                             }
                         }else if (statusCode == 500 || statusCode == 503){
                             print("Server Error")
                             onFailure(false,"Server Error", "500")
                         }else if dict[Constants.ApiKeys.error].stringValue != ""{
                                 print(dict[Constants.ApiKeys.error].stringValue,"\n", dict[Constants.ApiKeys.message].stringValue)
-							onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.errorCode].stringValue)
+							onFailure(false,dict[Constants.ApiKeys.message].stringValue, dict[Constants.ApiKeys.code].stringValue)
                         }
                     }
                 case .failure(let error):
