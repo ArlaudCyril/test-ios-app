@@ -249,6 +249,28 @@ class CommonFunctions{
 		}
 	}
     
+    static func showLoaderLogo(_ topView: UIView) {
+        let loadingView = UIView(frame: CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
+        loadingView.backgroundColor = UIColor.dark_transparent
+        loadingView.alpha = 0.95
+        loadingView.tag = 111
+        
+        var present = false
+        for (_, subView) in topView.subviews.enumerated() {
+            if subView.tag == 111 {
+                present = true
+            }
+        }
+        
+        if !present {
+            topView.addSubview(loadingView)
+        }
+        
+        let loadingAnimationView = LoadingAnimationView(frame: CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80))
+        loadingAnimationView.tag = 222
+        loadingView.addSubview(loadingAnimationView)
+    }
+    
     static func hideLoader(){
         let topView = getTopMostViewController()?.view
         if topView != nil{
@@ -270,34 +292,59 @@ class CommonFunctions{
     }
 	
 	static func hideLoaderCheckbox(_ onView : UIView, success: Bool){
-		
+        
         let topView = onView
-		var underView = UIImageView()
-		if(success == true){
-			underView = UIImageView(image:UIImage(asset: Assets.checkmark_color))
-		}else{
-			underView = UIImageView(image:UIImage(asset: Assets.close_color))
-		}
-		underView.frame = CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80)
-		
+        var underView = UIImageView()
+        if(success == true){
+            underView = UIImageView(image:UIImage(asset: Assets.checkmark_color))
+        }else{
+            underView = UIImageView(image:UIImage(asset: Assets.close_color))
+        }
+        underView.frame = CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80)
+        
         for (num,subView) in topView.subviews.enumerated(){
-			if subView.tag == 111{
-				subView.addSubview(underView)
-				subView.layer.addSublayer(underView.layer)
-				underView.layer.zPosition = 1
-				
-				let launcher = Launcher(layer: subView.layer)
-				if(success == true){
-					launcher.setup(frame: topView.frame)
-					subView.layer.addSublayer(launcher)
-					launcher.zPosition = 0
-					launcher.runCells()
-				}
-				
-				DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-					topView.subviews[num].removeFromSuperview()
-					launcher.emitterCells?.removeAll()
-				}
+            if subView.tag == 111{
+                subView.addSubview(underView)
+                subView.layer.addSublayer(underView.layer)
+                underView.layer.zPosition = 1
+                
+                let launcher = Launcher(layer: subView.layer)
+                if(success == true){
+                    launcher.setup(frame: topView.frame)
+                    subView.layer.addSublayer(launcher)
+                    launcher.zPosition = 0
+                    launcher.runCells()
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    topView.subviews[num].removeFromSuperview()
+                    launcher.emitterCells?.removeAll()
+                }
+            }
+        }
+    }
+    
+    static func hideLoaderLogo(_ onView: UIView, success: Bool) {
+        let topView = onView
+        
+        for (num, subView) in topView.subviews.enumerated() {
+            if subView.tag == 111 {
+                let launcher = Launcher(layer: subView.layer)
+                if success == true {
+                    launcher.setup(frame: topView.frame)
+                    subView.layer.addSublayer(launcher)
+                    launcher.zPosition = 0
+                    launcher.runCells()
+                    if let loadingAnimationView = subView.viewWithTag(222) {
+                        loadingAnimationView.removeFromSuperview()
+                    }
+                    
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    topView.subviews[num].removeFromSuperview()
+                    launcher.emitterCells?.removeAll()
+                }
             }
         }
     }

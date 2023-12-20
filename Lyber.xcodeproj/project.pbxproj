@@ -611,6 +611,8 @@
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
 		A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
 		C81691822B2C4AB6008163B3 /* Pods in Resources */ = {isa = PBXBuildFile; fileRef = C81691812B2C4AB6008163B3 /* Pods */; };
+		C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
+		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		EE9AB0952AEBBDA300B3E36C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9AB0972AEBBDA300B3E36C /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -924,6 +926,7 @@
 		3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.release.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.release.xcconfig"; sourceTree = "<group>"; };
 		4C0A8C3529955D5700CCC88A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		C81691812B2C4AB6008163B3 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
+		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		EE9AB0962AEBBDA300B3E36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		EE9AB0982AEBBDA400B3E36C /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Profile.xcstrings; sourceTree = "<group>"; };
 		F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2474,6 +2477,7 @@
 				0AC4C2C5283F63C70086C6B8 /* CommonUI.swift */,
 				0AC4C2C7283F63E20086C6B8 /* CommomFunctions.swift */,
 				0AC4C2C9283F64040086C6B8 /* SpinnerView.swift */,
+				C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */,
 			);
 			path = "Common Functions";
 			sourceTree = "<group>";
@@ -3585,6 +3589,7 @@
 				0A005C262844F251008117D1 /* PersonalDataCVC.swift in Sources */,
 				0A6E3B9F2844A4F1007002E0 /* checkAccountCompletedTVC.swift in Sources */,
 				1FDC1FE42A9CED4F00598071 /* DateFormatterExtension.swift in Sources */,
+				C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */,
 				0A793B1B28A3C50F003BCD45 /* ConfirmationVC.swift in Sources */,
 				0A71B7A8283F80A9007CE9B2 /* UIButtonExtension.swift in Sources */,
 				0A86AA8228A3773C00C6C688 /* DefaultPictureCVC.swift in Sources */,
@@ -3823,6 +3828,7 @@
 				1FF381582AFD297600CCF1A6 /* PersonalDataCVC.swift in Sources */,
 				1FF381592AFD297600CCF1A6 /* checkAccountCompletedTVC.swift in Sources */,
 				1FF3815A2AFD297600CCF1A6 /* DateFormatterExtension.swift in Sources */,
+				C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */,
 				1FF3815B2AFD297600CCF1A6 /* ConfirmationVC.swift in Sources */,
 				1FF3815C2AFD297600CCF1A6 /* UIButtonExtension.swift in Sources */,
 				1FF3815D2AFD297600CCF1A6 /* DefaultPictureCVC.swift in Sources */,

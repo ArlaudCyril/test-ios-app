@@ -54,7 +54,7 @@ class PortfolioDetailVC: SwipeGesture {
 		
 		if(self.orderId != ""){
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-				CommonFunctions.showLoaderCheckbox(self.view)
+				CommonFunctions.showLoaderLogo(self.view)
 				PortfolioDetailVC.staticTblView = self.tblView
 				PortfolioDetailVC.view = self.view
 				//if(userData.shared.is_push_enabled != 1)//notifications desactivated
@@ -390,11 +390,11 @@ extension PortfolioDetailVC{
 		if(PortfolioDetailVC.exchangeFinished != true){
 			PortfolioDetailVC.exchangeFinished = true
 			if success == true  {
-				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: true)
+				CommonFunctions.hideLoaderLogo(PortfolioDetailVC.view ?? UIView(), success: true)
 				self.callWalletGetBalance()
 				
 			}else{
-				CommonFunctions.hideLoaderCheckbox(PortfolioDetailVC.view ?? UIView(), success: false)
+				CommonFunctions.hideLoaderLogo(PortfolioDetailVC.view ?? UIView(), success: false)
 			}
 		}
 	}

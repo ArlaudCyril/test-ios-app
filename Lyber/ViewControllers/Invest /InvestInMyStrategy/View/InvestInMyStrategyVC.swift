@@ -807,6 +807,7 @@ extension InvestInMyStrategyVC {
 		if(strategyType == .Exchange){
 			let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			self.previewMyInvest.showLoading()
+            self.fromAssetId
 				
 			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalEuroInvested, completion: {response in
 				self.previewMyInvest.hideLoading()

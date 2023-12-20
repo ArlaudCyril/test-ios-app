@@ -48,10 +48,12 @@ extension LoadingInvestmentVC{
 	@objc func fireTimer(){
 		OneTimeInvestmentVM().getStrategyExecutionApi(executionId: self.idInvestment, completion: {response in
 			if response != nil{
-				self.timer.invalidate()
-				let vc = OneTimeInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-				vc.oneInvestment = response?.data
-				self.navigationController?.pushViewController(vc, animated: false)
+                if(response?.data.status != "PENDING"){
+                    self.timer.invalidate()
+                    let vc = OneTimeInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                    vc.oneInvestment = response?.data
+                    self.navigationController?.pushViewController(vc, animated: false)
+                }
 			}
 		})
 		
