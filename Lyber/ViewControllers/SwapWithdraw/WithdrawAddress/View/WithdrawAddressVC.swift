@@ -87,7 +87,7 @@ extension WithdrawAddressVC{
 //MARK: - Other functions
 extension WithdrawAddressVC{
 	func getNetworks(){
-		PortfolioDetailVM().getCoinInfoApi(Asset: self.asset?.id ?? "", isNetwork: true, completion: {[self]response in
+		PortfolioDetailVM().getCoinInfoApi(AssetId: self.asset?.id ?? "", isNetwork: true, completion: {[self]response in
 			if(response != nil){
 				self.networksArray = response?.data?.networks ?? []
 				self.tblView.reloadData()

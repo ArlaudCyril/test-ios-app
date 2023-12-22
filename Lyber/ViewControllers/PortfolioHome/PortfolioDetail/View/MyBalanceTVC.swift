@@ -45,7 +45,7 @@ extension MyBalanceTVC{
         
         CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(balance?.balanceData.euroBalance ?? "") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(balance?.balanceData.balance ?? ""), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAssetPennies(from: Double(balance?.balanceData.balance ?? ""), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.percentageLbl.isHidden = true
         for coin in coinDetailData{
@@ -94,7 +94,7 @@ extension MyBalanceTVC{
 			let priceCoin = (Double(balance?.balanceData.euroBalance ?? "" ) ?? 0)/(Double(balance?.balanceData.balance ?? "" ) ?? 1)
 			
 			CommonUI.setUpLbl(lbl: cell.euroLbl, text: "\(Double(balance?.balanceData.euroBalance ?? "") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: cell.nbOfCoinLbl, text: CommonFunctions.formattedAsset(from: Double(balance?.balanceData.balance ?? ""), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+			CommonUI.setUpLbl(lbl: cell.nbOfCoinLbl, text: CommonFunctions.formattedAssetPennies(from: Double(balance?.balanceData.balance ?? ""), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 			
 			CommonUI.setUpLbl(lbl: cell.optionLabel, text: currency.fullName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			cell.coinImgVw.sd_setImage(with: URL(string: currency.imageUrl ?? ""), completed: nil)

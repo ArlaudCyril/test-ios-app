@@ -52,9 +52,9 @@ class InvestInMyStrategyVC: ViewController {
 	var minInvestPerAsset : Decimal = 10
 	var asset : PriceServiceResume?
 	var maxAmountBuy : Decimal = 1000
-	
-	
     
+    private var numberOfDecimals = -1
+	
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var investInMyStrategyLbl: UILabel!
@@ -130,7 +130,7 @@ class InvestInMyStrategyVC: ViewController {
 			
 			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
 			
-			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAssetPennies(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			
 				self.exchangeAlertLbl.isHidden = false
 			
@@ -270,7 +270,13 @@ class InvestInMyStrategyVC: ViewController {
 			self.frequencyLbl.textColor = UIColor.ThirdTextColor
 			self.frequencyDropDown.image = Assets.drop_down.image()
 			self.frequencyImg.image = Assets.calendar_black.image()
-			
+            
+            PortfolioDetailVM().getCoinInfoApi(AssetId: "eur", isNetwork: false, completion: {
+                response in
+                if response != nil{
+                    self.numberOfDecimals = response?.data?.decimals ?? 2
+                }
+            })
 		}else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy || strategyType == .oneTimeInvestment){
 			
 			if(strategyType == .oneTimeInvestment){
@@ -340,6 +346,13 @@ class InvestInMyStrategyVC: ViewController {
 			
 			maxCoinExchange = Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") ?? 0
 			
+            PortfolioDetailVM().getCoinInfoApi(AssetId: self.fromAssetId ?? "", isNetwork: false, completion: {
+                response in
+                if response != nil{
+                    self.numberOfDecimals = response?.data?.decimals ?? 2
+                }
+            })
+                    
         }else if strategyType == .withdraw{
 			self.noOfCoinVw.isHidden = false
             self.addressVw.isHidden = false
@@ -357,9 +370,9 @@ class InvestInMyStrategyVC: ViewController {
 			
 			CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0) \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
-			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAsset(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAssetPennies(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAsset(from: self.feeWithdrawal ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetPennies(from: self.feeWithdrawal ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
 			self.switchPriceAssetBtn.layer.cornerRadius = 8
 			
@@ -477,7 +490,7 @@ extension InvestInMyStrategyVC {
 				
                 
             }else{
-				enteredText = "\(enteredText)\(sender.tag)"
+                enteredText = handleNewText(text: "\(enteredText)\(sender.tag)")
 				updateValues(value: enteredText)
             }
 				
@@ -545,7 +558,7 @@ extension InvestInMyStrategyVC {
 			}
 			self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
 			
-			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAsset(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAssetPennies(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			
 			self.maxCoinExchange = Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") ?? 0
 			self.fromBalanceTotal = String((Double(exchangeData?.exchangeFromCoinBalance.balanceData.euroBalance ?? "0") ?? 0))
@@ -595,7 +608,7 @@ extension InvestInMyStrategyVC {
 	
 	@objc func maximumBtnAct(){
         if strategyType == .withdraw{
-			let maxAmountWithdrawableString = CommonFunctions.formattedAsset(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)
+			let maxAmountWithdrawableString = CommonFunctions.formattedAssetPennies(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)
 			var enteredSubText = ""
 			
 			self.maxAmountWithdraw = Decimal(string:maxAmountWithdrawableString) ?? 0.0
@@ -611,7 +624,7 @@ extension InvestInMyStrategyVC {
 			noOfCoins(value: enteredText, subValue: enteredSubText)
             
         }else if strategyType == .Exchange{
-            enteredText = CommonFunctions.formattedAsset(from: Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0"), price: exchangeData?.exchangeFromCoinPrice, rounding: .down)
+            enteredText = CommonFunctions.formattedAssetPennies(from: Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0"), price: exchangeData?.exchangeFromCoinPrice, rounding: .down)
             noOfCoins(value: enteredText)
         }
         
@@ -807,12 +820,10 @@ extension InvestInMyStrategyVC {
 		if(strategyType == .Exchange){
 			let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			self.previewMyInvest.showLoading()
-            self.fromAssetId
 				
 			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalEuroInvested, completion: {response in
 				self.previewMyInvest.hideLoading()
 				if( response != nil){
-					
 					vc.InvestmentType = .Exchange
 					vc.fromAssetId = response?.data.fromAsset ?? ""
 					vc.exchangeTo = response?.data.toAsset ?? ""
@@ -822,6 +833,7 @@ extension InvestInMyStrategyVC {
 					vc.timeLimit = response?.data.validTimestamp ?? 0
 					vc.ratioCoin = response?.data.ratio ?? "0"
 					vc.orderId = response?.data.orderId ?? ""
+                    vc.numberOfDecimal = self.numberOfDecimals
 					vc.fees = Double(response?.data.fees ?? "")
 					vc.coinFromPrice = Double(self.fromAssetPrice ?? "")
 					vc.coinToPrice = Decimal(string: self.toAssetPrice ?? "")
@@ -928,12 +940,20 @@ extension InvestInMyStrategyVC {
 		
 	}
 	
+    private func handleNewText(text: String) -> String {
+        var newText = text
+        
+        if(self.strategyType == .Exchange || self.strategyType == .singleCoin){
+            newText = CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: text, numberOfDecimals: self.numberOfDecimals)
+        }
+        return newText
+    }
 }
 
 
 extension InvestInMyStrategyVC : UITextFieldDelegate{
     @objc func editChange(_:UITextField){
-        print(amountTF.text)
+        print(amountTF.text ?? "")
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //        self.view.endEditing(true)

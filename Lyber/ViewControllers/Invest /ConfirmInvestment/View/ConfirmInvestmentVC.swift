@@ -177,7 +177,7 @@ class ConfirmInvestmentVC: ViewController {
 			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.fullName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
 			self.lyberFeeLbl.text = CommonFunctions.localisation(key: "FEES")
-			self.euroLyberFeeLBl.text = "~\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
+			self.euroLyberFeeLBl.text = "~\(CommonFunctions.formattedAssetPennies(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
 			
 			self.totalEuroLbl.text = "\(totalCoinsInvested) \(fromAssetId.uppercased())"
 

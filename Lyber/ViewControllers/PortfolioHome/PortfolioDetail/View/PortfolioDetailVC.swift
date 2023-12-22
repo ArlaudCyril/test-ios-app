@@ -319,7 +319,7 @@ extension PortfolioDetailVC : URLSessionWebSocketDelegate{
 extension PortfolioDetailVC{
 	func callCoinInfoApi(){
 		CommonFunctions.showLoader(self.view)
-		portfolioDetailVM.getCoinInfoApi(Asset: assetId, completion: {[self]response in
+		portfolioDetailVM.getCoinInfoApi(AssetId: assetId, completion: {[self]response in
 			
 			self.assetDetailData = response
 			if((response) != nil)

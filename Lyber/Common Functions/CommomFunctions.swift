@@ -726,7 +726,7 @@ class CommonFunctions{
 		return stringFormatted
     }
 	
-	static func formattedAsset(from value: Double?, price: Double?, rounding : NumberFormatter.RoundingMode = .down) -> String {
+	static func formattedAssetPennies(from value: Double?, price: Double?, rounding : NumberFormatter.RoundingMode = .down) -> String {
 		guard value != nil else { return "0.00" }
 		guard (price != nil && price != 0 && ((price?.isNaN) != true)) else { return "0.00" }
 		let formatter = NumberFormatter()
@@ -754,6 +754,20 @@ class CommonFunctions{
 		
 		return stringFormatted
 	}
+    
+    static func formattedAssetBinance(assetId: String, value: String, numberOfDecimals: Int) -> String {
+        var formattedValue = value
+        if let range = value.range(of: ".") {
+            let integerPart = value[value.startIndex..<range.lowerBound]
+            let decimalPart = value[range.lowerBound...]
+            
+            if decimalPart.count - 1 > numberOfDecimals {
+                formattedValue = "\(integerPart)\(decimalPart.prefix(numberOfDecimals + 1))"
+            }
+        }
+        
+        return formattedValue
+    }
 	
 	static func formattedAssetDecimal(from value: Decimal?, price: Decimal?, rounding : NumberFormatter.RoundingMode = .down) -> String {
 		guard value != nil else { return "0.00" }

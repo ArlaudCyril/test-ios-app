@@ -166,7 +166,7 @@ extension CryptoDepositeVC{
 	
 	func callCoinInfoApi(assetId: String){
 		CommonFunctions.showLoader()
-        PortfolioDetailVM().getCoinInfoApi(Asset: assetId, isNetwork: true, completion: {[weak self]response in
+        PortfolioDetailVM().getCoinInfoApi(AssetId: assetId, isNetwork: true, completion: {[weak self]response in
 			CommonFunctions.hideLoader()
 			self?.dropDownProtocol.dataSource = []
 			self?.networkArray = []

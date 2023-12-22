@@ -91,12 +91,13 @@ struct AssetDetailData: Codable {
 	let about: About?
 	let marketCap: String?
     let circulatingSupply: String?
-	let marketRank: Int?
+    let marketRank: Int?
 	let defaultDepositNetwork: String?
 	let defaultWithdrawalNetwork: String?
     let isUIActive, isDepositActive, isTradeActive, isWithdrawalActive: Bool?
     let isStablecoin: Bool?
 	let networks: [NetworkAsset]?
+    let decimals: Int?
     
     //TODO: delete this parameters
 	let depositChains: [String]?

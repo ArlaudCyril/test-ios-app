@@ -8,9 +8,9 @@
 import Foundation
 class PortfolioDetailVM{
 //    var controller : AllAssetsVC?
-	func getCoinInfoApi(Asset : String, isNetwork : Bool = false, completion: @escaping ( (AssetDetailApi?) -> Void )){
+	func getCoinInfoApi(AssetId : String, isNetwork : Bool = false, completion: @escaping ( (AssetDetailApi?) -> Void )){
         
-        let params : [String : Any] = [Constants.ApiKeys.id : Asset,
+        let params : [String : Any] = [Constants.ApiKeys.id : AssetId,
 									   Constants.ApiKeys.include_networks : isNetwork]
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assetServiceAsset, withParameters: params, ofType: AssetDetailApi.self, onSuccess: { response in

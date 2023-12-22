@@ -32,6 +32,7 @@ class ConfirmExecutionVC: ViewController {
 	var coinFromPrice: Double?
 	var coinToPrice: Decimal?
 	var fromAssetId : String?
+    var numberOfDecimal : Int?
 	
 	//singleCoin
 	var asset : PriceServiceResume?
@@ -151,40 +152,40 @@ class ConfirmExecutionVC: ViewController {
 			applePayButton.addTarget(self, action: #selector(handleApplePayButtonTapped), for: .touchUpInside)
 			
 			self.detailViews = [self.toAssetPriceVw, self.amountVw, self.lyberFeesVw, self.totalVw]
+            
+            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2))€"
 			
 		}else if InvestmentType == .Exchange{
+            self.confirmExecutionLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
+            
+            self.toAssetPriceTitleLbl.text = CommonFunctions.localisation(key: "RATIO")
+            self.toAssetPriceValueLbl.text = "1 : \(self.ratioCoin ?? "")"
+            
+            self.amountTitleLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
+            self.amountValueLbl.text = "~\(self.amountFromDeductedFees ?? "0") \(self.fromAssetId?.uppercased() ?? "")"
+            
+            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2)) \(self.fromAssetId?.uppercased() ?? "")"
+        
+            self.totalValueLbl.text = "\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: amountFrom ?? "0", numberOfDecimals: self.numberOfDecimal ?? 2)) \(self.fromAssetId?.uppercased() ?? "")"
+            
+            self.fromAmountExecution.text = self.totalValueLbl.text
+            
+            //let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
+            let finalAmount = Decimal(string: self.amountTo ?? "0") ?? 0
+            
+            self.toAmountExecution.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(self.exchangeTo.uppercased())"
+            
+            //timer
+            let timestamp: Double = Double((self.timeLimit ?? 0) / 1000)
+            let dateFromTimestamp = Date(timeIntervalSince1970: timestamp)
+            let differenceInSeconds = dateFromTimestamp.timeIntervalSince(Date())
+            
+            self.fireTimerExchange(seconds: Int(differenceInSeconds))
+            
+            self.timeToConfirmPurchaseLbl.isHidden = true
+            
+            self.detailViews = [self.toAssetPriceVw, self.amountVw, self.lyberFeesVw, self.totalVw]
 			
-			self.confirmExecutionLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
-			
-			self.toAssetPriceTitleLbl.text = CommonFunctions.localisation(key: "RATIO")
-			self.toAssetPriceValueLbl.text = "1 : \(self.ratioCoin ?? "")"
-			
-			self.amountTitleLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
-			self.amountValueLbl.text = "~\(CommonFunctions.formattedAsset(from: Double(amountFromDeductedFees ?? "0"), price: self.coinFromPrice)) \(fromAssetId?.uppercased() ?? "")"
-			
-			self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAsset(from: self.fees, price: self.coinFromPrice)) \(self.fromAssetId?.uppercased() ?? "")"
-		
-			let totalFromAmount = (Decimal(string: self.amountFromDeductedFees ?? "0") ?? 0) + Decimal(self.fees ?? 0)
-			
-			self.totalValueLbl.text = "\(CommonFunctions.formattedAssetDecimal(from: totalFromAmount, price: Decimal(self.coinFromPrice ?? 0))) \(self.fromAssetId?.uppercased() ?? "")"
-			
-			self.fromAmountExecution.text = self.totalValueLbl.text
-			
-			//let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
-			let finalAmount = Decimal(string: self.amountTo ?? "0") ?? 0
-			
-			self.toAmountExecution.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(exchangeTo.uppercased())"
-			
-			//timer
-			let timestamp: Double = Double((self.timeLimit ?? 0) / 1000)
-			let dateFromTimestamp = Date(timeIntervalSince1970: timestamp)
-			let differenceInSeconds = dateFromTimestamp.timeIntervalSince(Date())
-			
-			self.fireTimerExchange(seconds: Int(differenceInSeconds))
-			
-			self.timeToConfirmPurchaseLbl.isHidden = true
-			
-			self.detailViews = [self.toAssetPriceVw, self.amountVw, self.lyberFeesVw, self.totalVw]
 		}
 	}
 	
