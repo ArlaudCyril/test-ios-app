@@ -158,6 +158,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "DEPOSIT_NOW" = "Deposit now";
 "NO_ASSETS" = "You don't have any assets yet";
 "ACTIVATE_CREATE_ONE" = "Activate/create one now";
+"DOCUMENT_BEING_VERIFIED" = "Your document is being verified.";
 
 
 //MARK: - PERSONAL INFO;
@@ -257,7 +258,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "REVIEW_INFORMATIONS" = "Review my informations";
 "CHANGE_INFORMATIONS" = "Change my informations";
 "PASSWORD_REQUIREMENTS" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case.";
-"STRONG_PASSWORD" = "The password must have atleast 10 characters, 1 special character, 1 lower case and one 1 upper case.";
+"STRONG_PASSWORD" = "You have a strong password!";
 "LABEL_CGU_CONDITIONS" = "I have read and accept the General Terms and Conditions of Sale";
 "LABEL_PRIVACY_POLICY" = "I have read and accept the privacy policy";
 "CGU_CONDITIONS" = "General Terms and Conditions of Sale";
@@ -645,7 +646,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "SAVE_MONEY" = "Save money";
 "STORE_DIGITAL_ASSETS" = "Store my digital assets";
 
-"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "To complete your registration, we need to verify your identity through our partner Docaposte. You will need to provide an electronic signature and a photograph of an identity document.";
+"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "To complete your registration, we need to verify your identity through our partner Onfido. You will need to provide an electronic signature and a photograph of an identity document.";
 
 
 //MARK: - CONTACTFORMVC

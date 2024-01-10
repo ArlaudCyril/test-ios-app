@@ -82,7 +82,7 @@ extension ChangePasswordVC : UITextFieldDelegate{
 		self.navigationController?.popViewController(animated: true)
 	}
 	
-	@objc func nextBtnAct(){//TODO:
+	@objc func nextBtnAct(){
 		if(oldPasswordTF.text == newPasswordTF.text){
 			CommonFunctions.toster(CommonFunctions.localisation(key: "NEW_PASSWORD_CANNOT_SAME"))
 		}else{
@@ -96,17 +96,6 @@ extension ChangePasswordVC : UITextFieldDelegate{
 						vc.action = "setNewPassword"
 						vc.controller = self
 						self.present(vc, animated: true)
-					})
-				}
-			})
-		}
-		if(token != ""){
-			ResetPasswordVM().resetPasswordIdentifierAPI(token: token, completion: {response in
-				if response != nil{
-					ResetPasswordVM().resetPasswordApi(token: self.token, email: response?.data.email, phone: response?.data.phoneNo, password: self.oldPasswordTF.text, completion: {response in
-						let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-						GlobalVariables.isLogin = true
-						self.navigationController?.pushViewController(vc, animated: true)
 					})
 				}
 			})

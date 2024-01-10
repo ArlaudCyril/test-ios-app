@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -2026,14 +2026,22 @@
                                 <rect key="frame" x="0.0" y="806" width="414" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sre-RQ-LPR">
-                                        <rect key="frame" x="116" y="0.0" width="274" height="56"/>
+                                        <rect key="frame" x="116" y="0.0" width="131" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="QNC-wX-Ccd"/>
                                         </constraints>
                                         <inset key="contentEdgeInsets" minX="20" minY="16" maxX="20" maxY="16"/>
-                                        <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="12" maxY="0.0"/>
-                                        <state key="normal" title="Invest Money" image="invest_money_white">
+                                        <state key="normal" title="Buy">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzw-0K-uao">
+                                        <rect key="frame" x="259" y="0.0" width="131" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="GUn-Jk-caM"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="20" minY="16" maxX="20" maxY="16"/>
+                                        <state key="normal" title="Sell">
                                             <color key="titleColor" name="AccentColor"/>
                                         </state>
                                     </button>
@@ -2049,13 +2057,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Nzw-0K-uao" firstAttribute="leading" secondItem="sre-RQ-LPR" secondAttribute="trailing" constant="12" id="6ee-bz-MyQ"/>
                                     <constraint firstItem="sre-RQ-LPR" firstAttribute="top" secondItem="ft1-ko-zc7" secondAttribute="top" id="8b5-ln-8Xd"/>
                                     <constraint firstItem="Prc-wu-Lfc" firstAttribute="leading" secondItem="ft1-ko-zc7" secondAttribute="leading" constant="48" id="DXm-AB-VSv"/>
                                     <constraint firstAttribute="bottom" secondItem="sre-RQ-LPR" secondAttribute="bottom" id="N05-3I-eaC"/>
+                                    <constraint firstItem="sre-RQ-LPR" firstAttribute="width" secondItem="Nzw-0K-uao" secondAttribute="width" id="Oax-HB-TGF"/>
                                     <constraint firstAttribute="bottom" secondItem="Prc-wu-Lfc" secondAttribute="bottom" id="PAD-9A-JMg"/>
-                                    <constraint firstAttribute="trailing" secondItem="sre-RQ-LPR" secondAttribute="trailing" constant="24" id="ULE-ah-49c"/>
+                                    <constraint firstItem="Nzw-0K-uao" firstAttribute="top" secondItem="ft1-ko-zc7" secondAttribute="top" id="gQh-IJ-FXn"/>
                                     <constraint firstItem="sre-RQ-LPR" firstAttribute="leading" secondItem="Prc-wu-Lfc" secondAttribute="trailing" constant="12" id="iBp-Ki-FVK"/>
                                     <constraint firstItem="Prc-wu-Lfc" firstAttribute="top" secondItem="ft1-ko-zc7" secondAttribute="top" id="pnx-zv-bDW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nzw-0K-uao" secondAttribute="trailing" constant="24" id="syu-Rb-52p"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nzw-0K-uao" secondAttribute="bottom" id="toj-fJ-7Rb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2075,8 +2087,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buyBtn" destination="sre-RQ-LPR" id="JZo-5B-ILr"/>
                         <outlet property="contentView" destination="e7p-mJ-bdu" id="Kzn-i3-6jl"/>
-                        <outlet property="investMoneyBtn" destination="sre-RQ-LPR" id="JZo-5B-ILr"/>
+                        <outlet property="sellBtn" destination="Nzw-0K-uao" id="Nv1-IT-xM9"/>
                         <outlet property="tblView" destination="hgA-ZX-ENG" id="7PT-Sl-U8N"/>
                         <outlet property="threeDotBtn" destination="Prc-wu-Lfc" id="GRB-z4-FzR"/>
                     </connections>

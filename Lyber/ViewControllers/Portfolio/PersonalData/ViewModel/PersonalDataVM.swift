@@ -50,6 +50,7 @@ class PersonalDataVM{
     func setAddressApi(personalData : personalDataStruct?, completion: @escaping ( (OTPAPI?) -> Void )){
         
         var param: [String: Any] = [:]
+        param[Constants.ApiKeys.isUSCitizen] =  personalData?.isUsPerson ?? "" == "Yes" ? true : false
 		param[Constants.ApiKeys.streetNumber] = personalData?.streetNumber ?? ""
 		param[Constants.ApiKeys.street] =  personalData?.streetName ?? ""
 		param[Constants.ApiKeys.city] =  personalData?.CityName ?? ""

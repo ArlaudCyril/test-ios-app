@@ -53,7 +53,7 @@ class InvestInMyStrategyVC: ViewController {
 	var asset : PriceServiceResume?
 	var maxAmountBuy : Decimal = 1000
     
-    private var numberOfDecimals = -1
+    var numberOfDecimals = -1
 	
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
@@ -362,7 +362,7 @@ class InvestInMyStrategyVC: ViewController {
 			self.coinsLbl.isHidden = false
 			self.minimumWithdrawVw.isHidden = false
 			
-			self.coinWithdrawPrice = Decimal(CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0)))
+            self.coinWithdrawPrice =  Decimal((Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
 			self.maxAmountWithdraw = Decimal((Double(self.fromBalance?.balanceData.balance ?? "") ?? 0.0) - (self.feeWithdrawal ?? 0.0))
 			
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
@@ -370,7 +370,7 @@ class InvestInMyStrategyVC: ViewController {
 			
 			CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0) \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
-			CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAssetPennies(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetPennies(from: self.feeWithdrawal ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
@@ -608,7 +608,7 @@ extension InvestInMyStrategyVC {
 	
 	@objc func maximumBtnAct(){
         if strategyType == .withdraw{
-			let maxAmountWithdrawableString = CommonFunctions.formattedAssetPennies(from: Double(fromBalance?.balanceData.balance ?? "") ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)
+            let maxAmountWithdrawableString = CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)
 			var enteredSubText = ""
 			
 			self.maxAmountWithdraw = Decimal(string:maxAmountWithdrawableString) ?? 0.0
@@ -943,7 +943,7 @@ extension InvestInMyStrategyVC {
     private func handleNewText(text: String) -> String {
         var newText = text
         
-        if(self.strategyType == .Exchange || self.strategyType == .singleCoin){
+        if(self.strategyType == .Exchange || self.strategyType == .singleCoin || (self.strategyType == .withdraw && exchangeCoinToEuro == true)){
             newText = CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: text, numberOfDecimals: self.numberOfDecimals)
         }
         return newText

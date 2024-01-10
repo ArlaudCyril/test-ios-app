@@ -31,7 +31,11 @@ class PortfolioHomeVC: NotSwipeGesture {
 		self.getTotalAvailableAssetsApi()
 		GlobalVariables.isLogin = false
 		if(self.hasToShowLoader == true){
-            CommonFunctions.showLoader()
+            if(self.typeLoader == "kyc"){
+                CommonFunctions.showLoader()
+            }else{
+                CommonFunctions.showLoaderSigning()
+            }
 			self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
 		}
 		
@@ -253,7 +257,7 @@ extension PortfolioHomeVC{
                     }
                 }else{
                     if(response?.data?.docusignStatus == "SIGNED"){
-                        CommonFunctions.hideLoader()
+                        CommonFunctions.hideLoaderSigning(success: true)
                         self.timer.invalidate()
                     }
                 }

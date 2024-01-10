@@ -52,7 +52,6 @@ extension KycWebVC: WKUIDelegate {
                 }
 			}else if(navigationAction.request.url?.absoluteString.hasPrefix("https://lyber.com/sign-finished")) == true{
 				if(navigationAction.request.url?.absoluteString == "https://lyber.com/sign-finished?event=signing_complete"){
-					//TODO: add loader
 					webViewHome = nil
                     self.goToPortfolioHome(showLoader: true, typeLoader: "signing")
 					

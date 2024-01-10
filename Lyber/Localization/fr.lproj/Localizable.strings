@@ -157,6 +157,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "DEPOSIT_NOW" = "Déposez en maintenant";
 "NO_ASSETS" = "Vous n'avez pas encore d'actifs";
 "ACTIVATE_CREATE_ONE" = "Activer/créer en une maintenant";
+"DOCUMENT_BEING_VERIFIED" = "Votre document est en cours de vérification.";
 
 
 //MARK: - PERSONAL INFO;
@@ -253,7 +254,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "REVIEW_INFORMATIONS" = "Revoir mes informations";
 "CHANGE_INFORMATIONS" = "Changer mes informations";
 "PASSWORD_REQUIREMENTS" = "Le mot de passe doit comporter au moins 10 caractères, 1 caractère spécial, 1 minuscule et 1 majuscule.";
-"STRONG_PASSWORD" = "You have a strong password!";
+"STRONG_PASSWORD" = "Vous mot de passe est solide !";
 "LABEL_CGU_CONDITIONS" = "J'ai lu et j'accepte les Conditions Générales de Vente";
 "LABEL_PRIVACY_POLICY" = "J'ai lu et j'accepte la politique de confidentialité";
 "CGU_CONDITIONS" = "Conditions Générales de Vente";
@@ -644,7 +645,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "SAVE_MONEY" = "Épargner de l'argent";
 "STORE_DIGITAL_ASSETS" = "Conserver mes actifs numériques";
 
-"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre identité via notre partenaire Docaposte. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
+"FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre identité via notre partenaire Onfido. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
 
 //MARK: - ERRORS
 "CONTACT_US" = "Contactez nous";

@@ -51,14 +51,9 @@ extension WithdrawAddressVC: UITableViewDelegate , UITableViewDataSource{
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if(networksArray[indexPath.row].isWithdrawalActive == true){
-			let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawAddressTVC", for: indexPath as IndexPath) as! WithdrawAddressTVC
-			cell.configureWithData(data : networksArray[indexPath.row])
-			return cell
-		}else{
-			return UITableViewCell()
-		}
-		
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawAddressTVC", for: indexPath as IndexPath) as! WithdrawAddressTVC
+        cell.configureWithData(data : networksArray[indexPath.row])
+        return cell
 	}
 	
 	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -71,6 +66,7 @@ extension WithdrawAddressVC: UITableViewDelegate , UITableViewDataSource{
 		vc.feeWithdrawal = self.networksArray[indexPath.row].withdrawFee
 		vc.fromAssetId = self.asset?.id ?? ""
 		vc.network = networksArray[indexPath.row]
+        vc.numberOfDecimals = self.networksArray[indexPath.row].decimals ?? -1
 		self.navigationController?.pushViewController(vc, animated: true)
 		
 	}
@@ -89,7 +85,12 @@ extension WithdrawAddressVC{
 	func getNetworks(){
 		PortfolioDetailVM().getCoinInfoApi(AssetId: self.asset?.id ?? "", isNetwork: true, completion: {[self]response in
 			if(response != nil){
-				self.networksArray = response?.data?.networks ?? []
+                self.networksArray = []
+                for network in response?.data?.networks ?? []{
+                    if(network.isWithdrawalActive == true){
+                        self.networksArray.append(network)
+                    }
+                }
 				self.tblView.reloadData()
 			}
 		})

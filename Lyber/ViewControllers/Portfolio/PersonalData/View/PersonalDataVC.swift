@@ -281,9 +281,11 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.enterZipcode)
         }else if self.CountryName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterCountry)
+        }else if self.isUsPerson == ""{
+            CommonFunctions.toster(Constants.AlertMessages.selectAreYouUSCitizen)
         }else{
 //            GotoNextIndex()
-            personalData = personalDataStruct(streetNumber: streetNumber, streetName: streetName, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName)
+            personalData = personalDataStruct(isUsPerson: isUsPerson, streetNumber: streetNumber, streetName: streetName, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.setAddressApi(personalData: personalData, completion: {[weak self]response in
@@ -292,7 +294,7 @@ extension PersonalDataVC{
                 if let response = response{
                     print(response)
                     userData.shared.personalDataStepComplete = 2
-					
+                    userData.shared.isUsCitizen = self?.isUsPerson ?? ""
 					userData.shared.streetNumber = self?.streetNumber ?? ""
 					userData.shared.streetName = self?.streetName ?? ""
 					userData.shared.city = self?.CityName ?? ""

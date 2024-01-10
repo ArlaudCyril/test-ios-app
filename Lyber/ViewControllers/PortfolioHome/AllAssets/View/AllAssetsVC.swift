@@ -182,7 +182,7 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
 			self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .singleAsset || screenType == .singleAssetStrategy{
 			let toAsset = coinsData.first(where: {$0.id == "usdt"}) ?? filterCoin[indexPath.row]
-			if(self.fromAssetId == "usdt"){
+            if(self.fromAssetId == "usdt" || filterCoin[indexPath.row].id == "usdt"){
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyType = .singleCoin
 				vc.asset = toAsset

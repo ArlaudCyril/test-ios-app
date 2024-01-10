@@ -93,7 +93,9 @@ extension PortfolioDetailTVC{
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
 		
-		
+        let indexPath = IndexPath(item: 2, section: 0)
+        self.collView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+        self.collectionView(self.collView, didSelectItemAt: indexPath)
 		
     }
     
@@ -257,6 +259,7 @@ extension PortfolioDetailTVC{
         self.controller?.portfolioDetailVM.getChartDataApi(AssetId: self.assetName, timeFrame: duration , completion: {[ self]response in
             if let response = response{
                 self.graphValues = []
+                self.midnightPrice = Decimal(string: response.data?.prices?.first ?? "") ?? 0
                 
                 let modifiedDateArr = self.getTimeValues(date: response.data?.lastUpdate ?? "", timeFrame: duration, count: response.data?.prices?.count ?? 0)
                 

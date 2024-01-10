@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import DropDown
 import CountryPickerView
 import IQKeyboardManagerSwift
 
 class addressCVC: UICollectionViewCell {
     //MARK: - Variables
     var controller : PersonalDataVC?
+    var dropDown = DropDown()
     //MARK:- IB OUTLETS
     @IBOutlet var addressLbl: UILabel!
     @IBOutlet var addressDescLbl: UILabel!
@@ -27,6 +29,8 @@ class addressCVC: UICollectionViewCell {
     @IBOutlet var zipCodeTF: UITextField!
     @IBOutlet var countryVw: CountryPickerView!
     @IBOutlet var countryTF: UITextField!
+    @IBOutlet var specifiedUSPersonVw: UIView!
+    @IBOutlet var specifiedUSPersonLbl: UILabel!
     
     override func awakeFromNib() {
 		IQKeyboardManager.shared.enable = true
@@ -38,6 +42,7 @@ extension addressCVC{
         CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "POSTAL_ADDRESS"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.addressDescLbl, text: CommonFunctions.localisation(key: "NEED_INFORMATIONS_LEGAL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: self.addressDescLbl, text: CommonFunctions.localisation(key: "NEED_INFORMATIONS_LEGAL"), lineSpacing: 6, textAlignment: .left)
+        CommonUI.setUpLbl(lbl: self.specifiedUSPersonLbl, text: CommonFunctions.localisation(key: "ARE_YOU_A_US_CITIZEN"), textColor: UIColor.TFplaceholderColor, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         
         CommonUI.setUpViewBorder(vw: self.streetNumberVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.buildingFloorVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
@@ -45,6 +50,7 @@ extension addressCVC{
         CommonUI.setUpViewBorder(vw: self.stateVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.zipCodeVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         CommonUI.setUpViewBorder(vw: self.countryVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
+        CommonUI.setUpViewBorder(vw: self.specifiedUSPersonVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)
         
         CommonUI.setUpTextField(textfield: buildingFloorTF, placeholder: CommonFunctions.localisation(key: "STREET_NAME"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpTextField(textfield: streetNumberTF, placeholder: CommonFunctions.localisation(key: "STREET_NUMBER"), font: UIFont.MabryPro(Size.XLarge.sizeValue()))
@@ -66,6 +72,9 @@ extension addressCVC{
 			tf?.autocapitalizationType = .words
             tf?.addTarget(self, action: #selector(editChange(_:)), for: .editingChanged)
         }
+        
+        let specifiedUsPersonVwTap = UITapGestureRecognizer(target: self, action: #selector(IsUsPerson))
+        self.specifiedUSPersonVw.addGestureRecognizer(specifiedUsPersonVwTap)
     }
     
     func setPersonalData(){
@@ -74,8 +83,11 @@ extension addressCVC{
         self.cityTF.text = userData.shared.city
         self.stateTF.text = userData.shared.department
         self.zipCodeTF.text = userData.shared.zipCode
-		self.countryVw.setCountryByCode(userData.shared.country)
+        //self.countryVw.setCountryByCode(userData.shared.country)
+		self.countryVw.setCountryByName(userData.shared.country)
         
+        self.specifiedUSPersonLbl.text = userData.shared.isUsCitizen
+        self.specifiedUSPersonLbl.textColor = UIColor.Purple35126D
         DispatchQueue.main.async {
             self.controller?.streetNumber = self.streetNumberTF.text ?? ""
             self.controller?.streetName = self.buildingFloorTF.text ?? ""
@@ -83,6 +95,7 @@ extension addressCVC{
             self.controller?.stateName = self.stateTF.text ?? ""
             self.controller?.zipCode = self.zipCodeTF.text ?? ""
             self.controller?.CountryName = self.countryTF.text ?? ""
+            self.controller?.isUsPerson = self.specifiedUSPersonLbl.text ?? ""
         }
         
     }
@@ -189,7 +202,7 @@ extension addressCVC{
 extension addressCVC: CountryPickerViewDelegate, CountryPickerViewDataSource{
     func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country){
         self.countryTF.text = country.name
-        self.controller?.CountryName = country.code
+        self.controller?.CountryName = country.name
     }
 	
 	func localeForCountryNameInList(in countryPickerView: CountryPickerView) -> Locale {
@@ -207,4 +220,23 @@ extension addressCVC: CountryPickerViewDelegate, CountryPickerViewDataSource{
 	func sectionTitleForPreferredCountries(in countryPickerView: CountryPickerView) -> String? {
 		return "Preferred country"
 	}
+}
+
+//MARK: - Other functions
+extension addressCVC{
+    @objc func IsUsPerson(){
+        
+        dropDown.dataSource = [CommonFunctions.localisation(key: "YES"),CommonFunctions.localisation(key: "NO")]
+        dropDown.backgroundColor = UIColor.PurpleGrey_50
+        dropDown.cornerRadius = 8
+        dropDown.textFont = UIFont.MabryPro(Size.Large.sizeValue())
+        dropDown.anchorView = specifiedUSPersonVw
+        dropDown.bottomOffset = CGPoint(x: 0, y: specifiedUSPersonVw.frame.height)
+        dropDown.show()
+        dropDown.selectionAction = {[weak self] (index: Int,item: String) in
+            self?.specifiedUSPersonLbl.text = item
+            self?.controller?.isUsPerson = item
+            self?.specifiedUSPersonLbl.textColor = UIColor.Purple35126D
+        }
+    }
 }

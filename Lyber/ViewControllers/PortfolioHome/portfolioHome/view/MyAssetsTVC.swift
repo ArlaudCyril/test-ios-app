@@ -53,7 +53,7 @@ extension MyAssetsTVC{
 		self.coinImgView.sd_setImage(with: URL(string:currency.imageUrl ?? ""), completed: nil)
 		
 		CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: currency.fullName ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(data?.balanceData.euroBalance ?? "0") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\((Double(data?.balanceData.euroBalance ?? "0") ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAssetPennies(from: Double(data?.balanceData.balance ?? ""), price: priceCoin, rounding: .down) , textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
 
 

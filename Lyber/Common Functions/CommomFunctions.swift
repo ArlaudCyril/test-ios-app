@@ -132,15 +132,36 @@ class CommonFunctions{
         loadingView.backgroundColor = UIColor.black
         loadingView.alpha = 0.6
         
-        
-//        let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "biercelona-beer", withExtension: "gif")!)
-//        let advTimeGif = UIImage.gifImageWithData(data: imageData! as NSData)
-//        let imageView = UIImageView(image: advTimeGif)
-//        imageView.frame = CGRect(x: (topView?.frame.width ?? 0)/2 - 20, y: (topView?.frame.height ?? 0)/2 - 20, width: 40, height: 40)
-                
-        
         let laodingFrame = SpinnerView(frame: CGRect(x: (topView?.frame.width ?? 0)/2 - 20, y: (topView?.frame.height ?? 0)/2 - 20, width: 40, height: 40))
         loadingView.addSubview(laodingFrame)
+        loadingView.tag = 111
+        var present = false
+        if topView != nil{
+            for (_,subView) in topView!.subviews.enumerated(){
+                if subView.tag == 111 || subView.tag == 191 {
+                    present = true
+                }
+            }
+        }
+        if !present{
+            topView?.addSubview(loadingView)
+        }
+    }
+    
+    static func showLoaderSigning(){
+        let topView = getTopMostViewController()?.view
+        let loadingView = UIView(frame : CGRect(x: 0, y: 0, width: topView?.frame.width ?? 0, height: topView?.frame.height ?? 0))
+        loadingView.backgroundColor = UIColor.black
+        loadingView.alpha = 0.6
+
+        let labelText = UILabel(frame: CGRect(x: 0, y: (topView?.frame.height ?? 0)/2 + 30, width: topView?.frame.width ?? 0, height: 20))
+        labelText.text = CommonFunctions.localisation(key: "DOCUMENT_BEING_VERIFIED")
+        labelText.textColor = UIColor.white
+        labelText.textAlignment = .center
+        loadingView.addSubview(labelText)
+
+        let loadingFrame = SpinnerView(frame: CGRect(x: (topView?.frame.width ?? 0)/2 - 20, y: (topView?.frame.height ?? 0)/2 - 20, width: 40, height: 40))
+        loadingView.addSubview(loadingFrame)
         loadingView.tag = 111
         var present = false
         if topView != nil{
@@ -291,7 +312,7 @@ class CommonFunctions{
         }
     }
 	
-	static func hideLoaderCheckbox(_ onView : UIView, success: Bool){
+    static func hideLoaderCheckbox(_ onView : UIView = getTopMostViewController()?.view ?? UIView(), success: Bool){
         
         let topView = onView
         var underView = UIImageView()
@@ -319,6 +340,39 @@ class CommonFunctions{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     topView.subviews[num].removeFromSuperview()
                     launcher.emitterCells?.removeAll()
+                }
+            }
+        }
+    }
+    
+    
+    static func hideLoaderSigning(_ onView: UIView = getTopMostViewController()?.view ?? UIView(), success: Bool) {
+
+        let topView = onView
+
+        for (num, subView) in topView.subviews.enumerated() {
+            if subView.tag == 111 {
+
+                // Remove all subsubviews
+                subView.subviews.forEach { subSubview in
+                    subSubview.removeFromSuperview()
+                }
+
+                // Add the underView (checkmark or close image)
+                let underView = UIImageView()
+                if success {
+                    underView.image = UIImage(asset: Assets.checkmark_color)
+                } else {
+                    underView.image = UIImage(asset: Assets.close_color)
+                }
+                underView.frame = CGRect(x: topView.frame.width / 2 - 40, y: topView.frame.height / 2 - 40, width: 80, height: 80)
+                subView.addSubview(underView)
+                subView.layer.addSublayer(underView.layer)
+                underView.layer.zPosition = 1
+
+                // Remove the loadingView after a delay
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    topView.subviews[num].removeFromSuperview()
                 }
             }
         }

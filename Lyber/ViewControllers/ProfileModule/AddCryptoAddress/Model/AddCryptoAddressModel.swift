@@ -23,6 +23,7 @@ struct NetworkAsset: Codable {
 	let withdrawFee: Double?
 	let isDepositActive: Bool?
 	let isWithdrawalActive: Bool?
+    let decimals: Int?  
 }
 
 
