@@ -138,7 +138,7 @@ extension AddressAddedPopUpVC{
 	@objc func addressCopyLblTapped(_ gesture: UITapGestureRecognizer) {
 		CommonFunctions.toster(CommonFunctions.localisation(key: "COPIED"))
 		let pasteboard = UIPasteboard.general
-		pasteboard.string = self.addressCopyLbl.text
+		pasteboard.string = self.editAddress?.address
 	}
 	
 	@objc func addressOriginImgAction(_ gesture: UITapGestureRecognizer) {
