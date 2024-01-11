@@ -698,7 +698,7 @@ extension InvestInMyStrategyVC {
 				amountTF.text = "\(cleanedValue)€"
 				self.noOfCoinLbl.text = "~\(totalNoOfCoinsInvest) \(self.fromAssetId?.uppercased() ?? "")"
 				
-				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0) + (0.01 * totalNoOfCoinsInvest), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
+				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
             }else{
 				totalNoOfCoinsInvest = Decimal(string:cleanedValue) ?? 0.0
 				totalEuroInvested = (Decimal(string: subValue) ?? 0.0)
@@ -706,7 +706,7 @@ extension InvestInMyStrategyVC {
 				amountTF.text = "\(cleanedValue) \(fromAssetId?.uppercased() ?? "")"
                 self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: NSDecimalNumber(decimal: totalEuroInvested).doubleValue))€"
 				
-				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0) + (0.01 * totalNoOfCoinsInvest), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
+				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
             }
 		}else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
 			if exchangeCoinToEuro == false{
@@ -848,7 +848,7 @@ extension InvestInMyStrategyVC {
 			vc.totalCoinsInvested = totalNoOfCoinsInvest
 			vc.address = self.addressLbl.text
 			vc.network = self.network
-			vc.fees = (self.feeWithdrawal ?? 0) + NSDecimalNumber(decimal: 0.01 * totalNoOfCoinsInvest).doubleValue
+			vc.fees = (self.feeWithdrawal ?? 0)
 			vc.fromAssetId = self.fromAssetId ?? ""
 			vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
 			self.navigationController?.pushViewController(vc, animated: true)
