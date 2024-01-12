@@ -610,7 +610,6 @@
 		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
 		A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
-		C81691822B2C4AB6008163B3 /* Pods in Resources */ = {isa = PBXBuildFile; fileRef = C81691812B2C4AB6008163B3 /* Pods */; };
 		C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		EE9AB0952AEBBDA300B3E36C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9AB0972AEBBDA300B3E36C /* Profile.storyboard */; };
@@ -3184,7 +3183,6 @@
 				0A759D412852029600E59580 /* InvestStrategy.storyboard in Resources */,
 				0A71B8D6283F9275007CE9B2 /* AtypText-SemiboldItalic.ttf in Resources */,
 				0A71B8D7283F9275007CE9B2 /* AtypText-Thin.ttf in Resources */,
-				C81691822B2C4AB6008163B3 /* Pods in Resources */,
 				0A71B8D8283F9275007CE9B2 /* AtypText-ThinItalic.ttf in Resources */,
 				0AC4C2B3283F4AD90086C6B8 /* LaunchScreen.storyboard in Resources */,
 				0A7A8A3128C5FE4A0022632C /* template_deserts_1.json in Resources */,
