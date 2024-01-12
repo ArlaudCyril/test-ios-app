@@ -128,7 +128,6 @@ class ConfirmInvestmentVC: ViewController {
     
     func checkInvestmentType(){
 		if (InvestmentType == .activateStrategy || InvestmentType == .editActiveStrategy || InvestmentType == .oneTimeInvestment){
-			//TODO : hide for oneTimeInvestment
 			if(InvestmentType == .oneTimeInvestment){
 				self.amountLbl.text = CommonFunctions.localisation(key: "INVEST")
 				self.frequencyNameLbl.text = CommonFunctions.localisation(key: "IMMEDIATE")
@@ -140,10 +139,10 @@ class ConfirmInvestmentVC: ViewController {
 					self.progressBar.setProgress(section: i, to: (Float(self.coinsData[i].share ))/100)
                 }
             }
-			let feeEuros = totalEuroInvested/100
+			let feeEuros = totalEuroInvested/200
             self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDT"
 			self.euroAmountLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested-feeEuros)) USDT"
-			self.euroLyberFeeLBl.text = "\(feeEuros) USDT"
+			self.euroLyberFeeLBl.text = "~\(feeEuros) USDT"
 			self.totalEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDT"
 			
         }else if InvestmentType == .deposit{
