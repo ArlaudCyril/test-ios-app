@@ -72,6 +72,7 @@ class PortfolioHomeVC: NotSwipeGesture {
 		
 		tblView.es.addPullToRefresh {
 			self.callWalletGetBalance()
+            self.getTotalAvailableAssetsApi()
 			self.tblView.es.stopPullToRefresh()
 		}
     }

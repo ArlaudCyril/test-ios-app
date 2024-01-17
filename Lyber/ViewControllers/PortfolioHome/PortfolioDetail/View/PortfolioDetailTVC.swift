@@ -24,7 +24,7 @@ class PortfolioDetailTVC: UITableViewCell {
 	var timer = Timer()
 	var entrySelected = ChartDataEntry()
 	var scaleYChartView : CGFloat = 0
-	var midnightPrice : Decimal = -1
+	var firstPrice : Decimal = -1
     
     //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
@@ -95,7 +95,7 @@ extension PortfolioDetailTVC{
 		
         let indexPath = IndexPath(item: 2, section: 0)
         self.collView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
-        self.collectionView(self.collView, didSelectItemAt: indexPath)
+        //self.collectionView(self.collView, didSelectItemAt: indexPath)
 		
     }
     
@@ -259,7 +259,7 @@ extension PortfolioDetailTVC{
         self.controller?.portfolioDetailVM.getChartDataApi(AssetId: self.assetName, timeFrame: duration , completion: {[ self]response in
             if let response = response{
                 self.graphValues = []
-                self.midnightPrice = Decimal(string: response.data?.prices?.first ?? "") ?? 0
+                self.firstPrice = Decimal(string: response.data?.prices?.first ?? "") ?? 0
                 
                 let modifiedDateArr = self.getTimeValues(date: response.data?.lastUpdate ?? "", timeFrame: duration, count: response.data?.prices?.count ?? 0)
                 
@@ -303,12 +303,12 @@ extension PortfolioDetailTVC{
 		
 		self.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: self.valueWebSocket))€"
 		
-		if(midnightPrice == -1){
+		if(firstPrice == -1){
 			self.percentageLbl.text = "0.0 %"
 		}else{
-			let percentChange = CommonFunctions.getTwoDecimalValueDecimal(number: (Decimal(self.valueWebSocket)/self.midnightPrice - 1) * 100)
+			let percentChange = CommonFunctions.getTwoDecimalValueDecimal(number: (Decimal(self.valueWebSocket)/self.firstPrice - 1) * 100)
 			
-			let euroChange = CommonFunctions.formattedDecimalForValue(from: Decimal(self.valueWebSocket), for: Decimal(self.valueWebSocket) - self.midnightPrice)
+			let euroChange = CommonFunctions.formattedDecimalForValue(from: Decimal(self.valueWebSocket), for: Decimal(self.valueWebSocket) - self.firstPrice)
 			
 			if(percentChange >= 0){
 				self.percentageLbl.text = "▲ + \(percentChange)% (\(euroChange)€)"
@@ -387,13 +387,13 @@ extension PortfolioDetailTVC{
 		self.controller?.portfolioDetailVM.getResumeByIdApi(assetId: self.assetName, completion: {response in
 			if response != nil{
 				self.controller?.asset = PriceServiceResume(id: self.assetName, priceServiceResumeData: response?.data ?? PriceServiceResumeData())
-				self.midnightPrice = Decimal(string: response?.data.midnightPrice ?? "-1") ?? -1
+				self.firstPrice = Decimal(string: response?.data.firstPrice ?? "-1") ?? -1
 				self.euroLbl.text = "\(CommonFunctions.formattedCurrency(from: Double(response?.data.lastPrice ?? "0") ?? 0))€"
 				
 				let lastPrice = (Decimal(string: response?.data.lastPrice ?? "") ?? 0)
 				
-				let percentChange = CommonFunctions.getTwoDecimalValueDecimal(number: (lastPrice / self.midnightPrice - 1) * 100)
-				let euroChange = CommonFunctions.formattedDecimalForValue(from: lastPrice, for: lastPrice - self.midnightPrice)
+				let percentChange = CommonFunctions.getTwoDecimalValueDecimal(number: (lastPrice / self.firstPrice - 1) * 100)
+				let euroChange = CommonFunctions.formattedDecimalForValue(from: lastPrice, for: lastPrice - self.firstPrice)
 				
 				if(percentChange >= 0){
 					self.percentageLbl.text = "▲ + \(percentChange)% (\(euroChange)€)"

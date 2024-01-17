@@ -33,7 +33,7 @@ struct PriceServiceResumeDataAPI: Codable {
 
 // MARK: - PriceServiceResumeData
 struct PriceServiceResumeData: Codable {
-	let lastPrice, change, squiggleURL, midnightPrice : String?
+	let lastPrice, change, squiggleURL, firstPrice : String?
 	var isAuto : Bool?
 	let rank: Int?
 	
@@ -43,7 +43,7 @@ struct PriceServiceResumeData: Codable {
 		self.squiggleURL = ""
 		self.isAuto = false
 		self.rank = 0
-		self.midnightPrice = "-1"
+		self.firstPrice = "-1"
 	}
 }
 

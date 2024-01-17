@@ -29,6 +29,7 @@ class enterNumberCVC: UICollectionViewCell {
     @IBOutlet var loginByEmailBtn: UIButton!
     @IBOutlet var forgotPasswordBtn: UIButton!
     @IBOutlet var scrollStackVw: UIStackView!
+    
 }
 
 //Mark: - SetUpUI
@@ -129,6 +130,8 @@ extension enterNumberCVC: CountryPickerViewDelegate,CountryPickerViewDataSource{
     func navigationTitle(in countryPickerView: CountryPickerView) -> String?{
         return "Select Country"
     }
+    
+    
 }
 
 
