@@ -183,6 +183,7 @@ extension ConfirmationVC{
 					vc.clientSecret = response?.data.clientSecret
 					vc.asset = self.asset
 					vc.validTimeStamp = response?.data.validTimestamp
+                    vc.paymentIntentId = response?.data.paymentIntentId
 					vc.fees = self.fees
 					vc.fromAmountInvested = self.fromAmountInvested
 					vc.toAmountToObtain = self.toAmountToObtain

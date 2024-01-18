@@ -64,18 +64,7 @@ extension AllAssetsAvailableTVC: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: (self.coinCollView.bounds.width/3 - 8), height: self.coinCollView.bounds.height)
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 8
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 8
-//    }
-    
+    	        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 		vc.assetId = allAssetsAvailable[indexPath.row].id

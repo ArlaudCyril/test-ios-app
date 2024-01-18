@@ -95,7 +95,6 @@ extension PortfolioDetailTVC{
 		
         let indexPath = IndexPath(item: 2, section: 0)
         self.collView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
-        //self.collectionView(self.collView, didSelectItemAt: indexPath)
 		
     }
     

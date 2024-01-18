@@ -612,6 +612,8 @@
 		A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
 		C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
+		C8859A362B596D1E00225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
+		C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		EE9AB0952AEBBDA300B3E36C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9AB0972AEBBDA300B3E36C /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -926,6 +928,7 @@
 		4C0A8C3529955D5700CCC88A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		C81691812B2C4AB6008163B3 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
 		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
 		EE9AB0962AEBBDA300B3E36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		EE9AB0982AEBBDA400B3E36C /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Profile.xcstrings; sourceTree = "<group>"; };
 		F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2753,6 +2756,7 @@
 		1F6B1DBC2AA9D0CF00A11A5C /* ConfirmExecution */ = {
 			isa = PBXGroup;
 			children = (
+				C8859A342B596D0900225697 /* ViewModel */,
 				1F6B1DBD2AA9D0D900A11A5C /* View */,
 			);
 			path = ConfirmExecution;
@@ -3019,6 +3023,14 @@
 				F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8859A342B596D0900225697 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3393,6 +3405,7 @@
 				1F4DCC6129D2FF4500C3B374 /* LanguageTVC.swift in Sources */,
 				0A75020C2859F76300D68BAB /* AllAssetsAvailableTVC.swift in Sources */,
 				0A71B7A0283F7D7C007CE9B2 /* LoginVC.swift in Sources */,
+				C8859A362B596D1E00225697 /* ConfirmExecutionVM.swift in Sources */,
 				0A7256512874506400E8322A /* InvestmentStrategyVM.swift in Sources */,
 				1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */,
 				0A7586C6286C76EE00DC889E /* Reachability.swift in Sources */,
@@ -3632,6 +3645,7 @@
 				1FF380972AFD297600CCF1A6 /* LanguageTVC.swift in Sources */,
 				1FF380982AFD297600CCF1A6 /* AllAssetsAvailableTVC.swift in Sources */,
 				1FF380992AFD297600CCF1A6 /* LoginVC.swift in Sources */,
+				C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */,
 				1FF3809A2AFD297600CCF1A6 /* InvestmentStrategyVM.swift in Sources */,
 				1FF3809B2AFD297600CCF1A6 /* DepositAssetVC.swift in Sources */,
 				1FF3809C2AFD297600CCF1A6 /* Reachability.swift in Sources */,

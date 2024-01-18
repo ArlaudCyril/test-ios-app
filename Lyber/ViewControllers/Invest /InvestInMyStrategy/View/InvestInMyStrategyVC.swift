@@ -863,6 +863,7 @@ extension InvestInMyStrategyVC {
 					vc.asset = self.asset
 					vc.orderId = response?.data.orderId ?? ""
 					vc.validTimeStamp = response?.data.validTimestamp
+                    vc.paymentIntentId = response?.data.paymentIntentId
 					vc.fees = NSDecimalNumber(decimal: self.totalEuroInvested).doubleValue * 0.03
 					vc.fromAmountInvested = NSDecimalNumber(decimal: self.totalEuroInvested).doubleValue
 					vc.toAmountToObtain = NSDecimalNumber(decimal: self.totalNoOfCoinsInvest).doubleValue

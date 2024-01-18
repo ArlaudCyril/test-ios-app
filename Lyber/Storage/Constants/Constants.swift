@@ -98,6 +98,8 @@ struct Constants{
         static let strategyType = "strategyType"
         static let share = "share"
         static let owner_uuid = "ownerUuid"
+        static let payment_intent_id = "paymentIntentId"
+        static let user_uuid = "userUuid"
         static let orderId = "orderId"
         static let executionId = "executionId"
         
@@ -224,7 +226,8 @@ struct Constants{
 		//Orders
 		static let orderServiceQuote = "order-service/quote"
 		static let orderServiceAcceptQuote = "order-service/accept-quote"
-		static let orderServiceOrder = "order-service/order"
+        static let orderServiceOrder = "order-service/order"
+		static let orderServiceCancelQuote = "order-service/cancel-quote"
 		
 		//Wallet
 		static let walletServiceAddress = "wallet-service/address"

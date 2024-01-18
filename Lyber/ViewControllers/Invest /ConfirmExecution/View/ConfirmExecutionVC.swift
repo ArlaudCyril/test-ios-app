@@ -28,7 +28,8 @@ class ConfirmExecutionVC: ViewController {
 	var amountFromDeductedFees : String?
 	var amountTo : String?
 	var exchangeTo = String()
-	var orderId: String?
+    var orderId: String?
+	var paymentIntentId: String?
 	var coinFromPrice: Double?
 	var coinToPrice: Decimal?
 	var fromAssetId : String?
@@ -85,7 +86,7 @@ class ConfirmExecutionVC: ViewController {
 		let dateFromTimestamp = Date(timeIntervalSince1970: timestamp)
 		let differenceInSeconds = dateFromTimestamp.timeIntervalSince(Date())
 		
-		self.fireTimer(seconds: Int(differenceInSeconds))
+        self.fireTimer(seconds: Int(differenceInSeconds))
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -322,7 +323,11 @@ extension ConfirmExecutionVC{
 			vc.confirmationType = .buyFailure
 			vc.previousViewController = self
 			self.present(vc, animated: true)
-		} else {
+        }else {
+            if(seconds == 1){
+                ConfirmExecutionVM().cancelQuoteApi(userUuid: userData.shared.userUuid, orderId: self.orderId ?? "", paymentIntentId: self.paymentIntentId ?? "", completion: {_ in })
+            }
+            
 			// Check if the timer is already running and invalidate it
 			timer?.invalidate()
 			

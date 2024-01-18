@@ -45,5 +45,6 @@ struct Quote: Codable{
 	var ratio: String
 	var orderId: String
 	var fees: String
-	var clientSecret: String?
+    var clientSecret: String?
+	var paymentIntentId: String?
 }

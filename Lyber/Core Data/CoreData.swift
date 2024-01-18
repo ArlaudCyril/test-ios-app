@@ -12,7 +12,8 @@ import UIKit
 
 class userData : NSObject {
 	var firstname = ""
-	var lastname = ""
+    var lastname = ""
+	var userUuid = ""
 	var registeredAt = ""
     var userToken = ""
     var refreshToken = ""
@@ -114,7 +115,8 @@ class userData : NSObject {
 		
 		//Profil informations
 		newData.setValue(firstname, forKey: "firstname")
-		newData.setValue(lastname, forKey: "lastname")
+        newData.setValue(lastname, forKey: "lastname")
+		newData.setValue(userUuid, forKey: "userUuid")
 		newData.setValue(registeredAt, forKey: "registeredAt")
 		newData.setValue(firstnameRegistration, forKey: "firstnameRegistration")
 		newData.setValue(lastnameRegistration, forKey: "lastnameRegistration")
@@ -289,8 +291,12 @@ class userData : NSObject {
 						print("data get firstname \(firstname)")
 					}
 					if let lastname = result.value(forKey: "lastname") as? String{
-						self.lastname = lastname
-						print("data get lastname \(lastname)")
+                        self.lastname = lastname
+                        print("data get lastname \(lastname)")
+                    }
+                    if let userUuid = result.value(forKey: "userUuid") as? String{
+						self.userUuid = userUuid
+						print("data get userUuid \(userUuid)")
 					}
 					if let registeredAt = result.value(forKey: "registeredAt") as? String{
 						self.registeredAt = registeredAt
@@ -306,7 +312,7 @@ class userData : NSObject {
 					}
 					if let placeOfBirth = result.value(forKey: "placeOfBirth") as? String{
 						self.placeOfBirth = placeOfBirth
-						print("data get lastname \(placeOfBirth)")
+						print("data get placeOfBirth \(placeOfBirth)")
 					}
 					if let birthDate = result.value(forKey: "birthDate") as? String{
 						self.birthDate = birthDate
@@ -420,7 +426,8 @@ class userData : NSObject {
 		self.refreshToken = ""
 		self.time = nil
 		self.firstname = ""
-		self.lastname = ""
+        self.lastname = ""
+		self.userUuid = ""
 		self.registeredAt = ""
 		self.profile_image = ""
 		self.email = ""
@@ -452,6 +459,7 @@ class userData : NSObject {
         self.time = nil
         self.firstname = ""
         self.lastname = ""
+        self.userUuid = ""
         self.registeredAt = ""
 		self.firstnameRegistration = ""
         self.lastnameRegistration = ""

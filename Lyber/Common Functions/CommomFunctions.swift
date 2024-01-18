@@ -1109,7 +1109,8 @@ class CommonFunctions{
 				}
 				userData.shared.firstname = response?.data?.firstName ?? ""
 				
-				userData.shared.lastname = response?.data?.lastName ?? ""
+                userData.shared.lastname = response?.data?.lastName ?? ""
+				userData.shared.userUuid = response?.data?.uuid ?? ""
 				userData.shared.registeredAt = response?.data?.registeredAt ?? ""
 				userData.shared.has2FA = response?.data?.has2FA ?? false
 				userData.shared.type2FA = response?.data?.type2FA ?? "none"
