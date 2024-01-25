@@ -27,8 +27,12 @@ class ChangePasswordVC: ViewController {
 	@IBOutlet var oldPasswordVw: UIView!
 	
 	@IBOutlet var newPasswordTitle: UILabel!
-	@IBOutlet var newPasswordTF: UITextField!
-	@IBOutlet var newPasswordVw: UIView!
+    @IBOutlet var newPasswordTF: UITextField!
+    @IBOutlet var newPasswordVw: UIView!
+    
+    @IBOutlet var confirmNewPasswordTitle: UILabel!
+	@IBOutlet var confirmNewPasswordTF: UITextField!
+	@IBOutlet var confirmNewPasswordVw: UIView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,7 +52,10 @@ class ChangePasswordVC: ViewController {
 		CommonUI.setTextWithLineSpacing(label: oldPasswordTitle, text: CommonFunctions.localisation(key: "ENTER_OLD_PASSWORD"), lineSpacing: 6, textAlignment: .left)
 		
 		CommonUI.setUpLbl(lbl: newPasswordTitle, text: "", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-		CommonUI.setTextWithLineSpacing(label: newPasswordTitle, text: CommonFunctions.localisation(key: "ENTER_NEW_PASSWORD"), lineSpacing: 6, textAlignment: .left)
+        CommonUI.setTextWithLineSpacing(label: newPasswordTitle, text: CommonFunctions.localisation(key: "ENTER_NEW_PASSWORD"), lineSpacing: 6, textAlignment: .left)
+        
+        CommonUI.setUpLbl(lbl: confirmNewPasswordTitle, text: "", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+		CommonUI.setTextWithLineSpacing(label: confirmNewPasswordTitle, text: CommonFunctions.localisation(key: "ENTER_NEW_PASSWORD"), lineSpacing: 6, textAlignment: .left)
 		
 		CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		
@@ -59,6 +66,8 @@ class ChangePasswordVC: ViewController {
 		CommonUI.setUpViewBorder(vw: self.oldPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
 		
 		CommonUI.setUpViewBorder(vw: self.newPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
+        
+        CommonUI.setUpViewBorder(vw: self.confirmNewPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
 		
 		//oldPasswordTF configuration
 		self.oldPasswordTF.delegate = self
@@ -66,9 +75,14 @@ class ChangePasswordVC: ViewController {
 		self.oldPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
 		
 		//newPasswordTF configuration
-		self.newPasswordTF.delegate = self
-		self.newPasswordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
-		self.newPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
+        self.newPasswordTF.delegate = self
+        self.newPasswordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
+        self.newPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
+        
+        //confirmNewPasswordTF configuration
+		self.confirmNewPasswordTF.delegate = self
+		self.confirmNewPasswordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
+		self.confirmNewPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
 		
 		self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
 		self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
@@ -84,7 +98,9 @@ extension ChangePasswordVC : UITextFieldDelegate{
 	
 	@objc func nextBtnAct(){
 		if(oldPasswordTF.text == newPasswordTF.text){
-			CommonFunctions.toster(CommonFunctions.localisation(key: "NEW_PASSWORD_CANNOT_SAME"))
+            CommonFunctions.toster(CommonFunctions.localisation(key: "NEW_PASSWORD_CANNOT_SAME"))
+        }else if(newPasswordTF.text != confirmNewPasswordTF.text){
+			CommonFunctions.toster(CommonFunctions.localisation(key: "NEW_PASSWORD_MUST_BE_SAME"))
 		}else{
 			changePasswordVM.passwordChangeChallengeAPI( completion: {response in
 				if response != nil{
@@ -126,9 +142,11 @@ extension ChangePasswordVC : UITextFieldDelegate{
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		if textField == oldPasswordTF{
 			CommonUI.setUpViewBorder(vw: self.oldPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor,backgroundColor: UIColor.LightPurple)
-		}else{
+		}else if textField == newPasswordTF{
 			CommonUI.setUpViewBorder(vw: self.newPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor,backgroundColor: UIColor.LightPurple)
-		}
+        }else{
+            CommonUI.setUpViewBorder(vw: self.confirmNewPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor,backgroundColor: UIColor.LightPurple)
+        }
 		return true
 	}
 }

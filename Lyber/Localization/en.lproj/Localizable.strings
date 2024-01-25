@@ -435,7 +435,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "ENTER_PHONE_NUMBER" = "Enter phone number";
 "LANGUAGE" = "Language";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "Device do not support or is not registered with FaceID";
-"EXPORT" = "Export";
+"ACCOUNT_STATEMENT" = "Account statement";
 "EXPORT_OPERATIONS" = "Export operations";
 
 
@@ -592,6 +592,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "ENTER_OLD_PASSWORD" = "Enter your old password";
 "SAVE_NEW_PASSWORD" = "Save my new password";
 "NEW_PASSWORD_CANNOT_SAME" = "Your new password cannot be the same as your old one.";
+"NEW_PASSWORD_MUST_BE_SAME" = "The 'new password' and 'confirm new password' fields must be identical.";
 
 
 //MARK: - Export

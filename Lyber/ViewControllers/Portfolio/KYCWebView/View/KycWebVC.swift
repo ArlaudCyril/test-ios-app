@@ -24,6 +24,7 @@ class KycWebVC: NotSwipeGesture,WKNavigationDelegate {
 
 	//MARK: - SetUpUI
     override func setUpUI(){
+        sleep(UInt32(1))
         let myURL = URL(string: kycUrl)
         let myRequest = URLRequest(url: myURL!)
 		webViewHome.uiDelegate = self
@@ -51,7 +52,7 @@ extension KycWebVC: WKUIDelegate {
                     kycFinished()
                 }
 			}else if(navigationAction.request.url?.absoluteString.hasPrefix("https://lyber.com/sign-finished")) == true{
-				if(navigationAction.request.url?.absoluteString == "https://lyber.com/sign-finished?event=signing_complete"){
+                if((navigationAction.request.url?.absoluteString.hasPrefix("https://lyber.com/sign-finished?event=signing_complete")) == true){
 					webViewHome = nil
                     self.goToPortfolioHome(showLoader: true, typeLoader: "signing")
 					

@@ -45,7 +45,7 @@ class ExportVC: SwipeGesture {
 	
 		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
 		
-		self.exportBtn.setTitle(CommonFunctions.localisation(key: "EXPORT"), for: .normal)
+		self.exportBtn.setTitle(CommonFunctions.localisation(key: "ACCOUNT_STATEMENT"), for: .normal)
 		self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
 		self.exportBtn.addTarget(self, action: #selector(exportBtnAct), for: .touchUpInside)
 	}

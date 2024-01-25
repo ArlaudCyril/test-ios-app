@@ -23,7 +23,7 @@ class ContactFormVC: SwipeGesture{
 	
 	@IBOutlet var contactVw: UIView!
 	@IBOutlet var contactLbl: UILabel!
-	@IBOutlet var messageTF: UITextField!
+	@IBOutlet var messageTV: UITextView!
 	
 	@IBOutlet var sendBtn: PurpleButton!
 	
@@ -60,7 +60,7 @@ class ContactFormVC: SwipeGesture{
 		
 		CommonUI.setUpLbl(lbl: self.contactLbl, text: CommonFunctions.localisation(key: "CONTACT_FORM"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
-		self.messageTF.placeholder = CommonFunctions.localisation(key: "MESSAGE")
+		self.messageTV.text = CommonFunctions.localisation(key: "MESSAGE")
 		
 		self.addressVw.backgroundColor = UIColor.greyBackgroundColor
 		self.addressVw.layer.cornerRadius = 16
@@ -98,7 +98,7 @@ extension ContactFormVC{
 	
 	@objc func sendBtnAct(){
 		sendBtn.isUserInteractionEnabled = false
-		ContactFormVM().contactSupportAPI(message: self.messageTF.text ?? "", completion:{response in
+		ContactFormVM().contactSupportAPI(message: self.messageTV.text ?? "", completion:{response in
 			self.sendBtn.isUserInteractionEnabled = true
 			if(response != nil){
 				CommonFunctions.toster(CommonFunctions.localisation(key: "MESSAGE_SENT_SUCCESSFULLY"))

@@ -44,7 +44,7 @@ class ProfileVC: SwipeGesture {
 		self.paymentData = [
 			buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "")
 		]
-		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "EXPORT"), desc: "")]
+		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "ACCOUNT_STATEMENT"), desc: "")]
 		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "ENABLED_FEMININE")),
 			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PASSWORD"), desc: ""),

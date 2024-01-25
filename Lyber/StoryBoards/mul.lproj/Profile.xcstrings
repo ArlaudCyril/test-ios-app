@@ -1453,6 +1453,18 @@
         }
       }
     },
+    "wrP-So-iBi.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"wrP-So-iBi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "WW1-Ht-QBH.normalTitle" : {
       "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"WW1-Ht-QBH\";",
       "extractionState" : "extracted_with_value",

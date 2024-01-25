@@ -257,7 +257,7 @@ extension PortfolioHomeVC{
                         self.timer.invalidate()
                     }
                 }else{
-                    if(response?.data?.docusignStatus == "SIGNED"){
+                    if(response?.data?.yousignStatus == "SIGNED"){
                         CommonFunctions.hideLoaderSigning(success: true)
                         self.timer.invalidate()
                     }

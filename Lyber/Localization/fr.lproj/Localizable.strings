@@ -431,7 +431,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "ENTER_PHONE_NUMBER" = "Numéro de téléphone";
 "LANGUAGE" = "Langues";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "L'appareil ne supporte pas ou n'est pas enregistré avec FaceID";
-"EXPORT" = "Exporter";
+"ACCOUNT_STATEMENT" = "Relevé de compte";
 "EXPORT_OPERATIONS" = "Actions d'exportation";
 
 
@@ -590,6 +590,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "ENTER_NEW_PASSWORD" = "Entrez votre nouveau mot de passe";
 "SAVE_NEW_PASSWORD" = "Enregistrer mon nouveau mot de passe";
 "NEW_PASSWORD_CANNOT_SAME" = "Votre nouveau mot de passe ne peut pas être le même que l'ancien.";
+"NEW_PASSWORD_MUST_BE_SAME" = "Les champs 'nouveau mot de passe' et 'confirmer le nouveau mot de passe' doivent être identiques.";
 
 
 //MARK: - Export
@@ -650,7 +651,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 //MARK: - ERRORS
 "CONTACT_US" = "Contactez nous";
 "EMAIL" = "Email";
-"SEND_US_OR_FILL_OUT" = "Envoyez-nous un courriel à contact@lyber.com ou remplissez le formulaire de contact ci-dessous :";
+"SEND_US_OR_FILL_OUT" = "Envoyez-nous un mail à contact@lyber.com ou remplissez le formulaire de contact ci-dessous :";
 "CONTACT_FORM" = "Formulaire de contact";
 "MESSAGE" = "Message";
 "SEND" = "Envoyer";

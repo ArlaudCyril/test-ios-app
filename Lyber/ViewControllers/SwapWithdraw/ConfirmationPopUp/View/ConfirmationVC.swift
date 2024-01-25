@@ -137,11 +137,8 @@ extension ConfirmationVC{
 			self.dismiss(animated: false)
 			self.previousViewController?.navigationController?.popToPortfolioHomeOrPortfolioDetail()
 		}else{
-			CommonFunctions.callWalletGetBalance()
-			self.dismiss(animated: true, completion: nil)
-			let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-			vc.screenType = .withdraw
-			self.previousViewController?.navigationController?.pushViewController(vc, animated: true)
+            self.dismiss(animated: false)
+            self.previousViewController?.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
 		}
 		
     }

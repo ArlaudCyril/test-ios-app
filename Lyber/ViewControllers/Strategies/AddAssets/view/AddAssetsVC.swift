@@ -219,7 +219,11 @@ extension AddAssetsVC{
 			}
 			
 		}
-		
+		//We don't want to be able to add USDT
+        let indexAssetToRemove = filterCoin.firstIndex(where: {$0.id == "usdt"})
+        if(indexAssetToRemove != nil){
+            filterCoin.remove(at: indexAssetToRemove!)
+        }
 		self.tblView.reloadData()
 	}
 	

@@ -18,7 +18,7 @@ class PortfolioHomeTVC: UITableViewCell {
     var controller : PortfolioHomeVC?
     var markerController : customMarker?
     let customMarkerView = customMarker()
-	var chartData = ["1M ",CommonFunctions.localisation(key: "1Y"), "ALL"]
+	var chartData = [CommonFunctions.localisation(key: "1W"),"1M ",CommonFunctions.localisation(key: "1Y"), "ALL"]
 
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -33,7 +33,7 @@ class PortfolioHomeTVC: UITableViewCell {
 extension PortfolioHomeTVC{
     func setUpCell(){
 		getTotalPortfolio()
-		drawChartView(limit: 30)
+		drawChartView(limit: 7)
         
         CommonUI.setUpLbl(lbl: portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
@@ -100,11 +100,13 @@ extension PortfolioHomeTVC: UICollectionViewDelegate, UICollectionViewDataSource
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		var limit = 30
+		var limit = 7
 		switch indexPath.row{
 			case 1:
+                limit = 30
+            case 2:
 				limit = 365
-			case 2:
+			case 3:
 				limit = 5000
 			default:
 				break
