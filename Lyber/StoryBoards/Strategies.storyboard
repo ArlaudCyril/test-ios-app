@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -704,7 +704,7 @@
                                                                                     <rect key="frame" x="16" y="54" width="334" height="238"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqR-ec-InS">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="152"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="146"/>
                                                                                             <subviews>
                                                                                                 <view contentMode="scaleToFill" id="l1x-CT-8d6">
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="334" height="20"/>
@@ -851,7 +851,7 @@
                                                                                             </constraints>
                                                                                         </view>
                                                                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYh-GH-jLS" customClass="MultiProgressView" customModule="MultiProgressView">
-                                                                                            <rect key="frame" x="0.0" y="164" width="334" height="18"/>
+                                                                                            <rect key="frame" x="0.0" y="158" width="334" height="18"/>
                                                                                             <color key="backgroundColor" name="greyColor"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="334" id="1Uf-mI-EtU"/>
@@ -859,7 +859,7 @@
                                                                                             </constraints>
                                                                                         </view>
                                                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Nl-0s-2UG">
-                                                                                            <rect key="frame" x="0.0" y="188" width="334" height="50"/>
+                                                                                            <rect key="frame" x="0.0" y="182" width="334" height="50"/>
                                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="50" id="oyy-b1-yPM"/>
@@ -940,7 +940,7 @@
                                                                                     <constraints>
                                                                                         <constraint firstItem="EYh-GH-jLS" firstAttribute="leading" secondItem="j1S-K9-PPl" secondAttribute="leading" id="4HW-34-FhO"/>
                                                                                         <constraint firstAttribute="trailing" secondItem="EYh-GH-jLS" secondAttribute="trailing" id="Fyb-dM-p1y"/>
-                                                                                        <constraint firstAttribute="bottom" secondItem="7Nl-0s-2UG" secondAttribute="bottom" id="Pi7-Kz-Bc7"/>
+                                                                                        <constraint firstAttribute="bottom" secondItem="7Nl-0s-2UG" secondAttribute="bottom" constant="6" id="Pi7-Kz-Bc7"/>
                                                                                         <constraint firstItem="7Nl-0s-2UG" firstAttribute="leading" secondItem="j1S-K9-PPl" secondAttribute="leading" id="Z07-5C-vD8"/>
                                                                                         <constraint firstItem="dqR-ec-InS" firstAttribute="leading" secondItem="j1S-K9-PPl" secondAttribute="leading" id="eQd-tI-TCa"/>
                                                                                         <constraint firstAttribute="trailing" secondItem="7Nl-0s-2UG" secondAttribute="trailing" id="guZ-Ys-WTs"/>
