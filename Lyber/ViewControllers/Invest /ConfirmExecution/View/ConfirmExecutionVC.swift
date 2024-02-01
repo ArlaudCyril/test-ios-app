@@ -11,6 +11,7 @@ import MultiProgressView
 import StripeApplePay
 import PassKit
 import SwiftUI
+import AppsFlyerLib
 
 class ConfirmExecutionVC: ViewController {
 	
@@ -203,6 +204,10 @@ extension ConfirmExecutionVC: ApplePayContextDelegate{
 	func applePayContext(_ context: StripeApplePay.STPApplePayContext, didCompleteWith status: StripeApplePay.STPApplePayContext.PaymentStatus, error: Error?) {
 		switch status {
 			case .success:
+                AppsFlyerLib.shared().logEvent(AFEventPurchase, withValues: [
+                    AFEventParamContentId: self.orderId ?? "",
+                    AFEventParamContentType: "CcOrder"
+                ]);
 				// Payment succeeded, show a receipt view
 				let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 				vc.assetId = self.asset?.id ?? ""
