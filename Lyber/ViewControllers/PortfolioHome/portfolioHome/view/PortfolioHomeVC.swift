@@ -19,7 +19,8 @@ class PortfolioHomeVC: NotSwipeGesture {
     var allAvailableAssets : [PriceServiceResume] = []
     var hasToShowLoader = false
 	var typeLoader = ""
-	var timer = Timer()
+    var timer = Timer()
+    var timerVerificationSigning = Timer()
     
     //MARK: - IB OUTLETS
     @IBOutlet var tblView: UITableView!
@@ -51,12 +52,13 @@ class PortfolioHomeVC: NotSwipeGesture {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		self.timer.invalidate()
+        self.timerVerificationSigning.invalidate()
 	}
 
 
 	//MARK: - SetUpUI
     override func setUpUI(){
-		self.headerData = [CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "MY_ASSETS")/*,CommonFunctions.localisation(key: "ANALYTICS")*/,CommonFunctions.localisation(key: "RECURRING_INVESTMENT"),CommonFunctions.localisation(key: "ALL_ASSETS_AVAILABLE")]
+		self.headerData = [CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "VERIFICATION"),CommonFunctions.localisation(key: "MY_ASSETS")/*,CommonFunctions.localisation(key: "ANALYTICS")*/,CommonFunctions.localisation(key: "RECURRING_INVESTMENT"),CommonFunctions.localisation(key: "ALL_ASSETS_AVAILABLE")]
 		
 		
         self.tblView.delegate = self
@@ -81,16 +83,18 @@ class PortfolioHomeVC: NotSwipeGesture {
 //Mark: - table view delegates and dataSource
 extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4 //5
+        return 5
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1
         }else if section == 1{
-			return Storage.balances.count == 0 ? 4: Storage.balances.count
-        }else if section == 2{
             return 1
+        }else if section == 2{
+			return Storage.balances.count == 0 ? 4: Storage.balances.count
         }else if section == 3{
+            return 1
+        }else if section == 4{
 			return recurringInvestmentData.count == 0 ? 1: recurringInvestmentData.count
         }else{
             return 1
@@ -104,6 +108,11 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
             cell.controller = self
             return cell
         }else if indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VerificationKycSigningTVC")as! VerificationKycSigningTVC
+            cell.setUpCell()
+            cell.portolioHomeVC = self
+            return cell
+        }else if indexPath.section == 2{
 			if(Storage.balances.count > 0){
 				let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
 				cell.setEuroAmount(totalAmount: totalEuroAvailablePrinting ?? 0)
@@ -147,7 +156,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 //			cell.callWalletGetPerformance()
 //            return cell
 //        }
-    else if indexPath.section == 2 { //3
+    else if indexPath.section == 3 {
 			if(recurringInvestmentData.count != 0){
 				let cell = tableView.dequeueReusableCell(withIdentifier: "RecurringTVC")as! RecurringTVC
 				cell.setUpCell(data: recurringInvestmentData[indexPath.row],index : indexPath.row,lastIndex: (recurringInvestmentData.count - 1))
@@ -158,7 +167,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 				cell.controller = self
 				return cell
 			}
-        }else if indexPath.section == 3{ //4
+        }else if indexPath.section == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AllAssetsAvailableTVC")as! AllAssetsAvailableTVC
             cell.controller = self
             cell.setUpCell()
@@ -190,7 +199,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.section{
-        case 3:
+        case 4:
 				let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
 				let nav = UINavigationController(rootViewController: vc)
 				nav.modalPresentationStyle = .fullScreen
@@ -252,7 +261,7 @@ extension PortfolioHomeVC{
         ProfileVM().getProfileDataApi(completion: {[]response in
             if response != nil{
                 if(self.typeLoader == "kyc"){
-                    if(response?.data?.kycStatus != "NOT_STARTED"){
+                    if(response?.data?.kycStatus?.decoderKycStatus == .pending || response?.data?.kycStatus?.decoderKycStatus == .rejected){
                         CommonFunctions.hideLoader()
                         self.timer.invalidate()
                     }

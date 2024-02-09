@@ -148,6 +148,11 @@ enum Assets : String{
 	case tiger_cat
 	case unicorn
 	case wolf
+    
+    //Indicators
+    case not_performed_indicator
+    case pending_indicator
+    case rejected_indicator
 
     
     func imageName() -> String{

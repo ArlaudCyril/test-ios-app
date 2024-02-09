@@ -11,9 +11,9 @@ class FrequencyVC: ViewController {
     //MARK: - Variables
     var frequencyData : [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "ONCE"), subName: CommonFunctions.localisation(key: "UNIQUE_INVESTMENT"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.apple_pay.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DAILY"), subName: CommonFunctions.localisation(key: "EVERYDAY"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WEEKLY"), subName: CommonFunctions.localisation(key: "EVERY_THURSDAY"), rightBtnName: ""),
-        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "MONTHLY"), subName: CommonFunctions.localisation(key: "EVERY_21ST_MONTH"), rightBtnName: "")
+        buyDepositeModel(icon: Assets.apple_pay.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DAILY"), subName: "\(CommonFunctions.localisation(key: "EVERYDAY")) (07:00 UTC)", rightBtnName: ""),
+        buyDepositeModel(icon: Assets.bank_outline.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WEEKLY"), subName: "\(CommonFunctions.localisation(key: "EVERY_THURSDAY")) (08:00 UTC)", rightBtnName: ""),
+        buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "MONTHLY"), subName: "\(CommonFunctions.localisation(key: "EVERY_21ST_MONTH")) (09:00 UTC)", rightBtnName: "")
     ]
     var frequencySelectedCallback : ((String)->())?
     //MARK: - IB OUTLETS

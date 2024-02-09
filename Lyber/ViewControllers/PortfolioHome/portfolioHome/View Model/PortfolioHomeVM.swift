@@ -48,9 +48,10 @@ class PortfolioHomeVM{
         }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
     }
 	
-	func walletGetBalanceHistoryApi(limit: Int, completion: @escaping ( (BalanceHistoryAPI?) -> Void )){
+    func walletGetBalanceHistoryApi(limit: Int, daily: Bool, completion: @escaping ( (BalanceHistoryAPI?) -> Void )){
 		
-		let param : [String : Any] = [Constants.ApiKeys.limit : limit]
+		let param : [String : Any] = [Constants.ApiKeys.limit : limit,
+                                      Constants.ApiKeys.daily : daily]
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceHistory, withParameters: param, ofType: BalanceHistoryAPI.self, onSuccess: { response in
             completion(response)

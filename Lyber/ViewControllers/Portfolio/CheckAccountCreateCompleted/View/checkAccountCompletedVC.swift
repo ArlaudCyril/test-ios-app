@@ -106,8 +106,10 @@ extension checkAccountCompletedVC: UITableViewDelegate, UITableViewDataSource{
 				
 			}
             else if indexPath.row == 1{
-                let vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-				self.navigationController?.pushViewController(vc, animated: false)
+                if userData.shared.stepRegisteringComplete == 1{
+                    let vc = PersonalDataVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                    self.navigationController?.pushViewController(vc, animated: false)
+                }
             }else if indexPath.row == 2{
                 if userData.shared.stepRegisteringComplete == 2{
                     let vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)

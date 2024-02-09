@@ -19,7 +19,9 @@ class AddressAddedPopUpVC: ViewController {
 	//Detail Strategy
 	var executionId = ""
 	var name = ""
-	var typeStrategy = ""
+    var typeStrategy = ""
+    var totalStableAmountSpent = ""
+	var totalFeeSpent = ""
 	
 	//Detail Order
 	var orderId = ""
@@ -173,7 +175,7 @@ extension AddressAddedPopUpVC{
 			}
 			CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: editAddress?.exchange ?? "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
-			CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.editAddress?.creationDate ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.editAddress?.creationDate ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
 			CommonUI.setUpButton(btn: self.deleteBtn, text: CommonFunctions.localisation(key: "DELETE"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			CommonUI.setUpButton(btn: self.editBtn, text: CommonFunctions.localisation(key: "EDIT"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -206,7 +208,7 @@ extension AddressAddedPopUpVC{
 			CommonUI.setUpLbl(lbl: self.feesPaidNameLbl, text: self.feesPaid, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
 			
 			CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "DATE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
 			self.iconView.isHidden = true
 			
@@ -222,10 +224,16 @@ extension AddressAddedPopUpVC{
 			
 			CommonUI.setUpLbl(lbl: self.addressOriginLbl, text: "\(CommonFunctions.localisation(key: "TYPE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: self.typeStrategy, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.toLbl, text: CommonFunctions.localisation(key: "DATE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.toNameLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
-			self.toView.isHidden = true
-			self.feesPaidView.isHidden = true
-			self.dateView.isHidden = true
+            CommonUI.setUpLbl(lbl: self.feesPaidLbl, text: CommonFunctions.localisation(key: "FEES_PAID"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.feesPaidNameLbl, text: self.totalFeeSpent, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "TOTAL_USDT_SPENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.dateLbl, text: self.totalStableAmountSpent, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
 			self.iconView.isHidden = true
 			
 			self.bottomView.layoutIfNeeded()
@@ -275,7 +283,7 @@ extension AddressAddedPopUpVC{
 			CommonUI.setUpLbl(lbl: self.feesPaidNameLbl, text: self.amount, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
 			
 			CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "DATE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMM yyyy"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
 			self.toView.isHidden = true
 			self.iconView.isHidden = true

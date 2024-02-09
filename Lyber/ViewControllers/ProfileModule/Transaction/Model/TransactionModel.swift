@@ -38,8 +38,13 @@ struct Transaction: Codable {
 	//strategy
 	let nextExecution: String?
 	let totalStableAmountSpent: String?
+    let totalEurAmountSpent: String?
 	let strategyName: String?
-	let strategyType: String?
+    let strategyType: String?
+    let totalFeeSpent: String?
+    let totalRecreditedAmount: String?
+    
+	
 }
 
 /* it remains the type strategy

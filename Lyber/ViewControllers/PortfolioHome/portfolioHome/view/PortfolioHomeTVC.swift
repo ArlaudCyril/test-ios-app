@@ -18,7 +18,7 @@ class PortfolioHomeTVC: UITableViewCell {
     var controller : PortfolioHomeVC?
     var markerController : customMarker?
     let customMarkerView = customMarker()
-	var chartData = [CommonFunctions.localisation(key: "1W"),"1M ",CommonFunctions.localisation(key: "1Y"), "ALL"]
+	var chartData = [CommonFunctions.localisation(key: "1D"), CommonFunctions.localisation(key: "1W"),"1M ",CommonFunctions.localisation(key: "1Y"), "ALL"]
 
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -33,7 +33,7 @@ class PortfolioHomeTVC: UITableViewCell {
 extension PortfolioHomeTVC{
     func setUpCell(){
 		getTotalPortfolio()
-		drawChartView(limit: 7)
+		drawChartView(limit: 1, daily: false)
         
         CommonUI.setUpLbl(lbl: portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
@@ -100,18 +100,22 @@ extension PortfolioHomeTVC: UICollectionViewDelegate, UICollectionViewDataSource
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		var limit = 7
+		var limit = 1
+        var daily = true
 		switch indexPath.row{
 			case 1:
-                limit = 30
+                limit = 7
             case 2:
+                limit = 30
+            case 3:
 				limit = 365
-			case 3:
+			case 4:
 				limit = 5000
 			default:
+                daily = false
 				break
 		}
-		self.drawChartView(limit: limit)
+		self.drawChartView(limit: limit, daily: daily)
 	}
 }
 
@@ -131,10 +135,10 @@ extension PortfolioHomeTVC{
 		CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalPortfolio))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
 	}
 	
-	func drawChartView(limit: Int){
+    func drawChartView(limit: Int, daily: Bool){
 		var graphValues: [ChartDataEntry] = []
 		
-		PortfolioHomeVM().walletGetBalanceHistoryApi(limit: limit, completion:{response in
+        PortfolioHomeVM().walletGetBalanceHistoryApi(limit: limit,daily: daily, completion:{response in
 			if response != nil{
 				if(response?.data.count ?? 0 > 0){
 					for i in 0...(response?.data.count ?? 1)-1{

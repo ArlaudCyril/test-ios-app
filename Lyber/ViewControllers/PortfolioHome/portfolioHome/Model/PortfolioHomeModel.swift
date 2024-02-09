@@ -98,7 +98,15 @@ struct PerformanceAPI: Codable {
 }
 
 struct Performance: Codable {
-	let totalGain: String?
-	let roi: String?
+    let totalGain: String?
+    let roi: String?
+}
+
+
+enum VerificationIndicator: String {
+    case notPerformed = "NOT_PERFORMED"
+    case rejected = "REJECTED"
+    case pending = "STRAT_BASED"
+    case validated = "VALIDATED"
 }
 

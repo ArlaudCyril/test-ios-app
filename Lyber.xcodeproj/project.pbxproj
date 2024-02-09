@@ -612,8 +612,14 @@
 		A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
 		C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
+		C855BCCB2B6BD72C00D46EDA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
+		C855BCCE2B6BE14700D46EDA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
 		C8859A362B596D1E00225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
+		C8AC1E1D2B6CF7AF0069C2FA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
+		C8AC1E1E2B6CF7EB0069C2FA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
+		C8FC6FA12B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */; };
+		C8FC6FA22B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */; };
 		EE9AB0952AEBBDA300B3E36C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9AB0972AEBBDA300B3E36C /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -928,7 +934,10 @@
 		4C0A8C3529955D5700CCC88A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		C81691812B2C4AB6008163B3 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
 		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupVC.swift; sourceTree = "<group>"; };
+		C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupModel.swift; sourceTree = "<group>"; };
 		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
+		C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationKycSigningTVC.swift; sourceTree = "<group>"; };
 		EE9AB0962AEBBDA300B3E36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		EE9AB0982AEBBDA400B3E36C /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Profile.xcstrings; sourceTree = "<group>"; };
 		F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1441,6 +1450,7 @@
 		0A72190A28634319009F42C5 /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
+				C855BCC82B6BD70000D46EDA /* KycSigningPopup */,
 				1FD2190D2AF3B0DC000F6FC5 /* ChangePassword */,
 				1FE0A80C2AA09AF5005742C8 /* Export */,
 				1F5B7C5329C1D24100256438 /* Verification */,
@@ -1627,6 +1637,7 @@
 				0A6FA81C28F575F700E17E7B /* chartVC.swift */,
 				1F96A99A2A3B4C71006D5A61 /* NoRecurringTVC.swift */,
 				1F6E77BE2A586D8E009E04DE /* NoAssetsTVC.swift */,
+				C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3025,6 +3036,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C855BCC82B6BD70000D46EDA /* KycSigningPopup */ = {
+			isa = PBXGroup;
+			children = (
+				C855BCCC2B6BE13600D46EDA /* Model */,
+				C855BCC92B6BD71C00D46EDA /* View */,
+			);
+			path = KycSigningPopup;
+			sourceTree = "<group>";
+		};
+		C855BCC92B6BD71C00D46EDA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C855BCCC2B6BE13600D46EDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C8859A342B596D0900225697 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3509,6 +3545,7 @@
 				0A6A9EFE289A4E4D001BB63E /* CryptoDepositeVC.swift in Sources */,
 				0A1C74F82840D227003CA6A7 /* OTPTextField.swift in Sources */,
 				0AC4C2C8283F63E20086C6B8 /* CommomFunctions.swift in Sources */,
+				C8FC6FA12B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */,
 				0AB9B2BA289E2A2700A6DCDD /* AddCryptoAddressVM.swift in Sources */,
 				1FE0A80F2AA09B07005742C8 /* ExportVC.swift in Sources */,
 				0A7246F828915AE800EBCA21 /* AddBankAccountVM.swift in Sources */,
@@ -3516,6 +3553,7 @@
 				0A90592F2848A1BF003F6198 /* AddAssetsTVC.swift in Sources */,
 				0A74457E2857414E00BF05EF /* DepositeOrBuyTVC.swift in Sources */,
 				0A721A4A288E9CC50092FBED /* PortfolioDetailVM.swift in Sources */,
+				C855BCCE2B6BE14700D46EDA /* KycSigningPopupModel.swift in Sources */,
 				1F54C9A42A7BE139009A43F7 /* ForgotPasswordVC.swift in Sources */,
 				0A928CB828472CF000F17DBE /* IdentityVerificationVC.swift in Sources */,
 				0A6FD4062849D390003A2AA0 /* AddStrategyVC.swift in Sources */,
@@ -3626,6 +3664,7 @@
 				1FE8E54D2A0A838A0033398F /* NotificationVM.swift in Sources */,
 				0A721907286325BB009F42C5 /* ProfileLogoutTVC.swift in Sources */,
 				0AC4C2C1283F5D210086C6B8 /* EnterPhoneVC.swift in Sources */,
+				C855BCCB2B6BD72C00D46EDA /* KycSigningPopupVC.swift in Sources */,
 				0A7586D1286C7D8C00DC889E /* EnterPhoneModel.swift in Sources */,
 				0A95DE2128990EFF0044EE92 /* EnableWhitelistingVC.swift in Sources */,
 				0A7586CF286C7CD900DC889E /* EnterPhoneVM.swift in Sources */,
@@ -3749,6 +3788,7 @@
 				1FF380FE2AFD297600CCF1A6 /* CryptoDepositeVC.swift in Sources */,
 				1FF380FF2AFD297600CCF1A6 /* OTPTextField.swift in Sources */,
 				1FF381002AFD297600CCF1A6 /* CommomFunctions.swift in Sources */,
+				C8FC6FA22B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */,
 				1FF381012AFD297600CCF1A6 /* AddCryptoAddressVM.swift in Sources */,
 				1FF381022AFD297600CCF1A6 /* ExportVC.swift in Sources */,
 				1FF381032AFD297600CCF1A6 /* AddBankAccountVM.swift in Sources */,
@@ -3756,6 +3796,7 @@
 				1FF381052AFD297600CCF1A6 /* AddAssetsTVC.swift in Sources */,
 				1FF381062AFD297600CCF1A6 /* DepositeOrBuyTVC.swift in Sources */,
 				1FF381072AFD297600CCF1A6 /* PortfolioDetailVM.swift in Sources */,
+				C8AC1E1E2B6CF7EB0069C2FA /* KycSigningPopupModel.swift in Sources */,
 				1FF381082AFD297600CCF1A6 /* ForgotPasswordVC.swift in Sources */,
 				1FF381092AFD297600CCF1A6 /* IdentityVerificationVC.swift in Sources */,
 				1FF3810A2AFD297600CCF1A6 /* AddStrategyVC.swift in Sources */,
@@ -3866,6 +3907,7 @@
 				1FF381702AFD297600CCF1A6 /* NotificationVM.swift in Sources */,
 				1FF381712AFD297600CCF1A6 /* ProfileLogoutTVC.swift in Sources */,
 				1FF381722AFD297600CCF1A6 /* EnterPhoneVC.swift in Sources */,
+				C8AC1E1D2B6CF7AF0069C2FA /* KycSigningPopupVC.swift in Sources */,
 				1FF381732AFD297600CCF1A6 /* EnterPhoneModel.swift in Sources */,
 				1FF381742AFD297600CCF1A6 /* EnableWhitelistingVC.swift in Sources */,
 				1FF381752AFD297600CCF1A6 /* EnterPhoneVM.swift in Sources */,

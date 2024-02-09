@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 import AppsFlyerLib
 
-class KycWebVC: NotSwipeGesture,WKNavigationDelegate {
+class KycWebVC: NotSwipeGesture,WKNavigationDelegate, UIScrollViewDelegate {
 	
     //MARK: - Variables
     var kycUrl = String()
@@ -27,6 +27,14 @@ class KycWebVC: NotSwipeGesture,WKNavigationDelegate {
         sleep(UInt32(1))
         let myURL = URL(string: kycUrl)
         let myRequest = URLRequest(url: myURL!)
+        
+        let source: String = "var meta = document.createElement('meta');" +
+            "meta.name = 'viewport';" +
+            "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" +
+            "var head = document.getElementsByTagName('head')[0];" +
+            "head.appendChild(meta);"
+        let script: WKUserScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        webViewHome.configuration.userContentController.addUserScript(script)
 		webViewHome.uiDelegate = self
 		webViewHome.load(myRequest)
 		webViewHome.navigationDelegate = self

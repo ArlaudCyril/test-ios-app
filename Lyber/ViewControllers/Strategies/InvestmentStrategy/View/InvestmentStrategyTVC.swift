@@ -22,8 +22,6 @@ class InvestmentStrategyTVC: UITableViewCell {
 	
     @IBOutlet var riskLbl: UILabel!
     @IBOutlet var riskIcon: UIImageView!
-    @IBOutlet var yieldLbl: UILabel!
-    @IBOutlet var yieldIcon: UIImageView!
 	
 	@IBOutlet var minInvestLbl: UILabel!
     @IBOutlet var minInvestIcon: UIImageView!
@@ -92,7 +90,7 @@ extension InvestmentStrategyTVC{
 		if(data?.activeStrategy == nil && data?.risk == nil && data?.expectedYield == nil){
 			viewBottomToInformationView.constant = 0
 		}else if(data?.activeStrategy == nil){
-			viewBottomToInformationView.constant = 50
+			viewBottomToInformationView.constant = 25
 		}else if(data?.risk == nil && data?.expectedYield == nil){
 			viewBottomToInformationView.constant = 50
 			viewBottomToActiveStrategyView.constant = 3.5
@@ -105,7 +103,6 @@ extension InvestmentStrategyTVC{
 			if(data?.risk != nil && data?.expectedYield != nil)
             {
 				self.riskLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "RISK")) : ", secondStr: CommonFunctions.localisation(key: data?.risk?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
-                self.yieldLbl.attributedText = CommonUI.showAttributedString(firstStr: "\(CommonFunctions.localisation(key: "YIELD")) : ", secondStr: CommonFunctions.localisation(key: data?.expectedYield?.uppercased() ?? ""), firstFont: UIFont.MabryPro(Size.Large.sizeValue()), secondFont: UIFont.MabryPro(Size.Large.sizeValue()), firstColor: UIColor.SecondarytextColor, secondColor: UIColor.primaryTextcolor)
                 defaultStrategyView.isHidden = false
                     
             }

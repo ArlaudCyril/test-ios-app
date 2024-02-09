@@ -32,6 +32,7 @@ class NotificationVC: SwipeGesture {
 	
 	//MARK: - SetUpUI
     override func setUpUI(){
+        self.notificationArraySorted = []
 		CommonUI.setUpLbl(lbl: self.notificationLbl, text: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         self.tblView.delegate = self
         self.tblView.dataSource = self
@@ -101,7 +102,7 @@ extension NotificationVC{
 			let date1 = Calendar.current.startOfDay(for: formatter.date(from: notification.date) ?? Date())
 			let date2 = Calendar.current.startOfDay(for: Date())
 			let components = calendar.dateComponents([.day], from: date1, to: date2)
-			if(components.day ?? 0 == 0){
+			if(components.day ?? -1 == 0){
 				//today
 				if(!headerData.contains("TODAY")){
 					headerData.append("TODAY")
@@ -134,9 +135,28 @@ extension NotificationVC{
 			}
 		}
 
-		self.notificationArraySorted += sortedNotficationDictionary.map { (key, value) in
-			return (value)
-		}
+        let todayNotifications = sortedNotficationDictionary.removeValue(forKey: "TODAY")
+        let yesterdayNotifications = sortedNotficationDictionary.removeValue(forKey: "YESTERDAY")
+
+        if let today = todayNotifications {
+            notificationArraySorted.append(today)
+        }
+        if let yesterday = yesterdayNotifications {
+            notificationArraySorted.append(yesterday)
+        }
+
+        let sortedKeys = sortedNotficationDictionary.keys.sorted { firstKey, secondKey in
+            guard let firstDate = titleDateFormatter.date(from: firstKey), let secondDate = titleDateFormatter.date(from: secondKey) else {
+                return false
+            }
+            return firstDate > secondDate
+        }
+
+        sortedKeys.forEach { key in
+            if let notifications = sortedNotficationDictionary[key] {
+                notificationArraySorted.append(notifications)
+            }
+        }
 	}
 	
 	func loadNextNotifications(){

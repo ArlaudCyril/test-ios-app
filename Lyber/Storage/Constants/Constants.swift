@@ -108,6 +108,7 @@ struct Constants{
         static let page = "page"
         static let limit = "limit"
         static let offset = "offset"
+        static let daily = "daily"
         
         //Profile
         static let iban = "iban"

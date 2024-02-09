@@ -32,6 +32,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
     @IBOutlet var Tf5: otpTextField!
     @IBOutlet var Tf6: otpTextField!
     @IBOutlet var backBtn: UIButton!
+    @IBOutlet var resendCodeBtn: LoadingButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,12 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
         }
         CommonUI.setUpButton(btn: backBtn, text: CommonFunctions.localisation(key: "BACK"), textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        
+        CommonUI.setUpButton(btn: resendCodeBtn, text: CommonFunctions.localisation(key: "RESEND_CODE"), textcolor: UIColor.purple_500, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.ExtraSmall.sizeValue()))
+        
+        resendCodeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 6)
+        
+        self.resendCodeBtn.addTarget(self, action: #selector(resendCodeBtnAct), for: .touchUpInside)
         
     }
 
@@ -137,8 +144,37 @@ extension VerificationVC: UITextFieldDelegate{
 //MARK: - Other functions
 extension VerificationVC{
 
-    @objc func backBtnAct(){
+    @objc func backBtnAct(){	
         self.dismiss(animated: true, completion: nil)
+    }
+     
+    @objc func resendCodeBtnAct(){
+        self.resendCodeBtn.showLoading()
+        EnterPhoneVM().SignUpApi(phoneNumber: self.enterPhoneController?.phoneNumber ?? "", countryCode: self.enterPhoneController?.countryCode ?? "", completion: { [weak self] response in
+            	
+            self?.resendCodeBtn.hideLoading()
+            
+            self?.resendCodeBtn.isUserInteractionEnabled = false
+            self?.resendCodeBtn.setTitleColor(UIColor.PurpleGrey_500, for: .normal)
+            
+            self?.timerSendCode(secondsRemaining: 10)
+        })
+    }
+    
+    func timerSendCode(secondsRemaining: Int){
+        if(secondsRemaining == 0){
+            self.resendCodeBtn.isUserInteractionEnabled = true
+            self.resendCodeBtn.setTitleColor(UIColor.purple_500, for: .normal)
+            self.resendCodeBtn.setTitle(CommonFunctions.localisation(key: "RESEND_CODE"), for: .normal)
+            
+        }else{
+            self.resendCodeBtn.setTitle("\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) \(secondsRemaining)", for: .normal)
+           
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.timerSendCode(secondsRemaining: secondsRemaining - 1)
+            }
+        }
+        
     }
     
     func verifyCode(code: String)

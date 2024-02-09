@@ -226,6 +226,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyData = self.strategy
 				vc.strategyType = .oneTimeInvestment
+                vc.fromAssetId = "usdt"
 				self.dismiss(animated: true, completion: nil)
 				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
@@ -250,6 +251,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyData = self.strategy
 				vc.strategyType = .oneTimeInvestment
+                vc.fromAssetId = "usdt"
 				self.dismiss(animated: true, completion: nil)
 				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 

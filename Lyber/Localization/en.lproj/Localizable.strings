@@ -288,6 +288,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "CONFIRM_MY_DEPOSIT" = "Confirm my deposit";
 "CONFIRM_DEPOSIT" = "Confirm deposit";
 "AMOUNT" = "Amount";
+"TOTAL_USDT_SPENT" = "Total USDT spent";
 "FREQUENCY" = "Frequency";
 "PAYMENT" = "Payment";
 "BUY" = "Buy";
@@ -709,5 +710,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "KYC_UNDER_VERIFICATION" = "Your KYC is under verification. Please try again in five minutes.";
 "PLEASE_VALIDATE_KYC" = "Your kyc has been refused. Please validate your kyc to be able to carry out the operation.";
 "VALIDATE_KYC" = "Validate my kyc";
+"VERIFICATION_IDENTITY" = "Verification of your identity";
+"CONTRACT_SIGNATURE" = "Contract signature";
 "USER_NOT_SIGNED_CONTRACT" = "Your contract has not been signed. Please sign it before you can proceed.";
 "SIGN_CONTRACT" = "Sign my contract";

@@ -761,8 +761,113 @@
                                                     <outlet property="profilePicVw" destination="5Wa-qb-QfO" id="Qlz-tG-d1T"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyAssetsTVC" rowHeight="195" id="bJP-IB-1vK" customClass="MyAssetsTVC" customModule="Lyber_dev" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VerificationKycSigningTVC" rowHeight="195" id="fgb-ge-CZQ" customClass="VerificationKycSigningTVC" customModule="Lyber_dev" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="400" width="414" height="195"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fgb-ge-CZQ" id="h2q-PT-Iy2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h03-YS-zxv">
+                                                            <rect key="frame" x="24" y="0.0" width="366" height="195"/>
+                                                            <subviews>
+                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvA-lq-7aJ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="97.5"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ncA-1o-dxa">
+                                                                            <rect key="frame" x="12" y="37" width="24" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="24" id="JoX-Hj-6wM"/>
+                                                                                <constraint firstAttribute="width" secondItem="ncA-1o-dxa" secondAttribute="height" multiplier="1:1" id="w3I-OR-a1x"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow_grey" translatesAutoresizingMaskIntoConstraints="NO" id="iox-mc-A42">
+                                                                            <rect key="frame" x="330" y="37" width="24" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="24" id="NB5-u7-Y7E"/>
+                                                                                <constraint firstAttribute="width" secondItem="iox-mc-A42" secondAttribute="height" multiplier="1:1" id="Nwe-c5-Oyo"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtu-z0-xKh">
+                                                                            <rect key="frame" x="48" y="38.5" width="270" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" name="greyColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="Jtu-z0-xKh" firstAttribute="leading" secondItem="ncA-1o-dxa" secondAttribute="trailing" constant="12" id="332-A0-80m"/>
+                                                                        <constraint firstItem="iox-mc-A42" firstAttribute="centerY" secondItem="ncA-1o-dxa" secondAttribute="centerY" id="Ppp-1S-YXw"/>
+                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="RBN-Wn-sgc"/>
+                                                                        <constraint firstItem="ncA-1o-dxa" firstAttribute="centerY" secondItem="yvA-lq-7aJ" secondAttribute="centerY" id="W2z-xG-WLv"/>
+                                                                        <constraint firstItem="iox-mc-A42" firstAttribute="leading" secondItem="Jtu-z0-xKh" secondAttribute="trailing" constant="12" id="atC-k7-cBY"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="iox-mc-A42" secondAttribute="trailing" constant="12" id="g5I-Yd-86T"/>
+                                                                        <constraint firstItem="Jtu-z0-xKh" firstAttribute="centerY" secondItem="ncA-1o-dxa" secondAttribute="centerY" id="h7D-AU-LWs"/>
+                                                                        <constraint firstItem="ncA-1o-dxa" firstAttribute="leading" secondItem="yvA-lq-7aJ" secondAttribute="leading" constant="12" id="oae-vn-Wwx"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5V0-tB-ze0">
+                                                                    <rect key="frame" x="0.0" y="97.5" width="366" height="97.5"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xDq-WT-oAr">
+                                                                            <rect key="frame" x="12" y="37" width="24" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="24" id="aWU-7p-qcC"/>
+                                                                                <constraint firstAttribute="width" secondItem="xDq-WT-oAr" secondAttribute="height" multiplier="1:1" id="yEx-d3-xPb"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow_grey" translatesAutoresizingMaskIntoConstraints="NO" id="dZY-1I-vlx">
+                                                                            <rect key="frame" x="330" y="37" width="24" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="dZY-1I-vlx" secondAttribute="height" multiplier="1:1" id="Y89-He-QaF"/>
+                                                                                <constraint firstAttribute="width" constant="24" id="b2r-OW-avj"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO0-pf-Tic">
+                                                                            <rect key="frame" x="48" y="38.5" width="270" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" name="greyColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="dZY-1I-vlx" firstAttribute="leading" secondItem="BO0-pf-Tic" secondAttribute="trailing" constant="12" id="E96-sm-27S"/>
+                                                                        <constraint firstItem="BO0-pf-Tic" firstAttribute="leading" secondItem="xDq-WT-oAr" secondAttribute="trailing" constant="12" id="KLJ-6m-K6J"/>
+                                                                        <constraint firstItem="BO0-pf-Tic" firstAttribute="centerY" secondItem="xDq-WT-oAr" secondAttribute="centerY" id="mFv-Ui-H3F"/>
+                                                                        <constraint firstItem="dZY-1I-vlx" firstAttribute="centerY" secondItem="xDq-WT-oAr" secondAttribute="centerY" id="msd-pD-WCt"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="dZY-1I-vlx" secondAttribute="trailing" constant="12" id="o30-2s-eqq"/>
+                                                                        <constraint firstItem="xDq-WT-oAr" firstAttribute="leading" secondItem="5V0-tB-ze0" secondAttribute="leading" constant="12" id="waY-GV-TdE"/>
+                                                                        <constraint firstItem="xDq-WT-oAr" firstAttribute="centerY" secondItem="5V0-tB-ze0" secondAttribute="centerY" id="xLQ-4Q-HfC"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="5V0-tB-ze0" firstAttribute="height" secondItem="yvA-lq-7aJ" secondAttribute="height" id="3zD-HQ-Zbd"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="h03-YS-zxv" secondAttribute="bottom" id="7sE-oe-XkR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="h03-YS-zxv" secondAttribute="trailing" constant="24" id="SuS-vQ-Wbu"/>
+                                                        <constraint firstItem="h03-YS-zxv" firstAttribute="leading" secondItem="h2q-PT-Iy2" secondAttribute="leading" constant="24" id="axz-jN-MUl"/>
+                                                        <constraint firstItem="h03-YS-zxv" firstAttribute="top" secondItem="h2q-PT-Iy2" secondAttribute="top" id="z8J-Ao-ebS"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="indicatorKycImgVw" destination="ncA-1o-dxa" id="oqd-QU-pH9"/>
+                                                    <outlet property="indicatorSigningImgVw" destination="xDq-WT-oAr" id="hhb-pj-tOn"/>
+                                                    <outlet property="kycLbl" destination="Jtu-z0-xKh" id="q3H-lk-Tin"/>
+                                                    <outlet property="rightArrowKycImgVw" destination="iox-mc-A42" id="Kf7-cC-xmn"/>
+                                                    <outlet property="rightArrowSigningImgVw" destination="dZY-1I-vlx" id="gTH-Op-1s8"/>
+                                                    <outlet property="signingLbl" destination="BO0-pf-Tic" id="iTu-Za-pp5"/>
+                                                    <outlet property="verificationKycVw" destination="yvA-lq-7aJ" id="hZG-po-cLf"/>
+                                                    <outlet property="verificationSigningVw" destination="5V0-tB-ze0" id="9LF-eM-cKO"/>
+                                                </connections>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyAssetsTVC" rowHeight="195" id="bJP-IB-1vK" customClass="MyAssetsTVC" customModule="Lyber_dev" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="595" width="414" height="195"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bJP-IB-1vK" id="B9a-YO-kKj">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
@@ -948,7 +1053,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoAssetsTVC" rowHeight="72" id="Y1K-9O-x9l" customClass="NoAssetsTVC" customModule="Lyber_dev" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="595" width="414" height="72"/>
+                                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y1K-9O-x9l" id="Zq7-Z3-1Li">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
@@ -994,7 +1099,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnalyticsTVC" rowHeight="196" id="ncl-lU-1gp" customClass="AnalyticsTVC" customModule="Lyber_dev" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="667" width="414" height="196"/>
+                                                <rect key="frame" x="0.0" y="862" width="414" height="196"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ncl-lU-1gp" id="ye9-pe-vJ7">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="196"/>
@@ -1105,7 +1210,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecurringTVC" rowHeight="210" id="VLE-Uo-P4X" customClass="RecurringTVC" customModule="Lyber_dev" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="863" width="414" height="210"/>
+                                                <rect key="frame" x="0.0" y="1058" width="414" height="210"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VLE-Uo-P4X" id="IYV-cu-Zca">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
@@ -1196,7 +1301,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AllAssetsAvailableTVC" rowHeight="290" id="Abe-9I-org" customClass="AllAssetsAvailableTVC" customModule="Lyber_dev" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1073" width="414" height="290"/>
+                                                <rect key="frame" x="0.0" y="1268" width="414" height="290"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Abe-9I-org" id="Y9c-aJ-1D7">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
@@ -1327,7 +1432,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoRecurringTVC" rowHeight="72" id="Y6V-dY-Ppw" customClass="NoRecurringTVC" customModule="Lyber_dev" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1363" width="414" height="72"/>
+                                                <rect key="frame" x="0.0" y="1558" width="414" height="72"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y6V-dY-Ppw" id="eKA-A4-1Jg">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
@@ -1373,7 +1478,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PortfolioHeaderTVC" rowHeight="69" id="lQF-nz-HdJ" customClass="PortfolioHeaderTVC" customModule="Lyber_dev" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1435" width="414" height="69"/>
+                                                <rect key="frame" x="0.0" y="1630" width="414" height="69"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lQF-nz-HdJ" id="9Zd-MJ-9l4">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
@@ -2189,7 +2294,7 @@
                                                                         <state key="normal" image="info_medium"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmG-2m-Rmk">
-                                                                        <rect key="frame" x="12" y="81" width="155" height="103"/>
+                                                                        <rect key="frame" x="12" y="163.5" width="155" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -3396,7 +3501,7 @@
         <image name="euro" width="32" height="32"/>
         <image name="info_medium" width="20" height="20"/>
         <image name="invest_money_white" width="28" height="28"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="person.circle.fill" catalog="system" width="32" height="32"/>
         <image name="purple_circle" width="24" height="24"/>
         <image name="right_arrow_color" width="24" height="24"/>
         <image name="right_arrow_grey" width="24" height="24"/>

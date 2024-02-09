@@ -39,9 +39,19 @@ extension UIColor{
             return UIColor(named: "dark_transparent") ?? UIColor.purple
         }
     }
-	public class var PurpleGrey_500 : UIColor{
+	public class var PurpleGrey_800 : UIColor{
+        get {
+            return UIColor(named: "PurpleGrey_800") ?? UIColor.purple
+        }
+    }
+    public class var PurpleGrey_500 : UIColor{
+        get {
+            return UIColor(named: "PurpleGrey_500") ?? UIColor.purple
+        }
+    }
+    public class var PurpleGrey_600 : UIColor{
 		get {
-			return UIColor(named: "PurpleGrey_500") ?? UIColor.purple
+			return UIColor(named: "PurpleGrey_600") ?? UIColor.purple
 		}
 	}
 	public class var PurpleGrey_100 : UIColor{

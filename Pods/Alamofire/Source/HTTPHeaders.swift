@@ -321,7 +321,7 @@ extension HTTPHeader {
     ///
     /// - Returns:         The header.
     public static func userAgent(_ value: String) -> HTTPHeader {
-        HTTPHeader(name: "User-Agent", value: value)
+        return HTTPHeader(name: "User-Agent", value: value)
     }
 }
 

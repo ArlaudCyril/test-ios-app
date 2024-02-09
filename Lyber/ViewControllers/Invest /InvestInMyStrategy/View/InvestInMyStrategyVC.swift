@@ -279,8 +279,14 @@ class InvestInMyStrategyVC: ViewController {
             })
 		}else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy || strategyType == .oneTimeInvestment){
 			
+            
+            
 			if(strategyType == .oneTimeInvestment){
+                self.maximumBtn.isHidden = false
+                self.noOfCoinVw.isHidden = false
 				self.frequencyVw.isHidden = true
+                
+                CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 €", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			}else{
 				self.frequencyVw.isHidden = false
 			}
@@ -626,6 +632,9 @@ extension InvestInMyStrategyVC {
         }else if strategyType == .Exchange{
             enteredText = CommonFunctions.formattedAssetPennies(from: Double(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0"), price: exchangeData?.exchangeFromCoinPrice, rounding: .down)
             noOfCoins(value: enteredText)
+        }else if strategyType == .oneTimeInvestment{
+            enteredText = fromBalance?.balanceData.balance.euroFormat ?? ""
+            noOfCoins(value: enteredText)
         }
         
         if enteredText.contains("."){
@@ -723,7 +732,15 @@ extension InvestInMyStrategyVC {
 				self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: NSDecimalNumber(decimal: totalEuroInvested).doubleValue))€"
 			}
 			
-		}else{
+        }else if(strategyType == .oneTimeInvestment){
+            amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDT"
+            let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
+            
+            totalEuroInvested = Decimal(string: cleanedValue) ?? 0.0
+            totalNoOfCoinsInvest = totalEuroInvested / Decimal(coinPrice)
+            
+            self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValue(number: NSDecimalNumber(decimal: totalNoOfCoinsInvest).doubleValue)) €"
+        }else{
             if exchangeCoin1ToCoin2 == false{
                     amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDT"
 				let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))

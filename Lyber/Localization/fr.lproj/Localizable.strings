@@ -284,6 +284,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "CONFIRM_MY_DEPOSIT" = "Confirmer mon dépôt";
 "CONFIRM_DEPOSIT" = "Confirmer le dépôt";
 "AMOUNT" = "Montant";
+"TOTAL_USDT_SPENT" = "Total de USDT dépensés";
 "FREQUENCY" = "Fréquence";
 "PAYMENT" = "Paiement";
 "BUY" = "Acheter du";
@@ -706,6 +707,8 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "KYC_UNDER_VERIFICATION" = "Votre KYC est en cours de vérification. Veuillez réessayer dans cinq minutes.";
 "PLEASE_VALIDATE_KYC" = "Votre kyc a été refusé. Veuillez valider votre kyc pour pouvoir effectuer l'opération.";
 "VALIDATE_KYC" = "Valider mon kyc";
+"VERIFICATION_IDENTITY" = "Vérification de votre identité";
+"CONTRACT_SIGNATURE" = "Signature du contrat";
 "USER_NOT_SIGNED_CONTRACT" = "Votre contrat n'a pas été signé. Veuillez le signer pour pouvoir effectuer l'opération";
 "SIGN_CONTRACT" = "Signer mon contrat";
 

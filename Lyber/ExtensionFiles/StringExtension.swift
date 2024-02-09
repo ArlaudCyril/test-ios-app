@@ -160,4 +160,39 @@ extension String{
 		}
 		return phone
 	}
+    
+    var euroFormat: String? {
+        if let doubleValue = Double(self) {
+            let roundedValue = String(format: "%.2f", doubleValue)
+            return roundedValue
+        }
+        
+        return nil
+    }
+    
+    var decoderKycStatus: VerificationIndicator {
+        switch self {
+        case "OK":
+            return .validated
+        case "REVIEW":
+            return .pending
+        case "CANCELED", "FAILED":
+            return .rejected
+        case "NOT_STARTED", "STARTED":
+            return .notPerformed
+        default:
+            return .notPerformed
+        }
+    }
+    
+    var decoderSigningStatus: VerificationIndicator {
+        switch self {
+        case "SIGNED":
+            return .validated
+        case "NOT_SIGNED":
+            return .notPerformed
+        default:
+            return .notPerformed
+        }
+    }
 }

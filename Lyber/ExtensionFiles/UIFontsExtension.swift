@@ -10,6 +10,7 @@ import UIKit
 
 
 internal enum Size : CGFloat{
+    case ExtraSmall = 6.0
     case VSmall = 10.0
     case Small = 12.0
     case Medium = 14.0

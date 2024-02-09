@@ -13,6 +13,18 @@
         }
       }
     },
+    "0s7-H6-kVu.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"0s7-H6-kVu\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "2jn-td-Yna.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"2jn-td-Yna\";",
       "extractionState" : "extracted_with_value",
@@ -253,6 +265,30 @@
         }
       }
     },
+    "blJ-2J-x3f.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Button\"; ObjectID = \"blJ-2J-x3f\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "blJ-2J-x3f.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"blJ-2J-x3f\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
     "Bzm-QF-wVl.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"Bzm-QF-wVl\";",
       "extractionState" : "extracted_with_value",
@@ -399,6 +435,18 @@
     },
     "etU-IR-rgP.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"etU-IR-rgP\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
+    "FHT-fM-pKL.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"FHT-fM-pKL\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -657,6 +705,30 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Label"
+          }
+        }
+      }
+    },
+    "JdA-WW-EdT.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Button\"; ObjectID = \"JdA-WW-EdT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "JdA-WW-EdT.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"JdA-WW-EdT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
           }
         }
       }
@@ -1317,6 +1389,30 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Label"
+          }
+        }
+      }
+    },
+    "unh-Dc-nIF.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Button\"; ObjectID = \"unh-Dc-nIF\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "unh-Dc-nIF.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"unh-Dc-nIF\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
           }
         }
       }

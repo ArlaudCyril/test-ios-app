@@ -94,6 +94,9 @@ extension TransactionVC : UITableViewDelegate,UITableViewDataSource{
 			vc.type = .strategy
 			vc.executionId = transaction?.id ?? ""
 			vc.name = transaction?.strategyName ?? ""
+            vc.totalStableAmountSpent = "\(transaction?.totalStableAmountSpent ?? "") \(transaction?.asset ?? "")"
+            vc.totalFeeSpent = "\(transaction?.totalFeeSpent ?? "0") \(transaction?.fromAsset?.uppercased() ?? "")"
+            vc.date = transaction?.date ?? ""
 			if(transaction?.nextExecution != nil){
 				vc.typeStrategy = CommonFunctions.localisation(key: "RECURRENT")
 			}else{

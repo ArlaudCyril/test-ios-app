@@ -99,9 +99,6 @@ class PortfolioDetailVC: SwipeGesture {
         }
         CommonUI.setUpButton(btn: buyBtn, text: "\(CommonFunctions.localisation(key: "BUY_VERB"))", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
 		CommonUI.setUpButton(btn: sellBtn, text: "\(CommonFunctions.localisation(key: "SELL"))", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-		if(self.assetId == "usdt"){
-			self.buyBtn.setTitle(CommonFunctions.localisation(key: "BUY_USDT"), for: .normal)
-		}
         buyBtn.setImage(nil, for: .normal)
         sellBtn.setImage(nil, for: .normal)
         self.threeDotBtn.layer.cornerRadius = 16
@@ -220,7 +217,11 @@ extension PortfolioDetailVC{
                     vc.strategyType = .Exchange
                     self.navigationController?.pushViewController(vc, animated: false)
                 }else{
-                    self.presentAlertBuyUsdt(toAsset: toAsset, controller: self)
+                    let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                    vc.type = .buyUsdt
+                    vc.controller = self
+                    vc.toAsset = toAsset
+                    self.navigationController?.present(vc, animated: false)
                 }
             }
         })
@@ -381,19 +382,6 @@ extension PortfolioDetailVC{
 			}
 			self.tblView.reloadData()
 		})
-	}
-	
-	func presentAlertBuyUsdt(toAsset : PriceServiceResume, controller: UIViewController){
-		let alert = UIAlertController(title: CommonFunctions.localisation(key: "BUY_USDT"), message: CommonFunctions.localisation(key: "INVEST_IN_ASSET_USDT"), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
-		}))
-		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "BUY_USDT"), style: .default, handler: {_ in
-			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-			vc.strategyType = .singleCoin
-			vc.asset = toAsset
-			controller.navigationController?.pushViewController(vc, animated: true)
-		}))
-		controller.present(alert, animated: true, completion: nil)
 	}
 }
 	

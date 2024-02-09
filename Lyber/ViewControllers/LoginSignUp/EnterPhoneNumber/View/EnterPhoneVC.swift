@@ -201,7 +201,7 @@ extension EnterPhoneVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 extension EnterPhoneVC{
     @objc func backBtnAct(){
 		if self.currentPage ?? 0 == 0{
-			self.navigationController?.popToViewController(ofClass: LoginVC.self)
+			self.navigationController?.popViewController(animated: false)
 		}else{
             let indexPath = NSIndexPath(item: (currentPage ?? 0) - 1, section: 0)
             self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
@@ -297,6 +297,7 @@ extension EnterPhoneVC{
                         userData.shared.time = Date()
                         userData.shared.dataSave()
 						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                        vc.enterPhoneController = self
 						vc.typeVerification = "phone"
 						vc.action = "signup"
 						vc.controller = self
