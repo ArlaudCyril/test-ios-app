@@ -26,7 +26,10 @@ class ExchangeFromVC: ViewController {
     
     @IBOutlet var lyberPortfolioVw: UIView!
     @IBOutlet var lyberPortfolioLbl: UILabel!
+    @IBOutlet var noAssetsLbl: UILabel!
     @IBOutlet var tblView: UITableView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,8 @@ class ExchangeFromVC: ViewController {
 
 	//MARK: - SetUpUI
     override func setUpUI(){
+        self.noAssetsLbl.isHidden = true
+        
         CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: CommonFunctions.localisation(key: "EXCHANGE_FROM_TITLE"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.lyberPortfolioLbl, text: CommonFunctions.localisation(key: "LYBER_PORTFOLIO"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
         CommonUI.setUpLbl(lbl: self.allportfolioLbl, text: CommonFunctions.localisation(key: "ALL_PORTFOLIO"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
@@ -48,6 +53,20 @@ class ExchangeFromVC: ViewController {
             self.allPortfolioVw.isHidden = true
             self.headerView.headerLbl.text = CommonFunctions.localisation(key: "WANT_WITHDRAW")
             self.lyberPortfolioLbl.text = CommonFunctions.localisation(key: "YOUR_ASSETS")
+            
+            if(totalEuroAvailable == 0){
+                self.noAssetsLbl.isHidden = false
+                self.tblView.isHidden = true
+                
+                CommonUI.setUpLbl(lbl: self.noAssetsLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+                self.noAssetsLbl.attributedText = CommonFunctions.underlineStringInText(str: CommonFunctions.localisation(key: "CLICK_HERE"), text: CommonFunctions.localisation(key: "NO_ASSETS_YET_CLICK_HERE"))
+                
+                let noAssetsLblTap = UITapGestureRecognizer(target: self, action: #selector(linkTapped))
+                self.noAssetsLbl.addGestureRecognizer(noAssetsLblTap)
+                
+                self.noAssetsLbl.numberOfLines = 0
+            }
+            
         }
         
         self.tblView.delegate = self
@@ -89,6 +108,17 @@ extension ExchangeFromVC{
     @objc func WithdrawAllAct(){
         let vc = WithdrawAllVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func linkTapped(){
+        PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+            let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+            let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+            vc.type = .buyUsdt
+            vc.controller = self
+            vc.toAsset = toAsset
+            self.navigationController?.present(vc, animated: false)
+        })
     }
 }
 

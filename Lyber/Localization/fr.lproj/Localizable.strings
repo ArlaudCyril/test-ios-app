@@ -26,7 +26,7 @@
 "NEXT" = "Suivant";
 "ENTER_CODE" = "Entrez le code";
 "CONFIRMATION_CODE" = "Nous vous avons envoyé un code de confirmation.";
-"RESEND_CODE_COULD_BE_SEND" = "Un nouveau code pourra être renvoyé dans ";
+"RESEND_CODE_COULD_BE_SEND" = "Un nouveau code pourra être renvoyé dans";
 "RESEND_CODE" = "Renvoyer le code";
 "CREATE_PIN" = "Créer un code PIN";
 "FOUR_DIGIT_CODE" = "Sécurisez votre compte en créant un code à 4 chiffres.";
@@ -342,6 +342,8 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "WANT_WITHDRAW" = "Je veux retirer";
 "ALL_PORTFOLIO" = "Tout mon portefeuille";
 "YOUR_ASSETS" = "Vos actifs";
+"NO_ASSETS_YET_CLICK_HERE" = "Vous n’avez encore pas d’actifs. Obtenez vos premières crypto dès maintenant en cliquant ici.";
+"CLICK_HERE" = "cliquant ici.";
 "WITHDRAW_TO" = "Retirer → Vers";
 "WITHDRAW_ALL_MY_PORTFOLIO" = "Retirer tout mon portefeuille";
 "PREVIEW_WITHDRAW" = "Aperçu du retrait";

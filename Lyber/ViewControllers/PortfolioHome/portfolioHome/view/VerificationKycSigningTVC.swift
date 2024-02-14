@@ -10,8 +10,8 @@ import UIKit
 
 class VerificationKycSigningTVC: UITableViewCell {
     //MARK: - Variables
-    var statusKyc: VerificationIndicator = .notPerformed
-    var statusSigning: VerificationIndicator = .notPerformed
+    var statusKyc: VerificationIndicator?
+    var statusSigning: VerificationIndicator?
     var portolioHomeVC: PortfolioHomeVC?
     
     //MARK:- IB OUTLETS
@@ -58,6 +58,8 @@ extension VerificationKycSigningTVC{
         case .validated:
             self.indicatorSigningImgVw.setImage(Assets.checkmark_color.image())
             self.rightArrowSigningImgVw.isHidden = true
+        case .none:
+            break
         }
         
         verificationKycVw.layer.cornerRadius = 16
@@ -87,6 +89,8 @@ extension VerificationKycSigningTVC{
         case .validated:
             self.indicatorKycImgVw.setImage(Assets.checkmark_color.image())
             self.rightArrowKycImgVw.isHidden = true
+        case .none:
+            break
         }
     }
 }
@@ -110,7 +114,7 @@ extension VerificationKycSigningTVC{
             })
         case .pending:
             CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_UNDER_VERIFICATION"))
-        case .validated:
+        case .validated, .none:
             break
         }
     }
@@ -132,7 +136,7 @@ extension VerificationKycSigningTVC{
                     }
                 })
             }
-        case .pending, .validated:
+        case .pending, .validated, .none:
             break
         }
     }
@@ -143,15 +147,15 @@ extension VerificationKycSigningTVC{
                 if(response?.data?.kycStatus?.decoderKycStatus == .validated){
                     self.statusKyc = .validated
                     self.updateKycIndicators()
-                    self.portolioHomeVC?.timerVerificationSigning.invalidate()
+                    self.portolioHomeVC?.invalidateTimerVerificationKycSigning()
                 }else if(response?.data?.kycStatus?.decoderKycStatus == .rejected){
                     self.statusKyc = .rejected
                     self.updateKycIndicators()
-                    self.portolioHomeVC?.timerVerificationSigning.invalidate()
+                    self.portolioHomeVC?.invalidateTimerVerificationKycSigning()
                 }else if(response?.data?.kycStatus?.decoderKycStatus == .pending){
                     self.statusKyc = .pending
                     self.updateKycIndicators()
-                    self.portolioHomeVC?.timerVerificationSigning.invalidate()
+                    self.portolioHomeVC?.invalidateTimerVerificationKycSigning()
                 }
             }
         })

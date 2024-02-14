@@ -478,7 +478,7 @@ class CommonFunctions{
     
 	static func setBalances(balances: [Balance])
 	{
-		Storage.balances = balances.sorted(by: {Double($0.balanceData.euroBalance) ?? 0 > Double($1.balanceData.euroBalance) ?? 0})
+		//Storage.balances = balances.sorted(by: {Double($0.balanceData.euroBalance) ?? 0 > Double($1.balanceData.euroBalance) ?? 0})
 	}
     
     //MARK: - Line Chart

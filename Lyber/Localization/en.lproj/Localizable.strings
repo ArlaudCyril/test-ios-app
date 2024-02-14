@@ -25,7 +25,7 @@
 "NEXT" = "Next";
 "ENTER_CODE" = "Enter code";
 "CONFIRMATION_CODE" = "We’ve sent you a confirmation code.";
-"RESEND_CODE_COULD_BE_SEND" = "A new code could be returned in ";
+"RESEND_CODE_COULD_BE_SEND" = "A new code could be returned in";
 "RESEND_CODE" = "Resend Code";
 "CREATE_PIN" = "Create a PIN";
 "FOUR_DIGIT_CODE" = "Secure your account by creating a 4 digit code.";
@@ -346,6 +346,8 @@ Make sure to withdraw all the money you have in your account before closing it."
 "WANT_WITHDRAW" = "I want to withdraw";
 "ALL_PORTFOLIO" = "All my portfolio";
 "YOUR_ASSETS" = "Your assets";
+"NO_ASSETS_YET_CLICK_HERE" = "You don't have any assets yet. Get your first cryptos now by clicking here.";
+"CLICK_HERE" = "clicking here.";
 "WITHDRAW_TO" = "Withdraw → To";
 "WITHDRAW_ALL_MY_PORTFOLIO" = "Withdraw all my portfolio";
 "PREVIEW_WITHDRAW" = "Preview withdraw";

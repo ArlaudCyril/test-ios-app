@@ -18,12 +18,14 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 	var enterPhoneController : EnterPhoneVC?
 	var verificationCallBack : ((String)->())?
 	var scopes : [String] = []
+    var timerResendCode = 59
     
     //MARK: - IB OUTLETS
     @IBOutlet var containerView: UIView!
     
     @IBOutlet var verificationLbl: UILabel!
     @IBOutlet var enterCodeLbl: UILabel!
+    @IBOutlet var resendCodeLbl: UILabel!
 
     @IBOutlet var Tf1: otpTextField!
     @IBOutlet var Tf2: otpTextField!
@@ -32,7 +34,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
     @IBOutlet var Tf5: otpTextField!
     @IBOutlet var Tf6: otpTextField!
     @IBOutlet var backBtn: UIButton!
-    @IBOutlet var resendCodeBtn: LoadingButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,23 +45,27 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 
 	//MARK: - SetUpUI
     override func setUpUI(){
-		IQKeyboardManager.shared.enableAutoToolbar = false
+        self.resendCodeLbl.isHidden = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
         switch typeVerification {
-            case "google":
-                CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-            case "phone":
-                CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_SMS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-            case "email":
-                CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_EMAIL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-            default:
-                print("Unsupported 2FA method")
+        case "google":
+            CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        case "phone":
+            self.resendCodeLbl.isHidden = false
+            CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_SMS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        case "email":
+            CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_EMAIL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        default:
+            print("Unsupported 2FA method")
         }
         containerView.layer.cornerRadius = 32;
-		self.containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        self.containerView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         containerView.layer.masksToBounds = true
         
         CommonUI.setUpLbl(lbl: verificationLbl, text: CommonFunctions.localisation(key: "VERIFICATION"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
-
+        
+        CommonUI.setUpLbl(lbl: resendCodeLbl, text: CommonFunctions.localisation(key: "RESEND_CODE"), textColor: UIColor.purple_500, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        
         let tfs : [otpTextField] = [Tf1,Tf2,Tf3, Tf4, Tf5, Tf6]
         for tf in tfs {
             tf.delegate = self
@@ -70,14 +76,12 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
         CommonUI.setUpButton(btn: backBtn, text: CommonFunctions.localisation(key: "BACK"), textcolor: UIColor.SecondarytextColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         
-        CommonUI.setUpButton(btn: resendCodeBtn, text: CommonFunctions.localisation(key: "RESEND_CODE"), textcolor: UIColor.purple_500, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryPro(Size.ExtraSmall.sizeValue()))
         
-        resendCodeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 6)
-        
-        self.resendCodeBtn.addTarget(self, action: #selector(resendCodeBtnAct), for: .touchUpInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(resendCodeLblAct))
+        resendCodeLbl.isUserInteractionEnabled = true
+        resendCodeLbl.addGestureRecognizer(tapGesture)
         
     }
-
 }
 
 //MARK: - Text Field Delegates
@@ -148,27 +152,24 @@ extension VerificationVC{
         self.dismiss(animated: true, completion: nil)
     }
      
-    @objc func resendCodeBtnAct(){
-        self.resendCodeBtn.showLoading()
+    @objc func resendCodeLblAct(){
         EnterPhoneVM().SignUpApi(phoneNumber: self.enterPhoneController?.phoneNumber ?? "", countryCode: self.enterPhoneController?.countryCode ?? "", completion: { [weak self] response in
             	
-            self?.resendCodeBtn.hideLoading()
+            self?.resendCodeLbl.isUserInteractionEnabled = false
+            self?.resendCodeLbl.textColor = UIColor.PurpleGrey_500
             
-            self?.resendCodeBtn.isUserInteractionEnabled = false
-            self?.resendCodeBtn.setTitleColor(UIColor.PurpleGrey_500, for: .normal)
-            
-            self?.timerSendCode(secondsRemaining: 10)
+            self?.timerSendCode(secondsRemaining: self?.timerResendCode ?? -1)
         })
     }
     
     func timerSendCode(secondsRemaining: Int){
         if(secondsRemaining == 0){
-            self.resendCodeBtn.isUserInteractionEnabled = true
-            self.resendCodeBtn.setTitleColor(UIColor.purple_500, for: .normal)
-            self.resendCodeBtn.setTitle(CommonFunctions.localisation(key: "RESEND_CODE"), for: .normal)
+            self.resendCodeLbl.isUserInteractionEnabled = true
+            self.resendCodeLbl.textColor = UIColor.purple_500
+            self.resendCodeLbl.text = CommonFunctions.localisation(key: "RESEND_CODE")
             
         }else{
-            self.resendCodeBtn.setTitle("\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) \(secondsRemaining)", for: .normal)
+            self.resendCodeLbl.text = "\(CommonFunctions.localisation(key: "RESEND_CODE_COULD_BE_SEND")) \(secondsRemaining)"
            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.timerSendCode(secondsRemaining: secondsRemaining - 1)

@@ -4344,13 +4344,14 @@
                                             <constraint firstAttribute="bottom" secondItem="79S-oB-8FN" secondAttribute="bottom" id="kvj-8l-BKj"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdA-WW-EdT" customClass="LoadingButton" customModule="Lyber_dev" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="185" width="354" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQY-9P-GUS">
+                                        <rect key="frame" x="30" y="185" width="354" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4z-Da-NwQ">
-                                        <rect key="frame" x="30" y="227.5" width="354" height="34.5"/>
+                                        <rect key="frame" x="30" y="213.5" width="354" height="34.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     </button>
@@ -4359,16 +4360,16 @@
                                 <constraints>
                                     <constraint firstItem="m65-n6-6IX" firstAttribute="leading" secondItem="bkL-oG-Kp0" secondAttribute="leading" constant="30" id="5fx-mO-wok"/>
                                     <constraint firstItem="3U5-I0-a7E" firstAttribute="trailing" secondItem="Crc-6U-IqO" secondAttribute="trailing" id="8gO-Wk-TBj"/>
+                                    <constraint firstItem="xQY-9P-GUS" firstAttribute="top" secondItem="m65-n6-6IX" secondAttribute="bottom" constant="24" id="90j-q8-ffw"/>
+                                    <constraint firstItem="b4z-Da-NwQ" firstAttribute="top" secondItem="xQY-9P-GUS" secondAttribute="bottom" constant="8" id="D7P-Al-Pra"/>
                                     <constraint firstItem="3U5-I0-a7E" firstAttribute="leading" secondItem="Crc-6U-IqO" secondAttribute="leading" id="Dgp-cB-fmI"/>
                                     <constraint firstItem="m65-n6-6IX" firstAttribute="trailing" secondItem="Crc-6U-IqO" secondAttribute="trailing" id="H8v-aT-fFo"/>
+                                    <constraint firstItem="xQY-9P-GUS" firstAttribute="leading" secondItem="b4z-Da-NwQ" secondAttribute="leading" id="IAQ-oI-BnC"/>
                                     <constraint firstItem="Crc-6U-IqO" firstAttribute="top" secondItem="bkL-oG-Kp0" secondAttribute="top" constant="20" id="JR9-8D-Gt0"/>
-                                    <constraint firstItem="JdA-WW-EdT" firstAttribute="leading" secondItem="b4z-Da-NwQ" secondAttribute="leading" id="LwL-gI-2mI"/>
                                     <constraint firstAttribute="height" constant="500" id="Pd9-dL-XPn"/>
+                                    <constraint firstItem="xQY-9P-GUS" firstAttribute="trailing" secondItem="b4z-Da-NwQ" secondAttribute="trailing" id="QCY-SK-Ubr"/>
                                     <constraint firstAttribute="trailing" secondItem="m65-n6-6IX" secondAttribute="trailing" constant="30" id="R1O-If-gQj"/>
-                                    <constraint firstItem="b4z-Da-NwQ" firstAttribute="top" secondItem="JdA-WW-EdT" secondAttribute="bottom" constant="8" id="Rzm-d7-x3F"/>
-                                    <constraint firstItem="JdA-WW-EdT" firstAttribute="trailing" secondItem="b4z-Da-NwQ" secondAttribute="trailing" id="bDn-Lf-7th"/>
                                     <constraint firstItem="3U5-I0-a7E" firstAttribute="top" secondItem="Crc-6U-IqO" secondAttribute="bottom" constant="4" id="bWj-Jg-aDA"/>
-                                    <constraint firstItem="JdA-WW-EdT" firstAttribute="top" secondItem="m65-n6-6IX" secondAttribute="bottom" constant="24" id="c78-KO-lwn"/>
                                     <constraint firstItem="m65-n6-6IX" firstAttribute="leading" secondItem="Crc-6U-IqO" secondAttribute="leading" id="hRY-dl-GMM"/>
                                     <constraint firstItem="m65-n6-6IX" firstAttribute="top" secondItem="3U5-I0-a7E" secondAttribute="bottom" constant="40" id="hpC-NU-FyW"/>
                                     <constraint firstItem="b4z-Da-NwQ" firstAttribute="trailing" secondItem="Crc-6U-IqO" secondAttribute="trailing" id="lGa-r5-HMY"/>
@@ -4399,7 +4400,7 @@
                         <outlet property="backBtn" destination="b4z-Da-NwQ" id="EAN-KB-doF"/>
                         <outlet property="containerView" destination="bkL-oG-Kp0" id="ceD-nh-0tY"/>
                         <outlet property="enterCodeLbl" destination="3U5-I0-a7E" id="pkD-4X-ibi"/>
-                        <outlet property="resendCodeBtn" destination="JdA-WW-EdT" id="MaX-ow-3Mi"/>
+                        <outlet property="resendCodeLbl" destination="xQY-9P-GUS" id="sGX-Oi-AcT"/>
                         <outlet property="verificationLbl" destination="Crc-6U-IqO" id="nhk-bK-ScK"/>
                     </connections>
                 </viewController>

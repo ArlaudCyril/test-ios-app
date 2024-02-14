@@ -52,7 +52,7 @@ class PortfolioHomeVC: NotSwipeGesture {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		self.timer.invalidate()
-        self.timerVerificationSigning.invalidate()
+        self.invalidateTimerVerificationKycSigning()
 	}
 
 
@@ -246,6 +246,10 @@ extension PortfolioHomeVC{
             })
             
         })
+    }
+    
+    func invalidateTimerVerificationKycSigning(){
+        self.timerVerificationSigning.invalidate()
     }
     
     @objc func investMoneyBtnAct(){
