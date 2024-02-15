@@ -59,9 +59,6 @@ class ProfileVC: SwipeGesture {
 		}else{
 			self.securityData[1].desc = "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "ENABLED"))"
 		}
-		if userData.shared.type2FA == "none" {
-			self.securityData[0].desc = CommonFunctions.localisation(key: "DISABLED_FEMININE")
-		}
 		
 		
 		//Views

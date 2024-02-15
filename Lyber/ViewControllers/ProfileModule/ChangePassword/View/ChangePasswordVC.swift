@@ -149,6 +149,21 @@ extension ChangePasswordVC : UITextFieldDelegate{
         }
 		return true
 	}
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == oldPasswordTF{
+            CommonUI.setUpViewBorder(vw: self.oldPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
+        }else if textField == newPasswordTF{
+            CommonUI.setUpViewBorder(vw: self.newPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
+        }else{
+            CommonUI.setUpViewBorder(vw: self.confirmNewPasswordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }
 
 
