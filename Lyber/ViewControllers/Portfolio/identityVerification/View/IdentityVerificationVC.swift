@@ -16,6 +16,7 @@ class IdentityVerificationVC: ViewController {
 	var btnPressed = false
 	var isCGUChecked = false
 	var isPrivacyChecked = false
+    var kycSigningPopupVC : KycSigningPopupVC?
 	
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
@@ -116,16 +117,11 @@ extension IdentityVerificationVC{
 		CommonFunctions.stopRegistration()
     }
     
-    @objc func kycBtnAct(){
-		self.btnPressed = true
-		if(self.urlKyc != ""){
-			let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			vc.kycUrl = self.urlKyc
-			self.navigationController?.pushViewController(vc, animated: true)
-		}else{
-			self.kycBtn.showLoading()
-		}
-		
+    @objc func kycBtnAct(){//Print pop-up and on the pop-up do the previous action
+        self.kycSigningPopupVC = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+        self.kycSigningPopupVC?.type = .certification
+        self.kycSigningPopupVC?.identityVerificationController = self
+        self.navigationController?.present(self.kycSigningPopupVC ?? KycSigningPopupVC(), animated: false)
     }
 	
 	@objc func reviewInformationsBtnAct(){
@@ -138,8 +134,7 @@ extension IdentityVerificationVC{
 		if self.urlKyc != "" {
 			timer?.invalidate()
 			if(self.btnPressed == true){
-				self.kycBtn.hideLoading()
-				kycBtnAct()
+                kycSigningPopupVC?.actionBtnAct()
 			}
 		}
 	}

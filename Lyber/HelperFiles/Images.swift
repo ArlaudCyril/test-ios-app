@@ -97,6 +97,7 @@ enum Assets : String{
     case visibility_on
     case profile_placholder
     case cover_placholder
+    case cloud_download
     
     //Flags
 	case uk_flag

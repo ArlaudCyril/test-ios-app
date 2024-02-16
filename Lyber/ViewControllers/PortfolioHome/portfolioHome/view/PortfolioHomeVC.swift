@@ -59,8 +59,7 @@ class PortfolioHomeVC: NotSwipeGesture {
 	//MARK: - SetUpUI
     override func setUpUI(){
 		self.headerData = [CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "VERIFICATION"),CommonFunctions.localisation(key: "MY_ASSETS")/*,CommonFunctions.localisation(key: "ANALYTICS")*/,CommonFunctions.localisation(key: "RECURRING_INVESTMENT"),CommonFunctions.localisation(key: "ALL_ASSETS_AVAILABLE")]
-		
-		
+		print(userData.shared.userSigned)
         self.tblView.delegate = self
         self.tblView.dataSource = self
         CommonUI.setUpButton(btn: investMoneyBtn, text: CommonFunctions.localisation(key: "INVEST_MONEY"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
@@ -83,13 +82,17 @@ class PortfolioHomeVC: NotSwipeGesture {
 //Mark: - table view delegates and dataSource
 extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return headerData.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return 1
         }else if section == 1{
-            return 1
+            if(userData.shared.userSigned == true){
+                return 0
+            }else{
+                return 1
+            }
         }else if section == 2{
 			return Storage.balances.count == 0 ? 4: Storage.balances.count
         }else if section == 3{
@@ -108,10 +111,14 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
             cell.controller = self
             return cell
         }else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "VerificationKycSigningTVC")as! VerificationKycSigningTVC
-            cell.setUpCell()
-            cell.portolioHomeVC = self
-            return cell
+            if(userData.shared.userSigned == true){
+                return UITableViewCell()
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VerificationKycSigningTVC")as! VerificationKycSigningTVC
+                cell.setUpCell()
+                cell.portolioHomeVC = self
+                return cell
+            }
         }else if indexPath.section == 2{
 			if(Storage.balances.count > 0){
 				let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
@@ -178,7 +185,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0{
+        if section == 0 || (section == 1 && userData.shared.userSigned == true) {
             return UIView()
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioHeaderTVC")as! PortfolioHeaderTVC
@@ -188,13 +195,12 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0{
+        if section == 0 || (section == 1 && userData.shared.userSigned == true) {
             return 0
         }else{
 			return 80
         }
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -273,6 +279,8 @@ extension PortfolioHomeVC{
                     if(response?.data?.yousignStatus == "SIGNED"){
                         CommonFunctions.hideLoaderSigning(success: true)
                         self.timer.invalidate()
+                        
+                        self.tblView.reloadData()
                     }
                 }
             }

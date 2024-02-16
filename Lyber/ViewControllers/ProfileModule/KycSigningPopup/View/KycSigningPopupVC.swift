@@ -15,6 +15,9 @@ class KycSigningPopupVC: ViewController {
     var controller : UIViewController = UIViewController()
     var toAsset : PriceServiceResume = PriceServiceResume()
     
+    //certification
+    var identityVerificationController : IdentityVerificationVC?
+    
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
     @IBOutlet var bottomView: UIView!
@@ -73,6 +76,8 @@ extension KycSigningPopupVC{
                     navVC.setNavigationBarHidden(true , animated: true)
                 }
             })
+            break
+            
         case .signing:
             let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
             KycWebVM().getSignUrlApi(completion:{ response in
@@ -86,12 +91,27 @@ extension KycSigningPopupVC{
                     
                 }
             })
+            break
+            
         case .buyUsdt:
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             vc.strategyType = .singleCoin
             vc.asset = self.toAsset
             self.controller.navigationController?.pushViewController(vc, animated: true)
             self.dismiss(animated: true)
+            break
+            
+        case .certification:
+            self.identityVerificationController?.btnPressed = true
+            if(self.identityVerificationController?.urlKyc != ""){
+                let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                vc.kycUrl = self.identityVerificationController?.urlKyc ?? ""
+                self.identityVerificationController?.navigationController?.pushViewController(vc, animated: true)
+                self.dismiss(animated: true)
+            }else{
+                self.actionBtn.showLoading()
+            }
+            break
         }
     }
 }
@@ -108,6 +128,7 @@ extension KycSigningPopupVC{
             
             CommonUI.setUpButton(btn: self.cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             self.actionBtn.setTitle(CommonFunctions.localisation(key: "VALIDATE_KYC"), for: .normal)
+            break
             
         case .signing:
             CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "SIGN_CONTRACT"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
@@ -117,6 +138,7 @@ extension KycSigningPopupVC{
             
             CommonUI.setUpButton(btn: self.cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             self.actionBtn.setTitle(CommonFunctions.localisation(key: "SIGN_CONTRACT"), for: .normal)
+            break
             
         case .buyUsdt:
             CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "BUY_USDT"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
@@ -126,6 +148,18 @@ extension KycSigningPopupVC{
             
             CommonUI.setUpButton(btn: self.cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             self.actionBtn.setTitle(CommonFunctions.localisation(key: "BUY_USDT"), for: .normal)
+            break
+            
+        case .certification:
+            CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "WARNING"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.DescriptionLbl, text: CommonFunctions.localisation(key: "CERTIFY_HONOUR_EU"), textColor: UIColor.PurpleGrey_600, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.DescriptionLbl.numberOfLines = 0
+            
+            CommonUI.setUpButton(btn: self.cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            self.actionBtn.setTitle(CommonFunctions.localisation(key: "YES_CERTIFY"), for: .normal)
+            break
         }
     }
 }

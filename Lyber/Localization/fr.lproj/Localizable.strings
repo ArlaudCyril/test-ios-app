@@ -9,6 +9,7 @@
 //MARK: - GLOBAL
 "LYBER_CRYPTO_FINGERTIPS" = "Lyber, la crypto à portée de main.";
 "LYBER_UNDER_MAINTENANCE" = "Lyber est en maintenance. Revenez plus tard !";
+"LYBER_UPDATE" = "Veuillez mettre à jour votre application dans l'AppStore";
 "SIMPLE_SECURE_DIVERSIFIED_INVESTMENT" = "L’investissement simple, sécurisé et diversifié";
 "SIGN_UP" = "S'inscrire";
 "LOADING_MORE" = "Charger plus";
@@ -36,7 +37,10 @@
 "ACTIVATE_FACE_ID" = "Activer Face ID";
 "ACCESS_LYBER_FACE_ID" = "Accédez à Lyber rapidement en vous connectant avec Face ID";
 "INVEST_IN_ASSET_USDT" = "Pour investir dans un actif, vous devez d'abord acheter des USDT, puis utiliser les USDT achetés et les échanger contre l'actif souhaité.";
+"CERTIFY_HONOUR_EU" = "Je certifie sur l'honneur que mes documents d'identité ont été émis par un pays membre de l'Union européenne ou de l'Espace économique européen, à l'exception de Chypre, Malte, Croatie, Hongrie, Liechtenstein, Lettonie, Roumanie et Slovaquie.";
 "BUY_USDT" = "Acheter de l’USDT";
+"YES_CERTIFY" = "Oui, je certifie";
+"WARNING" = "Attention !";
 "DECLINE" = "Refuser";
 "ASK_ME_LATER" = "Me demander plus tard";
 "DONT_MISS_ANY_UPDATE" = "Activez les notifications pour ne manquer aucune mise à jour de Lyber.";

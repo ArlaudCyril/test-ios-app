@@ -63,7 +63,8 @@ class userData : NSObject {
 	var sourceOfIncome = ""
 	var workIndustry = ""
 	var annualIncome = ""
-	var activityOnLyber = ""
+    var activityOnLyber = ""
+	var userSigned = false
 	
 	
     class var shared: userData{
@@ -137,7 +138,8 @@ class userData : NSObject {
 		newData.setValue(sourceOfIncome, forKey: "sourceOfIncome")
 		newData.setValue(workIndustry, forKey: "workIndustry")
 		newData.setValue(annualIncome, forKey: "annualIncome")
-		newData.setValue(activityOnLyber, forKey: "activityOnLyber")
+        newData.setValue(activityOnLyber, forKey: "activityOnLyber")
+		newData.setValue(userSigned, forKey: "userSigned")
         
         do {
             try context.save()
@@ -371,8 +373,12 @@ class userData : NSObject {
 						print("data get annualIncome \(annualIncome)")
 					}
 					if let activityOnLyber = result.value(forKey: "activityOnLyber") as? String{
-						self.activityOnLyber = activityOnLyber
-						print("data get activityOnLyber \(activityOnLyber)")
+                        self.activityOnLyber = activityOnLyber
+                        print("data get activityOnLyber \(activityOnLyber)")
+                    }
+                    if let userSigned = result.value(forKey: "userSigned") as? Bool{
+						self.userSigned = userSigned
+						print("data get userSigned \(userSigned)")
 					}
                 }
             }
@@ -408,7 +414,8 @@ class userData : NSObject {
 		self.sourceOfIncome = ""
 		self.workIndustry = ""
 		self.annualIncome = ""
-		self.activityOnLyber = ""
+        self.activityOnLyber = ""
+		self.userSigned = false
 		
 		self.dataSave()
 	}
@@ -501,7 +508,8 @@ class userData : NSObject {
 		self.sourceOfIncome = ""
 		self.workIndustry = ""
 		self.annualIncome = ""
-		self.activityOnLyber = ""
+        self.activityOnLyber = ""
+		self.userSigned = false
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext

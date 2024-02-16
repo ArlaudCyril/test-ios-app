@@ -117,8 +117,19 @@ class CommonFunctions{
 		navVC.setNavigationBarHidden(true , animated: true)
     }
 	
-	static func goToMaintenance(){
+	static func goToMaintenancePage(){
+        let vc = MaintenanceVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+        vc.typePage = .maintenance
+        let navVC = UINavigationController(rootViewController: vc)
+        UIApplication.shared.windows[0].rootViewController = navVC
+        UIApplication.shared.windows[0].makeKeyAndVisible()
+        navVC.navigationController?.popToRootViewController(animated: true)
+        navVC.setNavigationBarHidden(true , animated: true)
+    }
+    
+    static func goToUpdateNewVersionPage(){
 		let vc = MaintenanceVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+        vc.typePage = .update
 		let navVC = UINavigationController(rootViewController: vc)
 		UIApplication.shared.windows[0].rootViewController = navVC
 		UIApplication.shared.windows[0].makeKeyAndVisible()
@@ -478,7 +489,7 @@ class CommonFunctions{
     
 	static func setBalances(balances: [Balance])
 	{
-		//Storage.balances = balances.sorted(by: {Double($0.balanceData.euroBalance) ?? 0 > Double($1.balanceData.euroBalance) ?? 0})
+		Storage.balances = balances.sorted(by: {Double($0.balanceData.euroBalance) ?? 0 > Double($1.balanceData.euroBalance) ?? 0})
 	}
     
     //MARK: - Line Chart
@@ -1120,7 +1131,8 @@ class CommonFunctions{
 				userData.shared.scope2FALogin = ((response?.data?.scope2FA.contains("login")) == true)
 				userData.shared.scope2FAWhiteListing =  ((response?.data?.scope2FA.contains("whitelisting")) == true)
 				userData.shared.scope2FAWithdrawal = ((response?.data?.scope2FA.contains("withdrawal")) == true)
-				userData.shared.profile_image = response?.data?.avatar ?? ""
+                userData.shared.profile_image = response?.data?.avatar ?? ""
+                userData.shared.userSigned = response?.data?.yousignStatus?.decoderSigningStatusBool ?? false
 				
 				userData.shared.dataSave()
 			}
@@ -1129,82 +1141,85 @@ class CommonFunctions{
 	
 	static func handleErrors(caller: String, code: String, error: String, controller: UIViewController = UIViewController()){
 		switch code {
-			case "-1":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR"))
-				break
-			case "15", "25", "28", "30", "34", "40", "41", "42", "45", "50":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-				break
-			case "1":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "PHONE_ALREADY_REGISTERED"))
-				break
-			case "3", "8", "9", "26", "29", "46", "52":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "FATAL_ERROR", parameter: code))
-				CommonFunctions.fatalErrorAction()
-				break
-			case "5":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "EMAIL_ALREADY_EXIST"))
-				break
-			case "6", "7":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-				controller.dismiss(animated: false)
-				break
-			case "10":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_EMAIL"))
-				break
-			case "11":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_PHONE"))
-				break
-			case "12":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "USER_BLOCKED_FROM_LOGIN"))
-				break
-			case "14":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "WRONG_PASSWORD"))
-				break
-			case "18":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "CODE_ALREADY_USED"))
-				break
-			case "24":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "INCORRECT_OTP"))
-				break
-			case "27":
-				CommonFunctions.goHome()
-				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-				break
-			case "35":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "TOO_MANY_OTP_FAILURE"))
-				break
-			case "37", "44":
-				self.loadingProfileApi()
-				CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-				break
-			case "47":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "FAILED_RESET_PASSWORD"))
-				break
-			case "51":
-				CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_NOT_OK"))
-				let vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-				controller.navigationController?.pushViewController(vc, animated: false)
-				break
-			case "7023", "10041"://USER_NOT_KYC
-                let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                vc.type = .kyc
-                getTopMostViewController()?.present(vc, animated: false)
-				break
-			case "7024", "10042"://KYC_UNDER_VERIFICATION
-				CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_UNDER_VERIFICATION"))
-				CommonFunctions.goPortfolioHome()
-				break
-			case "7025", "10043"://USER_NOT_SIGNED_CONTRACT
-                let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-                vc.type = .signing
-                getTopMostViewController()?.present(vc, animated: false)
-				break
-			case "13014":
-				break
-			case "19002", "19003": // DEPRECATED_API_VERSION = 19002, UNDER_MAINTENANCE = 19003
-				CommonFunctions.goToMaintenance()
-				break
+        case "-1":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR"))
+            break
+        case "15", "25", "28", "30", "34", "40", "41", "42", "45", "50":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+            break
+        case "1":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "PHONE_ALREADY_REGISTERED"))
+            break
+        case "3", "8", "9", "26", "29", "46", "52":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "FATAL_ERROR", parameter: code))
+            CommonFunctions.fatalErrorAction()
+            break
+        case "5":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "EMAIL_ALREADY_EXIST"))
+            break
+        case "6", "7":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+            controller.dismiss(animated: false)
+            break
+        case "10":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_EMAIL"))
+            break
+        case "11":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_PHONE"))
+            break
+        case "12":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "USER_BLOCKED_FROM_LOGIN"))
+            break
+        case "14":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "WRONG_PASSWORD"))
+            break
+        case "18":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "CODE_ALREADY_USED"))
+            break
+        case "24":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "INCORRECT_OTP"))
+            break
+        case "27":
+            CommonFunctions.goHome()
+            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+            break
+        case "35":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "TOO_MANY_OTP_FAILURE"))
+            break
+        case "37", "44":
+            self.loadingProfileApi()
+            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
+            break
+        case "47":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "FAILED_RESET_PASSWORD"))
+            break
+        case "51":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_NOT_OK"))
+            let vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+            controller.navigationController?.pushViewController(vc, animated: false)
+            break
+        case "7023", "10041"://USER_NOT_KYC
+            let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+            vc.type = .kyc
+            getTopMostViewController()?.present(vc, animated: false)
+            break
+        case "7024", "10042"://KYC_UNDER_VERIFICATION
+            CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_UNDER_VERIFICATION"))
+            CommonFunctions.goPortfolioHome()
+            break
+        case "7025", "10043"://USER_NOT_SIGNED_CONTRACT
+            let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+            vc.type = .signing
+            getTopMostViewController()?.present(vc, animated: false)
+            break
+        case "13014":
+            break
+        case "19002":// DEPRECATED_API_VERSION = 19002 (update of app necessary)
+            CommonFunctions.goToUpdateNewVersionPage()
+            break
+        case "19003"://UNDER_MAINTENANCE = 19003
+            CommonFunctions.goToMaintenancePage()
+            break
 				
 			default:
 				CommonFunctions.toster(error)

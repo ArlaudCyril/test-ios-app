@@ -614,6 +614,8 @@
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C855BCCB2B6BD72C00D46EDA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
 		C855BCCE2B6BE14700D46EDA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
+		C857F4462B7E269000D0275E /* MaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F4452B7E269000D0275E /* MaintenanceModel.swift */; };
+		C857F4472B7E270900D0275E /* MaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F4452B7E269000D0275E /* MaintenanceModel.swift */; };
 		C8859A362B596D1E00225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C8AC1E1D2B6CF7AF0069C2FA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
@@ -936,6 +938,7 @@
 		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupVC.swift; sourceTree = "<group>"; };
 		C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupModel.swift; sourceTree = "<group>"; };
+		C857F4452B7E269000D0275E /* MaintenanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceModel.swift; sourceTree = "<group>"; };
 		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
 		C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationKycSigningTVC.swift; sourceTree = "<group>"; };
 		EE9AB0962AEBBDA300B3E36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -2854,6 +2857,7 @@
 		1FB03CFE2B15012C00AE153C /* Maintenance */ = {
 			isa = PBXGroup;
 			children = (
+				C857F4442B7E25E300D0275E /* Model */,
 				1FB03D012B15014D00AE153C /* View */,
 			);
 			path = Maintenance;
@@ -3057,6 +3061,14 @@
 			isa = PBXGroup;
 			children = (
 				C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C857F4442B7E25E300D0275E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C857F4452B7E269000D0275E /* MaintenanceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3534,6 +3546,7 @@
 				0A907E6C285B6235001ABD6A /* ResourcesCVC.swift in Sources */,
 				1FB5A61C2A97B79800C47AAE /* AddressAddedPopUpModel.swift in Sources */,
 				1FD219102AF3B101000F6FC5 /* ChangePasswordVC.swift in Sources */,
+				C857F4462B7E269000D0275E /* MaintenanceModel.swift in Sources */,
 				0A791E032864981A0084B104 /* ExchAnotherWalletTVC.swift in Sources */,
 				1F67C0622A6A7DE9007BB2E1 /* InvestmentModel.swift in Sources */,
 				1F9B43BD2ACAF57A00A13733 /* ContactFormVC.swift in Sources */,
@@ -3777,6 +3790,7 @@
 				1FF380F32AFD297600CCF1A6 /* ResourcesCVC.swift in Sources */,
 				1FF380F42AFD297600CCF1A6 /* AddressAddedPopUpModel.swift in Sources */,
 				1FF380F52AFD297600CCF1A6 /* ChangePasswordVC.swift in Sources */,
+				C857F4472B7E270900D0275E /* MaintenanceModel.swift in Sources */,
 				1FF380F62AFD297600CCF1A6 /* ExchAnotherWalletTVC.swift in Sources */,
 				1FF380F72AFD297600CCF1A6 /* InvestmentModel.swift in Sources */,
 				1FF380F82AFD297600CCF1A6 /* ContactFormVC.swift in Sources */,

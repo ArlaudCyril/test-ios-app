@@ -9,7 +9,7 @@ import Foundation
 
 struct Constants{
     
-	static let apiVersion = "0.1"
+	static let apiVersion = "0.2"
     static let deviceType = "IOS"
     static let deviceID = "df"
 

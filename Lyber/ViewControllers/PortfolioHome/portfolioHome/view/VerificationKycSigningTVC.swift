@@ -39,28 +39,15 @@ extension VerificationKycSigningTVC{
             if response != nil{
                 self.statusKyc = response?.data?.kycStatus?.decoderKycStatus ?? .notPerformed
                 self.statusSigning = response?.data?.yousignStatus?.decoderSigningStatus ?? .notPerformed
+                
+                self.updateKycIndicators()
+                self.updateSigningIndicators()
             }
         })
         
         CommonUI.setUpLbl(lbl: self.kycLbl, text: CommonFunctions.localisation(key: "VERIFICATION_IDENTITY"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpLbl(lbl: self.signingLbl, text: CommonFunctions.localisation(key: "CONTRACT_SIGNATURE"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        
-        updateKycIndicators()
-        
-        switch statusSigning {
-        case .rejected:
-            self.indicatorSigningImgVw.setImage(Assets.rejected_indicator.image())
-        case .notPerformed:
-            self.indicatorSigningImgVw.setImage(Assets.not_performed_indicator.image())
-        case .pending:
-            break
-        case .validated:
-            self.indicatorSigningImgVw.setImage(Assets.checkmark_color.image())
-            self.rightArrowSigningImgVw.isHidden = true
-        case .none:
-            break
-        }
         
         verificationKycVw.layer.cornerRadius = 16
         verificationKycVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
@@ -76,6 +63,22 @@ extension VerificationKycSigningTVC{
     
     }
     
+    func updateSigningIndicators(){
+        switch statusSigning {
+        case .rejected:
+            self.indicatorSigningImgVw.setImage(Assets.rejected_indicator.image())
+        case .notPerformed:
+            self.indicatorSigningImgVw.setImage(Assets.not_performed_indicator.image())
+        case .pending:
+            break
+        case .validated:
+            self.indicatorSigningImgVw.setImage(Assets.checkmark_color.image())
+            self.rightArrowSigningImgVw.isHidden = true
+        case .none:
+            break
+        }
+    }
+    
     func updateKycIndicators(){
         switch self.statusKyc {
         case .rejected:
@@ -85,7 +88,7 @@ extension VerificationKycSigningTVC{
             self.portolioHomeVC?.timerVerificationSigning = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
         case .pending:
             self.indicatorKycImgVw.setImage(Assets.pending_indicator.image())
-            self.portolioHomeVC?.timerVerificationSigning = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+            self.portolioHomeVC?.timerVerificationSigning = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
         case .validated:
             self.indicatorKycImgVw.setImage(Assets.checkmark_color.image())
             self.rightArrowKycImgVw.isHidden = true

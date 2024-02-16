@@ -195,4 +195,15 @@ extension String{
             return .notPerformed
         }
     }
+    
+    var decoderSigningStatusBool: Bool {
+        switch self {
+        case "SIGNED":
+            return true
+        case "NOT_SIGNED":
+            return false
+        default:
+            return false
+        }
+    }
 }

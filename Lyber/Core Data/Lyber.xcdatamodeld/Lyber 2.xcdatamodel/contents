@@ -47,6 +47,7 @@
         <attribute name="streetNumber" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="type2FA" optional="YES" attributeType="String"/>
+        <attribute name="userSigned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="userUuid" optional="YES" attributeType="String"/>
         <attribute name="workIndustry" optional="YES" attributeType="String"/>
         <attribute name="zipCode" optional="YES" attributeType="String"/>

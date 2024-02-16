@@ -11,4 +11,5 @@ enum KycSigningPopupModel{
     case kyc
     case signing
     case buyUsdt
+    case certification
 }
