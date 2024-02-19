@@ -59,7 +59,6 @@ class PortfolioHomeVC: NotSwipeGesture {
 	//MARK: - SetUpUI
     override func setUpUI(){
 		self.headerData = [CommonFunctions.localisation(key: "MY_ASSETS"),CommonFunctions.localisation(key: "VERIFICATION"),CommonFunctions.localisation(key: "MY_ASSETS")/*,CommonFunctions.localisation(key: "ANALYTICS")*/,CommonFunctions.localisation(key: "RECURRING_INVESTMENT"),CommonFunctions.localisation(key: "ALL_ASSETS_AVAILABLE")]
-		print(userData.shared.userSigned)
         self.tblView.delegate = self
         self.tblView.dataSource = self
         CommonUI.setUpButton(btn: investMoneyBtn, text: CommonFunctions.localisation(key: "INVEST_MONEY"), textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))

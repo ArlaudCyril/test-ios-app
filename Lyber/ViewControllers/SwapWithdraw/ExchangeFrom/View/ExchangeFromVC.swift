@@ -54,7 +54,7 @@ class ExchangeFromVC: ViewController {
             self.headerView.headerLbl.text = CommonFunctions.localisation(key: "WANT_WITHDRAW")
             self.lyberPortfolioLbl.text = CommonFunctions.localisation(key: "YOUR_ASSETS")
             
-            if(totalEuroAvailable == 0){
+            if(totalPortfolio == 0){
                 self.noAssetsLbl.isHidden = false
                 self.tblView.isHidden = true
                 

@@ -18,7 +18,7 @@ class PortfolioHomeTVC: UITableViewCell {
     var controller : PortfolioHomeVC?
     var markerController : customMarker?
     let customMarkerView = customMarker()
-	var chartData = [CommonFunctions.localisation(key: "1D"), CommonFunctions.localisation(key: "1W"),"1M ",CommonFunctions.localisation(key: "1Y"), "ALL"]
+	var chartData = [CommonFunctions.localisation(key: "1D"), CommonFunctions.localisation(key: "1W"),"1M", "ALL"]
 
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -108,8 +108,6 @@ extension PortfolioHomeTVC: UICollectionViewDelegate, UICollectionViewDataSource
             case 2:
                 limit = 30
             case 3:
-				limit = 365
-			case 4:
 				limit = 5000
 			default:
                 daily = false
