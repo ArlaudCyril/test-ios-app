@@ -396,14 +396,13 @@ class CommonFunctions{
             if subView.tag == 111 {
                 let launcher = Launcher(layer: subView.layer)
                 if success == true {
+                    if let loadingAnimationView = subView.viewWithTag(222) {
+                        loadingAnimationView.removeFromSuperview()
+                    }
                     launcher.setup(frame: topView.frame)
                     subView.layer.addSublayer(launcher)
                     launcher.zPosition = 0
                     launcher.runCells()
-                    if let loadingAnimationView = subView.viewWithTag(222) {
-                        loadingAnimationView.removeFromSuperview()
-                    }
-                    
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
