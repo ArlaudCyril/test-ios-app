@@ -17,19 +17,9 @@ class ExchangeFromVC: ViewController {
     
     //MARK: - IB OUTLETS
     @IBOutlet var headerView: HeaderView!
-//    @IBOutlet var cancelBtn: UIButton!
-//    @IBOutlet var headerLbl: UILabel!
-    @IBOutlet var allPortfolioVw: UIView!
-    @IBOutlet var allPortfolioImg: UIImageView!
-    @IBOutlet var allportfolioLbl: UILabel!
-    @IBOutlet var totalEuroLbl: UILabel!
-    
     @IBOutlet var lyberPortfolioVw: UIView!
-    @IBOutlet var lyberPortfolioLbl: UILabel!
     @IBOutlet var noAssetsLbl: UILabel!
     @IBOutlet var tblView: UITableView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,18 +31,10 @@ class ExchangeFromVC: ViewController {
 	//MARK: - SetUpUI
     override func setUpUI(){
         self.noAssetsLbl.isHidden = true
-        
         CommonUI.setUpLbl(lbl: self.headerView.headerLbl, text: CommonFunctions.localisation(key: "EXCHANGE_FROM_TITLE"), textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.lyberPortfolioLbl, text: CommonFunctions.localisation(key: "LYBER_PORTFOLIO"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.Header.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.allportfolioLbl, text: CommonFunctions.localisation(key: "ALL_PORTFOLIO"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.totalEuroLbl, text: "\(CommonFunctions.formattedCurrency(from: totalPortfolio))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
-        if screenType == .exchange{
-            self.allPortfolioVw.isHidden = true
-        }else if screenType == .withdraw{
-            self.allPortfolioVw.isHidden = true
+        if screenType == .withdraw{
             self.headerView.headerLbl.text = CommonFunctions.localisation(key: "WANT_WITHDRAW")
-            self.lyberPortfolioLbl.text = CommonFunctions.localisation(key: "YOUR_ASSETS")
             
             if(totalPortfolio == 0){
                 self.noAssetsLbl.isHidden = false
@@ -73,29 +55,98 @@ class ExchangeFromVC: ViewController {
         self.tblView.dataSource = self
         
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
-        let allPortfolioTap = UITapGestureRecognizer(target: self, action: #selector(WithdrawAllAct))
-        self.allPortfolioVw.addGestureRecognizer(allPortfolioTap)
     }
 }
 
 //MARK: - table view delegates and dataSource
 extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if(screenType == .withdraw){
+            return 2
+        }else{
+            return 1
+        }
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioHeaderTVC")as! PortfolioHeaderTVC
+            if(self.screenType == .exchange){
+                cell.setUpCell(data: CommonFunctions.localisation(key: "LYBER_PORTFOLIO"),section : section)
+            }else{
+                cell.setUpCell(data: CommonFunctions.localisation(key: "MY_CRYPTO_WALLET"),section : section)
+            }
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioHeaderTVC")as! PortfolioHeaderTVC
+            cell.setUpCell(data: CommonFunctions.localisation(key: "MY_BANK_ACCOUNT"),section : section)
+            return cell
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(section == 0){
             return Storage.balances.count
+        }else{
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeFromTVC")as! ExchangeFromTVC
-        cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row,screenType : screenType, lastIndex: Storage.balances.count - 1)
-        cell.controller = self
-        return cell
+        if indexPath.section == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeFromTVC")as! ExchangeFromTVC
+            cell.setUpCell(data: Storage.balances[indexPath.row],index : indexPath.row,screenType : screenType, lastIndex: Storage.balances.count - 1)
+            cell.controller = self
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeFromTVC")as! ExchangeFromTVC
+            if let balance = Storage.balances.first(where: { $0?.id == "usdt" }) {
+                cell.setUpCell(data: balance, index: 0, screenType: screenType, lastIndex: 0)
+            } else {
+                var balance = Balance()
+                balance.id = "usdt"
+                cell.setUpCell(data: balance, index: 0, screenType: screenType, lastIndex: 0)
+            }
+            cell.controller = self
+            return cell
+        }
+        
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == 0){
+            if(self.screenType == .withdraw){
+                let vc = WithdrawAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                vc.asset = CommonFunctions.getCurrency(id: Storage.balances[indexPath.row]?.id ?? "")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                if(self.toAssetId != nil){
+                    let balance = CommonFunctions.getBalance(id: Storage.balances[indexPath.row]?.id ?? "")
+                    let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                    vc.strategyType = .Exchange
+                    vc.fromAssetId = Storage.balances[indexPath.row]?.id
+                    vc.fromAssetPrice = ((Decimal(string: balance?.balanceData.euroBalance ?? "") ?? 0)/(Decimal(string: balance?.balanceData.balance ?? "") ?? 1)).description
+                    vc.toAssetId = self.toAssetId
+                    vc.toAssetPrice = self.toAssetPrice
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                else{
+                    let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                    vc.screenType = .exchange
+                    vc.fromAssetId = Storage.balances[indexPath.row]?.id ?? ""
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }else if(indexPath.section == 1){
+            let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+            vc.type = .withdrawEuros
+            vc.controller = self
+            self.present(vc, animated: false)
+        }
     }
 }
 
@@ -103,11 +154,6 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
 extension ExchangeFromVC{
     @objc func cancelBtnAct(){
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func WithdrawAllAct(){
-        let vc = WithdrawAllVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func linkTapped(){

@@ -45,7 +45,7 @@ class LoginVC: ViewController {
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 		if keyPath == "outputVolume"{
 			let audioSession = AVAudioSession.sharedInstance()
-			if(AppConfig.dictEnvVariables["ENV"] as? String == "DEV"){
+			if(AppConfig.dictEnvVariables["ENV"] as? String == "STAGING"){
 				if audioSession.outputVolume < audioLevel {
 					if(GlobalVariables.baseUrl == ApiEnvironment.Staging.rawValue){
 						CommonFunctions.toster("Environnement changé à : Dev")

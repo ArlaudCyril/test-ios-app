@@ -58,6 +58,19 @@
 
 Make sure to withdraw all the money you have in your account before closing it.";
 "MAKE_SURE_WITHDRAW" = "Make sure to withdraw all the money you have in your account before closing it.";
+"MY_BANK_ACCOUNT" = "On my bank account";
+"WITHDRAW_BANK_ACCOUNT" = "Withdraw on my bank account";
+"WITHDRAW_STEPS" = "To withdraw your investments on your bank account, please follow the steps below:
+
+1. Convert the assets you wish to withdraw into USDT.
+
+2. Send us a message by clicking here. Please include the following information: the amount of USDT you wish to withdraw, as well as your IBAN, BIC and the name of the beneficiary (which must be the same as the name with which you opened your Lyber account).
+
+Our support team will get back to you as soon as possible to make the withdrawal.";
+"HAVE_GOOGLE_AUTHENTICATOR" = "Do you have google authenticator?";
+"GOT_IT" = "Got it";
+"USE_GOOGLE_AUTHENTICATOR_NEED_APPLICATION" = "To use Google OTP authentication, you need to have Google Authenticator installed on your device. If you haven't already done so, download Google Authenticator from the App Store to continue.";
+"DOWNLOAD_GOOGLE_AUTHENTICATOR" = "Download Google Authenticator";
 
 
 
@@ -80,7 +93,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "YOU_MUST_ADD" = "You must add at least one asset to create your strategy.";
 "TRENDING" = "Trending";
 "GAINERS" = "Gainers";
-"LOOSERS" = "Loosers";
+"LOSERS" = "Losers";
 "STABLE" = "Stable";
 "BITCOIN" = "Bitcoin";
 "BTC" = "BTC";
@@ -349,9 +362,9 @@ Make sure to withdraw all the money you have in your account before closing it."
 "EXCHANGE_TO_TITLE" = "Exchange → To";
 "WANT_WITHDRAW" = "I want to withdraw";
 "ALL_PORTFOLIO" = "All my portfolio";
-"YOUR_ASSETS" = "Your assets";
+"MY_CRYPTO_WALLET" = "On my crypto wallet";
 "NO_ASSETS_YET_CLICK_HERE" = "You don't have any assets yet. Get your first cryptos now by clicking here.";
-"CLICK_HERE" = "clicking here.";
+"CLICK_HERE" = "clicking here";
 "WITHDRAW_TO" = "Withdraw → To";
 "WITHDRAW_ALL_MY_PORTFOLIO" = "Withdraw all my portfolio";
 "PREVIEW_WITHDRAW" = "Preview withdraw";
@@ -414,14 +427,14 @@ Make sure to withdraw all the money you have in your account before closing it."
 "SECURITY" = "Security";
 "NO_SECURITY" = "No security";
 "STRONG_AUTHENTIFICATION" = "Strong authentification";
-"CHANGE_PIN" = "Change Pin";
+"CHANGE_PIN" = "Change pin";
 "CHANGE_PASSWORD" = "Change Password";
 "FACE_ID" = "Face ID";
 "CLOSE_ACCOUNT" = "Close account";
 "CONTACT_FORM" = "Contact form";
 "LOG_OUT" = "Log out";
-"STOP_REGISTRATION" = "Stop registration";
-"PROGRESS_REGISTRATION_LOST" = "The progress of your registration will be lost";
+"STOP_REGISTRATION" = "Stop registration?";
+"PROGRESS_REGISTRATION_LOST" = "The progress of the registration will be lost.";
 "LIST_ALL_OPERATIONS" = "List of all operations (deposit, exchange and withdrawal) made on your account";
 "CARD_NUMBER" = "Card number";
 "EXPIRE" = "Expire";
@@ -433,7 +446,7 @@ Make sure to withdraw all the money you have in your account before closing it."
 "VERIFICATION" = "Verification";
 "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR" = "Enter the code displayed by Google Authenticator";
 "BACK" = "Back";
-"ENTER_CODE_RECEIVED_EMAIL" = "Enter the code received by email";
+"ENTER_CODE_RECEIVED_EMAIL" = "Enter the code you received at your email address.";
 "ENTER_CODE_RECEIVED_SMS" = "Enter the code received by sms";
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Too many failed attempts, please reauthenticate";
 "NO_TRANSACTION" = "No transaction";
@@ -661,7 +674,6 @@ Make sure to withdraw all the money you have in your account before closing it."
 "CONTACT_US" = "Contact us";
 "EMAIL" = "Email";
 "SEND_US_OR_FILL_OUT" = "Send us an email to contact@lyber.com or fill out the contact form below:";
-"CONTACT_FORM" = "Contact form";
 "MESSAGE" = "Message";
 "SEND" = "Send";
 "CONTACT_LYBER_ADDRESS" = "You can also contact us by mail at the address 274 ter/3, Avenue de la Marne, 59700 Marcq-en-Baroeul, Lille, France.";
@@ -716,7 +728,8 @@ Make sure to withdraw all the money you have in your account before closing it."
 "KYC_UNDER_VERIFICATION" = "Your KYC is under verification. Please try again in five minutes.";
 "PLEASE_VALIDATE_KYC" = "Your kyc has been refused. Please validate your kyc to be able to carry out the operation.";
 "VALIDATE_KYC" = "Validate my kyc";
-"VERIFICATION_IDENTITY" = "Verification of your identity";
-"CONTRACT_SIGNATURE" = "Contract signature";
+"VERIFICATION_IDENTITY" = "Verify your Identity";
+"CONTRACT_SIGNATURE" = "Sign your contract";
 "USER_NOT_SIGNED_CONTRACT" = "Your contract has not been signed. Please sign it before you can proceed.";
 "SIGN_CONTRACT" = "Sign my contract";
+"MINIMUM_CREDIT_CARD_PAYMENT" = "Minimum amount for credit card payment is 15€";

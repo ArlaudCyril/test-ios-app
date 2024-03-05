@@ -14,7 +14,7 @@ class AllAssetsVC: SwipeGesture {
     var pageNumber : Int = 1, apiHitOnce = false , apiHitting : Bool = false , canPaginate : Bool = true
     var screenType : screenEnum = .portfolio
     var coinSelectedCallback : ((_ coinData : Trending?)->())?
-    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "GAINERS"),CommonFunctions.localisation(key: "LOOSERS"),CommonFunctions.localisation(key: "STABLE")]
+    var coinsType : [String] = [CommonFunctions.localisation(key: "TRENDING"),CommonFunctions.localisation(key: "GAINERS"),CommonFunctions.localisation(key: "LOSERS"),CommonFunctions.localisation(key: "STABLE")]
 	var fromAssetId : String = ""
     
     var coinsData : [PriceServiceResume] = []
@@ -321,19 +321,11 @@ extension AllAssetsVC{
     }
 	
 	func presentAlertBuyUsdt(toAsset : PriceServiceResume){
-		let alert = UIAlertController(title: CommonFunctions.localisation(key: "BUY_USDT"), message: CommonFunctions.localisation(key: "INVEST_IN_ASSET_USDT"), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
-		}))
-		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "BUY_USDT"), style: .default, handler: {_ in
-			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-			vc.strategyType = .singleCoin
-//			if(self.screenType == .singleAssetStrategy){
-//				vc.strategyType = .singleCoinWithFrequence
-//			}
-			vc.asset = toAsset
-			self.navigationController?.pushViewController(vc, animated: true)
-		}))
-		present(alert, animated: true, completion: nil)
+        let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+        vc.type = .buyUsdt
+        vc.controller = self
+        vc.toAsset = toAsset
+        self.navigationController?.present(vc, animated: false)
 	}
 }
 

@@ -66,13 +66,17 @@ extension VerificationKycSigningTVC{
     func updateSigningIndicators(){
         switch statusSigning {
         case .rejected:
-            self.indicatorSigningImgVw.setImage(Assets.rejected_indicator.image())
+            self.indicatorSigningImgVw.setImage(Assets.right_arrow_purple.image())
         case .notPerformed:
-            self.indicatorSigningImgVw.setImage(Assets.not_performed_indicator.image())
+            if(statusKyc == .validated){
+                self.indicatorSigningImgVw.setImage(Assets.right_arrow_purple.image())
+            }else{
+                self.indicatorSigningImgVw.setImage(Assets.not_performed_indicator.image())
+            }
         case .pending:
             break
         case .validated:
-            self.indicatorSigningImgVw.setImage(Assets.checkmark_color.image())
+            self.indicatorSigningImgVw.setImage(Assets.accepted_indicator.image())
             self.rightArrowSigningImgVw.isHidden = true
         case .none:
             break
@@ -82,18 +86,24 @@ extension VerificationKycSigningTVC{
     func updateKycIndicators(){
         switch self.statusKyc {
         case .rejected:
-            self.indicatorKycImgVw.setImage(Assets.rejected_indicator.image())
+            self.indicatorKycImgVw.setImage(Assets.right_arrow_purple.image())
         case .notPerformed:
-            self.indicatorKycImgVw.setImage(Assets.not_performed_indicator.image())
-            self.portolioHomeVC?.timerVerificationSigning = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+            self.indicatorKycImgVw.setImage(Assets.right_arrow_purple.image())
+            self.launchTimer()
         case .pending:
             self.indicatorKycImgVw.setImage(Assets.pending_indicator.image())
-            self.portolioHomeVC?.timerVerificationSigning = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+            self.launchTimer()
         case .validated:
-            self.indicatorKycImgVw.setImage(Assets.checkmark_color.image())
+            self.indicatorKycImgVw.setImage(Assets.accepted_indicator.image())
             self.rightArrowKycImgVw.isHidden = true
         case .none:
             break
+        }
+    }
+    
+    func launchTimer(){
+        if self.portolioHomeVC?.timerVerificationSigning == nil {
+            self.portolioHomeVC?.timerVerificationSigning = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
         }
     }
 }
@@ -158,7 +168,6 @@ extension VerificationKycSigningTVC{
                 }else if(response?.data?.kycStatus?.decoderKycStatus == .pending){
                     self.statusKyc = .pending
                     self.updateKycIndicators()
-                    self.portolioHomeVC?.invalidateTimerVerificationKycSigning()
                 }
             }
         })

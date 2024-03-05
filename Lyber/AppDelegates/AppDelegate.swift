@@ -17,12 +17,14 @@ import FirebaseCrashlytics
 import StripeApplePay
 import AppsFlyerLib
 import AppTrackingTransparency
+import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         AppsFlyerLib.shared().appsFlyerDevKey = "G9y3U7W29YR7RSCN6AdBRC"
+        GMSPlacesClient.provideAPIKey(AppConfig.dictEnvVariables["PLACES_API_KEY"] as? String ?? "AIzaSyAp7c7z5phKb1IkXwJdOrJDGRHMIyr26BE")
         AppsFlyerLib.shared().appleAppID = AppConfig.dictEnvVariables["APPSFLYER_APP_ID"] as? String ?? "1609050369"
         //  Set isDebug to true to see AppsFlyer debug logs
         //AppsFlyerLib.shared().isDebug = true

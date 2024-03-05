@@ -18,20 +18,6 @@ class ExchangeFromTVC: UITableViewCell {
 	
     @IBOutlet var euroLbl: UILabel!
     @IBOutlet var noOfCoinLbl: UILabel!
-//    @IBOutlet var flatVw: UIView!
-//    @IBOutlet var flatWalletLbl: UILabel!
-//    @IBOutlet var anotherWalletVw: UIView!
-//    @IBOutlet var anotherWalletBtn: UIButton!
-    
-    @IBOutlet var EuroVw: UIView!
-    @IBOutlet var euroImgVw: UIImageView!
-    @IBOutlet var flatEuroLbl: UILabel!
-    @IBOutlet var euroInWalletLbl: UILabel!
-    @IBOutlet var coinsInWalletLbl: UILabel!
-    @IBOutlet var flatVw: UIView!
-    @IBOutlet var flatWalletLbl: UILabel!
-    
-    
 }
 
 //Mark:- SetUpUI
@@ -53,69 +39,9 @@ extension ExchangeFromTVC{
 		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(String(Double(data?.balanceData.euroBalance ?? "0") ?? 0))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "\(data?.balanceData.balance ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
-        self.euroImgVw.image = Assets.euro.image()
-        CommonUI.setUpLbl(lbl: self.flatEuroLbl, text: "Euro", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.euroInWalletLbl, text: "\(CommonFunctions.formattedCurrency(from: totalEuroAvailablePrinting))€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.flatWalletLbl, text: CommonFunctions.localisation(key: "FIAT_WALLET"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
-        self.coinsInWalletLbl.isHidden = true
-        
-        
-        flatVw.isHidden = true
-        EuroVw.isHidden = true
-		
-		//hide euros
-//        if index == lastIndex{
-//            flatVw.isHidden = false
-//            EuroVw.isHidden = false
-//        }
-        
-        let singleAssetTap = UITapGestureRecognizer(target: self, action: #selector(singleAssetTapped))
-        self.singleAssetVw.addGestureRecognizer(singleAssetTap)
-        
-        let flatWalletVwTap = UITapGestureRecognizer(target: self, action: #selector(flatWalletVwTapped))
-        self.EuroVw.addGestureRecognizer(flatWalletVwTap)
-        
-		
-        assetCallback = {() in
-			if(self.controller?.screenType == .exchange)
-			{
-				if(self.controller?.toAssetId != nil){
-					let balance = CommonFunctions.getBalance(id: data?.id ?? "")
-					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-					vc.strategyType = .Exchange
-					vc.fromAssetId = data?.id
-					vc.fromAssetPrice = ((Decimal(string: balance?.balanceData.euroBalance ?? "") ?? 0)/(Decimal(string: balance?.balanceData.balance ?? "") ?? 1)).description
-					vc.toAssetId = self.controller?.toAssetId
-					vc.toAssetPrice = self.controller?.toAssetPrice
-					self.controller?.navigationController?.pushViewController(vc, animated: true)
-				}
-				else{
-					let vc = AllAssetsVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-					vc.screenType = .exchange
-					vc.fromAssetId = data?.id ?? ""
-					self.controller?.navigationController?.pushViewController(vc, animated: true)
-				}
-			}
-			else if(self.controller?.screenType == .withdraw){
-				let vc = WithdrawAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-				vc.asset = CommonFunctions.getCurrency(id: data?.id ?? "") 
-				self.controller?.navigationController?.pushViewController(vc, animated: true)
-				
-			}
-        }
     }
 }
 
 //MARK: - objective functions
 extension ExchangeFromTVC{
-    @objc func singleAssetTapped(){
-        assetCallback?()
-        
-    }
-    
-    @objc func flatWalletVwTapped(){
-        let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-        self.controller?.navigationController?.pushViewController(vc, animated: true)
-        vc.strategyType = .withdrawEuro
-    }
 }

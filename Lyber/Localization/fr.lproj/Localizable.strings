@@ -58,6 +58,20 @@
 
 Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de le clôturer.";
 "MAKE_SURE_WITHDRAW" = "Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de le clôturer.";
+"MY_BANK_ACCOUNT" = "Sur mon compte bancaire";
+"WITHDRAW_BANK_ACCOUNT" = "Retirer sur mon compte bancaire";
+"WITHDRAW_STEPS" = "Afin de retirer vos investissements sur votre compte bancaire, veuillez suivre les étapes suivantes :
+
+1. Convertissez les actifs que vous souhaitez retirer en USDT.
+
+2. Envoyez nous un message en cliquant ici. Merci de bien vouloir y indiquer les informations suivantes : le montant d'USDT que vous souhaitez retirer, ainsi que votre IBAN, votre BIC et le nom du bénéficiaire (qui doit être le même que le nom avec lequel vous avez ouvert votre compte Lyber).
+
+Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer le retrait.";
+"HAVE_GOOGLE_AUTHENTICATOR" = "Avez-vous Google Authenticator ?";
+"GOT_IT" = "J'ai compris";
+"USE_GOOGLE_AUTHENTICATOR_NEED_APPLICATION" = "Pour utiliser l'authentification OTP de Google, vous devez avoir Google Authenticator installé sur votre appareil. Si vous ne l'avez pas déjà fait, téléchargez Google Authenticator depuis l'App Store pour continuer.";
+"DOWNLOAD_GOOGLE_AUTHENTICATOR" = "Télécharger Google Authenticator";
+
 
 //MARK: - EDUCATION STRATEGY;
 
@@ -78,7 +92,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "YOU_MUST_ADD" = "Vous devez ajouter un actif minimum pour créer votre stratégie. ";
 "TRENDING" = "Tendance";
 "GAINERS" = "Hausses";
-"LOOSERS" = "Baisses";
+"LOSERS" = "Baisses";
 "STABLE" = "Stable";
 "BITCOIN" = "Bitcoin";
 "BTC" = "BTC";
@@ -345,7 +359,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "EXCHANGE_TO_TITLE" = "Échange → Vers";
 "WANT_WITHDRAW" = "Je veux retirer";
 "ALL_PORTFOLIO" = "Tout mon portefeuille";
-"YOUR_ASSETS" = "Vos actifs";
+"MY_CRYPTO_WALLET" = "Sur mon portefeuille crypto";
 "NO_ASSETS_YET_CLICK_HERE" = "Vous n’avez encore pas d’actifs. Obtenez vos premières crypto dès maintenant en cliquant ici.";
 "CLICK_HERE" = "cliquant ici.";
 "WITHDRAW_TO" = "Retirer → Vers";
@@ -406,18 +420,18 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "PAYMENT_METHOD" = "Mode de paiement";
 "ADD_PAYMENT_METHOD" = "Nouveau moyen de paiement";
 "ACCOUNT" = "Compte";
-"ACTIVITY_LOGS" = "Logs d'activité";
+"ACTIVITY_LOGS" = "Historique d'activité";
 "SECURITY" = "Sécurité";
 "NO_SECURITY" = "Pas de sécurité";
 "STRONG_AUTHENTIFICATION" = "Authentification forte";
 "CHANGE_PIN" = "Changer de code PIN";
 "CHANGE_PASSWORD" = "Changer de mot de passe";
 "FACE_ID" = "Face ID";
-"CONTACT_FORM" = "Formulaire de contact";
+"CONTACT_US" = "Contactez nous";
 "CLOSE_ACCOUNT" = "Fermeture du compte";
 "LOG_OUT" = "Déconnexion";
-"STOP_REGISTRATION" = "Arrêter l'inscription";
-"PROGRESS_REGISTRATION_LOST" = "La progression de votre inscription sera perdue";
+"STOP_REGISTRATION" = "Arrêter l'inscription ?";
+"PROGRESS_REGISTRATION_LOST" = "La progression de l'inscription sera perdue.";
 "LIST_ALL_OPERATIONS" = "Liste de toutes les opérations (dépôts, échanges et retraits) effectuées sur votre compte";
 "CARD_NUMBER" = "Numéro de carte";
 "EXPIRE" = "Expirer";
@@ -429,7 +443,7 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "VERIFICATION" = "Vérification";
 "ENTER_CODE_DISPLAYED_GOOGLE_AUTHENTICATOR" = "Entrez le code affiché par Google Authenticator";
 "BACK" = "Retour";
-"ENTER_CODE_RECEIVED_EMAIL" = "Entrez le code reçu par email";
+"ENTER_CODE_RECEIVED_EMAIL" = "Entrez le code reçu à votre adresse email";
 "ENTER_CODE_RECEIVED_SMS" = "Saisir le code reçu par SMS";
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Trop de tentatives échouées, veuillez vous réauthentifier";
 "NO_TRANSACTION" = "Aucune transaction";
@@ -656,7 +670,6 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre identité via notre partenaire Onfido. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
 
 //MARK: - ERRORS
-"CONTACT_US" = "Contactez nous";
 "EMAIL" = "Email";
 "SEND_US_OR_FILL_OUT" = "Envoyez-nous un mail à contact@lyber.com ou remplissez le formulaire de contact ci-dessous :";
 "CONTACT_FORM" = "Formulaire de contact";
@@ -713,8 +726,9 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "KYC_UNDER_VERIFICATION" = "Votre KYC est en cours de vérification. Veuillez réessayer dans cinq minutes.";
 "PLEASE_VALIDATE_KYC" = "Votre kyc a été refusé. Veuillez valider votre kyc pour pouvoir effectuer l'opération.";
 "VALIDATE_KYC" = "Valider mon kyc";
-"VERIFICATION_IDENTITY" = "Vérification de votre identité";
-"CONTRACT_SIGNATURE" = "Signature du contrat";
+"VERIFICATION_IDENTITY" = "Vérifiez votre identité";
+"CONTRACT_SIGNATURE" = "Signez votre contrat";
 "USER_NOT_SIGNED_CONTRACT" = "Votre contrat n'a pas été signé. Veuillez le signer pour pouvoir effectuer l'opération";
 "SIGN_CONTRACT" = "Signer mon contrat";
+"MINIMUM_CREDIT_CARD_PAYMENT" = "Le montant minimum pour un paiement par carte de crédit est de 15€.";
 

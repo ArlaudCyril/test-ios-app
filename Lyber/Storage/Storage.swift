@@ -39,7 +39,7 @@ struct GlobalVariables {
 struct AppConfig {
 	static var dictEnvVariables: NSDictionary {
 #if STAGING
-		return NSDictionary(contentsOfFile: Bundle.main.path(forResource: "lyberStaging", ofType: "plist"))
+        return NSDictionary(contentsOfFile: Bundle.main.path(forResource: "lyberStaging", ofType: "plist") ?? "") ?? NSDictionary()
 #else
 		return NSDictionary(contentsOfFile: Bundle.main.path(forResource: "lyberProd", ofType: "plist") ?? "") ?? NSDictionary()
 #endif

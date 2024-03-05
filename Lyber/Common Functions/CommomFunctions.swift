@@ -1212,6 +1212,9 @@ class CommonFunctions{
             vc.type = .signing
             getTopMostViewController()?.present(vc, animated: false)
             break
+        case "7027":
+            CommonFunctions.toster(CommonFunctions.localisation(key: "MINIMUM_CREDIT_CARD_PAYMENT"))
+            break
         case "13014":
             break
         case "19002":// DEPRECATED_API_VERSION = 19002 (update of app necessary)

@@ -361,16 +361,11 @@ extension DepositeOrBuyVC{
 //MARK: - Other functions
 extension DepositeOrBuyVC{
 	func presentAlertBuyUsdt(toAsset : PriceServiceResume, controller: UIViewController){
-		let alert = UIAlertController(title: CommonFunctions.localisation(key: "BUY_USDT"), message: CommonFunctions.localisation(key: "INVEST_IN_ASSET_USDT"), preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "CANCEL"), style: .default, handler: {(action : UIAlertAction) in
-		}))
-		alert.addAction(UIAlertAction(title: CommonFunctions.localisation(key: "BUY_USDT"), style: .default, handler: {_ in
-			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-			vc.strategyType = .singleCoin
-			vc.asset = toAsset
-			controller.navigationController?.pushViewController(vc, animated: true)
-		}))
-		controller.present(alert, animated: true, completion: nil)
+        let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+        vc.type = .buyUsdt
+        vc.controller = self
+        vc.toAsset = toAsset
+        controller.navigationController?.present(vc, animated: false)
 	}
 
 }

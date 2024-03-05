@@ -697,6 +697,18 @@
         }
       }
     },
+    "JBX-Pe-g5h.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"JBX-Pe-g5h\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "JcJ-L3-HmE.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"JcJ-L3-HmE\";",
       "extractionState" : "extracted_with_value",

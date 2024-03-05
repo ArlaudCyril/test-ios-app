@@ -13,11 +13,13 @@
 	<key>CONTRALIA_URL</key>
 	<string>https://test.contralia.fr/Contralia</string>
 	<key>ENV</key>
-	<string>DEV</string>
+	<string>STAGING</string>
 	<key>APPSFLYER_APP_ID</key>
 	<string>1609050369</string>
 	<key>STRIPE_KEY</key>
 	<string>pk_test_51NVVY7F2A3romcuHdC3JDD9evsFhQvyZ5cYS6wpy9OznXgmYzLvWTG81Zfj2nWGQFZ2zs8RboA3uMLCNPpPV08Zk00McUdiPAt</string>
+	<key>PLACES_API_KEY</key>
+	<string>AIzaSyAp7c7z5phKb1IkXwJdOrJDGRHMIyr26BE</string>
 	<key>API_URL</key>
 	<string>https://staging.lyber.com/</string>
 </dict>

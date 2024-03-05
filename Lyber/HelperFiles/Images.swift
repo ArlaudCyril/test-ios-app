@@ -91,6 +91,7 @@ enum Assets : String{
     
     case done
     case right_arrow_black
+    case right_arrow_purple
     case logout
     case img_full
     case check
@@ -154,6 +155,7 @@ enum Assets : String{
     case not_performed_indicator
     case pending_indicator
     case rejected_indicator
+    case accepted_indicator
 
     
     func imageName() -> String{

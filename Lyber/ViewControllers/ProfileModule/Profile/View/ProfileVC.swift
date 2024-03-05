@@ -49,7 +49,7 @@ class ProfileVC: SwipeGesture {
 			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PASSWORD"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
-			SecurityModel(name: CommonFunctions.localisation(key: "CONTACT_FORM"), desc: ""),
+			SecurityModel(name: CommonFunctions.localisation(key: "CONTACT_US"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "FACE_ID"), desc: ""),
             SecurityModel(name: CommonFunctions.localisation(key: "CLOSE_ACCOUNT"), desc: "")]
             

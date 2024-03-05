@@ -542,7 +542,6 @@
 		1FF3817F2AFD297600CCF1A6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF380932AFD297600CCF1A6 /* FirebaseCrashlytics */; };
 		1FF381802AFD297600CCF1A6 /* _CryptoExtras in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF3808D2AFD297600CCF1A6 /* _CryptoExtras */; };
 		1FF381812AFD297600CCF1A6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1FF380902AFD297600CCF1A6 /* FirebaseAnalytics */; };
-		1FF381822AFD297600CCF1A6 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
 		1FF381842AFD297600CCF1A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FEE5A402AA75459000B0EF2 /* GoogleService-Info.plist */; };
 		1FF381852AFD297600CCF1A6 /* Lyber.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 0A78F19D28B63ABB0094DBA1 /* Lyber.entitlements */; };
 		1FF381862AFD297600CCF1A6 /* AtypDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B898283F84F2007CE9B2 /* AtypDisplay-Bold.ttf */; };
@@ -609,9 +608,14 @@
 		1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFD171D29ED962C00935003 /* DepositAssetVC.swift */; };
 		4C0A8C3629955D5700CCC88A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A8C3529955D5700CCC88A /* Storage.swift */; };
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
-		A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */; };
+		710735E7BD660DA098641525 /* Pods_Lyber_prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92102674EB0CB68259587CE5 /* Pods_Lyber_prod.framework */; };
+		9BCFF6039E93320122688ED7 /* Pods_Lyber_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF43FC56F030BBDBC2A00C8E /* Pods_Lyber_dev.framework */; };
 		C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
+		C838FD7E2B87696F00922C25 /* UITapGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */; };
+		C838FD7F2B87696F00922C25 /* UITapGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */; };
+		C84CD27D2B8E10420071C7E2 /* lyberStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CE02AFE7F900052D21E /* lyberStaging.plist */; };
+		C84CD27E2B8E10460071C7E2 /* lyberProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CDD2AFE7D020052D21E /* lyberProd.plist */; };
 		C855BCCB2B6BD72C00D46EDA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
 		C855BCCE2B6BE14700D46EDA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
 		C857F4462B7E269000D0275E /* MaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F4452B7E269000D0275E /* MaintenanceModel.swift */; };
@@ -933,17 +937,22 @@
 		1FFD171D29ED962C00935003 /* DepositAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositAssetVC.swift; sourceTree = "<group>"; };
 		242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.debug.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.debug.xcconfig"; sourceTree = "<group>"; };
 		3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber.release.xcconfig"; path = "Target Support Files/Pods-Lyber/Pods-Lyber.release.xcconfig"; sourceTree = "<group>"; };
+		40713EA74AA06A604EC4A56A /* Pods-Lyber dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber dev.release.xcconfig"; path = "Target Support Files/Pods-Lyber dev/Pods-Lyber dev.release.xcconfig"; sourceTree = "<group>"; };
 		4C0A8C3529955D5700CCC88A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		C81691812B2C4AB6008163B3 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
+		5AAEF8E27F5863FF1CE21491 /* Pods-Lyber prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber prod.debug.xcconfig"; path = "Target Support Files/Pods-Lyber prod/Pods-Lyber prod.debug.xcconfig"; sourceTree = "<group>"; };
+		7B4D6A7779ADF2CF5FC14572 /* Pods-Lyber prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber prod.release.xcconfig"; path = "Target Support Files/Pods-Lyber prod/Pods-Lyber prod.release.xcconfig"; sourceTree = "<group>"; };
+		92102674EB0CB68259587CE5 /* Pods_Lyber_prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber_prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
+		C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureExtension.swift; sourceTree = "<group>"; };
 		C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupVC.swift; sourceTree = "<group>"; };
 		C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupModel.swift; sourceTree = "<group>"; };
 		C857F4452B7E269000D0275E /* MaintenanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceModel.swift; sourceTree = "<group>"; };
 		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
 		C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationKycSigningTVC.swift; sourceTree = "<group>"; };
+		DF43FC56F030BBDBC2A00C8E /* Pods_Lyber_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5A00A1434E71C92E4E0D1F8 /* Pods-Lyber dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber dev.debug.xcconfig"; path = "Target Support Files/Pods-Lyber dev/Pods-Lyber dev.debug.xcconfig"; sourceTree = "<group>"; };
 		EE9AB0962AEBBDA300B3E36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		EE9AB0982AEBBDA400B3E36C /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Profile.xcstrings; sourceTree = "<group>"; };
-		F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -957,7 +966,7 @@
 				1FC0E2802A65437A00E4EB6A /* FirebaseCrashlytics in Frameworks */,
 				0A92916B290013B700E23409 /* _CryptoExtras in Frameworks */,
 				1FC0E27C2A65412B00E4EB6A /* FirebaseAnalytics in Frameworks */,
-				A74B3D7A36F9750F7D926739 /* Pods_Lyber.framework in Frameworks */,
+				710735E7BD660DA098641525 /* Pods_Lyber_prod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,7 +980,7 @@
 				1FF3817F2AFD297600CCF1A6 /* FirebaseCrashlytics in Frameworks */,
 				1FF381802AFD297600CCF1A6 /* _CryptoExtras in Frameworks */,
 				1FF381812AFD297600CCF1A6 /* FirebaseAnalytics in Frameworks */,
-				1FF381822AFD297600CCF1A6 /* Pods_Lyber.framework in Frameworks */,
+				9BCFF6039E93320122688ED7 /* Pods_Lyber_dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1347,6 +1356,7 @@
 				1F35C2D32A52CB3200512ABD /* CountryPickerViewExtension.swift */,
 				1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */,
 				1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */,
+				C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */,
 			);
 			path = ExtensionFiles;
 			sourceTree = "<group>";
@@ -2364,7 +2374,6 @@
 		0AC4C297283F4AD80086C6B8 = {
 			isa = PBXGroup;
 			children = (
-				C81691812B2C4AB6008163B3 /* Pods */,
 				1F432CC2297DDDD9006EBEEA /* .gitignore */,
 				0AC4C2A2283F4AD80086C6B8 /* Lyber */,
 				1883D3082950798A00CEC597 /* Sources */,
@@ -3027,6 +3036,10 @@
 			children = (
 				242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */,
 				3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */,
+				E5A00A1434E71C92E4E0D1F8 /* Pods-Lyber dev.debug.xcconfig */,
+				40713EA74AA06A604EC4A56A /* Pods-Lyber dev.release.xcconfig */,
+				5AAEF8E27F5863FF1CE21491 /* Pods-Lyber prod.debug.xcconfig */,
+				7B4D6A7779ADF2CF5FC14572 /* Pods-Lyber prod.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -3035,7 +3048,8 @@
 			isa = PBXGroup;
 			children = (
 				1883CE202950728F00CEC597 /* Charts.framework */,
-				F74BDCFD69F0E5D11B62FE94 /* Pods_Lyber.framework */,
+				DF43FC56F030BBDBC2A00C8E /* Pods_Lyber_dev.framework */,
+				92102674EB0CB68259587CE5 /* Pods_Lyber_prod.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3094,6 +3108,7 @@
 				0AC4C29E283F4AD80086C6B8 /* Resources */,
 				C3BAE0A215BFA3D93C7C03DC /* [CP] Embed Pods Frameworks */,
 				1FC0E2772A6527FA00E4EB6A /* ShellScript */,
+				E8CD9747517639791897D7A3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3122,6 +3137,7 @@
 				1FF381832AFD297600CCF1A6 /* Resources */,
 				1FF381C32AFD297600CCF1A6 /* [CP] Embed Pods Frameworks */,
 				1FF381C42AFD297600CCF1A6 /* ShellScript */,
+				9711C680A2AE7946AEBFD4A7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3166,7 +3182,7 @@
 			);
 			mainGroup = 0AC4C297283F4AD80086C6B8;
 			packageReferences = (
-				0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */,
 				0A92916C290013DB00E23409 /* XCRemoteSwiftPackageReference "big-num" */,
 				1FC0E27A2A65412B00E4EB6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
@@ -3206,6 +3222,7 @@
 				0A005C242844F040008117D1 /* EmailAddressXib.xib in Resources */,
 				0A71B8C2283F9275007CE9B2 /* AtypRegularVariable.ttf in Resources */,
 				0A1A95BD284601D8001224C6 /* VerificationEmailXib.xib in Resources */,
+				C84CD27D2B8E10420071C7E2 /* lyberStaging.plist in Resources */,
 				0A005C1E2844E89F008117D1 /* personalDataXib.xib in Resources */,
 				0A7C378D286094E400E238D8 /* SwapWithdraw.storyboard in Resources */,
 				0A71B8C3283F9275007CE9B2 /* Mabry Pro Black Italic.otf in Resources */,
@@ -3315,6 +3332,7 @@
 				1FF381BB2AFD297600CCF1A6 /* AtypText-SemiboldItalic.ttf in Resources */,
 				1FF381BC2AFD297600CCF1A6 /* AtypText-Thin.ttf in Resources */,
 				1FF381BD2AFD297600CCF1A6 /* AtypText-ThinItalic.ttf in Resources */,
+				C84CD27E2B8E10460071C7E2 /* lyberProd.plist in Resources */,
 				1FF381BE2AFD297600CCF1A6 /* LaunchScreen.storyboard in Resources */,
 				1FF381BF2AFD297600CCF1A6 /* template_deserts_1.json in Resources */,
 				1FF381C02AFD297600CCF1A6 /* Assets.xcassets in Resources */,
@@ -3360,7 +3378,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lyber-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Lyber dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3373,15 +3391,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber dev/Pods-Lyber dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber dev/Pods-Lyber dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lyber dev/Pods-Lyber dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1FF381C42AFD297600CCF1A6 /* ShellScript */ = {
@@ -3403,21 +3421,55 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
+		9711C680A2AE7946AEBFD4A7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber dev/Pods-Lyber dev-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber dev/Pods-Lyber dev-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lyber dev/Pods-Lyber dev-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C3BAE0A215BFA3D93C7C03DC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber prod/Pods-Lyber prod-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber prod/Pods-Lyber prod-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lyber/Pods-Lyber-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lyber prod/Pods-Lyber prod-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8CD9747517639791897D7A3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber prod/Pods-Lyber prod-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lyber prod/Pods-Lyber prod-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lyber prod/Pods-Lyber prod-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF38909A11B29FCC0E958D5D /* [CP] Check Pods Manifest.lock */ = {
@@ -3435,7 +3487,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Lyber-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Lyber prod-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3606,6 +3658,7 @@
 				0A791DFA28646E6F0084B104 /* AddPaymentMethodVC.swift in Sources */,
 				0A7586C4286C769F00DC889E /* Api Handler.swift in Sources */,
 				0A71B8E0283FA2E9007CE9B2 /* createPinCVC.swift in Sources */,
+				C838FD7E2B87696F00922C25 /* UITapGestureExtension.swift in Sources */,
 				0A7B0D622861EE3F0030C4D8 /* WithdrawAllVC.swift in Sources */,
 				0AE67F442853021D00F13D2E /* InvestInMyStrategyVC.swift in Sources */,
 				0A7586CC286C7C9600DC889E /* LoginVM.swift in Sources */,
@@ -3850,6 +3903,7 @@
 				1FF3812B2AFD297600CCF1A6 /* AddPaymentMethodVC.swift in Sources */,
 				1FF3812C2AFD297600CCF1A6 /* Api Handler.swift in Sources */,
 				1FF3812D2AFD297600CCF1A6 /* createPinCVC.swift in Sources */,
+				C838FD7F2B87696F00922C25 /* UITapGestureExtension.swift in Sources */,
 				1FF3812E2AFD297600CCF1A6 /* WithdrawAllVC.swift in Sources */,
 				1FF3812F2AFD297600CCF1A6 /* InvestInMyStrategyVC.swift in Sources */,
 				1FF381302AFD297600CCF1A6 /* LoginVM.swift in Sources */,
@@ -4120,7 +4174,7 @@
 		};
 		0AC4C2B8283F4AD90086C6B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */;
+			baseConfigurationReference = 5AAEF8E27F5863FF1CE21491 /* Pods-Lyber prod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4162,7 +4216,7 @@
 		};
 		0AC4C2B9283F4AD90086C6B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */;
+			baseConfigurationReference = 7B4D6A7779ADF2CF5FC14572 /* Pods-Lyber prod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4203,7 +4257,7 @@
 		};
 		1FF381C62AFD297600CCF1A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 242CB493FCAEAEB14DDD6AC3 /* Pods-Lyber.debug.xcconfig */;
+			baseConfigurationReference = E5A00A1434E71C92E4E0D1F8 /* Pods-Lyber dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4213,6 +4267,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"STAGING=1",
+					"COCOAPODS=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lyber/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lyber dev";
@@ -4239,6 +4298,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lyber.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "STAGING DEBUG";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
@@ -4249,7 +4309,7 @@
 		};
 		1FF381C72AFD297600CCF1A6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3122388E2E3616896323A1EE /* Pods-Lyber.release.xcconfig */;
+			baseConfigurationReference = 40713EA74AA06A604EC4A56A /* Pods-Lyber dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -4259,6 +4319,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"STAGING=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lyber/info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lyber dev";
@@ -4325,7 +4390,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+		0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-crypto.git";
 			requirement = {
@@ -4349,7 +4414,7 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+		1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-crypto.git";
 			requirement = {
@@ -4383,12 +4448,12 @@
 		};
 		0A929168290013B700E23409 /* Crypto */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
 			productName = Crypto;
 		};
 		0A92916A290013B700E23409 /* _CryptoExtras */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
 			productName = _CryptoExtras;
 		};
 		1FC0E27B2A65412B00E4EB6A /* FirebaseAnalytics */ = {
@@ -4408,12 +4473,12 @@
 		};
 		1FF3808B2AFD297600CCF1A6 /* Crypto */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
 			productName = Crypto;
 		};
 		1FF3808D2AFD297600CCF1A6 /* _CryptoExtras */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
 			productName = _CryptoExtras;
 		};
 		1FF3808E2AFD297600CCF1A6 /* BigNum */ = {

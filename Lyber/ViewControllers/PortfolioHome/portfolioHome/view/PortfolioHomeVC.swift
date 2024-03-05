@@ -20,7 +20,7 @@ class PortfolioHomeVC: NotSwipeGesture {
     var hasToShowLoader = false
 	var typeLoader = ""
     var timer = Timer()
-    var timerVerificationSigning = Timer()
+    var timerVerificationSigning : Timer?
     
     //MARK: - IB OUTLETS
     @IBOutlet var tblView: UITableView!
@@ -37,7 +37,7 @@ class PortfolioHomeVC: NotSwipeGesture {
             }else{
                 CommonFunctions.showLoaderSigning()
             }
-			self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+			self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
 		}
 		
     }
@@ -254,7 +254,8 @@ extension PortfolioHomeVC{
     }
     
     func invalidateTimerVerificationKycSigning(){
-        self.timerVerificationSigning.invalidate()
+        self.timerVerificationSigning?.invalidate()
+        self.timerVerificationSigning = nil
     }
     
     @objc func investMoneyBtnAct(){
@@ -270,7 +271,7 @@ extension PortfolioHomeVC{
         ProfileVM().getProfileDataApi(completion: {[]response in
             if response != nil{
                 if(self.typeLoader == "kyc"){
-                    if(response?.data?.kycStatus?.decoderKycStatus == .pending || response?.data?.kycStatus?.decoderKycStatus == .rejected){
+                    if(response?.data?.kycStatus?.decoderKycStatus == .pending || response?.data?.kycStatus?.decoderKycStatus == .rejected || response?.data?.kycStatus?.decoderKycStatus == .validated){
                         CommonFunctions.hideLoader()
                         self.timer.invalidate()
                     }

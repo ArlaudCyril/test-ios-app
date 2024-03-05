@@ -24,7 +24,10 @@ class KycSigningPopupVC: ViewController {
     
     @IBOutlet var titleLbl: UILabel!
     @IBOutlet var DescriptionLbl: UILabel!
+    @IBOutlet var DescriptionLblBottomViewConstraint: NSLayoutConstraint!
+    @IBOutlet var SubDescriptionLbl: UILabel!
     
+    @IBOutlet var btnView: UIView!
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var actionBtn: PurpleButton!
     
@@ -37,6 +40,9 @@ class KycSigningPopupVC: ViewController {
     //MARK: - SetUpUI
 
     override func setUpUI(){
+        self.SubDescriptionLbl.isHidden = true
+        self.DescriptionLblBottomViewConstraint.constant = 95
+        
         self.bottomView.layer.cornerRadius = 32
         self.bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         
@@ -59,6 +65,12 @@ extension KycSigningPopupVC{
     
     @objc func outerTapped(){
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func goToContactForm(){
+        self.dismiss(animated: true, completion: nil)
+        let vc = ContactFormVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+        self.controller.navigationController?.pushViewController(vc, animated: false)
     }
     
     @objc func actionBtnAct(){
@@ -112,6 +124,13 @@ extension KycSigningPopupVC{
                 self.actionBtn.showLoading()
             }
             break
+            
+        case .withdrawEuros:
+            break
+            
+        case .googleAuthenticator:
+            self.dismiss(animated: true)
+            break
         }
     }
 }
@@ -160,6 +179,64 @@ extension KycSigningPopupVC{
             
             self.actionBtn.setTitle(CommonFunctions.localisation(key: "YES_CERTIFY"), for: .normal)
             break
+            
+        case .withdrawEuros:
+            CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "WITHDRAW_BANK_ACCOUNT"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.DescriptionLbl, text: "", textColor: UIColor.PurpleGrey_600, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.DescriptionLbl.numberOfLines = 0
+            
+            let text = CommonFunctions.localisation(key: "WITHDRAW_STEPS")
+            let attributedString = NSMutableAttributedString(string: text)
+            if let range = text.range(of: CommonFunctions.localisation(key: "CLICK_HERE")) {
+                attributedString.addAttribute(.foregroundColor, value: UIColor.purple_500, range: NSRange(range, in: text))
+            }
+            self.DescriptionLbl.attributedText = attributedString
+            
+            let tapDescriptionLbl = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel))
+            self.DescriptionLbl.addGestureRecognizer(tapDescriptionLbl)
+            
+            self.btnView.isHidden = true
+            self.DescriptionLblBottomViewConstraint.constant = 48
+            
+            break
+        
+        case .googleAuthenticator:
+            CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "HAVE_GOOGLE_AUTHENTICATOR"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.DescriptionLbl, text: CommonFunctions.localisation(key:"USE_GOOGLE_AUTHENTICATOR_NEED_APPLICATION"), textColor: UIColor.PurpleGrey_600, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.DescriptionLbl.numberOfLines = 0
+            
+            CommonUI.setUpLbl(lbl: self.SubDescriptionLbl, text: "", textColor: UIColor.purple_500, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            self.SubDescriptionLbl.attributedText = CommonFunctions.underlineString(str: CommonFunctions.localisation(key: "DOWNLOAD_GOOGLE_AUTHENTICATOR"))
+            
+            let SubDescriptionLblTap = UITapGestureRecognizer(target: self, action: #selector(SubDescriptionLblTapped))
+            self.SubDescriptionLbl.addGestureRecognizer(SubDescriptionLblTap)
+            
+            self.actionBtn.setTitle(CommonFunctions.localisation(key: "GOT_IT"), for: .normal)
+            
+            self.cancelBtn.isHidden = true
+            self.SubDescriptionLbl.isHidden = false
+            
+            self.DescriptionLblBottomViewConstraint.constant = 126
+            
+            break
+        }
+    }
+    
+    @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
+        guard let text = self.DescriptionLbl.text else { return }
+        if let range = text.range(of: CommonFunctions.localisation(key: "CLICK_HERE")) {
+            if gesture.didTapAttributedTextInLabel(label: self.DescriptionLbl, inRange: NSRange(range, in: text)) {
+                self.goToContactForm()
+            }
+        }
+    }
+    
+    @objc func SubDescriptionLblTapped(_ gesture: UITapGestureRecognizer) {
+        if let appStoreURL = URL(string: "https://itunes.apple.com/app/google-authenticator/id388497605") {
+                UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
         }
     }
 }

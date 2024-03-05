@@ -36,8 +36,6 @@ extension PortfolioHomeTVC{
 		drawChartView(limit: 1, daily: false)
         
         CommonUI.setUpLbl(lbl: portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		
-		
         
 		self.profilePic.image = UIImage(asset: Assets(rawValue: userData.shared.profile_image) ?? Assets.chick_egg)
         self.profilePic.layer.cornerRadius = self.profilePic.layer.bounds.height/2
@@ -51,6 +49,7 @@ extension PortfolioHomeTVC{
 		self.collView.layer.cornerRadius = 12
 		self.collView.delegate = self
 		self.collView.dataSource = self
+        self.collView.reloadData()
 
     }
     

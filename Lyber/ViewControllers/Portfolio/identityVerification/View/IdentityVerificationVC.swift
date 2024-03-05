@@ -117,7 +117,7 @@ extension IdentityVerificationVC{
 		CommonFunctions.stopRegistration()
     }
     
-    @objc func kycBtnAct(){//Print pop-up and on the pop-up do the previous action
+    @objc func kycBtnAct(){
         self.kycSigningPopupVC = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
         self.kycSigningPopupVC?.type = .certification
         self.kycSigningPopupVC?.identityVerificationController = self

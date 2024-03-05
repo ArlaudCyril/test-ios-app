@@ -44,7 +44,7 @@ class GoogleAuthenticatorVC : SwipeGesture {
         self.verifyBtn.addTarget(self, action: #selector(verifyBtnAct), for: .touchUpInside)
         self.googleAuthenticatorBtn.addTarget(self, action: #selector(googleAuthenticatorBtnAct), for: .touchUpInside)
         self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        
+        self.showPopUp()
         getGoogleOTPUrl()
     }
     
@@ -63,8 +63,33 @@ class GoogleAuthenticatorVC : SwipeGesture {
     }
     
     @objc func googleAuthenticatorBtnAct(){
-        guard let url = URL(string: self.urlGoogleOTP ?? "") else { return }
-        UIApplication.shared.open(url)
+//        guard let url = URL(string: self.urlGoogleOTP ?? "") else { return }
+//
+//        if UIApplication.shared.canOpenURL(url) {
+//            UIApplication.shared.open(url)
+//        } else {
+//            let appStoreURL = URL(string: "https://apps.apple.com/us/app/google-authenticator/id388497605")!
+//            UIApplication.shared.open(appStoreURL)
+//        }
+        
+        guard let url = URL(string: "otpauth://") else {
+            // L'URL scheme n'est pas pris en charge, ce qui signifie que Google Authenticator n'est probablement pas installé
+            // Redirigez l'utilisateur vers l'App Store pour télécharger l'application
+            if let appStoreURL = URL(string: "https://itunes.apple.com/app/google-authenticator/id388497605") {
+                UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+            }
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(url) {
+            // Google Authenticator est installé, ouvrez l'URL pour ajouter le compte
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            // Google Authenticator n'est pas installé, redirigez l'utilisateur vers l'App Store
+            if let appStoreURL = URL(string: "https://itunes.apple.com/app/google-authenticator/id388497605") {
+                UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     @objc func backBtnAct(){
@@ -98,7 +123,10 @@ class GoogleAuthenticatorVC : SwipeGesture {
             }
         })
     }
-    
-        
+    func showPopUp(){
+        let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+        vc.type = .googleAuthenticator
+        self.present(vc, animated: false)
+    }
 }
 
