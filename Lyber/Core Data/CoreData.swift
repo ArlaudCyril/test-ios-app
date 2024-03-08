@@ -52,10 +52,8 @@ class userData : NSObject {
 	var nationality = ""
 	var isUsCitizen = ""
 	///Phase 2
-	var streetNumber = ""
-	var streetName = ""
+	var address = ""
 	var city = ""
-	var department = ""
 	var zipCode = ""
 	var country = ""
 	///Phase 3
@@ -127,10 +125,8 @@ class userData : NSObject {
 		newData.setValue(nationality, forKey: "nationality")
 		newData.setValue(isUsCitizen, forKey: "isUsCitizen")
 		
-		newData.setValue(streetNumber, forKey: "streetNumber")
-		newData.setValue(streetName, forKey: "streetName")
+		newData.setValue(address, forKey: "address")
 		newData.setValue(city, forKey: "city")
-		newData.setValue(department, forKey: "department")
 		newData.setValue(zipCode, forKey: "zipCode")
 		newData.setValue(country, forKey: "country")
 		
@@ -332,21 +328,13 @@ class userData : NSObject {
 						self.isUsCitizen = isUsCitizen
 						print("data get isUsCitizen \(isUsCitizen)")
 					}
-					if let streetNumber = result.value(forKey: "streetNumber") as? String{
-						self.streetNumber = streetNumber
-						print("data get streetNumber \(streetNumber)")
-					}
-					if let streetName = result.value(forKey: "streetName") as? String{
-						self.streetName = streetName
-						print("data get streetName \(streetName)")
+					if let address = result.value(forKey: "address") as? String{
+						self.address = address
+						print("data get address \(address)")
 					}
 					if let city = result.value(forKey: "city") as? String{
 						self.city = city
 						print("data get city \(city)")
-					}
-					if let department = result.value(forKey: "department") as? String{
-						self.department = department
-						print("data get department \(department)")
 					}
 					if let zipCode = result.value(forKey: "zipCode") as? String{
 						self.zipCode = zipCode
@@ -403,10 +391,8 @@ class userData : NSObject {
 		self.nationality = ""
 		self.isUsCitizen = ""
 		
-		self.streetNumber = ""
-		self.streetName = ""
+		self.address = ""
 		self.city = ""
-		self.department = ""
 		self.zipCode = ""
 		self.country = ""
 		
@@ -497,10 +483,8 @@ class userData : NSObject {
 		self.nationality = ""
 		self.isUsCitizen = ""
 		
-		self.streetNumber = ""
-		self.streetName = ""
+		self.address = ""
 		self.city = ""
-		self.department = ""
 		self.zipCode = ""
 		self.country = ""
 		

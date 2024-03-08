@@ -15,7 +15,7 @@ class PersonalDataVC: ViewController {
     var currentPage : Int = 0
     var indicatorView : [UIView]!
     var indicatorViewsWidth : [NSLayoutConstraint]!
-    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),streetNumber = String(),streetName = String(),CityName = String(),stateName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),activity = String(),isEditData = false
+    var firstName = String(),lastName = String(),birthPlace = String(), birthDate = String(),birthCountry = String(), nationality = String(),isUsPerson = String(),address = String(),CityName = String(),zipCode = String(),CountryName = String(),investmentExp = String(),sourceOfIncome = String(),workIndustry = String(),annualIncome = String(),activity = String(),isEditData = false
 //    var personalData : [personalDataStruct] = []
     var personalData : personalDataStruct?
     
@@ -142,9 +142,6 @@ extension PersonalDataVC{
 	}
     
     @objc func nextButtonAct(){
-//            if currentPage == 0{
-//                checkPersonalDataValidation()
-//            }else
 			if currentPage == 0{
                 checkAdddressValidation()
             }else if currentPage == 1{
@@ -183,9 +180,6 @@ extension PersonalDataVC{
 //MARK: - Other functions
 extension PersonalDataVC{
     func LoadNibFiles(){
-//        let personalDataNib : UINib =  UINib(nibName: "personalDataXib", bundle: nil)
-//        collView.register(personalDataNib, forCellWithReuseIdentifier: "PersonalDataCVC")
-        
         let addressNib : UINib =  UINib(nibName: "addressXib", bundle: nil)
         collView.register(addressNib, forCellWithReuseIdentifier: "addressCVC")
         
@@ -246,37 +240,15 @@ extension PersonalDataVC{
 			personalData = personalDataStruct(fisrtName: firstName, lastName: lastName, birthPlace: birthPlace, birthDate: birthDate, birthCountry: birthCountry, nationality: nationality, isUsPerson: isUsPerson, language: userData.shared.language)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
-//            personalDataVM.personalDataApi(profile_info_step : 1,personalData: personalData, completion: {[weak self]response in
-//                self?.nextButton.hideLoading()
-//                self?.nextButton.isUserInteractionEnabled = true
-//                if let response = response{
-//                    print(response)
-//                    userData.shared.personalDataStepComplete = 1
-//					
-//					userData.shared.firstnameRegistration = self?.firstName ?? ""
-//					userData.shared.lastnameRegistration = self?.lastName ?? ""
-//					userData.shared.placeOfBirth = self?.birthPlace ?? ""
-//					userData.shared.birthDate = self?.birthDate ?? ""
-//					userData.shared.countryOfBirth = self?.birthCountry ?? ""
-//					userData.shared.nationality = self?.nationality ?? ""
-//					userData.shared.isUsCitizen = self?.isUsPerson ?? ""
-//                    userData.shared.dataSave()
-//                    self?.GotoNextIndex()
-//                }
-//            })
         }
     }
     
     
     func checkAdddressValidation(){
-        if self.streetNumber.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            CommonFunctions.toster(Constants.AlertMessages.enterStreetNumber)
-        }else if self.streetName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunctions.toster(Constants.AlertMessages.enterStreetName)
+        if self.address.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            CommonFunctions.toster(Constants.AlertMessages.enterAddress)
         }else if self.CityName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterCity)
-        }else if self.stateName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            CommonFunctions.toster(Constants.AlertMessages.enterDepartment)
         }else if self.zipCode.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             CommonFunctions.toster(Constants.AlertMessages.enterZipcode)
         }else if self.CountryName.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
@@ -285,7 +257,7 @@ extension PersonalDataVC{
             CommonFunctions.toster(Constants.AlertMessages.selectAreYouUSCitizen)
         }else{
 //            GotoNextIndex()
-            personalData = personalDataStruct(isUsPerson: isUsPerson, streetNumber: streetNumber, streetName: streetName, CityName: CityName, stateName: stateName, zipCode: zipCode, CountryName: CountryName)
+            personalData = personalDataStruct(isUsPerson: isUsPerson, address: address, CityName: CityName, zipCode: zipCode, CountryName: CountryName)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.setAddressApi(personalData: personalData, completion: {[weak self]response in
@@ -295,10 +267,8 @@ extension PersonalDataVC{
                     print(response)
                     userData.shared.personalDataStepComplete = 2
                     userData.shared.isUsCitizen = self?.isUsPerson ?? ""
-					userData.shared.streetNumber = self?.streetNumber ?? ""
-					userData.shared.streetName = self?.streetName ?? ""
+					userData.shared.address = self?.address ?? ""
 					userData.shared.city = self?.CityName ?? ""
-					userData.shared.department = self?.stateName ?? ""
 					userData.shared.zipCode = self?.zipCode ?? ""
 					userData.shared.country = self?.CountryName ?? ""
                     userData.shared.dataSave()

@@ -78,7 +78,7 @@ extension addressCVC{
     }
     
     func setPersonalData(){
-		self.addressTF.text = userData.shared.streetNumber
+		self.addressTF.text = userData.shared.address
         self.cityTF.text = userData.shared.city
         self.zipCodeTF.text = userData.shared.zipCode
         //self.countryVw.setCountryByCode(userData.shared.country)
@@ -87,7 +87,7 @@ extension addressCVC{
         self.specifiedUSPersonLbl.text = userData.shared.isUsCitizen
         self.specifiedUSPersonLbl.textColor = UIColor.Purple35126D
         DispatchQueue.main.async {
-            self.controller?.streetNumber = self.addressTF.text ?? ""
+            self.controller?.address = self.addressTF.text ?? ""
             self.controller?.CityName = self.cityTF.text ?? ""
             self.controller?.zipCode = self.zipCodeTF.text ?? ""
             self.controller?.CountryName = self.countryTF.text ?? ""
@@ -164,7 +164,7 @@ extension addressCVC: UITextFieldDelegate{
 extension addressCVC{
     @objc func editChange(_ tf : UITextField){
         if tf == addressTF{
-            self.controller?.streetNumber = tf.text ?? ""
+            self.controller?.address = tf.text ?? ""
         }else if tf == cityTF{
             self.controller?.CityName = tf.text ?? ""
         }else if tf == zipCodeTF{
@@ -239,8 +239,8 @@ extension addressCVC: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name ?? "")")
         self.addressTF.text = place.name
+        self.controller?.address = place.name ?? ""
         if let addressComponents = place.addressComponents {
                var city: String?
                var postalCode: String?
@@ -252,9 +252,10 @@ extension addressCVC: GMSAutocompleteViewControllerDelegate {
                        postalCode = component.name
                    }
                }
-               
-               self.cityTF.text = city
-               self.zipCodeTF.text = postalCode
+            self.cityTF.text = city
+            self.controller?.CityName = city ?? ""
+            self.zipCodeTF.text = postalCode
+            self.controller?.zipCode = postalCode ?? ""
            }
         self.controller?.dismiss(animated: true, completion: nil)
     }

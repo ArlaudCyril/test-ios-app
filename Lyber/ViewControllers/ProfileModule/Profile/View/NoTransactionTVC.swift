@@ -32,6 +32,6 @@ extension NoTransactionTVC{
 			CommonFunctions.hideLoader(self.noTransactionVw)
 		}
         self.noTransactionVw.layer.cornerRadius = 16
-        CommonUI.setUpLbl(lbl: self.notransactionLbl, text: CommonFunctions.localisation(key: "NO_TRANSACTION"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.notransactionLbl, text: CommonFunctions.localisation(key: "NO_TRANSACTIONS"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
     }
 }

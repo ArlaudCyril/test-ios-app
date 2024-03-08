@@ -19,7 +19,10 @@ class GoogleAuthenticatorVC : SwipeGesture {
     @IBOutlet var twoFactorLbl: UILabel!
     @IBOutlet var twoFactorDescLbl: UILabel!
     
+    @IBOutlet var googleAuthenticatorQrCodeLbl: UILabel!
     @IBOutlet var googleAuthenticatorQrCode: UIImageView!
+    
+    @IBOutlet var googleAuthenticatorBtnLbl: UILabel!
     @IBOutlet var googleAuthenticatorBtn: UIButton!
     @IBOutlet var verifyBtn: UIButton!
     
@@ -35,9 +38,13 @@ class GoogleAuthenticatorVC : SwipeGesture {
         self.headerView.headerLbl.isHidden = true
         CommonUI.setUpLbl(lbl: self.twoFactorLbl, text: CommonFunctions.localisation(key: "TWO_FA"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: self.twoFactorDescLbl, text: CommonFunctions.localisation(key: "ADD_GOOGLE_AUTHENTICATOR"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-
+        self.twoFactorDescLbl.numberOfLines = 0
         
-        CommonUI.setUpButton(btn: googleAuthenticatorBtn, text: CommonFunctions.localisation(key: "TAP_ADD_GOOGLE_AUTHENTICATOR"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.googleAuthenticatorQrCodeLbl, text: CommonFunctions.localisation(key: "SCAN_QR_CODE_CONFIGURE_ACCOUNT"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        
+        CommonUI.setUpLbl(lbl: self.googleAuthenticatorBtnLbl, text: CommonFunctions.localisation(key: "ADD_GOOGLE_AUTHENTICATOR_MANUALLY"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
+        
+        CommonUI.setUpButton(btn: googleAuthenticatorBtn, text: CommonFunctions.localisation(key: "COPY_KEY"), textcolor: UIColor.PurpleColor, backgroundColor: UIColor.white, cornerRadius: 0, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
         
         self.verifyBtn.setTitle(CommonFunctions.localisation(key: "VERIFY"), for: .normal)
         
@@ -63,33 +70,16 @@ class GoogleAuthenticatorVC : SwipeGesture {
     }
     
     @objc func googleAuthenticatorBtnAct(){
-//        guard let url = URL(string: self.urlGoogleOTP ?? "") else { return }
-//
-//        if UIApplication.shared.canOpenURL(url) {
-//            UIApplication.shared.open(url)
-//        } else {
-//            let appStoreURL = URL(string: "https://apps.apple.com/us/app/google-authenticator/id388497605")!
-//            UIApplication.shared.open(appStoreURL)
-//        }
+        guard let url = URL(string: self.urlGoogleOTP ?? ""),
+                  var components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+                  let queryItems = components.queryItems else {
+                return
+            }
+            
+        let secretValue = queryItems.first(where: { $0.name == "secret" })?.value
         
-        guard let url = URL(string: "otpauth://") else {
-            // L'URL scheme n'est pas pris en charge, ce qui signifie que Google Authenticator n'est probablement pas installé
-            // Redirigez l'utilisateur vers l'App Store pour télécharger l'application
-            if let appStoreURL = URL(string: "https://itunes.apple.com/app/google-authenticator/id388497605") {
-                UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
-            }
-            return
-        }
-
-        if UIApplication.shared.canOpenURL(url) {
-            // Google Authenticator est installé, ouvrez l'URL pour ajouter le compte
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        } else {
-            // Google Authenticator n'est pas installé, redirigez l'utilisateur vers l'App Store
-            if let appStoreURL = URL(string: "https://itunes.apple.com/app/google-authenticator/id388497605") {
-                UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
-            }
-        }
+        UIPasteboard.general.string = secretValue
+        CommonFunctions.toster(CommonFunctions.localisation(key: "COPIED"))
     }
     
     @objc func backBtnAct(){

@@ -3,6 +3,7 @@
     <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
         <attribute name="accessToken" optional="YES" attributeType="String"/>
         <attribute name="activityOnLyber" optional="YES" attributeType="String"/>
+        <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="annualIncome" optional="YES" attributeType="String"/>
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="bic" optional="YES" attributeType="String"/>
@@ -11,7 +12,6 @@
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="countryCode" optional="YES" attributeType="String"/>
         <attribute name="countryOfBirth" optional="YES" attributeType="String"/>
-        <attribute name="department" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="enterPhoneStepComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="extraSecurity" optional="YES" attributeType="String"/>
@@ -43,8 +43,6 @@
         <attribute name="sourceOfIncome" optional="YES" attributeType="String"/>
         <attribute name="step" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="stepRegisteringComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="streetName" optional="YES" attributeType="String"/>
-        <attribute name="streetNumber" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="type2FA" optional="YES" attributeType="String"/>
         <attribute name="userSigned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>

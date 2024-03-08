@@ -565,6 +565,18 @@
         }
       }
     },
+    "GMR-Tg-kNT.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"GMR-Tg-kNT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "GMz-nQ-mnO.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"GMz-nQ-mnO\";",
       "extractionState" : "extracted_with_value",
@@ -819,6 +831,18 @@
     },
     "MkP-dd-v2F.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"MkP-dd-v2F\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
+    "mz9-9Q-KJR.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"mz9-9Q-KJR\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {

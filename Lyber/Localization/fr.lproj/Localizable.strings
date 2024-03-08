@@ -446,7 +446,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "ENTER_CODE_RECEIVED_EMAIL" = "Entrez le code reçu à votre adresse email";
 "ENTER_CODE_RECEIVED_SMS" = "Saisir le code reçu par SMS";
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Trop de tentatives échouées, veuillez vous réauthentifier";
-"NO_TRANSACTION" = "Aucune transaction";
+"NO_TRANSACTIONS" = "Aucune transaction";
 "ENTER_PASSWORD" = "Entrez votre mot de passe";
 "ENTER_EMAIL_ADDRESS" = "Entrez votre adresse mail";
 "ENTER_PHONE_NUMBER" = "Numéro de téléphone";
@@ -529,6 +529,9 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "VERIFY" = "Vérifier";
 "TAP_ADD_GOOGLE_AUTHENTICATOR" = "Tapez pour ajouter à Google Authenticator";
 "USE_FACE_ID" = "Utiliser Face Id";
+"SCAN_QR_CODE_CONFIGURE_ACCOUNT" = "Scannez ce QR Code directement depuis l'application Google Authenticator pour configurer automatiquement votre compte.";
+"ADD_GOOGLE_AUTHENTICATOR_MANUALLY" = "Si vous ne pouvez pas scanner le QR Code, vous pouvez ajouter votre compte manuellement dans Google Authenticator avec la clé ci-dessous.";
+"COPY_KEY" = "Copier la Clé";
 
 //MARK: -ALERT MESSAGES
 "ALERT_PHONE_NUMBER" = "Veuillez entrer votre numéro de téléphone";
@@ -539,9 +542,8 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "ALERT_NATIONALITY" = "Veuillez sélectionner une nationalité ";
 "ALERT_EMAIL" = "Veuillez saisir l'adresse électronique";
 "ALERT_VALID_EMAIL" = "Veuillez saisir une adresse électronique valide";
-"ALERT_STREET_NUMBER" = "Veuillez saisir le numéro de rue";
 "ALERT_FREQUENCY" = "Veuillez sélectionner la fréquence";
-"ALERT_STREET_NAME" = "Veuillez saisir le nom de la rue";
+"ALERT_ADDRESS" = "Veuillez saisir une adresse";
 "ALERT_CITY_NAME" = "Veuillez saisir le nom de la ville";
 "ALERT_ZIP_CODE" = "Veuillez saisir le code postal";
 "ALERT_COUNTRY" = "Veuillez saisir le nom du pays";

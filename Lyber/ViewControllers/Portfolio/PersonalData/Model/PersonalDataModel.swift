@@ -7,7 +7,7 @@
 
 import Foundation
 struct personalDataStruct : Codable{
-    var fisrtName,lastName,birthPlace ,birthDate,birthCountry,nationality,isUsPerson,email,streetNumber ,streetName,CityName,stateName,zipCode,CountryName ,investmentExp,sourceOfIncome ,workIndustry,annualIncome,activity,language : String?
+    var fisrtName,lastName,birthPlace ,birthDate,birthCountry,nationality,isUsPerson,email, address,CityName,stateName,zipCode,CountryName ,investmentExp,sourceOfIncome ,workIndustry,annualIncome,activity,language : String?
 }
 
 //MARK: - NEW PROFILE API

@@ -279,7 +279,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "LABEL_CGU_CONDITIONS" = "I have read and accept the General Terms and Conditions of Sale";
 "LABEL_PRIVACY_POLICY" = "I have read and accept the privacy policy";
 "CGU_CONDITIONS" = "General Terms and Conditions of Sale";
-"PRIVACY_POLICY" = "privacy policy";
+"PRIVACY_POLICY" = "Privacy Policy";
 
 //MARK: - INVEST MONEY;
 "USING_MY_STRATEGY" = "Using my strategy";
@@ -449,7 +449,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "ENTER_CODE_RECEIVED_EMAIL" = "Enter the code you received at your email address.";
 "ENTER_CODE_RECEIVED_SMS" = "Enter the code received by sms";
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Too many failed attempts, please reauthenticate";
-"NO_TRANSACTION" = "No transaction";
+"NO_TRANSACTIONS" = "No transactions";
 "ENTER_PASSWORD" = "Enter password";
 "ENTER_EMAIL_ADDRESS" = "Enter email address";
 "ENTER_PHONE_NUMBER" = "Enter phone number";
@@ -516,7 +516,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "FORGOT_PASSWORD" = "Forgot your password?";
 "HAPPY_SEE_YOU_BACK" = "Happy to see you back!";
 "ENTER_PHONE_NUMBER_LOGIN" = "Enter your phone number to login, we’ll send you a verification code.";
-"ENTER_EMAIL_LOGIN" = "Enter your email to login, we’ll send you a link by email.";
+"ENTER_EMAIL_LOGIN" = "Enter your Email to login, we’ll send you a verification code.";
 "HAPPENS_EVEN_BEST" = "Happens even to the best";
 "SEND_RESET_LINK_EMAIL_ADDRESS" = "We will send you a reset link to your email address";
 "SEND_RESET_LINK" = "Send me a reset link";
@@ -532,6 +532,9 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "VERIFY" = "Verify";
 "TAP_ADD_GOOGLE_AUTHENTICATOR" = "Tap to add to Google Authenticator";
 "USE_FACE_ID" = "Use Face Id";
+"SCAN_QR_CODE_CONFIGURE_ACCOUNT" = "Scan this QR Code directly from the Google Authenticator application to automatically configure your account.";
+"ADD_GOOGLE_AUTHENTICATOR_MANUALLY" = "If you can't scan the QR Code, you can add your account manually in Google Authenticator with the key below.";
+"COPY_KEY" = "Copy Key";
 
 //MARK: -ALERT MESSAGES
 "ALERT_PHONE_NUMBER" = "Please enter Phone number";
@@ -542,9 +545,8 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "ALERT_NATIONALITY" = "Please select nationality";
 "ALERT_EMAIL" = "Please enter email address";
 "ALERT_VALID_EMAIL" = "Please enter valid email address";
-"ALERT_STREET_NUMBER" = "Please enter street number";
 "ALERT_FREQUENCY" = "Please select frequency";
-"ALERT_STREET_NAME" = "Please enter street name";
+"ALERT_ADDRESS" = "Please enter address";
 "ALERT_CITY_NAME" = "Please enter city name";
 "ALERT_ZIP_CODE" = "Please enter zip code";
 "ALERT_COUNTRY" = "Please enter country name";
