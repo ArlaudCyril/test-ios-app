@@ -142,6 +142,8 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "TO_START_INVESTING" = "Commencer à investir";
 "WITHDRAW" = "Retirer";
 "WITHDRAW_ON" = "Retirer sur";
+"ADD_RIB" = "Ajouter un RIB";
+"CHOOSE_RIB_WANT_WITHDRAW" = "Choisissez le RIB sur lequel vous souhaitez effectuer un retrait";
 "SEND_ASSETS_ANOTHER_ACCOUNT" = "Envoyer des actifs sur un autre compte";
 "EXCHANGE" = "Échanger";
 "EXCHANGE_NOUN" = "Echange";
@@ -671,7 +673,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 
 "FINALISE_REGISTRATION_VERIFY_IDENTITY" = "Pour finaliser votre inscription, nous avons besoin de vérifier votre identité via notre partenaire Onfido. Dans l'étape qui va suivre, vous allez devoir réaliser une signature éléctronique ainsi que la photographie d'un document d'identité.";
 
-//MARK: - ERRORS
+//MARK: - CONTACTFORMVC
 "EMAIL" = "Email";
 "SEND_US_OR_FILL_OUT" = "Envoyez-nous un mail à contact@lyber.com ou remplissez le formulaire de contact ci-dessous :";
 "CONTACT_FORM" = "Formulaire de contact";
@@ -681,6 +683,16 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "WILL_GET_BACK_TO_YOU" = "Nous vous répondrons à l'adresse suivante : %@";
 "MESSAGE_SENT_SUCCESSFULLY" = "Le message a bien été envoyé";
 
+//MARK: Withdraw Euros
+"RIB_NAME" = "Nom du RIB";
+"IBAN" = "IBAN";
+"BIC" = "BIC";
+"OWNER_NAME" = "Nom du titulaire";
+"OWNER" = "Titulaire";
+"BANK_COUNTRY" = "Pays de la banque";
+"YOUR_NEW_RIB" = "Votre nouveau RIB";
+"ADD" = "Ajouter";
+"PLEASE_COMPLETE_FIELDS" = "Veuillez remplir tous les champs";
 
 //MARK: - ERRORS
 
@@ -732,5 +744,5 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "CONTRACT_SIGNATURE" = "Signez votre contrat";
 "USER_NOT_SIGNED_CONTRACT" = "Votre contrat n'a pas été signé. Veuillez le signer pour pouvoir effectuer l'opération";
 "SIGN_CONTRACT" = "Signer mon contrat";
-"MINIMUM_CREDIT_CARD_PAYMENT" = "Le montant minimum pour un paiement par carte de crédit est de 15€.";
+"MINIMUM_CREDIT_CARD_PAYMENT" = "Le montant minimum pour un paiement par carte de crédit est de 20€.";
 

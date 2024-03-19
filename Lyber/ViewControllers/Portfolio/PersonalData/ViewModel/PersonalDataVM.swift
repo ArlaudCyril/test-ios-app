@@ -51,7 +51,8 @@ class PersonalDataVM{
         
         var param: [String: Any] = [:]
         param[Constants.ApiKeys.isUSCitizen] =  personalData?.isUsPerson ?? "" == "Yes" ? true : false
-		param[Constants.ApiKeys.address] = personalData?.address ?? ""
+        param[Constants.ApiKeys.street] = personalData?.street ?? ""
+		param[Constants.ApiKeys.streetNumber] = personalData?.streetNumber ?? ""
 		param[Constants.ApiKeys.city] =  personalData?.CityName ?? ""
 		param[Constants.ApiKeys.zipCode] =  personalData?.zipCode ?? ""
 		param[Constants.ApiKeys.country] =  personalData?.CountryName ?? ""

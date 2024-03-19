@@ -50,10 +50,13 @@ class LoginVC: ViewController {
 					if(GlobalVariables.baseUrl == ApiEnvironment.Staging.rawValue){
 						CommonFunctions.toster("Environnement changé à : Dev")
 						GlobalVariables.baseUrl = ApiEnvironment.Dev.rawValue
+                        userData.shared.environment = "DEV"
 					}else{
 						CommonFunctions.toster("Environnement changé à : Staging")
 						GlobalVariables.baseUrl = ApiEnvironment.Staging.rawValue
+                        userData.shared.environment = "STAGING"
 					}
+                    userData.shared.dataSave()
 				}
 				audioLevel = audioSession.outputVolume
 			}

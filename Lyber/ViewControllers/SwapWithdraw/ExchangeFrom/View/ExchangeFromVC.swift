@@ -120,7 +120,7 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section == 0){
             if(self.screenType == .withdraw){
-                let vc = WithdrawAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 vc.asset = CommonFunctions.getCurrency(id: Storage.balances[indexPath.row]?.id ?? "")
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
@@ -142,10 +142,19 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
                 }
             }
         }else if(indexPath.section == 1){
-            let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-            vc.type = .withdrawEuros
-            vc.controller = self
-            self.present(vc, animated: false)
+            AddNewRIBVM().getRibsApi(completion: {response in
+                if response != nil{
+                    if(response?.data.count ?? 0 <= 0){
+                        let vc = AddNewRIBVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                        let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                        vc.typeWithdraw = .ribs
+                        vc.ribsArray = response?.data ?? []
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            })
         }
     }
 }

@@ -160,8 +160,13 @@ struct Constants{
         static let googleOtp = "googleOtp"
 		
 		// MARK: - User keys
-		static let scope2FA = "scope2FA"
-		
+        static let scope2FA = "scope2FA"
+        
+        //MARK: Others
+        static let userName = "userName"
+        static let bankCountry = "bankCountry"
+		static let ribId = "ribId"
+        
     }
     
     // MARK: - Requested URL Keys
@@ -235,7 +240,9 @@ struct Constants{
 		static let walletServiceWithdrawalAddress = "wallet-service/withdrawal-address"
 		static let walletServiceWithdraw = "wallet-service/withdraw"
 		static let walletServiceHistory = "wallet-service/history"
-		static let walletServicePerformance = "wallet-service/performance"
+        static let walletServicePerformance = "wallet-service/performance"
+        static let walletServiceRib = "wallet-service/rib"
+		static let walletServiceRibs = "wallet-service/ribs"
 		
 		//Network
 		static let networkServiceNetworks = "network-service/networks"
@@ -247,8 +254,7 @@ struct Constants{
 		//Change password
 		static let userServicePasswordChangeChallenge = "user-service/password-change-challenge"
 		static let userServicePassword = "user-service/password"
-		
-		
+        
     }
 	
 	enum Icon: String, CaseIterable {

@@ -295,7 +295,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 			case .AssetDetailPagePopUp:
 				//Detail Page
 				if indexPath.row == 0{
-					let vc = WithdrawAddressVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+					let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
 					vc.asset = CommonFunctions.getCurrency(id: self.coinId ?? "")
 					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 

@@ -256,8 +256,11 @@ extension PersonalDataVC{
         }else if self.isUsPerson == ""{
             CommonFunctions.toster(Constants.AlertMessages.selectAreYouUSCitizen)
         }else{
-//            GotoNextIndex()
-            personalData = personalDataStruct(isUsPerson: isUsPerson, address: address, CityName: CityName, zipCode: zipCode, CountryName: CountryName)
+            let separatedAddress = separateAddress(address)
+            print("Number: \(separatedAddress?.0 ?? "")") // Number: 71
+            print("Street: \(separatedAddress?.1 ?? "")") // Street: rue de Canteleu
+           
+            personalData = personalDataStruct(isUsPerson: isUsPerson, street: separatedAddress?.1, streetNumber: separatedAddress?.0, CityName: CityName, zipCode: zipCode, CountryName: CountryName)
             self.nextButton.showLoading()
             self.nextButton.isUserInteractionEnabled = false
             personalDataVM.setAddressApi(personalData: personalData, completion: {[weak self]response in
@@ -314,6 +317,24 @@ extension PersonalDataVC{
                 }
             })
         }
+    }
+    
+    func separateAddress(_ address: String) -> (String, String)? {
+        let regex = try! NSRegularExpression(pattern: "^\\s*(\\d+[a-zA-Z]?)(\\s+.*)", options: [])
+        let range = NSRange(address.startIndex..., in: address)
+        
+        if let match = regex.firstMatch(in: address, options: [], range: range) {
+            if match.numberOfRanges == 3 {
+                let numberRange = Range(match.range(at: 1), in: address)!
+                let streetRange = Range(match.range(at: 2), in: address)!
+                
+                let number = String(address[numberRange]).trimmingCharacters(in: .whitespaces)
+                let street = String(address[streetRange]).trimmingCharacters(in: .whitespaces)
+                
+                return (number, street)
+            }
+        }
+        return nil
     }
 }
 

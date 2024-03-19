@@ -107,6 +107,13 @@ extension SceneDelegate{
 			}
 			userData.shared.dataSave()
 		}
+        if(AppConfig.dictEnvVariables["ENV"] as? String == "STAGING"){
+            if userData.shared.environment == "DEV"{
+                GlobalVariables.baseUrl = ApiEnvironment.Dev.rawValue
+            }else if(userData.shared.environment == "STAGING"){
+                GlobalVariables.baseUrl = ApiEnvironment.Staging.rawValue
+            }
+        }
 		self.controllerDelegate()
     }
 

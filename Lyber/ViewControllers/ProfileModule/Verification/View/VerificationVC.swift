@@ -21,6 +21,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
     var timerResendCode = 59
     
     //MARK: - IB OUTLETS
+    @IBOutlet var outerView: UIView!
     @IBOutlet var containerView: UIView!
     
     @IBOutlet var verificationLbl: UILabel!
@@ -81,6 +82,10 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
         resendCodeLbl.isUserInteractionEnabled = true
         resendCodeLbl.addGestureRecognizer(tapGesture)
         
+        let tapGestureOuterView = UITapGestureRecognizer(target: self, action: #selector(backBtnAct))
+        outerView.isUserInteractionEnabled = true
+        outerView.addGestureRecognizer(tapGestureOuterView)
+        
     }
 }
 
@@ -112,35 +117,44 @@ extension VerificationVC: UITextFieldDelegate{
         let currentString: NSString = textField.text! as NSString
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
-            let maxLength = 1
-            if string.count == 1{
-                textField.text = string
-                if Tf1 == textField{
-                    Tf2.becomeFirstResponder()
-                }else if Tf2 == textField{
-                    Tf3.becomeFirstResponder()
-                }else if Tf3 == textField{
-                    Tf4.becomeFirstResponder()
-                }else if Tf4 == textField{
-                    Tf5.becomeFirstResponder()
-                }else if Tf5 == textField{
-                    Tf6.becomeFirstResponder()
-                }else if Tf6 == textField{
-                    Tf6.resignFirstResponder()
+        let maxLength = 1
+        if textField == Tf1 && string.count == 6 {
+                let characters = Array(string)
+                if characters.count == 6 {
+                    Tf1.text = String(characters[0])
+                    Tf2.text = String(characters[1])
+                    Tf3.text = String(characters[2])
+                    Tf4.text = String(characters[3])
+                    Tf5.text = String(characters[4])
+                    Tf6.text = String(characters[5])
                 }
-                if Tf1.text != "" && Tf2.text != "" && Tf3.text != "" && Tf4.text != "" && Tf5.text != "" && Tf6.text != ""{
-
-                    self.verifyCode(code: "\(Tf1.text ?? "")\(Tf2.text ?? "")\(Tf3.text ?? "")\(Tf4.text ?? "")\(Tf5.text ?? "")\(Tf6.text ?? "")")
-					let tfs = [Tf1,Tf2,Tf3,Tf4,Tf5,Tf6]
-					DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-						for tf in tfs{
-							tf?.text = ""
-						}
-						self.Tf1.becomeFirstResponder()
-					})
-                }
+        }else if string.count == 1{
+            textField.text = string
+            if Tf1 == textField{
+                Tf2.becomeFirstResponder()
+            }else if Tf2 == textField{
+                Tf3.becomeFirstResponder()
+            }else if Tf3 == textField{
+                Tf4.becomeFirstResponder()
+            }else if Tf4 == textField{
+                Tf5.becomeFirstResponder()
+            }else if Tf5 == textField{
+                Tf6.becomeFirstResponder()
+            }else if Tf6 == textField{
+                Tf6.resignFirstResponder()
             }
+        }
+        if Tf1.text != "" && Tf2.text != "" && Tf3.text != "" && Tf4.text != "" && Tf5.text != "" && Tf6.text != ""{
 
+            self.verifyCode(code: "\(Tf1.text ?? "")\(Tf2.text ?? "")\(Tf3.text ?? "")\(Tf4.text ?? "")\(Tf5.text ?? "")\(Tf6.text ?? "")")
+            let tfs = [Tf1,Tf2,Tf3,Tf4,Tf5,Tf6]
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                for tf in tfs{
+                    tf?.text = ""
+                }
+                self.Tf1.becomeFirstResponder()
+            })
+        }
         return newString.length <= maxLength
     }
 }

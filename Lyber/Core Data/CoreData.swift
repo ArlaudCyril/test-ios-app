@@ -11,6 +11,7 @@ import UIKit
 
 
 class userData : NSObject {
+    var environment = ""
 	var firstname = ""
     var lastname = ""
 	var userUuid = ""
@@ -85,6 +86,7 @@ class userData : NSObject {
             print(error)
         }
         let newData = NSEntityDescription.insertNewObject(forEntityName: "UserData", into: context)
+        newData.setValue(environment, forKey: "environment")
         newData.setValue(userToken, forKey: "accessToken")
         newData.setValue(refreshToken, forKey: "refreshToken")
         newData.setValue(registrationToken, forKey: "registrationToken")
@@ -181,6 +183,10 @@ class userData : NSObject {
                     if let isAccountCreated = result.value(forKey: "isAccountCreated") as? Bool{
                         self.isAccountCreated = isAccountCreated
                         print("data get isAccountCreated \(isAccountCreated)")
+                    }
+                    if let environment = result.value(forKey: "environment") as? String{
+                        self.environment = environment
+                        print("data get environment \(environment)")
                     }
                     if let isEducationStrategyRead = result.value(forKey: "isEducationStrategyRead") as? Bool{
                         self.isEducationStrategyRead = isEducationStrategyRead

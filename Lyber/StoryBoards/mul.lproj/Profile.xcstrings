@@ -1693,6 +1693,30 @@
         }
       }
     },
+    "Z3A-Ec-H90.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Button\"; ObjectID = \"Z3A-Ec-H90\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "Z3A-Ec-H90.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"Z3A-Ec-H90\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
     "Z5y-l2-TPf.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"Z5y-l2-TPf\";",
       "extractionState" : "extracted_with_value",

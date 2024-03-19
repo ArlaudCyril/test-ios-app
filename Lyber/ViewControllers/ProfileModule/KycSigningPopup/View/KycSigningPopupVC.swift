@@ -125,9 +125,6 @@ extension KycSigningPopupVC{
             }
             break
             
-        case .withdrawEuros:
-            break
-            
         case .googleAuthenticator:
             self.dismiss(animated: true)
             break
@@ -180,27 +177,6 @@ extension KycSigningPopupVC{
             self.actionBtn.setTitle(CommonFunctions.localisation(key: "YES_CERTIFY"), for: .normal)
             break
             
-        case .withdrawEuros:
-            CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "WITHDRAW_BANK_ACCOUNT"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
-            
-            CommonUI.setUpLbl(lbl: self.DescriptionLbl, text: "", textColor: UIColor.PurpleGrey_600, font: UIFont.MabryPro(Size.Large.sizeValue()))
-            self.DescriptionLbl.numberOfLines = 0
-            
-            let text = CommonFunctions.localisation(key: "WITHDRAW_STEPS")
-            let attributedString = NSMutableAttributedString(string: text)
-            if let range = text.range(of: CommonFunctions.localisation(key: "CLICK_HERE")) {
-                attributedString.addAttribute(.foregroundColor, value: UIColor.purple_500, range: NSRange(range, in: text))
-            }
-            self.DescriptionLbl.attributedText = attributedString
-            
-            let tapDescriptionLbl = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel))
-            self.DescriptionLbl.addGestureRecognizer(tapDescriptionLbl)
-            
-            self.btnView.isHidden = true
-            self.DescriptionLblBottomViewConstraint.constant = 48
-            
-            break
-        
         case .googleAuthenticator:
             CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "HAVE_GOOGLE_AUTHENTICATOR"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
             
@@ -222,15 +198,6 @@ extension KycSigningPopupVC{
             self.DescriptionLblBottomViewConstraint.constant = 126
             
             break
-        }
-    }
-    
-    @objc func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
-        guard let text = self.DescriptionLbl.text else { return }
-        if let range = text.range(of: CommonFunctions.localisation(key: "CLICK_HERE")) {
-            if gesture.didTapAttributedTextInLabel(label: self.DescriptionLbl, inRange: NSRange(range, in: text)) {
-                self.goToContactForm()
-            }
         }
     }
     

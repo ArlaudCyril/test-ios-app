@@ -9,8 +9,7 @@ import UIKit
 
 class AddressAddedPopUpVC: ViewController {
     //MARK: - Variables
-    var controller : AddCryptoAddressVC?
-    var addressBookController : CryptoAddressBookVC?
+    var controller : UIViewController?
     var editAddress : Address?
     var addressAddedPopUpVM = AddressAddedPopUpVM()
     var deleteCallback : (()->())?
@@ -38,6 +37,9 @@ class AddressAddedPopUpVC: ViewController {
 	var to = ""
 	var amount = ""
 	var date = ""
+    
+    //RIB selected
+    var ribSelected : RibData?
 	
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -75,6 +77,10 @@ class AddressAddedPopUpVC: ViewController {
     
     @IBOutlet var deleteBtn: LoadingButton!
     @IBOutlet var editBtn: LoadingButton!
+    
+    @IBOutlet var useRibBtn: PurpleButton!
+    @IBOutlet var useRibVw: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -90,6 +96,7 @@ class AddressAddedPopUpVC: ViewController {
 		self.addressImg.isHidden = true
 		self.addressOriginImg.isHidden = true
 		self.dateImg.isHidden = true
+        self.useRibVw.isHidden = true
 		
 		handleTypePopUp()
         
@@ -97,6 +104,7 @@ class AddressAddedPopUpVC: ViewController {
         self.headerView.backBtn.addTarget(self, action: #selector(cancelBtnAct), for: .touchUpInside)
         self.editBtn.addTarget(self, action: #selector(editAct), for: .touchUpInside)
         self.deleteBtn.addTarget(self, action: #selector(deleteBtnAct), for: .touchUpInside)
+        self.useRibBtn.addTarget(self, action: #selector(useRibBtnAct), for: .touchUpInside)
         let tapp = UITapGestureRecognizer(target: self, action: #selector(outerTapped))
         self.outerView.addGestureRecognizer(tapp)
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addressCopyLblTapped(_:)))
@@ -125,15 +133,35 @@ extension AddressAddedPopUpVC{
     }
     
     @objc func editAct(){
-		self.dismiss(animated: true, completion: nil)
-		let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-		vc.isEditAddress = true
-		vc.cryptoAddress = self.editAddress
-		self.addressBookController?.navigationController?.pushViewController(vc, animated: true)
+        self.dismiss(animated: true, completion: nil)
+        if(self.type == .ribSelected){
+            let vc = AddNewRIBVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+            vc.isEditingRib = true
+            vc.ribData = self.ribSelected
+            self.controller?.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+            vc.isEditAddress = true
+            vc.cryptoAddress = self.editAddress
+            self.controller?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc func deleteBtnAct(){
-		self.callDeleteApi()
+        self.callDeleteApi()
+        
+    }
+    
+    @objc func useRibBtnAct(){
+        //TODO: to change
+        let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+//        vc.strategyType = .withdraw
+//        vc.minimumWithdrawal = self.networksArray[indexPath.row].withdrawMin
+//        vc.feeWithdrawal = self.networksArray[indexPath.row].withdrawFee
+//        vc.fromAssetId = self.asset?.id ?? ""
+//        vc.network = networksArray[indexPath.row]
+//        vc.numberOfDecimals = self.networksArray[indexPath.row].decimals ?? -1
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 	
@@ -266,36 +294,70 @@ extension AddressAddedPopUpVC{
 			self.iconView.isHidden = true
 			
 		}else if(type == .withdraw){
-			self.headerView.headerLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL")
-			
-			CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "TRANSACTION_ID"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.addressCopyLbl, text: self.transactionId.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			self.addressImg.isHidden = false
-			
-			CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "STATUS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.networkNameLbl, text: self.status.decoderStatusWithdraw, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-			
-			CommonUI.setUpLbl(lbl: self.addressOriginLbl, text: CommonFunctions.localisation(key: "TO"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: self.to.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			self.addressOriginImg.isHidden = false
-			
-			CommonUI.setUpLbl(lbl: self.feesPaidLbl, text: CommonFunctions.localisation(key: "AMOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.feesPaidNameLbl, text: self.amount, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			
-			CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "DATE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
-			CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-			
-			self.toView.isHidden = true
-			self.iconView.isHidden = true
-		}
+            self.headerView.headerLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL")
+            
+            CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "TRANSACTION_ID"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.addressCopyLbl, text: self.transactionId.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.addressImg.isHidden = false
+            
+            CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "STATUS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.networkNameLbl, text: self.status.decoderStatusWithdraw, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.addressOriginLbl, text: CommonFunctions.localisation(key: "TO"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: self.to.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.addressOriginImg.isHidden = false
+            
+            CommonUI.setUpLbl(lbl: self.feesPaidLbl, text: CommonFunctions.localisation(key: "AMOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.feesPaidNameLbl, text: self.amount, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "DATE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            self.toView.isHidden = true
+            self.iconView.isHidden = true
+        }else if(type == .ribSelected){
+            self.headerView.headerLbl.text = ribSelected?.name ?? ""
+            
+            CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "IBAN"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.addressCopyLbl, text: self.ribSelected?.iban.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.addressLbl.numberOfLines = 0
+            
+            CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "BIC"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.networkNameLbl, text: ribSelected?.bic, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.addressOriginLbl, text: "\(CommonFunctions.localisation(key: "OWNER"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: ribSelected?.userName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "BANK_COUNTRY"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.dateLbl, text: ribSelected?.bankCountry, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            CommonUI.setUpButton(btn: self.deleteBtn, text: CommonFunctions.localisation(key: "DELETE"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpButton(btn: self.editBtn, text: CommonFunctions.localisation(key: "EDIT"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            self.useRibBtn.setTitle("Use this RIB", for: .normal)
+            
+            self.useRibVw.isHidden = false
+            self.toView.isHidden = true
+            self.feesPaidView.isHidden = true
+        }
 	}
 	
     func callDeleteApi(){
         self.deleteBtn.showLoading(color: UIColor.PurpleColor)
-		addressAddedPopUpVM.deleteAddressApi(network: self.editAddress?.network ?? "", address: self.editAddress?.address ?? "", completion: {[weak self]response in
-            self?.deleteBtn.hideLoading()
-            self?.dismiss(animated: true)
-            self?.deleteCallback?()
-        })
+        if(self.type == .ribSelected){
+            AddNewRIBVM().deleteRisApi(ribId: ribSelected?.ribId ?? "", completion: {response in
+                if response != nil{
+                    self.deleteBtn.hideLoading()
+                    self.dismiss(animated: true)
+                    self.deleteCallback?()
+                }
+            })
+        }else{
+            addressAddedPopUpVM.deleteAddressApi(network: self.editAddress?.network ?? "", address: self.editAddress?.address ?? "", completion: {[weak self]response in
+                self?.deleteBtn.hideLoading()
+                self?.dismiss(animated: true)
+                self?.deleteCallback?()
+            })
+        }
     }
 }

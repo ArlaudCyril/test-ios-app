@@ -12,5 +12,6 @@ enum AddressAddedPopUpModel{
 	case order
 	case strategy
 	case deposit
-	case withdraw
+    case withdraw
+	case ribSelected
 }

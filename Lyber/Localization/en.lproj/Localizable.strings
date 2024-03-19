@@ -142,6 +142,8 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "TO_START_INVESTING" = "To start investing";
 "WITHDRAW" = "Withdraw";
 "WITHDRAW_ON" = "Withdraw on";
+"ADD_RIB" = "Add a RIB";
+"CHOOSE_RIB_WANT_WITHDRAW" = "Choose the RIB on which you want to withdraw";
 "SEND_ASSETS_ANOTHER_ACCOUNT" = "Send assets to another account";
 "EXCHANGE" = "Exchange";
 "EXCHANGE_NOUN" = "Exchange";
@@ -683,6 +685,17 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "MESSAGE_SENT_SUCCESSFULLY" = "The message has been sent successfully";
 
 
+//MARK: Withdraw Euros
+"RIB_NAME" = "RIB Name";
+"IBAN" = "IBAN";
+"BIC" = "BIC";
+"OWNER_NAME" = "Owner’s name";
+"OWNER" = "Owner";
+"BANK_COUNTRY" = "Bank country";
+"YOUR_NEW_RIB" = "Your new RIB";
+"ADD" = "Add";
+"PLEASE_COMPLETE_FIELDS" = "Please complete all fields";
+
 //MARK: - ERRORS
 
 "FATAL_ERROR" = "Fatal error (%@)";
@@ -734,4 +747,4 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "CONTRACT_SIGNATURE" = "Sign your contract";
 "USER_NOT_SIGNED_CONTRACT" = "Your contract has not been signed. Please sign it before you can proceed.";
 "SIGN_CONTRACT" = "Sign my contract";
-"MINIMUM_CREDIT_CARD_PAYMENT" = "Minimum amount for credit card payment is 15€";
+"MINIMUM_CREDIT_CARD_PAYMENT" = "Minimum amount for credit card payment is 20€";

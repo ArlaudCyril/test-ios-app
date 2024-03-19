@@ -247,7 +247,7 @@
 		1F0988BA29B9E86A0075B000 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F0988B929B9E86A0075B000 /* Test.storyboard */; };
 		1F105CE22AFE80A40052D21E /* lyberStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CE02AFE7F900052D21E /* lyberStaging.plist */; };
 		1F105CE32AFE80A70052D21E /* lyberProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CDD2AFE7D020052D21E /* lyberProd.plist */; };
-		1F1857772A28D0BD006F9014 /* WithdrawAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */; };
+		1F1857772A28D0BD006F9014 /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857762A28D0BD006F9014 /* WithdrawVC.swift */; };
 		1F1857792A28DA5A006F9014 /* WithdrawAddressTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */; };
 		1F1DA4372A7CF6A000BE8C61 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */; };
 		1F1DA4392A7D489A00BE8C61 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DA4382A7D489A00BE8C61 /* ResetPasswordVC.swift */; };
@@ -325,7 +325,7 @@
 		1FF380A52AFD297600CCF1A6 /* StrongAuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE7695529C47144005141C0 /* StrongAuthVM.swift */; };
 		1FF380A62AFD297600CCF1A6 /* InvestmentExpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53DEE8284635FB0027367A /* InvestmentExpModel.swift */; };
 		1FF380A72AFD297600CCF1A6 /* VerificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5B7C5129C1BDA100256438 /* VerificationVM.swift */; };
-		1FF380A82AFD297600CCF1A6 /* WithdrawAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */; };
+		1FF380A82AFD297600CCF1A6 /* WithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1857762A28D0BD006F9014 /* WithdrawVC.swift */; };
 		1FF380A92AFD297600CCF1A6 /* CryptoDepositeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D540F29F003610078267F /* CryptoDepositeVM.swift */; };
 		1FF380AA2AFD297600CCF1A6 /* error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1883D30C2950798A00CEC597 /* error.swift */; };
 		1FF380AB2AFD297600CCF1A6 /* enterNumberCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC4C2C2283F5DDF0086C6B8 /* enterNumberCVC.swift */; };
@@ -610,6 +610,12 @@
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
 		710735E7BD660DA098641525 /* Pods_Lyber_prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92102674EB0CB68259587CE5 /* Pods_Lyber_prod.framework */; };
 		9BCFF6039E93320122688ED7 /* Pods_Lyber_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF43FC56F030BBDBC2A00C8E /* Pods_Lyber_dev.framework */; };
+		C80DFA482BA459D800BDA41B /* RIBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA472BA459D800BDA41B /* RIBModel.swift */; };
+		C80DFA492BA45A9100BDA41B /* RIBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA472BA459D800BDA41B /* RIBModel.swift */; };
+		C80DFA4C2BA45C4100BDA41B /* WithdrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */; };
+		C80DFA4D2BA45CE700BDA41B /* WithdrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */; };
+		C80DFA4F2BA45FDA00BDA41B /* WithdrawRibTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */; };
+		C80DFA502BA4603600BDA41B /* WithdrawRibTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */; };
 		C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C838FD7E2B87696F00922C25 /* UITapGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */; };
@@ -620,10 +626,14 @@
 		C855BCCE2B6BE14700D46EDA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
 		C857F4462B7E269000D0275E /* MaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F4452B7E269000D0275E /* MaintenanceModel.swift */; };
 		C857F4472B7E270900D0275E /* MaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F4452B7E269000D0275E /* MaintenanceModel.swift */; };
+		C87F07A12BA1FE37006E125F /* AddNewRIBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */; };
 		C8859A362B596D1E00225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C8AC1E1D2B6CF7AF0069C2FA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
 		C8AC1E1E2B6CF7EB0069C2FA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
+		C8C448D72BA32CA70013A468 /* AddNewRIBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */; };
+		C8C448DA2BA330C40013A468 /* AddNewRIBVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */; };
+		C8C448DB2BA332920013A468 /* AddNewRIBVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */; };
 		C8FC6FA12B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */; };
 		C8FC6FA22B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */; };
 		EE9AB0952AEBBDA300B3E36C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9AB0972AEBBDA300B3E36C /* Profile.storyboard */; };
@@ -873,7 +883,7 @@
 		1F0A372C29CB44C000B07A20 /* LyberDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LyberDebug.entitlements; sourceTree = "<group>"; };
 		1F105CDD2AFE7D020052D21E /* lyberProd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = lyberProd.plist; sourceTree = "<group>"; };
 		1F105CE02AFE7F900052D21E /* lyberStaging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = lyberStaging.plist; sourceTree = "<group>"; };
-		1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAddressVC.swift; sourceTree = "<group>"; };
+		1F1857762A28D0BD006F9014 /* WithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawVC.swift; sourceTree = "<group>"; };
 		1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawAddressTVC.swift; sourceTree = "<group>"; };
 		1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		1F1DA4382A7D489A00BE8C61 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -942,12 +952,17 @@
 		5AAEF8E27F5863FF1CE21491 /* Pods-Lyber prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber prod.debug.xcconfig"; path = "Target Support Files/Pods-Lyber prod/Pods-Lyber prod.debug.xcconfig"; sourceTree = "<group>"; };
 		7B4D6A7779ADF2CF5FC14572 /* Pods-Lyber prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber prod.release.xcconfig"; path = "Target Support Files/Pods-Lyber prod/Pods-Lyber prod.release.xcconfig"; sourceTree = "<group>"; };
 		92102674EB0CB68259587CE5 /* Pods_Lyber_prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber_prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C80DFA472BA459D800BDA41B /* RIBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RIBModel.swift; sourceTree = "<group>"; };
+		C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawModel.swift; sourceTree = "<group>"; };
+		C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRibTVC.swift; sourceTree = "<group>"; };
 		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureExtension.swift; sourceTree = "<group>"; };
 		C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupVC.swift; sourceTree = "<group>"; };
 		C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupModel.swift; sourceTree = "<group>"; };
 		C857F4452B7E269000D0275E /* MaintenanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceModel.swift; sourceTree = "<group>"; };
+		C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVC.swift; sourceTree = "<group>"; };
 		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
+		C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVM.swift; sourceTree = "<group>"; };
 		C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationKycSigningTVC.swift; sourceTree = "<group>"; };
 		DF43FC56F030BBDBC2A00C8E /* Pods_Lyber_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A00A1434E71C92E4E0D1F8 /* Pods-Lyber dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber dev.debug.xcconfig"; path = "Target Support Files/Pods-Lyber dev/Pods-Lyber dev.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1948,7 +1963,8 @@
 		0A7C378E286098E700E238D8 /* SwapWithdraw */ = {
 			isa = PBXGroup;
 			children = (
-				1F1857742A28D093006F9014 /* WithdrawAddress */,
+				C87F079E2BA1FE1C006E125F /* AddNewRIB */,
+				1F1857742A28D093006F9014 /* Withdraw */,
 				1FFD171B29ED960E00935003 /* DepositAsset */,
 				0A7B0D5E2861EE090030C4D8 /* WithdrawAll */,
 				0A7C378F286098FE00E238D8 /* ExchangeFrom */,
@@ -2624,19 +2640,21 @@
 			path = SRP;
 			sourceTree = "<group>";
 		};
-		1F1857742A28D093006F9014 /* WithdrawAddress */ = {
+		1F1857742A28D093006F9014 /* Withdraw */ = {
 			isa = PBXGroup;
 			children = (
+				C80DFA4A2BA45BD100BDA41B /* Model */,
 				1F1857752A28D0A8006F9014 /* View */,
 			);
-			path = WithdrawAddress;
+			path = Withdraw;
 			sourceTree = "<group>";
 		};
 		1F1857752A28D0A8006F9014 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1F1857762A28D0BD006F9014 /* WithdrawAddressVC.swift */,
+				1F1857762A28D0BD006F9014 /* WithdrawVC.swift */,
 				1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */,
+				C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3054,6 +3072,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C80DFA462BA459BF00BDA41B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C80DFA472BA459D800BDA41B /* RIBModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C80DFA4A2BA45BD100BDA41B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C855BCC82B6BD70000D46EDA /* KycSigningPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -3087,10 +3121,36 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C87F079E2BA1FE1C006E125F /* AddNewRIB */ = {
+			isa = PBXGroup;
+			children = (
+				C80DFA462BA459BF00BDA41B /* Model */,
+				C8C448D82BA330B60013A468 /* ViewModel */,
+				C87F079F2BA1FE28006E125F /* View */,
+			);
+			path = AddNewRIB;
+			sourceTree = "<group>";
+		};
+		C87F079F2BA1FE28006E125F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C8859A342B596D0900225697 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C8C448D82BA330B60013A468 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3182,7 +3242,7 @@
 			);
 			mainGroup = 0AC4C297283F4AD80086C6B8;
 			packageReferences = (
-				0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */,
+				0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */,
 				0A92916C290013DB00E23409 /* XCRemoteSwiftPackageReference "big-num" */,
 				1FC0E27A2A65412B00E4EB6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
@@ -3520,7 +3580,7 @@
 				1FE7695629C47144005141C0 /* StrongAuthVM.swift in Sources */,
 				0A53DEE9284635FB0027367A /* InvestmentExpModel.swift in Sources */,
 				1F5B7C5229C1BDA100256438 /* VerificationVM.swift in Sources */,
-				1F1857772A28D0BD006F9014 /* WithdrawAddressVC.swift in Sources */,
+				1F1857772A28D0BD006F9014 /* WithdrawVC.swift in Sources */,
 				1F2D541029F003610078267F /* CryptoDepositeVM.swift in Sources */,
 				1883D3132950798A00CEC597 /* error.swift in Sources */,
 				0AC4C2C3283F5DDF0086C6B8 /* enterNumberCVC.swift in Sources */,
@@ -3570,6 +3630,7 @@
 				0A857C6B288585290013ED99 /* ConfirmInvestmentVM.swift in Sources */,
 				0A6A9F02289A5937001BB63E /* PaymentFundsVC.swift in Sources */,
 				0A721905286325A0009F42C5 /* ProfileSecurityTVC.swift in Sources */,
+				C80DFA4F2BA45FDA00BDA41B /* WithdrawRibTVC.swift in Sources */,
 				0A7A3BF2285CBFB000646337 /* TotalEarningsTVC.swift in Sources */,
 				0A7502042859F63F00D68BAB /* PortfolioHomeCVC.swift in Sources */,
 				0AC5B5FE2840ACA500533ED3 /* EducationStrategyModel.swift in Sources */,
@@ -3608,6 +3669,7 @@
 				0A1A95B72845EE32001224C6 /* addressCVC.swift in Sources */,
 				0A9059212848863B003F6198 /* StringExtension.swift in Sources */,
 				0A6A9EFE289A4E4D001BB63E /* CryptoDepositeVC.swift in Sources */,
+				C80DFA4C2BA45C4100BDA41B /* WithdrawModel.swift in Sources */,
 				0A1C74F82840D227003CA6A7 /* OTPTextField.swift in Sources */,
 				0AC4C2C8283F63E20086C6B8 /* CommomFunctions.swift in Sources */,
 				C8FC6FA12B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */,
@@ -3660,6 +3722,7 @@
 				0A71B8E0283FA2E9007CE9B2 /* createPinCVC.swift in Sources */,
 				C838FD7E2B87696F00922C25 /* UITapGestureExtension.swift in Sources */,
 				0A7B0D622861EE3F0030C4D8 /* WithdrawAllVC.swift in Sources */,
+				C8C448DA2BA330C40013A468 /* AddNewRIBVM.swift in Sources */,
 				0AE67F442853021D00F13D2E /* InvestInMyStrategyVC.swift in Sources */,
 				0A7586CC286C7C9600DC889E /* LoginVM.swift in Sources */,
 				1F96A99B2A3B4C71006D5A61 /* NoRecurringTVC.swift in Sources */,
@@ -3672,6 +3735,7 @@
 				0A76E701288973FC0021A7A6 /* TransactionVM.swift in Sources */,
 				0A7C8D0E28B4DFBF00D6E057 /* AddressAddedPopUpVM.swift in Sources */,
 				0A791E01286480420084B104 /* AddCreditCardVC.swift in Sources */,
+				C80DFA482BA459D800BDA41B /* RIBModel.swift in Sources */,
 				0A7219032863258B009F42C5 /* ProfileAccountTVC.swift in Sources */,
 				1F6E77BF2A586D8E009E04DE /* NoAssetsTVC.swift in Sources */,
 				0AC4C2A4283F4AD80086C6B8 /* AppDelegate.swift in Sources */,
@@ -3690,6 +3754,7 @@
 				0A791DFC28646E8E0084B104 /* AddPaymentMethodTVC.swift in Sources */,
 				0A70730A2850B466001B48D9 /* InvestmentStrategyModel.swift in Sources */,
 				0A6A9F06289A61C5001BB63E /* FundAccountVC.swift in Sources */,
+				C87F07A12BA1FE37006E125F /* AddNewRIBVC.swift in Sources */,
 				0A3E8D1B2862ED3E0063F383 /* customMarker.swift in Sources */,
 				0A907E6A285B5BCC001ABD6A /* PortfolioDetailModel.swift in Sources */,
 				0A7445872857625B00BF05EF /* FrequencyTVC.swift in Sources */,
@@ -3765,7 +3830,7 @@
 				1FF380A52AFD297600CCF1A6 /* StrongAuthVM.swift in Sources */,
 				1FF380A62AFD297600CCF1A6 /* InvestmentExpModel.swift in Sources */,
 				1FF380A72AFD297600CCF1A6 /* VerificationVM.swift in Sources */,
-				1FF380A82AFD297600CCF1A6 /* WithdrawAddressVC.swift in Sources */,
+				1FF380A82AFD297600CCF1A6 /* WithdrawVC.swift in Sources */,
 				1FF380A92AFD297600CCF1A6 /* CryptoDepositeVM.swift in Sources */,
 				1FF380AA2AFD297600CCF1A6 /* error.swift in Sources */,
 				1FF380AB2AFD297600CCF1A6 /* enterNumberCVC.swift in Sources */,
@@ -3845,6 +3910,7 @@
 				1FF380F52AFD297600CCF1A6 /* ChangePasswordVC.swift in Sources */,
 				C857F4472B7E270900D0275E /* MaintenanceModel.swift in Sources */,
 				1FF380F62AFD297600CCF1A6 /* ExchAnotherWalletTVC.swift in Sources */,
+				C80DFA502BA4603600BDA41B /* WithdrawRibTVC.swift in Sources */,
 				1FF380F72AFD297600CCF1A6 /* InvestmentModel.swift in Sources */,
 				1FF380F82AFD297600CCF1A6 /* ContactFormVC.swift in Sources */,
 				1FF380F92AFD297600CCF1A6 /* ProfilePaymentTVC.swift in Sources */,
@@ -3853,6 +3919,7 @@
 				1FF380FC2AFD297600CCF1A6 /* addressCVC.swift in Sources */,
 				1FF380FD2AFD297600CCF1A6 /* StringExtension.swift in Sources */,
 				1FF380FE2AFD297600CCF1A6 /* CryptoDepositeVC.swift in Sources */,
+				C80DFA4D2BA45CE700BDA41B /* WithdrawModel.swift in Sources */,
 				1FF380FF2AFD297600CCF1A6 /* OTPTextField.swift in Sources */,
 				1FF381002AFD297600CCF1A6 /* CommomFunctions.swift in Sources */,
 				C8FC6FA22B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */,
@@ -3905,6 +3972,7 @@
 				1FF3812D2AFD297600CCF1A6 /* createPinCVC.swift in Sources */,
 				C838FD7F2B87696F00922C25 /* UITapGestureExtension.swift in Sources */,
 				1FF3812E2AFD297600CCF1A6 /* WithdrawAllVC.swift in Sources */,
+				C8C448DB2BA332920013A468 /* AddNewRIBVM.swift in Sources */,
 				1FF3812F2AFD297600CCF1A6 /* InvestInMyStrategyVC.swift in Sources */,
 				1FF381302AFD297600CCF1A6 /* LoginVM.swift in Sources */,
 				1FF381312AFD297600CCF1A6 /* NoRecurringTVC.swift in Sources */,
@@ -3917,6 +3985,7 @@
 				1FF381382AFD297600CCF1A6 /* TransactionVM.swift in Sources */,
 				1FF381392AFD297600CCF1A6 /* AddressAddedPopUpVM.swift in Sources */,
 				1FF3813A2AFD297600CCF1A6 /* AddCreditCardVC.swift in Sources */,
+				C80DFA492BA45A9100BDA41B /* RIBModel.swift in Sources */,
 				1FF3813B2AFD297600CCF1A6 /* ProfileAccountTVC.swift in Sources */,
 				1FF3813C2AFD297600CCF1A6 /* NoAssetsTVC.swift in Sources */,
 				1FF3813D2AFD297600CCF1A6 /* AppDelegate.swift in Sources */,
@@ -3935,6 +4004,7 @@
 				1FF3814A2AFD297600CCF1A6 /* AddPaymentMethodTVC.swift in Sources */,
 				1FF3814B2AFD297600CCF1A6 /* InvestmentStrategyModel.swift in Sources */,
 				1FF3814C2AFD297600CCF1A6 /* FundAccountVC.swift in Sources */,
+				C8C448D72BA32CA70013A468 /* AddNewRIBVC.swift in Sources */,
 				1FF3814D2AFD297600CCF1A6 /* customMarker.swift in Sources */,
 				1FF3814E2AFD297600CCF1A6 /* PortfolioDetailModel.swift in Sources */,
 				1FF3814F2AFD297600CCF1A6 /* FrequencyTVC.swift in Sources */,
@@ -4390,7 +4460,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */ = {
+		0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-crypto.git";
 			requirement = {
@@ -4414,7 +4484,7 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto.git" */ = {
+		1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-crypto.git";
 			requirement = {
@@ -4448,12 +4518,12 @@
 		};
 		0A929168290013B700E23409 /* Crypto */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
+			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */;
 			productName = Crypto;
 		};
 		0A92916A290013B700E23409 /* _CryptoExtras */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
+			package = 0A929167290013B700E23409 /* XCRemoteSwiftPackageReference "swift-crypto" */;
 			productName = _CryptoExtras;
 		};
 		1FC0E27B2A65412B00E4EB6A /* FirebaseAnalytics */ = {
@@ -4473,12 +4543,12 @@
 		};
 		1FF3808B2AFD297600CCF1A6 /* Crypto */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
+			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */;
 			productName = Crypto;
 		};
 		1FF3808D2AFD297600CCF1A6 /* _CryptoExtras */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto.git" */;
+			package = 1FF3808C2AFD297600CCF1A6 /* XCRemoteSwiftPackageReference "swift-crypto" */;
 			productName = _CryptoExtras;
 		};
 		1FF3808E2AFD297600CCF1A6 /* BigNum */ = {

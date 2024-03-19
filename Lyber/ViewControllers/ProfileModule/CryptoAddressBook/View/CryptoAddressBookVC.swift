@@ -123,7 +123,7 @@ extension CryptoAddressBookVC: UITableViewDelegate, UITableViewDataSource{
      
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = AddressAddedPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-        vc.addressBookController = self
+        vc.controller = self
 		vc.editAddress = cryptoAddressArrayFiltered[indexPath.row]
         self.present(vc, animated: true, completion: nil)
         vc.deleteCallback = {[] in

@@ -261,17 +261,26 @@ extension ConfirmInvestmentVC{
 				"destination": self.address ?? ""
 			] as [String : Any]
 			if(userData.shared.scope2FAWithdrawal == true){
-				self.confirmInvestmentVM.userGetOtpApi(action: "withdraw", data: data, completion: {[weak self]response in
-					self?.confirmInvestmentBtn.hideLoading()
-					if response != nil{
-						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-						vc.typeVerification = userData.shared.type2FA
-						vc.action = "withdraw"
-						vc.controller = self ?? ConfirmInvestmentVC()
-						vc.dataWithdrawal = data
-						self?.present(vc, animated: true, completion: nil)
-					}
-				})
+                if(userData.shared.type2FA == "google"){
+                    let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                    vc.typeVerification = userData.shared.type2FA
+                    vc.action = "withdraw"
+                    vc.controller = self 
+                    vc.dataWithdrawal = data
+                    self.present(vc, animated: true, completion: nil)
+                }else{
+                    self.confirmInvestmentVM.userGetOtpApi(action: "withdraw", data: data, completion: {[weak self]response in
+                        self?.confirmInvestmentBtn.hideLoading()
+                        if response != nil{
+                            let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                            vc.typeVerification = userData.shared.type2FA
+                            vc.action = "withdraw"
+                            vc.controller = self ?? ConfirmInvestmentVC()
+                            vc.dataWithdrawal = data
+                            self?.present(vc, animated: true, completion: nil)
+                        }
+                    })
+                }
 			}else{
 				VerificationVM().walletCreateWithdrawalRequest(data: data, onSuccess:{[]response in
 					if response != nil{

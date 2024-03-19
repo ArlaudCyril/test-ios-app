@@ -14,6 +14,7 @@
         <attribute name="countryOfBirth" optional="YES" attributeType="String"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="enterPhoneStepComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="environment" optional="YES" attributeType="String"/>
         <attribute name="extraSecurity" optional="YES" attributeType="String"/>
         <attribute name="faceIdEnabled" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="firstname" optional="YES" attributeType="String"/>
