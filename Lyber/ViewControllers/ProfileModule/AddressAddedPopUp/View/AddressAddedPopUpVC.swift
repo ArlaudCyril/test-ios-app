@@ -40,6 +40,7 @@ class AddressAddedPopUpVC: ViewController {
     
     //RIB selected
     var ribSelected : RibData?
+    var indexSelected : Int?
 	
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -153,22 +154,28 @@ extension AddressAddedPopUpVC{
     }
     
     @objc func useRibBtnAct(){
-        //TODO: to change
-        let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-//        vc.strategyType = .withdraw
-//        vc.minimumWithdrawal = self.networksArray[indexPath.row].withdrawMin
-//        vc.feeWithdrawal = self.networksArray[indexPath.row].withdrawFee
-//        vc.fromAssetId = self.asset?.id ?? ""
-//        vc.network = networksArray[indexPath.row]
-//        vc.numberOfDecimals = self.networksArray[indexPath.row].decimals ?? -1
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        self.dismiss(animated: true, completion: nil)
+        if(self.ribSelected?.ribStatus == "VALIDATED"){
+            let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+            vc.strategyType = .withdrawEuro
+            vc.minimumWithdrawal = 10
+            vc.fromAssetId = "usdt"
+            vc.numberOfDecimals = 2
+            vc.indexRibSelected = self.indexSelected
+            self.controller?.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            CommonFunctions.toster(CommonFunctions.localisation(key: "CURRENTLY_VALIDATING_RIB"))
+        }
     }
 	
 	@objc func addressCopyLblTapped(_ gesture: UITapGestureRecognizer) {
 		CommonFunctions.toster(CommonFunctions.localisation(key: "COPIED"))
 		let pasteboard = UIPasteboard.general
-		pasteboard.string = self.editAddress?.address
+        if(type == .ribSelected){
+            pasteboard.string = self.ribSelected?.iban
+        }else{
+            pasteboard.string = self.editAddress?.address
+        }
 	}
 	
 	@objc func addressOriginImgAction(_ gesture: UITapGestureRecognizer) {

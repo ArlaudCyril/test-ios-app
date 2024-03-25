@@ -59,7 +59,7 @@ extension WithdrawAllVC{
         let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
         vc.popupType = .withdrawAll
         self.present(vc, animated: true, completion: nil)
-        vc.accountSelectedCallback = {[] accountSelected in
+        vc.accountSelectedCallback = {[] accountSelected, row in
 //            self?.creditCardImg.image = accountSelected.icon
 //            self?.creditCardImgVw.backgroundColor = accountSelected.iconBackgroundColor
 //            self?.creditCardLbl.text = accountSelected.subName

@@ -25,6 +25,9 @@ class ConfirmInvestmentVC: ViewController {
 	var network : NetworkAsset?
 	var fees : Double?
 	var coinPrice: Double?
+    
+    //withdrawEuro
+    var ribSelected : RibData?
 	
 	var asset : PriceServiceResume?
 	
@@ -183,6 +186,42 @@ class ConfirmInvestmentVC: ViewController {
 			self.allocationView.isHidden = true
             self.progressView.isHidden = true
 			self.volatilePriceLbl.isHidden = true
+        }else if InvestmentType == .withdrawEuro{
+            let fees = 0.55
+            
+            self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL")
+            self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL"), for: .normal)
+            
+            self.noOfEuroInvested.text = "\(self.totalEuroInvested) EUR"
+            
+            self.coinPriceVw.isHidden = true
+            
+            let finalAmountEuros = Decimal(self.totalEuroInvested) - Decimal(fees)
+            
+            self.amountLbl.text = CommonFunctions.localisation(key: "IBAN")
+            self.euroAmountLbl.text = "\(self.ribSelected?.iban.addressFormat ?? "")"
+            
+            self.frequencyLbl.text = CommonFunctions.localisation(key: "BIC")
+            self.frequencyNameLbl.text = "\(self.ribSelected?.bic ?? "")"
+            
+            self.paymentVw.isHidden = false
+            
+            self.paymentLbl.text = CommonFunctions.localisation(key: "SELL")
+            CommonUI.setUpLbl(lbl: self.paymentNameLbl, text: "\(self.totalCoinsInvested.description) \(fromAssetId.uppercased())", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            self.networkVw.isHidden = false
+            
+            self.networkTitleLbl.text = CommonFunctions.localisation(key: "FEES")
+            CommonUI.setUpLbl(lbl: self.networkLbl, text: "\(fees) EUR", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        
+            self.lyberFeeLbl.text = CommonFunctions.localisation(key: "RECEIVE")
+            self.euroLyberFeeLBl.text = "~\(finalAmountEuros) EUR"
+            
+            self.totalEuroLbl.text = "\(totalEuroInvested) EUR"
+
+            self.allocationView.isHidden = true
+            self.progressView.isHidden = true
+            self.volatilePriceLbl.isHidden = true
         }
     }
 	
@@ -251,20 +290,33 @@ extension ConfirmInvestmentVC{
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
             })
-        }else if InvestmentType == .withdraw{
+        }else if InvestmentType == .withdraw || InvestmentType == .withdrawEuro{
             self.confirmInvestmentBtn.showLoading()
-			
-			let data = [
-				"asset": self.fromAssetId,
-				"network": self.network?.id ?? "",
-				"amount": self.totalCoinsInvested,
-				"destination": self.address ?? ""
-			] as [String : Any]
+			var actionVerification = ""
+            var data = [:] as [String : Any]
+            if(InvestmentType == .withdraw){
+                data = [
+                    "asset": self.fromAssetId,
+                    "network": self.network?.id ?? "",
+                    "amount": self.totalCoinsInvested,
+                    "destination": self.address ?? ""
+                ]
+                actionVerification = "withdraw"
+            }else{
+                data = [
+                    "ribId": self.ribSelected?.ribId ?? "",
+                    "iban": self.ribSelected?.iban ?? "",
+                    "bic": self.ribSelected?.bic ?? "",
+                    "amount": self.totalCoinsInvested
+                ]
+                actionVerification = "withdrawEuro"
+            }
+            
 			if(userData.shared.scope2FAWithdrawal == true){
                 if(userData.shared.type2FA == "google"){
                     let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                     vc.typeVerification = userData.shared.type2FA
-                    vc.action = "withdraw"
+                    vc.action = actionVerification
                     vc.controller = self 
                     vc.dataWithdrawal = data
                     self.present(vc, animated: true, completion: nil)
@@ -274,7 +326,7 @@ extension ConfirmInvestmentVC{
                         if response != nil{
                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                             vc.typeVerification = userData.shared.type2FA
-                            vc.action = "withdraw"
+                            vc.action = actionVerification
                             vc.controller = self ?? ConfirmInvestmentVC()
                             vc.dataWithdrawal = data
                             self?.present(vc, animated: true, completion: nil)
@@ -282,10 +334,14 @@ extension ConfirmInvestmentVC{
                     })
                 }
 			}else{
-				VerificationVM().walletCreateWithdrawalRequest(data: data, onSuccess:{[]response in
+                VerificationVM().walletCreateWithdrawalRequest(action: actionVerification, data: data, onSuccess:{[]response in
 					if response != nil{
 						let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-						vc.confirmationType = .Withdraw
+                        if(actionVerification == "withdraw"){
+                            vc.confirmationType = .Withdraw
+                        }else{
+                            vc.confirmationType = .WithdrawEuro
+                        }
 						vc.previousViewController = self
 						self.present(vc, animated: true)
 						

@@ -39,17 +39,30 @@ class VerificationVM{
         }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
     }
 	
-	func walletCreateWithdrawalRequest(otp: String? = "", data: [String : Any] ,onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
-        var params : [String : Any] = [Constants.ApiKeys.asset : data["asset"] ?? "",
-									   Constants.ApiKeys.amount : data["amount"] ?? "",
-									   Constants.ApiKeys.destination : data["destination"] ?? "",
-									   Constants.ApiKeys.network : data["network"] ?? ""]
+    func walletCreateWithdrawalRequest(action : String?, otp: String? = "", data: [String : Any] ,onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
+        var params : [String : Any] = [:]
+        var url = ""
+        if(action == "withdraw"){
+            params =  [Constants.ApiKeys.asset : data["asset"] ?? "",
+            Constants.ApiKeys.amount : data["amount"] ?? "",
+            Constants.ApiKeys.destination : data["destination"] ?? "",
+            Constants.ApiKeys.network : data["network"] ?? ""]
+            
+            url = Constants.ApiUrlKeys.walletServiceWithdraw
+        }else{
+            params =  [Constants.ApiKeys.ribId : data["ribId"] ?? "",
+            Constants.ApiKeys.iban : data["iban"] ?? "",
+            Constants.ApiKeys.bic : data["bic"] ?? "",
+            Constants.ApiKeys.amount : data["amount"] ?? ""]
+            
+            url = Constants.ApiUrlKeys.walletServiceWithdrawEuro
+        }
         
 		if(otp != ""){
 			params[Constants.ApiKeys.otp] = otp ?? ""
 		}
 		
-        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceWithdraw, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+        ApiHandler.callApiWithParameters(url: url, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             onSuccess(response)
 		}, onFailure: { reload, error, code  in
 			let failure = FailureAPI(message: error, code: code)

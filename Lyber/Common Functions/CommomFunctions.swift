@@ -109,7 +109,17 @@ class CommonFunctions{
     }
 	
 	static func goPortfolioHome(){
-		let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        let vc = PortfolioHomeVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        let navVC = UINavigationController(rootViewController: vc)
+        UIApplication.shared.windows[0].rootViewController = navVC
+        UIApplication.shared.windows[0].makeKeyAndVisible()
+        navVC.navigationController?.popToRootViewController(animated: true)
+        navVC.setNavigationBarHidden(true , animated: true)
+    }
+    
+    static func goPortfolioDetail(id: String){
+		let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        vc.assetId = id
 		let navVC = UINavigationController(rootViewController: vc)
 		UIApplication.shared.windows[0].rootViewController = navVC
 		UIApplication.shared.windows[0].makeKeyAndVisible()

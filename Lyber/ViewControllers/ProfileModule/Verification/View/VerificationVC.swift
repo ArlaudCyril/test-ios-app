@@ -211,13 +211,17 @@ extension VerificationVC{
 			}
 			self.present(vc, animated: true)
 
-		}else if(self.action == "withdraw"){
-			VerificationVM().walletCreateWithdrawalRequest(otp: code, data: dataWithdrawal ?? [:], onSuccess:{[]response in
+        }else if(self.action == "withdraw" || self.action == "withdrawEuro"){
+            VerificationVM().walletCreateWithdrawalRequest(action: self.action, otp: code, data: dataWithdrawal ?? [:], onSuccess:{[]response in
                 if response != nil{
 					self.dismiss(animated: true)
 					CommonFunctions.callWalletGetBalance()
 					let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-					vc.confirmationType = .Withdraw
+                    if(self.action == "withdraw"){
+                        vc.confirmationType = .Withdraw
+                    }else{
+                        vc.confirmationType = .WithdrawEuro
+                    }
 					vc.previousViewController = self.controller
 					self.controller?.present(vc, animated: true)
 

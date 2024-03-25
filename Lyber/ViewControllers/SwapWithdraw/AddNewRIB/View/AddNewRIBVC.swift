@@ -11,6 +11,7 @@ import CountryPickerView
 class AddNewRIBVC: ViewController {
     //MARK: - Variables
     var isEditingRib = false
+    var isAddingFromWithdraw = false
     var ribData : RibData?
     var addNewRIBVM = AddNewRIBVM()
     
@@ -132,7 +133,11 @@ extension AddNewRIBVC: UITextFieldDelegate{
 //MARK: - objective functions
 extension AddNewRIBVC{
     @objc func backBtnAct(){
-        self.navigationController?.popToViewController(ofClass: WithdrawVC.self)
+        if(self.isAddingFromWithdraw){
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            self.navigationController?.popToViewController(ofClass: WithdrawVC.self)
+        }
     }
     
     @objc func addBtnAct(){
@@ -166,10 +171,15 @@ extension AddNewRIBVC{
             if response != nil{
                 AddNewRIBVM().getRibsApi(completion: {response in
                     if response != nil{
-                        let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                        vc.typeWithdraw = .ribs
-                        vc.ribsArray = response?.data ?? []
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        if(self.isAddingFromWithdraw){
+                            self.navigationController?.popViewController(animated: true)
+                        }else{
+                            let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                            vc.typeWithdraw = .ribs
+                            vc.ribsArray = response?.data ?? []
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        
                     }
                 })
             }

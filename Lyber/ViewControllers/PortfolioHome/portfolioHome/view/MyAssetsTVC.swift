@@ -87,10 +87,6 @@ extension MyAssetsTVC{
         assetCallback = {() in
             let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 			vc.assetId = data?.id ?? ""
-//			let navController = UINavigationController(rootViewController: vc)
-//			navController.modalPresentationStyle = .fullScreen
-//			navController.navigationBar.isHidden = true
-//            self.controller?.present(navController, animated: true, completion: nil)
 			self.controller?.navigationController?.pushViewController(vc, animated: true)
         }
     }

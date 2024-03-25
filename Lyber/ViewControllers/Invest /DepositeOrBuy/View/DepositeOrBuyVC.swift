@@ -57,7 +57,7 @@ class DepositeOrBuyVC: ViewController {
     var assetPagePopUpData : [buyDepositeModel] = []
     var popupType  : bottomPopUp = .DepositeBuy
     var depositeCallback : ((_ index : Int)->())?
-    var accountSelectedCallback : ((buyDepositeModel)->())?
+    var accountSelectedCallback : ((buyDepositeModel, Int)->())?
     var controller : InvestMoneyVC?, portfolioHomeController : PortfolioHomeVC?,allAssetsController : AllAssetsVC?,portfolioDetailController : PortfolioDetailVC?,investStrategyController : InvestInMyStrategyVC?, investmentStrategyController : InvestmentStrategyVC?
     var portfolioDetailScreen = false
     var specificAssetsArr = ["btc","eth","sol","matic","bnb","usdc","usdt","euroc"]
@@ -99,7 +99,7 @@ class DepositeOrBuyVC: ViewController {
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "PAY_WITH")
         }else if popupType == .withdrawExchange{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "CHOOSE_OPERATION")
-        }else if popupType == .withdrawTo{
+        }else if popupType == .withdrawTo || popupType == .withdrawToEuro{
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "WITHDRAW_TO")
             /*self.withdrawToAccountData.append(buyDepositeModel(icon: Assets.bank_fill.image(), iconBackgroundColor: UIColor.PurpleColor, name: CommonFunctions.localisation(key: "ADD_BANK_ACCOUNT"), subName: CommonFunctions.localisation(key: "LIMITED_1000€_WEEK"), rightBtnName: ""))*/
         }else if popupType == .InvestInStrategiesOrAsset{
@@ -145,7 +145,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             return investWithStrategiesActiveData.count
         }else if popupType == .investWithStrategiesInactive{
             return investWithStrategiesInactiveData.count
-        }else if popupType == .withdrawTo{
+        }else if popupType == .withdrawTo || popupType == .withdrawToEuro{
             return withdrawToAccountData.count
         }else if popupType == .InvestInStrategiesOrAsset{
             return investInStrategyOrAssetData.count
@@ -170,7 +170,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
             cell.setUpCellData(data: investWithStrategiesActiveData[indexPath.row])
         }else if popupType == .investWithStrategiesInactive{
             cell.setUpCellData(data: investWithStrategiesInactiveData[indexPath.row])
-        }else if popupType == .withdrawTo{
+        }else if popupType == .withdrawTo || popupType == .withdrawToEuro{
             cell.setUpCellData(data: withdrawToAccountData[indexPath.row])
         }else if popupType == .InvestInStrategiesOrAsset{
             cell.setUpCellData(data: investInStrategyOrAssetData[indexPath.row])
@@ -273,10 +273,18 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
         case .withdrawTo:                                                        //Withdraw to
             if indexPath.row == (self.withdrawToAccountData.count - 1){
                 let vc = AddCryptoAddressVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-				vc.network = self.network ?? ""
+                vc.network = self.network ?? ""
                 self.investStrategyController?.navigationController?.pushViewController(vc, animated: true)
             }else{
-                accountSelectedCallback?(withdrawToAccountData[indexPath.row])
+                accountSelectedCallback?(withdrawToAccountData[indexPath.row], indexPath.row)
+            }
+        case .withdrawToEuro:
+            if indexPath.row == (self.withdrawToAccountData.count - 1){
+                let vc = AddNewRIBVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                vc.isAddingFromWithdraw = true
+                self.investStrategyController?.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                accountSelectedCallback?(withdrawToAccountData[indexPath.row], indexPath.row)
             }
         case .InvestInStrategiesOrAsset:                                                  //Invest in Strategy Or Asset
             if indexPath.row == 0{

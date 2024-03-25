@@ -72,7 +72,6 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
             cell.configureWithData(data : networksArray[indexPath.row])
             return cell
         }else{
-            //TODO: change
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawRibTVC", for: indexPath as IndexPath) as! WithdrawRibTVC
             cell.configureWithData(data : ribsArray[indexPath.row])
             return cell
@@ -94,6 +93,7 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
             vc.controller = self
             vc.type = .ribSelected
             vc.ribSelected = ribsArray[indexPath.row]
+            vc.indexSelected = indexPath.row
             self.present(vc, animated: true, completion: nil)
             vc.deleteCallback = {[] in
                 self.getRibs()

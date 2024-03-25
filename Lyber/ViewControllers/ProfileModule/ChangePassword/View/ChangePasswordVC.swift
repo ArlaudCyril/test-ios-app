@@ -104,7 +104,6 @@ extension ChangePasswordVC : UITextFieldDelegate{
 		}else{
 			changePasswordVM.passwordChangeChallengeAPI( completion: {response in
 				if response != nil{
-					// TODO: call change password then verificationvc with action to verifyPasswordChange
 					self.changePasswordVM.setNewPasswordAPI(b: response?.data?.b ?? "", salt: response?.data?.salt ?? "", oldPassword: self.oldPasswordTF.text ?? "", newPassword: self.newPasswordTF.text ?? "", completion: {response in
 						
 						let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)

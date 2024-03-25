@@ -17,7 +17,7 @@ class InvestInMyStrategyVC: ViewController {
 
 	//withdraw
 	var network : NetworkAsset?
-	var withdrawToAccountData : [buyDepositeModel] = []
+    var withdrawToAccountData : [buyDepositeModel] = []
 	var addressSelected = false
 	var exchangeCoinToEuro = false
 	var minimumWithdrawal : Double?
@@ -25,6 +25,11 @@ class InvestInMyStrategyVC: ViewController {
 	var coinWithdrawPrice : Decimal = 0.0
 	var maxAmountWithdraw : Decimal = 0.0
 	
+    //withdraw euro
+    var indexRibSelected : Int?
+    var ribSelected : RibData?
+    var bic : String?
+    
 	//exchange and withdraw
     var fromAssetId : String?
 	var fromBalance : Balance?
@@ -153,6 +158,8 @@ class InvestInMyStrategyVC: ViewController {
         super.viewWillAppear(animated)
         if strategyType == .withdraw{
 			getAddresses()
+        }else if strategyType == .withdrawEuro{
+            getRibs()
         }
     }
 
@@ -383,8 +390,26 @@ class InvestInMyStrategyVC: ViewController {
 			self.switchPriceAssetBtn.layer.cornerRadius = 8
 			
         } else if strategyType == .withdrawEuro{
+            self.noOfCoinVw.isHidden = false
+            self.addressVw.isHidden = false
+            self.maximumBtn.isHidden = false
+            self.switchPriceAssetBtn.isHidden = false
+            self.coinsLbl.isHidden = false
+            self.minimumWithdrawVw.isHidden = false
+            
+            self.coinWithdrawPrice =  Decimal((Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
+            self.maxAmountWithdraw = Decimal((Double(self.fromBalance?.balanceData.balance ?? "") ?? 0.0) - (self.feeWithdrawal ?? 0.0))
+            
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
-            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) Euro"
+            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) \(fromAssetId?.uppercased() ?? "")"
+            
+            CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0)€", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetPennies(from: self.feeWithdrawal ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
+            self.switchPriceAssetBtn.layer.cornerRadius = 8
         }else if strategyType == .anotherWallet{
             self.amountTF.placeholder = "0"
         }else if strategyType == .sell{
@@ -404,7 +429,7 @@ extension InvestInMyStrategyVC {
     }
     
     @objc func previewMyInvestAction(){
-        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .singleCoin || strategyType == .singleCoinWithFrequence{
+        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .withdrawEuro || strategyType == .singleCoin || strategyType == .singleCoinWithFrequence{
             goToConfirmInvestment()
         }else if strategyType == .sell{
             SellCoinApi()
@@ -428,7 +453,8 @@ extension InvestInMyStrategyVC {
                 CommonFunctions.hideLoader(self?.view ?? UIView())
                 let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.popupType = .PayWith
-                vc.accountSelectedCallback = {[weak self] accountSelected in
+                vc.accountSelectedCallback = {[weak self] accountSelected, row in
+                    
                     self?.creditCardLbl.text = accountSelected.subName
                     self?.creditCardNumberLbl.text = accountSelected.name
                     if accountSelected.svgUrl == ""{
@@ -445,14 +471,28 @@ extension InvestInMyStrategyVC {
 	
 	@objc func selectAddress(){
 		let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-		vc.popupType = .withdrawTo
+        if(self.strategyType == .withdraw){
+            vc.popupType = .withdrawTo
+        }else if(self.strategyType == .withdrawEuro){
+            vc.popupType = .withdrawToEuro
+            self.indexRibSelected = nil
+        }
+		
 		vc.investStrategyController = self
 		vc.network = self.network?.id
 		vc.withdrawToAccountData = self.withdrawToAccountData
-		vc.accountSelectedCallback = {[weak self] accountSelected in
+		vc.accountSelectedCallback = {[weak self] accountSelected, row in
+            if(self?.strategyType == .withdrawEuro){
+                self?.indexRibSelected = row
+                self?.ribSelected = accountSelected.ribData
+            }
 			self?.addressLbl.text = accountSelected.subName
 			self?.addressNameLbl.text = accountSelected.name
-			self?.addressImg.sd_setImage(with: URL(string: accountSelected.svgUrl ?? ""))
+            if accountSelected.svgUrl == ""{
+                self?.addressImg.image = accountSelected.icon
+            }else{
+                self?.addressImg.sd_setImage(with: URL(string: accountSelected.svgUrl ?? ""))
+            }
 		}
 		self.present(vc, animated: true, completion: nil)
     }
@@ -613,7 +653,7 @@ extension InvestInMyStrategyVC {
     }
 	
 	@objc func maximumBtnAct(){
-        if strategyType == .withdraw{
+        if strategyType == .withdraw || strategyType == .withdrawEuro{
             let maxAmountWithdrawableString = CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)
 			var enteredSubText = ""
 			
@@ -697,7 +737,7 @@ extension InvestInMyStrategyVC {
 			
 			self.feesLbl.text = "~\(CommonFunctions.getTwoDecimalValueDecimal(number: totalEuroInvested * Decimal(coinFromPrice))) €"
             
-        }else if strategyType == .withdraw{
+        }else if (strategyType == .withdraw || strategyType == .withdrawEuro){
 			
 			
             if exchangeCoinToEuro == false{
@@ -707,7 +747,9 @@ extension InvestInMyStrategyVC {
 				amountTF.text = "\(cleanedValue)€"
 				self.noOfCoinLbl.text = "~\(totalNoOfCoinsInvest) \(self.fromAssetId?.uppercased() ?? "")"
 				
-				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
+                if (strategyType == .withdraw){
+                    self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
+                }
             }else{
 				totalNoOfCoinsInvest = Decimal(string:cleanedValue) ?? 0.0
 				totalEuroInvested = (Decimal(string: subValue) ?? 0.0)
@@ -715,7 +757,10 @@ extension InvestInMyStrategyVC {
 				amountTF.text = "\(cleanedValue) \(fromAssetId?.uppercased() ?? "")"
                 self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: NSDecimalNumber(decimal: totalEuroInvested).doubleValue))€"
 				
-				self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
+                if (strategyType == .withdraw){
+                    self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
+                }
+				
             }
 		}else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
 			if exchangeCoinToEuro == false{
@@ -760,7 +805,7 @@ extension InvestInMyStrategyVC {
     }
 	
 	func updateValues(value: String){
-		if(strategyType == .withdraw){
+		if(strategyType == .withdraw || strategyType == .withdrawEuro){
 			var enteredSubText = ""
 			if exchangeCoinToEuro == false{
 				//coin
@@ -818,16 +863,17 @@ extension InvestInMyStrategyVC {
             }else{
                 self.goToPreviewINvest()
             }
-		}else if strategyType == .withdraw{
-			if(totalNoOfCoinsInvest < Decimal(self.minimumWithdrawal ?? 0.0))
-			{
-				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_INFERIOR"))
-			}else if(totalNoOfCoinsInvest > self.maxAmountWithdraw)
-			{
-				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_SUPERIOR"))
-			}else{
-				self.goToPreviewINvest()
-			}
+		}else if strategyType == .withdraw || strategyType == .withdrawEuro{
+//			if(totalNoOfCoinsInvest < Decimal(self.minimumWithdrawal ?? 0.0))
+//			{
+//				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_INFERIOR"))
+//			}else if(totalNoOfCoinsInvest > self.maxAmountWithdraw)
+//			{
+//				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_SUPERIOR"))
+//			}else{
+//				self.goToPreviewINvest()
+//			}
+            self.goToPreviewINvest()
 		}
        
     }
@@ -870,7 +916,17 @@ extension InvestInMyStrategyVC {
 			vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
 			self.navigationController?.pushViewController(vc, animated: true)
 
-		}else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
+		}else if(strategyType == .withdrawEuro){
+            let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+            vc.InvestmentType = .withdrawEuro
+            vc.totalEuroInvested = NSDecimalNumber(decimal: totalEuroInvested).doubleValue
+            vc.totalCoinsInvested = totalNoOfCoinsInvest
+            vc.ribSelected = self.ribSelected
+            vc.fromAssetId = self.fromAssetId ?? ""
+            vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
 			let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			self.previewMyInvest.showLoading()
 			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: totalEuroInvested, completion: {response in
@@ -919,7 +975,7 @@ extension InvestInMyStrategyVC {
 				self.previewMyInvest.isUserInteractionEnabled = false
 				self.exchangeAlertLbl.isHidden = false
 			}
-		}else if(self.strategyType == .withdraw){
+		}else if(self.strategyType == .withdraw || self.strategyType == .withdrawEuro){
 			if(self.addressSelected == true){
 				self.previewMyInvest.backgroundColor = UIColor.PurpleColor
 				self.previewMyInvest.isUserInteractionEnabled = true
@@ -957,6 +1013,39 @@ extension InvestInMyStrategyVC {
 		})
 		
 	}
+    
+    func getRibs(){
+        self.withdrawToAccountData.removeAll()
+        AddNewRIBVM().getRibsApi(completion: {[weak self]response in
+            if let response = response{
+                for rib in response.data {
+                    if(rib.ribStatus == "VALIDATED"){
+                        self?.withdrawToAccountData.append(buyDepositeModel(icon: Assets.euro.image(), svgUrl: "", iconBackgroundColor: UIColor.clear, name: rib.name , subName: rib.iban.addressFormat , rightBtnName: "", ribData: rib))
+                    }
+                }
+            }
+            
+            self?.withdrawToAccountData.append(buyDepositeModel(icon: Assets.invest_single_assets.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "ADD_ADRESS"))", subName: CommonFunctions.localisation(key: "UNLIMITED_WITHDRAWAL"), rightBtnName: ""))
+            
+            var ribSelected = self?.withdrawToAccountData[self?.indexRibSelected ?? (self?.withdrawToAccountData.count ?? 1) - 1]
+            
+            if(self?.withdrawToAccountData.count ?? 0 > 0)
+            {
+                self?.addressSelected = true
+                ribSelected = self?.withdrawToAccountData[self?.indexRibSelected ?? (self?.withdrawToAccountData.count ?? 2) - 2]
+            }
+            self?.ribSelected = ribSelected?.ribData
+            CommonUI.setUpLbl(lbl: self?.addressNameLbl ?? UILabel(), text: ribSelected?.name, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self?.addressLbl ?? UILabel(), text: ribSelected?.subName.addressFormat, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+            
+            if self?.withdrawToAccountData.first?.svgUrl == "" || self?.withdrawToAccountData.first?.svgUrl == nil{
+                self?.addressImg.image = ribSelected?.icon
+            }else{
+                self?.addressImg.sd_setImage(with: URL(string: ribSelected?.svgUrl ?? ""))
+            }
+        })
+        
+    }
 	
     private func handleNewText(text: String) -> String {
         var newText = text

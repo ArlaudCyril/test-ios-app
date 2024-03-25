@@ -70,7 +70,7 @@ class ConfirmationVC: ViewController {
 			self.headingLbl.text = "You have successfully bought \(coinInvest ?? "")."
 		}else if confirmationType == .Sell{
 			self.headingLbl.text = "You have successfully sold \(coinInvest ?? "")."
-		}else if confirmationType == .Withdraw{
+		}else if confirmationType == .Withdraw || confirmationType == .WithdrawEuro{
 			self.headingLbl.text = CommonFunctions.localisation(key: "AMOUNT_WITHDRAW_ACCOUNT")
 			self.headingLbl.textAlignment = .center
 			self.subHeadingLbl.textAlignment = .center
@@ -136,7 +136,13 @@ extension ConfirmationVC{
 		}else if(confirmationType == .buyFailure){
 			self.dismiss(animated: false)
 			self.previousViewController?.navigationController?.popToPortfolioHomeOrPortfolioDetail()
-		}else{
+		}else if(confirmationType == .Withdraw){
+            self.dismiss(animated: false)
+            CommonFunctions.goPortfolioHome()
+        }else if(confirmationType == .WithdrawEuro){
+            self.dismiss(animated: false)
+            CommonFunctions.goPortfolioDetail(id: "usdt")
+        }else{
             self.dismiss(animated: false)
             self.previousViewController?.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
 		}

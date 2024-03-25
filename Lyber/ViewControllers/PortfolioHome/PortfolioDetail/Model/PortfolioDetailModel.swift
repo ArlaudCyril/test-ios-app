@@ -99,10 +99,6 @@ struct AssetDetailData: Codable {
 	let networks: [NetworkAsset]?
     let decimals: Int?
     
-    //TODO: delete this parameters
-	let depositChains: [String]?
-	let withdrawalChains : [String:WithdrawalChain]?
-
 }
 
 

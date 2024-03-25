@@ -15,6 +15,7 @@ struct buyDepositeModel {
     var name : String
     var subName : String
     var rightBtnName : String
+    var ribData : RibData?
 }
 
 enum bottomPopUp{
@@ -22,6 +23,7 @@ enum bottomPopUp{
     case PayWith
     case withdrawExchange
     case withdrawTo
+    case withdrawToEuro
     case withdrawAll
     case InvestInStrategiesOrAsset
     case investWithStrategiesActive
@@ -34,6 +36,7 @@ enum confirmationPopUp{
     case Buy
     case Sell
     case Withdraw
+    case WithdrawEuro
     case Tailoring
     case LinkSent
     case exportSuccess
