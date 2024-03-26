@@ -864,16 +864,15 @@ extension InvestInMyStrategyVC {
                 self.goToPreviewINvest()
             }
 		}else if strategyType == .withdraw || strategyType == .withdrawEuro{
-//			if(totalNoOfCoinsInvest < Decimal(self.minimumWithdrawal ?? 0.0))
-//			{
-//				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_INFERIOR"))
-//			}else if(totalNoOfCoinsInvest > self.maxAmountWithdraw)
-//			{
-//				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_SUPERIOR"))
-//			}else{
-//				self.goToPreviewINvest()
-//			}
-            self.goToPreviewINvest()
+			if(totalNoOfCoinsInvest < Decimal(self.minimumWithdrawal ?? 0.0))
+			{
+				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_INFERIOR"))
+			}else if(totalNoOfCoinsInvest > self.maxAmountWithdraw)
+			{
+				CommonFunctions.toster(CommonFunctions.localisation(key: "ALERT_AMOUNT_WITHDRAWAL_SUPERIOR"))
+			}else{
+				self.goToPreviewINvest()
+			}
 		}
        
     }
