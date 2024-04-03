@@ -40,7 +40,7 @@
                                             <rect key="frame" x="12" y="0.0" width="342" height="56"/>
                                             <color key="tintColor" name="Purple#35126D"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                     <color key="value" name="TFplaceholderColor"/>
@@ -64,7 +64,7 @@
                                             <rect key="frame" x="12" y="0.0" width="310" height="56"/>
                                             <color key="tintColor" name="Purple#35126D"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                     <color key="value" name="TFplaceholderColor"/>

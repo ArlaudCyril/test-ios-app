@@ -35,12 +35,16 @@ class ConfirmExecutionVC: ViewController {
 	var coinToPrice: Decimal?
 	var fromAssetId : String?
     var numberOfDecimal : Int?
-	
+    
+    //singleCoin / exchange
+    var timer: Timer?
+    var endTime: Date?
+    
 	//singleCoin
 	var asset : PriceServiceResume?
 	let applePayButton: PKPaymentButton = PKPaymentButton(paymentButtonType: .plain, paymentButtonStyle: .black)
 	var clientSecret: String?
-	var timer: Timer?
+    var quoteIsCanceled = false
 	
 	//MARK: - IB OUTLETS
 	@IBOutlet var backBtn: UIButton!
@@ -82,17 +86,12 @@ class ConfirmExecutionVC: ViewController {
 		super.viewDidLoad()
 		setUpUI()
 		checkInvestmentType()
-		//timer
-		let timestamp: Double = Double((self.validTimeStamp ?? 0) / 1000)
-		let dateFromTimestamp = Date(timeIntervalSince1970: timestamp)
-		let differenceInSeconds = dateFromTimestamp.timeIntervalSince(Date())
-		
-        self.fireTimer(seconds: Int(differenceInSeconds))
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
 		timer?.invalidate()
-		timer = nil
+        timer = nil
 	}
 	
 	
@@ -156,6 +155,15 @@ class ConfirmExecutionVC: ViewController {
 			self.detailViews = [self.toAssetPriceVw, self.amountVw, self.lyberFeesVw, self.totalVw]
             
             self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2))€"
+            
+            //timerApplePay
+            if let validTimeStamp = self.validTimeStamp {
+                let endDate = Date(timeIntervalSince1970: TimeInterval(validTimeStamp / 1000))
+                self.endTime = endDate
+                
+                updateCountdownApplePay()
+                self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdownApplePay), userInfo: nil, repeats: true)
+            }
 			
 		}else if InvestmentType == .Exchange{
             self.confirmExecutionLbl.text = CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")
@@ -172,17 +180,18 @@ class ConfirmExecutionVC: ViewController {
             
             self.fromAmountExecution.text = self.totalValueLbl.text
             
-            //let finalAmount = max(0,(Decimal(string: self.amountTo ?? "0") ?? 0) - (Decimal(self.fees ?? 0) * (Decimal(string: self.ratioCoin ?? "1") ?? 1)))
             let finalAmount = Decimal(string: self.amountTo ?? "0") ?? 0
             
             self.toAmountExecution.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(self.exchangeTo.uppercased())"
             
-            //timer
-            let timestamp: Double = Double((self.timeLimit ?? 0) / 1000)
-            let dateFromTimestamp = Date(timeIntervalSince1970: timestamp)
-            let differenceInSeconds = dateFromTimestamp.timeIntervalSince(Date())
-            
-            self.fireTimerExchange(seconds: Int(differenceInSeconds))
+            //timerExchange
+            if let validTimeStamp = self.timeLimit {
+                let endDate = Date(timeIntervalSince1970: TimeInterval(validTimeStamp / 1000))
+                self.endTime = endDate
+                
+                updateCountdownExchange()
+                self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdownExchange), userInfo: nil, repeats: true)
+            }
             
             self.timeToConfirmPurchaseLbl.isHidden = true
             
@@ -314,46 +323,55 @@ extension ConfirmExecutionVC{
 		}
 	}
 	
-	func fireTimer(seconds: Int) {
-		timeToConfirmPurchaseLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE_TIME", parameter: String(seconds))
-		
-		if seconds == 0 {
-			applePayButton.isUserInteractionEnabled = false
-			let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-			vc.asset = self.asset
-			vc.fees = self.fees
-			vc.toAmountToObtain = self.toAmountToObtain
-			vc.fromAmountInvested = self.fromAmountInvested
-			vc.InvestmentType = self.InvestmentType
-			vc.confirmationType = .buyFailure
-			vc.previousViewController = self
-			self.present(vc, animated: true)
-        }else {
-            if(seconds == 1){
+    @objc func updateCountdownApplePay() {
+        guard let endTime = endTime else { return }
+        let now = Date()
+        let remainingSeconds = Calendar.current.dateComponents([.second], from: now, to: endTime).second ?? 0
+            
+        if remainingSeconds <= 0 {
+            self.timer?.invalidate()
+            self.timer = nil
+            
+            if(!self.quoteIsCanceled){
                 ConfirmExecutionVM().cancelQuoteApi(userUuid: userData.shared.userUuid, orderId: self.orderId ?? "", paymentIntentId: self.paymentIntentId ?? "", completion: {_ in })
             }
             
-			// Check if the timer is already running and invalidate it
-			timer?.invalidate()
-			
-			// Start a new timer
-			timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
-				self?.fireTimer(seconds: seconds - 1)
-			}
-		}
-	}
-	
-	func fireTimerExchange(seconds: Int){
-		confirmExecutionBtn.setTitle("\(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")) (\(seconds) sec)", for: .normal)
-		if(seconds == 0)
-		{
-			confirmExecutionBtn.isEnabled = false
-			confirmExecutionBtn.backgroundColor = .gray
-		}else{
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-				self.fireTimerExchange(seconds: seconds-1)
-			}
-		}
-		
-	}
+            applePayButton.isUserInteractionEnabled = false
+            
+            let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+            vc.asset = self.asset
+            vc.fees = self.fees
+            vc.toAmountToObtain = self.toAmountToObtain
+            vc.fromAmountInvested = self.fromAmountInvested
+            vc.InvestmentType = self.InvestmentType
+            vc.confirmationType = .buyFailure
+            vc.previousViewController = self
+            self.present(vc, animated: true)
+        }else {
+            if(remainingSeconds == 1){
+                ConfirmExecutionVM().cancelQuoteApi(userUuid: userData.shared.userUuid, orderId: self.orderId ?? "", paymentIntentId: self.paymentIntentId ?? "", completion: {_ in })
+            }
+            DispatchQueue.main.async {
+                self.timeToConfirmPurchaseLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE_TIME", parameter: String(remainingSeconds))
+            }
+        }
+    }
+    
+    @objc func updateCountdownExchange() {
+        guard let endTime = endTime else { return }
+        let now = Date()
+        let remainingSeconds = Calendar.current.dateComponents([.second], from: now, to: endTime).second ?? 0
+            
+        if remainingSeconds <= 0 {
+            self.timer?.invalidate()
+            self.timer = nil
+            
+            //update UI
+            confirmExecutionBtn.isEnabled = false
+            confirmExecutionBtn.backgroundColor = .gray
+            confirmExecutionBtn.setTitle("\(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")) (0 sec)", for: .normal)
+        }else{
+            confirmExecutionBtn.setTitle("\(CommonFunctions.localisation(key: "CONFIRM_EXCHANGE")) (\(remainingSeconds) sec)", for: .normal)
+        }
+    }
 }

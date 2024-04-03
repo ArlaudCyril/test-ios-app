@@ -162,21 +162,35 @@ extension StrongAuthVC{
 		// We do a twoFa request only if we desactive a scope
 		if(sender.isOn != true){
 			let details = ["scope2FA" : scopes]
-			ConfirmInvestmentVM().userGetOtpApi(action: "scope", data: details, completion: {[weak self]response in
-				if response != nil{
-					sender.isOn = !sender.isOn
-					let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-					vc.typeVerification = userData.shared.type2FA
-					vc.action = "changeScope"
-					vc.scopes = scopes
-					vc.verificationCallBack = {[]code in
-						userData.shared.scope2FAWithdrawal = false
-						userData.shared.dataSave()
-						sender.isOn = false
-					}
-					self?.present(vc, animated: true)
-				}
-			})
+            if(userData.shared.type2FA == "google"){
+                sender.isOn = !sender.isOn
+                let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                vc.typeVerification = userData.shared.type2FA
+                vc.action = "changeScope"
+                vc.scopes = scopes
+                vc.verificationCallBack = {[]code in
+                    userData.shared.scope2FAWithdrawal = false
+                    userData.shared.dataSave()
+                    sender.isOn = false
+                }
+                self.present(vc, animated: true)
+            }else{
+                ConfirmInvestmentVM().userGetOtpApi(action: "scope", data: details, completion: {[weak self]response in
+                    if response != nil{
+                        sender.isOn = !sender.isOn
+                        let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                        vc.typeVerification = userData.shared.type2FA
+                        vc.action = "changeScope"
+                        vc.scopes = scopes
+                        vc.verificationCallBack = {[]code in
+                            userData.shared.scope2FAWithdrawal = false
+                            userData.shared.dataSave()
+                            sender.isOn = false
+                        }
+                        self?.present(vc, animated: true)
+                    }
+                })
+            }
 		}else{
 			//we active
 			scopes.append(contentsOf: ["withdrawal"])

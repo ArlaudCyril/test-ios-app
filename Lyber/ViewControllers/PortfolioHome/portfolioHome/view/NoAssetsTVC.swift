@@ -30,7 +30,9 @@ extension NoAssetsTVC{
 
 extension NoAssetsTVC{
 	@objc func noAssetsBtnAct(){
+        noAssetsBtn.isEnabled = false
 		PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+            self.noAssetsBtn.isEnabled = true
 			let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.strategyType = .singleCoin

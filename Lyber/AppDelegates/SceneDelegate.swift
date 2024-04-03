@@ -19,22 +19,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         return singleTon.instance
     }
-    
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
         guard let _ = (scene as? UIWindowScene) else { return }
-        self.checkInitialAppSetup()
+        self.checkInitialAppSetup(connectionOptions: connectionOptions)
 
         Thread.sleep(forTimeInterval: 1.5)
         window?.overrideUserInterfaceStyle = .light
-        // workaround for SceneDelegate continueUserActivity not getting called on cold start
-        //              if let userActivity = connectionOptions.userActivities.first {
-        //                BranchScene.shared().scene(scene, continue: userActivity)
-        //              } else if !connectionOptions.urlContexts.isEmpty {
-        //                BranchScene.shared().scene(scene, openURLContexts: connectionOptions.urlContexts)
-        //              }
+        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -75,17 +68,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        let urlStr = url.absoluteString
-        if urlStr.hasPrefix("lyber://reset-password"){
-			let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-			let token = components?.queryItems?.first(where: { $0.name == "token" })?.value
-			let vc = ResetPasswordVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-			vc.token = token ?? ""
-			let navController = UINavigationController(rootViewController: vc)
-			navController.navigationBar.isHidden = true
-			window?.rootViewController = navController
-			window?.makeKeyAndVisible()
-        }
+        self.handleDeepLink(url: url)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -93,10 +76,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return true
     }
     
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+            handleDeepLink(url: url)
+        }
+    }
+    
 }
 
 extension SceneDelegate{
-    func checkInitialAppSetup(){
+    func checkInitialAppSetup(connectionOptions: UIScene.ConnectionOptions){
         userData.shared.getData()
 		if(userData.shared.language == ""){
 			if(Bundle.main.preferredLocalizations.first == "fr")
@@ -107,6 +96,9 @@ extension SceneDelegate{
 			}
 			userData.shared.dataSave()
 		}
+        let path = Bundle.main.path(forResource: userData.shared.language, ofType: "lproj")!
+        GlobalVariables.bundle = Bundle(path: path)!
+        
         if(AppConfig.dictEnvVariables["ENV"] as? String == "STAGING"){
             if userData.shared.environment == "DEV"{
                 GlobalVariables.baseUrl = ApiEnvironment.Dev.rawValue
@@ -114,13 +106,17 @@ extension SceneDelegate{
                 GlobalVariables.baseUrl = ApiEnvironment.Staging.rawValue
             }
         }
-		self.controllerDelegate()
+        
+        if let urlContext = connectionOptions.urlContexts.first {
+            let url = urlContext.url
+            handleDeepLink(url: url)
+        }else{
+            self.controllerDelegate()
+        }
     }
 
 	
 	func controllerDelegate(){
-		let path = Bundle.main.path(forResource: userData.shared.language, ofType: "lproj")!
-		GlobalVariables.bundle = Bundle(path: path)!
 		do {
 			let refreshToken = try decode(jwt: userData.shared.refreshToken)
 			print(refreshToken)
@@ -173,4 +169,17 @@ extension SceneDelegate{
 		
 		
 	}
+    private func handleDeepLink(url: URL){
+        let urlStr = url.absoluteString
+        if urlStr.hasPrefix("lyber://reset-password"){
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            let token = components?.queryItems?.first(where: { $0.name == "token" })?.value
+            let vc = ResetPasswordVC.instantiateFromAppStoryboard(appStoryboard: .Main)
+            vc.token = token ?? ""
+            let navController = UINavigationController(rootViewController: vc)
+            navController.navigationBar.isHidden = true
+            window?.rootViewController = navController
+            window?.makeKeyAndVisible()
+        }
+    }
 }

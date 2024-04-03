@@ -200,20 +200,6 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 			return 80
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        switch indexPath.section{
-        case 4:
-				let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
-				let nav = UINavigationController(rootViewController: vc)
-				nav.modalPresentationStyle = .fullScreen
-				nav.navigationBar.isHidden = true
-				self.present(nav, animated: true, completion: nil)
-        default:
-            break
-        }
-    }
 }
 
 //MARK: - objective functions

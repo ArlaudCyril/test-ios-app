@@ -335,7 +335,7 @@ extension EnterPhoneVC{
                                             userData.shared.time = Date()
                                             userData.shared.dataSave()
                                             self?.nextBtnView.isHidden = true
-                                            let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 1, section: 0)
+                                            let indexPath = NSIndexPath(item: (self?.currentPage ?? 0) + 2, section: 0)
                                             self?.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: false)
 										}else{
                                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)

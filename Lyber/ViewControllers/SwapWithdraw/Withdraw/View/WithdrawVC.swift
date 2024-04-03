@@ -44,15 +44,18 @@ class WithdrawVC: ViewController, UITextFieldDelegate {
         if(typeWithdraw == .addresses){
             CommonUI.setUpLbl(lbl: self.withdrawAddressLbl, text: CommonFunctions.localisation(key: "WITHDRAW_ON"), textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
             self.getNetworks()
+            self.addRibBtn.isHidden = true
         }else{
             CommonUI.setUpLbl(lbl: self.withdrawAddressLbl, text: CommonFunctions.localisation(key: "CHOOSE_RIB_WANT_WITHDRAW"), textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            
+            self.addRibBtn.setTitle(CommonFunctions.localisation(key: "ADD_RIB"), for: .normal)
+            
+            self.addRibBtn.addTarget(self, action: #selector(addBtnAct), for: .touchUpInside)
         }
         self.withdrawAddressLbl.numberOfLines = 0
         
-        self.addRibBtn.setTitle(CommonFunctions.localisation(key: "ADD_RIB"), for: .normal)
-        
         self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        self.addRibBtn.addTarget(self, action: #selector(addBtnAct), for: .touchUpInside)
+        
 	}
 }
 

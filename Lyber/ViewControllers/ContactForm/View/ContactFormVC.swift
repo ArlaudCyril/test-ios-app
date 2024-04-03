@@ -60,8 +60,11 @@ class ContactFormVC: SwipeGesture{
 		
 		CommonUI.setUpLbl(lbl: self.contactLbl, text: CommonFunctions.localisation(key: "CONTACT_FORM"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
-		self.messageTV.text = CommonFunctions.localisation(key: "MESSAGE")
-		
+        self.messageTV.delegate = self
+		self.messageTV.text = CommonFunctions.localisation(key: "DESCRIBE_PROBLEM")
+        self.messageTV.textColor = UIColor.lightGray
+        
+        
 		self.addressVw.backgroundColor = UIColor.greyBackgroundColor
 		self.addressVw.layer.cornerRadius = 16
 		
@@ -108,6 +111,12 @@ extension ContactFormVC{
 	}
 }
 
-//MARK: - others functions
-extension ContactFormVC{
+//MARK: - UITextViewDelegate
+extension ContactFormVC: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
 }

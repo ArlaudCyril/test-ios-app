@@ -778,7 +778,7 @@ extension InvestInMyStrategyVC {
 			}
 			
         }else if(strategyType == .oneTimeInvestment){
-            amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDT"
+            amountTF.text = "\(cleanedValue) USDT"
             let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
             
             totalEuroInvested = Decimal(string: cleanedValue) ?? 0.0
@@ -902,7 +902,6 @@ extension InvestInMyStrategyVC {
 					self.navigationController?.pushViewController(vc, animated: true)
 				}
 			})
-			
 		}else if(strategyType == .withdraw){
 			let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.InvestmentType = .withdraw
@@ -944,9 +943,9 @@ extension InvestInMyStrategyVC {
 				}
 			})
 			
-		}else if(strategyType == .activateStrategy || strategyType == .oneTimeInvestment){
+		}else if(strategyType == .activateStrategy || strategyType == .oneTimeInvestment || strategyType == .editActiveStrategy){
 			let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-			if(strategyType == .activateStrategy){
+			if(strategyType == .activateStrategy || strategyType == .editActiveStrategy){
 				vc.frequency = self.selectedFrequency
 			}
 			

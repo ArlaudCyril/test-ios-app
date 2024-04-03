@@ -94,7 +94,8 @@ extension PortfolioDetailTVC{
         self.coinBtn.addTarget(self, action: #selector(coinBtnAct), for: .touchUpInside)
 		
         let indexPath = IndexPath(item: 2, section: 0)
-        self.collView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+        self.collView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+        self.collectionView(self.collView, didSelectItemAt: indexPath)
 		
     }
     
@@ -146,15 +147,11 @@ extension PortfolioDetailTVC: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PortfolioHomeCVC", for: indexPath as IndexPath) as! PortfolioHomeCVC
         cell.configureWithData(data : chartData[indexPath.row])
-        if (indexPath.row == 0){
-            cell.isSelected = true
-            self.collView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
-        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (((collView.layer.bounds.width/6) - 10)), height: collView.layer.bounds.height)
+        return CGSize(width: (((collView.layer.bounds.width/Double(chartData.count+1)) - 5)), height: collView.layer.bounds.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
