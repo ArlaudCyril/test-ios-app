@@ -200,7 +200,9 @@ extension PortfolioDetailVC{
     }
     
     @objc func buyBtnAct(){
+        self.view.isUserInteractionEnabled = false
         PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+            self.view.isUserInteractionEnabled = true
             let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
             if(self.asset?.id == "usdt"){
                 let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
@@ -228,7 +230,9 @@ extension PortfolioDetailVC{
     }
     
     @objc func sellBtnAct(){
+        self.view.isUserInteractionEnabled = false
         PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+            self.view.isUserInteractionEnabled = true
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             vc.fromAssetId = self.asset?.id
             vc.toAssetId = "usdt"

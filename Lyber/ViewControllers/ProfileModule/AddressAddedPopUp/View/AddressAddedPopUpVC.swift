@@ -173,6 +173,10 @@ extension AddressAddedPopUpVC{
 		let pasteboard = UIPasteboard.general
         if(type == .ribSelected){
             pasteboard.string = self.ribSelected?.iban
+        }else if(type == .order){
+            pasteboard.string = self.orderId
+        }else if(type == .deposit){
+            pasteboard.string = self.transactionId
         }else{
             pasteboard.string = self.editAddress?.address
         }
@@ -181,13 +185,13 @@ extension AddressAddedPopUpVC{
 	@objc func addressOriginImgAction(_ gesture: UITapGestureRecognizer) {
 		CommonFunctions.toster(CommonFunctions.localisation(key: "COPIED"))
 		let pasteboard = UIPasteboard.general
-		pasteboard.string = self.addressOriginNameLbl.text
+		pasteboard.string = self.from
 	}
 	
 	@objc func dateImgAction(_ gesture: UITapGestureRecognizer) {
 		CommonFunctions.toster(CommonFunctions.localisation(key: "COPIED"))
 		let pasteboard = UIPasteboard.general
-		pasteboard.string = self.dateLbl.text
+		pasteboard.string = self.transactionHash
 	}
 }
 

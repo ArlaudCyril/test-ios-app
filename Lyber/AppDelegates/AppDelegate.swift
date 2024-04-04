@@ -68,7 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
     
-	
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         userData.shared.is_push_enabled = 2
         userData.shared.dataSave()
