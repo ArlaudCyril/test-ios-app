@@ -11,7 +11,7 @@
 "LYBER_UNDER_MAINTENANCE" = "Lyber is under maintenance. Come back later!";
 "LYBER_UPDATE" = "Please update your application in the AppStore";
 "SIMPLE_SECURE_DIVERSIFIED_INVESTMENT" = "Simple, secure and diversified investment";
-"SIGN_UP" = "Sign up";
+"SIGN_UP" = "Sign up in 5min";
 "LOADING_MORE" = "Loading more";
 "NO_MORE_DATA" = "No more data";
 "LOADING" = "Loading...";
@@ -502,7 +502,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "ENABLED_FEMININE" = "Enabled";
 "ADD_USE_ADRESS" = "Add and use this adress";
 "CRYPTO_ASSET_DEPOSIT" = "Crypto asset deposit";
-"DEPOSIT_ADRESS" = "Deposit adress";
+"DEPOSIT_ADDRESS" = "Deposit address";
 "SEND_ONLY" = "Send only";
 "NETWORKS_ASSET_DEACTIVATED" = "All networks of this asset are currently deactivated for deposit";
 "ADDRESS_USING" = "to this address, using the";
@@ -526,6 +526,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "DELETE" = "Delete";
 "EDIT" = "Edit";
 "CONFIRM" = "Confirm";
+"SELECT_PROFILE_PICTURE" = "Select Profile Picture";
 "SELECTED_PROFILE_PICTURE" = "Selected Profile Picture";
 "BY_EMAIL" = "By Email";
 "GOOGLE_AUTHENTICATOR" = "Google authenticator";
@@ -613,6 +614,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "RESET_PASSWORD" = "Reset password";
 "CHANGE_PASSWORD" = "Change password";
 "ENTER_NEW_PASSWORD" = "Enter your new password";
+"CONFIRM_NEW_PASSWORD" = "Confirm your new password";
 "ENTER_OLD_PASSWORD" = "Enter your old password";
 "SAVE_NEW_PASSWORD" = "Save my new password";
 "NEW_PASSWORD_CANNOT_SAME" = "Your new password cannot be the same as your old one.";
@@ -697,6 +699,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "PLEASE_COMPLETE_FIELDS" = "Please complete all fields";
 "RECEIVE" = "Receive";
 "CURRENTLY_VALIDATING_RIB" = "We are currently validating your RIB and will process it as soon as possible.";
+"RIB_BEEN_REFUSED" = "This RIB has been refused. Please try using another one or contact support if you need help.";
 
 //MARK: - ERRORS
 

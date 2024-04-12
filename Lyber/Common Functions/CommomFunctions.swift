@@ -60,7 +60,7 @@ class CommonFunctions{
         let navVC = UINavigationController(rootViewController: vc)
         UIApplication.shared.windows[0].rootViewController = navVC
         UIApplication.shared.windows[0].makeKeyAndVisible()
-        navVC.navigationController?.popToRootViewController(animated: true)
+        navVC.navigationController?.popToRootViewController(animated: false)
         navVC.setNavigationBarHidden(true , animated: true)
         userData.shared.disconnect()
     }
@@ -1232,7 +1232,10 @@ class CommonFunctions{
         case "19003"://UNDER_MAINTENANCE = 19003
             CommonFunctions.goToMaintenancePage()
             break
-				
+        case "19006", "19007"://JWT Token expired
+            CommonFunctions.logout()
+            CommonFunctions.toster(error)
+            break
 			default:
 				CommonFunctions.toster(error)
 		}

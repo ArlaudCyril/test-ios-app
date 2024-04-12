@@ -10,7 +10,6 @@ import IQKeyboardManagerSwift
 
 class ChangePinVC: ViewController {
     //MARK: - Variables
-	var verifyPin = false
     var enteredPin = String()
 	var currentPage : Int? = 0
   //MARK: - IB OUTLETS
@@ -52,12 +51,14 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreateNewPinCVC", for: indexPath as IndexPath) as! CreateNewPinCVC
-            cell.setUpUI()
-            cell.configureWithData()
-            cell.pinCreatedDelegate = {[]pin in
-                self.enteredPin = pin
-                self.GotoNextIndex()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmNewPinCVC", for: indexPath as IndexPath) as! ConfirmNewPinCVC
+            cell.setUpUI(verifyPin : true)
+            cell.pinConfirmDelegate = {[]pin in
+                if userData.shared.logInPinSet != Int(pin){
+                    CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
+                }else{
+                    self.GotoNextIndex()
+                }
             }
             if currentPage == 0{
                 DispatchQueue.main.async {
@@ -69,8 +70,25 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             }
             return cell
         }else if indexPath.item == 1{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreateNewPinCVC", for: indexPath as IndexPath) as! CreateNewPinCVC
+            cell.setUpUI()
+            cell.configureWithData()
+            cell.pinCreatedDelegate = {[]pin in
+                self.enteredPin = pin
+                self.GotoNextIndex()
+            }
+            if currentPage == 1{
+                DispatchQueue.main.async {
+                    cell.pinTF1.becomeFirstResponder()
+                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                }
+            }else{
+                cell.endEditing(true)
+            }
+            return cell
+        }else if indexPath.item == 2{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfirmNewPinCVC", for: indexPath as IndexPath) as! ConfirmNewPinCVC
-            cell.setUpUI(verifyPin : verifyPin)
+            cell.setUpUI(verifyPin : false)
             cell.pinConfirmDelegate = {[]pin in
                 if self.enteredPin != pin{
                     CommonFunctions.toster(Constants.AlertMessages.enterCorrectPin)
@@ -79,7 +97,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
                 }
                 
             }
-            if currentPage == 1{
+            if currentPage == 2{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
                     IQKeyboardManager.shared.shouldResignOnTouchOutside = false
@@ -116,12 +134,11 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
 //MARK: - objective functions
 extension ChangePinVC{
     @objc func backBtnAct(){
-        if self.currentPage ?? 0 == 1 {
+        if self.currentPage ?? 0 == 0 {
+            self.dismiss(animated: true, completion: nil)
+        }else{
             let indexPath = NSIndexPath(item: (currentPage ?? 0) - 1, section: 0)
             self.collView.scrollToItem(at: indexPath as IndexPath, at: .right, animated: true)
-            
-        }else{
-            self.dismiss(animated: true, completion: nil)
         }
     }
     

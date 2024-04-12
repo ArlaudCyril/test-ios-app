@@ -13,6 +13,7 @@ import AppsFlyerLib
 class LoginVC: ViewController {
 	let audioSession = AVAudioSession.sharedInstance()
 	private var audioLevel : Float = 0.0
+    private var isObservingVolume = false
 	
     //MARK: - IB OUTLETS
     @IBOutlet var backgroundImgVw: UIImageView!
@@ -28,8 +29,11 @@ class LoginVC: ViewController {
 		super.viewWillAppear(animated)
 		do {
 			try audioSession.setActive(true, options: [])
-			audioSession.addObserver(self, forKeyPath: "outputVolume",
-									 options: NSKeyValueObservingOptions.new, context: nil)
+            if !isObservingVolume {
+                audioSession.addObserver(self, forKeyPath: "outputVolume",
+                                         options: NSKeyValueObservingOptions.new, context: nil)
+                isObservingVolume = true
+            }
 			audioLevel = audioSession.outputVolume
 		} catch {
 			print("Error")
@@ -38,8 +42,10 @@ class LoginVC: ViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		audioSession.removeObserver(self, forKeyPath: "outputVolume")
-		
+        if isObservingVolume {
+           audioSession.removeObserver(self, forKeyPath: "outputVolume")
+           isObservingVolume = false
+       }
 	}
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

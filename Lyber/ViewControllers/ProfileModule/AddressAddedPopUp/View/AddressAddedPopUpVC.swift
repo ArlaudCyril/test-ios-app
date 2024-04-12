@@ -163,6 +163,8 @@ extension AddressAddedPopUpVC{
             vc.numberOfDecimals = 2
             vc.indexRibSelected = self.indexSelected
             self.controller?.navigationController?.pushViewController(vc, animated: true)
+        }else if(self.ribSelected?.ribStatus == "CANCELED"){
+            CommonFunctions.toster(CommonFunctions.localisation(key: "RIB_BEEN_REFUSED"))
         }else{
             CommonFunctions.toster(CommonFunctions.localisation(key: "CURRENTLY_VALIDATING_RIB"))
         }
@@ -177,6 +179,8 @@ extension AddressAddedPopUpVC{
             pasteboard.string = self.orderId
         }else if(type == .deposit){
             pasteboard.string = self.transactionId
+        }else if(type == .withdraw){
+            pasteboard.string = self.transactionId
         }else{
             pasteboard.string = self.editAddress?.address
         }
@@ -185,7 +189,12 @@ extension AddressAddedPopUpVC{
 	@objc func addressOriginImgAction(_ gesture: UITapGestureRecognizer) {
 		CommonFunctions.toster(CommonFunctions.localisation(key: "COPIED"))
 		let pasteboard = UIPasteboard.general
-		pasteboard.string = self.from
+        if(type == .deposit){
+            pasteboard.string = self.from
+        }else if(type == .withdraw){
+            pasteboard.string = self.to
+        }
+		
 	}
 	
 	@objc func dateImgAction(_ gesture: UITapGestureRecognizer) {

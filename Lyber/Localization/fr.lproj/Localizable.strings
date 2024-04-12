@@ -11,7 +11,7 @@
 "LYBER_UNDER_MAINTENANCE" = "Lyber est en maintenance. Revenez plus tard !";
 "LYBER_UPDATE" = "Veuillez mettre à jour votre application dans l'AppStore";
 "SIMPLE_SECURE_DIVERSIFIED_INVESTMENT" = "L’investissement simple, sécurisé et diversifié";
-"SIGN_UP" = "S'inscrire";
+"SIGN_UP" = "S'inscrire en 5min";
 "LOADING_MORE" = "Charger plus";
 "NO_MORE_DATA" = "Plus de données";
 "LOADING" = "Chargement...";
@@ -499,7 +499,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "ENABLED_FEMININE" = "Activée";
 "ADD_USE_ADRESS" = "Ajouter et utiliser cette adresse";
 "CRYPTO_ASSET_DEPOSIT" = "Dépôt de crypto-actifs";
-"DEPOSIT_ADRESS" = "Adresse de dépôt";
+"DEPOSIT_ADDRESS" = "Adresse de dépôt";
 "SEND_ONLY" = "Envoyer uniquement du";
 "NETWORKS_ASSET_DEACTIVATED" = "Tous les réseaux de cet actif sont actuellement désactivés pour le dépôt";
 "ADDRESS_USING" = "à cette adresse, en utilisant le protocole";
@@ -523,7 +523,8 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "DELETE" = "Supprimer";
 "EDIT" = "Editer";
 "CONFIRM" = "Confirmer";
-"SELECTED_PROFILE_PICTURE" = "Sélectionner une photo de profil";
+"SELECT_PROFILE_PICTURE" = "Sélectionner une photo de profil";
+"SELECTED_PROFILE_PICTURE" = "Photo de profil sélectionnée";
 "BY_EMAIL" = "Par e-mail";
 "GOOGLE_AUTHENTICATOR" = "Google authenticator";
 "TWO_FA" = "Double authentification";
@@ -613,6 +614,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "CHANGE_PASSWORD" = "Modification du mot de passe";
 "ENTER_OLD_PASSWORD" = "Entrez votre ancien mot de passe";
 "ENTER_NEW_PASSWORD" = "Entrez votre nouveau mot de passe";
+"CONFIRM_NEW_PASSWORD" = "Confirmez votre nouveau mot de passe";
 "SAVE_NEW_PASSWORD" = "Enregistrer mon nouveau mot de passe";
 "NEW_PASSWORD_CANNOT_SAME" = "Votre nouveau mot de passe ne peut pas être le même que l'ancien.";
 "NEW_PASSWORD_MUST_BE_SAME" = "Les champs 'nouveau mot de passe' et 'confirmer le nouveau mot de passe' doivent être identiques.";
@@ -695,6 +697,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "PLEASE_COMPLETE_FIELDS" = "Veuillez remplir tous les champs";
 "RECEIVE" = "Recevoir";
 "CURRENTLY_VALIDATING_RIB" = "Votre RIB est en cours de validation, nous le traiterons dans les meilleurs délais.";
+"RIB_BEEN_REFUSED" = "Ce RIB a été refusé. Veuillez essayer d'en utiliser un autre ou contacter l'assistance si vous avez besoin d'aide.";
 
 //MARK: - ERRORS
 

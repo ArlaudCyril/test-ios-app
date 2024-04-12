@@ -73,6 +73,7 @@ extension AddStrategyTVC{
 extension AddStrategyTVC{
     @objc func selectAllocation(){
         let vc = AllocationVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
+        vc.name = self.coinNameLbl.text
         self.controller?.present(vc, animated: true, completion: nil)
 		if(self.controller?.allocation[self.percentageView.tag] == 0){
 			vc.allocationSelected = "5%"

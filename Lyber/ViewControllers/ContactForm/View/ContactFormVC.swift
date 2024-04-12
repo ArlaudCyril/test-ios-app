@@ -19,7 +19,7 @@ class ContactFormVC: SwipeGesture{
 	@IBOutlet var emailVw: UIView!
 	@IBOutlet var emailIcon: UIImageView!
 	@IBOutlet var emailTitleLbl: UILabel!
-	@IBOutlet var emailDescLbl: UILabel!
+	@IBOutlet var emailDescTV: UITextView!
 	
 	@IBOutlet var contactVw: UIView!
 	@IBOutlet var contactLbl: UILabel!
@@ -49,12 +49,27 @@ class ContactFormVC: SwipeGesture{
 		
 		self.emailIcon.image = UIImage(asset: Assets.mail)
 		
-		CommonUI.setUpLbl(lbl: self.emailDescLbl, text: CommonFunctions.localisation(key: "SEND_US_OR_FILL_OUT"), textColor: UIColor.descFontColor, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        //emailDescTV
+        self.emailDescTV.dataDetectorTypes = [.link]
+        emailDescTV.isScrollEnabled = false
+        self.emailDescTV.backgroundColor = .clear
+
+        self.emailDescTV.textContainerInset = UIEdgeInsets.zero
+        self.emailDescTV.textContainer.lineFragmentPadding = 0
+        
+        let attributedString = NSMutableAttributedString(string: CommonFunctions.localisation(key: "SEND_US_OR_FILL_OUT"))
+        let range = (attributedString.string as NSString).range(of: "contact@lyber.com")
+        attributedString.addAttribute(.link, value: "mailto:contact@lyber.com", range: range)
+        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+        
+        emailDescTV.linkTextAttributes = [
+                .foregroundColor: UIColor.purple_500
+            ]
+        self.emailDescTV.attributedText = attributedString
+        self.emailDescTV.font = UIFont.MabryProMedium(Size.Medium.sizeValue())
+        self.emailDescTV.textColor = UIColor.descFontColor
 		
-		self.emailDescLbl.attributedText = CommonFunctions.underlineStringInText(str: "contact@lyber.com", text: self.emailDescLbl.text ?? "")
-		
-		self.emailDescLbl.numberOfLines = 0
-		
+        //contactVw
 		self.contactVw.backgroundColor = UIColor.greyBackgroundColor
 		self.contactVw.layer.cornerRadius = 16
 		

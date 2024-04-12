@@ -257,7 +257,7 @@ extension PortfolioHomeVC{
         ProfileVM().getProfileDataApi(completion: {[]response in
             if response != nil{
                 if(self.typeLoader == "kyc"){
-                    if(response?.data?.kycStatus?.decoderKycStatus == .pending || response?.data?.kycStatus?.decoderKycStatus == .rejected || response?.data?.kycStatus?.decoderKycStatus == .validated){
+                    if(response?.data?.kycStatus?.decoderKycStatus != .notPerformed){
                         CommonFunctions.hideLoader()
                         self.timer.invalidate()
                     }

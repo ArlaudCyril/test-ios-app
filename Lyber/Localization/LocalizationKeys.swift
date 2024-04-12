@@ -1014,7 +1014,7 @@ extension L10n: CustomStringConvertible{
         case .CryptoAssetDeposit:
             return L10n.tr("Crypto asset deposit")
         case .DepositAdress:
-            return L10n.tr("Deposit adress")
+            return L10n.tr("Deposit address")
         case .sendOnlyBitcoin:
             return L10n.tr("Send only Bitcoin (BTC) to this address, using the native Bitcoin protocol.")
         case .BuyBitcoinOnLyber:
@@ -1052,7 +1052,7 @@ extension L10n: CustomStringConvertible{
         case .SelectDefaultPicture:
             return L10n.tr("Select Default Picture")
         case .SelectedProfilePicture:
-            return L10n.tr("Selected Profile Picture")
+            return L10n.tr("Select Profile Picture")
         case .ByEmail:
             return L10n.tr("By Email")
         case .GoogleAuthenticator:

@@ -67,7 +67,7 @@ extension EmailLoginCVC{
    
     @objc func editChange(_ tf : UITextField){
         if tf == emailTF{
-            self.controller?.email = tf.text ?? ""
+            self.controller?.email = tf.text?.lowercased() ?? ""
         }else if tf == passwordTF{
             self.controller?.password = tf.text ?? ""
         }

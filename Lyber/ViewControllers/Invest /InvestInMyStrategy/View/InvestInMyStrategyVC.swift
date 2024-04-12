@@ -194,6 +194,8 @@ class InvestInMyStrategyVC: ViewController {
 		self.feesLbl.isHidden = true
 		self.minimumWithdrawVw.isHidden = true
 		
+        CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalEuroAvailable ?? 0)) USDT \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        
 		CommonUI.setUpLbl(lbl: creditCardNumberLbl, text: CommonFunctions.localisation(key: "SELECT_CREDIT_CARD"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		CommonUI.setUpLbl(lbl: creditCardLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         
@@ -291,7 +293,7 @@ class InvestInMyStrategyVC: ViewController {
 			if(strategyType == .oneTimeInvestment){
                 self.maximumBtn.isHidden = false
                 self.noOfCoinVw.isHidden = false
-				self.frequencyVw.isHidden = true
+                self.frequencyVw.isHidden = true
                 
                 CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 €", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			}else{
@@ -318,22 +320,6 @@ class InvestInMyStrategyVC: ViewController {
 			}else{
 				amountTF.text = "0 USDT"
 			}
-            
-            var totalCoins : String = ""
-            for index in 0...(strategyCoinsData.count - 1){
-                if totalCoins == ""{
-                    totalCoins = "\(strategyCoinsData[index].assetID ?? "")"
-                }else{
-                    if index >= 4{
-                        totalCoins = "\(totalCoins) +\(strategyCoinsData.count-4) other assets"
-                        break
-                    }else{
-                        totalCoins = "\(totalCoins), \(strategyCoinsData[index].assetID ?? "")"
-                    }
-                }
-            }
-            self.coinsLbl.text = totalCoins
-			
         }else if strategyType == .deposit{
             self.investInMyStrategyLbl.text = CommonFunctions.localisation(key: "EURO_DESPOSIT")
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_DEPOSIT"), for: .normal)

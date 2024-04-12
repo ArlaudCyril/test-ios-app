@@ -293,9 +293,17 @@ extension ConfirmInvestmentVC{
         }else if InvestmentType == .withdraw || InvestmentType == .withdrawEuro{
             self.confirmInvestmentBtn.showLoading()
 			var actionVerification = ""
-            var data = [:] as [String : Any]
+            var dataGetOtp = [:] as [String : Any]
+            var dataWithdrawalRequest = [:] as [String : Any]
             if(InvestmentType == .withdraw){
-                data = [
+                dataGetOtp = [
+                    "asset": self.fromAssetId,
+                    "network": self.network?.id ?? "",
+                    "amount": self.totalCoinsInvested,
+                    "destination": self.address ?? ""
+                ]
+                
+                dataWithdrawalRequest = [
                     "asset": self.fromAssetId,
                     "network": self.network?.id ?? "",
                     "amount": self.totalCoinsInvested,
@@ -303,7 +311,13 @@ extension ConfirmInvestmentVC{
                 ]
                 actionVerification = "withdraw"
             }else{
-                data = [
+                dataGetOtp = [
+                    "destination": self.ribSelected?.iban ?? "",
+                    "asset":"usdt",
+                    "amount": self.totalCoinsInvested
+                ]
+                
+                dataWithdrawalRequest = [
                     "ribId": self.ribSelected?.ribId ?? "",
                     "iban": self.ribSelected?.iban ?? "",
                     "bic": self.ribSelected?.bic ?? "",
@@ -318,23 +332,23 @@ extension ConfirmInvestmentVC{
                     vc.typeVerification = userData.shared.type2FA
                     vc.action = actionVerification
                     vc.controller = self 
-                    vc.dataWithdrawal = data
+                    vc.dataWithdrawal = dataWithdrawalRequest
                     self.present(vc, animated: true, completion: nil)
                 }else{
-                    self.confirmInvestmentVM.userGetOtpApi(action: "withdraw", data: data, completion: {[weak self]response in
+                    self.confirmInvestmentVM.userGetOtpApi(action: actionVerification, data: dataGetOtp, completion: {[weak self]response in
                         self?.confirmInvestmentBtn.hideLoading()
                         if response != nil{
                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                             vc.typeVerification = userData.shared.type2FA
                             vc.action = actionVerification
                             vc.controller = self ?? ConfirmInvestmentVC()
-                            vc.dataWithdrawal = data
+                            vc.dataWithdrawal = dataWithdrawalRequest
                             self?.present(vc, animated: true, completion: nil)
                         }
                     })
                 }
 			}else{
-                VerificationVM().walletCreateWithdrawalRequest(action: actionVerification, data: data, onSuccess:{[]response in
+                VerificationVM().walletCreateWithdrawalRequest(action: actionVerification, data: dataWithdrawalRequest, onSuccess:{[]response in
 					if response != nil{
 						let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                         if(actionVerification == "withdraw"){

@@ -333,6 +333,8 @@ extension PersonalDataVC{
                 
                 return (number, street)
             }
+        }else{
+            return ("", address)
         }
         return nil
     }

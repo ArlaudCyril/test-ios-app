@@ -64,7 +64,7 @@ class CryptoDepositeVC: ViewController {
 		self.headerView.backBtn.setImage(Assets.back.image(), for: .normal)
         CommonUI.setUpLbl(lbl: cryptoAssetLbl, text: CommonFunctions.localisation(key: "CRYPTO_ASSET_DEPOSIT"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         
-        CommonUI.setUpLbl(lbl: self.depositeAddressLbl, text: CommonFunctions.localisation(key: "DEPOSIT_ADRESS"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.depositeAddressLbl, text: CommonFunctions.localisation(key: "DEPOSIT_ADDRESS"), textColor: UIColor.Grey7B8094, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
         
         
         CommonUI.setUpViewBorder(vw: depositeAddressVw ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor)

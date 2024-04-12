@@ -94,14 +94,16 @@ extension LanguageVC{
 //MARK: - others functions
 extension LanguageVC{
 	func setNewLanguage(language: Language){
-		//changement faster on the screen
+        CommonFunctions.showLoader()
 		userData.shared.language = language.id
 		userData.shared.dataSave()
 		self.tblView.reloadData()
 		LanguageVM().setLanguageAPI(language: language.id, completion: {[]response in
 			if response != nil{
+                CommonFunctions.hideLoader()
 				let path = Bundle.main.path(forResource: language.id, ofType: "lproj")!
 				GlobalVariables.bundle = Bundle(path: path)!
+                self.languageLbl.text = CommonFunctions.localisation(key: "LANGUAGE")
 			}
 		})
 	}

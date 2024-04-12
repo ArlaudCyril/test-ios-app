@@ -231,16 +231,33 @@ extension PortfolioDetailVC{
     
     @objc func sellBtnAct(){
         self.view.isUserInteractionEnabled = false
-        PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
-            self.view.isUserInteractionEnabled = true
-            let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-            vc.fromAssetId = self.asset?.id
-            vc.toAssetId = "usdt"
-            vc.fromAssetPrice = self.asset?.priceServiceResumeData.lastPrice
-            vc.toAssetPrice = response?.data.lastPrice
-            vc.strategyType = .Exchange
-            self.navigationController?.pushViewController(vc, animated: false)
-        })
+        if(self.assetId == "usdt"){
+            AddNewRIBVM().getRibsApi(completion: {response in
+                self.view.isUserInteractionEnabled = true
+                if response != nil{
+                    if(response?.data.count ?? 0 <= 0){
+                        let vc = AddNewRIBVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                        let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                        vc.typeWithdraw = .ribs
+                        vc.ribsArray = response?.data ?? []
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            })
+        }else{
+            PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+                self.view.isUserInteractionEnabled = true
+                let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                vc.fromAssetId = self.asset?.id
+                vc.toAssetId = "usdt"
+                vc.fromAssetPrice = self.asset?.priceServiceResumeData.lastPrice
+                vc.toAssetPrice = response?.data.lastPrice
+                vc.strategyType = .Exchange
+                self.navigationController?.pushViewController(vc, animated: false)
+            })
+        }
     }
 	
 	@objc func fireTimer(){

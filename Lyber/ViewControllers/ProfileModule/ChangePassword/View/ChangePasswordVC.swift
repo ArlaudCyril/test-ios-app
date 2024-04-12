@@ -25,14 +25,17 @@ class ChangePasswordVC: ViewController {
 	@IBOutlet var oldPasswordTitle: UILabel!
 	@IBOutlet var oldPasswordTF: UITextField!
 	@IBOutlet var oldPasswordVw: UIView!
+    @IBOutlet var oldPasswordEyeBtn: UIButton!
 	
 	@IBOutlet var newPasswordTitle: UILabel!
     @IBOutlet var newPasswordTF: UITextField!
     @IBOutlet var newPasswordVw: UIView!
+    @IBOutlet var newPasswordEyeBtn: UIButton!
     
     @IBOutlet var confirmNewPasswordTitle: UILabel!
 	@IBOutlet var confirmNewPasswordTF: UITextField!
 	@IBOutlet var confirmNewPasswordVw: UIView!
+    @IBOutlet var confirmNewPasswordEyeBtn: UIButton!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -55,7 +58,7 @@ class ChangePasswordVC: ViewController {
         CommonUI.setTextWithLineSpacing(label: newPasswordTitle, text: CommonFunctions.localisation(key: "ENTER_NEW_PASSWORD"), lineSpacing: 6, textAlignment: .left)
         
         CommonUI.setUpLbl(lbl: confirmNewPasswordTitle, text: "", textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
-		CommonUI.setTextWithLineSpacing(label: confirmNewPasswordTitle, text: CommonFunctions.localisation(key: "ENTER_NEW_PASSWORD"), lineSpacing: 6, textAlignment: .left)
+		CommonUI.setTextWithLineSpacing(label: confirmNewPasswordTitle, text: CommonFunctions.localisation(key: "CONFIRM_NEW_PASSWORD"), lineSpacing: 6, textAlignment: .left)
 		
 		CommonUI.setUpLbl(lbl: self.requirementsLbl, text: CommonFunctions.localisation(key: "PASSWORD_REQUIREMENTS"), textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Large.sizeValue()))
 		
@@ -73,16 +76,19 @@ class ChangePasswordVC: ViewController {
 		self.oldPasswordTF.delegate = self
 		self.oldPasswordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
 		self.oldPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
+        self.oldPasswordEyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
 		
 		//newPasswordTF configuration
         self.newPasswordTF.delegate = self
         self.newPasswordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
         self.newPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
+        self.newPasswordEyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
         
         //confirmNewPasswordTF configuration
 		self.confirmNewPasswordTF.delegate = self
 		self.confirmNewPasswordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
 		self.confirmNewPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
+        self.confirmNewPasswordEyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
 		
 		self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
 		self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
@@ -163,6 +169,22 @@ extension ChangePasswordVC : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
+    }
+    
+    @objc func eyeBtnAct(sender: UIButton){
+        switch sender{
+        case oldPasswordEyeBtn:
+            self.oldPasswordTF.isSecureTextEntry = !self.oldPasswordTF.isSecureTextEntry
+            break
+        case newPasswordEyeBtn:
+            self.newPasswordTF.isSecureTextEntry = !self.newPasswordTF.isSecureTextEntry
+            break
+        case confirmNewPasswordEyeBtn:
+            self.confirmNewPasswordTF.isSecureTextEntry = !self.confirmNewPasswordTF.isSecureTextEntry
+            break
+        default:
+            break
+        }
     }
 }
 

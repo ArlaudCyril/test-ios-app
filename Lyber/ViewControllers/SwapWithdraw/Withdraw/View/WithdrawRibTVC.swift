@@ -27,6 +27,8 @@ extension WithdrawRibTVC{
         
         if(data?.ribStatus == "PENDING"){
             self.statusRibImgView.image = Assets.pending_indicator.image()
+        }else if(data?.ribStatus == "CANCELED"){
+            self.statusRibImgView.image = Assets.rejected_indicator.image()
         }else{
             self.statusRibImgView.image = Assets.accepted_indicator.image()
         }

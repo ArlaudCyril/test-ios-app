@@ -12,6 +12,7 @@ class AllocationVC: ViewController {
     var pickerData = ["5%","10%","15%","20%","25%","30%","35%","40%","45%","50%","55%","60%","65%","70%","75%","80%","85%","90%","95%","100%"]
     var allocationSelected : String!
     var allocationCallBack : ((String)->())?
+    var name: String?
     
     //MARK: - IB OUTLETS
     @IBOutlet var allocationVw: UIView!
@@ -39,7 +40,7 @@ class AllocationVC: ViewController {
         allocationVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         self.cancelBtn.layer.cornerRadius = 12
         CommonUI.setUpLbl(lbl: self.allocationLbl, text: CommonFunctions.localisation(key: "ALLOCATION"), textColor: UIColor.primaryTextcolor, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-        CommonUI.setUpLbl(lbl: self.coinNameLbl, text: CommonFunctions.localisation(key: "BITCOIN"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.coinNameLbl, text: self.name, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         self.setAllocationBtn.setTitle(CommonFunctions.localisation(key: "SET_THIS_ALLOCATION"), for: .normal)
         pickerVw.delegate = self
         pickerVw.dataSource = self

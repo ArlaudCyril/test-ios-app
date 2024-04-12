@@ -324,7 +324,8 @@ extension PortfolioDetailTVC{
 			let pointSelected = self.chartView.getPosition(entry: self.entrySelected, axis: .left)
 			self.customMarkerView.center = CGPoint(x: pointSelected.x , y: (pointSelected.y ) )
 		}
-		let lastPoint = self.chartView.getPosition(entry: self.graphValues[self.graphValues.count - 1], axis: .left)
+        
+        let lastPoint = self.chartView.getPosition(entry: self.graphValues.last ?? ChartDataEntry(), axis: .left)
 		//self.customMarkerView.contentView.isHidden = false
 		if(Int(self.entrySelected.x) == self.graphValues.count - 1){
 			self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )

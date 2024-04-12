@@ -194,7 +194,7 @@ extension VerificationVC{
     
     func verifyCode(code: String)
     {
-        if(self.action == "otpValidation"){//code ici google authenticator
+        if(self.action == "otpValidation"){
 			let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 			vc.typeVerification = userData.shared.type2FA
 			vc.action = "verificationCallback"
@@ -212,8 +212,10 @@ extension VerificationVC{
 			self.present(vc, animated: true)
 
         }else if(self.action == "withdraw" || self.action == "withdrawEuro"){
+            CommonFunctions.showLoader()
             VerificationVM().walletCreateWithdrawalRequest(action: self.action, otp: code, data: dataWithdrawal ?? [:], onSuccess:{[]response in
                 if response != nil{
+                    CommonFunctions.hideLoader()
 					self.dismiss(animated: true)
 					CommonFunctions.callWalletGetBalance()
 					let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
@@ -228,6 +230,7 @@ extension VerificationVC{
 				}
 			}, onFailure: {[]response in
 				if response != nil{
+                    CommonFunctions.hideLoader()
 					if(response?.code != "24"){
 						self.dismiss(animated: true)
 						self.controller?.navigationController?.popViewController(animated: true)

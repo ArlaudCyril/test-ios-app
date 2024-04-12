@@ -39,6 +39,11 @@ class AddNewRIBVC: ViewController {
         super.viewDidLoad()
         setUpUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
 
     //MARK: - SetUpUI
     override func setUpUI(){
@@ -136,7 +141,7 @@ extension AddNewRIBVC{
         if(self.isAddingFromWithdraw){
             self.navigationController?.popViewController(animated: true)
         }else{
-            self.navigationController?.popToViewController(ofClass: WithdrawVC.self)
+            self.navigationController?.popToViewController(ofClass: ExchangeFromVC.self)
         }
     }
     
@@ -207,6 +212,10 @@ extension AddNewRIBVC: CountryPickerViewDelegate, CountryPickerViewDataSource{
     
     func sectionTitleForPreferredCountries(in countryPickerView: CountryPickerView) -> String? {
         return "Preferred country"
+    }
+    
+    func countryPickerView(_ countryPickerView: CountryPickerView, willShow viewController: CountryPickerViewController) {
+        self.navigationController?.navigationBar.isHidden = false
     }
 }
 
