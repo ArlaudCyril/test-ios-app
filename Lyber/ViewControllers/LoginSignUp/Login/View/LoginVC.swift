@@ -24,6 +24,12 @@ class LoginVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        do {
+            try audioSession.setCategory(.playback, mode: .default, options: [.mixWithOthers])
+            try audioSession.setActive(true)
+        } catch {
+            print("Failed to set up audio session: \(error)")
+        }
     }
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -50,7 +56,6 @@ class LoginVC: ViewController {
 	
 	override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 		if keyPath == "outputVolume"{
-			let audioSession = AVAudioSession.sharedInstance()
 			if(AppConfig.dictEnvVariables["ENV"] as? String == "STAGING"){
 				if audioSession.outputVolume < audioLevel {
 					if(GlobalVariables.baseUrl == ApiEnvironment.Staging.rawValue){

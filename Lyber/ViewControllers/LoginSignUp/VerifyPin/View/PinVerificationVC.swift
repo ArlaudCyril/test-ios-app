@@ -180,26 +180,41 @@ extension PinVerificationVC{
     @objc func authenticationWithTouchID() {
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = "Use Passcode"
-        
+
         var authError: NSError?
         let reasonString = "To access the secure data"
-        
+        logMessage("Lauching face id")
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
-
-			localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
-                
+            localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
                 if success {
                     DispatchQueue.main.async {
                         self.GoToScreen()
                     }
-                    
                 } else {
-					print(self.evaluateAuthenticationPolicyMessageForLA(code: authError?._code ?? -1))
-			
+                    // Log the error from the evaluation process
+                    if let evalError = evaluateError as NSError? {
+                        self.logMessage("Authentication failed: \(self.evaluateAuthenticationPolicyMessageForLA(code: evalError.code))")
+                    }
                 }
             }
         } else {
-            print(self.evaluateAuthenticationPolicyMessageForLA(code: authError?.code ?? -1))
+            // The device cannot use biometric authentication
+            if let error = authError {
+                logMessage("Biometric authentication is not available on this device. Reason: \(self.evaluateAuthenticationPolicyMessageForLA(code: error.code))")
+                // Additional logging to understand why biometrics are not available
+                switch error.code {
+                case LAError.biometryNotAvailable.rawValue:
+                    logMessage("Biometrics are not available on this device.")
+                case LAError.biometryNotEnrolled.rawValue:
+                    logMessage("Biometrics are not enrolled on this device.")
+                case LAError.biometryLockout.rawValue:
+                    logMessage("Biometrics are locked out due to too many failed attempts.")
+                default:
+                    logMessage("An unknown error occurred with biometrics.")
+                }
+            } else {
+                logMessage("Failed to retrieve any specific error regarding biometrics.")
+            }
         }
     }
 	

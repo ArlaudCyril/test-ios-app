@@ -141,7 +141,9 @@ extension AddNewRIBVC{
         if(self.isAddingFromWithdraw){
             self.navigationController?.popViewController(animated: true)
         }else{
-            self.navigationController?.popToViewController(ofClass: ExchangeFromVC.self)
+            if(!(self.navigationController?.popToViewController(ofClass: ExchangeFromVC.self) ?? false)){
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
     
@@ -152,7 +154,12 @@ extension AddNewRIBVC{
         let ownerName = self.ownerNameTF.text ?? ""
         let bankCountry = self.bankCountryTF.text ?? ""
         
-        if(iban != "" && bic != "" && ribName != "" && ownerName != "" && bankCountry != ""){
+        if !(containsValidData(input: iban) && containsValidData(input: bic) && containsValidData(input: ribName) && containsValidData(input: ownerName) && containsValidData(input: bankCountry)) {
+            CommonFunctions.toster(CommonFunctions.localisation(key: "PLEASE_COMPLETE_FIELDS"))
+        }else if(!containsOnlyLetters(input: ownerName)){
+            CommonFunctions.toster(CommonFunctions.localisation(key: "OWNER_NAME_ONLY_LETTERS"))
+        }else{
+            
             if(self.isEditingRib){
                 self.addNewRIBVM.deleteRisApi(ribId: ribData?.ribId ?? "", completion: {response in
                     if response != nil{
@@ -162,8 +169,6 @@ extension AddNewRIBVC{
             }else{
                 self.addNewRib(iban: iban, bic: bic, ribName: ribName, ownerName: ownerName, bankCountry: bankCountry)
             }
-        }else{
-            CommonFunctions.toster(CommonFunctions.localisation(key: "PLEASE_COMPLETE_FIELDS"))
         }
         
     }
@@ -189,6 +194,16 @@ extension AddNewRIBVC{
                 })
             }
         })
+    }
+    
+    private func containsValidData(input: String) -> Bool {
+        let trimmedText = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        return !trimmedText.isEmpty && trimmedText.range(of: "[a-zA-Z0-9]", options: .regularExpression) != nil
+    }
+    
+    private func containsOnlyLetters(input: String) -> Bool {
+        let allowedCharacterSet = CharacterSet.letters
+        return input.rangeOfCharacter(from: allowedCharacterSet.inverted) == nil && !input.isEmpty
     }
 }
 

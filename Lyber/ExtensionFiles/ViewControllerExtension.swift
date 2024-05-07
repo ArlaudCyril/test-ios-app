@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
-extension UIViewController {
+extension UIViewController: MFMailComposeViewControllerDelegate {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -19,14 +20,79 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake && AppConfig.dictEnvVariables["ENV"] as? String == "STAGING"{
+            sendLogsByEmail()
+        }
+    }
+    
+    func logMessage(_ message: String) {
+        print(message)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        let timestamp = formatter.string(from: Date())
+        let logMessage = "\(timestamp): \(message)\n"
+
+        if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let logFileURL = documentDirectory.appendingPathComponent("appLogs.txt")
+            
+            // Check if file exists
+            if FileManager.default.fileExists(atPath: logFileURL.path) {
+                // Append to existing file
+                if let fileHandle = try? FileHandle(forWritingTo: logFileURL) {
+                    fileHandle.seekToEndOfFile()
+                    if let data = logMessage.data(using: .utf8) {
+                        fileHandle.write(data)
+                    }
+                    fileHandle.closeFile()
+                }
+            } else {
+                // Create new file
+                try? logMessage.write(to: logFileURL, atomically: true, encoding: .utf8)
+            }
+        }
+    }
+
+    func sendLogsByEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["elie@lyber.com"])
+            mail.setSubject("App Logs")
+            
+            if let logData = retrieveLogs() {
+                mail.addAttachmentData(logData, mimeType: "text/plain", fileName: "logs.txt")
+            }
+            
+            present(mail, animated: true)
+        } else {
+            print("Cannot send mail")
+        }
+    }
+    
+    func retrieveLogs() -> Data? {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+        let logFileURL = documentDirectory.appendingPathComponent("appLogs.txt")
+        
+        do {
+            let logData = try Data(contentsOf: logFileURL)
+            return logData
+        } catch {
+            print("Error reading log file: \(error)")
+            return nil
+        }
+    }
+    
 }
 
 extension UINavigationController {
-  func popToViewController(ofClass: AnyClass, animated: Bool = false) {
+  func popToViewController(ofClass: AnyClass, animated: Bool = false) -> Bool{
 	  
 	  if let vc = viewControllers.first(where: { $0.isKind(of: ofClass) }) {
 		  popToViewController(vc, animated: animated)
+          return true
 	  }
+      return false
   }
 	
 	func popToPortfolioHomeOrPortfolioDetail(animated: Bool = false) {

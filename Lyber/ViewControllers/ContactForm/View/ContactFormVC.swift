@@ -100,6 +100,8 @@ class ContactFormVC: SwipeGesture{
 		self.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
 		
 		self.sendBtn.setTitle(CommonFunctions.localisation(key: "SEND"), for: .normal)
+        sendBtn.backgroundColor = .gray
+        sendBtn.isEnabled = false
 		
 		self.sendBtn.addTarget(self, action: #selector(sendBtnAct), for: .touchUpInside)
 	}
@@ -133,5 +135,22 @@ extension ContactFormVC: UITextViewDelegate{
             textView.text = nil
             textView.textColor = UIColor.black
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == messageTV {
+            updateSendButtonState()
+        }
+    }
+    
+    private func updateSendButtonState() {
+        let text = messageTV.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        sendBtn.isEnabled = !text.isEmpty
+        if(sendBtn.isEnabled){
+            sendBtn.backgroundColor = .purple_500
+        }else{
+            sendBtn.backgroundColor = .gray
+        }
+        
     }
 }

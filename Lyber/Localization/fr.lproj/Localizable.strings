@@ -381,6 +381,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "CHANGE_ASSET_REPARTITION" = "Modifier la répartition des actifs";
 "PAUSE_STRATEGY" = "Mettre la stratégie en pause";
 "DELETE_STRATEGY" = "Supprimer la stratégie";
+"SURE_DELETE_STRATEGY" = "Êtes-vous sûr de vouloir supprimer cette stratégie ?";
 "RECURRING_INVESTMENT" = "Investissement récurrent";
 "RECURRENT" = "Récurrent";
 "EXECUTE_STRATEGY_REGULAR_BASIS" = "Exécuter une stratégie de façon régulière";
@@ -425,7 +426,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "ACTIVITY_LOGS" = "Historique d'activité";
 "SECURITY" = "Sécurité";
 "NO_SECURITY" = "Pas de sécurité";
-"STRONG_AUTHENTIFICATION" = "Authentification forte";
+"STRONG_AUTHENTIFICATION" = "Authentification Forte";
 "CHANGE_PIN" = "Changer de code PIN";
 "CHANGE_PASSWORD" = "Changer de mot de passe";
 "FACE_ID" = "Face ID";
@@ -434,7 +435,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "LOG_OUT" = "Déconnexion";
 "STOP_REGISTRATION" = "Arrêter l'inscription ?";
 "PROGRESS_REGISTRATION_LOST" = "La progression de l'inscription sera perdue.";
-"LIST_ALL_OPERATIONS" = "Liste de toutes les opérations (dépôts, échanges et retraits) effectuées sur votre compte";
+"LIST_ALL_OPERATIONS" = "Liste de toutes les opérations (dépôts, échanges et retraits) effectuées sur votre compte.";
 "CARD_NUMBER" = "Numéro de carte";
 "EXPIRE" = "Expirer";
 "CVV" = "CVV";
@@ -695,6 +696,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "YOUR_NEW_RIB" = "Votre nouveau RIB";
 "ADD" = "Ajouter";
 "PLEASE_COMPLETE_FIELDS" = "Veuillez remplir tous les champs";
+"OWNER_NAME_ONLY_LETTERS" = "Le champ du nom du propriétaire ne doit contenir que des lettres";
 "RECEIVE" = "Recevoir";
 "CURRENTLY_VALIDATING_RIB" = "Votre RIB est en cours de validation, nous le traiterons dans les meilleurs délais.";
 "RIB_BEEN_REFUSED" = "Ce RIB a été refusé. Veuillez essayer d'en utiliser un autre ou contacter l'assistance si vous avez besoin d'aide.";

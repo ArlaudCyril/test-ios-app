@@ -2,33 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPrivacyAccessedAPITypes</key>
-	<array>
-		<dict>
-			<key>NSPrivacyAccessedAPICategory</key>
-			<string>NSPrivacyAccessedAPICategory</string>
-			<key>NSPrivacyApprovedReason</key>
-			<string>The app checks available disk space to ensure there is enough room for proper operation of download and storage functions.</string>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPICategory</key>
-			<string>SystemBootTime</string>
-			<key>NSPrivacyApprovedReason</key>
-			<string>The app uses system boot time to optimize initialization processes.</string>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPICategory</key>
-			<string>FileTimestamp</string>
-			<key>NSPrivacyApprovedReason</key>
-			<string>We access file timestamps to check for the latest updates and ensure data synchronization.</string>
-		</dict>
-		<dict>
-			<key>NSPrivacyAccessedAPICategory</key>
-			<string>UserDefaults</string>
-			<key>NSPrivacyApprovedReason</key>
-			<string>The app stores user preferences and application settings to enhance the user experience.</string>
-		</dict>
-	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>UISupportsDocumentBrowser</key>

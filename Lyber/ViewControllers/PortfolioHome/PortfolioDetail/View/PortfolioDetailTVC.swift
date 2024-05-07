@@ -293,6 +293,29 @@ extension PortfolioDetailTVC{
                 customMarkerView.bottomDateLbl.text = self.dateTimeArr[index].date
             }
         }
+        
+        adjustBubblePosition(xPixel: xPixel)
+    }
+    
+    func adjustBubblePosition(xPixel: CGFloat) {
+        let bubbleWidth = self.customMarkerView.frame.width
+        let chartWidth = self.chartView.bounds.width
+
+        let leftEdgeDistance = xPixel - bubbleWidth / 2
+        let rightEdgeDistance = chartWidth - xPixel - bubbleWidth / 2
+
+        if leftEdgeDistance < 0 {
+            self.customMarkerView.imageViewCenterTopBubbleConstraint.constant = -leftEdgeDistance
+            self.customMarkerView.imageViewCenterBottomBubbleConstraint.constant = -leftEdgeDistance
+        } else if rightEdgeDistance < 0 {
+            self.customMarkerView.imageViewCenterTopBubbleConstraint.constant = rightEdgeDistance
+            self.customMarkerView.imageViewCenterBottomBubbleConstraint.constant = rightEdgeDistance
+        } else {
+            self.customMarkerView.imageViewCenterTopBubbleConstraint.constant = 0
+            self.customMarkerView.imageViewCenterBottomBubbleConstraint.constant = 0
+        }
+
+        self.customMarkerView.layoutIfNeeded()
     }
 	
 	func updateValueLastPoint(){
@@ -332,7 +355,9 @@ extension PortfolioDetailTVC{
 			self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.valueWebSocket)
 			
 		}
-		self.graphValues[self.graphValues.count-1] = ChartDataEntry(x: Double(self.graphValues.count-1), y: self.valueWebSocket)
+        if(self.graphValues.count > 0){
+            self.graphValues[self.graphValues.count-1] = ChartDataEntry(x: Double(self.graphValues.count-1), y: self.valueWebSocket)
+        }
 		self.extractedFunc(self.graphValues, UIColor.PurpleColor)
 	}
 	

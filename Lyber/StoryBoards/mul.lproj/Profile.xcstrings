@@ -433,6 +433,18 @@
         }
       }
     },
+    "EGe-3p-QZm.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"EGe-3p-QZm\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "etU-IR-rgP.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"etU-IR-rgP\";",
       "extractionState" : "extracted_with_value",
@@ -711,6 +723,18 @@
     },
     "JcJ-L3-HmE.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"JcJ-L3-HmE\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
+    "jhc-w8-EQX.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"jhc-w8-EQX\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {

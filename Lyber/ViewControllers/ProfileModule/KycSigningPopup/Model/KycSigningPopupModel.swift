@@ -13,4 +13,5 @@ enum KycSigningPopupModel{
     case buyUsdt
     case certification
     case googleAuthenticator
+    case deleteStrategy
 }

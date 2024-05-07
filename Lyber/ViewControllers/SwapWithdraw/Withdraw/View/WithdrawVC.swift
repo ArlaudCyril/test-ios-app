@@ -109,7 +109,9 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
 extension WithdrawVC{
 	@objc func backBtnAct(){
         if(typeWithdraw == .ribs){
-            self.navigationController?.popToViewController(ofClass: ExchangeFromVC.self)
+            if(!(self.navigationController?.popToViewController(ofClass: ExchangeFromVC.self) ?? false)){
+                self.navigationController?.popViewController(animated: true)
+            }
         }else{
             self.navigationController?.popViewController(animated: true)
         }

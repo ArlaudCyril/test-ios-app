@@ -28,6 +28,9 @@ class customMarker : MarkerView{
     @IBOutlet var centerWhiteVw: UIView!
     @IBOutlet var outerMarkerViewWidthConst: NSLayoutConstraint!
     
+    @IBOutlet var imageViewCenterTopBubbleConstraint: NSLayoutConstraint!
+    @IBOutlet var imageViewCenterBottomBubbleConstraint: NSLayoutConstraint!
+    
     @IBOutlet var bottomBubble: UIStackView!
     @IBOutlet var bottomEuroLbl: UILabel!
     @IBOutlet var bottomDateLbl: UILabel!
@@ -49,7 +52,6 @@ class customMarker : MarkerView{
         self.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.width, height: self.contentView.frame.height)
         self.offset = CGPoint(x: (-((self.frame.width/2))), y: -((75)))
         addSubview(contentView)
-//        self.gifImg.bringSubviewToFront(centerDot)
         self.euroView.layer.cornerRadius = 4
         self.centerDot.layer.cornerRadius = 6
         

@@ -111,7 +111,8 @@ extension TransactionVC : UITableViewDelegate,UITableViewDataSource{
 			vc.from = transaction?.fromAddress ?? ""
 			vc.amount = "\(transaction?.amount ?? "") \(transaction?.asset ?? "")"
 			vc.network = transaction?.network ?? ""
-			vc.transactionHash = transaction?.txId ?? ""
+            vc.transactionHash = transaction?.txId ?? ""
+			vc.date = transaction?.date ?? ""
 			
 		}else if(transaction?.type == "withdraw"){
 			vc.type = .withdraw

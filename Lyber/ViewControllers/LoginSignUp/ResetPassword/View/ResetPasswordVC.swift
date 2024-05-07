@@ -21,6 +21,7 @@ class ResetPasswordVC: ViewController {
 	@IBOutlet var requirementsLbl: UILabel!
 	@IBOutlet var passwordTF: UITextField!
 	@IBOutlet var passwordVw: UIView!
+    @IBOutlet var passwordEyeBtn: UIButton!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -49,6 +50,7 @@ class ResetPasswordVC: ViewController {
 		self.passwordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
 		self.passwordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
 		
+        self.passwordEyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
 		self.headerView.backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
 		self.nextButton.addTarget(self, action: #selector(nextBtnAct), for: .touchUpInside)
 		
@@ -95,6 +97,10 @@ extension ResetPasswordVC : UITextFieldDelegate{
 		}
 			
 	}
+    
+    @objc func eyeBtnAct(sender: UIButton){
+        self.passwordTF.isSecureTextEntry = !self.passwordTF.isSecureTextEntry
+    }
 	
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		CommonUI.setUpViewBorder(vw: self.passwordVw, radius: 16, borderWidth: 1.5, borderColor: UIColor.PurpleColor.cgColor,backgroundColor: UIColor.LightPurple)

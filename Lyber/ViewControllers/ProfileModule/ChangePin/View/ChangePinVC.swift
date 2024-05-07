@@ -148,17 +148,18 @@ extension ChangePinVC{
 //MARK: - SCROLLVIEW DELEGATES FUNTION
 extension ChangePinVC{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let value = (scrollView.contentOffset.x + scrollView.frame.width/2)/scrollView.frame.width
-        if Int(value) != self.currentPage{
-            self.currentPage = (Int(value))
+        let value = Int((scrollView.contentOffset.x + scrollView.frame.width/2) / scrollView.frame.width)
+                
+        if value != self.currentPage {
+            if value == 0 {
+                resetPinFields()
+            }
+            self.currentPage = value
         }
-        if currentPage == 1{
-            self.backBtn.setImage(Assets.back.image(), for: .normal)
-        }else{
-            self.backBtn.setImage(Assets.close.image(), for: .normal)
-        }
-        collView.reloadData()
+
+        updateUIForCurrentPage()
     }
+    
 }
 
 //MARK: - OTHER FUNCTION
@@ -174,5 +175,20 @@ extension ChangePinVC{
 		userData.shared.dataSave()
 		self.dismiss(animated: true, completion: nil)
         
+    }
+    
+    func resetPinFields() {
+        if let cell = collView.cellForItem(at: IndexPath(item: 1, section: 0)) as? CreateNewPinCVC {
+            cell.resetPinFields()
+        }
+    }
+    
+    func updateUIForCurrentPage() {
+        if currentPage == 1 {
+            self.backBtn.setImage(Assets.back.image(), for: .normal)
+        } else {
+            self.backBtn.setImage(Assets.close.image(), for: .normal)
+        }
+        collView.reloadData()
     }
 }

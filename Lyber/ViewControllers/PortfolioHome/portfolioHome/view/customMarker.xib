@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="customMarker" customModule="Lyber_dev" customModuleProvider="target">
             <connections>
                 <outlet property="bottomBubble" destination="ESf-HB-EhG" id="6Y6-A4-szB"/>
                 <outlet property="bottomDateLbl" destination="pri-e9-Gh3" id="OoN-s5-ylK"/>
@@ -21,6 +21,8 @@
                 <outlet property="euroView" destination="nrz-A6-42o" id="6F0-tK-V0Q"/>
                 <outlet property="gifImg" destination="bDT-DD-QRa" id="Uc7-gM-Ll4"/>
                 <outlet property="graphLbl" destination="Ka4-SC-vtm" id="ZS6-R4-OFa"/>
+                <outlet property="imageViewCenterBottomBubbleConstraint" destination="cdP-a9-yOF" id="lTE-xX-iuZ"/>
+                <outlet property="imageViewCenterTopBubbleConstraint" destination="GBR-x4-WXA" id="4Vg-Sb-3va"/>
                 <outlet property="markerDotVw" destination="oUH-FQ-oT5" id="WzN-Yk-ILf"/>
                 <outlet property="topBubble" destination="nrz-A6-42o" id="6aP-hj-T10"/>
             </connections>
@@ -31,16 +33,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nrz-A6-42o">
-                    <rect key="frame" x="0.0" y="0.0" width="108" height="41"/>
+                    <rect key="frame" x="33.5" y="0.0" width="41.5" height="41"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-SC-vtm">
-                            <rect key="frame" x="0.0" y="0.0" width="108" height="20.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l77-XD-3vi">
-                            <rect key="frame" x="0.0" y="20.5" width="108" height="20.5"/>
+                            <rect key="frame" x="0.0" y="20.5" width="41.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -86,16 +88,16 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ESf-HB-EhG">
-                    <rect key="frame" x="0.0" y="111" width="108" height="41"/>
+                    <rect key="frame" x="33.5" y="111" width="41.5" height="41"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfQ-eY-4ML">
-                            <rect key="frame" x="0.0" y="0.0" width="108" height="20.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pri-e9-Gh3">
-                            <rect key="frame" x="0.0" y="20.5" width="108" height="20.5"/>
+                            <rect key="frame" x="0.0" y="20.5" width="41.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -110,16 +112,13 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ESf-HB-EhG" secondAttribute="trailing" id="2Xq-GA-XBt"/>
                 <constraint firstItem="oUH-FQ-oT5" firstAttribute="top" secondItem="nrz-A6-42o" secondAttribute="bottom" constant="20" id="8i5-cf-Ue7"/>
                 <constraint firstItem="oUH-FQ-oT5" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ChA-jq-wkD"/>
                 <constraint firstItem="ESf-HB-EhG" firstAttribute="top" secondItem="oUH-FQ-oT5" secondAttribute="bottom" constant="20" id="ERO-oW-Wgb"/>
-                <constraint firstItem="ESf-HB-EhG" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="EmU-Xx-71Y"/>
-                <constraint firstItem="ESf-HB-EhG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="GGw-JF-RBr"/>
+                <constraint firstItem="nrz-A6-42o" firstAttribute="centerX" secondItem="bDT-DD-QRa" secondAttribute="centerX" id="GBR-x4-WXA"/>
                 <constraint firstItem="nrz-A6-42o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QHl-U4-9en"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nrz-A6-42o" secondAttribute="trailing" id="Wmf-b1-Jq9"/>
+                <constraint firstItem="ESf-HB-EhG" firstAttribute="centerX" secondItem="bDT-DD-QRa" secondAttribute="centerX" id="cdP-a9-yOF"/>
                 <constraint firstItem="oUH-FQ-oT5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jJI-uK-R9s"/>
-                <constraint firstItem="nrz-A6-42o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xmK-a4-TO3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-234.78260869565219" y="-658.25892857142856"/>

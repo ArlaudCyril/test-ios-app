@@ -267,8 +267,14 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 self.dismiss(animated: true, completion: nil)
             }
             else if indexPath.row == 3{
-                self.investmentStrategyController?.deleteStrategy(strategy: self.strategy)
+                //TODO: change to the other pop-up
+                let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                vc.type = .deleteStrategy
+                vc.investmentStrategyController = investmentStrategyController
+                vc.strategy = self.strategy
+                self.investmentStrategyController?.present(vc, animated: true)
                 self.dismiss(animated: true, completion: nil)
+                
             }
         case .withdrawTo:                                                        //Withdraw to
             if indexPath.row == (self.withdrawToAccountData.count - 1){

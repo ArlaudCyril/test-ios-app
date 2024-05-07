@@ -764,13 +764,13 @@ extension InvestInMyStrategyVC {
 			}
 			
         }else if(strategyType == .oneTimeInvestment){
-            amountTF.text = "\(cleanedValue) USDT"
+            
             let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
+            totalNoOfCoinsInvest = Decimal(string: cleanedValue) ?? 0.0
+            totalEuroInvested = totalNoOfCoinsInvest * Decimal(coinPrice)
             
-            totalEuroInvested = Decimal(string: cleanedValue) ?? 0.0
-            totalNoOfCoinsInvest = totalEuroInvested / Decimal(coinPrice)
-            
-            self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValue(number: NSDecimalNumber(decimal: totalNoOfCoinsInvest).doubleValue)) €"
+            amountTF.text = "\(cleanedValue) USDT"
+            self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValueDecimal(number: totalEuroInvested)) €"
         }else{
             if exchangeCoin1ToCoin2 == false{
                     amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDT"
@@ -921,7 +921,7 @@ extension InvestInMyStrategyVC {
 					vc.orderId = response?.data.orderId ?? ""
 					vc.validTimeStamp = response?.data.validTimestamp
                     vc.paymentIntentId = response?.data.paymentIntentId
-					vc.fees = NSDecimalNumber(decimal: self.totalEuroInvested).doubleValue * 0.03
+                    vc.fees = Double(response?.data.fees ?? "") ?? NSDecimalNumber(decimal: self.totalEuroInvested).doubleValue * 0.03
 					vc.fromAmountInvested = NSDecimalNumber(decimal: self.totalEuroInvested).doubleValue
 					vc.toAmountToObtain = NSDecimalNumber(decimal: self.totalNoOfCoinsInvest).doubleValue
 					vc.InvestmentType = self.strategyType

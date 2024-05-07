@@ -3567,7 +3567,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9j-yX-N95">
-                                <rect key="frame" x="0.0" y="293.5" width="414" height="602.5"/>
+                                <rect key="frame" x="0.0" y="236.5" width="414" height="659.5"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9e-Yr-ylO" customClass="HeaderView" customModule="Lyber_dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -3577,13 +3577,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwq-Su-SQE">
-                                        <rect key="frame" x="24" y="72" width="366" height="496.5"/>
+                                        <rect key="frame" x="24" y="72" width="366" height="553.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cgZ-dI-aG7">
-                                                <rect key="frame" x="0.0" y="0.0" width="366" height="496.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="553.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7hY-Ta-rHr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="328.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="385.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xs3-C4-NDZ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="57"/>
@@ -3774,10 +3774,40 @@
                                                                     <constraint firstAttribute="trailing" secondItem="waF-rG-evY" secondAttribute="trailing" constant="12" id="ymW-IU-oEb"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mmu-1m-RWi">
+                                                                <rect key="frame" x="0.0" y="328.5" width="366" height="57"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="WSI-4Z-fYg">
+                                                                        <rect key="frame" x="12" y="16" width="342" height="25"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhc-w8-EQX">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="288.5" height="25"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGe-3p-QZm">
+                                                                                <rect key="frame" x="300.5" y="0.0" width="41.5" height="25"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <viewLayoutGuide key="safeArea" id="VbP-Gl-iF5"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="WSI-4Z-fYg" secondAttribute="trailing" constant="12" id="5ME-uP-7mI"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="WSI-4Z-fYg" secondAttribute="bottom" constant="16" id="gkV-Ca-ZNX"/>
+                                                                    <constraint firstItem="WSI-4Z-fYg" firstAttribute="top" secondItem="Mmu-1m-RWi" secondAttribute="top" constant="16" id="kQS-T2-EWN"/>
+                                                                    <constraint firstItem="WSI-4Z-fYg" firstAttribute="leading" secondItem="Mmu-1m-RWi" secondAttribute="leading" constant="12" id="y7O-iB-yYE"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP5-r5-dfw">
-                                                        <rect key="frame" x="0.0" y="328.5" width="366" height="96"/>
+                                                        <rect key="frame" x="0.0" y="385.5" width="366" height="96"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wwF-6v-ig4">
                                                                 <rect key="frame" x="0.0" y="24" width="366" height="48"/>
@@ -3831,7 +3861,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bn9-5E-g1e">
-                                                        <rect key="frame" x="0.0" y="424.5" width="366" height="72"/>
+                                                        <rect key="frame" x="0.0" y="481.5" width="366" height="72"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3A-Ec-H90" customClass="PurpleButton" customModule="Lyber_dev" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
@@ -3897,7 +3927,10 @@
                         <outlet property="addressOriginView" destination="17s-40-khb" id="0BT-tM-qYX"/>
                         <outlet property="addressView" destination="7hY-Ta-rHr" id="spH-Yh-Iy5"/>
                         <outlet property="bottomView" destination="d9j-yX-N95" id="9V6-Ip-gy3"/>
+                        <outlet property="dateAddedDepositLbl" destination="jhc-w8-EQX" id="BeC-cj-kiQ"/>
                         <outlet property="dateAddedLbl" destination="wi1-3O-esV" id="0IM-45-kvn"/>
+                        <outlet property="dateDepositLbl" destination="EGe-3p-QZm" id="pXn-MT-7th"/>
+                        <outlet property="dateDepositView" destination="Mmu-1m-RWi" id="iAw-re-pIT"/>
                         <outlet property="dateImg" destination="HOm-hW-bGs" id="9Qb-Nu-UA2"/>
                         <outlet property="dateLbl" destination="O6L-Ec-3ve" id="D4w-vd-eRC"/>
                         <outlet property="dateView" destination="MO5-lr-YRd" id="ama-Uu-mSL"/>

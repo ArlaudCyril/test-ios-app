@@ -72,7 +72,11 @@ class AddressAddedPopUpVC: ViewController {
 	@IBOutlet var dateView: UIView!
     @IBOutlet var dateAddedLbl: UILabel!
     @IBOutlet var dateLbl: UILabel!
-	@IBOutlet var dateImg: UIImageView!
+    @IBOutlet var dateImg: UIImageView!
+    
+    @IBOutlet var dateDepositView: UIView!
+    @IBOutlet var dateAddedDepositLbl: UILabel!
+    @IBOutlet var dateDepositLbl: UILabel!
 	
 	@IBOutlet var iconView: UIView!
     
@@ -98,6 +102,7 @@ class AddressAddedPopUpVC: ViewController {
 		self.addressOriginImg.isHidden = true
 		self.dateImg.isHidden = true
         self.useRibVw.isHidden = true
+        self.dateDepositView.isHidden = true
 		
 		handleTypePopUp()
         
@@ -310,6 +315,10 @@ extension AddressAddedPopUpVC{
 			CommonUI.setUpLbl(lbl: self.dateLbl, text: self.transactionHash.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			self.dateLbl.numberOfLines = 0
 			self.dateImg.isHidden = false
+            
+            self.dateDepositView.isHidden = false
+            CommonUI.setUpLbl(lbl: self.dateAddedDepositLbl, text: CommonFunctions.localisation(key: "DATE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.dateDepositLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 			
 			self.iconView.isHidden = true
 			

@@ -109,4 +109,14 @@ extension CreateNewPinCVC: UITextFieldDelegate,MyTextFieldDelegate{
         }
         return newString.length <= maxLength
     }
+    
+    func resetPinFields() {
+        let pinTextFields = [pinTF1, pinTF2, pinTF3, pinTF4]
+        for textField in pinTextFields {
+            textField?.text = ""
+            textField?.backgroundColor = UIColor.borderColor  // Reset the background color if needed
+        }
+        enterDigitCounts = 0
+        pinTF1.becomeFirstResponder()  // Focus on the first PIN field again
+    }
 }

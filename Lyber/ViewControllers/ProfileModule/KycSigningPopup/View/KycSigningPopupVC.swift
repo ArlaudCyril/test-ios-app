@@ -18,6 +18,10 @@ class KycSigningPopupVC: ViewController {
     //certification
     var identityVerificationController : IdentityVerificationVC?
     
+    //deleteStrategy
+    var investmentStrategyController: InvestmentStrategyVC?
+    var strategy : Strategy?
+    
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
     @IBOutlet var bottomView: UIView!
@@ -128,6 +132,11 @@ extension KycSigningPopupVC{
         case .googleAuthenticator:
             self.dismiss(animated: true)
             break
+            
+        case .deleteStrategy:
+            self.investmentStrategyController?.deleteStrategy(strategy: self.strategy ?? Strategy())
+            self.dismiss(animated: true)
+            break
         }
     }
 }
@@ -194,6 +203,21 @@ extension KycSigningPopupVC{
             
             self.cancelBtn.isHidden = true
             self.SubDescriptionLbl.isHidden = false
+            
+            self.DescriptionLblBottomViewConstraint.constant = 126
+            
+            break
+            
+        case .deleteStrategy:
+            CommonUI.setUpLbl(lbl: self.titleLbl, text: CommonFunctions.localisation(key: "DELETE_STRATEGY"), textColor: UIColor.PurpleGrey_800, font: UIFont.MabryProBold(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.DescriptionLbl, text: CommonFunctions.localisation(key:"SURE_DELETE_STRATEGY"), textColor: UIColor.PurpleGrey_600, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.DescriptionLbl.numberOfLines = 0
+            
+            self.actionBtn.setTitle(CommonFunctions.localisation(key: "DELETE_STRATEGY"), for: .normal)
+            
+            CommonUI.setUpButton(btn: self.cancelBtn, text: CommonFunctions.localisation(key: "CANCEL"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+
             
             self.DescriptionLblBottomViewConstraint.constant = 126
             
