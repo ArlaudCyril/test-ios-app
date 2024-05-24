@@ -829,7 +829,7 @@ class CommonFunctions{
 		return stringFormatted
 	}
     
-    static func formattedAssetBinance(assetId: String, value: String, numberOfDecimals: Int) -> String {
+    static func formattedAssetBinance(value: String, numberOfDecimals: Int) -> String {
         var formattedValue = value
         if let range = value.range(of: ".") {
             let integerPart = value[value.startIndex..<range.lowerBound]

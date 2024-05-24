@@ -154,7 +154,7 @@ class ConfirmExecutionVC: ViewController {
 			
 			self.detailViews = [self.toAssetPriceVw, self.amountVw, self.lyberFeesVw, self.totalVw]
             
-            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2))€"
+            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2))€"
             
             //timerApplePay
             if let validTimeStamp = self.validTimeStamp {
@@ -174,9 +174,9 @@ class ConfirmExecutionVC: ViewController {
             self.amountTitleLbl.text = CommonFunctions.localisation(key: "EXCHANGE_FROM")
             self.amountValueLbl.text = "~\(self.amountFromDeductedFees ?? "0") \(self.fromAssetId?.uppercased() ?? "")"
             
-            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2)) \(self.fromAssetId?.uppercased() ?? "")"
+            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2)) \(self.fromAssetId?.uppercased() ?? "")"
         
-            self.totalValueLbl.text = "\(CommonFunctions.formattedAssetBinance(assetId: self.fromAssetId ?? "", value: amountFrom ?? "0", numberOfDecimals: self.numberOfDecimal ?? 2)) \(self.fromAssetId?.uppercased() ?? "")"
+            self.totalValueLbl.text = "\(CommonFunctions.formattedAssetBinance(value: amountFrom ?? "0", numberOfDecimals: self.numberOfDecimal ?? 2)) \(self.fromAssetId?.uppercased() ?? "")"
             
             self.fromAmountExecution.text = self.totalValueLbl.text
             

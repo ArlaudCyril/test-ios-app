@@ -37,22 +37,19 @@ class MyBalanceTVC: UITableViewCell {
 //Mark:- SetUpUI
 extension MyBalanceTVC{
     func setUpCell(assetId : String?){
-		let balance = CommonFunctions.getBalance(id: assetId ?? "")
-		let priceCoin = (Double(balance?.balanceData.euroBalance ?? "" ) ?? 0)/(Double(balance?.balanceData.balance ?? "" ) ?? 1)
+        let balance = CommonFunctions.getBalance(id: assetId ?? "")
+        let priceCoin = (Double(balance?.balanceData.euroBalance ?? "" ) ?? 0)/(Double(balance?.balanceData.balance ?? "" ) ?? 1)
+        let coin = CommonFunctions.getCurrency(id: assetId ?? "")
         self.assetsView.layer.cornerRadius = 16
         self.singleAssetVw.layer.cornerRadius = 16
         
         CommonUI.setUpLbl(lbl: self.coinTypeLbl, text: "", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(balance?.balanceData.euroBalance ?? "") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAssetPennies(from: Double(balance?.balanceData.balance ?? ""), price: priceCoin, rounding: .down), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.euroLbl, text: "\(Double(balance?.balanceData.euroBalance ?? "") ?? 0)€", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: CommonFunctions.formattedAssetBinance(value: balance?.balanceData.balance ?? "0", numberOfDecimals: coin.decimals ?? 0), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         CommonUI.setUpLbl(lbl: self.percentageLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
         self.percentageLbl.isHidden = true
-        for coin in coinDetailData{
-            if coin.id == assetId {
-                self.coinTypeLbl.text = "\(coin.fullName ?? "")"
-                self.coinImgView.sd_setImage(with: URL(string: coin.imageUrl ?? ""), completed: nil)
-            }
-        }
+        self.coinTypeLbl.text = "\(coin.fullName ?? "")"
+        self.coinImgView.sd_setImage(with: URL(string: coin.imageUrl ?? ""), completed: nil)
     }
 }
 
