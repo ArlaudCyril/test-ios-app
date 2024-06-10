@@ -175,12 +175,15 @@ extension ChangePasswordVC : UITextFieldDelegate{
         switch sender{
         case oldPasswordEyeBtn:
             self.oldPasswordTF.isSecureTextEntry = !self.oldPasswordTF.isSecureTextEntry
+            self.oldPasswordTF.isSecureTextEntry ? self.oldPasswordEyeBtn.setImage(Assets.visibility_off.image(), for: .normal) : self.oldPasswordEyeBtn.setImage(Assets.visibility.image(), for: .normal)
             break
         case newPasswordEyeBtn:
             self.newPasswordTF.isSecureTextEntry = !self.newPasswordTF.isSecureTextEntry
+            self.newPasswordTF.isSecureTextEntry ? self.newPasswordEyeBtn.setImage(Assets.visibility_off.image(), for: .normal) : self.newPasswordEyeBtn.setImage(Assets.visibility.image(), for: .normal)
             break
         case confirmNewPasswordEyeBtn:
             self.confirmNewPasswordTF.isSecureTextEntry = !self.confirmNewPasswordTF.isSecureTextEntry
+            self.confirmNewPasswordTF.isSecureTextEntry ? self.confirmNewPasswordEyeBtn.setImage(Assets.visibility_off.image(), for: .normal) : self.confirmNewPasswordEyeBtn.setImage(Assets.visibility.image(), for: .normal)
             break
         default:
             break

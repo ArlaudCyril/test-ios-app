@@ -12,7 +12,7 @@ class EnterPhoneVM {
 	func SignUpApi(phoneNumber: String,countryCode : String, completion: @escaping ( (signUpApi?) -> Void )){
         var phone : String = phoneNumber
         
-        if(phone.first == "0" && countryCode == "+33"){
+        if(phone.first == "0"){
             phone.remove(at: phone.startIndex)
         }
         

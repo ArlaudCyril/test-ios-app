@@ -38,6 +38,7 @@ class AddNewRIBVC: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        setupTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +94,7 @@ class AddNewRIBVC: ViewController {
 //MARK: - Text Field Delegates
 extension AddNewRIBVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         if textField == ribNameTF{
             self.ibanTF.becomeFirstResponder()
         }else if textField == ibanTF{
@@ -204,6 +206,12 @@ extension AddNewRIBVC{
     private func containsOnlyLetters(input: String) -> Bool {
         let allowedCharacterSet = CharacterSet.letters
         return input.rangeOfCharacter(from: allowedCharacterSet.inverted) == nil && !input.isEmpty
+    }
+    
+    // Add tap gesture recognizer to dismiss the keyboard
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 }
 
