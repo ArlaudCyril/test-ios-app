@@ -96,6 +96,6 @@ struct InvestmentStrategyAsset: Codable {
 }
 
 struct StrategyActive: Codable{
-    var amount : Int?
+    var amount : Double?
     var frequency : String?
 }

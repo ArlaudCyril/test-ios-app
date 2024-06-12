@@ -60,7 +60,7 @@ struct RecurrentInvestmentStrategyAPI: Codable {
 // MARK: - Investment
 struct RecurrentInvestmentStrategy: Codable {
 	let strategyName: String
-	let amount: Int
+	let amount: Double
 	let frequency: String
 	let nextExecution: String
 	let strategyType: String
