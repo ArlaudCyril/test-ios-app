@@ -103,11 +103,11 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeFromTVC")as! ExchangeFromTVC
-            if let balance = Storage.balances.first(where: { $0?.id == "usdt" }) {
+            if let balance = Storage.balances.first(where: { $0?.id == "usdc" }) {
                 cell.setUpCell(data: balance, index: 0, screenType: screenType, lastIndex: 0)
             } else {
                 var balance = Balance()
-                balance.id = "usdt"
+                balance.id = "usdc"
                 cell.setUpCell(data: balance, index: 0, screenType: screenType, lastIndex: 0)
             }
             cell.controller = self
@@ -166,8 +166,8 @@ extension ExchangeFromVC{
     }
     
     @objc func linkTapped(){
-        PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
-            let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+        PortfolioDetailVM().getResumeByIdApi(assetId: "usdc", completion:{[] response in
+            let toAsset = PriceServiceResume(id: "usdc", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
             let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
             vc.type = .buyUsdt
             vc.controller = self

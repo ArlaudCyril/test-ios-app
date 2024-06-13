@@ -164,7 +164,7 @@ extension AddressAddedPopUpVC{
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             vc.strategyType = .withdrawEuro
             vc.minimumWithdrawal = 10
-            vc.fromAssetId = "usdt"
+            vc.fromAssetId = "usdc"
             vc.numberOfDecimals = 2
             vc.indexRibSelected = self.indexSelected
             self.controller?.navigationController?.pushViewController(vc, animated: true)
@@ -284,7 +284,7 @@ extension AddressAddedPopUpVC{
             CommonUI.setUpLbl(lbl: self.feesPaidLbl, text: CommonFunctions.localisation(key: "FEES_PAID"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: self.feesPaidNameLbl, text: self.totalFeeSpent, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
             
-            CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "TOTAL_USDT_SPENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "TOTAL_USDC_SPENT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: self.dateLbl, text: self.totalStableAmountSpent, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
 			self.iconView.isHidden = true

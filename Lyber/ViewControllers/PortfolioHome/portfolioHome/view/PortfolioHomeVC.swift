@@ -148,7 +148,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 				}else{
 					let cell = tableView.dequeueReusableCell(withIdentifier: "MyAssetsTVC")as! MyAssetsTVC
 					let balanceData = BalanceData(balance: "0", euroBalance: "0")
-					let balance = Balance(id: "usdt", balanceData: balanceData)
+					let balance = Balance(id: "usdc", balanceData: balanceData)
 					cell.controller = self
 					cell.setUpCell(data: balance,index : 2, lastIndex: 2)
 					return cell

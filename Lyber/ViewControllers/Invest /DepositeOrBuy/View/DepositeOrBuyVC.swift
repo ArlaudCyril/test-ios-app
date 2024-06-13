@@ -23,7 +23,7 @@ class DepositeOrBuyVC: ViewController {
     ]
     var withdrawExchangedata : [buyDepositeModel] = [
         buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "SEND_ASSETS_ANOTHER_ACCOUNT"), rightBtnName: ""),
-		buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "BUY_VERB"), subName: CommonFunctions.localisation(key: "BUY_ASSETS_USDT"), rightBtnName: ""),
+		buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "BUY_VERB"), subName: CommonFunctions.localisation(key: "BUY_ASSETS_USDC"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
         buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT_VERB"), subName: CommonFunctions.localisation(key: "MONEY_LYBER"), rightBtnName: ""),
 //        buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "SELL"), subName: "\(CommonFunctions.localisation(key: "SELL")) \(CommonFunctions.localisation(key: "ASSETS"))", rightBtnName: "")
@@ -59,9 +59,6 @@ class DepositeOrBuyVC: ViewController {
     var depositeCallback : ((_ index : Int)->())?
     var accountSelectedCallback : ((buyDepositeModel, Int)->())?
     var controller : InvestMoneyVC?, portfolioHomeController : PortfolioHomeVC?,allAssetsController : AllAssetsVC?,portfolioDetailController : PortfolioDetailVC?,investStrategyController : InvestInMyStrategyVC?, investmentStrategyController : InvestmentStrategyVC?
-    var portfolioDetailScreen = false
-    var specificAssetsArr = ["btc","eth","sol","matic","bnb","usdc","usdt","euroc"]
-    var specificAssets = false
 	//PortfolioDetailVC
 	var idAsset : String = ""
 	var asset: PriceServiceResume?
@@ -112,15 +109,15 @@ class DepositeOrBuyVC: ViewController {
             self.depositeOrSingularBuyLbl.text = CommonFunctions.localisation(key: "CHOOSE_OPERATION")
 			self.assetPagePopUpData  = [
 				buyDepositeModel(icon: Assets.withdraw.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "WITHDRAW"), subName: CommonFunctions.localisation(key: "SEND_ASSETS_ANOTHER_ACCOUNT"), rightBtnName: ""),
-				buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:"\(CommonFunctions.localisation(key: "BUY")) \(self.idAsset.uppercased())", subName: CommonFunctions.localisation(key: "BUY_SPECIFIC_ASSET_USDT", parameter: self.idAsset.uppercased()), rightBtnName: ""),
+				buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:"\(CommonFunctions.localisation(key: "BUY")) \(self.idAsset.uppercased())", subName: CommonFunctions.localisation(key: "BUY_SPECIFIC_ASSET_USDC", parameter: self.idAsset.uppercased()), rightBtnName: ""),
 				buyDepositeModel(icon: Assets.exchange.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "EXCHANGE"), subName: CommonFunctions.localisation(key: "TRADE_ONE_ASSET_AGAINST_ANOTHER"), rightBtnName: ""),
 //                    buyDepositeModel(icon: Assets.sell.image(), iconBackgroundColor: UIColor.LightPurple, name: "\(CommonFunctions.localisation(key: "SELL")) \(self.assetsData?.symbol?.uppercased() ?? "")", subName: "", rightBtnName: ""),
 				buyDepositeModel(icon: Assets.money_deposit.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DEPOSIT"), subName: "\(CommonFunctions.localisation(key: "ASSET_LYBER_PART1")) \(self.idAsset.uppercased()) \(CommonFunctions.localisation(key: "ASSET_LYBER_PART2"))", rightBtnName: "")
 			]
             
         }
-		if(self.idAsset == "usdt"){
-			self.assetPagePopUpData[1] = buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:CommonFunctions.localisation(key: "BUY_USDT"), subName: CommonFunctions.localisation(key: "BUY_USDT_EUROS"), rightBtnName: "")
+		if(self.idAsset == "usdc"){
+			self.assetPagePopUpData[1] = buyDepositeModel(icon: Assets.buy.image(), iconBackgroundColor: UIColor.LightPurple, name:CommonFunctions.localisation(key: "BUY_USDC"), subName: CommonFunctions.localisation(key: "BUY_USDC_EUROS"), rightBtnName: "")
 		}
 		if(self.strategy.publicType != "lyber"){
 			self.investWithStrategiesInactiveData.append(buyDepositeModel(icon: Assets.trash.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "DELETE_STRATEGY"), subName: "", rightBtnName: ""))
@@ -226,7 +223,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyData = self.strategy
 				vc.strategyType = .oneTimeInvestment
-                vc.fromAssetId = "usdt"
+                vc.fromAssetId = "usdc"
 				self.dismiss(animated: true, completion: nil)
 				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
@@ -251,7 +248,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyData = self.strategy
 				vc.strategyType = .oneTimeInvestment
-                vc.fromAssetId = "usdt"
+                vc.fromAssetId = "usdc"
 				self.dismiss(animated: true, completion: nil)
 				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
@@ -316,17 +313,17 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				}else if indexPath.row == 1{
 					self.dismiss(animated: true, completion: nil)
 					
-					PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
-						let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
-						if(self.idAsset == "usdt"){
+					PortfolioDetailVM().getResumeByIdApi(assetId: "usdc", completion:{[] response in
+						let toAsset = PriceServiceResume(id: "usdc", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+						if(self.idAsset == "usdc"){
 							let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 							vc.strategyType = .singleCoin
 							vc.asset = toAsset
 							self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 						}else{
-							if(CommonFunctions.getBalance(id: "usdt") != nil){
+							if(CommonFunctions.getBalance(id: "usdc") != nil){
 								let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-								vc.fromAssetId = "usdt"
+								vc.fromAssetId = "usdc"
 								vc.toAssetId = self.asset?.id
 								vc.fromAssetPrice = response?.data.lastPrice
 								vc.toAssetPrice = self.asset?.priceServiceResumeData.lastPrice

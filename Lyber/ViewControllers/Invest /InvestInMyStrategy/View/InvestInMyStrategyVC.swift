@@ -194,7 +194,7 @@ class InvestInMyStrategyVC: ViewController {
         self.feesLbl.isHidden = true
         self.minimumWithdrawVw.isHidden = true
         
-        CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalEuroAvailable ?? 0)) USDT \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+        CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalEuroAvailable ?? 0)) USDC \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
         
         CommonUI.setUpLbl(lbl: creditCardNumberLbl, text: CommonFunctions.localisation(key: "SELECT_CREDIT_CARD"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: creditCardLbl, text: "", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
@@ -312,13 +312,13 @@ class InvestInMyStrategyVC: ViewController {
                 self.frequencyDropDown.image = Assets.drop_down.image()
                 self.frequencyImg.image = Assets.calendar_black.image()
                 
-                amountTF.text = "\(self.strategyData?.minAmount ?? 0) USDT"
+                amountTF.text = "\(self.strategyData?.minAmount ?? 0) USDC"
                 totalEuroInvested = Decimal(self.strategyData?.minAmount ?? 0)
                 
                 self.previewMyInvest.backgroundColor = UIColor.PurpleColor
                 self.previewMyInvest.isUserInteractionEnabled = true
             }else{
-                amountTF.text = "0 USDT"
+                amountTF.text = "0 USDC"
             }
         }else if strategyType == .deposit{
             self.investInMyStrategyLbl.text = CommonFunctions.localisation(key: "EURO_DESPOSIT")
@@ -768,11 +768,11 @@ extension InvestInMyStrategyVC {
             totalNoOfCoinsInvest = Decimal(string: cleanedValue) ?? 0.0
             totalEuroInvested = totalNoOfCoinsInvest * Decimal(coinPrice)
             
-            amountTF.text = "\(cleanedValue) USDT"
+            amountTF.text = "\(cleanedValue) USDC"
             self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValueDecimal(number: totalEuroInvested)) €"
         }else{
             if exchangeCoin1ToCoin2 == false{
-                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDT"
+                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDC"
                 let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
                 totalEuroInvested = Decimal(string: cleanedValue) ?? 0.0
                     totalNoOfCoinsInvest = totalEuroInvested / Decimal(coinPrice)
@@ -814,7 +814,7 @@ extension InvestInMyStrategyVC {
                 strategyType = .oneTimeInvestment
             }
             if totalEuroInvested > Decimal(totalEuroAvailable ?? 0){
-                CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDT"))
+                CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDC"))
             }else if totalEuroInvested < Decimal(self.strategyData?.minAmount ?? 0){
                 CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.strategyData?.minAmount ?? 0) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
             }else{

@@ -219,11 +219,9 @@ extension AddAssetsVC{
 			}
 			
 		}
-		//We don't want to be able to add USDT
-        let indexAssetToRemove = filterCoin.firstIndex(where: {$0.id == "usdt"})
-        if(indexAssetToRemove != nil){
-            filterCoin.remove(at: indexAssetToRemove!)
-        }
+        //We don't want to be able to add assets with "isStrategyActive" at false
+        filterCoin = filterCoin.filter { CommonFunctions.getCurrency(id: $0.id).isStrategyActive ?? false }
+        
 		self.tblView.reloadData()
 	}
 	

@@ -77,7 +77,7 @@ class CryptoDepositeVC: ViewController {
         
         CommonUI.setUpViewBorder(vw: self.sendOnlyAssetView, radius: 16, borderWidth: 0, borderColor: UIColor.ColorFFF2D9.cgColor, backgroundColor: UIColor.ColorFFF2D9)
 		
-		if(self.selectedAsset?.id == "usdt"){
+		if(self.selectedAsset?.id == "usdc"){
 			self.orLbl.isHidden = false
 			self.buyCoinBtn.isHidden = false
 			CommonUI.setUpLbl(lbl: orLbl, text: CommonFunctions.localisation(key: "OR"), textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
@@ -127,10 +127,10 @@ extension CryptoDepositeVC{
 	}
     
     @objc func buyCoinBtnAct(){
-		PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+		PortfolioDetailVM().getResumeByIdApi(assetId: "usdc", completion:{[] response in
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.strategyType = .singleCoin
-			vc.asset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+			vc.asset = PriceServiceResume(id: "usdc", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
 			self.navigationController?.pushViewController(vc, animated: true)
 		})
     }

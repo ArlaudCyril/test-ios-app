@@ -36,9 +36,9 @@
 "ACTIVATE" = "Activer";
 "ACTIVATE_FACE_ID" = "Activer Face ID";
 "ACCESS_LYBER_FACE_ID" = "Accédez à Lyber rapidement en vous connectant avec Face ID";
-"INVEST_IN_ASSET_USDT" = "Pour investir dans un actif, vous devez d'abord acheter des USDT, puis utiliser les USDT achetés et les échanger contre l'actif souhaité.";
+"INVEST_IN_ASSET_USDC" = "Pour investir dans un actif, vous devez d'abord acheter des USDC, puis utiliser les USDC achetés et les échanger contre l'actif souhaité.";
 "CERTIFY_HONOUR_EU" = "Je certifie sur l'honneur que mes documents d'identité ont été émis par un pays membre de l'Union européenne ou de l'Espace économique européen, à l'exception de Chypre, Malte, Croatie, Hongrie, Liechtenstein, Lettonie, Roumanie et Slovaquie.";
-"BUY_USDT" = "Acheter de l’USDT";
+"BUY_USDC" = "Acheter de l’USDC";
 "YES_CERTIFY" = "Oui, je certifie";
 "WARNING" = "Attention !";
 "DECLINE" = "Refuser";
@@ -62,9 +62,9 @@ Veillez à bien retirer tout l’argent que vous avez sur votre compte avant de 
 "WITHDRAW_BANK_ACCOUNT" = "Retirer sur mon compte bancaire";
 "WITHDRAW_STEPS" = "Afin de retirer vos investissements sur votre compte bancaire, veuillez suivre les étapes suivantes :
 
-1. Convertissez les actifs que vous souhaitez retirer en USDT.
+1. Convertissez les actifs que vous souhaitez retirer en USDC.
 
-2. Envoyez nous un message en cliquant ici. Merci de bien vouloir y indiquer les informations suivantes : le montant d'USDT que vous souhaitez retirer, ainsi que votre IBAN, votre BIC et le nom du bénéficiaire (qui doit être le même que le nom avec lequel vous avez ouvert votre compte Lyber).
+2. Envoyez nous un message en cliquant ici. Merci de bien vouloir y indiquer les informations suivantes : le montant d'USDC que vous souhaitez retirer, ainsi que votre IBAN, votre BIC et le nom du bénéficiaire (qui doit être le même que le nom avec lequel vous avez ouvert votre compte Lyber).
 
 Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer le retrait.";
 "HAVE_GOOGLE_AUTHENTICATOR" = "Avez-vous Google Authenticator ?";
@@ -304,14 +304,14 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "CONFIRM_MY_DEPOSIT" = "Confirmer mon dépôt";
 "CONFIRM_DEPOSIT" = "Confirmer le dépôt";
 "AMOUNT" = "Montant";
-"TOTAL_USDT_SPENT" = "Total de USDT dépensés";
+"TOTAL_USDC_SPENT" = "Total de USDC dépensés";
 "FREQUENCY" = "Fréquence";
 "PAYMENT" = "Paiement";
 "BUY" = "Acheter du";
 "BUY_VERB" = "Acheter";
-"BUY_ASSETS_USDT" = "Acheter des actifs avec des USDT";
-"BUY_SPECIFIC_ASSET_USDT" = "Acheter du %@ en USDT";
-"BUY_USDT_EUROS" = "Acheter de l'USDT avec des euros";
+"BUY_ASSETS_USDC" = "Acheter des actifs avec des USDC";
+"BUY_SPECIFIC_ASSET_USDC" = "Acheter du %@ en USDC";
+"BUY_USDC_EUROS" = "Acheter de l'USDC avec des euros";
 "SELL" = "Vendre";
 "TOTAL" = "Total";
 "PRICE" = "Prix";
@@ -398,9 +398,9 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "CANT_EXCHANGE_ASSET_DONT_HAVE" = "Vous ne pouvez pas échanger un actif non présent dans votre portefeuille";
 "NOT_ENOUGH_BALANCE" = "Votre solde est insuffisant pour investir";
 "NOT_ENOUGH_INVESTMENT_PART_1" = "Vous devez investir au moins";
-"NOT_ENOUGH_INVESTMENT_PART_2" = "USDT dans la stratégie";
+"NOT_ENOUGH_INVESTMENT_PART_2" = "USDC dans la stratégie";
 "NOT_ENOUGH_COINS" = "Vous n'avez pas assez d'actifs pour échanger";
-"NOT_ENOUGH_USDT" = "Vous n'avez pas assez d'USDT pour effectuer cette action";
+"NOT_ENOUGH_USDC" = "Vous n'avez pas assez d'USDC pour effectuer cette action";
 "CANT_BUY_MORE_THAN" = "Vous ne pouvez acheter un actif pour plus de %@ euros";
 
 "NOT_ENOUGH_COINS_WITHDRAW" = "Vous n'avez pas assez d'actifs pour effectuer un retrait";
@@ -410,7 +410,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "TAILOR_STRATEGY_RAISE_AMOUNT" = "Pour adapter cette stratégie, vous devez augmenter votre montant actuel";
 "AGREE_INCREASE_INVESTMENT" = "Acceptez-vous d'augmenter votre montant à investir ?";
 "OH_MY" = "Oh, zut !";
-"MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "Vous devez avoir Apple Pay activé et une carte enregistrée pour pouvoir acheter des USDT avec des euros.";
+"MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "Vous devez avoir Apple Pay activé et une carte enregistrée pour pouvoir acheter des USDC avec des euros.";
 "UNDERSTAND" = "J'ai compris";
 "APPLE_PAY_ERROR" = "Erreur Apple Pay";
 

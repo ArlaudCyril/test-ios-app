@@ -76,7 +76,7 @@ extension ProfileTransactionTVC{
 				self.failureIcon.isHidden = false
 				self.amountVw.isHidden = true
 			}else{
-				self.euroLbl.text = "\(data?.totalStableAmountSpent ?? "0") USDT"
+				self.euroLbl.text = "\(data?.totalStableAmountSpent ?? "0") USDC"
 			}
 			self.coinImg.image = Assets.intermediate_strategy_outline.image()
 			self.transactionTypeLbl.text = data?.strategyName

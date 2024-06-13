@@ -97,14 +97,20 @@ class PortfolioDetailVC: SwipeGesture {
         if #available(iOS 15.0, *) {
             tblView.sectionHeaderTopPadding = 0
         }
-        CommonUI.setUpButton(btn: buyBtn, text: "\(CommonFunctions.localisation(key: "BUY_VERB"))", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        if(self.assetId == "usdt"){
+            self.buyBtn.isHidden = true
+        }else{
+            CommonUI.setUpButton(btn: buyBtn, text: "\(CommonFunctions.localisation(key: "BUY_VERB"))", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+            buyBtn.setImage(nil, for: .normal)
+            self.buyBtn.addTarget(self, action: #selector(buyBtnAct), for: .touchUpInside)
+        }
+        
 		CommonUI.setUpButton(btn: sellBtn, text: "\(CommonFunctions.localisation(key: "SELL"))", textcolor: UIColor.whiteColor, backgroundColor: UIColor.PurpleColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
-        buyBtn.setImage(nil, for: .normal)
+        
         sellBtn.setImage(nil, for: .normal)
         self.threeDotBtn.layer.cornerRadius = 16
         self.threeDotBtn.threeDotButtonShadow()
         
-        self.buyBtn.addTarget(self, action: #selector(buyBtnAct), for: .touchUpInside)
         self.sellBtn.addTarget(self, action: #selector(sellBtnAct), for: .touchUpInside)
         self.threeDotBtn.addTarget(self, action: #selector(threeDotBtnAct), for: .touchUpInside)
 		
@@ -192,7 +198,6 @@ extension PortfolioDetailVC{
         let vc = DepositeOrBuyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
         vc.popupType = .AssetDetailPagePopUp
 		vc.idAsset = self.assetId
-        vc.portfolioDetailScreen = true
 		vc.coinId = self.assetId
 		vc.asset = self.asset
         vc.portfolioDetailController = self
@@ -201,18 +206,18 @@ extension PortfolioDetailVC{
     
     @objc func buyBtnAct(){
         self.view.isUserInteractionEnabled = false
-        PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+        PortfolioDetailVM().getResumeByIdApi(assetId: "usdc", completion:{[] response in
             self.view.isUserInteractionEnabled = true
-            let toAsset = PriceServiceResume(id: "usdt", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
-            if(self.asset?.id == "usdt"){
+            let toAsset = PriceServiceResume(id: "usdc", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+            if(self.asset?.id == "usdc"){
                 let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                 vc.strategyType = .singleCoin
                 vc.asset = toAsset
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
-                if(CommonFunctions.getBalance(id: "usdt") != nil){
+                if(CommonFunctions.getBalance(id: "usdc") != nil){
                     let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-                    vc.fromAssetId = "usdt"
+                    vc.fromAssetId = "usdc"
                     vc.toAssetId = self.asset?.id
                     vc.fromAssetPrice = response?.data.lastPrice
                     vc.toAssetPrice = self.asset?.priceServiceResumeData.lastPrice
@@ -231,7 +236,7 @@ extension PortfolioDetailVC{
     
     @objc func sellBtnAct(){
         self.view.isUserInteractionEnabled = false
-        if(self.assetId == "usdt"){
+        if(self.assetId == "usdc"){
             AddNewRIBVM().getRibsApi(completion: {response in
                 self.view.isUserInteractionEnabled = true
                 if response != nil{
@@ -247,11 +252,11 @@ extension PortfolioDetailVC{
                 }
             })
         }else{
-            PortfolioDetailVM().getResumeByIdApi(assetId: "usdt", completion:{[] response in
+            PortfolioDetailVM().getResumeByIdApi(assetId: "usdc", completion:{[] response in
                 self.view.isUserInteractionEnabled = true
                 let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                 vc.fromAssetId = self.asset?.id
-                vc.toAssetId = "usdt"
+                vc.toAssetId = "usdc"
                 vc.fromAssetPrice = self.asset?.priceServiceResumeData.lastPrice
                 vc.toAssetPrice = response?.data.lastPrice
                 vc.strategyType = .Exchange
@@ -303,7 +308,7 @@ extension PortfolioDetailVC : URLSessionWebSocketDelegate{
 								let value = Double(price ?? "")
 								DispatchQueue.main.async {
 									if value  != 0{
-                                        if(self?.assetId == "usdt"){
+                                        if(self?.assetId == "usdc"){
                                             self?.portfolioDetailTVC?.valueWebSocket = 1/(value ?? 0)
                                         }else{
                                             self?.portfolioDetailTVC?.valueWebSocket = value ?? 0
@@ -331,7 +336,7 @@ extension PortfolioDetailVC : URLSessionWebSocketDelegate{
 		var urlString = ApiEnvironment.socketBaseUrl + "\(assetId)eur"
 		if(assetId == "pepe"){
 			urlString = ApiEnvironment.socketBaseUrl + "\(assetId)usdt"
-        }else if(assetId == "usdt"){
+        }else if(assetId == "usdc"){
             urlString = ApiEnvironment.socketBaseUrl + "eur\(assetId)"
         }
 		if let url = URL(string: urlString) {

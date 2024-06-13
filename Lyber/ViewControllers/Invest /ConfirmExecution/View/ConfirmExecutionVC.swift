@@ -103,7 +103,7 @@ class ConfirmExecutionVC: ViewController {
 		
 		CommonUI.setUpLbl(lbl: self.fromAmountExecution, text: "\(CommonFunctions.formattedCurrency(from: fromAmountInvested))€", textColor: UIColor.PurpleColor, font: UIFont.MabryProMedium(Size.XVLarge.sizeValue()))
 		CommonUI.setUpLbl(lbl: self.arrowExecution, text: "↓", textColor: UIColor.PurpleColor, font: UIFont.MabryProMedium(Size.XVLarge.sizeValue()))
-		CommonUI.setUpLbl(lbl: self.toAmountExecution, text: "\(CommonFunctions.formattedCurrency(from: toAmountToObtain))\(self.asset?.id.uppercased() ?? "")", textColor: UIColor.PurpleColor, font: UIFont.MabryProMedium(Size.XVLarge.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.toAmountExecution, text: "\(CommonFunctions.formattedCurrency(from: toAmountToObtain)) \(self.asset?.id.uppercased() ?? "")", textColor: UIColor.PurpleColor, font: UIFont.MabryProMedium(Size.XVLarge.sizeValue()))
 		
 		self.stackVw.layer.cornerRadius = 16
 		

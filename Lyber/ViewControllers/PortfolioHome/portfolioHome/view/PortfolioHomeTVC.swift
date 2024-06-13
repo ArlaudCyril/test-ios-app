@@ -123,7 +123,7 @@ extension PortfolioHomeTVC{
 		totalEuroAvailable = 0
 		for balance in Storage.balances{
 			totalPortfolio += (Double(balance?.balanceData.euroBalance ?? "0") ?? 0)
-			if(balance?.id == "usdt"){
+			if(balance?.id == "usdc"){
 				totalEuroAvailable = (Double(balance?.balanceData.balance ?? "0") ?? 0)
 			}
 		}

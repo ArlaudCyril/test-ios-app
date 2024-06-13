@@ -75,6 +75,7 @@ struct AssetBaseData: Codable {
 	let nativeNetwork : String?
     let isStablecoin: Bool?
     let isUIActive, isTradeActive, isDepositActive, isWithdrawalActive: Bool?
+    let isStrategyActive: Bool?
     let decimals: Int?
 	
 	init() {
@@ -85,7 +86,8 @@ struct AssetBaseData: Codable {
 		self.isUIActive = false
 		self.isTradeActive = false
 		self.isDepositActive = false
-		self.isWithdrawalActive = false
+        self.isWithdrawalActive = false
+		self.isStrategyActive = false
         self.nativeNetwork = ""
 		self.decimals = 0
 	}

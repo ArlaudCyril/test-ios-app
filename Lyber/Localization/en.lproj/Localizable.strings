@@ -35,11 +35,11 @@
 "ACTIVATE" = "Activate";
 "ACTIVATE_FACE_ID" = "Activate Face ID";
 "ACCESS_LYBER_FACE_ID" = "Access Lyber fast and easily by logging with Face ID.";
-"INVEST_IN_ASSET_USDT" = "To invest in an asset, you must first buy USDT, then use the purchased USDT and exchange it for the desired asset.";
+"INVEST_IN_ASSET_USDC" = "To invest in an asset, you must first buy USDC, then use the purchased USDC and exchange it for the desired asset.";
 "CERTIFY_HONOUR_EU" = "I certify on my honour that my identity documents were issued by a member country of the European Union or the European Economic Area, with the exception of Cyprus, Malta, Croatia, Hungary, Liechtenstein, Latvia, Romania and Slovakia.";
 "YES_CERTIFY" = "Yes, I certify";
 "WARNING" = "Warning!";
-"BUY_USDT" = "Buy USDT";
+"BUY_USDC" = "Buy USDC";
 "DECLINE" = "Decline";
 "ASK_ME_LATER" = "Ask me later";
 "DONT_MISS_ANY_UPDATE" = "Enable notifications so you don't miss any updates from Lyber.";
@@ -62,9 +62,9 @@ Make sure to withdraw all the money you have in your account before closing it."
 "WITHDRAW_BANK_ACCOUNT" = "Withdraw on my bank account";
 "WITHDRAW_STEPS" = "To withdraw your investments on your bank account, please follow the steps below:
 
-1. Convert the assets you wish to withdraw into USDT.
+1. Convert the assets you wish to withdraw into USDC.
 
-2. Send us a message by clicking here. Please include the following information: the amount of USDT you wish to withdraw, as well as your IBAN, BIC and the name of the beneficiary (which must be the same as the name with which you opened your Lyber account).
+2. Send us a message by clicking here. Please include the following information: the amount of USDC you wish to withdraw, as well as your IBAN, BIC and the name of the beneficiary (which must be the same as the name with which you opened your Lyber account).
 
 Our support team will get back to you as soon as possible to make the withdrawal.";
 "HAVE_GOOGLE_AUTHENTICATOR" = "Do you have google authenticator?";
@@ -307,14 +307,14 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "CONFIRM_MY_DEPOSIT" = "Confirm my deposit";
 "CONFIRM_DEPOSIT" = "Confirm deposit";
 "AMOUNT" = "Amount";
-"TOTAL_USDT_SPENT" = "Total USDT spent";
+"TOTAL_USDC_SPENT" = "Total USDC spent";
 "FREQUENCY" = "Frequency";
 "PAYMENT" = "Payment";
 "BUY" = "Buy";
 "BUY_VERB" = "Buy";
-"BUY_ASSETS_USDT" = "Buy assets with USDT";
-"BUY_SPECIFIC_ASSET_USDT" = "Buy %@ with USDT";
-"BUY_USDT_EUROS" = "Buy USDT with euros";
+"BUY_ASSETS_USDC" = "Buy assets with USDC";
+"BUY_SPECIFIC_ASSET_USDC" = "Buy %@ with USDC";
+"BUY_USDC_EUROS" = "Buy USDC with euros";
 "SELL" = "Sell";
 "TOTAL" = "Total";
 "PRICE" = "Price";
@@ -401,9 +401,9 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "CANT_EXCHANGE_ASSET_DONT_HAVE" = "You can't exchange assets you don't have in your wallet";
 "NOT_ENOUGH_BALANCE" = "You don't have enough balance to invest";
 "NOT_ENOUGH_INVESTMENT_PART_1" = "You need to invest atleast";
-"NOT_ENOUGH_INVESTMENT_PART_2" = "USDT in the strategy";
+"NOT_ENOUGH_INVESTMENT_PART_2" = "USDC in the strategy";
 "NOT_ENOUGH_COINS" = "You don't have enough coins to exchange";
-"NOT_ENOUGH_USDT" = "You don't have enough USDT to perform this action";
+"NOT_ENOUGH_USDC" = "You don't have enough USDC to perform this action";
 "CANT_BUY_MORE_THAN" = "You can't buy for more than %@ euros in an asset";
 "NOT_ENOUGH_COINS_WITHDRAW" = "You don't have enough coins to withdraw";
 "MINIMUM_AMOUNT_EXCHANGE" = "The minimum amount of assets to be exchanged is";
@@ -412,7 +412,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "TAILOR_STRATEGY_RAISE_AMOUNT" = "To tailor at this strategy, you need to raise your current amount";
 "AGREE_INCREASE_INVESTMENT" = "Do you agree to increase the amount you invest?";
 "OH_MY" = "Oh, my !";
-"MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "You must have Apple Pay activated and a registered card to be able to buy USDT with euros.";
+"MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "You must have Apple Pay activated and a registered card to be able to buy USDC with euros.";
 "UNDERSTAND" = "I understand";
 "APPLE_PAY_ERROR" = "Apple Pay error";
 

@@ -143,10 +143,10 @@ class ConfirmInvestmentVC: ViewController {
                 }
             }
 			let feeEuros = totalEuroInvested/200
-            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDT"
-			self.euroAmountLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested-feeEuros)) USDT"
-			self.euroLyberFeeLBl.text = "~\(feeEuros) USDT"
-			self.totalEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDT"
+            self.noOfEuroInvested.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDC"
+			self.euroAmountLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested-feeEuros)) USDC"
+			self.euroLyberFeeLBl.text = "~\(feeEuros) USDC"
+			self.totalEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: totalEuroInvested)) USDC"
 			
         }else if InvestmentType == .deposit{
             self.coinPriceVw.isHidden = true
@@ -313,7 +313,7 @@ extension ConfirmInvestmentVC{
             }else{
                 dataGetOtp = [
                     "destination": self.ribSelected?.iban ?? "",
-                    "asset":"usdt",
+                    "asset":"usdc",
                     "amount": self.totalCoinsInvested
                 ]
                 

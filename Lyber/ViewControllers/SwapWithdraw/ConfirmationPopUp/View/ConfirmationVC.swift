@@ -114,7 +114,7 @@ class ConfirmationVC: ViewController {
 			CommonUI.setUpLbl(lbl: self.confirmationLbl, text: CommonFunctions.localisation(key: "OH_MY"), textColor: UIColor.whiteColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
 			
 			self.headingLbl.text = ""
-			self.subHeadingLbl.text = "\(CommonFunctions.localisation(key: "AMOUNT_STRATEGY_INSUFFICIENT")) \(CommonFunctions.localisation(key: "TAILOR_STRATEGY_RAISE_AMOUNT")) (\(self.strategy?.activeStrategy?.amount ?? 0) USDT) \(CommonFunctions.localisation(key: "TO_2")) \(CommonFunctions.getFormatedPriceDecimal(number: self.requiredAmount)) USDT.\n \(CommonFunctions.localisation(key: "AGREE_INCREASE_INVESTMENT"))"
+			self.subHeadingLbl.text = "\(CommonFunctions.localisation(key: "AMOUNT_STRATEGY_INSUFFICIENT")) \(CommonFunctions.localisation(key: "TAILOR_STRATEGY_RAISE_AMOUNT")) (\(self.strategy?.activeStrategy?.amount ?? 0) USDC) \(CommonFunctions.localisation(key: "TO_2")) \(CommonFunctions.getFormatedPriceDecimal(number: self.requiredAmount)) USDC.\n \(CommonFunctions.localisation(key: "AGREE_INCREASE_INVESTMENT"))"
 			
 			self.YesBtn.isHidden = false
 			CommonUI.setUpButton(btn: self.ThanksBtn, text: CommonFunctions.localisation(key: "NO"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
@@ -141,7 +141,7 @@ extension ConfirmationVC{
             CommonFunctions.goPortfolioHome()
         }else if(confirmationType == .WithdrawEuro){
             self.dismiss(animated: false)
-            CommonFunctions.goPortfolioDetail(id: "usdt")
+            CommonFunctions.goPortfolioDetail(id: "usdc")
         }else{
             self.dismiss(animated: false)
             self.previousViewController?.navigationController?.popToViewController(ofClass: PortfolioHomeVC.self)
@@ -174,7 +174,7 @@ extension ConfirmationVC{
 				})
 			}else{
 				self.dismiss(animated: true)
-				CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDT"))
+				CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDC"))
 			}
 		}else if(confirmationType == .buyFailure){
 			self.YesBtn.showLoading(color: .purple)

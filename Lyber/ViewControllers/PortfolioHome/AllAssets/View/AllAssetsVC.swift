@@ -181,18 +181,18 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
 			//            vc.assetsData = coinsData[indexPath.row]
 			self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .singleAsset || screenType == .singleAssetStrategy{
-			let toAsset = coinsData.first(where: {$0.id == "usdt"}) ?? filterCoin[indexPath.row]
-            if(self.fromAssetId == "usdt" || filterCoin[indexPath.row].id == "usdt"){
+			let toAsset = coinsData.first(where: {$0.id == "usdc"}) ?? filterCoin[indexPath.row]
+            if(self.fromAssetId == "usdc" || filterCoin[indexPath.row].id == "usdc"){
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyType = .singleCoin
 				vc.asset = toAsset
 				self.navigationController?.pushViewController(vc, animated: true)
 			}else{
-				if(CommonFunctions.getBalance(id: "usdt") != nil){
+				if(CommonFunctions.getBalance(id: "usdc") != nil){
 					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-					vc.fromAssetId = "usdt"
+					vc.fromAssetId = "usdc"
 					vc.toAssetId = filterCoin[indexPath.row].id
-					vc.fromAssetPrice = coinsData.first(where: {$0.id == "usdt"})?.priceServiceResumeData.lastPrice
+					vc.fromAssetPrice = coinsData.first(where: {$0.id == "usdc"})?.priceServiceResumeData.lastPrice
 					vc.toAssetPrice = filterCoin[indexPath.row].priceServiceResumeData.lastPrice
 					vc.strategyType = .Exchange
 					self.navigationController?.pushViewController(vc, animated: true)

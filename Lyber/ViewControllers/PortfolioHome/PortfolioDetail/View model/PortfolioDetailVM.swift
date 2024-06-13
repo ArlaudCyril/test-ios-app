@@ -61,7 +61,7 @@ class PortfolioDetailVM{
     }
 	
 	func getResumeByIdApi(assetId : String,completion: @escaping ( (PriceServiceResumeDataAPI?) -> Void )){
-        
+    
         let params : [String : Any] = [Constants.ApiKeys.id : assetId]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.priceServiceResume, withParameters: params, ofType: PriceServiceResumeDataAPI.self, onSuccess: { response in
