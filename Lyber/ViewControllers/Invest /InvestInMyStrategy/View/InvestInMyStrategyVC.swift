@@ -813,9 +813,9 @@ extension InvestInMyStrategyVC {
             if(CommonFunctions.frequenceEncoder(frequence: self.selectedFrequency) == "now"){
                 strategyType = .oneTimeInvestment
             }
-            if totalEuroInvested > Decimal(totalEuroAvailable ?? 0){
+            if totalNoOfCoinsInvest > Decimal(totalEuroAvailable ?? 0){
                 CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_USDC"))
-            }else if totalEuroInvested < Decimal(self.strategyData?.minAmount ?? 0){
+            }else if totalNoOfCoinsInvest < Decimal(self.strategyData?.minAmount ?? 0){
                 CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.strategyData?.minAmount ?? 0) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
             }else{
                 self.goToPreviewINvest()
@@ -935,8 +935,8 @@ extension InvestInMyStrategyVC {
             }
             
             vc.asset = asset
-            vc.fees = NSDecimalNumber(decimal: totalEuroInvested).doubleValue * 0.03
-            vc.totalEuroInvested = NSDecimalNumber(decimal: totalEuroInvested).doubleValue
+            vc.fees = NSDecimalNumber(decimal: totalNoOfCoinsInvest).doubleValue * 0.03
+            vc.totalEuroInvested = NSDecimalNumber(decimal: totalNoOfCoinsInvest).doubleValue
             vc.InvestmentType = strategyType
             vc.strategyData = self.strategyData
             
