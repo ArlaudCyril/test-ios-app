@@ -313,7 +313,7 @@ class InvestInMyStrategyVC: ViewController {
                 self.frequencyImg.image = Assets.calendar_black.image()
                 
                 amountTF.text = "\(self.strategyData?.minAmount ?? 0) USDC"
-                totalEuroInvested = Decimal(self.strategyData?.minAmount ?? 0)
+                totalNoOfCoinsInvest = Decimal(self.strategyData?.minAmount ?? 0)
                 
                 self.previewMyInvest.backgroundColor = UIColor.PurpleColor
                 self.previewMyInvest.isUserInteractionEnabled = true
@@ -774,8 +774,8 @@ extension InvestInMyStrategyVC {
             if exchangeCoin1ToCoin2 == false{
                     amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDC"
                 let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
-                totalEuroInvested = Decimal(string: cleanedValue) ?? 0.0
-                    totalNoOfCoinsInvest = totalEuroInvested / Decimal(coinPrice)
+                totalNoOfCoinsInvest = Decimal(string: cleanedValue) ?? 0.0
+                totalEuroInvested = totalEuroInvested / Decimal(coinPrice)
                     
                 self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValue(number: NSDecimalNumber(decimal: totalNoOfCoinsInvest).doubleValue)) \(self.fromAssetId?.uppercased() ?? "")"
             }else{

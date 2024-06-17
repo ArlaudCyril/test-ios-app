@@ -17,7 +17,7 @@ class AddStrategyVC: ViewController {
     var tailoring : Bool?
     var tailoringStrategy : Strategy?
     var investmentStrategyController : InvestmentStrategyVC?
-	var minInvestPerAsset : Decimal = 20
+	var minInvestPerAsset : Decimal = 10
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var buildMyOwnStrategyLbl: UILabel!
@@ -328,7 +328,7 @@ extension AddStrategyVC{
 				for asset in strategy.bundle {
 					let newAmount = self.minInvestPerAsset / (Decimal(asset.share)/100)
 					if(newAmount > requiredAmount){
-						requiredAmount = newAmount
+                        requiredAmount = NSDecimalNumber(decimal: newAmount).rounding(accordingToBehavior: NSDecimalNumberHandler(roundingMode: .up, scale: 0, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)).decimalValue
 					}
 				}
 				if(strategy.activeStrategy != nil && Decimal(strategy.activeStrategy?.amount ?? 0) < requiredAmount)
