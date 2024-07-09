@@ -63,7 +63,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             if currentPage == 0{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                    IQKeyboardManager.shared.resignOnTouchOutside = false
                 }
             }else{
                 cell.endEditing(true)
@@ -80,7 +80,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             if currentPage == 1{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                    IQKeyboardManager.shared.resignOnTouchOutside = false
                 }
             }else{
                 cell.endEditing(true)
@@ -100,7 +100,7 @@ extension ChangePinVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             if currentPage == 2{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                    IQKeyboardManager.shared.resignOnTouchOutside = false
                 }
             }else{
                 cell.endEditing(true)

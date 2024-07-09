@@ -25,7 +25,7 @@ class CreateNewPinCVC: UICollectionViewCell {
 	//MARK: - SetUpUI
 
     func setUpUI(){
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+        IQKeyboardManager.shared.resignOnTouchOutside = false
 		IQKeyboardManager.shared.enableAutoToolbar = false
         enterDigitCounts = 0
         CommonUI.setUpLbl(lbl: createPinLbl, text: CommonFunctions.localisation(key: "CREATE_PIN"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))

@@ -35,9 +35,10 @@ class enterNumberCVC: UICollectionViewCell {
 //Mark: - SetUpUI
 extension enterNumberCVC{
 	func setUpUI(currentPage: Int){
+        self.controller?.countryCode = self.countryPickerVw.selectedCountry.phoneCode
 		if currentPage == 0{
 			DispatchQueue.main.async {
-				IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+                IQKeyboardManager.shared.resignOnTouchOutside = true
 			}
 		}
 //        IQKeyboardManager.shared.enableAutoToolbar = false
@@ -46,7 +47,7 @@ extension enterNumberCVC{
         CommonUI.setUpLbl(lbl: enterNumberLbl, text: CommonFunctions.localisation(key: "PHONE_NUMBER"), textColor: UIColor.primaryTextcolor, font: UIFont.AtypDisplayMedium(Size.XXXLarge.sizeValue()))
         CommonUI.setUpLbl(lbl: enterNumberDescLbl, text: CommonFunctions.localisation(key: "ENTER_PHONE_DESCRIPTION"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         CommonUI.setTextWithLineSpacing(label: enterNumberDescLbl, text: CommonFunctions.localisation(key: "ENTER_PHONE_DESCRIPTION"), lineSpacing: 6, textAlignment: .left)
-    
+        
         CommonUI.setUpButton(btn: countryCodeBtn, text: self.controller?.countryCode ?? "", textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 16, font: UIFont.MabryPro(Size.XLarge.sizeValue()))
         CommonUI.setUpViewBorder(vw: self.phoneView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)
         CommonUI.setUpViewBorder(vw: self.passwordView, radius: 16, borderWidth: 1.5, borderColor: UIColor.borderColor.cgColor,backgroundColor: UIColor.whiteColor)

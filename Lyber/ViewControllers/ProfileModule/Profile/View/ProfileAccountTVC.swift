@@ -36,7 +36,9 @@ class ProfileAccountTVC: UITableViewCell {
 extension ProfileAccountTVC{
     func setUpCell(data : SecurityModel?,index : IndexPath,lastIndex : Int){
         CommonUI.setUpLbl(lbl: nameLbl, text: data?.name, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        
         CommonUI.setUpLbl(lbl: nameDescLbl, text: data?.desc, textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
+        self.nameDescLbl.isHidden = false
 		self.valueView.isHidden = true
         self.rightArrowView.isHidden = false
         self.switchView.isHidden = true

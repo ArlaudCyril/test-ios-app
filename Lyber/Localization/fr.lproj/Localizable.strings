@@ -456,6 +456,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "LANGUAGE" = "Langues";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "L'appareil ne supporte pas ou n'est pas enregistré avec FaceID";
 "ACCOUNT_STATEMENT" = "Relevé de compte";
+"EXPORT" = "Exporter";
 "EXPORT_OPERATIONS" = "Actions d'exportation";
 
 
@@ -572,7 +573,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "ALERT_VALID_ADDRESS" = "Veuillez saisir une adresse valide";
 "ALERT_EXCHANGE" = "Veuillez sélectionner votre échange";
 "ALERT_WHITELISTING" = "Veuillez activer la liste blanche d'adresses pour ajouter une adresse";
-"ALERT_AMOUNT_WITHDRAWAL" = "Le montant de votre retrait est inférieur au minimum requis";
+"ALERT_AMOUNT_WITHDRAWAL_INFERIOR" = "Le montant de votre retrait est inférieur au minimum requis";
 "ALERT_AMOUNT_WITHDRAWAL_SUPERIOR" = "Le montant de votre retrait plus les frais dépasse votre solde";
 
 //MARK: - Adress Book
@@ -696,7 +697,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "YOUR_NEW_RIB" = "Votre nouveau RIB";
 "ADD" = "Ajouter";
 "PLEASE_COMPLETE_FIELDS" = "Veuillez remplir tous les champs";
-"OWNER_NAME_ONLY_LETTERS" = "Le champ du nom du propriétaire ne doit contenir que des lettres";
+"OWNER_NAME_REQUIREMENTS" = "Le champ du nom du propriétaire ne doit contenir que des lettres, des espaces et des tirets.";
 "RECEIVE" = "Recevoir";
 "CURRENTLY_VALIDATING_RIB" = "Votre RIB est en cours de validation, nous le traiterons dans les meilleurs délais.";
 "RIB_BEEN_REFUSED" = "Ce RIB a été refusé. Veuillez essayer d'en utiliser un autre ou contacter l'assistance si vous avez besoin d'aide.";

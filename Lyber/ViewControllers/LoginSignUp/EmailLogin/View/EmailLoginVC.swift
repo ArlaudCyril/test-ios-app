@@ -79,7 +79,7 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 			self.emailLoginCVC = cell
             if currentPage == 0{
                 DispatchQueue.main.async {
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+                    IQKeyboardManager.shared.resignOnTouchOutside = true
                 }
             }else{
                 cell.endEditing(true)
@@ -96,7 +96,7 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             if currentPage == 1{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                    IQKeyboardManager.shared.resignOnTouchOutside = false
                 }
             }else{
                 cell.endEditing(true)
@@ -117,7 +117,7 @@ extension EmailLoginVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             if currentPage == 2{
                 DispatchQueue.main.async {
                     cell.pinTF1.becomeFirstResponder()
-                    IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+                    IQKeyboardManager.shared.resignOnTouchOutside = false
                 }
             }else{
                 cell.endEditing(true)

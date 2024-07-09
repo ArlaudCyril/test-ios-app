@@ -158,8 +158,8 @@ extension AddNewRIBVC{
         
         if !(containsValidData(input: iban) && containsValidData(input: bic) && containsValidData(input: ribName) && containsValidData(input: ownerName) && containsValidData(input: bankCountry)) {
             CommonFunctions.toster(CommonFunctions.localisation(key: "PLEASE_COMPLETE_FIELDS"))
-        }else if(!containsOnlyLetters(input: ownerName)){
-            CommonFunctions.toster(CommonFunctions.localisation(key: "OWNER_NAME_ONLY_LETTERS"))
+        }else if(!containsValidName(input: ownerName)){
+            CommonFunctions.toster(CommonFunctions.localisation(key: "OWNER_NAME_REQUIREMENTS"))
         }else{
             
             if(self.isEditingRib){
@@ -203,10 +203,13 @@ extension AddNewRIBVC{
         return !trimmedText.isEmpty && trimmedText.range(of: "[a-zA-Z0-9]", options: .regularExpression) != nil
     }
     
-    private func containsOnlyLetters(input: String) -> Bool {
-        let allowedCharacterSet = CharacterSet.letters
-        return input.rangeOfCharacter(from: allowedCharacterSet.inverted) == nil && !input.isEmpty
+    private func containsValidName(input: String) -> Bool {
+        var allowedCharacterSet = CharacterSet.letters
+        allowedCharacterSet.insert(charactersIn: " -")
+        
+        return input.rangeOfCharacter(from: allowedCharacterSet.inverted) == nil
     }
+
     
     // Add tap gesture recognizer to dismiss the keyboard
     private func setupTapGesture() {

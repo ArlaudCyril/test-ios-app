@@ -132,12 +132,10 @@ extension SceneDelegate{
 			}else{
 				PinVerificationVM().refreshTokenApi(completion: {[weak self]response in
 					if let response = response{
-						//print encore server error
 						userData.shared.userToken = response.data?.accessToken ?? ""
 						userData.shared.refreshToken = response.data?.refreshToken ?? ""
 						userData.shared.time = Date()
 						userData.shared.dataSave()
-						print("current time \(Date())")
 						GlobalVariables.isLogin = true
 						CommonFunctions.loadingProfileApi()
 						if userData.shared.logInPinSet != 0{

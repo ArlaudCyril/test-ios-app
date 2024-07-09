@@ -38,15 +38,13 @@ class ProfileVC: SwipeGesture {
     
     override func setUpUI(){
 
-		//Writings
-		//self.headerData = [CommonFunctions.localisation(key: "OPERATIONS"),CommonFunctions.localisation(key: "PAYMENT_METHOD"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
 		self.headerData = [CommonFunctions.localisation(key: "OPERATIONS"),CommonFunctions.localisation(key: "ACCOUNT"),CommonFunctions.localisation(key: "SECURITY"),""]
 		self.paymentData = [
 			buyDepositeModel(icon: Assets.mastercard.image(), iconBackgroundColor: UIColor.LightPurple, name: CommonFunctions.localisation(key: "CREDIT_CARD"), subName: "***0103", rightBtnName: "")
 		]
 		self.AccountData = [SecurityModel(name: CommonFunctions.localisation(key: "ACTIVITY_LOGS"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "LANGUAGE"), desc: ""),SecurityModel(name: CommonFunctions.localisation(key: "ACCOUNT_STATEMENT"), desc: "")]
 		self.securityData = [SecurityModel(name: CommonFunctions.localisation(key: "STRONG_AUTHENTIFICATION"), desc: CommonFunctions.localisation(key: "ENABLED_FEMININE")),
-			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: "\(CommonFunctions.localisation(key: "WHITELISTING")) \(CommonFunctions.localisation(key: "DISABLED"))"),
+			SecurityModel(name: CommonFunctions.localisation(key: "CRYPTO_ADRESS_BOOK"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PASSWORD"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "CHANGE_PIN"), desc: ""),
 			SecurityModel(name: CommonFunctions.localisation(key: "CONTACT_US"), desc: ""),
@@ -101,8 +99,6 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
             }else{
                 return transactionData.count == 0 ? 1: transactionData.count
             }
-//        }else if section == 1{
-//            return paymentData.count
         }else if section == 1{
             return AccountData.count
         }else if section == 2{
@@ -244,7 +240,13 @@ extension ProfileVC{
     func callTransactionApi(){
 		TransactionVM().getTransactionsApi(limit: 3, offset: 0, completion: {[]response in
             if let response = response{
-                self.transactionData = response.data ?? []
+                self.transactionData = []
+                let validTypes = ["order", "deposit", "withdraw", "strategy"]
+                for transaction in response.data ?? []{
+                    if validTypes.contains(transaction.type ?? "") {
+                        self.transactionData.append(transaction)
+                    }
+                }
 				self.transactionsLoaded = true
                 self.tblView.reloadData()
             }

@@ -35,7 +35,7 @@ class PersonalDataVC: ViewController {
     
     override func viewDidLoad() {
         IQKeyboardManager.shared.enable = true
-		IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.resignOnTouchOutside = true
         super.viewDidLoad()
         setUpUI()
     }

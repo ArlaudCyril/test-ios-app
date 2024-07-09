@@ -144,14 +144,16 @@ extension TransactionVC{
 					self.bottomReached = true
 				}
 				self.totalRows += self.numberOfTransactionsPerRequest
-				
+                let validTypes = ["order", "deposit", "withdraw", "strategy"] 
 				for transaction in response.data ?? []{
-					let date = CommonFunctions.getDateFormat(date:transaction.date ?? "", inputFormat:"yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat:"dd MMMM yyyy")
-					if(self.transactionDict.keys.contains(date)){
-						self.transactionDict[date]?.append(transaction)
-					}else{
-						self.transactionDict[date] = [transaction]
-					}
+                    if validTypes.contains(transaction.type ?? "") {
+                        let date = CommonFunctions.getDateFormat(date:transaction.date ?? "", inputFormat:"yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat:"dd MMMM yyyy")
+                        if(self.transactionDict.keys.contains(date)){
+                            self.transactionDict[date]?.append(transaction)
+                        }else{
+                            self.transactionDict[date] = [transaction]
+                        }
+                    }
 				}
 				let dateFormatter = DateFormatter()
 				dateFormatter.configureLocale()

@@ -78,11 +78,13 @@ extension KycSigningPopupVC{
     }
     
     @objc func actionBtnAct(){
+        self.actionBtn.isEnabled = false
         switch self.type {
         case .kyc:
             let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
             IdentityVerificationVM().startKycApi(headerType: "user", completion: {response in
                 if response != nil {
+                    self.actionBtn.isEnabled = true
                     vc.kycUrl = response?.data?.url ?? ""
                     vc.revalidation = true
                     let navVC = UINavigationController(rootViewController: vc)
@@ -95,9 +97,12 @@ extension KycSigningPopupVC{
             break
             
         case .signing:
+            CommonFunctions.showLoader()
             let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
             KycWebVM().getSignUrlApi(completion:{ response in
                 if(response != nil){
+                    CommonFunctions.hideLoader()
+                    self.actionBtn.isEnabled = true
                     vc.kycUrl = response?.data?.url ?? ""
                     let navVC = UINavigationController(rootViewController: vc)
                     UIApplication.shared.windows[0].rootViewController = navVC
@@ -110,6 +115,7 @@ extension KycSigningPopupVC{
             break
             
         case .buyUsdt:
+            self.actionBtn.isEnabled = true
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             vc.strategyType = .singleCoin
             vc.asset = self.toAsset
@@ -120,6 +126,7 @@ extension KycSigningPopupVC{
         case .certification:
             self.identityVerificationController?.btnPressed = true
             if(self.identityVerificationController?.urlKyc != ""){
+                self.actionBtn.isEnabled = true
                 let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
                 vc.kycUrl = self.identityVerificationController?.urlKyc ?? ""
                 self.identityVerificationController?.navigationController?.pushViewController(vc, animated: true)
@@ -130,10 +137,12 @@ extension KycSigningPopupVC{
             break
             
         case .googleAuthenticator:
+            self.actionBtn.isEnabled = true
             self.dismiss(animated: true)
             break
             
         case .deleteStrategy:
+            self.actionBtn.isEnabled = true
             self.investmentStrategyController?.deleteStrategy(strategy: self.strategy ?? Strategy())
             self.dismiss(animated: true)
             break

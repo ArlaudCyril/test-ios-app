@@ -154,7 +154,9 @@ class ConfirmExecutionVC: ViewController {
 			
 			self.detailViews = [self.toAssetPriceVw, self.amountVw, self.lyberFeesVw, self.totalVw]
             
-            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(value: self.fees?.description ?? "", numberOfDecimals: self.numberOfDecimal ?? 2))€"
+            let fees = self.fromAmountInvested - (Double(self.amountFromDeductedFees ?? "0") ?? 0)
+            self.amountValueLbl.text = "\(self.amountFromDeductedFees ?? "0")€"
+            self.lyberFeesValueLbl.text = "~\(CommonFunctions.formattedAssetBinance(value: fees.description, numberOfDecimals: self.numberOfDecimal ?? 2))€"
             
             //timerApplePay
             if let validTimeStamp = self.validTimeStamp {
@@ -217,6 +219,7 @@ extension ConfirmExecutionVC: ApplePayContextDelegate{
                     AFEventParamContentId: self.orderId ?? "",
                     AFEventParamContentType: "CcOrder"
                 ]);
+                sleep(2)
 				// Payment succeeded, show a receipt view
 				let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 				vc.assetId = self.asset?.id ?? ""

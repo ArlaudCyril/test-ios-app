@@ -137,8 +137,10 @@ extension VerificationKycSigningTVC{
         case .rejected, .notPerformed:
             if(self.statusKyc == .validated){
                 let vc = KycWebVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                CommonFunctions.showLoader()
                 KycWebVM().getSignUrlApi(completion:{ response in
                     if(response != nil){
+                        CommonFunctions.hideLoader()
                         vc.kycUrl = response?.data?.url ?? ""
                         let navVC = UINavigationController(rootViewController: vc)
                         UIApplication.shared.windows[0].rootViewController = navVC

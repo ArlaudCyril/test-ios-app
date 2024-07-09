@@ -21,6 +21,7 @@ class AllAssetsVC: SwipeGesture {
     var originalData : [PriceServiceResume] = []
     var filteredData : [AssetBaseData] = []
     var filterCoin : [PriceServiceResume] = []
+    var searchedCoin : [PriceServiceResume] = []
     var selectedCoinsType : coinType? = .Trending
     //MARK: - IB OUTLETS
     @IBOutlet var backBtn: UIButton!
@@ -89,7 +90,7 @@ class AllAssetsVC: SwipeGesture {
         }
         
         tblView.es.addPullToRefresh {
-//            self.coinsData = []
+            //TODO: continue filtering
             self.pageNumber  = 1
             self.apiHitOnce = false
             self.apiHitting = false
@@ -97,6 +98,7 @@ class AllAssetsVC: SwipeGesture {
             self.callGetAssetsApi()
         }
         
+        //hide euros
 		//hide euros
 		self.availableFlatVw.isHidden = true
     }
@@ -154,12 +156,12 @@ extension AllAssetsVC: UICollectionViewDelegate, UICollectionViewDataSource,UICo
 //MARK: - table view delegates and dataSource
 extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filterCoin.count
+        return searchedCoin.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddAssetsTVC", for: indexPath as IndexPath) as! AddAssetsTVC
-        cell.configureWithData(data : filterCoin[indexPath.row])
+        cell.configureWithData(data : searchedCoin[indexPath.row])
         return cell
     }
     
@@ -169,20 +171,20 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if screenType == .portfolio{
             let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-			vc.assetId = filterCoin[indexPath.row].id
+			vc.assetId = searchedCoin[indexPath.row].id
             self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .exchange{
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.fromAssetId = self.fromAssetId
-			vc.toAssetId = filterCoin[indexPath.row].id
+			vc.toAssetId = searchedCoin[indexPath.row].id
 			vc.fromAssetPrice = coinsData.first(where: {$0.id == self.fromAssetId})?.priceServiceResumeData.lastPrice
-			vc.toAssetPrice = filterCoin[indexPath.row].priceServiceResumeData.lastPrice
+			vc.toAssetPrice = searchedCoin[indexPath.row].priceServiceResumeData.lastPrice
 			vc.strategyType = .Exchange
 			//            vc.assetsData = coinsData[indexPath.row]
 			self.navigationController?.pushViewController(vc, animated: true)
         }else if screenType == .singleAsset || screenType == .singleAssetStrategy{
-			let toAsset = coinsData.first(where: {$0.id == "usdc"}) ?? filterCoin[indexPath.row]
-            if(self.fromAssetId == "usdc" || filterCoin[indexPath.row].id == "usdc"){
+			let toAsset = coinsData.first(where: {$0.id == "usdc"}) ?? searchedCoin[indexPath.row]
+            if(self.fromAssetId == "usdc" || searchedCoin[indexPath.row].id == "usdc"){
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyType = .singleCoin
 				vc.asset = toAsset
@@ -191,9 +193,9 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
 				if(CommonFunctions.getBalance(id: "usdc") != nil){
 					let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 					vc.fromAssetId = "usdc"
-					vc.toAssetId = filterCoin[indexPath.row].id
+					vc.toAssetId = searchedCoin[indexPath.row].id
 					vc.fromAssetPrice = coinsData.first(where: {$0.id == "usdc"})?.priceServiceResumeData.lastPrice
-					vc.toAssetPrice = filterCoin[indexPath.row].priceServiceResumeData.lastPrice
+					vc.toAssetPrice = searchedCoin[indexPath.row].priceServiceResumeData.lastPrice
 					vc.strategyType = .Exchange
 					self.navigationController?.pushViewController(vc, animated: true)
 				}else{
@@ -253,12 +255,13 @@ extension AllAssetsVC{
    
     @objc func searchTextChange(){
         if searchTF.text == ""{
-			self.filterData()
+            self.searchedCoin = self.filterCoin
         }else{
-            self.filterCoin = []
+            self.searchedCoin = []
+            
             self.filteredData = coinDetailData.filter({
-				($0.id?.hasPrefix(searchTF.text ?? "") ?? false) || ($0.fullName?.lowercased().hasPrefix(searchTF.text?.lowercased() ?? "") ?? false)
-
+                ($0.id?.hasPrefix(searchTF.text ?? "") ?? false) || ($0.fullName?.lowercased().hasPrefix(searchTF.text?.lowercased() ?? "") ?? false)
+                
             })
             print(filteredData)
             for i in 0..<self.filteredData.count{
@@ -266,18 +269,16 @@ extension AllAssetsVC{
                 
                 for k in 0..<self.coinsData.count{
                     if self.coinsData[k].id == self.filteredData[i].id ?? ""{
-						if(!(self.fromAssetId != "" && self.coinsData[k].id == self.fromAssetId)){
-							filterCoin.append(self.coinsData[k])
-							print("filterCoin coins data",filterCoin)
-						}
+                        if(!(self.fromAssetId != "" && self.coinsData[k].id == self.fromAssetId) && (self.filterCoin.contains { $0.id == self.coinsData[k].id })
+                        ){
+                            searchedCoin.append(self.coinsData[k])
+                            print("searchedCoin coins data",searchedCoin)
+                        }
                     }
                 }
             }
         }
-        
-        print("coins data",coinsData)
         self.tblView.reloadData()
-        
     }
     
     func showSpinnerOnTableFooter(){
@@ -316,8 +317,7 @@ extension AllAssetsVC{
 			}
 			
 		}
-        
-        self.tblView.reloadData()
+        searchTextChange()
     }
 	
 	func presentAlertBuyUsdt(toAsset : PriceServiceResume){

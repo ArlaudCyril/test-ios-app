@@ -459,6 +459,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "LANGUAGE" = "Language";
 "DEVICE_NOT_SUPPORT_REGISTERED_FACEID" = "Device do not support or is not registered with FaceID";
 "ACCOUNT_STATEMENT" = "Account statement";
+"EXPORT" = "Export";
 "EXPORT_OPERATIONS" = "Export operations";
 
 
@@ -698,7 +699,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "YOUR_NEW_RIB" = "Your new RIB";
 "ADD" = "Add";
 "PLEASE_COMPLETE_FIELDS" = "Please complete all fields";
-"OWNER_NAME_ONLY_LETTERS" = "The owner name field must contain letters only.";
+"OWNER_NAME_REQUIREMENTS" = "The owner name field must contain only letters, spaces, and hyphens.";
 "RECEIVE" = "Receive";
 "CURRENTLY_VALIDATING_RIB" = "We are currently validating your RIB and will process it as soon as possible.";
 "RIB_BEEN_REFUSED" = "This RIB has been refused. Please try using another one or contact support if you need help.";

@@ -26,7 +26,7 @@ class ConfirmPinCVC: UICollectionViewCell {
 //Mark:- SetUpUI
 extension ConfirmPinCVC{
     func setUpUI(verifyPin : Bool){
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = false
+        IQKeyboardManager.shared.resignOnTouchOutside = false
 		IQKeyboardManager.shared.enableAutoToolbar = false
         enterDigitCounts = 0
         if verifyPin == true{

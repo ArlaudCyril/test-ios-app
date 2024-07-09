@@ -112,11 +112,8 @@ class ApiHandler: NSObject {
                         if let data = response.data{
                             do{
                                 let jsondata = try JSON(data: data)
-                                print(jsondata)
-
+//                                print(jsondata)
                                 let json = try JSONDecoder().decode(T.self, from: data)
-								print("json")
-                                print(json)
 								onSuccess(json)
 
                             }
