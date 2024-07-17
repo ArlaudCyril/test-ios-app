@@ -56,6 +56,7 @@ extension TransactionVC : UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
 		return self.transactionDict.keys.count
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.transactionDict[transactionDictKeys[section]]?.count ?? 0
     }
@@ -115,11 +116,20 @@ extension TransactionVC : UITableViewDelegate,UITableViewDataSource{
 			vc.date = transaction?.date ?? ""
 			
 		}else if(transaction?.type == "withdraw"){
-			vc.type = .withdraw
+            vc.type = .withdraw
+            vc.transactionId = transaction?.id ?? ""
+            vc.status = transaction?.status ?? ""
+            vc.to = transaction?.toAddress ?? ""
+            vc.amount = "\(transaction?.amount ?? "") \(transaction?.asset ?? "")"
+            vc.date = transaction?.date ?? ""
+            
+        }else if(transaction?.type == "withdraw_euro"){
+			vc.type = .withdrawEuro
 			vc.transactionId = transaction?.id ?? ""
 			vc.status = transaction?.status ?? ""
-			vc.to = transaction?.toAddress ?? ""
-			vc.amount = "\(transaction?.amount ?? "") \(transaction?.asset ?? "")"
+			vc.iban = transaction?.iban ?? ""
+            vc.amount = "\(transaction?.amount ?? "") \(transaction?.asset?.uppercased() ?? "")"
+            vc.feesPaid = CommonFunctions.formattedAssetBinance(value: String((transaction?.eurAmount ?? 0) - (transaction?.eurAmountDeductedLyberFees ?? 0)), numberOfDecimals: 2)
 			vc.date = transaction?.date ?? ""
 			
 		}
@@ -144,7 +154,7 @@ extension TransactionVC{
 					self.bottomReached = true
 				}
 				self.totalRows += self.numberOfTransactionsPerRequest
-                let validTypes = ["order", "deposit", "withdraw", "strategy"] 
+                let validTypes = ["order", "deposit", "withdraw", "strategy", "withdraw_euro"] 
 				for transaction in response.data ?? []{
                     if validTypes.contains(transaction.type ?? "") {
                         let date = CommonFunctions.getDateFormat(date:transaction.date ?? "", inputFormat:"yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat:"dd MMMM yyyy")

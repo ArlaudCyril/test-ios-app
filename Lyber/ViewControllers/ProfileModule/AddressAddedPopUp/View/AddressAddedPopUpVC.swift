@@ -38,6 +38,10 @@ class AddressAddedPopUpVC: ViewController {
 	var amount = ""
 	var date = ""
     
+    //withdrawEuro
+    var iban = ""
+    var eurAmount = ""
+    
     //RIB selected
     var ribSelected : RibData?
     var indexSelected : Int?
@@ -184,7 +188,7 @@ extension AddressAddedPopUpVC{
             pasteboard.string = self.orderId
         }else if(type == .deposit){
             pasteboard.string = self.transactionId
-        }else if(type == .withdraw){
+        }else if(type == .withdraw || type == .withdrawEuro){
             pasteboard.string = self.transactionId
         }else{
             pasteboard.string = self.editAddress?.address
@@ -196,7 +200,7 @@ extension AddressAddedPopUpVC{
 		let pasteboard = UIPasteboard.general
         if(type == .deposit){
             pasteboard.string = self.from
-        }else if(type == .withdraw){
+        }else if(type == .withdraw || type == .withdrawEuro){
             pasteboard.string = self.to
         }
 		
@@ -343,6 +347,30 @@ extension AddressAddedPopUpVC{
             CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
             self.toView.isHidden = true
+            self.iconView.isHidden = true
+        }else if(type == .withdrawEuro){
+            self.headerView.headerLbl.text = CommonFunctions.localisation(key: "EURO_WITHDRAWAL")
+            
+            CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "TRANSACTION_ID"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.addressCopyLbl, text: self.transactionId.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.addressImg.isHidden = false
+            
+            CommonUI.setUpLbl(lbl: self.networkLbl, text: CommonFunctions.localisation(key: "STATUS"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.networkNameLbl, text: self.status.decoderStatusWithdraw, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+
+            CommonUI.setUpLbl(lbl: self.addressOriginLbl, text: CommonFunctions.localisation(key: "IBAN"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.addressOriginNameLbl, text: self.iban.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.addressOriginImg.isHidden = false
+            
+            CommonUI.setUpLbl(lbl: self.toLbl, text: CommonFunctions.localisation(key: "AMOUNT"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.toNameLbl, text: self.amount, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.feesPaidLbl, text: CommonFunctions.localisation(key: "FEES"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.feesPaidNameLbl, text: self.feesPaid, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            
+            CommonUI.setUpLbl(lbl: self.dateAddedLbl, text: CommonFunctions.localisation(key: "DATE"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.dateLbl, text: CommonFunctions.getDateFormat(date: self.date, inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd/MM/yyyy HH:mm"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            
             self.iconView.isHidden = true
         }else if(type == .ribSelected){
             self.headerView.headerLbl.text = ribSelected?.name ?? ""

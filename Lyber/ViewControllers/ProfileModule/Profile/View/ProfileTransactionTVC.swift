@@ -70,7 +70,12 @@ extension ProfileTransactionTVC{
 			self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
 			self.dateLbl.text = data?.status?.decoderStatusWithdraw
 			
-		}else if data?.type == "strategy"{
+		}else if data?.type == "withdraw_euro"{
+            self.coinImg.image = Assets.withdraw.image()
+            self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL_EURO")
+            self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
+            self.dateLbl.text = data?.status?.decoderStatusWithdraw
+        }else if data?.type == "strategy"{
 			if(data?.status == "FAILURE")
 			{
 				self.failureIcon.isHidden = false

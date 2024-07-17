@@ -63,22 +63,27 @@ extension TransactionTVC{
         }else if data?.type == "withdraw"{
             self.coinImg.image = Assets.withdraw.image()
             self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL_TRANSACTION", parameter: data?.asset?.uppercased() ?? "")
+            self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
+            self.dateLbl.text = data?.status?.decoderStatusWithdraw
+        }else if data?.type == "withdraw_euro"{
+            self.coinImg.image = Assets.withdraw.image()
+            self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL_EURO")
 			self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
 			self.dateLbl.text = data?.status?.decoderStatusWithdraw
 		}else if data?.type == "strategy"{
-			if(data?.status == "FAILURE")
-			{
-				self.failureIcon.isHidden = false
-				self.amountVw.isHidden = true
-			}else{
-				self.euroLbl.text = "\(data?.totalStableAmountSpent ?? "0") USDC"
-			}
-			self.coinImg.image = Assets.intermediate_strategy_outline.image()
-			self.transactionTypeLbl.text = data?.strategyName
-			if(!(data?.nextExecution?.isEmpty ?? true)){
-				self.dateLbl.text = "\(CommonFunctions.localisation(key: "NEXT_PAYMENT")):  \(CommonFunctions.getDateFormat(date: data?.nextExecution ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMMM"))"
-			}
-		}
+            if(data?.status == "FAILURE")
+            {
+                self.failureIcon.isHidden = false
+                self.amountVw.isHidden = true
+            }else{
+                self.euroLbl.text = "\(data?.totalStableAmountSpent ?? "0") USDC"
+            }
+            self.coinImg.image = Assets.intermediate_strategy_outline.image()
+            self.transactionTypeLbl.text = data?.strategyName
+            if(!(data?.nextExecution?.isEmpty ?? true)){
+                self.dateLbl.text = "\(CommonFunctions.localisation(key: "NEXT_PAYMENT")):  \(CommonFunctions.getDateFormat(date: data?.nextExecution ?? "", inputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", outputFormat: "dd MMMM"))"
+            }
+        }
     }
     
 }

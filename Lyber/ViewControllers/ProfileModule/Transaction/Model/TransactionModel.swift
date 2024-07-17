@@ -35,6 +35,11 @@ struct Transaction: Codable {
 	//withdraw
 	let toAddress: String?
 	
+    //withdrawEuro
+    let iban: String?
+    let eurAmount: Double?
+    let eurAmountDeductedLyberFees: Double?
+    
 	//strategy
 	let nextExecution: String?
 	let totalStableAmountSpent: String?

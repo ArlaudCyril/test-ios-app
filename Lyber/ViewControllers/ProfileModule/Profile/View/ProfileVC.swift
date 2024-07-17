@@ -241,7 +241,7 @@ extension ProfileVC{
 		TransactionVM().getTransactionsApi(limit: 3, offset: 0, completion: {[]response in
             if let response = response{
                 self.transactionData = []
-                let validTypes = ["order", "deposit", "withdraw", "strategy"]
+                let validTypes = ["order", "deposit", "withdraw", "strategy", "withdraw_euro"]
                 for transaction in response.data ?? []{
                     if validTypes.contains(transaction.type ?? "") {
                         self.transactionData.append(transaction)

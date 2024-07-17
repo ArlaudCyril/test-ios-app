@@ -292,9 +292,16 @@ extension PortfolioHomeVC{
         CommonFunctions.showLoader(self.view)
         AllAssetsVM().getAllAssetsApi(completion: {[]response in
             if let response = response {
-                CommonFunctions.hideLoader(self.view )
-                for i in 0..<6{
-                    self.allAvailableAssets.append(response[i])
+                CommonFunctions.hideLoader(self.view)
+                var count = 0
+                for i in 0..<response.count {
+                    if response[i].id != "usdt" {
+                        self.allAvailableAssets.append(response[i])
+                        count += 1
+                    }
+                    if count == 6 {
+                        break
+                    }
                 }
                 self.tblView.reloadData()
             }

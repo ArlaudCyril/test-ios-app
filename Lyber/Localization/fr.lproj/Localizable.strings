@@ -419,7 +419,9 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "OPERATIONS" = "Opérations";
 "EXCH" = "Exch. ";
 "WITHDRAWAL" = "Retrait";
+"EURO_WITHDRAWAL" = "Retrait d'euros";
 "WITHDRAWAL_TRANSACTION" = "Retrait de %@";
+"WITHDRAWAL_EURO" = "Retrait d'EUR.";
 "PAYMENT_METHOD" = "Mode de paiement";
 "ADD_PAYMENT_METHOD" = "Nouveau moyen de paiement";
 "ACCOUNT" = "Compte";

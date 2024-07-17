@@ -42,7 +42,7 @@ class WithdrawVC: ViewController, UITextFieldDelegate {
 		self.tblView.dataSource = self
 		
         if(typeWithdraw == .addresses){
-            CommonUI.setUpLbl(lbl: self.withdrawAddressLbl, text: CommonFunctions.localisation(key: "WITHDRAW_ON"), textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.withdrawAddressLbl, text: CommonFunctions.localisation(key: "WITHDRAW_ON"), textColor: UIColor.Grey423D33, font: UIFont.MabryProBold(Size.Large.sizeValue()))
             self.getNetworks()
             self.addRibBtn.isHidden = true
         }else{
