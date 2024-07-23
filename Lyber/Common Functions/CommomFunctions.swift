@@ -470,6 +470,7 @@ class CommonFunctions{
 		}
 		return ""
 	}
+    
 	static func getCurrency(id: String) -> AssetBaseData{
 		for currency in Storage.currencies {
 			if(currency?.id == id){

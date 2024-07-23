@@ -55,6 +55,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
             self.resendCodeLbl.isHidden = false
             CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_SMS"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         case "email":
+            self.resendCodeLbl.isHidden = false
             CommonUI.setUpLbl(lbl: enterCodeLbl, text: CommonFunctions.localisation(key: "ENTER_CODE_RECEIVED_EMAIL"), textColor: UIColor.SecondarytextColor, font: UIFont.MabryPro(Size.Large.sizeValue()))
         default:
             print("Unsupported 2FA method")

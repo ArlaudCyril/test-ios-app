@@ -246,7 +246,7 @@ extension AddressAddedPopUpVC{
 			self.toView.isHidden = true
 			self.feesPaidView.isHidden = true
 		}else if(type == .order){
-			self.headerView.headerLbl.text = CommonFunctions.localisation(key: "ORDER")
+			self.headerView.headerLbl.text = CommonFunctions.localisation(key: "EXCHANGE_NOUN")
 			
 			CommonUI.setUpLbl(lbl: self.addressLbl, text: CommonFunctions.localisation(key: "ORDER_ID"), textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Large.sizeValue()))
 			CommonUI.setUpLbl(lbl: self.addressCopyLbl, text: self.orderId.addressFormat, textColor: UIColor.grey36323C, font: UIFont.MabryPro(Size.Large.sizeValue()))

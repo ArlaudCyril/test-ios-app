@@ -976,7 +976,7 @@ extension InvestInMyStrategyVC {
             if let response = response{
                 for address in response.data ?? []{
                     if(address.network == self?.network?.id){
-                        self?.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(), svgUrl: CommonFunctions.getImage(id: address.network?.decoderNetwork ?? "btc"), iconBackgroundColor: UIColor.clear, name: address.name , subName: address.address ?? "", rightBtnName: ""))
+                        self?.withdrawToAccountData.append(buyDepositeModel(icon: UIImage(), svgUrl: self?.network?.imageUrl, iconBackgroundColor: UIColor.clear, name: address.name , subName: address.address ?? "", rightBtnName: ""))
                     }
                 }
             }

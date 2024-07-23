@@ -8,7 +8,7 @@
 import UIKit
 
 class checkAccountCompletedVC: ViewController {
-    //MARK: - Variables
+    //MARK: - Variables	
     var tableData : [AccountCompletedModel] =
     [AccountCompletedModel(index: 1, text: CommonFunctions.localisation(key: "CREATE_AN_ACCOUNT"), isCompleted: false, isPending: true, rightIcon: Assets.right_arrow_grey.image()),
      AccountCompletedModel(index: 2, text: CommonFunctions.localisation(key: "FILL_PERSONAL_DATA"), isCompleted: false, isPending: false, rightIcon: Assets.right_arrow_grey.image()),

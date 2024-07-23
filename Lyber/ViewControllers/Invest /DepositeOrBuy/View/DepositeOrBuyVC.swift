@@ -306,10 +306,13 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 			case .AssetDetailPagePopUp:
 				//Detail Page
 				if indexPath.row == 0{
-					let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-					vc.asset = CommonFunctions.getCurrency(id: self.coinId ?? "")
-					self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
-
+                    if (CommonFunctions.getBalance(id: self.coinId ?? "") != nil){
+                        let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                        vc.asset = CommonFunctions.getCurrency(id: self.coinId ?? "")
+                        self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                        CommonFunctions.toster(CommonFunctions.localisation(key: "NO_BALANCE_WITHDRAW"))
+                    }
 				}else if indexPath.row == 1{
 					self.dismiss(animated: true, completion: nil)
 					

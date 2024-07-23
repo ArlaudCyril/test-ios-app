@@ -301,17 +301,21 @@ extension PersonalDataVC{
                     print(response)
 					self?.nextButton.hideLoading()
 					self?.nextButton.isUserInteractionEnabled = true
-					userData.shared.personalDataStepComplete = 3
-					userData.shared.stepRegisteringComplete = 2
+					
 					
 					userData.shared.investmentExperience = self?.investmentExp ?? ""
 					userData.shared.sourceOfIncome = self?.sourceOfIncome ?? ""
 					userData.shared.workIndustry = self?.workIndustry ?? ""
 					userData.shared.annualIncome = self?.annualIncome ?? ""
 					userData.shared.activityOnLyber = self?.activity ?? ""
-					userData.shared.dataSave()
 					
-					let vc = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                    var vc : ViewController = checkAccountCompletedVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                    if(userData.shared.stepRegisteringComplete >= 2){
+                        vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+                    }
+                    userData.shared.personalDataStepComplete = 3
+                    userData.shared.stepRegisteringComplete = 2
+                    userData.shared.dataSave()
 					self?.navigationController?.pushViewController(vc, animated: false)
 					
                 }
