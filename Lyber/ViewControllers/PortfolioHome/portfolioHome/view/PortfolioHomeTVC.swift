@@ -17,7 +17,10 @@ class PortfolioHomeTVC: UITableViewCell {
     var activityIndicator : NVActivityIndicatorView!
     var controller : PortfolioHomeVC?
     var markerController : customMarker?
+    var entrySelected = ChartDataEntry()
     let customMarkerView = customMarker()
+    var graphValues: [ChartDataEntry] = []
+    var dateTimeArr : [graphStruct] = []
 	var chartData = [CommonFunctions.localisation(key: "1D"), CommonFunctions.localisation(key: "1W"),"1M", "ALL"]
 
     //MARK: - IB OUTLETS
@@ -45,7 +48,7 @@ extension PortfolioHomeTVC{
         self.profilePic.isUserInteractionEnabled = true
         self.chartView.delegate = self
         self.chartView.addSubview(customMarkerView)
-		
+        
 		self.collView.layer.cornerRadius = 12
 		self.collView.delegate = self
 		self.collView.dataSource = self
@@ -65,7 +68,10 @@ extension PortfolioHomeTVC: ChartViewDelegate{
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-       
+        self.customMarkerView.center = CGPoint(x: highlight.xPx, y: (highlight.yPx ))
+        self.entrySelected = entry
+        self.customMarkerView.contentView.isHidden = false
+        self.hideShowBubble(xPixel: highlight.xPx, yPixel: highlight.yPx, xValue: highlight.x, yValue:highlight.y )
     }
 
 }
@@ -133,26 +139,74 @@ extension PortfolioHomeTVC{
 	}
 	
     func drawChartView(limit: Int, daily: Bool){
-		var graphValues: [ChartDataEntry] = []
+        self.graphValues = []
+        self.dateTimeArr = []
 		
         PortfolioHomeVM().walletGetBalanceHistoryApi(limit: limit,daily: daily, completion:{response in
 			if response != nil{
 				if(response?.data.count ?? 0 > 0){
 					for i in 0...(response?.data.count ?? 1)-1{
-						graphValues.append(ChartDataEntry(x: Double(i), y: Double(response?.data[i].total ?? "0" ) ?? 0.0))
+                        self.graphValues.append(ChartDataEntry(x: Double(i), y: Double(response?.data[i].total ?? "0" ) ?? 0.0))
+                        self.dateTimeArr.append(graphStruct(index: i, date: response?.data[i].date ?? "", euro: Double(response?.data[i].total ?? "") ?? 0))
 					}
-					graphValues.append(ChartDataEntry(x: Double(response?.data.count ?? 0), y: totalPortfolio))
+                    self.graphValues.append(ChartDataEntry(x: Double(response?.data.count ?? 0), y: totalPortfolio))
+                    self.dateTimeArr.append(graphStruct(index: response?.data.count ?? 0, date: response?.data.last?.date ?? "", euro: Double(response?.data.last?.total ?? "") ?? 0))
 				}else{
-					graphValues.append(ChartDataEntry(x: Double(0), y: totalPortfolio))
-					graphValues.append(ChartDataEntry(x: Double(1), y: totalPortfolio))
+                    self.graphValues.append(ChartDataEntry(x: Double(0), y: totalPortfolio))
+                    self.graphValues.append(ChartDataEntry(x: Double(1), y: totalPortfolio))
 				}
 				
 				
-				self.extractedFunc(graphValues, UIColor.PurpleColor)
-				let lastPoint = self.chartView.getPosition(entry: graphValues[graphValues.count - 1], axis: .left)
+                self.extractedFunc(self.graphValues, UIColor.PurpleColor)
+                let lastPoint = self.chartView.getPosition(entry: self.graphValues[self.graphValues.count - 1], axis: .left)
 				print("lastPoint : \(lastPoint)")
-				self.customMarkerView.contentView.isHidden = true
+                self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
+                self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.graphValues[self.graphValues.count - 1].y)
 			}
 		})
 	}
+    
+    func hideShowBubble(xPixel:CGFloat,yPixel : CGFloat,xValue : CGFloat,yValue: CGFloat){
+        if yPixel > self.chartView.layer.bounds.height/2{
+            customMarkerView.bottomBubble.isHidden = true
+            customMarkerView.topBubble.isHidden = false
+        }else{
+            customMarkerView.bottomBubble.isHidden = false
+            customMarkerView.topBubble.isHidden = true
+        }
+        customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
+        customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
+
+        for (index,_) in stride(from: 0, through: (self.dateTimeArr.count)-1, by: 1).enumerated(){
+            if self.dateTimeArr[index].index == Int(xValue){
+                print("NEW VALUE : \(self.dateTimeArr[index].date)")
+                customMarkerView.dateTimeLbl.text = CommonFunctions.getDateFormat(date: self.dateTimeArr[index].date, inputFormat: "yyyy-MM-dd'T'HH:mm", outputFormat: "MMM. d, HH:mm")
+                customMarkerView.bottomDateLbl.text = CommonFunctions.getDateFormat(date: self.dateTimeArr[index].date, inputFormat: "yyyy-MM-dd'T'HH:mm", outputFormat: "MMM. d, HH:mm")
+            }
+        }
+        
+        adjustBubblePosition(xPixel: xPixel)
+    }
+    
+    func adjustBubblePosition(xPixel: CGFloat) {
+        let bubbleWidth = self.customMarkerView.frame.width
+        let chartWidth = self.chartView.bounds.width
+
+        let leftEdgeDistance = xPixel - bubbleWidth / 2
+        let rightEdgeDistance = chartWidth - xPixel - bubbleWidth / 2
+
+        if leftEdgeDistance < 0 {
+            self.customMarkerView.imageViewCenterTopBubbleConstraint.constant = -leftEdgeDistance
+            self.customMarkerView.imageViewCenterBottomBubbleConstraint.constant = -leftEdgeDistance
+        } else if rightEdgeDistance < 0 {
+            self.customMarkerView.imageViewCenterTopBubbleConstraint.constant = rightEdgeDistance
+            self.customMarkerView.imageViewCenterBottomBubbleConstraint.constant = rightEdgeDistance
+        } else {
+            self.customMarkerView.imageViewCenterTopBubbleConstraint.constant = 0
+            self.customMarkerView.imageViewCenterBottomBubbleConstraint.constant = 0
+        }
+
+        self.customMarkerView.layoutIfNeeded()
+    }
 }
+
