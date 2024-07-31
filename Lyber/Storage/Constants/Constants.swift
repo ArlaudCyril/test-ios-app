@@ -123,6 +123,8 @@ struct Constants{
         // MARK: - New Login keys
         static let phoneNo = "phoneNo"
         static let countryCode = "countryCode"
+        static let signature = "signature"
+        static let timestamp = "timestamp"
         static let code = "code"
         static let method = "method"
         static let A = "A"

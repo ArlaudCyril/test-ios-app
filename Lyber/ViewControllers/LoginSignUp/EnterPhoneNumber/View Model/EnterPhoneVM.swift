@@ -6,21 +6,26 @@
 //
 
 import Foundation
+import CommonCrypto
 
 class EnterPhoneVM {
     // MARK:- API CALL
 	func SignUpApi(phoneNumber: String,countryCode : String, completion: @escaping ( (signUpApi?) -> Void )){
+        let secretKey = "409f3hui4rbf2d2E/4-39u2!-9di4b23-01C*SRFV2d12jbf)2DBFG3i4f24f"
+        let timestamp = String(Int(Date().timeIntervalSince1970))
         var phone : String = phoneNumber
         
         if(phone.first == "0"){
             phone.remove(at: phone.startIndex)
         }
-        
+        let payload = "{\"countryCode\":\(Int(countryCode) ?? 0),\"phoneNo\":\"\(phone)\"}"
+        let signature = createSignature(secretKey: secretKey, payload: payload, timestamp: timestamp)
+
         let param: [String: Any] = [
             Constants.ApiKeys.phoneNo: phone,
             Constants.ApiKeys.countryCode: Int(countryCode) ?? 0 as Any,
-//            Constants.ApiKeys.device_type: Constants.deviceType,
-//            Constants.ApiKeys.device_id: Constants.deviceID,
+            Constants.ApiKeys.signature: signature,
+            Constants.ApiKeys.timestamp: timestamp
         ]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetPhone, withParameters: param, ofType: signUpApi.self, onSuccess: { response in
@@ -29,7 +34,7 @@ class EnterPhoneVM {
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "SignUpApi",code: code, error: error)
 			completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
+        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "signature")
     }
     
     func enterOTPApi(otp: String, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -101,5 +106,26 @@ class EnterPhoneVM {
                 print(error)
                 CommonFunctions.toster(error)
             }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: headerType)
+    }
+}
+//MARK: other functions
+extension EnterPhoneVM{
+    
+    func createSignature(secretKey: String, payload: String, timestamp: String) -> String {
+        let message = "\(timestamp).\(payload)"
+        let key = secretKey.data(using: .utf8)!
+        let messageData = message.data(using: .utf8)!
+
+        var hmac = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA256), key.bytes, key.count, messageData.bytes, messageData.count, &hmac)
+
+        let hmacData = Data(hmac)
+        return hmacData.map { String(format: "%02hhx", $0) }.joined()
+    }
+}
+
+extension Data {
+    var bytes: [UInt8] {
+        return [UInt8](self)
     }
 }

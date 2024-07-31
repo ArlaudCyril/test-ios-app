@@ -39,6 +39,7 @@ class PortfolioHomeVC: NotSwipeGesture {
             }
 			self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
 		}
+        
 		
     }
 

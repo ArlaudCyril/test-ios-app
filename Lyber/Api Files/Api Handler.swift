@@ -42,15 +42,20 @@ class ApiHandler: NSObject {
         
 		var header : HTTPHeaders = []
         userData.shared.getData()
+        var params = parameters
         
         // MARK: - HEADER CREATED, YOU CAN ALSO SEND YOUR CUSTOM HEADER
-//		header.add(name: "X-Api-Version", value: Constants.apiVersion)
 		header.add(name: "x-api-version", value: Constants.apiVersion)
 		switch headerType {
 			case "user":
 				header.add(name: "Authorization", value: "Bearer \(userData.shared.userToken)")
 			case "registration":
 				header.add(name: "Authorization", value: "Bearer \(userData.shared.registrationToken)")
+            case "signature":
+                header.add(name: "X-Signature", value: params[Constants.ApiKeys.signature] as! String)
+                header.add(name: "X-Timestamp", value: params[Constants.ApiKeys.timestamp] as! String)
+                params.removeValue(forKey: Constants.ApiKeys.signature)
+                params.removeValue(forKey: Constants.ApiKeys.timestamp)
 			case "none":
 				break
 			default:
@@ -60,9 +65,9 @@ class ApiHandler: NSObject {
         
         
         // MARK:- PRINT ALL REQUESTED DATA
-		print("Requested data :-\n URL: \(GlobalVariables.baseUrl)\(url)\n HttpMethod: \(method)\n Header: \(header)\n Requested Params: \(parameters)\n\n\n\n\n")
+		print("Requested data :-\n URL: \(GlobalVariables.baseUrl)\(url)\n HttpMethod: \(method)\n Header: \(header)\n Requested Params: \(params)\n\n\n\n\n")
 		print("\(GlobalVariables.baseUrl)\(url)")
-        print(parameters)
+        print(params)
         print(header)
         print(method)
         
@@ -77,13 +82,13 @@ class ApiHandler: NSObject {
             
             var kMehod: HTTPMethod?
 			var url = "\(GlobalVariables.baseUrl)\(url)"
-			var params = parameters
+			
             
             switch method {
             case .GET:
                 kMehod = .get
 					var i = 0
-					for (key, value) in parameters {
+					for (key, value) in params {
 						if(i == 0){
 							url += "?\(key)=\(value)"
 						}else{
@@ -160,7 +165,7 @@ class ApiHandler: NSObject {
             
 		}else if method == .PostWithJSON || method == .PUTWithJSON || method == .DELETEWithJSON || method == .PATCHWithJSON{
             
-            let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [JSONSerialization.WritingOptions.prettyPrinted, JSONSerialization.WritingOptions.sortedKeys])
             
 			var request = URLRequest(url: URL(string: "\(GlobalVariables.baseUrl)\(url)")!)
             request.httpBody = jsonData
@@ -209,6 +214,9 @@ class ApiHandler: NSObject {
 									print(dict[Constants.ApiKeys.message].stringValue)
 									onFailure(false,"-1", dict[Constants.ApiKeys.code].stringValue)
 								}
+                            }else if (statusCode == 429){
+                                print("Rate limit")
+                                onFailure(false,"Rate limit", "429")
                             }else if (statusCode == 500 || statusCode == 503){
                                 print("Server Error")
                                 onFailure(false,"Server Error", "500")
@@ -238,7 +246,7 @@ class ApiHandler: NSObject {
                 break
             }
             
-			AF.request("\(GlobalVariables.baseUrl)\(url)", method: kMehod ?? .get, parameters: parameters, encoding: URLEncoding.default, headers: header).responseString{ response in
+			AF.request("\(GlobalVariables.baseUrl)\(url)", method: kMehod ?? .get, parameters: params, encoding: URLEncoding.default, headers: header).responseString{ response in
                 print(response)
                 let statusCode = response.response?.statusCode
                 switch response.result{
@@ -310,7 +318,7 @@ class ApiHandler: NSObject {
                     print("\n param : \(value) \n imgName : \("File-\(Date().timeIntervalSince1970).jpeg") ")
                 }
                 
-                for (key, value) in parameters {
+                for (key, value) in params {
                     multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
                 }
                 

@@ -22,6 +22,7 @@ class PortfolioHomeTVC: UITableViewCell {
     var graphValues: [ChartDataEntry] = []
     var dateTimeArr : [graphStruct] = []
 	var chartData = [CommonFunctions.localisation(key: "1D"), CommonFunctions.localisation(key: "1W"),"1M", "ALL"]
+    private var originalText: String?
 
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -46,6 +47,11 @@ extension PortfolioHomeTVC{
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(profileAction))
         self.profilePic.addGestureRecognizer(profileTap)
         self.profilePic.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(euroLblTapped))
+            euroLbl.isUserInteractionEnabled = true
+            euroLbl.addGestureRecognizer(tapGesture)
+        
         self.chartView.delegate = self
         self.chartView.addSubview(customMarkerView)
         
@@ -80,6 +86,17 @@ extension PortfolioHomeTVC{
     @objc func profileAction(){
         let vc = ProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 		self.controller?.navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    @objc func euroLblTapped() {
+        // Effectuer l'action souhaitée lorsque le label est cliqué
+        print("Euro label tapped")
+        
+        if originalText == nil {
+            originalText = euroLbl.text
+        }
+
+        toggleLabelTextMask(euroLbl)
     }
 }
 
@@ -207,6 +224,14 @@ extension PortfolioHomeTVC{
         }
 
         self.customMarkerView.layoutIfNeeded()
+    }
+    
+    func toggleLabelTextMask(_ label: UILabel) {
+        if label.text == originalText {
+            label.text = String(repeating: "*", count: originalText?.count ?? 0)
+        } else {
+            label.text = originalText
+        }
     }
 }
 
