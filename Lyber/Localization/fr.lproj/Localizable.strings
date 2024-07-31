@@ -723,6 +723,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "WRONG_PASSWORD" = "Mot de passe incorrect";
 "EXPIRED_CHALLENGE" = "Défi expiré";
 "CODE_ALREADY_USED" = "Google OTP déjà utilisé. Veuillez attendre 30 secondes et réessayer avec un nouvel OTP.";
+"WAIT_BEFORE_OTP" = "Vous devez attendre %@ secondes avant d'envoyer un autre OTP.";
 "TWO_FA_NOT_ACTIVATED" = "2FA non activé";
 "INCORRECT_OTP" = "OTP incorrect";
 "USER_BINANCE_ID_NOT_FOUND" = "Impossible de trouver un utilisateur avec cet identifiant binance";

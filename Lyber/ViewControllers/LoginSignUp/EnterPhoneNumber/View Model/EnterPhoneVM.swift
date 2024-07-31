@@ -9,8 +9,21 @@ import Foundation
 import CommonCrypto
 
 class EnterPhoneVM {
+    private var lastSignUpApiCall: Date?
     // MARK:- API CALL
 	func SignUpApi(phoneNumber: String,countryCode : String, completion: @escaping ( (signUpApi?) -> Void )){
+        let currentTime = Date()
+        if let lastCall = self.lastSignUpApiCall {
+            let remainingSeconds = 60 - currentTime.timeIntervalSince(lastCall)
+            if remainingSeconds > 0 {
+                CommonFunctions.toster(CommonFunctions.localisation(key: "WAIT_BEFORE_OTP", parameter: String(Int(remainingSeconds))))
+                completion(nil)
+                return
+            }
+        }
+        
+        self.lastSignUpApiCall = currentTime
+        
         let secretKey = "409f3hui4rbf2d2E/4-39u2!-9di4b23-01C*SRFV2d12jbf)2DBFG3i4f24f"
         let timestamp = String(Int(Date().timeIntervalSince1970))
         var phone : String = phoneNumber

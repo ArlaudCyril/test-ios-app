@@ -726,6 +726,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "WRONG_PASSWORD" = "Incorrect password";
 "EXPIRED_CHALLENGE" = "Expired challenge";
 "CODE_ALREADY_USED" = "Google OTP already used. Please wait 30s and try again with a new OTP";
+"WAIT_BEFORE_OTP" = "You have to wait %@ seconds before sending another OTP.";
 "TWO_FA_NOT_ACTIVATED" = "2FA not activated";
 "INCORRECT_OTP" = "Incorrect OTP";
 "USER_BINANCE_ID_NOT_FOUND" = "Couldn't find user with this binance id";
