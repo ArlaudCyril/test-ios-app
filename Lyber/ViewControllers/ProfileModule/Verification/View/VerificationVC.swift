@@ -19,6 +19,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 	var verificationCallBack : ((String)->())?
 	var scopes : [String] = []
     var timerResendCode = 59
+    var resendClosure: (() -> Void)?
     
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -168,13 +169,10 @@ extension VerificationVC{
     }
      
     @objc func resendCodeLblAct(){
-        EnterPhoneVM().SignUpApi(phoneNumber: self.enterPhoneController?.phoneNumber ?? "", countryCode: self.enterPhoneController?.countryCode ?? "", completion: { [weak self] response in
-            	
-            self?.resendCodeLbl.isUserInteractionEnabled = false
-            self?.resendCodeLbl.textColor = UIColor.PurpleGrey_500
-            
-            self?.timerSendCode(secondsRemaining: self?.timerResendCode ?? -1)
-        })
+        resendClosure?()
+        self.resendCodeLbl.isUserInteractionEnabled = false
+        self.resendCodeLbl.textColor = UIColor.PurpleGrey_500
+        self.timerSendCode(secondsRemaining: self.timerResendCode)
     }
     
     func timerSendCode(secondsRemaining: Int){

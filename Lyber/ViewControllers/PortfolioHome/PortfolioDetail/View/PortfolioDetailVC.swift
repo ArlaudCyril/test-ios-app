@@ -74,11 +74,7 @@ class PortfolioDetailVC: SwipeGesture {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		callCoinInfoApi()
-		self.callChartApi(duration: self.chartDurationTime)
-		callResoucesApi()
 		setUpUI()
-		PortfolioDetailVC.exchangeFinished = false
 	}
 	
 	override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -92,6 +88,12 @@ class PortfolioDetailVC: SwipeGesture {
 	//MARK: - SetUpUI
     override func setUpUI(){
         PortfolioDetailTVC().controller = self
+        
+        callCoinInfoApi()
+        self.callChartApi(duration: self.chartDurationTime)
+        callResoucesApi()
+        PortfolioDetailVC.exchangeFinished = false
+        
         self.tblView.delegate = self
         self.tblView.dataSource = self
         if #available(iOS 15.0, *) {
@@ -113,6 +115,10 @@ class PortfolioDetailVC: SwipeGesture {
         
         self.sellBtn.addTarget(self, action: #selector(sellBtnAct), for: .touchUpInside)
         self.threeDotBtn.addTarget(self, action: #selector(threeDotBtnAct), for: .touchUpInside)
+        
+        DispatchQueue.main.async {
+            self.tblView.reloadData()
+        }
 		
     }
     
@@ -403,7 +409,7 @@ extension PortfolioDetailVC{
 		portfolioDetailVM.getAssetsNewsApi(id: self.assetId, completion: {[self]response in
 			CommonFunctions.hideLoader(self.view)
 			self.resourcesData = response?.data ?? []
-			if(self.resourcesData.isEmpty){
+            if(self.resourcesData.isEmpty && self.headerData.count > 4){
 				self.headerData.removeLast()
 			}
 			self.tblView.reloadData()

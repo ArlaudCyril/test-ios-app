@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ContactFormVM{
 	func contactSupportAPI(message: String, completion: @escaping ( (SuccessAPI?) -> Void )){

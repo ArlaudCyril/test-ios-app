@@ -249,7 +249,9 @@ extension ConfirmExecutionVC{
 	
 	@objc func confirmExecutionBtnAct(){
 		if InvestmentType == .Exchange{
+            self.confirmExecutionBtn.isEnabled = false
 			ConfirmInvestmentVM().ordersAcceptQuoteAPI(orderId: self.orderId ?? "", completion: {response in
+                self.confirmExecutionBtn.isEnabled = true
 				if response != nil{
 					let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
 					vc.assetId = self.exchangeTo

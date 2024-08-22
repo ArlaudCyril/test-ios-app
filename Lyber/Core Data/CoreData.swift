@@ -41,6 +41,7 @@ class userData : NSObject {
     var scope2FAWhiteListing = false
     var scope2FAWithdrawal = false
     var has2FA = false
+    var hideBalance = false
     var type2FA = "none"
 	
 	//Profile informations
@@ -112,6 +113,7 @@ class userData : NSObject {
         newData.setValue(scope2FAWhiteListing, forKey: "scope2FAWhiteListing")
         newData.setValue(scope2FAWithdrawal, forKey: "scope2FAWithdrawal")
         newData.setValue(has2FA, forKey: "has2FA")
+        newData.setValue(hideBalance, forKey: "hideBalance")
         newData.setValue(type2FA, forKey: "type2FA")
 		
 		//Profil informations
@@ -284,6 +286,10 @@ class userData : NSObject {
                         self.has2FA = has2FA
                         print("data get has2FA \(has2FA)")
                     }
+                    if let hideBalance = result.value(forKey: "hideBalance") as? Bool{
+                        self.hideBalance = hideBalance
+                        print("data get hideBalance \(hideBalance)")
+                    }
                     if let type2FA = result.value(forKey: "type2FA") as? String{
                         self.type2FA = type2FA
                         print("data get type2FA \(type2FA)")
@@ -442,7 +448,8 @@ class userData : NSObject {
 		self.scope2FALogin = false
 		self.scope2FAWhiteListing = false
 		self.scope2FAWithdrawal = false
-		self.has2FA = false
+        self.has2FA = false
+		self.hideBalance = false
 		self.type2FA = "none"
 		
 		self.dataSave()
@@ -480,6 +487,7 @@ class userData : NSObject {
         self.scope2FAWhiteListing = false
         self.scope2FAWithdrawal = false
         self.has2FA = false
+        self.hideBalance = false
         self.type2FA = "none"
 		
 		//Profile informations

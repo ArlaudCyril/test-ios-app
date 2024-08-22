@@ -29,7 +29,7 @@ class CryptoAddressesTVC: UITableViewCell {
 
 extension CryptoAddressesTVC{
     func configureWithData(data : Address?){
-		self.coinImgView.sd_setImage(with: URL(string: CommonFunctions.getImage(id: data?.network?.decoderNetwork ?? "")))
+        self.coinImgView.sd_setImage(with: URL(string: CommonFunctions.getNetwork(id: data?.network ?? "")?.imageUrl ?? ""))
         CommonUI.setUpLbl(lbl: self.addressNameLbl, text: data?.name, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.addresslbl, text: data?.address?.addressFormat , textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Medium.sizeValue()))
     }

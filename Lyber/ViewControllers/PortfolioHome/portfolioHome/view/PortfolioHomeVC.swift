@@ -30,6 +30,8 @@ class PortfolioHomeVC: NotSwipeGesture {
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.getTotalAvailableAssetsApi()
+        self.getAllAssetsDetail()
+        self.getAllNetworks()
 		GlobalVariables.isLogin = false
 		if(self.hasToShowLoader == true){
             if(self.typeLoader == "kyc"){
@@ -39,15 +41,12 @@ class PortfolioHomeVC: NotSwipeGesture {
             }
 			self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
 		}
-        
-		
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUpUI()
 		self.callWalletGetBalance()
-		self.getAllAssetsDetail()
 		self.callActiveStrategies()
     }
 	
@@ -96,9 +95,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
         }else if section == 2{
 			return Storage.balances.count == 0 ? 4: Storage.balances.count
         }else if section == 3{
-            return 1
-        }else if section == 4{
-			return recurringInvestmentData.count == 0 ? 1: recurringInvestmentData.count
+            return recurringInvestmentData.count == 0 ? 1: recurringInvestmentData.count
         }else{
             return 1
         }
@@ -167,6 +164,7 @@ extension PortfolioHomeVC : UITableViewDelegate,UITableViewDataSource{
 			if(recurringInvestmentData.count != 0){
 				let cell = tableView.dequeueReusableCell(withIdentifier: "RecurringTVC")as! RecurringTVC
 				cell.setUpCell(data: recurringInvestmentData[indexPath.row],index : indexPath.row,lastIndex: (recurringInvestmentData.count - 1))
+                cell.controller = self
 				return cell
 			}else{
 				let cell = tableView.dequeueReusableCell(withIdentifier: "NoRecurringTVC")as! NoRecurringTVC
@@ -315,6 +313,13 @@ extension PortfolioHomeVC{
             if response != nil {
                 Storage.currencies = coinDetailData
                 
+            }
+        })
+    }
+    func getAllNetworks(){
+        AddCryptoAddressVM().getNetworksDataApi(completion: {response in
+            if response != nil{
+                Storage.networks = response?.data ?? []
             }
         })
     }

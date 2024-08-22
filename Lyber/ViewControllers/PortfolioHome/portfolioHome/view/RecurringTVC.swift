@@ -8,6 +8,7 @@
 import UIKit
 
 class RecurringTVC: UITableViewCell {
+    var controller: UIViewController?
     //MARK:- IB OUTLETS
     @IBOutlet var recurringVw: UIView!
     @IBOutlet var strategyImgVw: UIImageView!
@@ -53,5 +54,16 @@ extension RecurringTVC{
             recurringVw.layer.cornerRadius = 16
             recurringVw.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner,.layerMinXMinYCorner,.layerMaxXMinYCorner]
         }
+        
+        let recurringTap = UITapGestureRecognizer(target: self, action: #selector(recurringTapped))
+        self.recurringVw.addGestureRecognizer(recurringTap)
+    }
+    
+    @objc func recurringTapped(){
+        let vc = InvestmentStrategyVC.instantiateFromAppStoryboard(appStoryboard: .Strategies)
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        nav.navigationBar.isHidden = true
+        self.controller?.present(nav, animated: false, completion: nil)
     }
 }

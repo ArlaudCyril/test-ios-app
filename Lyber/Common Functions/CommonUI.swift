@@ -14,6 +14,14 @@ class CommonUI{
         lbl.font = font
         lbl.textColor = textColor
     }
+    
+    static func setUpLblBalance(lbl:UILabel, text: String? = nil, textColor:UIColor, font: UIFont) {
+        lbl.text = text
+        lbl.font = font
+        lbl.textColor = textColor
+        lbl.originalText = text
+        lbl.checkMaskBalance()
+    }
 	
     
     static func setUpTextField(textfield:UITextField, text: String? = nil, placeholder:String, font: UIFont) {

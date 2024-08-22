@@ -22,7 +22,7 @@ class PortfolioHomeTVC: UITableViewCell {
     var graphValues: [ChartDataEntry] = []
     var dateTimeArr : [graphStruct] = []
 	var chartData = [CommonFunctions.localisation(key: "1D"), CommonFunctions.localisation(key: "1W"),"1M", "ALL"]
-    private var originalText: String?
+    private var daily = false
 
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -32,12 +32,13 @@ class PortfolioHomeTVC: UITableViewCell {
     @IBOutlet var profilePic: UIImageView!
     @IBOutlet var chartView: LineChartView!
     @IBOutlet var collView: UICollectionView!
+    @IBOutlet var hideBalanceBtn: UIButton!
 }
 
 extension PortfolioHomeTVC{
     func setUpCell(){
 		getTotalPortfolio()
-		drawChartView(limit: 1, daily: false)
+		drawChartView(limit: 1)
         
         CommonUI.setUpLbl(lbl: portfolioLbl, text: CommonFunctions.localisation(key: "PORTFOLIO"), textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
@@ -48,9 +49,7 @@ extension PortfolioHomeTVC{
         self.profilePic.addGestureRecognizer(profileTap)
         self.profilePic.isUserInteractionEnabled = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(euroLblTapped))
-            euroLbl.isUserInteractionEnabled = true
-            euroLbl.addGestureRecognizer(tapGesture)
+        self.hideBalanceBtn.addTarget(self, action: #selector(toggleMaskBalance), for: .touchUpInside)
         
         self.chartView.delegate = self
         self.chartView.addSubview(customMarkerView)
@@ -59,11 +58,22 @@ extension PortfolioHomeTVC{
 		self.collView.delegate = self
 		self.collView.dataSource = self
         self.collView.reloadData()
-
+        
+        if userData.shared.hideBalance {
+            self.hideBalanceBtn.setImage(Assets.visibility_off.image(), for: .normal)
+        } else {
+            self.hideBalanceBtn.setImage(Assets.visibility.image(), for: .normal)
+        }
     }
     
     fileprivate func extractedFunc(_ graphValues: [ChartDataEntry],_ graphColor : UIColor) {
         CommonFunctions.drawDetailChart(with: graphValues, on: chartView, gradientColors: [graphColor, UIColor.whiteColor], lineColor: graphColor)
+        if userData.shared.hideBalance {
+            chartView.rightAxis.enabled = false
+        }
+        //actualise the data to place right the last point
+        chartView.notifyDataSetChanged()
+        putBubleAtLastPoint()
     }
 }
 
@@ -88,15 +98,11 @@ extension PortfolioHomeTVC{
 		self.controller?.navigationController?.pushViewController(vc, animated: false)
     }
     
-    @objc func euroLblTapped() {
-        // Effectuer l'action souhaitée lorsque le label est cliqué
-        print("Euro label tapped")
+    @objc func toggleMaskBalance(){
+        userData.shared.hideBalance = !userData.shared.hideBalance
+        userData.shared.dataSave()
+        self.controller?.tblView.reloadData()
         
-        if originalText == nil {
-            originalText = euroLbl.text
-        }
-
-        toggleLabelTextMask(euroLbl)
     }
 }
 
@@ -123,7 +129,7 @@ extension PortfolioHomeTVC: UICollectionViewDelegate, UICollectionViewDataSource
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		var limit = 1
-        var daily = true
+        self.daily = true
 		switch indexPath.row{
 			case 1:
                 limit = 7
@@ -135,7 +141,7 @@ extension PortfolioHomeTVC: UICollectionViewDelegate, UICollectionViewDataSource
                 daily = false
 				break
 		}
-		self.drawChartView(limit: limit, daily: daily)
+		self.drawChartView(limit: limit)
 	}
 }
 
@@ -152,14 +158,14 @@ extension PortfolioHomeTVC{
 		}
 		
 		
-		CommonUI.setUpLbl(lbl: euroLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalPortfolio))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
+		CommonUI.setUpLblBalance(lbl: euroLbl, text: "\(CommonFunctions.getTwoDecimalValue(number: totalPortfolio))€", textColor: UIColor.ThirdTextColor, font: UIFont.AtypTextMedium(Size.extraLarge.sizeValue()))
 	}
 	
-    func drawChartView(limit: Int, daily: Bool){
+    func drawChartView(limit: Int){
         self.graphValues = []
         self.dateTimeArr = []
 		
-        PortfolioHomeVM().walletGetBalanceHistoryApi(limit: limit,daily: daily, completion:{response in
+        PortfolioHomeVM().walletGetBalanceHistoryApi(limit: limit,daily: self.daily, completion:{response in
 			if response != nil{
 				if(response?.data.count ?? 0 > 0){
 					for i in 0...(response?.data.count ?? 1)-1{
@@ -175,10 +181,6 @@ extension PortfolioHomeTVC{
 				
 				
                 self.extractedFunc(self.graphValues, UIColor.PurpleColor)
-                let lastPoint = self.chartView.getPosition(entry: self.graphValues[self.graphValues.count - 1], axis: .left)
-				print("lastPoint : \(lastPoint)")
-                self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
-                self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.graphValues[self.graphValues.count - 1].y)
 			}
 		})
 	}
@@ -191,14 +193,22 @@ extension PortfolioHomeTVC{
             customMarkerView.bottomBubble.isHidden = false
             customMarkerView.topBubble.isHidden = true
         }
-        customMarkerView.graphLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
-        customMarkerView.bottomEuroLbl.text = "\(CommonFunctions.formattedCurrency(from: yValue))€"
-
+        CommonUI.setUpLblBalance(lbl: customMarkerView.graphLbl, text: "\(CommonFunctions.formattedCurrency(from: yValue))€", textColor: UIColor.PurpleColor, font: UIFont.AtypTextMedium(Size.Medium.sizeValue()))
+        
+        CommonUI.setUpLblBalance(lbl: customMarkerView.bottomEuroLbl, text: "\(CommonFunctions.formattedCurrency(from: yValue))€", textColor: UIColor.PurpleColor, font: UIFont.AtypTextMedium(Size.Medium.sizeValue()))
+        
         for (index,_) in stride(from: 0, through: (self.dateTimeArr.count)-1, by: 1).enumerated(){
             if self.dateTimeArr[index].index == Int(xValue){
+                var inputFormat = "yyyy-MM-dd'T'HH:mm"
+                let outputFormat = "MMM. d, HH:mm"
+                if(daily == true){
+                    inputFormat = "yyyy-MM-dd"
+                }
                 print("NEW VALUE : \(self.dateTimeArr[index].date)")
-                customMarkerView.dateTimeLbl.text = CommonFunctions.getDateFormat(date: self.dateTimeArr[index].date, inputFormat: "yyyy-MM-dd'T'HH:mm", outputFormat: "MMM. d, HH:mm")
-                customMarkerView.bottomDateLbl.text = CommonFunctions.getDateFormat(date: self.dateTimeArr[index].date, inputFormat: "yyyy-MM-dd'T'HH:mm", outputFormat: "MMM. d, HH:mm")
+                let date = CommonFunctions.getDateFormat(date: self.dateTimeArr[index].date, inputFormat: inputFormat, outputFormat: outputFormat)
+                
+                customMarkerView.dateTimeLbl.text = date
+                customMarkerView.bottomDateLbl.text = date
             }
         }
         
@@ -226,12 +236,13 @@ extension PortfolioHomeTVC{
         self.customMarkerView.layoutIfNeeded()
     }
     
-    func toggleLabelTextMask(_ label: UILabel) {
-        if label.text == originalText {
-            label.text = String(repeating: "*", count: originalText?.count ?? 0)
-        } else {
-            label.text = originalText
-        }
+    private func putBubleAtLastPoint() {
+        guard let lastEntry = self.graphValues.last else { return }
+        
+        let lastPoint = self.chartView.getPosition(entry: lastEntry, axis: .left)
+        print("lastPoint : \(lastPoint)")
+        self.customMarkerView.center = CGPoint(x: lastPoint.x , y: (lastPoint.y ) )
+        self.hideShowBubble(xPixel: lastPoint.x, yPixel: lastPoint.y, xValue: self.graphValues[self.graphValues.count - 1].x, yValue: self.graphValues[self.graphValues.count - 1].y)
     }
 }
 

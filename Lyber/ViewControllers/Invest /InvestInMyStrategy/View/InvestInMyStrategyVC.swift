@@ -758,7 +758,7 @@ extension InvestInMyStrategyVC {
                 self.amountTF.text = "\(cleanedValue) \(self.asset?.id.uppercased() ?? "")"
                 let coinPrice = Decimal(string: asset?.priceServiceResumeData.lastPrice ?? "0") ?? 0
                 totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
-                totalEuroInvested = (totalNoOfCoinsInvest.decimalValue * coinPrice) as NSDecimalNumber
+                totalEuroInvested = CommonFunctions.getTwoDecimalValueDecimal(number: totalNoOfCoinsInvest.decimalValue * coinPrice) as NSDecimalNumber
                 self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from:  totalEuroInvested.doubleValue))€"
             }
             

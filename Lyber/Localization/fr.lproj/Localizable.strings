@@ -173,7 +173,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "VIEW_MORE" = "Voir plus";
 "READ_LESS" = "Voir moins";
 "NEXT_PAYMENT" = "Prochain paiement";
-"NO_ACTIVE_STRATEGIE" = "Vous n'avez pas de stratégie active";
+"NO_ACTIVE_STRATEGIE" = "Vous n'avez pas de stratégies actives.";
 "NO_BALANCE_WITHDRAW" = "Vous n'avez pas de solde à retirer.";
 "DEPOSIT_NOW" = "Déposez en maintenant";
 "NO_ASSETS" = "Vous n'avez pas encore d'actifs";
@@ -757,4 +757,5 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "USER_NOT_SIGNED_CONTRACT" = "Votre contrat n'a pas été signé. Veuillez le signer pour pouvoir effectuer l'opération";
 "SIGN_CONTRACT" = "Signer mon contrat";
 "MINIMUM_CREDIT_CARD_PAYMENT" = "Le montant minimum pour un paiement par carte de crédit est de 20€.";
+"ACCOUNT_CREATION_BLOCKED" = "Votre création de compte a été bloquée pour des raisons de conformité. Si vous avez besoin de plus d'informations, veuillez contacter le support.";
 

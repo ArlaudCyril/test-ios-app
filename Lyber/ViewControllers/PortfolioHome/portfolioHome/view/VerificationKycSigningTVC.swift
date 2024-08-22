@@ -25,6 +25,8 @@ class VerificationKycSigningTVC: UITableViewCell {
     @IBOutlet var rightArrowSigningImgVw: UIImageView!
     @IBOutlet var signingLbl: UILabel!
     
+    @IBOutlet var alertLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -35,6 +37,7 @@ class VerificationKycSigningTVC: UITableViewCell {
 //Mark:- SetUpUI
 extension VerificationKycSigningTVC{
     func setUpCell(){
+        self.alertLbl.isHidden = true
         ProfileVM().getProfileDataApi(completion: {[]response in
             if response != nil{
                 self.statusKyc = response?.data?.kycStatus?.decoderKycStatus ?? .notPerformed
@@ -48,6 +51,9 @@ extension VerificationKycSigningTVC{
         CommonUI.setUpLbl(lbl: self.kycLbl, text: CommonFunctions.localisation(key: "VERIFICATION_IDENTITY"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         
         CommonUI.setUpLbl(lbl: self.signingLbl, text: CommonFunctions.localisation(key: "CONTRACT_SIGNATURE"), textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+        
+        CommonUI.setUpLbl(lbl: self.alertLbl, text: CommonFunctions.localisation(key: "ACCOUNT_CREATION_BLOCKED"), textColor: UIColor.Red_500, font: UIFont.MabryProMedium(Size.Small.sizeValue()))
+        self.alertLbl.numberOfLines = 0
         
         verificationKycVw.layer.cornerRadius = 16
         verificationKycVw.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
@@ -78,7 +84,7 @@ extension VerificationKycSigningTVC{
         case .validated:
             self.indicatorSigningImgVw.setImage(Assets.accepted_indicator.image())
             self.rightArrowSigningImgVw.isHidden = true
-        case .none:
+        case .none, .ban:
             break
         }
     }
@@ -96,6 +102,12 @@ extension VerificationKycSigningTVC{
         case .validated:
             self.indicatorKycImgVw.setImage(Assets.accepted_indicator.image())
             self.rightArrowKycImgVw.isHidden = true
+        case .ban:
+            self.indicatorKycImgVw.setImage(Assets.rejected_indicator.image())
+            self.rightArrowKycImgVw.isHidden = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.alertLbl.isHidden = false
+            }
         case .none:
             break
         }
@@ -127,7 +139,7 @@ extension VerificationKycSigningTVC{
             })
         case .pending:
             CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_UNDER_VERIFICATION"))
-        case .validated, .none:
+        case .validated, .none, .ban:
             break
         }
     }
@@ -151,7 +163,7 @@ extension VerificationKycSigningTVC{
                     }
                 })
             }
-        case .pending, .validated, .none:
+        case .pending, .validated, .none, .ban:
             break
         }
     }
@@ -170,6 +182,10 @@ extension VerificationKycSigningTVC{
                 }else if(response?.data?.kycStatus?.decoderKycStatus == .pending){
                     self.statusKyc = .pending
                     self.updateKycIndicators()
+                }else if(response?.data?.kycStatus?.decoderKycStatus == .ban){
+                    self.statusKyc = .ban
+                    self.updateKycIndicators()
+                    self.portolioHomeVC?.invalidateTimerVerificationKycSigning()
                 }
             }
         })

@@ -112,12 +112,12 @@ extension StrongAuthVC{
 		if smsBtnImg.isHidden == true{
 			if(userData.shared.type2FA == "google")
 			{
-				self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone")
+                self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone", details: [:])
 			}else{
 				let details = ["type2FA" : "phone"]
 				ConfirmInvestmentVM().userGetOtpApi(action: "type", data: details ,completion: {[weak self]response in
 					if response != nil{
-						self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone")
+                        self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "phone", details: details)
 					}
 				})
 				
@@ -129,12 +129,12 @@ extension StrongAuthVC{
 		if mailBtnImg.isHidden == true{
 			if(userData.shared.type2FA == "google")
 			{
-				self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email")
+				self.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email", details: [:])
 			}else{
 				let details = ["type2FA" : "email"]
 				ConfirmInvestmentVM().userGetOtpApi(action: "type", data: details, completion: {[weak self]response in
 					if response != nil{
-						self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email")
+						self?.changeTwoFa(oldWay: userData.shared.type2FA, newWay: "email", details: details)
 					}
 				})
 				
@@ -187,6 +187,9 @@ extension StrongAuthVC{
                             userData.shared.dataSave()
                             sender.isOn = false
                         }
+                        vc.resendClosure = {[weak self] in
+                            ConfirmInvestmentVM().userGetOtpApi(action: "scope", data: details, completion: {_ in})
+                        }
                         self?.present(vc, animated: true)
                     }
                 })
@@ -225,6 +228,9 @@ extension StrongAuthVC{
 						userData.shared.dataSave()
 						sender.isOn = false
 					}
+                    vc.resendClosure = {[weak self] in
+                        ConfirmInvestmentVM().userGetOtpApi(action: "scope", data: details, completion: {_ in})
+                    }
 					self?.present(vc, animated: true)
 				}
 			})
@@ -270,7 +276,7 @@ extension StrongAuthVC{
 		}
     }
 	
-	func changeTwoFa(oldWay: String, newWay: String){
+    func changeTwoFa(oldWay: String, newWay: String, details: [String:String]){
 		let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
 		vc.typeVerification = oldWay
 		vc.action = "verificationCallback"
@@ -284,6 +290,9 @@ extension StrongAuthVC{
 				}
 			})
 		}
+        vc.resendClosure = {[weak self] in
+            ConfirmInvestmentVM().userGetOtpApi(action: "type", data: details ,completion: {_ in})
+        }
 		self.present(vc, animated: true)
 	}
 }

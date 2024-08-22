@@ -173,7 +173,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "VIEW_MORE" = "View more";
 "READ_LESS" = "Read Less";
 "NEXT_PAYMENT" = "Next payment";
-"NO_ACTIVE_STRATEGIE" = "You do not have any active strategy yet";
+"NO_ACTIVE_STRATEGIE" = "You do not have any active strategies yet.";
 "NO_BALANCE_WITHDRAW" = "You do not have balance to withdraw.";
 "DEPOSIT_NOW" = "Deposit now";
 "NO_ASSETS" = "You don't have any assets yet";
@@ -760,3 +760,4 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "USER_NOT_SIGNED_CONTRACT" = "Your contract has not been signed. Please sign it before you can proceed.";
 "SIGN_CONTRACT" = "Sign my contract";
 "MINIMUM_CREDIT_CARD_PAYMENT" = "Minimum amount for credit card payment is 20€";
+"ACCOUNT_CREATION_BLOCKED" = "Your account creation has been blocked for compliance reasons. If you need further information, please contact support.";

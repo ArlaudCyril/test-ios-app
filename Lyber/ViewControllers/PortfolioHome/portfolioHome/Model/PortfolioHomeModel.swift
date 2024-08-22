@@ -106,6 +106,7 @@ struct Performance: Codable {
 enum VerificationIndicator: String {
     case notPerformed = "NOT_PERFORMED"
     case rejected = "REJECTED"
+    case ban = "BAN"
     case pending = "STRAT_BASED"
     case validated = "VALIDATED"
 }

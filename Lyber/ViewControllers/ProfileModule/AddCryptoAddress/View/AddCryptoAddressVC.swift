@@ -317,34 +317,29 @@ extension AddCryptoAddressVC: UITextFieldDelegate{
 //MARK: - Other functions
 extension AddCryptoAddressVC{
     func getNetworkData(){
-		addCryptoAddressVM.getNetworksDataApi(completion: {response in
-			if response != nil{
-				for network in response?.data ?? []{
-					if(self.network != "")
-					{
-						if(network.id == self.network){
-							self.networkValueArr?.append("\(network.fullName ?? "") (\(network.id.uppercased() ))")
-							self.networkImgArr?.append(network.imageUrl ?? "")
-						}
-						
-					}
-					else{
-						self.networkValueArr?.append("\(network.fullName ?? "") (\(network.id.uppercased() ))")
-						self.networkImgArr?.append(network.imageUrl ?? "")
-					}
-				}
-				self.networkDropdown.dataSource = self.networkValueArr ?? []
-				if(self.network != "")
-				{
-					CommonUI.setUpViewBorder(vw: self.networkImgLblView ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.greyDisabled.cgColor)
-					self.networkDropdown.selectionAction!(0, self.networkDropdown.dataSource[0])
-					self.networkview.backgroundColor = UIColor.greyDisabled
-					self.networkview.isUserInteractionEnabled = false
-					self.networkImgLblView.backgroundColor = UIColor.greyDisabled
-				}
-			}
-		})
-		
+        for network in Storage.networks{
+            if(self.network != "")
+            {
+                if(network.id == self.network){
+                    self.networkValueArr?.append("\(network.fullName ?? "") (\(network.id.uppercased() ))")
+                    self.networkImgArr?.append(network.imageUrl ?? "")
+                }
+                
+            }
+            else{
+                self.networkValueArr?.append("\(network.fullName ?? "") (\(network.id.uppercased() ))")
+                self.networkImgArr?.append(network.imageUrl ?? "")
+            }
+        }
+        self.networkDropdown.dataSource = self.networkValueArr ?? []
+        if(self.network != "")
+        {
+            CommonUI.setUpViewBorder(vw: self.networkImgLblView ?? UIView(), radius: 12, borderWidth: 1.5, borderColor: UIColor.greyDisabled.cgColor)
+            self.networkDropdown.selectionAction!(0, self.networkDropdown.dataSource[0])
+            self.networkview.backgroundColor = UIColor.greyDisabled
+            self.networkview.isUserInteractionEnabled = false
+            self.networkImgLblView.backgroundColor = UIColor.greyDisabled
+        }
     }
     
     func checkValidation(completion : @escaping (()->()) ){

@@ -301,6 +301,11 @@ extension EnterPhoneVC{
 						vc.typeVerification = "phone"
 						vc.action = "signup"
 						vc.controller = self
+                        
+                        vc.resendClosure = { [weak self] in
+                            self?.enterPhoneVM.SignUpApi(phoneNumber: self?.phoneNumber ?? "", countryCode: self?.countryCode ?? "", completion: {_ in })
+                        }
+                        
 						self?.present(vc, animated: true)
                     }
                 })
@@ -341,6 +346,9 @@ extension EnterPhoneVC{
                                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                                             vc.typeVerification = response.data?.type2FA
 											vc.controller = self
+                                            vc.resendClosure = {[weak self] in
+                                                EnterPhoneVM().logInApi(A: BigNum(bytes: clientKeys.public.bytes).dec, M1: BigNum(bytes: clientProof).dec, method: "srp", completion: {_ in })
+                                            }
 											self?.present(vc, animated: true)
                                         }
 									}else{
@@ -413,6 +421,9 @@ extension EnterPhoneVC{
 					vc.typeVerification = "email"
 					vc.action = "signup_email"
 					vc.enterPhoneController = self
+                    vc.resendClosure = {[weak self] in
+                        PersonalDataVM().sendVerificationEmailApi(email: self?.email,password : self?.emailPassword, completion: {_ in})
+                    }
 					self?.present(vc, animated: true)
 				}
 			})

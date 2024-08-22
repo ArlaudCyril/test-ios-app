@@ -616,6 +616,8 @@
 		C80DFA4D2BA45CE700BDA41B /* WithdrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */; };
 		C80DFA4F2BA45FDA00BDA41B /* WithdrawRibTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */; };
 		C80DFA502BA4603600BDA41B /* WithdrawRibTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */; };
+		C8116B4E2C63ABDA00A52F51 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8116B4D2C63ABDA00A52F51 /* UILabelExtension.swift */; };
+		C8116B4F2C63ABDA00A52F51 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8116B4D2C63ABDA00A52F51 /* UILabelExtension.swift */; };
 		C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C838FD7E2B87696F00922C25 /* UITapGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */; };
@@ -957,6 +959,7 @@
 		C80DFA472BA459D800BDA41B /* RIBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RIBModel.swift; sourceTree = "<group>"; };
 		C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawModel.swift; sourceTree = "<group>"; };
 		C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRibTVC.swift; sourceTree = "<group>"; };
+		C8116B4D2C63ABDA00A52F51 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureExtension.swift; sourceTree = "<group>"; };
 		C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupVC.swift; sourceTree = "<group>"; };
@@ -1375,6 +1378,7 @@
 				1F1DA4362A7CF6A000BE8C61 /* URLExtension.swift */,
 				1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */,
 				C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */,
+				C8116B4D2C63ABDA00A52F51 /* UILabelExtension.swift */,
 			);
 			path = ExtensionFiles;
 			sourceTree = "<group>";
@@ -3719,6 +3723,7 @@
 				0A71A1B32886B8090030FE23 /* AllAssetsVM.swift in Sources */,
 				1FD2A6F02B1F397A00CB175E /* KycWebVM.swift in Sources */,
 				0A7B0D5D2861C6700030C4D8 /* AllAssetsModel.swift in Sources */,
+				C8116B4E2C63ABDA00A52F51 /* UILabelExtension.swift in Sources */,
 				0A7060C62897EB8D009011D9 /* CryptoAddressBookVC.swift in Sources */,
 				1F54C9A72A7C0967009A43F7 /* ResetPasswordVM.swift in Sources */,
 				0A7A3BE9285C8C2E00646337 /* BalanceVC.swift in Sources */,
@@ -3969,6 +3974,7 @@
 				1FF381252AFD297600CCF1A6 /* AllAssetsVM.swift in Sources */,
 				1FD2A6F12B1F3A3C00CB175E /* KycWebVM.swift in Sources */,
 				1FF381262AFD297600CCF1A6 /* AllAssetsModel.swift in Sources */,
+				C8116B4F2C63ABDA00A52F51 /* UILabelExtension.swift in Sources */,
 				1FF381272AFD297600CCF1A6 /* CryptoAddressBookVC.swift in Sources */,
 				1FF381282AFD297600CCF1A6 /* ResetPasswordVM.swift in Sources */,
 				1FF381292AFD297600CCF1A6 /* BalanceVC.swift in Sources */,
@@ -4278,7 +4284,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DPRODUCTION";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4320,7 +4326,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DPRODUCTION";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

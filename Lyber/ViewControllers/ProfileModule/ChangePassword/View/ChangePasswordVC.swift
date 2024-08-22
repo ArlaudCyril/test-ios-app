@@ -110,12 +110,17 @@ extension ChangePasswordVC : UITextFieldDelegate{
 		}else{
 			changePasswordVM.passwordChangeChallengeAPI( completion: {response in
 				if response != nil{
-					self.changePasswordVM.setNewPasswordAPI(b: response?.data?.b ?? "", salt: response?.data?.salt ?? "", oldPassword: self.oldPasswordTF.text ?? "", newPassword: self.newPasswordTF.text ?? "", completion: {response in
+                    let bData = response?.data?.b ?? ""
+                    let saltData = response?.data?.salt ?? ""
+					self.changePasswordVM.setNewPasswordAPI(b: bData, salt: saltData, oldPassword: self.oldPasswordTF.text ?? "", newPassword: self.newPasswordTF.text ?? "", completion: {response in
                         if response != nil {
                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                             vc.typeVerification = "email"
                             vc.action = "setNewPassword"
                             vc.controller = self
+                            vc.resendClosure = {[weak self] in
+                                self?.changePasswordVM.setNewPasswordAPI(b: bData, salt: saltData, oldPassword: self?.oldPasswordTF.text ?? "", newPassword: self?.newPasswordTF.text ?? "", completion: {_ in})
+                            }
                             self.present(vc, animated: true)
                         }
 					})

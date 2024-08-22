@@ -9,6 +9,7 @@ import Foundation
 
 struct Storage{
     static var currencies : [AssetBaseData?] = []
+    static var networks : [NetworkData] = []
 	static var balances : [Balance?] = []
     
     /*init(currencies: [AssetDetailData?]) {

@@ -180,6 +180,8 @@ extension String{
             return .rejected
         case "NOT_STARTED", "STARTED":
             return .notPerformed
+        case "LYBER_REFUSED":
+            return .ban
         default:
             return .notPerformed
         }

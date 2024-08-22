@@ -121,11 +121,6 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
 				cell.setUpCell(loaded: self.transactionsLoaded)
                 return cell
             }
-//        }else if indexPath.section == 1{
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfilePaymentTVC")as! ProfilePaymentTVC
-//            cell.setUpCell(data: paymentData[indexPath.row], row: indexPath.row,lastIndex: paymentData.count - 1 )
-//            cell.controller = self
-//            return cell
         }else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileAccountTVC")as! ProfileAccountTVC
             cell.setUpCell(data: AccountData[indexPath.row], index: indexPath,lastIndex: AccountData.count - 1 )
@@ -146,8 +141,8 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 3{
-            return UIView()
+        if section >= 3{
+            return nil
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHeaderTVC")as! ProfileHeaderTVC
             cell.setUpCell(data: headerData[section],section : section)
@@ -156,7 +151,7 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 4 ? 20 : 60
+        return section == 3 ? 0 : 60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -282,6 +277,9 @@ extension ProfileVC{
 						vc.typeVerification = userData.shared.type2FA
 						vc.action = "close-account"
 						vc.controller = self ?? ConfirmInvestmentVC()
+                        vc.resendClosure = {[weak self] in
+                            ConfirmInvestmentVM().userGetOtpApi(action: "close-account", completion: {_ in})
+                        }
 						self?.present(vc, animated: true, completion: nil)
 					}
 				})

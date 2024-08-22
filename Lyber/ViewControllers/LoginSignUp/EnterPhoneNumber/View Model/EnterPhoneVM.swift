@@ -24,7 +24,7 @@ class EnterPhoneVM {
         
         self.lastSignUpApiCall = currentTime
         
-        let secretKey = "409f3hui4rbf2d2E/4-39u2!-9di4b23-01C*SRFV2d12jbf)2DBFG3i4f24f"
+        let secretKey = AppConfig.dictEnvVariables["SECURITY_KEY"] as? String ?? "409f3hui4rbf2d2E/4-39u2!-9di4b23-01C*SRFV2d12jbf)2DBFG3i4f24f"
         let timestamp = String(Int(Date().timeIntervalSince1970))
         var phone : String = phoneNumber
         

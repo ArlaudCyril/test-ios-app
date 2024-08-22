@@ -25,36 +25,43 @@ class EntryAttributeWrapper {
 class CommonFunctions{
     var attributes = EKAttributes()
     
-    static func toster(_ txt : String){
-        let attributesWrapper: EntryAttributeWrapper = {
-            var attributes = EKAttributes()
-            attributes.positionConstraints = .fullWidth
-            attributes.hapticFeedbackType = .success
-            attributes.positionConstraints.safeArea = .empty(fillSafeArea: true)
-            attributes.entryBackground = .visualEffect(style: .dark)
-            attributes.displayDuration = 3
-            return EntryAttributeWrapper(with: attributes)
-        }()
-        let title = EKProperty.LabelContent(
-            text: txt,
-            style: EKProperty.LabelStyle(font: UIFont.boldSystemFont(ofSize: 16), color: EKColor.white, alignment: NSTextAlignment.center, displayMode: .light, numberOfLines: 0)
-        )
-        let description = EKProperty.LabelContent(
-            text: "",
-            style: EKProperty.LabelStyle(
-                font: UIFont.systemFont(ofSize: 1, weight: .light),
-                color: .black
-            )
-        )
-        let simpleMessage = EKSimpleMessage(
-            title: title,
-            description: description
-        )
-        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
-        let contentView = EKNotificationMessageView(with: notificationMessage)
-        SwiftEntryKit.display(entry: contentView, using: attributesWrapper.attributes)
+    static func toster(_ txt : String) {
+        guard let controller = getTopMostViewController() else{return}
+        // Create the toast label and position it
+        let toastLabel = PaddedLabel(insets: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20))
+        
+        // Customize the appearance
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = .systemFont(ofSize: 16)
+        toastLabel.textAlignment = .center
+        toastLabel.text = txt
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        toastLabel.numberOfLines = 0
+        
+        // Set maximum and minimum width
+        let maxSize = CGSize(width: controller.view.frame.size.width - 40, height: CGFloat.greatestFiniteMagnitude)
+        let expectedSize = toastLabel.sizeThatFits(maxSize)
+        
+        // Set minimum width for short messages
+        let minWidth: CGFloat = 100
+        let width = max(expectedSize.width + 20, minWidth)
+        
+        toastLabel.frame = CGRect(x: (controller.view.frame.size.width - width) / 2, y: 100, width: width, height: expectedSize.height + 20)
+        
+        // Add the label to the view
+        controller.view.addSubview(toastLabel)
+        
+        // Animate the fade-out and removal after 4 seconds
+        UIView.animate(withDuration: 1.0, delay: 3, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: { _ in
+            toastLabel.removeFromSuperview()
+        })
     }
-
+    
     static func logout(){
         let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
         let navVC = UINavigationController(rootViewController: vc)
@@ -459,16 +466,25 @@ class CommonFunctions{
 	
 	
 	static func getImage(id: String) -> String{
-		var idImage = id
-		if(idImage == "bsc"){
-			idImage = "bnb"
-		}
-		for currency in Storage.currencies {
-			if(currency?.id == idImage){
-				return currency?.imageUrl ?? ""
-			}
-		}
-		return ""
+        var idImage = id
+        if(idImage == "bsc"){
+            idImage = "bnb"
+        }
+        for currency in Storage.currencies {
+            if(currency?.id == idImage){
+                return currency?.imageUrl ?? ""
+            }
+        }
+        return ""
+    }
+    
+    static func getNetwork(id: String) -> NetworkData?{
+        for network in Storage.networks {
+            if(network.id == id){
+                return network
+            }
+        }
+        return nil
 	}
     
 	static func getCurrency(id: String) -> AssetBaseData{
@@ -583,7 +599,7 @@ class CommonFunctions{
         view.rightAxis.enabled = true
         view.rightAxis.labelPosition = .outsideChart
         view.rightAxis.drawGridLinesEnabled = false
-        view.rightAxis.setLabelCount(3, force: true)
+        view.rightAxis.setLabelCount(2, force: true)
 		view.rightAxis.axisMinimum = data.yMin
 		view.rightAxis.axisMaximum = data.yMax
 		view.rightAxis.decimals = 2

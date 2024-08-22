@@ -187,7 +187,7 @@ class ConfirmInvestmentVC: ViewController {
             self.progressView.isHidden = true
 			self.volatilePriceLbl.isHidden = true
         }else if InvestmentType == .withdrawEuro{
-            let fees = 0.55
+            let fees = 0.66
             
             self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL")
             self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL"), for: .normal)
@@ -343,6 +343,9 @@ extension ConfirmInvestmentVC{
                             vc.action = actionVerification
                             vc.controller = self ?? ConfirmInvestmentVC()
                             vc.dataWithdrawal = dataWithdrawalRequest
+                            vc.resendClosure = {[weak self] in
+                                self?.confirmInvestmentVM.userGetOtpApi(action: actionVerification, data: dataGetOtp, completion: {_ in})
+                            }
                             self?.present(vc, animated: true, completion: nil)
                         }
                     })
