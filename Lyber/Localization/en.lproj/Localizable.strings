@@ -144,6 +144,10 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "WITHDRAW_ON" = "Withdraw on";
 "ADD_RIB" = "Add a RIB";
 "CHOOSE_RIB_WANT_WITHDRAW" = "Choose the RIB on which you want to withdraw";
+"WITHDRAW_CONTROLLER_TITLE_SEND" = "By what means?";
+"WITHDRAW_CONTROLLER_SEND_PHONE" = "Phone Number";
+"WITHDRAW_CONTROLLER_SEND_QRCODE" = "QR Code";
+"WITHDRAW_CONTROLLER_SEND_NFC" = "NFC";
 "SEND_ASSETS_ANOTHER_ACCOUNT" = "Send assets to another account";
 "EXCHANGE" = "Exchange";
 "EXCHANGE_NOUN" = "Exchange";
@@ -346,6 +350,10 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "RECOMMENDED" = "Recommended";
 "DEPOSIT" = "Deposit";
 "DEPOSIT_VERB" = "Deposit";
+"SEND_MONEY_TITLE" = "Send money (no fees)";
+"SEND_MONEY_DESC" = "Send money to your friends";
+"SEND_MONEY_DETAIL_TITLE" = "Send %@ (no fees)";
+"SEND_MONEY_DETAIL_DESC" = "Send %@ to your friends";
 "DEPOSIT_TRANSACTION" = "%@ Deposit";
 "MONEY_LYBER" = "Add money on Lyber";
 "ASSET_LYBER_PART1" = "Add";
@@ -356,6 +364,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 //Withdraw
 "CHOOSE_OPERATION" = "Choose an operation";
 "EXCHANGE_FROM_TITLE" = "Exchange → From";
+"EXCHANGE_FROM_TITLE_WITHDRAW" = "Exchange → From";
 "LYBER_PORTFOLIO" = "Lyber portfolio";
 "FROM" = "From";
 "TO" = "To";
@@ -364,6 +373,7 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "AVAILABLE_FLAT" = "Available FlAT";
 "EXCHANGE_TO_TITLE" = "Exchange → To";
 "WANT_WITHDRAW" = "I want to withdraw";
+"EXCHANGE_FROM_TITLE_SEND" = "I want to send";
 "ALL_PORTFOLIO" = "All my portfolio";
 "MY_CRYPTO_WALLET" = "On my crypto wallet";
 "NO_ASSETS_YET_CLICK_HERE" = "You don't have any assets yet. Get your first cryptos now by clicking here.";
@@ -454,6 +464,9 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "BACK" = "Back";
 "ENTER_CODE_RECEIVED_EMAIL" = "Enter the code you received at your email address.";
 "ENTER_CODE_RECEIVED_SMS" = "Enter the code received by sms";
+"VERIFICATION_TITLE_SEND_MONEY" = "Enter Recipient's Phone Number";
+"VERIFICATION_DESC_SEND_MONEY" = "Please enter the phone number of the person you want to send the crypto to.";
+"VERIFICATION_BTN_SEND_MONEY" = "Send Crypto";
 "TOO_MANY_FAILED_ATTEMPT_PLEASE_REAUTHENTICATE" = "Too many failed attempts, please reauthenticate";
 "NO_TRANSACTIONS" = "No transactions";
 "ENTER_PASSWORD" = "Enter password";
@@ -709,34 +722,21 @@ Our support team will get back to you as soon as possible to make the withdrawal
 
 //MARK: - ERRORS
 
-"FATAL_ERROR" = "Fatal error (%@)";
-"UNKNOWN_ERROR" = "Unknown error";
-"UNKNOWN_ERROR_PARAMETER" = "Unknown error (%@)";
 "ERROR_TRANSACTION" = "The transaction could not be completed";
-"PHONE_ALREADY_REGISTERED" = "This phone number is already registered";
 "COULD_NOT_FIND_PHONE" = "Couldn't find phone number";
-"EMAIL_ALREADY_EXIST" = "Email already exists, you must choose another one";
 "NO_ACCOUNT_CREATED" = "Please create your user account with email and password first";
 "NO_PASSWORD_CREATED" = "First need to create a password";
 "PHONE_NOT_VERIFIED" = "Phone not verified";
 "EMAIL_NOT_VERIFIED" = "Email not verified";
-"NO_USER_EMAIL" = "No user account exists with this email";
-"NO_USER_PHONE" = "No user account exists with this phone number";
-"USER_BLOCKED_FROM_LOGIN" = "This account is blocked. Contact support for more informations.";
-"WRONG_PASSWORD" = "Incorrect password";
 "EXPIRED_CHALLENGE" = "Expired challenge";
-"CODE_ALREADY_USED" = "Google OTP already used. Please wait 30s and try again with a new OTP";
 "WAIT_BEFORE_OTP" = "You have to wait %@ seconds before sending another OTP.";
 "TWO_FA_NOT_ACTIVATED" = "2FA not activated";
-"INCORRECT_OTP" = "Incorrect OTP";
 "USER_BINANCE_ID_NOT_FOUND" = "Couldn't find user with this binance id";
 "USER_NOT_EXIST" = "Fatal ! User no longer exist !";
 "INVALID_AUTHORIZATION" = "Invalid authorization";
 "INCORRECT_TOKEN" = "Incorrect JWT";
 "INVALID_AUTHORIZATION_TYPE" = "Invalid authorization type";
 "UNEXPECTED_OTP" = "Please first ask for an OTP";
-"TOO_MANY_OTP_FAILURE" =
-"You made too much failed OTP attempt for today. You will be able to try again tomorrow. If this was not you or for urgent changes, please contact support";
 "ONLY_EMAIL_AND_SMS" =
 "This method is only supported if the user has 2FA configured for email or sms but google 2FA is configured";
 "EXPIRED_OTP" = "This OTP token has expired";
@@ -748,10 +748,8 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "MISSING_OTP" = "OTP is required but missing";
 "UNSUPPORTED_AUTH_METHOD" = "This authentication method is not supported";
 "INCORRECT_SCOPE_2FA" = "Incorrect scope 2FA";
-"KYC_NOT_OK" = "We were not able to validate your KYC. Please try again";
 "SIGN_NOT_OK" = "We were unable to validate your signature. You will be asked to try again.";
 "USER_ALREADY_VERIFIED" = "User is already verified";
-"FAILED_RESET_PASSWORD" = "This link was already used to reset your password!";
 "KYC_UNDER_VERIFICATION" = "Your KYC is under verification. Please try again in five minutes.";
 "PLEASE_VALIDATE_KYC" = "Your kyc has been refused. Please validate your kyc to be able to carry out the operation.";
 "VALIDATE_KYC" = "Validate my kyc";
@@ -759,5 +757,120 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "CONTRACT_SIGNATURE" = "Sign your contract";
 "USER_NOT_SIGNED_CONTRACT" = "Your contract has not been signed. Please sign it before you can proceed.";
 "SIGN_CONTRACT" = "Sign my contract";
-"MINIMUM_CREDIT_CARD_PAYMENT" = "Minimum amount for credit card payment is 20€";
 "ACCOUNT_CREATION_BLOCKED" = "Your account creation has been blocked for compliance reasons. If you need further information, please contact support.";
+
+
+//MARK: ERROR CODES
+"ERROR_CODE_MINUS_1" = "A problem has occurred, please try again or contact support.";
+"ERROR_CODE_1" = "An account already exists with this phone number.";
+"ERROR_CODE_3" = "We encountered a problem during the verification process. Please try again.";
+"ERROR_CODE_5" = "An account already exists with this e-mail address.";
+"ERROR_CODE_6_7" = "We encountered a problem during the verification process. Please try again.";
+"ERROR_CODE_8" = "Unable to create an account because your phone number is not verified, please try again.";
+"ERROR_CODE_9" = "Unable to create an account because your e-mail address is not verified, please try again.";
+"ERROR_CODE_10" = "No account exists with this email address.";
+"ERROR_CODE_11" = "No account exists with this phone number.";
+"ERROR_CODE_12" = "Your account has been blocked. If you need help, please contact support on our website.";
+"ERROR_CODE_13" = "A problem has occurred, please try again.";
+"ERROR_CODE_14" = "Incorrect password.";
+"ERROR_CODE_15" = "Something went wrong, please try again.";
+"ERROR_CODE_16" = "No account exists for this user. Please make sure you finish your registration.";
+"ERROR_CODE_18" = "This verification code has already been used.";
+"ERROR_CODE_20" = "The 2FA is not active on your account.";
+"ERROR_CODE_24" = "The code you have entered is incorrect.";
+"ERROR_CODE_26" = "We could not find your account, if you need help please contact support.";
+"ERROR_CODE_27" = "Unable to create an account because some information is missing, please try again.";
+"ERROR_CODE_28_29_30" = "A problem has occurred, please try to login again.";
+"ERROR_CODE_34" = "A problem has occurred, please try again.";
+"ERROR_CODE_35" = "You have submitted too many wrong verification code today. Contact support if it wasn't you.";
+"ERROR_CODE_37" = "There seems to be a configuration problem with your 2FA, please contact support.";
+"ERROR_CODE_38" = "This verification code has expired.";
+"ERROR_CODE_39" = "You may be using a code that does not correspond to this action.";
+"ERROR_CODE_40" = "We have not been able to send you the verification code, please contact support if you need help.";
+"ERROR_CODE_41" = "We have not been able to send you the verification code, please contact support if you need help.";
+"ERROR_CODE_42" = "There seems to be a configuration problem with your Google Auth 2FA, please contact support.";
+"ERROR_CODE_43" = "The code you have entered is incorrect.";
+"ERROR_CODE_44" = "Your Google 2FA authentication is already configured.";
+"ERROR_CODE_45" = "You must enter a verification code to perform this action.";
+"ERROR_CODE_48" = "This password reset link has already been used.";
+"ERROR_CODE_50" = "There seems to be a configuration problem with your 2FA, please contact support.";
+"ERROR_CODE_52" = "We have detected that your account has already been created, please try to log in.";
+"ERROR_CODE_53" = "We were unable to verify the integrity of your password, please try to login again.";
+"ERROR_CODE_57" = "The withdrawal lock period has not expired, please try again later.";
+
+
+"ERROR_CODE_1000" = "We were unable to get the price of the asset, please try again.";
+
+
+"ERROR_CODE_3000" = "The asset you are trying to %@ is not available, please contact support if you need help.";
+"ERROR_CODE_3006" = "Fiat assets do not have networks.";
+
+
+"ERROR_CODE_7000" = "%@ is currently disabled for trading.";
+"ERROR_CODE_7001" = "%@ is currently disabled for trading.";
+"ERROR_CODE_7002" = "You are not authorized to trade. If you have a question, please contact us via the contact form.";
+"ERROR_CODE_7003" = "You don't have enough funds to complete this order.";
+"ERROR_CODE_7006" = "A problem has occurred, please try again.";
+"ERROR_CODE_7007" = "This order has been lost. If you need help, please contact us via the contact form.";
+"ERROR_CODE_7008" = "This quote has already been accepted.";
+"ERROR_CODE_7009" = "This quote has already been canceled.";
+"ERROR_CODE_7010" = "This quote has expired, please try again.";
+"ERROR_CODE_7014" = "USDC purchase is temporarily unavailable, please try again later.";
+"ERROR_CODE_7015" = "The assets you are trying to trade must be different.";
+"ERROR_CODE_7018" = "You have reached the maximum failed quote for the day, try again tomorrow.";
+"ERROR_CODE_7019" = "There seems to have been a problem creating your account. Please contact support.";
+"ERROR_CODE_7020" = "Your account is blocked for an indefinite period, for more information please contact support.";
+"ERROR_CODE_7021" = "Your account is closed, please create a new one to access our services.";
+"ERROR_CODE_7022" = "Your account is blocked for an indefinite period, for more information please contact support.";
+"ERROR_CODE_7024" = "We are still checking your identity, please try again later.";
+"ERROR_CODE_7026" = "The amount you are trying to trade does not respect the correct format.";
+"ERROR_CODE_7027" = "The minimum purchase amount for USDC is 20 euros.";
+
+
+"ERROR_CODE_10001" = "This address is not whitelisted. You are not allowed to withdraw to this address.";
+"ERROR_CODE_10005" = "You can not withdraw more money than you have.";
+"ERROR_CODE_10009" = "You are not authorized to make withdrawals. If you need help, please contact support.";
+"ERROR_CODE_10012" = "%@ is currently unavailable, please contact the support or try again later.";
+"ERROR_CODE_10013" = "%@ on network %@ for asset %@ is not possible.";
+"ERROR_CODE_10018" = "Withdrawals are currently unavailable for this asset.";
+"ERROR_CODE_10021" = "Minimum withdrawal amount is %@";
+"ERROR_CODE_10022" = "An OTP was expected.";
+"ERROR_CODE_10023" = "You are not authorized to make deposits. If you need help, please contact support.";
+"ERROR_CODE_10024" = "%@ network is currently unavailable, please choose another network or try again later.";
+"ERROR_CODE_10025" = "We can't find the address you want to delete.";
+"ERROR_CODE_10028" = "The address format does not match the expected format for %@ network.";
+"ERROR_CODE_10030" = "Only crypto asset are supported.";
+"ERROR_CODE_10032" = "The withdrawal lock period has not expired, please try again later.";
+"ERROR_CODE_10033" = "We were unable to get the price of the asset, please try again.";
+"ERROR_CODE_10034" = "Your account is closed, please create a new one to access our services.";
+"ERROR_CODE_10035" = "Your account is blocked for an indefinite period, for more information please contact support.";
+"ERROR_CODE_10036" = "There seems to have been a problem creating your account. Please contact support.";
+"ERROR_CODE_10037" = "Your account is blocked for an indefinite period, for more information please contact support.";
+"ERROR_CODE_10042" = "We are still checking your identity, please try again later.";
+"ERROR_CODE_10044" = "The bank account details you are trying to use cannot be found in our validated bank account details register.";
+"ERROR_CODE_10045" = "The bank account details you are trying to use does not match the one we have validated.";
+"ERROR_CODE_10048" = "The address you are trying to add already exists.";
+"ERROR_CODE_10050" = "One of your bank account details already has this name.";
+"ERROR_CODE_10051" = "One of your bank account details already has this IBAN.";
+
+
+"ERROR_CODE_13001" = "Unable to find the strategy, please try again or contact support.";
+"ERROR_CODE_13003" = "Unable to find the strategy, please try again or contact support.";
+"ERROR_CODE_13006" = "This strategy requires a minimum investment of %@ USDC.";
+"ERROR_CODE_13009" = "You cannot enter the same asset twice in a strategy.";
+"ERROR_CODE_13010" = "The sum of the percentages cannot exceed 100%.";
+"ERROR_CODE_13011" = "One of the assets you are trying to trade is not available.";
+"ERROR_CODE_13012" = "One of the assets you are trying to trade is not available.";
+"ERROR_CODE_13013" = "The sum of the percentages cannot be less than 100%.";
+"ERROR_CODE_13015" = "You can't invest in USDC using a strategy.";
+"ERROR_CODE_13016" = "You are not authorized to execute the strategy. If you have a question, please contact us via the contact form.";
+"ERROR_CODE_13017" = "There seems to have been a problem creating your account. Please contact support.";
+"ERROR_CODE_13018" = "Your account is blocked for an indefinite period, for more information please contact support.";
+"ERROR_CODE_13019" = "Your account is closed, please create a new one to access our services.";
+"ERROR_CODE_13020" = "Your account is blocked for an indefinite period, for more information please contact support.";
+
+
+"ERROR_CODE_15002" = "A problem has occurred, please try again or contact support.";
+
+
+"ERROR_CODE_18000" = "This network seems to be unavailable, please contact support if you need help.";

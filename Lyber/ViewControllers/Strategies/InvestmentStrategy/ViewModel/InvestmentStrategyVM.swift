@@ -16,7 +16,7 @@ class InvestmentStrategyVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getInvestmentStrategiesApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func deleteStrategyApi(strategyName:String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -30,7 +30,7 @@ class InvestmentStrategyVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "deleteStrategyApi",code: code, error: error)
             completion(nil)
-        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .DELETEWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func pauseStrategyApi(strategyName:String, ownerUuid:String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -45,6 +45,6 @@ class InvestmentStrategyVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "pauseStrategyApi",code: code, error: error)
             completion(nil)
-        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .DELETEWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
 }

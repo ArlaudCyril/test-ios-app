@@ -60,6 +60,9 @@ class InvestInMyStrategyVC: ViewController {
     
     var numberOfDecimals = -1
     
+    //send
+    var sendMean = ""
+    
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var investInMyStrategyLbl: UILabel!
@@ -261,34 +264,39 @@ class InvestInMyStrategyVC: ViewController {
     }
     
     func checkInvestInStrategy(){
-        if strategyType == .singleCoin || strategyType == .singleCoinWithFrequence{
+        if strategyType == .singleCoin || strategyType == .singleCoinWithFrequence || strategyType == .Send{
             if(strategyType == .singleCoinWithFrequence){
                 self.frequencyVw.isHidden = false
+                self.frequencyLbl.text = "\(CommonFunctions.localisation(key: "ONCE"))"
+                self.selectedFrequency = "\(CommonFunctions.localisation(key: "ONCE"))"
+                self.frequencyVw.backgroundColor = UIColor.greyColor
+                self.frequencyLbl.textColor = UIColor.ThirdTextColor
+                self.frequencyDropDown.image = Assets.drop_down.image()
+                self.frequencyImg.image = Assets.calendar_black.image()
             }else{
                 self.frequencyVw.isHidden = true
             }
             self.noOfCoinVw.isHidden = false
-            self.maximumBtn.isHidden = true
             self.switchPriceAssetBtn.isHidden = false
-            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "BUY")) \(self.asset?.id.uppercased() ?? "")"
             self.noOfCoinLbl.text = "~\(exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0") \(self.asset?.id.uppercased() ?? "")"
-            self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_MY_PURCHASE"), for: .normal)
-            self.frequencyLbl.text = "\(CommonFunctions.localisation(key: "ONCE"))"
-            self.selectedFrequency = "\(CommonFunctions.localisation(key: "ONCE"))"
-            self.frequencyVw.backgroundColor = UIColor.greyColor
-            self.frequencyLbl.textColor = UIColor.ThirdTextColor
-            self.frequencyDropDown.image = Assets.drop_down.image()
-            self.frequencyImg.image = Assets.calendar_black.image()
             
-            PortfolioDetailVM().getCoinInfoApi(AssetId: "eur", isNetwork: false, completion: {
+            if(strategyType != .Send){
+                self.maximumBtn.isHidden = true
+                self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "BUY")) \(self.asset?.id.uppercased() ?? "")"
+                self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "PREVIEW_MY_PURCHASE"), for: .normal)
+            }else{
+                self.maximumBtn.isHidden = false
+                self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "SEND")) \(self.asset?.id.uppercased() ?? "")"
+                self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
+            }
+            
+            PortfolioDetailVM().getCoinInfoApi(AssetId: asset?.id ?? "eur", isNetwork: false, completion: {
                 response in
                 if response != nil{
                     self.numberOfDecimals = response?.data?.decimals ?? 2
                 }
             })
         }else if (strategyType == .activateStrategy || strategyType == .editActiveStrategy || strategyType == .oneTimeInvestment){
-            
-            
             
             if(strategyType == .oneTimeInvestment){
                 self.maximumBtn.isHidden = false
@@ -415,7 +423,7 @@ extension InvestInMyStrategyVC {
     }
     
     @objc func previewMyInvestAction(){
-        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .withdrawEuro || strategyType == .singleCoin || strategyType == .singleCoinWithFrequence{
+        if strategyType == .Exchange || strategyType == .withdraw || strategyType == .withdrawEuro || strategyType == .singleCoin || strategyType == .singleCoinWithFrequence || strategyType == .Send{
             goToConfirmInvestment()
         }else if strategyType == .sell{
             SellCoinApi()
@@ -661,6 +669,13 @@ extension InvestInMyStrategyVC {
         }else if strategyType == .oneTimeInvestment{
             enteredText = fromBalance?.balanceData.balance.euroFormat ?? ""
             noOfCoins(value: enteredText)
+        }else if strategyType == .Send{
+            if exchangeCoinToEuro == false{
+                enteredText = fromBalance?.balanceData.euroBalance.euroFormat ?? ""
+            }else{
+                enteredText = CommonFunctions.formattedAssetBinance(value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)
+            }
+            noOfCoins(value: enteredText)
         }
         
         if enteredText.contains("."){
@@ -678,8 +693,6 @@ extension InvestInMyStrategyVC {
                 if (response.data?.count ?? 0) > 0{
                     self?.creditCardLbl.text = response.data?[0].address ?? ""
                     self?.creditCardNumberLbl.text = response.data?[0].name ?? ""
-//                    self?.creditCardImg.setSvgImage(from: URL(string: response.addresses?[0].logo ?? ""))
-                    //self?.creditCardImg.sd_setImage(with: URL(string: response.data?[0].logo ?? ""))
                 }
             }
         })
@@ -747,7 +760,7 @@ extension InvestInMyStrategyVC {
                 }
                 
             }
-        }else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
+        }else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence || strategyType == .Send){
             if exchangeCoinToEuro == false{
                 amountTF.text = "\(cleanedValue)€"
                 let coinPrice = NSDecimalNumber(string: asset?.priceServiceResumeData.lastPrice ?? "0")
@@ -835,13 +848,6 @@ extension InvestInMyStrategyVC {
                 self.goToPreviewINvest()
             }
             
-//            if totalEuroInvested > maxAmountBuy{
-//                CommonFunctions.toster(CommonFunctions.localisation(key: "CANT_BUY_MORE_THAN", parameter: maxAmountBuy.description))
-//            }else if totalEuroInvested < self.minInvestPerAsset{
-//                CommonFunctions.toster("\(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_1")) \(self.minInvestPerAsset) \(CommonFunctions.localisation(key: "NOT_ENOUGH_INVESTMENT_PART_2"))")
-//            }else{
-//                self.goToPreviewINvest()
-//            }
         }else if strategyType == .Exchange{
             if totalEuroInvested.compare(maxCoinExchange) == .orderedDescending {
                 CommonFunctions.toster(CommonFunctions.localisation(key: "NOT_ENOUGH_COINS"))
@@ -858,6 +864,8 @@ extension InvestInMyStrategyVC {
             }else{
                 self.goToPreviewINvest()
             }
+        }else{
+            goToPreviewINvest()
         }
        
     }
@@ -868,7 +876,7 @@ extension InvestInMyStrategyVC {
             let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             self.previewMyInvest.showLoading()
                 
-            InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalEuroInvested.decimalValue, completion: {response in
+            InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalEuroInvested.decimalValue, controller: self, completion: {response in
                 self.previewMyInvest.hideLoading()
                 if( response != nil){
                     vc.InvestmentType = .Exchange
@@ -892,6 +900,7 @@ extension InvestInMyStrategyVC {
             vc.InvestmentType = .withdraw
             vc.totalEuroInvested = totalEuroInvested.doubleValue
             vc.totalCoinsInvested = totalNoOfCoinsInvest.decimalValue
+            vc.minimumWithdraw = self.minimumWithdrawal
             vc.address = self.addressLbl.text
             vc.network = self.network
             vc.fees = (self.feeWithdrawal ?? 0)
@@ -904,6 +913,7 @@ extension InvestInMyStrategyVC {
             vc.InvestmentType = .withdrawEuro
             vc.totalEuroInvested = totalEuroInvested.doubleValue
             vc.totalCoinsInvested = totalNoOfCoinsInvest.decimalValue
+            vc.minimumWithdraw = self.minimumWithdrawal
             vc.ribSelected = self.ribSelected
             vc.fromAssetId = self.fromAssetId ?? ""
             vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
@@ -912,7 +922,7 @@ extension InvestInMyStrategyVC {
         }else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence){
             let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             self.previewMyInvest.showLoading()
-            InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: totalEuroInvested.decimalValue, completion: {response in
+            InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: totalEuroInvested.decimalValue, controller: self, completion: {response in
                 self.previewMyInvest.hideLoading()
                 if response != nil{
                     vc.clientSecret = response?.data.clientSecret
@@ -941,6 +951,11 @@ extension InvestInMyStrategyVC {
             vc.strategyData = self.strategyData
             
             self.navigationController?.pushViewController(vc, animated: true)
+        }else if(strategyType == .Send){
+            let vc = InformationPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+            vc.typeInformation = "sendMoneyPhone"
+            vc.controller = self
+            self.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -1045,13 +1060,7 @@ extension InvestInMyStrategyVC : UITextFieldDelegate{
     @objc func editChange(_:UITextField){
         print(amountTF.text ?? "")
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        //        self.view.endEditing(true)
-    }
-    
     func textFieldDidChangeSelection(_ textField: UITextField) {
-//        let startPosition: UITextPosition = amountTF.beginningOfDocument
-//        let endPosition: UITextPosition = amountTF.endOfDocument
         if let selectedRange = amountTF.selectedTextRange {
             cursorPosition = amountTF.offset(from: amountTF.beginningOfDocument, to: selectedRange.start)
             print("cursor position -----\(cursorPosition)")

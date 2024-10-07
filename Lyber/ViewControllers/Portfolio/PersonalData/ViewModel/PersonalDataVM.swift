@@ -11,31 +11,9 @@ import CryptoKit
 import UIKit
 
 class PersonalDataVM{
-    //func personalDataApi(profile_info_step : Int,personalData : personalDataStruct?, completion: @escaping ( (OTPAPI?) -> Void )){
 	func personalDataApi(language: String, completion: @escaping ( (OTPAPI?) -> Void )){
         
         var param: [String: Any] = [:]
-        /*if personalData?.fisrtName ?? "" != ""{
-            param[Constants.ApiKeys.firstName] =  personalData?.fisrtName ?? ""
-        }
-        if personalData?.lastName ?? "" != ""{
-            param[Constants.ApiKeys.lastName] =  personalData?.lastName ?? ""
-        }
-        if personalData?.birthPlace ?? "" != ""{
-            param[Constants.ApiKeys.birthPlace] =  personalData?.birthPlace ?? ""
-        }
-        if personalData?.birthDate ?? "" != ""{
-            param[Constants.ApiKeys.birthDate] =  personalData?.birthDate ?? ""
-        }
-        if personalData?.birthCountry ?? "" != ""{
-            param[Constants.ApiKeys.birthCountry] =  personalData?.birthCountry ?? ""
-        }
-        if personalData?.nationality ?? "" != ""{
-            param[Constants.ApiKeys.nationality] =  personalData?.nationality ?? ""
-        }
-		if personalData?.isUsPerson ?? "" != ""{
-			param[Constants.ApiKeys.isUSCitizen] =  personalData?.isUsPerson ?? "" == "Yes" ? true : false
-		}*/
 		param[Constants.ApiKeys.language] =  language
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userSetUserInfo, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
@@ -44,7 +22,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "personalDataApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "registration")
     }
     
     func setAddressApi(personalData : personalDataStruct?, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -64,7 +42,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "setAddressApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "registration")
     }
     
     func setInvestmentExperienceApi(personalData : personalDataStruct?, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -83,7 +61,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "setInvestmentExperienceApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "registration")
     }
     
     
@@ -105,7 +83,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "sendVerificationEmailApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "registration")
     }
     
 	func checkEmailVerificationApi(controller: UIViewController, code : String?, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -116,7 +94,7 @@ class PersonalDataVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "checkEmailVerificationApi",code: code, error: error, controller: controller)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "registration")
     }
     
 	func finishRegistrationApi(controller: UIViewController, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -126,6 +104,6 @@ class PersonalDataVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "finishRegistrationApi",code: code, error: error, controller: controller)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "registration")
     }
 }

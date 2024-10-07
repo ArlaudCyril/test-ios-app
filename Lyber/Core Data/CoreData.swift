@@ -25,7 +25,6 @@ class userData : NSObject {
 	var profile_image = ""
     var phone_no = ""
     var countryCode = ""
-    var isAccountCreated = false
     var isEducationStrategyRead = false
     var logInPinSet = 0
     var is_push_enabled = 0
@@ -43,11 +42,12 @@ class userData : NSObject {
     var has2FA = false
     var hideBalance = false
     var type2FA = "none"
+    
+    //Requests / Unique per user
+    var keyId = ""
 	
 	//Profile informations
 	///Phase 1
-	var firstnameRegistration = ""
-	var lastnameRegistration = ""
 	var placeOfBirth = ""
 	var birthDate = ""
 	var countryOfBirth = ""
@@ -96,7 +96,6 @@ class userData : NSObject {
         newData.setValue(email, forKey: "email")
         newData.setValue(phone_no, forKey: "phone_no")
         newData.setValue(countryCode, forKey: "countryCode")
-        newData.setValue(isAccountCreated, forKey: "isAccountCreated")
         newData.setValue(isEducationStrategyRead, forKey: "isEducationStrategyRead")
         newData.setValue(logInPinSet, forKey: "logInPinSet")
         newData.setValue(is_push_enabled, forKey: "is_push_enabled")
@@ -115,14 +114,13 @@ class userData : NSObject {
         newData.setValue(has2FA, forKey: "has2FA")
         newData.setValue(hideBalance, forKey: "hideBalance")
         newData.setValue(type2FA, forKey: "type2FA")
+        newData.setValue(keyId, forKey: "keyId")
 		
 		//Profil informations
 		newData.setValue(firstname, forKey: "firstname")
         newData.setValue(lastname, forKey: "lastname")
 		newData.setValue(userUuid, forKey: "userUuid")
 		newData.setValue(registeredAt, forKey: "registeredAt")
-		newData.setValue(firstnameRegistration, forKey: "firstnameRegistration")
-		newData.setValue(lastnameRegistration, forKey: "lastnameRegistration")
 		newData.setValue(placeOfBirth, forKey: "placeOfBirth")
 		newData.setValue(birthDate, forKey: "birthDate")
 		newData.setValue(countryOfBirth, forKey: "countryOfBirth")
@@ -182,10 +180,6 @@ class userData : NSObject {
             if(results.count > 0){
                 for result in results as![NSManagedObject]{
                     
-                    if let isAccountCreated = result.value(forKey: "isAccountCreated") as? Bool{
-                        self.isAccountCreated = isAccountCreated
-                        print("data get isAccountCreated \(isAccountCreated)")
-                    }
                     if let environment = result.value(forKey: "environment") as? String{
                         self.environment = environment
                         print("data get environment \(environment)")
@@ -294,6 +288,10 @@ class userData : NSObject {
                         self.type2FA = type2FA
                         print("data get type2FA \(type2FA)")
                     }
+                    if let keyId = result.value(forKey: "keyId") as? String{
+                        self.keyId = keyId
+                        print("data get keyId \(keyId)")
+                    }
 					
 					//Profile informations
 					if let firstname = result.value(forKey: "firstname") as? String{
@@ -311,14 +309,6 @@ class userData : NSObject {
 					if let registeredAt = result.value(forKey: "registeredAt") as? String{
 						self.registeredAt = registeredAt
 						print("data get registeredAt \(registeredAt)")
-					}
-					if let firstnameRegistration = result.value(forKey: "firstnameRegistration") as? String{
-						self.firstnameRegistration = firstnameRegistration
-						print("data get firstnameRegistration \(firstnameRegistration)")
-					}
-					if let lastnameRegistration = result.value(forKey: "lastnameRegistration") as? String{
-						self.lastnameRegistration = lastnameRegistration
-						print("data get lastnameRegistration \(lastnameRegistration)")
 					}
 					if let placeOfBirth = result.value(forKey: "placeOfBirth") as? String{
 						self.placeOfBirth = placeOfBirth
@@ -389,7 +379,6 @@ class userData : NSObject {
 	
 	func registered(){
 		
-		self.isAccountCreated = true
 		
 		self.personalDataStepComplete = 0
 		self.stepRegisteringComplete = 0
@@ -420,23 +409,31 @@ class userData : NSObject {
 	
 	func disconnect(){
 //all except following
-//		self.isAccountCreated = false
-//		self.isEducationStrategyRead = false
 //		self.personalDataStepComplete = 0
 //		self.stepRegisteringComplete = 0
 //		self.enterPhoneStepComplete = 0
 //		self.registrationToken = ""
 //		self.language = ""
+        
+        //load profile
+        self.firstname = ""
+        self.lastname = ""
+        self.userUuid = ""
+        self.registeredAt = ""
+        self.has2FA = false
+        self.type2FA = "none"
+        self.keyId = "keyId"
+        self.phone_no = ""
+        self.email = ""
+        self.scope2FALogin = false
+        self.scope2FAWhiteListing = false
+        self.scope2FAWithdrawal = false
+        self.profile_image = ""
+        self.userSigned = false
+        
 		self.userToken = ""
 		self.refreshToken = ""
 		self.time = nil
-		self.firstname = ""
-        self.lastname = ""
-		self.userUuid = ""
-		self.registeredAt = ""
-		self.profile_image = ""
-		self.email = ""
-		self.phone_no = ""
 		self.countryCode = ""
 		self.logInPinSet = 0
 		self.is_push_enabled = 0
@@ -445,19 +442,13 @@ class userData : NSObject {
 		self.bic = ""
 		self.faceIdEnabled = false
 		self.extraSecurity = "none"
-		self.scope2FALogin = false
-		self.scope2FAWhiteListing = false
-		self.scope2FAWithdrawal = false
-        self.has2FA = false
 		self.hideBalance = false
-		self.type2FA = "none"
 		
 		self.dataSave()
 	}
     
     func deleteData(){//maybe it delete also language
 		//all except self.language = ""
-        self.isAccountCreated = false
         self.isEducationStrategyRead = false
         self.userToken = ""
         self.refreshToken = ""
@@ -467,8 +458,6 @@ class userData : NSObject {
         self.lastname = ""
         self.userUuid = ""
         self.registeredAt = ""
-		self.firstnameRegistration = ""
-        self.lastnameRegistration = ""
 		self.profile_image = ""
         self.email = ""
         self.phone_no = ""
@@ -489,6 +478,7 @@ class userData : NSObject {
         self.has2FA = false
         self.hideBalance = false
         self.type2FA = "none"
+        self.keyId = ""
 		
 		//Profile informations
 		self.placeOfBirth = ""
@@ -518,4 +508,15 @@ class userData : NSObject {
             print(error)
         }
     }
+    
+    func deleteDataRegistration(){
+        self.personalDataStepComplete = 0
+        self.stepRegisteringComplete = 0
+        self.enterPhoneStepComplete = 0
+        self.registrationToken = ""
+        
+        self.disconnect()
+    }
+        
 }
+

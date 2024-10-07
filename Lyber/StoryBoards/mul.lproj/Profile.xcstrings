@@ -229,6 +229,18 @@
         }
       }
     },
+    "AwY-pO-QHU.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"AwY-pO-QHU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
     "b4z-Da-NwQ.configuration.title" : {
       "comment" : "Class = \"UIButton\"; configuration.title = \"Button\"; ObjectID = \"b4z-Da-NwQ\";",
       "extractionState" : "extracted_with_value",
@@ -297,6 +309,30 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Label"
+          }
+        }
+      }
+    },
+    "c4v-Yy-XBp.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Button\"; ObjectID = \"c4v-Yy-XBp\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "c4v-Yy-XBp.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"c4v-Yy-XBp\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
           }
         }
       }
@@ -733,6 +769,18 @@
         }
       }
     },
+    "JFG-mH-zHB.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"JFG-mH-zHB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
     "jhc-w8-EQX.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"jhc-w8-EQX\";",
       "extractionState" : "extracted_with_value",
@@ -1083,6 +1131,18 @@
     },
     "PU9-KN-k8U.text" : {
       "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"PU9-KN-k8U\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Label"
+          }
+        }
+      }
+    },
+    "py1-lk-HZn.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"Label\"; ObjectID = \"py1-lk-HZn\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {

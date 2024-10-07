@@ -57,7 +57,7 @@ class EnableWhitelistingVC: ViewController {
 		}else{
 //			CommonUI.setUpLbl(lbl: self.blockLbl, text: "\(CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER")) \(CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))", textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 			
-			CommonUI.setUpLbl(lbl: self.informationLbl, text: CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
+			CommonUI.setUpLbl(lbl: self.informationLbl, text: CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: [CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)]), textColor: UIColor.primaryTextcolor, font: UIFont.MabryPro(Size.Small.sizeValue()))
 		}
         
         self.saveSettingsBtn.setTitle(CommonFunctions.localisation(key: "SAVE_SETTINGS"), for: .normal)
@@ -86,7 +86,7 @@ extension EnableWhitelistingVC{
     
     @objc func saveSettingsBtnAct(){
         self.saveSettingsBtn.showLoading()
-		enableWhitelistingVM.changeWhitelistingSecurityApi(withdrawalLock: self.selectedTime?.securityTime.encoderSecurityTime ?? "", completion: {response in
+        enableWhitelistingVM.changeWhitelistingSecurityApi(withdrawalLock: self.selectedTime?.securityTime.encoderSecurityTime ?? "", controller: self, completion: {response in
 			self.saveSettingsBtn.hideLoading()
 			if response != nil {
 				userData.shared.extraSecurity = self.selectedTime?.securityTime.encoderSecurityTime ?? ""
@@ -182,27 +182,27 @@ extension EnableWhitelistingVC{
 					case "NO_EXTRA_SECURITY":
 						self.informationLbl.text = CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY")
 					default:
-						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: CommonFunctions.localisation(key: timeDataSelected.securityTime))
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: [CommonFunctions.localisation(key: timeDataSelected.securityTime)])
 				}
 			case "1d":
 				switch timeDataSelected.securityTime{
 					case "72_HOURS":
-						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: CommonFunctions.localisation(key: timeDataSelected.securityTime))
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: [CommonFunctions.localisation(key: timeDataSelected.securityTime)])
 					case "24_HOURS":
-						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: [CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)])
 					case "NO_EXTRA_SECURITY":
-						self.informationLbl.text = "\( CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY_FUTURE")) \( CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)))"
+						self.informationLbl.text = "\( CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY_FUTURE")) \( CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: [CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)]))"
 					default:
 						print("not handled")
 				}
 			case "3d":
 				switch timeDataSelected.securityTime{
 					case "72_HOURS":
-						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime))
+						self.informationLbl.text = CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED", parameter: [CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)])
 					case "24_HOURS":
-						self.informationLbl.text = "\(CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: CommonFunctions.localisation(key: timeDataSelected.securityTime))) \(CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)))"
+						self.informationLbl.text = "\(CommonFunctions.localisation(key: "NHOURS_DELAY_REQUIRED_FUTURE", parameter: [CommonFunctions.localisation(key: timeDataSelected.securityTime)])) \(CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: [CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)]))"
 					case "NO_EXTRA_SECURITY":
-						self.informationLbl.text = "\(CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY_FUTURE")) \( CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)))"
+						self.informationLbl.text = "\(CommonFunctions.localisation(key: "CAN_WITHDRAW_IMMEDIATELY_FUTURE")) \( CommonFunctions.localisation(key: "CHANGES_EFFECTIVE_AFTER", parameter: [CommonFunctions.localisation(key: userData.shared.extraSecurity.decoderSecurityTime)]))"
 					default:
 						print("not handled")
 				}

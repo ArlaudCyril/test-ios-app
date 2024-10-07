@@ -288,7 +288,11 @@ extension PortfolioDetailVC{
 					self.timer.invalidate()
 					self.orderId = ""
 				}
-			}
+            }else{
+                PortfolioDetailVC.transactionFinished(success: false)
+                self.timer.invalidate()
+                self.orderId = ""
+            }
 		})
 	}
 	

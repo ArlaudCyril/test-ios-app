@@ -84,15 +84,6 @@ extension PersonalDataVC: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if indexPath.item == 0{
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonalDataCVC", for: indexPath as IndexPath) as! PersonalDataCVC
-//            cell.controller = self
-//			cell.SetUpCell()
-//            if isEditData{
-//                cell.setPersonalData()
-//            }
-//            return cell
-//        }else 
 		if indexPath.item == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addressCVC", for: indexPath as IndexPath) as! addressCVC
             cell.controller = self

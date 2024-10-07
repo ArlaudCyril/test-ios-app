@@ -232,10 +232,11 @@ extension AddCryptoAddressVC{
 						}
 						self.cryptoAddress = Address(address: self.addressTF.text ?? "", network: self.selectedNetworkId, name: self.addressNameTF.text ?? "", origin: originValue, exchange: self.ExchangeTF.text, creationDate: "")
 						self.addAddressBtn.showLoading()
-						CryptoAddressBookVM().createWithdrawalAddress(cryptoAddress: self.cryptoAddress, completion: {[weak self]response in
+                        CryptoAddressBookVM().createWithdrawalAddress(cryptoAddress: self.cryptoAddress, controller: self, isEditing: self.isEditAddress, completion: {[weak self]response in
 							self?.addAddressBtn.hideLoading()
-							self?.navigationController?.popViewController(animated: true)
-							
+                            if(response != nil){
+                                self?.navigationController?.popViewController(animated: true)
+                            }
 						})
 					}else {
 						CommonFunctions.toster(Constants.AlertMessages.PleaseEnterValidAddress)

@@ -7,8 +7,9 @@
 
 import Foundation
 class CryptoAddressBookVM{
-	func createWithdrawalAddress(cryptoAddress : Address?,completion: @escaping ( (SuccessAPI?) -> Void )){
+    func createWithdrawalAddress(cryptoAddress : Address?, controller: ViewController, isEditing: Bool, completion: @escaping ( (SuccessAPI?) -> Void )){
 		var param : [String : Any] = [:]
+        var caller = "createWithdrawalAddress"
 		
 		param[Constants.ApiKeys.network] = cryptoAddress?.network?.lowercased() ?? ""
 		param[Constants.ApiKeys.name] = cryptoAddress?.name ?? ""
@@ -18,14 +19,17 @@ class CryptoAddressBookVM{
 			param[Constants.ApiKeys.exchange] = cryptoAddress?.exchange ?? ""
 			
 		}
-		
-		
+        
+        if(isEditing){
+            caller = "editWithdrawalAddress"
+        }
+        
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceWithdrawalAddress, withParameters: param, ofType: SuccessAPI.self, onSuccess: { response in
 			completion(response)
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "createWithdrawalAddress",code: code, error: error)
+            CommonFunctions.handleErrors(caller: "createWithdrawalAddress",code: code, error: error, controller: controller, arguments: ["network": cryptoAddress?.network ?? ""])
 			completion(nil)
-		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
 	}
 	
     func getWithdrawalAdressAPI(completion: @escaping ( (CryptoAddressesAPI?) -> Void )){
@@ -35,6 +39,6 @@ class CryptoAddressBookVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getWithdrawalAdressAPI",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 }

@@ -17,6 +17,6 @@ class EducationStrategyVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "readEductionStrategyApi",code: code, error: error)
             completion(nil)
-        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .POST, img: nil, imageParameter: nil, headerType: "user")
     }
 }

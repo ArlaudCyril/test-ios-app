@@ -10,6 +10,7 @@ import UIKit
 enum ExchangeEnum{
     case exchange
     case withdraw
+    case send
 }
 
 struct coinsStruct{

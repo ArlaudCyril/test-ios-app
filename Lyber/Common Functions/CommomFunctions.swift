@@ -25,42 +25,69 @@ class EntryAttributeWrapper {
 class CommonFunctions{
     var attributes = EKAttributes()
     
-    static func toster(_ txt : String) {
-        guard let controller = getTopMostViewController() else{return}
-        // Create the toast label and position it
-        let toastLabel = PaddedLabel(insets: UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20))
-        
-        // Customize the appearance
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+    static func toster(_ txt: String) {
+        guard let controller = getTopMostViewController() else { return }
+
+        // Create the container view for the toast
+        let containerView = UIView()
+        containerView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        containerView.layer.cornerRadius = 10
+        //F7F7F8
+        containerView.clipsToBounds = true
+        containerView.alpha = 1.0
+
+        // Create the logo image view
+        let logoImage: UIImage = Assets.appIcon.image()
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true // Set the logo size
+        logoImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+        // Create the toast label
+        let toastLabel = UILabel()
         toastLabel.textColor = UIColor.white
         toastLabel.font = .systemFont(ofSize: 16)
-        toastLabel.textAlignment = .center
+        toastLabel.textAlignment = .left
         toastLabel.text = txt
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10
-        toastLabel.clipsToBounds = true
         toastLabel.numberOfLines = 0
+
+        // Create a stack view to hold the logo and the label
+        let stackView = UIStackView(arrangedSubviews: [logoImageView, toastLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add the stack view to the container view
+        containerView.addSubview(stackView)
         
         // Set maximum and minimum width
         let maxSize = CGSize(width: controller.view.frame.size.width - 40, height: CGFloat.greatestFiniteMagnitude)
         let expectedSize = toastLabel.sizeThatFits(maxSize)
-        
-        // Set minimum width for short messages
         let minWidth: CGFloat = 100
-        let width = max(expectedSize.width + 20, minWidth)
-        
-        toastLabel.frame = CGRect(x: (controller.view.frame.size.width - width) / 2, y: 100, width: width, height: expectedSize.height + 20)
-        
-        // Add the label to the view
-        controller.view.addSubview(toastLabel)
-        
+        let width = max(expectedSize.width + 60, minWidth) // Adjusting the width for the image
+        containerView.frame = CGRect(x: (controller.view.frame.size.width - width) / 2, y: 100, width: width, height: expectedSize.height + 40)
+
+        // Add the container view to the controller's view
+        controller.view.addSubview(containerView)
+
+        // Set constraints for stackView inside containerView
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
+            stackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10)
+        ])
+
         // Animate the fade-out and removal after 4 seconds
         UIView.animate(withDuration: 1.0, delay: 3, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
+            containerView.alpha = 0.0
         }, completion: { _ in
-            toastLabel.removeFromSuperview()
+            containerView.removeFromSuperview()
         })
     }
+
     
     static func logout(){
         let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
@@ -95,14 +122,14 @@ class CommonFunctions{
         
     }
 	
-	static func fatalErrorAction(){
+	static func errorRegistration(){
 		let vc = LoginVC.instantiateFromAppStoryboard(appStoryboard: .Main)
 		let navVC = UINavigationController(rootViewController: vc)
 		UIApplication.shared.windows[0].rootViewController = navVC
 		UIApplication.shared.windows[0].makeKeyAndVisible()
 		navVC.navigationController?.popToRootViewController(animated: true)
 		navVC.setNavigationBarHidden(true , animated: true)
-		userData.shared.deleteData()
+		userData.shared.deleteDataRegistration()
         
     }
 	
@@ -125,8 +152,16 @@ class CommonFunctions{
     }
     
     static func goPortfolioDetail(id: String){
-		let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
+        let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
         vc.assetId = id
+        let navVC = UINavigationController(rootViewController: vc)
+        UIApplication.shared.windows[0].rootViewController = navVC
+        UIApplication.shared.windows[0].makeKeyAndVisible()
+        navVC.navigationController?.popToRootViewController(animated: true)
+        navVC.setNavigationBarHidden(true , animated: true)
+    }
+    
+    static func goToViewController(vc: UIViewController){
 		let navVC = UINavigationController(rootViewController: vc)
 		UIApplication.shared.windows[0].rootViewController = navVC
 		UIApplication.shared.windows[0].makeKeyAndVisible()
@@ -987,8 +1022,8 @@ class CommonFunctions{
         }
     }
 	
-	static func localisation(key : String, parameter : String = "") -> String{
-		return String(format: NSLocalizedString(key, bundle: GlobalVariables.bundle, comment: ""), parameter)
+	static func localisation(key : String, parameter : [String] = [""]) -> String{
+		return String(format: NSLocalizedString(key, bundle: GlobalVariables.bundle, comment: ""), arguments: parameter)
 	}
 	
 	static func getLocalizationKey(fromLocalizedText text: String, in language: String = "en") -> String {
@@ -1163,99 +1198,6 @@ class CommonFunctions{
 				userData.shared.dataSave()
 			}
 		})
-	}
-	
-	static func handleErrors(caller: String, code: String, error: String, controller: UIViewController = UIViewController()){
-		switch code {
-        case "-1":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR"))
-            break
-        case "15", "25", "28", "30", "34", "40", "41", "42", "45", "50":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-            break
-        case "1":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "PHONE_ALREADY_REGISTERED"))
-            break
-        case "3", "8", "9", "26", "29", "46", "52":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "FATAL_ERROR", parameter: code))
-            CommonFunctions.fatalErrorAction()
-            break
-        case "5":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "EMAIL_ALREADY_EXIST"))
-            break
-        case "6", "7":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-            controller.dismiss(animated: false)
-            break
-        case "10":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_EMAIL"))
-            break
-        case "11":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "NO_USER_PHONE"))
-            break
-        case "12":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "USER_BLOCKED_FROM_LOGIN"))
-            break
-        case "14":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "WRONG_PASSWORD"))
-            break
-        case "18":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "CODE_ALREADY_USED"))
-            break
-        case "24":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "INCORRECT_OTP"))
-            break
-        case "27":
-            CommonFunctions.goHome()
-            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-            break
-        case "35":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "TOO_MANY_OTP_FAILURE"))
-            break
-        case "37", "44":
-            self.loadingProfileApi()
-            CommonFunctions.toster(CommonFunctions.localisation(key: "UNKNOWN_ERROR_PARAMETER", parameter: code))
-            break
-        case "47":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "FAILED_RESET_PASSWORD"))
-            break
-        case "51":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_NOT_OK"))
-            let vc = IdentityVerificationVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
-            controller.navigationController?.pushViewController(vc, animated: false)
-            break
-        case "7023", "10041"://USER_NOT_KYC
-            let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-            vc.type = .kyc
-            getTopMostViewController()?.present(vc, animated: false)
-            break
-        case "7024", "10042"://KYC_UNDER_VERIFICATION
-            CommonFunctions.toster(CommonFunctions.localisation(key: "KYC_UNDER_VERIFICATION"))
-            CommonFunctions.goPortfolioHome()
-            break
-        case "7025", "10043"://USER_NOT_SIGNED_CONTRACT
-            let vc = KycSigningPopupVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-            vc.type = .signing
-            getTopMostViewController()?.present(vc, animated: false)
-            break
-        case "7027":
-            CommonFunctions.toster(CommonFunctions.localisation(key: "MINIMUM_CREDIT_CARD_PAYMENT"))
-            break
-        case "13014":
-            break
-        case "19002":// DEPRECATED_API_VERSION = 19002 (update of app necessary)
-            CommonFunctions.goToUpdateNewVersionPage()
-            break
-        case "19003"://UNDER_MAINTENANCE = 19003
-            CommonFunctions.goToMaintenancePage()
-            break
-        case "19006", "19007"://JWT Token expired
-            CommonFunctions.logout()
-            CommonFunctions.toster(error)
-            break
-			default:
-				CommonFunctions.toster(error)
-		}
 	}
 }
 

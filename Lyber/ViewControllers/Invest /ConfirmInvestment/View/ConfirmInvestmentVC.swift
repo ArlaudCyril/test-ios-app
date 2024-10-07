@@ -26,6 +26,8 @@ class ConfirmInvestmentVC: ViewController {
 	var fees : Double?
 	var coinPrice: Double?
     
+    var minimumWithdraw : Double?
+    
     //withdrawEuro
     var ribSelected : RibData?
 	
@@ -256,7 +258,7 @@ extension ConfirmInvestmentVC{
     @objc func confirmInvestmentBtnAct(){
         if InvestmentType == .activateStrategy{
             self.confirmInvestmentBtn.showLoading()
-            confirmInvestmentVM.activateStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, ownerUuid: strategyData?.ownerUuid ?? "",completion: {[weak self]response in
+            confirmInvestmentVM.activateStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, frequency: frequency, ownerUuid: strategyData?.ownerUuid ?? "", minAmount: self.strategyData?.minAmount ?? 0, controller: self, completion: {[weak self]response in
                 self?.confirmInvestmentBtn.hideLoading()
                 if let response = response{
                     print(response)
@@ -269,7 +271,7 @@ extension ConfirmInvestmentVC{
             })
         }else if InvestmentType == .oneTimeInvestment{
             self.confirmInvestmentBtn.showLoading()
-			OneTimeInvestmentVM().executeStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, ownerUuid: strategyData?.ownerUuid ?? "", completion: {[weak self]response in
+			OneTimeInvestmentVM().executeStrategyApi(strategyName: strategyData?.name ?? "", amount: totalEuroInvested, ownerUuid: strategyData?.ownerUuid ?? "", controller: self, completion: {[weak self]response in
                 self?.confirmInvestmentBtn.hideLoading()
 				if response != nil{
                     let vc = LoadingInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
@@ -331,7 +333,8 @@ extension ConfirmInvestmentVC{
                     let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                     vc.typeVerification = userData.shared.type2FA
                     vc.action = actionVerification
-                    vc.controller = self 
+                    vc.minimumWithdraw = self.minimumWithdraw
+                    vc.controller = self
                     vc.dataWithdrawal = dataWithdrawalRequest
                     self.present(vc, animated: true, completion: nil)
                 }else{
@@ -341,6 +344,7 @@ extension ConfirmInvestmentVC{
                             let vc = VerificationVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
                             vc.typeVerification = userData.shared.type2FA
                             vc.action = actionVerification
+                            vc.minimumWithdraw = self?.minimumWithdraw
                             vc.controller = self ?? ConfirmInvestmentVC()
                             vc.dataWithdrawal = dataWithdrawalRequest
                             vc.resendClosure = {[weak self] in
@@ -351,7 +355,7 @@ extension ConfirmInvestmentVC{
                     })
                 }
 			}else{
-                VerificationVM().walletCreateWithdrawalRequest(action: actionVerification, data: dataWithdrawalRequest, onSuccess:{[]response in
+                VerificationVM().walletCreateWithdrawalRequest(action: actionVerification, data: dataWithdrawalRequest, controller: self, minimumWithdraw: self.minimumWithdraw?.description ?? "", onSuccess:{[]response in
 					if response != nil{
 						let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                         if(actionVerification == "withdraw"){
@@ -363,7 +367,7 @@ extension ConfirmInvestmentVC{
 						self.present(vc, animated: true)
 						
 					}
-				}, onFailure: {[]response in})
+                }, onFailure: {[]response in})
 			}
         }
     }

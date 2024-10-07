@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A005C172844CC6A008117D1 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C162844CC6A008117D1 /* CoreData.swift */; };
-		0A005C1E2844E89F008117D1 /* personalDataXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C1D2844E89F008117D1 /* personalDataXib.xib */; };
 		0A005C222844EBFD008117D1 /* PersonalDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C212844EBFD008117D1 /* PersonalDataVC.swift */; };
 		0A005C242844F040008117D1 /* EmailAddressXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C232844F040008117D1 /* EmailAddressXib.xib */; };
-		0A005C262844F251008117D1 /* PersonalDataCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C252844F251008117D1 /* PersonalDataCVC.swift */; };
 		0A005C282844F74A008117D1 /* addressXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C272844F74A008117D1 /* addressXib.xib */; };
 		0A005C2A2844F924008117D1 /* InvestmentExperienceXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C292844F924008117D1 /* InvestmentExperienceXib.xib */; };
 		0A1A95B52845EC55001224C6 /* emailAddressCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A95B42845EC55001224C6 /* emailAddressCVC.swift */; };
@@ -501,7 +499,6 @@
 		1FF381552AFD297600CCF1A6 /* ConfirmNewPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEE288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift */; };
 		1FF381562AFD297600CCF1A6 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F83382229F97D3F00E41F61 /* Confetti.swift */; };
 		1FF381572AFD297600CCF1A6 /* ChangePinOtpCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB24EEA288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift */; };
-		1FF381582AFD297600CCF1A6 /* PersonalDataCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A005C252844F251008117D1 /* PersonalDataCVC.swift */; };
 		1FF381592AFD297600CCF1A6 /* checkAccountCompletedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6E3B9E2844A4F1007002E0 /* checkAccountCompletedTVC.swift */; };
 		1FF3815A2AFD297600CCF1A6 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDC1FE32A9CED4F00598071 /* DateFormatterExtension.swift */; };
 		1FF3815B2AFD297600CCF1A6 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A793B1A28A3C50F003BCD45 /* ConfirmationVC.swift */; };
@@ -563,7 +560,6 @@
 		1FF381962AFD297600CCF1A6 /* EmailAddressXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C232844F040008117D1 /* EmailAddressXib.xib */; };
 		1FF381972AFD297600CCF1A6 /* AtypRegularVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B897283F84F2007CE9B2 /* AtypRegularVariable.ttf */; };
 		1FF381982AFD297600CCF1A6 /* VerificationEmailXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A95BC284601D8001224C6 /* VerificationEmailXib.xib */; };
-		1FF381992AFD297600CCF1A6 /* personalDataXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A005C1D2844E89F008117D1 /* personalDataXib.xib */; };
 		1FF3819A2AFD297600CCF1A6 /* SwapWithdraw.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7C378C286094E400E238D8 /* SwapWithdraw.storyboard */; };
 		1FF3819B2AFD297600CCF1A6 /* Mabry Pro Black Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AE283F8500007CE9B2 /* Mabry Pro Black Italic.otf */; };
 		1FF3819C2AFD297600CCF1A6 /* Mabry Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A71B8AF283F8500007CE9B2 /* Mabry Pro Black.otf */; };
@@ -610,6 +606,8 @@
 		4C7A217429928C98001CFBED /* AddAssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A90592A2848A17A003F6198 /* AddAssetsVC.swift */; };
 		710735E7BD660DA098641525 /* Pods_Lyber_prod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92102674EB0CB68259587CE5 /* Pods_Lyber_prod.framework */; };
 		9BCFF6039E93320122688ED7 /* Pods_Lyber_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF43FC56F030BBDBC2A00C8E /* Pods_Lyber_dev.framework */; };
+		C8032E8D2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8032E8C2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift */; };
+		C8032E8E2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8032E8C2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift */; };
 		C80DFA482BA459D800BDA41B /* RIBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA472BA459D800BDA41B /* RIBModel.swift */; };
 		C80DFA492BA45A9100BDA41B /* RIBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA472BA459D800BDA41B /* RIBModel.swift */; };
 		C80DFA4C2BA45C4100BDA41B /* WithdrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */; };
@@ -622,15 +620,21 @@
 		C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */; };
 		C838FD7E2B87696F00922C25 /* UITapGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */; };
 		C838FD7F2B87696F00922C25 /* UITapGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */; };
+		C840F27D2CAC6164004567C6 /* InformationPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C840F27C2CAC6164004567C6 /* InformationPopUpVC.swift */; };
+		C840F27E2CAC6164004567C6 /* InformationPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C840F27C2CAC6164004567C6 /* InformationPopUpVC.swift */; };
 		C84CD27D2B8E10420071C7E2 /* lyberStaging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CE02AFE7F900052D21E /* lyberStaging.plist */; };
 		C84CD27E2B8E10460071C7E2 /* lyberProd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F105CDD2AFE7D020052D21E /* lyberProd.plist */; };
 		C855BCCB2B6BD72C00D46EDA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
 		C855BCCE2B6BE14700D46EDA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
 		C857F4462B7E269000D0275E /* MaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F4452B7E269000D0275E /* MaintenanceModel.swift */; };
 		C857F4472B7E270900D0275E /* MaintenanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C857F4452B7E269000D0275E /* MaintenanceModel.swift */; };
+		C85C47452CA710EA005FA100 /* WithdrawSendTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C47442CA710EA005FA100 /* WithdrawSendTVC.swift */; };
+		C85C47462CA710EA005FA100 /* WithdrawSendTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85C47442CA710EA005FA100 /* WithdrawSendTVC.swift */; };
 		C87F07A12BA1FE37006E125F /* AddNewRIBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */; };
 		C8859A362B596D1E00225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
+		C8A6AA182CAEE9BB004DDD30 /* ApiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */; };
+		C8A6AA192CAEE9BB004DDD30 /* ApiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */; };
 		C8AC1E1D2B6CF7AF0069C2FA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
 		C8AC1E1E2B6CF7EB0069C2FA /* KycSigningPopupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */; };
 		C8C448D72BA32CA70013A468 /* AddNewRIBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */; };
@@ -645,10 +649,8 @@
 
 /* Begin PBXFileReference section */
 		0A005C162844CC6A008117D1 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
-		0A005C1D2844E89F008117D1 /* personalDataXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = personalDataXib.xib; sourceTree = "<group>"; };
 		0A005C212844EBFD008117D1 /* PersonalDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataVC.swift; sourceTree = "<group>"; };
 		0A005C232844F040008117D1 /* EmailAddressXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailAddressXib.xib; sourceTree = "<group>"; };
-		0A005C252844F251008117D1 /* PersonalDataCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDataCVC.swift; sourceTree = "<group>"; };
 		0A005C272844F74A008117D1 /* addressXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressXib.xib; sourceTree = "<group>"; };
 		0A005C292844F924008117D1 /* InvestmentExperienceXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestmentExperienceXib.xib; sourceTree = "<group>"; };
 		0A1A95B42845EC55001224C6 /* emailAddressCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emailAddressCVC.swift; sourceTree = "<group>"; };
@@ -956,17 +958,21 @@
 		5AAEF8E27F5863FF1CE21491 /* Pods-Lyber prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber prod.debug.xcconfig"; path = "Target Support Files/Pods-Lyber prod/Pods-Lyber prod.debug.xcconfig"; sourceTree = "<group>"; };
 		7B4D6A7779ADF2CF5FC14572 /* Pods-Lyber prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber prod.release.xcconfig"; path = "Target Support Files/Pods-Lyber prod/Pods-Lyber prod.release.xcconfig"; sourceTree = "<group>"; };
 		92102674EB0CB68259587CE5 /* Pods_Lyber_prod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber_prod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8032E8C2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions_HandlingErrors.swift; sourceTree = "<group>"; };
 		C80DFA472BA459D800BDA41B /* RIBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RIBModel.swift; sourceTree = "<group>"; };
 		C80DFA4B2BA45C4100BDA41B /* WithdrawModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawModel.swift; sourceTree = "<group>"; };
 		C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRibTVC.swift; sourceTree = "<group>"; };
 		C8116B4D2C63ABDA00A52F51 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		C838FD7D2B87696F00922C25 /* UITapGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureExtension.swift; sourceTree = "<group>"; };
+		C840F27C2CAC6164004567C6 /* InformationPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPopUpVC.swift; sourceTree = "<group>"; };
 		C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupVC.swift; sourceTree = "<group>"; };
 		C855BCCD2B6BE14700D46EDA /* KycSigningPopupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycSigningPopupModel.swift; sourceTree = "<group>"; };
 		C857F4452B7E269000D0275E /* MaintenanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceModel.swift; sourceTree = "<group>"; };
+		C85C47442CA710EA005FA100 /* WithdrawSendTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawSendTVC.swift; sourceTree = "<group>"; };
 		C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVC.swift; sourceTree = "<group>"; };
 		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
+		C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVM.swift; sourceTree = "<group>"; };
 		C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVM.swift; sourceTree = "<group>"; };
 		C8D233B02BD9426F00856A05 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationKycSigningTVC.swift; sourceTree = "<group>"; };
@@ -1021,7 +1027,6 @@
 		0A005C1C2844E859008117D1 /* XibFiles */ = {
 			isa = PBXGroup;
 			children = (
-				0A005C1D2844E89F008117D1 /* personalDataXib.xib */,
 				0A005C232844F040008117D1 /* EmailAddressXib.xib */,
 				0A1A95BC284601D8001224C6 /* VerificationEmailXib.xib */,
 				0A005C272844F74A008117D1 /* addressXib.xib */,
@@ -1048,7 +1053,6 @@
 			isa = PBXGroup;
 			children = (
 				0A005C212844EBFD008117D1 /* PersonalDataVC.swift */,
-				0A005C252844F251008117D1 /* PersonalDataCVC.swift */,
 				0A1A95B42845EC55001224C6 /* emailAddressCVC.swift */,
 				0A1A95B62845EE32001224C6 /* addressCVC.swift */,
 				0A1A95B82845EE4A001224C6 /* InvestmentExperienceCVC.swift */,
@@ -1488,7 +1492,7 @@
 				C855BCC82B6BD70000D46EDA /* KycSigningPopup */,
 				1FD2190D2AF3B0DC000F6FC5 /* ChangePassword */,
 				1FE0A80C2AA09AF5005742C8 /* Export */,
-				1F5B7C5329C1D24100256438 /* Verification */,
+				1F5B7C5329C1D24100256438 /* PopUp Controller */,
 				1FC9B5A029B2502B001483CF /* GoogleAuthenticator */,
 				0A86AA8328A381E700C6C688 /* SelectedProfile */,
 				0A86AA7C28A375FA00C6C688 /* DefaultPicture */,
@@ -1699,6 +1703,7 @@
 				0A7586C3286C769F00DC889E /* Api Handler.swift */,
 				0A7586C5286C76EE00DC889E /* Reachability.swift */,
 				0A7586C7286C794000DC889E /* ApiConstants.swift */,
+				C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */,
 			);
 			path = "Api Files";
 			sourceTree = "<group>";
@@ -2525,6 +2530,7 @@
 			children = (
 				0AC4C2C5283F63C70086C6B8 /* CommonUI.swift */,
 				0AC4C2C7283F63E20086C6B8 /* CommomFunctions.swift */,
+				C8032E8C2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift */,
 				0AC4C2C9283F64040086C6B8 /* SpinnerView.swift */,
 				C81DF74D2B31A84C0036A5DD /* LoadingAnimationView.swift */,
 			);
@@ -2663,6 +2669,7 @@
 				1F1857762A28D0BD006F9014 /* WithdrawVC.swift */,
 				1F1857782A28DA5A006F9014 /* WithdrawAddressTVC.swift */,
 				C80DFA4E2BA45FDA00BDA41B /* WithdrawRibTVC.swift */,
+				C85C47442CA710EA005FA100 /* WithdrawSendTVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2761,19 +2768,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		1F5B7C5329C1D24100256438 /* Verification */ = {
+		1F5B7C5329C1D24100256438 /* PopUp Controller */ = {
 			isa = PBXGroup;
 			children = (
 				1F5B7C5529C1D25400256438 /* Model */,
 				1F5B7C5429C1D24D00256438 /* View */,
 			);
-			path = Verification;
+			path = "PopUp Controller";
 			sourceTree = "<group>";
 		};
 		1F5B7C5429C1D24D00256438 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				1FB9A0AB29B8D831008431B0 /* VerificationVC.swift */,
+				C840F27C2CAC6164004567C6 /* InformationPopUpVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3292,7 +3300,6 @@
 				0A71B8C2283F9275007CE9B2 /* AtypRegularVariable.ttf in Resources */,
 				0A1A95BD284601D8001224C6 /* VerificationEmailXib.xib in Resources */,
 				C84CD27D2B8E10420071C7E2 /* lyberStaging.plist in Resources */,
-				0A005C1E2844E89F008117D1 /* personalDataXib.xib in Resources */,
 				0A7C378D286094E400E238D8 /* SwapWithdraw.storyboard in Resources */,
 				0A71B8C3283F9275007CE9B2 /* Mabry Pro Black Italic.otf in Resources */,
 				0A71B8C4283F9275007CE9B2 /* Mabry Pro Black.otf in Resources */,
@@ -3365,7 +3372,6 @@
 				1FF381972AFD297600CCF1A6 /* AtypRegularVariable.ttf in Resources */,
 				1FF381982AFD297600CCF1A6 /* VerificationEmailXib.xib in Resources */,
 				1F105CE22AFE80A40052D21E /* lyberStaging.plist in Resources */,
-				1FF381992AFD297600CCF1A6 /* personalDataXib.xib in Resources */,
 				1FF3819A2AFD297600CCF1A6 /* SwapWithdraw.storyboard in Resources */,
 				1FF3819B2AFD297600CCF1A6 /* Mabry Pro Black Italic.otf in Resources */,
 				1FF3819C2AFD297600CCF1A6 /* Mabry Pro Black.otf in Resources */,
@@ -3579,6 +3585,7 @@
 				0A7256512874506400E8322A /* InvestmentStrategyVM.swift in Sources */,
 				1FFD171E29ED962C00935003 /* DepositAssetVC.swift in Sources */,
 				0A7586C6286C76EE00DC889E /* Reachability.swift in Sources */,
+				C840F27D2CAC6164004567C6 /* InformationPopUpVC.swift in Sources */,
 				0A86AA8628A3821100C6C688 /* SelectedProfileVC.swift in Sources */,
 				1F86FBBA2A696788001A9D64 /* OneTimeInvestmentVC.swift in Sources */,
 				1F487C152AA2297700D67663 /* ExportVM.swift in Sources */,
@@ -3664,6 +3671,7 @@
 				1883D3172950798A00CEC597 /* configuration.swift in Sources */,
 				1883D3122950798A00CEC597 /* keys.swift in Sources */,
 				0A1A95BB2845F1E2001224C6 /* TextFieldExtension.swift in Sources */,
+				C85C47452CA710EA005FA100 /* WithdrawSendTVC.swift in Sources */,
 				0A7013D4286DBD0000BB63C5 /* PersonalDataVM.swift in Sources */,
 				0A928CBC2847392A00F17DBE /* calenderVC.swift in Sources */,
 				0A907E6C285B6235001ABD6A /* ResourcesCVC.swift in Sources */,
@@ -3704,6 +3712,7 @@
 				0A907E66285B5874001ABD6A /* AboutTVC.swift in Sources */,
 				1FB9A0AA29B89CF0008431B0 /* GoogleAuthenticatorModel.swift in Sources */,
 				1883D3142950798A00CEC597 /* srp.swift in Sources */,
+				C8032E8D2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift in Sources */,
 				1F1DA4372A7CF6A000BE8C61 /* URLExtension.swift in Sources */,
 				0A7445852857624800BF05EF /* FrequencyVC.swift in Sources */,
 				0A73AB952875B37C00A92D1D /* AddStrategyVM.swift in Sources */,
@@ -3760,6 +3769,7 @@
 				1FE7695329C46356005141C0 /* Model.xcmappingmodel in Sources */,
 				1F8BD79A29D43ED100EF322A /* ViewController.swift in Sources */,
 				0A90592428488884003F6198 /* Constants.swift in Sources */,
+				C8A6AA182CAEE9BB004DDD30 /* ApiVM.swift in Sources */,
 				0A7013D6286DC12000BB63C5 /* PersonalDataModel.swift in Sources */,
 				1886C7E82959BFE000D28828 /* WebSocket.swift in Sources */,
 				0A791DFC28646E8E0084B104 /* AddPaymentMethodTVC.swift in Sources */,
@@ -3777,7 +3787,6 @@
 				0AB24EEF288A7DD900B7BAE8 /* ConfirmNewPinCVC.swift in Sources */,
 				1F83382329F97D3F00E41F61 /* Confetti.swift in Sources */,
 				0AB24EEB288A7D2F00B7BAE8 /* ChangePinOtpCVC.swift in Sources */,
-				0A005C262844F251008117D1 /* PersonalDataCVC.swift in Sources */,
 				0A6E3B9F2844A4F1007002E0 /* checkAccountCompletedTVC.swift in Sources */,
 				1FDC1FE42A9CED4F00598071 /* DateFormatterExtension.swift in Sources */,
 				C81DF74E2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */,
@@ -3830,6 +3839,7 @@
 				1FF3809A2AFD297600CCF1A6 /* InvestmentStrategyVM.swift in Sources */,
 				1FF3809B2AFD297600CCF1A6 /* DepositAssetVC.swift in Sources */,
 				1FF3809C2AFD297600CCF1A6 /* Reachability.swift in Sources */,
+				C840F27E2CAC6164004567C6 /* InformationPopUpVC.swift in Sources */,
 				1FF3809D2AFD297600CCF1A6 /* SelectedProfileVC.swift in Sources */,
 				1FF3809E2AFD297600CCF1A6 /* OneTimeInvestmentVC.swift in Sources */,
 				1FF3809F2AFD297600CCF1A6 /* ExportVM.swift in Sources */,
@@ -3915,6 +3925,7 @@
 				1FF380EF2AFD297600CCF1A6 /* keys.swift in Sources */,
 				1FF380F02AFD297600CCF1A6 /* TextFieldExtension.swift in Sources */,
 				1FF380F12AFD297600CCF1A6 /* PersonalDataVM.swift in Sources */,
+				C85C47462CA710EA005FA100 /* WithdrawSendTVC.swift in Sources */,
 				1FF380F22AFD297600CCF1A6 /* calenderVC.swift in Sources */,
 				1FF380F32AFD297600CCF1A6 /* ResourcesCVC.swift in Sources */,
 				1FF380F42AFD297600CCF1A6 /* AddressAddedPopUpModel.swift in Sources */,
@@ -3955,6 +3966,7 @@
 				1FF381122AFD297600CCF1A6 /* AboutTVC.swift in Sources */,
 				1FF381132AFD297600CCF1A6 /* GoogleAuthenticatorModel.swift in Sources */,
 				1FF381142AFD297600CCF1A6 /* srp.swift in Sources */,
+				C8032E8E2C8B132D00535BEB /* CommonFunctions_HandlingErrors.swift in Sources */,
 				1FF381152AFD297600CCF1A6 /* URLExtension.swift in Sources */,
 				1FF381162AFD297600CCF1A6 /* FrequencyVC.swift in Sources */,
 				1FF381172AFD297600CCF1A6 /* AddStrategyVM.swift in Sources */,
@@ -4011,6 +4023,7 @@
 				1FF381452AFD297600CCF1A6 /* Model.xcmappingmodel in Sources */,
 				1FF381462AFD297600CCF1A6 /* ViewController.swift in Sources */,
 				1FF381472AFD297600CCF1A6 /* Constants.swift in Sources */,
+				C8A6AA192CAEE9BB004DDD30 /* ApiVM.swift in Sources */,
 				1FF381482AFD297600CCF1A6 /* PersonalDataModel.swift in Sources */,
 				1FF381492AFD297600CCF1A6 /* WebSocket.swift in Sources */,
 				1FF3814A2AFD297600CCF1A6 /* AddPaymentMethodTVC.swift in Sources */,
@@ -4028,7 +4041,6 @@
 				1FF381552AFD297600CCF1A6 /* ConfirmNewPinCVC.swift in Sources */,
 				1FF381562AFD297600CCF1A6 /* Confetti.swift in Sources */,
 				1FF381572AFD297600CCF1A6 /* ChangePinOtpCVC.swift in Sources */,
-				1FF381582AFD297600CCF1A6 /* PersonalDataCVC.swift in Sources */,
 				1FF381592AFD297600CCF1A6 /* checkAccountCompletedTVC.swift in Sources */,
 				1FF3815A2AFD297600CCF1A6 /* DateFormatterExtension.swift in Sources */,
 				C81DF74F2B31A84C0036A5DD /* LoadingAnimationView.swift in Sources */,
@@ -4263,7 +4275,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lyber/LyberDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4279,7 +4291,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4305,7 +4317,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lyber/Lyber.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4321,7 +4333,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4346,7 +4358,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lyber/LyberDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4370,7 +4382,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4398,7 +4410,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lyber/Lyber.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 28;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4422,7 +4434,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

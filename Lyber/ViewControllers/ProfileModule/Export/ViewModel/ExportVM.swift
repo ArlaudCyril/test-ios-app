@@ -18,6 +18,6 @@ class ExportVm{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "exportApi",code: code, error: error)
 			completion(nil)
-		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .GET, img: nil, imageParameter: nil, headerType: "user")
 	}
 }

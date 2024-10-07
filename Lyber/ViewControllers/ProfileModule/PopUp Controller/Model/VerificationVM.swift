@@ -8,7 +8,7 @@
 import Foundation
 
 class VerificationVM{
-	func TwoFAApi(type2FA: String?,otp: String, googleOtp: String? = "", completion: @escaping ( (SuccessAPI?) -> Void )){
+    func TwoFAApi(type2FA: String?,otp: String, googleOtp: String? = "", controller: ViewController, completion: @escaping ( (SuccessAPI?) -> Void )){
         
 		var params : [String : Any] = [Constants.ApiKeys.type2FA : type2FA ?? "",
 									   Constants.ApiKeys.otp: otp]
@@ -18,28 +18,26 @@ class VerificationVM{
 		}
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceUser, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
-            print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "TwoFAApi",code: code, error: error)
+			CommonFunctions.handleErrors(caller: "TwoFAApi",code: code, error: error, controller: controller)
             completion(nil)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
-    func verify2FAApi(code:String?, completion: @escaping ( (LogInAPI?) -> Void )){
+    func verify2FAApi(code:String?, controller: ViewController, completion: @escaping ( (LogInAPI?) -> Void )){
         
         let params : [String : Any] = [Constants.ApiKeys.code : code ?? ""]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServiceVerify2FA, withParameters: params, ofType: LogInAPI.self, onSuccess: { response in
-            print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "verify2FAApi",code: code, error: error)
+			CommonFunctions.handleErrors(caller: "verify2FAApi",code: code, error: error, controller: controller)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
 	
-    func walletCreateWithdrawalRequest(action : String?, otp: String? = "", data: [String : Any] ,onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
+    func walletCreateWithdrawalRequest(action : String?, otp: String? = "", data: [String : Any] , controller: ViewController, previousController: ViewController = ViewController(), minimumWithdraw: String, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
         var params : [String : Any] = [:]
         var url = ""
         if(action == "withdraw"){
@@ -66,9 +64,9 @@ class VerificationVM{
             onSuccess(response)
 		}, onFailure: { reload, error, code  in
 			let failure = FailureAPI(message: error, code: code)
-			CommonFunctions.handleErrors(caller: "walletCreateWithdrawalRequest",code: code, error: error)
+            CommonFunctions.handleErrors(caller: "walletCreateWithdrawalRequest",code: code, error: error, controller: controller, previousController: previousController, arguments: ["asset": data["asset"] as? String ?? "usdc", "network": data["network"] as? String ?? "", "minimumWithdraw": minimumWithdraw])
 			onFailure(failure)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func userCloseAccountRequest(otp: String, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
@@ -80,20 +78,20 @@ class VerificationVM{
             let failure = FailureAPI(message: error, code: code)
             CommonFunctions.handleErrors(caller: "userCloseAccountRequest", code: code, error: error)
             onFailure(failure)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user")
         
     }
 	
-	func verifyPasswordChangeAPI(code: String, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
+    func verifyPasswordChangeAPI(code: String, controller: ViewController, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
 		let params : [String : Any] = [Constants.ApiKeys.code : code]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyPasswordChange, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             onSuccess(response)
         }, onFailure: { reload, error, code  in
             let failure = FailureAPI(message: error, code: code)
-            CommonFunctions.handleErrors(caller: "verifyPasswordChangeAPI", code: code, error: error)
+            CommonFunctions.handleErrors(caller: "verifyPasswordChangeAPI", code: code, error: error, controller: controller)
             onFailure(failure)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
         
     }
 }

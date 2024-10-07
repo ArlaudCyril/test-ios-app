@@ -42,27 +42,3 @@ extension UILabel {
         self.text = text
     }
 }
-
-class PaddedLabel: UILabel {
-    var insets: UIEdgeInsets
-    
-    init(insets: UIEdgeInsets) {
-        self.insets = insets
-        super.init(frame: .zero)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.insets = .zero
-        super.init(coder: aDecoder)
-    }
-    
-    override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: insets))
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + insets.left + insets.right,
-                      height: size.height + insets.top + insets.bottom)
-    }
-}

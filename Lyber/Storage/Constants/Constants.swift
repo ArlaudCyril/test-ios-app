@@ -156,6 +156,8 @@ struct Constants{
         static let occupation = "occupation"
         static let incomeRange = "incomeRange"
         static let mainUse = "mainUse"
+        static let requestHash = "requestHash"
+        static let keyId = "keyId"
         
         // MARK: - Profile keys
         static let type2FA = "type2FA"
@@ -219,6 +221,7 @@ struct Constants{
 		static let userServiceExport = "user-service/export"
         static let userCloseAccount = "user-service/close-account"
         static let userVerifyPasswordChange = "user-service/verify-password-change"
+        static let userServiceIntegrity = "user-service/integrity"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"

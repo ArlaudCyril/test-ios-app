@@ -92,7 +92,7 @@ class ContactFormVC: SwipeGesture{
 		
 		self.addressDescLbl.attributedText = CommonFunctions.underlineStringInText(str: "274 ter/3, Avenue de la Marne, 59700 Marcq-en-Baroeul, Lille, France.", text: self.addressDescLbl.text ?? "")
 		
-		CommonUI.setUpLbl(lbl: self.footerLbl, text: CommonFunctions.localisation(key: "WILL_GET_BACK_TO_YOU", parameter: userData.shared.email), textColor: UIColor.descFontColor, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
+		CommonUI.setUpLbl(lbl: self.footerLbl, text: CommonFunctions.localisation(key: "WILL_GET_BACK_TO_YOU", parameter: [userData.shared.email]), textColor: UIColor.descFontColor, font: UIFont.MabryProMedium(Size.Medium.sizeValue()))
 		self.footerLbl.numberOfLines = 0
 		
 		self.backBtn.setImage(Assets.back.image(), for: .normal)

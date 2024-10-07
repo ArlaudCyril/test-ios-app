@@ -8,18 +8,17 @@
 import Foundation
 class PortfolioDetailVM{
 //    var controller : AllAssetsVC?
-	func getCoinInfoApi(AssetId : String, isNetwork : Bool = false, completion: @escaping ( (AssetDetailApi?) -> Void )){
+    func getCoinInfoApi(AssetId : String, isNetwork : Bool = false, controller: ViewController = ViewController(), completion: @escaping ( (AssetDetailApi?) -> Void )){
         
         let params : [String : Any] = [Constants.ApiKeys.id : AssetId,
 									   Constants.ApiKeys.include_networks : isNetwork]
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.assetServiceAsset, withParameters: params, ofType: AssetDetailApi.self, onSuccess: { response in
-            print(response)
             completion(response)
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "getCoinInfoApi",code: code, error: error)
+            CommonFunctions.handleErrors(caller: "getCoinInfoApi",code: code, error: error, controller: controller, arguments: ["asset": AssetId])
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func getChartDataApi(AssetId : String,timeFrame: String,completion: @escaping ( (ChartAPI?) -> Void )){
@@ -31,7 +30,7 @@ class PortfolioDetailVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getChartDataApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func getAssetsNewsApi(id : String,completion: @escaping ( (NewsDataAPI?) -> Void )){
@@ -44,7 +43,7 @@ class PortfolioDetailVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getAssetsNewsApi",code: code, error: error)
             completion(nil)
-        }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user", integrity: true)
     }
 	
 	func OrderGetOrderApi(orderId : String,completion: @escaping ( (OrderAPI?) -> Void )){
@@ -52,12 +51,11 @@ class PortfolioDetailVM{
         let params : [String : Any] = [Constants.ApiKeys.orderId : orderId]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceOrder, withParameters: params, ofType: OrderAPI.self, onSuccess: { response in
-            print(response)
             completion(response)
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "OrderGetOrderApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 	
 	func getResumeByIdApi(assetId : String,completion: @escaping ( (PriceServiceResumeDataAPI?) -> Void )){
@@ -70,6 +68,6 @@ class PortfolioDetailVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getResumeByIdApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 }

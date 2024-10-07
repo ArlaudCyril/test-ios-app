@@ -16,7 +16,7 @@ class EnterPhoneVM {
         if let lastCall = self.lastSignUpApiCall {
             let remainingSeconds = 60 - currentTime.timeIntervalSince(lastCall)
             if remainingSeconds > 0 {
-                CommonFunctions.toster(CommonFunctions.localisation(key: "WAIT_BEFORE_OTP", parameter: String(Int(remainingSeconds))))
+                CommonFunctions.toster(CommonFunctions.localisation(key: "WAIT_BEFORE_OTP", parameter: [String(Int(remainingSeconds))]))
                 completion(nil)
                 return
             }
@@ -47,19 +47,19 @@ class EnterPhoneVM {
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "SignUpApi",code: code, error: error)
 			completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "signature")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "signature")
     }
     
-    func enterOTPApi(otp: String, completion: @escaping ( (OTPAPI?) -> Void )){
+    func enterOTPApi(otp: String, controller: ViewController, completion: @escaping ( (OTPAPI?) -> Void )){
         let param: [String: Any] = [Constants.ApiKeys.code: otp]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userVerifyPhoneNo, withParameters: param, ofType: OTPAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "enterOTPApi",code: code, error: error)
+            CommonFunctions.handleErrors(caller: "enterOTPApi",code: code, error: error, controller: controller)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "registration")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "registration")
     }
     
     func logInWithPhoneChallengeApi(phoneNumber: String,countryCode : String, completion: @escaping ( (ChallengeAPI?) -> Void )){
@@ -72,7 +72,7 @@ class EnterPhoneVM {
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "logInWithPhoneChallengeApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func logInChallengeApi(email: String, completion: @escaping ( (ChallengeAPI?) -> Void )){
@@ -85,7 +85,7 @@ class EnterPhoneVM {
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "logInChallengeApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "none")
     }
     
     func logInApi(A: String,M1 : String,method : String, completion: @escaping ( (LogInAPI?) -> Void )){
@@ -97,10 +97,11 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userLogin, withParameters: param, ofType: LogInAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
+            ApiHandler.getKeyId()
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "logInApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func sendDeviceTokenToServer(deviceToken: String){
@@ -118,7 +119,7 @@ class EnterPhoneVM {
             }, onFailure: { reload, error, code in
                 print(error)
                 CommonFunctions.toster(error)
-            }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: headerType)
+            }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: headerType)
     }
 }
 //MARK: other functions

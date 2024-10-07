@@ -23,7 +23,7 @@ class AllAssetsVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getAllAssetsApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func getAllAssetsDetailApi(completion: @escaping ( ([AssetBaseData]?) -> Void )){
@@ -35,7 +35,7 @@ class AllAssetsVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getAllAssetsDetailApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
 }

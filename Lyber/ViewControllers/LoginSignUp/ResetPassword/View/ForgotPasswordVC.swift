@@ -55,7 +55,12 @@ class ForgotPasswordVC: ViewController {
 //MARK: - objective functions
 extension ForgotPasswordVC : UITextFieldDelegate{
 	@objc func backBtnAct(){
-		self.navigationController?.popViewController(animated: true)
+        if(self.navigationController?.viewControllers.count ?? 0 > 1){
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            CommonFunctions.goHome()
+        }
+		
 	}
 	
 	@objc func nextBtnAct(){

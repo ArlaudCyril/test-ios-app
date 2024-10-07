@@ -10,7 +10,7 @@ import AppsFlyerLib
 
 class OneTimeInvestmentVM{
 	
-	func executeStrategyApi(strategyName : String ,amount : Double, ownerUuid: String, completion: @escaping ( (ExecutionOneInvestmentAPI?) -> Void )){
+    func executeStrategyApi(strategyName : String ,amount : Double, ownerUuid: String, controller: ViewController, completion: @escaping ( (ExecutionOneInvestmentAPI?) -> Void )){
 		let params : [String : Any] = [Constants.ApiKeys.strategy_name : strategyName,
 									   Constants.ApiKeys.amount : amount,
 									   Constants.ApiKeys.owner_uuid : ownerUuid]
@@ -22,9 +22,9 @@ class OneTimeInvestmentVM{
             ]);
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "executeStrategyApi",code: code, error: error)
+			CommonFunctions.handleErrors(caller: "executeStrategyApi",code: code, error: error, controller: controller)
 			completion(nil)
-		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
 	}
 	
 	
@@ -37,7 +37,7 @@ class OneTimeInvestmentVM{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getStrategyExecutionApi",code: code, error: error)
 			completion(nil)
-		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .GET, img: nil, imageParameter: nil, headerType: "user")
 	}
 
 }

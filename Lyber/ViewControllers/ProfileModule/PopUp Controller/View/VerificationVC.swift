@@ -20,6 +20,7 @@ final class VerificationVC: ViewController,MyTextFieldDelegate {
 	var scopes : [String] = []
     var timerResendCode = 59
     var resendClosure: (() -> Void)?
+    var minimumWithdraw: Double?
     
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -198,7 +199,7 @@ extension VerificationVC{
 			vc.typeVerification = userData.shared.type2FA
 			vc.action = "verificationCallback"
 			vc.verificationCallBack = {[]codeOtp in
-				VerificationVM().TwoFAApi(type2FA: "google", otp: codeOtp, googleOtp: code, completion: {[weak self]response in
+                VerificationVM().TwoFAApi(type2FA: "google", otp: codeOtp, googleOtp: code, controller: self.controller ?? self, completion: {[weak self]response in
 					if response != nil{
 						userData.shared.has2FA = true
 						userData.shared.type2FA = "google"
@@ -212,7 +213,7 @@ extension VerificationVC{
 
         }else if(self.action == "withdraw" || self.action == "withdrawEuro"){
             CommonFunctions.showLoader()
-            VerificationVM().walletCreateWithdrawalRequest(action: self.action, otp: code, data: dataWithdrawal ?? [:], onSuccess:{[]response in
+            VerificationVM().walletCreateWithdrawalRequest(action: self.action, otp: code, data: dataWithdrawal ?? [:], controller: self, previousController: self.controller ?? ViewController(), minimumWithdraw: self.minimumWithdraw?.description ?? "", onSuccess:{[]response in
                 if response != nil{
                     CommonFunctions.hideLoader()
 					self.dismiss(animated: true)
@@ -251,7 +252,7 @@ extension VerificationVC{
 				}
 			})
         }else if(self.action == "signup"){
-			EnterPhoneVM().enterOTPApi(otp: code, completion: {[weak self]response in
+            EnterPhoneVM().enterOTPApi(otp: code, controller: self, completion: {[weak self]response in
 				if let response = response{
 					print(response)
 					userData.shared.enterPhoneStepComplete = 1
@@ -283,7 +284,7 @@ extension VerificationVC{
                 }
             }, onFailure: {[]response in})
         }else if(self.action == "setNewPassword"){
-            VerificationVM().verifyPasswordChangeAPI(code: code,
+            VerificationVM().verifyPasswordChangeAPI(code: code, controller: self,
             onSuccess:{[]response in
                 if response != nil{
 					self.dismiss(animated: false)
@@ -292,7 +293,7 @@ extension VerificationVC{
             }, onFailure: {[]response in})
         }
         else{
-            VerificationVM().verify2FAApi(code: code, completion: {[]response in
+            VerificationVM().verify2FAApi(code: code, controller: self, completion: {[]response in
                 if response != nil{
                     userData.shared.userToken = response?.data?.accessToken ?? ""
                     userData.shared.refreshToken = response?.data?.refreshToken ?? ""

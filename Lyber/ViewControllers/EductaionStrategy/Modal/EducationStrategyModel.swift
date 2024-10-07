@@ -19,6 +19,10 @@ struct SuccessAPI: Codable {
     let data : dataStruct?
 }
 
+struct DataAPI: Codable {
+    let data: String
+}
+
 struct FailureAPI {
 	let message: String?
 	let code: String?

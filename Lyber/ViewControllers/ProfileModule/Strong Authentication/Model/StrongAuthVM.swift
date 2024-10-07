@@ -21,7 +21,7 @@ class StrongAuthVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "scope2FAApi",code: code, error: error)
             completion(nil)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
 }
 

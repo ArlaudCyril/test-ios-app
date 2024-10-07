@@ -11,4 +11,5 @@ import Foundation
 enum WithdrawType: String{
     case addresses
     case ribs
+    case send
 }

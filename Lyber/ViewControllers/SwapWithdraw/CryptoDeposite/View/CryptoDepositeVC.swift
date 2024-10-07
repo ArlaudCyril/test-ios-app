@@ -166,7 +166,7 @@ extension CryptoDepositeVC{
 	
 	func callCoinInfoApi(assetId: String){
 		CommonFunctions.showLoader()
-        PortfolioDetailVM().getCoinInfoApi(AssetId: assetId, isNetwork: true, completion: {[weak self]response in
+        PortfolioDetailVM().getCoinInfoApi(AssetId: assetId, isNetwork: true, controller: self, completion: {[weak self]response in
 			CommonFunctions.hideLoader()
 			self?.dropDownProtocol.dataSource = []
 			self?.networkArray = []
@@ -208,7 +208,7 @@ extension CryptoDepositeVC{
 		
 		self.depositeAddresTextVw.text = ""
 		CommonFunctions.showLoaderWhite(self.depositeAddresTextVw)
-		CryptoDepositeVM().getWalletAdressApi(assetId: assetId, network: networkId, completion: {[weak self]response in
+        CryptoDepositeVM().getWalletAdressApi(assetId: assetId, network: networkId, controller: self, completion: {[weak self]response in
 			CommonFunctions.hideLoader(self?.depositeAddresTextVw ?? UIView())
 			self?.depositeAddresTextVw.text = response?.data?.address
 			

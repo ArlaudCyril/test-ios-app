@@ -250,7 +250,7 @@ extension ConfirmExecutionVC{
 	@objc func confirmExecutionBtnAct(){
 		if InvestmentType == .Exchange{
             self.confirmExecutionBtn.isEnabled = false
-			ConfirmInvestmentVM().ordersAcceptQuoteAPI(orderId: self.orderId ?? "", completion: {response in
+            ConfirmInvestmentVM().ordersAcceptQuoteAPI(orderId: self.orderId ?? "", controller: self, completion: {response in
                 self.confirmExecutionBtn.isEnabled = true
 				if response != nil{
 					let vc = PortfolioDetailVC.instantiateFromAppStoryboard(appStoryboard: .Portfolio)
@@ -357,7 +357,7 @@ extension ConfirmExecutionVC{
                 ConfirmExecutionVM().cancelQuoteApi(userUuid: userData.shared.userUuid, orderId: self.orderId ?? "", paymentIntentId: self.paymentIntentId ?? "", completion: {_ in })
             }
             DispatchQueue.main.async {
-                self.timeToConfirmPurchaseLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE_TIME", parameter: String(remainingSeconds))
+                self.timeToConfirmPurchaseLbl.text = CommonFunctions.localisation(key: "CONFIRM_PURCHASE_TIME", parameter: [String(remainingSeconds)])
             }
         }
     }

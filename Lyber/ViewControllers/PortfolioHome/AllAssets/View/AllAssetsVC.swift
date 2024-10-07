@@ -90,7 +90,6 @@ class AllAssetsVC: SwipeGesture {
         }
         
         tblView.es.addPullToRefresh {
-            //TODO: continue filtering
             self.pageNumber  = 1
             self.apiHitOnce = false
             self.apiHitting = false

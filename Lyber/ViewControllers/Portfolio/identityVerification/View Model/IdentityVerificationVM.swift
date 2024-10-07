@@ -14,6 +14,6 @@ class IdentityVerificationVM{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "startKycApi",code: code, error: error)
 			completion(nil)
-		}, method: .POST, img: nil, imageParamater: nil, headerType: headerType)
+        }, method: .POST, img: nil, imageParameter: nil, headerType: headerType)
 	}
 }

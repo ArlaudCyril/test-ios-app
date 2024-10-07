@@ -15,7 +15,7 @@ class ProfileVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getProfileDataApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 	
 	func saveProfilePictureApi(imageName: String, completion: @escaping ( (ProfileAPI?) -> Void )){
@@ -27,6 +27,6 @@ class ProfileVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "saveProfilePictureApi",code: code, error: error)
             completion(nil)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
 }

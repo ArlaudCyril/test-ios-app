@@ -16,6 +16,6 @@ class AddBankAccountVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "addBankAccountApi",code: code, error: error)
             completion(nil)
-        }, method: .POST, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .POST, img: nil, imageParameter: nil, headerType: "user")
     }
 }

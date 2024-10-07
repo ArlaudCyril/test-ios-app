@@ -16,6 +16,6 @@ class PinVerificationVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "refreshTokenApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "none")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "none")
     }
 }

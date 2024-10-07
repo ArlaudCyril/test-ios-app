@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 enum Assets : String{
+    case appIcon
 	case grey_coins
 	case box
 	case circle
@@ -75,6 +76,7 @@ enum Assets : String{
     //Invest Money
     case invest_single_assets
     case money_deposit
+    case send_money
     case mastercard
     case apple_pay
     case bank_outline
@@ -156,6 +158,11 @@ enum Assets : String{
     case pending_indicator
     case rejected_indicator
     case accepted_indicator
+    
+    //Withdraw VC
+    case send_phone
+    case send_QRCode
+    case send_NFC
 
     
     func imageName() -> String{

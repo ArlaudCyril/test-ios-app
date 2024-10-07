@@ -178,7 +178,7 @@ extension ConfirmationVC{
 			}
 		}else if(confirmationType == .buyFailure){
 			self.YesBtn.showLoading(color: .purple)
-			InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: Decimal(fromAmountInvested), completion: {response in
+            InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: "eur", toAssetId: asset?.id ?? "", exchangeFromAmount: Decimal(fromAmountInvested), controller: self, completion: {response in
 				self.YesBtn.hideLoading()
 				if response != nil{
 					self.dismiss(animated: false)

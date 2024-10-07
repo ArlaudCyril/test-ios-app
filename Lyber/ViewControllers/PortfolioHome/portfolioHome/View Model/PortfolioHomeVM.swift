@@ -16,7 +16,7 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getMyAssetsApi",code: code, error: error)
             completion(nil)
-        }, method: .GetString, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
    func getActiveStrategiesApi(completion: @escaping ( (RecurrentInvestmentStrategyAPI?) -> Void )){
@@ -27,7 +27,7 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getActiveStrategiesApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
 	func callWalletGetBalanceApi(completion: @escaping ( ([Balance]?) -> Void )){
@@ -45,7 +45,7 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "callWalletGetBalanceApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 	
     func walletGetBalanceHistoryApi(limit: Int, daily: Bool, completion: @escaping ( (BalanceHistoryAPI?) -> Void )){
@@ -58,7 +58,7 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "walletGetBalanceHistoryApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 	
 	func walletGetPerformanceApi(completion: @escaping ( (PerformanceAPI?) -> Void )){
@@ -68,6 +68,6 @@ class PortfolioHomeVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "walletGetPerformanceApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 }

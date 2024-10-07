@@ -18,18 +18,16 @@
         <attribute name="extraSecurity" optional="YES" attributeType="String"/>
         <attribute name="faceIdEnabled" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="firstname" optional="YES" attributeType="String"/>
-        <attribute name="firstnameRegistration" optional="YES" attributeType="String"/>
         <attribute name="has2FA" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="hideBalance" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="iban" optional="YES" attributeType="String"/>
         <attribute name="investmentExperience" optional="YES" attributeType="String"/>
         <attribute name="is_push_enabled" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="isAccountCreated" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isEducationStrategyRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isUsCitizen" optional="YES" attributeType="String"/>
+        <attribute name="keyId" optional="YES" attributeType="String"/>
         <attribute name="language" optional="YES" attributeType="String"/>
         <attribute name="lastname" optional="YES" attributeType="String"/>
-        <attribute name="lastnameRegistration" optional="YES" attributeType="String"/>
         <attribute name="logInPinSet" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nationality" optional="YES" attributeType="String"/>
         <attribute name="personalDataStepComplete" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>

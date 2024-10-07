@@ -7,7 +7,7 @@
 
 import Foundation
 class InvestInMyStrategyVM{
-	func ordersGetQuoteApi(fromAssetId : String ,toAssetId : String,exchangeFromAmount : Decimal,completion: @escaping ( (QuoteAPI?) -> Void )){
+    func ordersGetQuoteApi(fromAssetId : String ,toAssetId : String,exchangeFromAmount : Decimal, controller: ViewController, completion: @escaping ( (QuoteAPI?) -> Void )){
 		let params : [String : Any] = [Constants.ApiKeys.fromAsset : fromAssetId,
 									   Constants.ApiKeys.toAsset : toAssetId,
 									   Constants.ApiKeys.fromAmount : exchangeFromAmount.description]
@@ -16,9 +16,9 @@ class InvestInMyStrategyVM{
 			completion(response)
 			CommonFunctions.hideLoader()
 		}, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "ordersGetQuoteApi",code: code, error: error)
+            CommonFunctions.handleErrors(caller: "ordersGetQuoteApi",code: code, error: error, controller: controller, arguments: ["fromAssetId": fromAssetId.uppercased(), "toAssetId": toAssetId.uppercased()])
 			completion(nil)
-		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
 	}
 }
 

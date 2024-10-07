@@ -9,11 +9,13 @@ import Foundation
 import AppsFlyerLib
 
 class ConfirmInvestmentVM{
-    func activateStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
+    func activateStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, minAmount: Int, controller: ViewController, completion: @escaping ( (SuccessAPI?) -> Void )){
         let params : [String : Any] = [Constants.ApiKeys.strategy_name : strategyName,
                                        Constants.ApiKeys.amount : amount,
                                        Constants.ApiKeys.frequency : CommonFunctions.frequenceEncoder(frequence: frequency),
                                        Constants.ApiKeys.owner_uuid : ownerUuid]
+        let arguments = ["minAmount": minAmount.description]
+        
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
             completion(response)
             AppsFlyerLib.shared().logEvent(AFEventPurchase, withValues: [
@@ -22,9 +24,9 @@ class ConfirmInvestmentVM{
             ]);
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "activateStrategyApi",code: code, error: error)
+			CommonFunctions.handleErrors(caller: "activateStrategyApi",code: code, error: error, controller: controller, arguments: arguments)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func editActiveStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -38,10 +40,10 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "editActiveStrategyApi",code: code, error: error)
             completion(nil)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
-    func ordersAcceptQuoteAPI(orderId : String, completion: @escaping ( (SuccessAPI?) -> Void )){
+    func ordersAcceptQuoteAPI(orderId : String, controller: ViewController, completion: @escaping ( (SuccessAPI?) -> Void )){
         let params : [String : Any] = [Constants.ApiKeys.orderId : orderId]
 		
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.orderServiceAcceptQuote, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
@@ -51,9 +53,9 @@ class ConfirmInvestmentVM{
                 AFEventParamContentType: "Order"
             ]);
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "ordersAcceptQuoteAPI",code: code, error: error)
+			CommonFunctions.handleErrors(caller: "ordersAcceptQuoteAPI",code: code, error: error, controller: controller)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func SellApi(assetId: String,amount : Decimal,assetAmount : Decimal,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -68,7 +70,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "SellApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
 	func userGetOtpApi(action: String, data : [String : Any] = [:], completion: @escaping ( (SuccessAPI?) -> Void )){
         var params : [String : Any] = [:]
@@ -93,7 +95,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "userGetOtpApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 }
 

@@ -18,7 +18,7 @@ class ChangePasswordVM{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "passwordChangeChallengeAPI",code: code, error: error)
 			completion(nil)
-		}, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .GET, img: nil, imageParameter: nil, headerType: "user")
 	}
 	
 	func setNewPasswordAPI(b: String, salt: String, oldPassword: String, newPassword: String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -55,11 +55,10 @@ class ChangePasswordVM{
 		}
 								
 		ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userServicePassword, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
-			print(response)
 			completion(response)
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "setNewPasswordAPI",code: code, error: error)
 			completion(nil)
-		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
 	}
 }

@@ -27,7 +27,7 @@ class AddStrategyVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "addStrategyApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func tailorStrategyApi(newStrategy:Strategy,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -50,7 +50,7 @@ class AddStrategyVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "tailorStrategyApi",code: code, error: error)
             completion(nil)
-        }, method: .PATCHWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
 }

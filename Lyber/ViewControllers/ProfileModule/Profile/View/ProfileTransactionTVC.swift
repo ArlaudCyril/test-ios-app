@@ -60,13 +60,13 @@ extension ProfileTransactionTVC{
 			
 		}else if data?.type == "deposit"{
 			self.coinImg.image = Assets.money_deposit.image()
-			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT_TRANSACTION", parameter: data?.asset?.uppercased() ?? ""))"
+			self.transactionTypeLbl.text = "\(CommonFunctions.localisation(key: "DEPOSIT_TRANSACTION", parameter: [data?.asset?.uppercased() ?? ""]))"
 			self.euroLbl.text = "+\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
 			self.dateLbl.text = data?.status?.decoderStatusDeposit
 			
 		}else if data?.type == "withdraw"{
 			self.coinImg.image = Assets.withdraw.image()
-			self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL_TRANSACTION", parameter: data?.asset?.uppercased() ?? "")
+			self.transactionTypeLbl.text = CommonFunctions.localisation(key: "WITHDRAWAL_TRANSACTION", parameter: [data?.asset?.uppercased() ?? ""])
 			self.euroLbl.text = "-\(data?.amount ?? "") \(data?.asset?.uppercased() ?? "")"
 			self.dateLbl.text = data?.status?.decoderStatusWithdraw
 			

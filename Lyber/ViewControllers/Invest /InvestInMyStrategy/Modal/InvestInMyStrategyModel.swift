@@ -14,6 +14,7 @@ enum InvestStrategyModel{
     case oneTimeInvestment
     case deposit
     case Exchange
+    case Send
     case withdraw
     case withdrawEuro
     case anotherWallet

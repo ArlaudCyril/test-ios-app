@@ -18,7 +18,7 @@ class ResetPasswordVM{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "forgotPasswordAPI",code: code, error: error)
 			completion(nil)
-		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
 	}
 	
 	func resetPasswordIdentifierAPI(token: String, completion: @escaping ( (IdentifiersAPI?) -> Void )){
@@ -30,7 +30,7 @@ class ResetPasswordVM{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "resetPasswordIdentifierAPI",code: code, error: error)
 			completion(nil)
-		}, method: .GET, img: nil, imageParamater: nil, headerType: token)
+		}, method: .GET, img: nil, imageParameter: nil, headerType: token)
 	}
 	
 	func resetPasswordApi(token: String, email : String?, phone: String?, password : String?, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -51,6 +51,6 @@ class ResetPasswordVM{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "resetPasswordApi",code: code, error: error)
 			completion(nil)
-		}, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: token)
+		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: token)
 	}
 }

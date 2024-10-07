@@ -410,7 +410,7 @@ extension AddressAddedPopUpVC{
                 }
             })
         }else{
-            addressAddedPopUpVM.deleteAddressApi(network: self.editAddress?.network ?? "", address: self.editAddress?.address ?? "", completion: {[weak self]response in
+            addressAddedPopUpVM.deleteAddressApi(network: self.editAddress?.network ?? "", address: self.editAddress?.address ?? "", controller: self, completion: {[weak self]response in
                 self?.deleteBtn.hideLoading()
                 self?.dismiss(animated: true)
                 self?.deleteCallback?()

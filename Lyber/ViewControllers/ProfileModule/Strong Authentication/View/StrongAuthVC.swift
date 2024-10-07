@@ -281,7 +281,7 @@ extension StrongAuthVC{
 		vc.typeVerification = oldWay
 		vc.action = "verificationCallback"
 		vc.verificationCallBack = {[]code in
-			VerificationVM().TwoFAApi(type2FA: newWay, otp: code, completion: {[weak self]response in
+            VerificationVM().TwoFAApi(type2FA: newWay, otp: code, controller: self, completion: {[weak self]response in
 				if response != nil{
 					userData.shared.has2FA = true
 					userData.shared.type2FA = newWay

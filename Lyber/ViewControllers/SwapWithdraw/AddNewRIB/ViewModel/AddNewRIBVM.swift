@@ -21,7 +21,7 @@ class AddNewRIBVM{
         }, onFailure: { reload, error, code in
             CommonFunctions.handleErrors(caller: "addRibApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func getRibsApi(completion: @escaping ( (RibAPI?) -> Void )){
@@ -32,7 +32,7 @@ class AddNewRIBVM{
         }, onFailure: { reload, error, code in
             CommonFunctions.handleErrors(caller: "getRibsApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
     
     func deleteRisApi(ribId: String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -45,7 +45,7 @@ class AddNewRIBVM{
         }, onFailure: { reload, error, code in
             CommonFunctions.handleErrors(caller: "deleteRisApi",code: code, error: error)
             completion(nil)
-        }, method: .DELETEWithJSON, img: nil, imageParamater: nil, headerType: "user")
+        }, method: .DELETEWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
 
 }

@@ -129,7 +129,9 @@ extension InvestmentStrategyVC{
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tblView.removeObserver(self, forKeyPath: "contentSize")
+        if self.tblView.observationInfo != nil {
+            self.tblView.removeObserver(self, forKeyPath: "contentSize")
+        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

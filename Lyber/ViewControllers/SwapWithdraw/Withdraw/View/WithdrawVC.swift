@@ -20,6 +20,11 @@ class WithdrawVC: ViewController, UITextFieldDelegate {
     
     //Ribs
     var ribsArray : [RibData] = []
+    
+    //Send
+    let sendMeansArray : [String] = ["phone", "QRCode"]
+//    let sendMeansArray : [String] = ["phone", "QRCode", "NFC"]
+    var fromAsset : String = ""
 	
 	//MARK:- IB OUTLETS
     @IBOutlet var backBtn: UIButton!
@@ -45,12 +50,15 @@ class WithdrawVC: ViewController, UITextFieldDelegate {
             CommonUI.setUpLbl(lbl: self.withdrawAddressLbl, text: CommonFunctions.localisation(key: "WITHDRAW_ON"), textColor: UIColor.Grey423D33, font: UIFont.MabryProBold(Size.Large.sizeValue()))
             self.getNetworks()
             self.addRibBtn.isHidden = true
-        }else{
+        }else if(typeWithdraw == .ribs){
             CommonUI.setUpLbl(lbl: self.withdrawAddressLbl, text: CommonFunctions.localisation(key: "CHOOSE_RIB_WANT_WITHDRAW"), textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
             
             self.addRibBtn.setTitle(CommonFunctions.localisation(key: "ADD_RIB"), for: .normal)
             
             self.addRibBtn.addTarget(self, action: #selector(addBtnAct), for: .touchUpInside)
+        }else if(typeWithdraw == .send){
+            CommonUI.setUpLbl(lbl: self.withdrawAddressLbl, text: CommonFunctions.localisation(key: "WITHDRAW_CONTROLLER_TITLE_SEND"), textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
+            self.addRibBtn.isHidden = true
         }
         self.withdrawAddressLbl.numberOfLines = 0
         
@@ -64,8 +72,10 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(typeWithdraw == .addresses){
             return networksArray.count
-        }else{
+        }else if(typeWithdraw == .ribs){
             return ribsArray.count
+        }else{
+            return sendMeansArray.count
         }
 	}
 	
@@ -74,10 +84,16 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawAddressTVC", for: indexPath as IndexPath) as! WithdrawAddressTVC
             cell.configureWithData(data : networksArray[indexPath.row])
             return cell
-        }else{
+        }else if(typeWithdraw == .ribs){
             let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawRibTVC", for: indexPath as IndexPath) as! WithdrawRibTVC
             cell.configureWithData(data : ribsArray[indexPath.row])
             return cell
+        }else if(typeWithdraw == .send){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WithdrawSendTVC", for: indexPath as IndexPath) as! WithdrawSendTVC
+            cell.configureWithData(data : sendMeansArray[indexPath.row])
+            return cell
+        }else{
+            return UITableViewCell()
         }
 	}
 	
@@ -91,7 +107,7 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
             vc.network = networksArray[indexPath.row]
             vc.numberOfDecimals = self.networksArray[indexPath.row].decimals ?? -1
             self.navigationController?.pushViewController(vc, animated: true)
-        }else{
+        }else if(typeWithdraw == .ribs){
             let vc = AddressAddedPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
             vc.controller = self
             vc.type = .ribSelected
@@ -100,6 +116,16 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
             self.present(vc, animated: true, completion: nil)
             vc.deleteCallback = {[] in
                 self.getRibs()
+            }
+        }else{
+            //TODO: implement QRCode
+            if(sendMeansArray[indexPath.row] == "phone"){
+                let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                vc.screenType = .send
+                vc.sendMean = "phone"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                
             }
         }
 	}
@@ -126,7 +152,7 @@ extension WithdrawVC{
 //MARK: - Other functions
 extension WithdrawVC{
 	func getNetworks(){
-        PortfolioDetailVM().getCoinInfoApi(AssetId: self.asset?.id ?? "", isNetwork: true, completion: {[self]response in
+        PortfolioDetailVM().getCoinInfoApi(AssetId: self.asset?.id ?? "", isNetwork: true, controller: self, completion: {[self]response in
             if(response != nil){
                 self.networksArray = []
                 for network in response?.data?.networks ?? []{
