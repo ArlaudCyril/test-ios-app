@@ -36,7 +36,7 @@ class QrCodeVC : ViewController {
 	}
 	
 	@objc func backBtnAct(){
-		self.navigationController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
 	}
 	
 	func generateQRCode(string: String)->UIImage?{

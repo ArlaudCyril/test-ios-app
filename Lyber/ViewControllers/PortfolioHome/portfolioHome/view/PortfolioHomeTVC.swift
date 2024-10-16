@@ -30,6 +30,7 @@ class PortfolioHomeTVC: UITableViewCell {
     @IBOutlet var euroLbl: UILabel!
     @IBOutlet var profilePicVw: UIView!
     @IBOutlet var profilePic: UIImageView!
+    @IBOutlet var qrCodeImg: UIImageView!
     @IBOutlet var chartView: LineChartView!
     @IBOutlet var collView: UICollectionView!
     @IBOutlet var hideBalanceBtn: UIButton!
@@ -48,6 +49,10 @@ extension PortfolioHomeTVC{
         let profileTap = UITapGestureRecognizer(target: self, action: #selector(profileAction))
         self.profilePic.addGestureRecognizer(profileTap)
         self.profilePic.isUserInteractionEnabled = true
+        
+        let qrCodeImgTap = UITapGestureRecognizer(target: self, action: #selector(qrCodeAction))
+        self.qrCodeImg.addGestureRecognizer(qrCodeImgTap)
+        self.qrCodeImg.isUserInteractionEnabled = true
         
         self.hideBalanceBtn.addTarget(self, action: #selector(toggleMaskBalance), for: .touchUpInside)
         
@@ -95,7 +100,16 @@ extension PortfolioHomeTVC: ChartViewDelegate{
 extension PortfolioHomeTVC{
     @objc func profileAction(){
         let vc = ProfileVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-		self.controller?.navigationController?.pushViewController(vc, animated: false)
+        self.controller?.navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    @objc func qrCodeAction(){
+        let vc = QrCodeVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+        vc.urlQrCode = "tel:\(userData.shared.countryCode + userData.shared.phone_no)"
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        nav.navigationBar.isHidden = true
+        self.controller?.present(nav, animated: true, completion: nil)
     }
     
     @objc func toggleMaskBalance(){

@@ -426,6 +426,13 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "You must have Apple Pay activated and a registered card to be able to buy USDC with euros.";
 "UNDERSTAND" = "I understand";
 "APPLE_PAY_ERROR" = "Apple Pay error";
+"SCANNED_QR_CODE_WRONG_FORMAT" = "The scanned QR code is in the wrong format";
+
+
+//MARK: - CONFIRMATION
+"CONFIRMATION_CONGRATS_TITLE" = "Congratulations";
+"CONFIRMATION_CONGRATS_MAIN_PARAGRAPH" = "Your shipment was successful.";
+"CONFIRMATION_SECONDARY_PARAGRAPH" = "You can now see its effect on your portfolio.";
 
 
 //MARK: - PROFILE
@@ -609,6 +616,13 @@ Our support team will get back to you as soon as possible to make the withdrawal
 "FEES" = "Fees";
 "MINIMUM_WITHDRAWAL" = "Minimum withdrawal";
 "CONFIRM_WITHDRAWAL" = "Confirm withdrawal";
+"CONFIRM_INVESTMENT_TITLE_SEND" = "Confirm Sending";
+"CONFIRM_INVESTMENT_BTN_SEND" = "Confirm Sending";
+"CONFIRM_INVESTMENT_SURNAME" = "Surname";
+"CONFIRM_INVESTMENT_FIRSTNAME" = "Firstname";
+"CONFIRM_INVESTMENT_TOTAL_ASSET" = "Total %@";
+"CONFIRM_INVESTMENT_TOTAL" = "Total";
+
 
 //MARK: - Withdraw
 "DEACTIVATED" = "Deactivated";

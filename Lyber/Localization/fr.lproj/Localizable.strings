@@ -423,6 +423,12 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "MUST_HAVE_CARD_REGISTERED_APPLE_PAY" = "Vous devez avoir Apple Pay activé et une carte enregistrée pour pouvoir acheter des USDC avec des euros.";
 "UNDERSTAND" = "J'ai compris";
 "APPLE_PAY_ERROR" = "Erreur Apple Pay";
+"SCANNED_QR_CODE_WRONG_FORMAT" = "Le code QR scanné n'est pas au bon format";
+
+//MARK: - CONFIRMATION
+"CONFIRMATION_CONGRATS_TITLE" = "Félicitations";
+"CONFIRMATION_CONGRATS_MAIN_PARAGRAPH" = "Votre envoi s'est déroulé avec succès.";
+"CONFIRMATION_SECONDARY_PARAGRAPH" = "Le destinataire a reçu ses cryptos sur son compte Lyber !";
 
 //MARK: - PROFILE
 "TRANSACTION" = "Transaction";
@@ -606,6 +612,12 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "FEES" = "Frais";
 "MINIMUM_WITHDRAWAL" = "Retrait minimum";
 "CONFIRM_WITHDRAWAL" = "Confirmer le retrait";
+"CONFIRM_INVESTMENT_TITLE_SEND" = "Confirmer l'envoi";
+"CONFIRM_INVESTMENT_BTN_SEND" = "Confirmer l'envoi";
+"CONFIRM_INVESTMENT_SURNAME" = "Nom de famille";
+"CONFIRM_INVESTMENT_FIRSTNAME" = "Prénom";
+"CONFIRM_INVESTMENT_TOTAL_ASSET" = "Total %@";
+"CONFIRM_INVESTMENT_TOTAL" = "Total";
 
 //MARK: - Withdraw
 "DEACTIVATED" = "Désactivé";

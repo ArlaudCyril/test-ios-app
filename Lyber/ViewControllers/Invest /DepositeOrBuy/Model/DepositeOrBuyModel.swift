@@ -41,5 +41,6 @@ enum confirmationPopUp{
     case LinkSent
     case exportSuccess
 	case exportFailure
-	case buyFailure
+    case buyFailure
+	case Congratulations
 }

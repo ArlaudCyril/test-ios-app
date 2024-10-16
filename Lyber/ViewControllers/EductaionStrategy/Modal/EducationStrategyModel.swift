@@ -23,6 +23,16 @@ struct DataAPI: Codable {
     let data: String
 }
 
+struct UserInfoDataAPI: Codable {
+    let data: UserInfoAPI
+}
+
+struct UserInfoAPI: Codable {
+    let firstName: String
+    let lastName: String
+    let phoneNo: String
+}
+
 struct FailureAPI {
 	let message: String?
 	let code: String?

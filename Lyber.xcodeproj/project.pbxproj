@@ -633,6 +633,8 @@
 		C87F07A12BA1FE37006E125F /* AddNewRIBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */; };
 		C8859A362B596D1E00225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
+		C89CF6852CB5785E00DEA2E5 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89CF6842CB5785E00DEA2E5 /* QRCodeScannerViewController.swift */; };
+		C89CF6862CB5793B00DEA2E5 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89CF6842CB5785E00DEA2E5 /* QRCodeScannerViewController.swift */; };
 		C8A6AA182CAEE9BB004DDD30 /* ApiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */; };
 		C8A6AA192CAEE9BB004DDD30 /* ApiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */; };
 		C8AC1E1D2B6CF7AF0069C2FA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
@@ -642,6 +644,8 @@
 		C8C448DB2BA332920013A468 /* AddNewRIBVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */; };
 		C8D233B12BD9426F00856A05 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C8D233B02BD9426F00856A05 /* PrivacyInfo.xcprivacy */; };
 		C8D233B22BD9426F00856A05 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C8D233B02BD9426F00856A05 /* PrivacyInfo.xcprivacy */; };
+		C8D403AB2CB6DD170070E27A /* InformationPopUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D403AA2CB6DD170070E27A /* InformationPopUpVM.swift */; };
+		C8D403AC2CB6E0050070E27A /* InformationPopUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D403AA2CB6DD170070E27A /* InformationPopUpVM.swift */; };
 		C8FC6FA12B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */; };
 		C8FC6FA22B7137E500F15EBE /* VerificationKycSigningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */; };
 		EE9AB0952AEBBDA300B3E36C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE9AB0972AEBBDA300B3E36C /* Profile.storyboard */; };
@@ -972,9 +976,11 @@
 		C85C47442CA710EA005FA100 /* WithdrawSendTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawSendTVC.swift; sourceTree = "<group>"; };
 		C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVC.swift; sourceTree = "<group>"; };
 		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
+		C89CF6842CB5785E00DEA2E5 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVM.swift; sourceTree = "<group>"; };
 		C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVM.swift; sourceTree = "<group>"; };
 		C8D233B02BD9426F00856A05 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C8D403AA2CB6DD170070E27A /* InformationPopUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPopUpVM.swift; sourceTree = "<group>"; };
 		C8FC6FA02B7137E500F15EBE /* VerificationKycSigningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationKycSigningTVC.swift; sourceTree = "<group>"; };
 		DF43FC56F030BBDBC2A00C8E /* Pods_Lyber_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lyber_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A00A1434E71C92E4E0D1F8 /* Pods-Lyber dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lyber dev.debug.xcconfig"; path = "Target Support Files/Pods-Lyber dev/Pods-Lyber dev.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2480,6 +2486,7 @@
 		0AC4C2BC283F4B400086C6B8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C89CF6822CB577FC00DEA2E5 /* QRCodeScanner */,
 				1F9B43BA2ACAF55B00A13733 /* ContactForm */,
 				1F4DCC5C29D2FDD500C3B374 /* Language */,
 				0A707D3C2890082F00C9ACA4 /* HeaderView.swift */,
@@ -2771,6 +2778,7 @@
 		1F5B7C5329C1D24100256438 /* PopUp Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C8D403A92CB6DD060070E27A /* ViewModel */,
 				1F5B7C5529C1D25400256438 /* Model */,
 				1F5B7C5429C1D24D00256438 /* View */,
 			);
@@ -3163,10 +3171,34 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C89CF6822CB577FC00DEA2E5 /* QRCodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				C89CF6832CB5782D00DEA2E5 /* View */,
+			);
+			path = QRCodeScanner;
+			sourceTree = "<group>";
+		};
+		C89CF6832CB5782D00DEA2E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C89CF6842CB5785E00DEA2E5 /* QRCodeScannerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C8C448D82BA330B60013A468 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C8D403A92CB6DD060070E27A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C8D403AA2CB6DD170070E27A /* InformationPopUpVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3668,6 +3700,7 @@
 				1F35C2D42A52CB3200512ABD /* CountryPickerViewExtension.swift in Sources */,
 				0A6E936428BF62D7008FF5E7 /* UIImageExtension.swift in Sources */,
 				0A95DE172898ED030044EE92 /* AddCryptoAddressVC.swift in Sources */,
+				C8D403AB2CB6DD170070E27A /* InformationPopUpVM.swift in Sources */,
 				1883D3172950798A00CEC597 /* configuration.swift in Sources */,
 				1883D3122950798A00CEC597 /* keys.swift in Sources */,
 				0A1A95BB2845F1E2001224C6 /* TextFieldExtension.swift in Sources */,
@@ -3746,6 +3779,7 @@
 				0AE67F442853021D00F13D2E /* InvestInMyStrategyVC.swift in Sources */,
 				0A7586CC286C7C9600DC889E /* LoginVM.swift in Sources */,
 				1F96A99B2A3B4C71006D5A61 /* NoRecurringTVC.swift in Sources */,
+				C89CF6852CB5785E00DEA2E5 /* QRCodeScannerViewController.swift in Sources */,
 				1F56DD7A2AF502B800AB22EA /* ChangePasswordVM.swift in Sources */,
 				0A70BC5C28992FBB00577C0B /* EnableWhitelistingModel.swift in Sources */,
 				0A6E3B9D2844A084007002E0 /* checkAccountCompletedVC.swift in Sources */,
@@ -3922,6 +3956,7 @@
 				1FF380EC2AFD297600CCF1A6 /* UIImageExtension.swift in Sources */,
 				1FF380ED2AFD297600CCF1A6 /* AddCryptoAddressVC.swift in Sources */,
 				1FF380EE2AFD297600CCF1A6 /* configuration.swift in Sources */,
+				C8D403AC2CB6E0050070E27A /* InformationPopUpVM.swift in Sources */,
 				1FF380EF2AFD297600CCF1A6 /* keys.swift in Sources */,
 				1FF380F02AFD297600CCF1A6 /* TextFieldExtension.swift in Sources */,
 				1FF380F12AFD297600CCF1A6 /* PersonalDataVM.swift in Sources */,
@@ -4000,6 +4035,7 @@
 				1FF3812F2AFD297600CCF1A6 /* InvestInMyStrategyVC.swift in Sources */,
 				1FF381302AFD297600CCF1A6 /* LoginVM.swift in Sources */,
 				1FF381312AFD297600CCF1A6 /* NoRecurringTVC.swift in Sources */,
+				C89CF6862CB5793B00DEA2E5 /* QRCodeScannerViewController.swift in Sources */,
 				1FF381322AFD297600CCF1A6 /* ChangePasswordVM.swift in Sources */,
 				1FF381332AFD297600CCF1A6 /* EnableWhitelistingModel.swift in Sources */,
 				1FF381342AFD297600CCF1A6 /* checkAccountCompletedVC.swift in Sources */,

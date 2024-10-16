@@ -62,6 +62,7 @@ class InvestInMyStrategyVC: ViewController {
     
     //send
     var sendMean = ""
+    var phone = ""
     
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
@@ -952,10 +953,34 @@ extension InvestInMyStrategyVC {
             
             self.navigationController?.pushViewController(vc, animated: true)
         }else if(strategyType == .Send){
-            let vc = InformationPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
-            vc.typeInformation = "sendMoneyPhone"
-            vc.controller = self
-            self.present(vc, animated: true, completion: nil)
+            if(self.sendMean == "phone"){
+                let vc = InformationPopUpVC.instantiateFromAppStoryboard(appStoryboard: .Profile)
+                vc.typeInformation = "sendMoneyPhone"
+                vc.fromAssetId = self.asset?.id ?? ""
+                vc.totalEuroInvested = Double(truncating: self.totalEuroInvested)
+                vc.totalCoinsInvested = self.totalNoOfCoinsInvest as Decimal
+                vc.numberOfDecimals = self.numberOfDecimals
+                vc.controller = self
+                self.present(vc, animated: true, completion: nil)
+            }else{
+                let qrScannerVC = QRCodeScannerViewController()
+                qrScannerVC.onQRCodeScanned = { [weak self] qrCode in
+                    InformationPopUpVM().getUserNameByPhoneApi(phone: qrCode, completion: {response in
+                        if response != nil{
+                            let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                            vc.InvestmentType = .Send
+                            vc.fromAssetId = self?.asset?.id ?? ""
+                            vc.totalCoinsInvested = (self?.totalNoOfCoinsInvest ?? 0)as Decimal
+                            vc.totalEuroInvested = Double(truncating: self?.totalEuroInvested ?? 0)
+                            vc.friendInfo = response?.data
+                            vc.numberOfDecimals = self?.numberOfDecimals
+                            self?.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    })
+                }
+                present(qrScannerVC, animated: true)
+            }
+            
         }
     }
     

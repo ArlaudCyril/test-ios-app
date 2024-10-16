@@ -74,18 +74,18 @@ class ConfirmInvestmentVM{
     }
 	func userGetOtpApi(action: String, data : [String : Any] = [:], completion: @escaping ( (SuccessAPI?) -> Void )){
         var params : [String : Any] = [:]
-		
-		if(!data.isEmpty){
-			do {
-				let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
-				let base64EncodedString = jsonData.base64EncodedString()
-				params[Constants.ApiKeys.details] = base64EncodedString
-				
-			} catch {
-				print("Error creating JSON: \(error)")
-			}
-		}
-		
+        
+        if(!data.isEmpty){
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+                let base64EncodedString = jsonData.base64EncodedString()
+                params[Constants.ApiKeys.details] = base64EncodedString
+                
+            } catch {
+                print("Error creating JSON: \(error)")
+            }
+        }
+        
         params[Constants.ApiKeys.action] = action
         
         
@@ -93,9 +93,23 @@ class ConfirmInvestmentVM{
             completion(response)
             CommonFunctions.hideLoader()
         }, onFailure: { reload, error, code in
-			CommonFunctions.handleErrors(caller: "userGetOtpApi",code: code, error: error)
+            CommonFunctions.handleErrors(caller: "userGetOtpApi",code: code, error: error)
             completion(nil)
         }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
+    }
+    
+    func transferToFriendApi(asset: String, amount: Decimal, phone: String, completion: @escaping ( (SuccessAPI?) -> Void )){
+        var params : [String : Any] = [Constants.ApiKeys.asset: asset.uppercased(),
+                                       Constants.ApiKeys.amount: amount,
+                                       Constants.ApiKeys.phone: phone]
+		
+        ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.walletServiceTransferToFriend, withParameters: params, ofType: SuccessAPI.self, onSuccess: { response in
+            completion(response)
+            CommonFunctions.hideLoader()
+        }, onFailure: { reload, error, code in
+			CommonFunctions.handleErrors(caller: "transferToFriendApi",code: code, error: error)
+            completion(nil)
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
     }
 }
 

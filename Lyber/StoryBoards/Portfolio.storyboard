@@ -647,25 +647,45 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Wa-qb-QfO">
-                                                                    <rect key="frame" x="338" y="37" width="52" height="52"/>
+                                                                    <rect key="frame" x="294" y="37" width="96" height="52"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tfn-ov-SqM">
-                                                                            <rect key="frame" x="2" y="2.5" width="48" height="47"/>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tb-E6-Hxh">
+                                                                            <rect key="frame" x="42" y="2" width="52" height="52"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tfn-ov-SqM">
+                                                                                    <rect key="frame" x="2" y="2.5" width="48" height="47"/>
+                                                                                    <color key="backgroundColor" name="whiteColor"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" secondItem="tfn-ov-SqM" secondAttribute="height" multiplier="1:1" id="Wfl-Mk-bEB"/>
+                                                                                        <constraint firstAttribute="width" constant="48" id="hI1-Ii-ZJy"/>
+                                                                                    </constraints>
+                                                                                </imageView>
+                                                                            </subviews>
                                                                             <color key="backgroundColor" name="whiteColor"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" secondItem="tfn-ov-SqM" secondAttribute="height" multiplier="1:1" id="Wfl-Mk-bEB"/>
-                                                                                <constraint firstAttribute="width" constant="48" id="hI1-Ii-ZJy"/>
+                                                                                <constraint firstItem="tfn-ov-SqM" firstAttribute="top" secondItem="9Tb-E6-Hxh" secondAttribute="top" constant="2" id="82x-bC-7ha"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="tfn-ov-SqM" secondAttribute="bottom" constant="2" id="L0T-Uu-2eO"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="tfn-ov-SqM" secondAttribute="trailing" constant="2" id="Pc5-cz-R2q"/>
+                                                                                <constraint firstItem="tfn-ov-SqM" firstAttribute="leading" secondItem="9Tb-E6-Hxh" secondAttribute="leading" constant="2" id="ZNg-Va-1h7"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr_Code_black" translatesAutoresizingMaskIntoConstraints="NO" id="4la-9T-7dy">
+                                                                            <rect key="frame" x="2" y="16" width="24" height="24"/>
+                                                                            <color key="backgroundColor" name="whiteColor"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="4la-9T-7dy" secondAttribute="height" multiplier="1:1" id="6Vi-3K-SzS"/>
+                                                                                <constraint firstAttribute="width" secondItem="4la-9T-7dy" secondAttribute="height" multiplier="1:1" id="Xvt-oa-Ct9"/>
+                                                                                <constraint firstAttribute="width" constant="24" id="uUh-b5-nid"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" name="PurpleColor"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="tfn-ov-SqM" firstAttribute="centerY" secondItem="5Wa-qb-QfO" secondAttribute="centerY" id="1pF-9i-bLp"/>
-                                                                        <constraint firstItem="tfn-ov-SqM" firstAttribute="top" secondItem="5Wa-qb-QfO" secondAttribute="top" constant="2" id="6JL-nt-LzY"/>
-                                                                        <constraint firstItem="tfn-ov-SqM" firstAttribute="centerX" secondItem="5Wa-qb-QfO" secondAttribute="centerX" id="LcM-DY-LZO"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="tfn-ov-SqM" secondAttribute="bottom" constant="2" id="PGS-Xh-eM6"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="tfn-ov-SqM" secondAttribute="trailing" constant="2" id="Qvj-he-Asf"/>
-                                                                        <constraint firstItem="tfn-ov-SqM" firstAttribute="leading" secondItem="5Wa-qb-QfO" secondAttribute="leading" constant="2" id="R3k-6z-w0H"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="9Tb-E6-Hxh" secondAttribute="trailing" constant="2" id="LF5-pd-dnA"/>
+                                                                        <constraint firstItem="4la-9T-7dy" firstAttribute="centerY" secondItem="9Tb-E6-Hxh" secondAttribute="centerY" id="Rvc-3w-069"/>
+                                                                        <constraint firstItem="4la-9T-7dy" firstAttribute="leading" secondItem="5Wa-qb-QfO" secondAttribute="leading" constant="2" id="S5w-bS-hDw"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="9Tb-E6-Hxh" secondAttribute="bottom" constant="-2" id="ZLH-nD-tb2"/>
+                                                                        <constraint firstItem="9Tb-E6-Hxh" firstAttribute="top" secondItem="5Wa-qb-QfO" secondAttribute="top" constant="2" id="eho-UD-cql"/>
+                                                                        <constraint firstItem="9Tb-E6-Hxh" firstAttribute="leading" secondItem="4la-9T-7dy" secondAttribute="trailing" constant="16" id="g8E-5q-6fI"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYQ-wg-Edr" customClass="LineChartView" customModule="Charts">
@@ -765,7 +785,8 @@
                                                     <outlet property="outerView" destination="zJO-W7-Jaw" id="ojf-T6-wmL"/>
                                                     <outlet property="portfolioLbl" destination="VW3-4S-FcH" id="nxq-g3-Wd5"/>
                                                     <outlet property="profilePic" destination="tfn-ov-SqM" id="jJE-Jr-7mQ"/>
-                                                    <outlet property="profilePicVw" destination="5Wa-qb-QfO" id="Qlz-tG-d1T"/>
+                                                    <outlet property="profilePicVw" destination="9Tb-E6-Hxh" id="UzN-bu-B3Q"/>
+                                                    <outlet property="qrCodeImg" destination="4la-9T-7dy" id="tLq-PA-Tvs"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VerificationKycSigningTVC" rowHeight="195" id="fgb-ge-CZQ" customClass="VerificationKycSigningTVC" customModule="Lyber_dev" customModuleProvider="target">
@@ -3531,6 +3552,7 @@
         <image name="invest_money_white" width="28" height="28"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="purple_circle" width="24" height="24"/>
+        <image name="qr_Code_black" width="26" height="26"/>
         <image name="right_arrow_color" width="24" height="24"/>
         <image name="right_arrow_grey" width="24" height="24"/>
         <image name="search" width="24" height="24"/>

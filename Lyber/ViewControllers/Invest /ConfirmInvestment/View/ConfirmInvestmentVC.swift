@@ -32,6 +32,10 @@ class ConfirmInvestmentVC: ViewController {
     var ribSelected : RibData?
 	
 	var asset : PriceServiceResume?
+    
+    //Send
+    var friendInfo: UserInfoAPI?
+    var numberOfDecimals : Int?
 	
     //MARK: - IB OUTLETS
     @IBOutlet var cancelBtn: UIButton!
@@ -224,6 +228,32 @@ class ConfirmInvestmentVC: ViewController {
             self.allocationView.isHidden = true
             self.progressView.isHidden = true
             self.volatilePriceLbl.isHidden = true
+        }else if(InvestmentType == .Send){
+            self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_INVESTMENT_TITLE_SEND")
+            self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_INVESTMENT_BTN_SEND"), for: .normal)
+            
+            self.noOfEuroInvested.text = "\(self.totalEuroInvested) €"
+            
+            //First Row
+            self.coinPriceLbl.text = CommonFunctions.localisation(key: "CONFIRM_INVESTMENT_SURNAME")
+            self.euroCoinPriceLbl.text = self.friendInfo?.lastName
+            
+            //Second Row
+            self.amountLbl.text = CommonFunctions.localisation(key: "CONFIRM_INVESTMENT_FIRSTNAME")
+            self.euroAmountLbl.text = self.friendInfo?.firstName
+
+            //Third Row
+            self.lyberFeeLbl.text = CommonFunctions.localisation(key: "CONFIRM_INVESTMENT_TOTAL_ASSET", parameter: [self.fromAssetId.uppercased()])
+            self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAssetBinance(value: self.totalCoinsInvested.description, numberOfDecimals: numberOfDecimals ?? 0)) \(self.fromAssetId.uppercased())"
+            
+            //Total row
+            self.totalEuroLbl.text = "\(totalEuroInvested.description.euroFormat ?? "0") €"
+
+            self.frequencyVw.isHidden = true
+            self.networkVw.isHidden = true
+            self.allocationView.isHidden = true
+            self.progressView.isHidden = true
+            self.volatilePriceLbl.isHidden = true
         }
     }
 	
@@ -251,7 +281,6 @@ extension ConfirmInvestmentVC: UICollectionViewDelegate, UICollectionViewDataSou
 //MARK: - objective functions
 extension ConfirmInvestmentVC{
     @objc func cancelBtnAct(){
-//        self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -354,7 +383,7 @@ extension ConfirmInvestmentVC{
                         }
                     })
                 }
-			}else{
+            }else{
                 VerificationVM().walletCreateWithdrawalRequest(action: actionVerification, data: dataWithdrawalRequest, controller: self, minimumWithdraw: self.minimumWithdraw?.description ?? "", onSuccess:{[]response in
 					if response != nil{
 						let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
@@ -369,6 +398,15 @@ extension ConfirmInvestmentVC{
 					}
                 }, onFailure: {[]response in})
 			}
+        }else if(InvestmentType == .Send){
+            self.confirmInvestmentVM.transferToFriendApi(asset: self.fromAssetId, amount: Decimal(string: CommonFunctions.formattedAssetBinance(value: self.totalCoinsInvested.description, numberOfDecimals: numberOfDecimals ?? 0)) ?? 0, phone: self.friendInfo?.phoneNo ?? "", completion: {response in
+                if response != nil{
+                    let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+                    vc.confirmationType = .LinkSent
+                    vc.previousViewController = self
+                    self.present(vc, animated: true)
+                }
+            })
         }
     }
 }

@@ -38,7 +38,6 @@ class PortfolioDetailVM{
         let params : [String : Any] = [Constants.ApiKeys.id : id]
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.newsService, withParameters: params, ofType: NewsDataAPI.self, onSuccess: { response in
-            print(response)
             completion(response)
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getAssetsNewsApi",code: code, error: error)

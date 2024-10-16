@@ -118,15 +118,14 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
                 self.getRibs()
             }
         }else{
-            //TODO: implement QRCode
+            let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
+            vc.screenType = .send
             if(sendMeansArray[indexPath.row] == "phone"){
-                let vc = ExchangeFromVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                vc.screenType = .send
                 vc.sendMean = "phone"
-                self.navigationController?.pushViewController(vc, animated: true)
             }else{
-                
+                vc.sendMean = "qrCode"
             }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
 	}
 }

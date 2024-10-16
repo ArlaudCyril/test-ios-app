@@ -132,6 +132,7 @@ struct Constants{
         static let refresh_token = "refresh_token"
         
         // MARK: - New personal Data keys
+        static let phone = "phone"
         static let firstName = "firstName"
         static let lastName = "lastName"
         static let birthPlace = "birthPlace"
@@ -212,7 +213,6 @@ struct Constants{
         static let assetServiceAssets = "asset-service/assets"
         static let userServiceGoogleOtp = "user-service/google-otp"
         static let userServiceVerify2FA = "user-service/verify-2FA"
-        static let userServiceLanguage = "user-service/language"
 		static let userServiceTwoFaOtp = "user-service/2fa-otp"
 		static let userServiceTransactions = "user-service/transactions"
 		static let userServiceForgot = "user-service/forgot"
@@ -248,7 +248,8 @@ struct Constants{
 		static let walletServiceHistory = "wallet-service/history"
         static let walletServicePerformance = "wallet-service/performance"
         static let walletServiceRib = "wallet-service/rib"
-		static let walletServiceRibs = "wallet-service/ribs"
+        static let walletServiceRibs = "wallet-service/ribs"
+		static let walletServiceTransferToFriend = "wallet-service/transfer-to-friend"
 		
 		//Network
 		static let networkServiceNetworks = "network-service/networks"
@@ -259,7 +260,10 @@ struct Constants{
 		
 		//Change password
 		static let userServicePasswordChangeChallenge = "user-service/password-change-challenge"
-		static let userServicePassword = "user-service/password"
+        static let userServicePassword = "user-service/password"
+        
+        //Send Phone
+        static let userServiceUserByPhone = "user-service/user-by-phone"
         
     }
 	

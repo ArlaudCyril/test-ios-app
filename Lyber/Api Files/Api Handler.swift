@@ -16,8 +16,6 @@ enum ApiMethod {
     case GET
     case POST
     case PostWithImage
-    case PostString
-    case GetString
     case PostWithJSON
     case PUT
     case PUTWithImage
@@ -92,13 +90,13 @@ class ApiHandler: NSObject {
         var params = parameters
         let dispatchGroup = DispatchGroup()
         
-        if integrity {
-            dispatchGroup.enter() // Commence une tâche
-            integritiseRequest(params: params) { responseHeader in
-                header = responseHeader
-                dispatchGroup.leave() // Tâche terminée
-            }
-        }
+//        if integrity {
+//            dispatchGroup.enter() // Commence une tâche
+//            integritiseRequest(params: params) { responseHeader in
+//                header = responseHeader
+//                dispatchGroup.leave() // Tâche terminée
+//            }
+//        }
         
         dispatchGroup.notify(queue: .main) {
             // Ajout des en-têtes de base
@@ -135,6 +133,7 @@ class ApiHandler: NSObject {
             switch method {
            case .GET:
                kMethod = .get
+                
                var i = 0
                for (key, value) in params {
                    fullUrl += (i == 0) ? "?\(key)=\(value)" : "&\(key)=\(value)"
@@ -191,10 +190,15 @@ class ApiHandler: NSObject {
            if (200...299).contains(statusCode ?? 0) {
                onSuccess(value)
            } else {
-               let errorDescription = "Unexpected status code: \(statusCode ?? 0)"
-               onFailure(false, errorDescription, "\(statusCode ?? 0)")
+               let errorDescription = "Unexpected status code: \(dict[Constants.ApiKeys.code].stringValue)"
+               onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue)
            }
-       case .failure(_):
+       case .failure(let error):
+           print("Erreur lors de la requête : \(error)")
+           if let data = response.data,
+                  let jsonString = String(data: data, encoding: .utf8) {
+                   print("Erreur de décodage JSON, réponse brute : \(jsonString)")
+               }
            onFailure(false,dict[Constants.ApiKeys.error].stringValue, dict[Constants.ApiKeys.code].stringValue)
        }
    }

@@ -107,17 +107,22 @@ class ConfirmationVC: ViewController {
 			self.confirmImgView.image = Assets.red_failure_light.image()
 			
 		}else if(self.confirmationType == .Tailoring){
-			self.bottomView.backgroundColor = UIColor.orange
-			self.headerView.backgroundColor = UIColor.orange
-			self.confirmImgView.image = Assets.sad_smiley.image()
+            self.bottomView.backgroundColor = UIColor.orange
+            self.headerView.backgroundColor = UIColor.orange
+            self.confirmImgView.image = Assets.sad_smiley.image()
+            
+            CommonUI.setUpLbl(lbl: self.confirmationLbl, text: CommonFunctions.localisation(key: "OH_MY"), textColor: UIColor.whiteColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
+            
+            self.headingLbl.text = ""
+            self.subHeadingLbl.text = "\(CommonFunctions.localisation(key: "AMOUNT_STRATEGY_INSUFFICIENT")) \(CommonFunctions.localisation(key: "TAILOR_STRATEGY_RAISE_AMOUNT")) (\(self.strategy?.activeStrategy?.amount ?? 0) USDC) \(CommonFunctions.localisation(key: "TO_2")) \(CommonFunctions.getFormatedPriceDecimal(number: self.requiredAmount)) USDC.\n \(CommonFunctions.localisation(key: "AGREE_INCREASE_INVESTMENT"))"
+            
+            self.YesBtn.isHidden = false
+            CommonUI.setUpButton(btn: self.ThanksBtn, text: CommonFunctions.localisation(key: "NO"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+        }else if(self.confirmationType == .Congratulations){
+            self.confirmationLbl.text = CommonFunctions.localisation(key: "CONFIRMATION_CONGRATS_TITLE")
 			
-			CommonUI.setUpLbl(lbl: self.confirmationLbl, text: CommonFunctions.localisation(key: "OH_MY"), textColor: UIColor.whiteColor, font: UIFont.AtypTextMedium(Size.XXXLarge.sizeValue()))
-			
-			self.headingLbl.text = ""
-			self.subHeadingLbl.text = "\(CommonFunctions.localisation(key: "AMOUNT_STRATEGY_INSUFFICIENT")) \(CommonFunctions.localisation(key: "TAILOR_STRATEGY_RAISE_AMOUNT")) (\(self.strategy?.activeStrategy?.amount ?? 0) USDC) \(CommonFunctions.localisation(key: "TO_2")) \(CommonFunctions.getFormatedPriceDecimal(number: self.requiredAmount)) USDC.\n \(CommonFunctions.localisation(key: "AGREE_INCREASE_INVESTMENT"))"
-			
-			self.YesBtn.isHidden = false
-			CommonUI.setUpButton(btn: self.ThanksBtn, text: CommonFunctions.localisation(key: "NO"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.whiteColor, cornerRadius: 16, font: UIFont.MabryProMedium(Size.XLarge.sizeValue()))
+			self.headingLbl.text = CommonFunctions.localisation(key: "CONFIRMATION_CONGRATS_MAIN_PARAGRAPH")
+			self.subHeadingLbl.text = CommonFunctions.localisation(key: "CONFIRMATION_SECONDARY_PARAGRAPH")
 		}
 	}
 }

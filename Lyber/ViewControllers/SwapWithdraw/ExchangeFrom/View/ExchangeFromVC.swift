@@ -125,7 +125,7 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
                 let vc = WithdrawVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
                 vc.asset = CommonFunctions.getCurrency(id: Storage.balances[indexPath.row]?.id ?? "")
                 self.navigationController?.pushViewController(vc, animated: true)
-            }else if(self.screenType == .withdraw){
+            }else if(self.screenType == .exchange){
                 if(self.toAssetId != nil){
                     let balance = CommonFunctions.getBalance(id: Storage.balances[indexPath.row]?.id ?? "")
                     let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
@@ -143,13 +143,11 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }else if(self.screenType == .send){
-                let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-                vc.strategyType = .Send
-                vc.sendMean = self.sendMean
                 PortfolioDetailVM().getResumeByIdApi(assetId: Storage.balances[indexPath.row]?.id ?? "usdc", completion:{[] response in
                     let toAsset = PriceServiceResume(id: Storage.balances[indexPath.row]?.id ?? "usdc", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
                     let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                     vc.strategyType = .Send
+                    vc.sendMean = self.sendMean
                     vc.asset = toAsset
                     vc.fromBalance = Storage.balances[indexPath.row]
                     self.navigationController?.pushViewController(vc, animated: true)

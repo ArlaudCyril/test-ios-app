@@ -16,6 +16,10 @@ final class InformationPopUpVC: ViewController {
     var typeInformation : String?
     var controller : ViewController?
     var countryCode = "+33"
+    var totalCoinsInvested = Decimal()
+    var totalEuroInvested = Double()
+    var fromAssetId = String()
+    var numberOfDecimals = Int()
     
     //MARK: - IB OUTLETS
     @IBOutlet var outerView: UIView!
@@ -114,38 +118,22 @@ extension InformationPopUpVC{
         switch typeInformation {
         case "sendMoneyPhone":
             self.dismiss(animated: true, completion: nil)
-            //TODO: waiting back for request then implementing then calling ConfirmInvestment
-            let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-//            vc.InvestmentType = .withdraw
-//            vc.totalEuroInvested = totalEuroInvested.doubleValue
-//            vc.totalCoinsInvested = totalNoOfCoinsInvest.decimalValue
-//            vc.minimumWithdraw = self.minimumWithdrawal
-//            vc.address = self.addressLbl.text
-//            vc.network = self.network
-//            vc.fees = (self.feeWithdrawal ?? 0)
-//            vc.fromAssetId = self.fromAssetId ?? ""
-//            vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
-            self.controller?.navigationController?.pushViewController(vc, animated: true)
+            let phone = String(self.countryPickerVw.selectedCountry.phoneCode.dropFirst() + (self.phoneTF.text ?? "").phoneFormat)
+            InformationPopUpVM().getUserNameByPhoneApi(phone: phone, completion: {response in
+                if response != nil{
+                    let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                    vc.InvestmentType = .Send
+                    vc.fromAssetId = self.fromAssetId
+                    vc.totalCoinsInvested = self.totalCoinsInvested
+                    vc.totalEuroInvested = self.totalEuroInvested
+                    vc.friendInfo = response?.data
+                    vc.numberOfDecimals = self.numberOfDecimals
+                    self.controller?.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
         default:
             break
         }
-    }
-     
-    
-    func verifyCode(code: String)
-    {
-//        }else if(self.action == "signup"){
-//            EnterPhoneVM().enterOTPApi(otp: code, controller: self, completion: {[weak self]response in
-//                if let response = response{
-//                    print(response)
-//                    userData.shared.enterPhoneStepComplete = 1
-//                    userData.shared.dataSave()
-//                    self?.dismiss(animated: true)
-//                    let vc = EnterPhoneVC.instantiateFromAppStoryboard(appStoryboard: .Main)
-//                    self?.controller?.navigationController?.pushViewController(vc, animated: true)
-//                }
-//            })
-        
     }
 
 }
