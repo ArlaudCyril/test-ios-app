@@ -149,6 +149,8 @@ extension ExchangeFromVC : UITableViewDelegate,UITableViewDataSource{
                     vc.strategyType = .Send
                     vc.sendMean = self.sendMean
                     vc.asset = toAsset
+                    vc.fromAssetId = "eur"
+                    vc.toAssetId = toAsset.id
                     vc.fromBalance = Storage.balances[indexPath.row]
                     self.navigationController?.pushViewController(vc, animated: true)
                 })

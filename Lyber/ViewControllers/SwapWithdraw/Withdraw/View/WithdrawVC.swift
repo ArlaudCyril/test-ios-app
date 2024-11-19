@@ -102,8 +102,9 @@ extension WithdrawVC: UITableViewDelegate , UITableViewDataSource{
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             vc.strategyType = .withdraw
             vc.minimumWithdrawal = self.networksArray[indexPath.row].withdrawMin
-            vc.feeWithdrawal = self.networksArray[indexPath.row].withdrawFee
-            vc.fromAssetId = self.asset?.id ?? ""
+            vc.feeWithdrawal = self.networksArray[indexPath.row].withdrawFee ?? 0
+            vc.fromAssetId = "eur"
+            vc.toAssetId = self.asset?.id ?? ""
             vc.network = networksArray[indexPath.row]
             vc.numberOfDecimals = self.networksArray[indexPath.row].decimals ?? -1
             self.navigationController?.pushViewController(vc, animated: true)
@@ -137,6 +138,8 @@ extension WithdrawVC{
             if(!(self.navigationController?.popToViewController(ofClass: ExchangeFromVC.self) ?? false)){
                 self.navigationController?.popViewController(animated: true)
             }
+        }else if(typeWithdraw == .send){
+            self.dismiss(animated: true)
         }else{
             self.navigationController?.popViewController(animated: true)
         }

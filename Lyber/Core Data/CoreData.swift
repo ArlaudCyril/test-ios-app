@@ -414,6 +414,7 @@ class userData : NSObject {
 //		self.enterPhoneStepComplete = 0
 //		self.registrationToken = ""
 //		self.language = ""
+//      self.keyId = ""
         
         //load profile
         self.firstname = ""
@@ -422,7 +423,6 @@ class userData : NSObject {
         self.registeredAt = ""
         self.has2FA = false
         self.type2FA = "none"
-        self.keyId = "keyId"
         self.phone_no = ""
         self.email = ""
         self.scope2FALogin = false

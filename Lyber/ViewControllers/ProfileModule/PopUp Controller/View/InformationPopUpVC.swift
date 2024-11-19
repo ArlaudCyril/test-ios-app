@@ -123,7 +123,7 @@ extension InformationPopUpVC{
                 if response != nil{
                     let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                     vc.InvestmentType = .Send
-                    vc.fromAssetId = self.fromAssetId
+                    vc.assetId = self.fromAssetId
                     vc.totalCoinsInvested = self.totalCoinsInvested
                     vc.totalEuroInvested = self.totalEuroInvested
                     vc.friendInfo = response?.data

@@ -159,6 +159,8 @@ struct Constants{
         static let mainUse = "mainUse"
         static let requestHash = "requestHash"
         static let keyId = "keyId"
+        static let challenge = "challenge"
+        static let attestation = "attestation"
         
         // MARK: - Profile keys
         static let type2FA = "type2FA"
@@ -204,9 +206,12 @@ struct Constants{
         
         //Detail Page
         static let newsService = "news-service/news"
+        static let assetServiceAsset = "asset-service/asset"
+        
+        //Price
         static let priceServiceResume = "price-service/resume"
         static let priceServicePrice = "price-service/price"
-        static let assetServiceAsset = "asset-service/asset"
+        static let priceServiceLastPrice = "price-service/lastPrice"
         
         //User
         static let userServiceUser = "user-service/user"
@@ -222,6 +227,7 @@ struct Constants{
         static let userCloseAccount = "user-service/close-account"
         static let userVerifyPasswordChange = "user-service/verify-password-change"
         static let userServiceIntegrity = "user-service/integrity"
+        static let userServiceAttestation = "user-service/attestation"
         
         //Strategies
         static let investmentStrategies = "strategy-service/strategies"

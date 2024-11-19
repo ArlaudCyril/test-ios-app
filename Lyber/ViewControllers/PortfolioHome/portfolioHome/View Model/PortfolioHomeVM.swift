@@ -22,7 +22,6 @@ class PortfolioHomeVM{
    func getActiveStrategiesApi(completion: @escaping ( (RecurrentInvestmentStrategyAPI?) -> Void )){
         
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.strategyServiceActiveStrategy, withParameters: [:], ofType: RecurrentInvestmentStrategyAPI.self, onSuccess: { response in
-            print(response)
             completion(response)
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getActiveStrategiesApi",code: code, error: error)

@@ -279,59 +279,57 @@ class CommonFunctions{
     }
 	
 	static func showLoaderWhite(_ onView : UIView){
-		let topView = onView
-		let loadingView = UIView(frame : CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
-		loadingView.backgroundColor = UIColor.white
-		loadingView.alpha = 0.6
-		let laodingFrame = SpinnerView(frame: CGRect(x: topView.frame.width/2 - 20, y: topView.frame.height/2 - 20, width: 40, height: 40))
-		loadingView.addSubview(laodingFrame)
-		loadingView.tag = 111
-		var present = false
-		for (_,subView) in topView.subviews.enumerated(){
-			if subView.tag == 111 {
-				present = true
-			}
-		}
-		if !present{
-			topView.addSubview(loadingView)
-		}
-	}
-	
-	
-	static func showLoaderCheckbox(_ topView : UIView){
-		
-		
-		let loadingView = UIView(frame : CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
-	    
-		loadingView.layer.addSublayer(CALayer())
-		loadingView.backgroundColor = UIColor.dark_transparent
-		loadingView.alpha = 0.9
-		
-		let loadingRect = UIView(frame : CGRect(x: topView.frame.width/2 - 60, y: topView.frame.height/2 - 60, width: 120, height: 120))
-		loadingRect.backgroundColor = UIColor.white
-		loadingView.addSubview(loadingRect)
-		loadingView.layer.addSublayer(loadingRect.layer)
-		loadingRect.layer.zPosition = 1
+        let topView = onView
+        let loadingView = UIView(frame : CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
+        loadingView.backgroundColor = UIColor.white
+        loadingView.alpha = 0.6
+        let laodingFrame = SpinnerView(frame: CGRect(x: topView.frame.width/2 - 20, y: topView.frame.height/2 - 20, width: 40, height: 40))
+        loadingView.addSubview(laodingFrame)
+        loadingView.tag = 111
+        var present = false
+        for (_,subView) in topView.subviews.enumerated(){
+            if subView.tag == 111 {
+                present = true
+            }
+        }
+        if !present{
+            topView.addSubview(loadingView)
+        }
+    }
+    
+    static func showLoaderCalculation(_ onView: UIView, width : CGFloat = 26) {
+        let topView = onView
+        // Hide only the text of UILabel
+        topView.alpha = 0
+        
+        // Ensure UILabel has a superview to add the loader to
+        guard let superview = topView.superview else { return }
+        
+        // Create the loading view
+        let loadingView = UIView(frame: CGRect(x: topView.frame.origin.x, y: topView.frame.origin.y, width: topView.frame.width, height: topView.frame.height))
+        loadingView.backgroundColor = UIColor.white
+        loadingView.alpha = 0.6
+        
+        // Add SpinnerView at the center of loadingView
+        let loadingFrame = SpinnerView(frame: CGRect(x: topView.frame.width / 2 - (width/2), y: topView.frame.height / 2 - (width/2), width: width, height: width))
+        loadingView.addSubview(loadingFrame)
+        loadingView.tag = 111
+        
+        // Check if loader is already present to avoid duplicates
+        if superview.viewWithTag(111) == nil {
+            superview.addSubview(loadingView)
+        }
+    }
 
-		
-		let laodingFrame = SpinnerView(frame: CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80))
-		loadingView.addSubview(laodingFrame)
-		loadingView.layer.addSublayer(laodingFrame.layer)
-		laodingFrame.layer.zPosition = 1
-		
-		loadingView.tag = 111
-
-		
-		var present = false
-		for (_,subView) in topView.subviews.enumerated(){
-			if subView.tag == 111 {
-				present = true
-			}
-		}
-		if !present{
-			topView.addSubview(loadingView)
-		}
-	}
+    static func hideLoaderCalculation(_ onView: UIView) {
+        let topView = onView
+        // Show UILabel text again
+        topView.alpha = 1
+        
+        // Remove loader from superview
+        topView.superview?.viewWithTag(111)?.removeFromSuperview()
+    }
+	
     
     static func showLoaderLogo(_ topView: UIView) {
         let loadingView = UIView(frame: CGRect(x: 0, y: 0, width: topView.frame.width, height: topView.frame.height))
@@ -375,39 +373,6 @@ class CommonFunctions{
         }
     }
 	
-    static func hideLoaderCheckbox(_ onView : UIView = getTopMostViewController()?.view ?? UIView(), success: Bool){
-        
-        let topView = onView
-        var underView = UIImageView()
-        if(success == true){
-            underView = UIImageView(image:UIImage(asset: Assets.checkmark_color))
-        }else{
-            underView = UIImageView(image:UIImage(asset: Assets.close_color))
-        }
-        underView.frame = CGRect(x: topView.frame.width/2 - 40, y: topView.frame.height/2 - 40, width: 80, height: 80)
-        
-        for (num,subView) in topView.subviews.enumerated(){
-            if subView.tag == 111{
-                subView.addSubview(underView)
-                subView.layer.addSublayer(underView.layer)
-                underView.layer.zPosition = 1
-                
-                let launcher = Launcher(layer: subView.layer)
-                if(success == true){
-                    launcher.setup(frame: topView.frame)
-                    subView.layer.addSublayer(launcher)
-                    launcher.zPosition = 0
-                    launcher.runCells()
-                }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    topView.subviews[num].removeFromSuperview()
-                    launcher.emitterCells?.removeAll()
-                }
-            }
-        }
-    }
-    
     
     static func hideLoaderSigning(_ onView: UIView = getTopMostViewController()?.view ?? UIView(), success: Bool) {
 
@@ -511,6 +476,15 @@ class CommonFunctions{
             }
         }
         return ""
+    }
+    
+    static func getDecimal(id: String) -> Int{
+        for currency in Storage.currencies {
+            if(currency?.id == id){
+                return currency?.decimals ?? 2
+            }
+        }
+        return 2
     }
     
     static func getNetwork(id: String) -> NetworkData?{
@@ -852,35 +826,6 @@ class CommonFunctions{
 		return stringFormatted
     }
 	
-	static func formattedAssetPennies(from value: Double?, price: Double?, rounding : NumberFormatter.RoundingMode = .down) -> String {
-		guard value != nil else { return "0.00" }
-		guard (price != nil && price != 0 && ((price?.isNaN) != true)) else { return "0.00" }
-		let formatter = NumberFormatter()
-		
-		//To find the precision, here X
-		//Price * 10e-X >= 0.01(pennies)
-		//=> X  >= -log(0,01/Price)
-		let precision = Int(ceil(-log10(0.01/(price ?? 1))))
-		if(precision > 0){
-			formatter.maximumFractionDigits = precision
-			formatter.minimumFractionDigits =  precision
-		}else{
-			formatter.maximumFractionDigits = 0
-			formatter.minimumFractionDigits =  0
-		}
-		
-		formatter.groupingSeparator = ","
-		formatter.groupingSize = 3
-		formatter.usesGroupingSeparator = true
-		formatter.decimalSeparator = "."
-		formatter.roundingMode = rounding
-	
-		//        formatter.numberStyle = .decimal
-		let stringFormatted = formatter.string(from: NSNumber(value: value ?? 0.0)) ?? "0"
-		
-		return stringFormatted
-	}
-    
     static func formattedAssetBinance(value: String, numberOfDecimals: Int) -> String {
         var formattedValue = value
         if let range = value.range(of: ".") {
@@ -895,36 +840,6 @@ class CommonFunctions{
         return formattedValue
     }
 	
-	static func formattedAssetDecimal(from value: Decimal?, price: Decimal?, rounding : NumberFormatter.RoundingMode = .down) -> String {
-		guard value != nil else { return "0.00" }
-		guard (price != nil && price != 0 && ((price?.isNaN) != true)) else { return "0.00" }
-		let formatter = NumberFormatter()
-		
-		//To find the precision, here X
-		//Price * 10e-X >= 0.01(pennies)
-		//=> X  >= -log(0,01/Price)
-		let precision = Int(ceil(-log10(0.01/NSDecimalNumber(decimal: price ?? 1).doubleValue)))
-		if(precision > 0){
-			formatter.maximumFractionDigits = precision
-			formatter.minimumFractionDigits =  precision
-		}else{
-			formatter.maximumFractionDigits = 0
-			formatter.minimumFractionDigits =  0
-		}
-		
-		formatter.groupingSeparator = ","
-		formatter.groupingSize = 3
-		formatter.usesGroupingSeparator = true
-		formatter.decimalSeparator = "."
-		formatter.roundingMode = rounding
-	
-		//        formatter.numberStyle = .decimal
-		let stringFormatted = formatter.string(from: NSDecimalNumber(decimal: value ?? 0.00)) ?? "0"
-		
-		return stringFormatted
-	}
-	
-    
     static func numberFormat(from value: Double?) -> String {
         guard value != nil else { return "0.00" }
         let formatter = NumberFormatter()

@@ -83,6 +83,7 @@ class ChangePasswordVC: ViewController {
         self.newPasswordTF.placeholder = CommonFunctions.localisation(key: "ENTER_PASSWORD")
         self.newPasswordTF.addTarget(self, action: #selector(editChange), for: .editingChanged)
         self.newPasswordEyeBtn.addTarget(self, action: #selector(eyeBtnAct), for: .touchUpInside)
+        self.newPasswordTF.isUserInteractionEnabled = true
         
         //confirmNewPasswordTF configuration
 		self.confirmNewPasswordTF.delegate = self
@@ -101,7 +102,7 @@ extension ChangePasswordVC : UITextFieldDelegate{
 	@objc func backBtnAct(){
 		self.navigationController?.popViewController(animated: true)
 	}
-	
+
 	@objc func nextBtnAct(){
 		if(oldPasswordTF.text == newPasswordTF.text){
             CommonFunctions.toster(CommonFunctions.localisation(key: "NEW_PASSWORD_CANNOT_SAME"))

@@ -49,3 +49,11 @@ struct Quote: Codable{
     var clientSecret: String?
 	var paymentIntentId: String?
 }
+
+struct LastPriceAPI: Codable{
+    var data: LastPrice
+}
+
+struct LastPrice: Codable{
+    var price: String
+}

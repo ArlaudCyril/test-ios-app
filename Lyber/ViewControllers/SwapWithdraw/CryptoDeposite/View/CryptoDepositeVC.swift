@@ -131,6 +131,8 @@ extension CryptoDepositeVC{
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.strategyType = .singleCoin
 			vc.asset = PriceServiceResume(id: "usdc", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
+            vc.fromAssetId = "eur"
+            vc.toAssetId = "usdc"
 			self.navigationController?.pushViewController(vc, animated: true)
 		})
     }

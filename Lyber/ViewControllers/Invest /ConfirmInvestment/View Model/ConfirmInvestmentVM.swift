@@ -26,7 +26,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "activateStrategyApi",code: code, error: error, controller: controller, arguments: arguments)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user", integrity: true)
     }
     
     func editActiveStrategyApi(strategyName : String ,amount : Double,frequency: String, ownerUuid: String, completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -55,7 +55,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "ordersAcceptQuoteAPI",code: code, error: error, controller: controller)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user", integrity: true)
     }
     
     func SellApi(assetId: String,amount : Decimal,assetAmount : Decimal,completion: @escaping ( (SuccessAPI?) -> Void )){
@@ -109,7 +109,7 @@ class ConfirmInvestmentVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "transferToFriendApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user", integrity: true)
     }
 }
 

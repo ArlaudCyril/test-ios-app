@@ -119,6 +119,8 @@ extension KycSigningPopupVC{
             let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             vc.strategyType = .singleCoin
             vc.asset = self.toAsset
+            vc.fromAssetId = "eur"
+            vc.toAssetId = toAsset.id
             self.controller.navigationController?.pushViewController(vc, animated: true)
             self.dismiss(animated: true)
             break

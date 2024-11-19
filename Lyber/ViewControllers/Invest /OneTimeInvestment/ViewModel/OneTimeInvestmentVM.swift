@@ -24,7 +24,7 @@ class OneTimeInvestmentVM{
 		}, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "executeStrategyApi",code: code, error: error, controller: controller)
 			completion(nil)
-		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
+		}, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user", integrity: true)
 	}
 	
 	

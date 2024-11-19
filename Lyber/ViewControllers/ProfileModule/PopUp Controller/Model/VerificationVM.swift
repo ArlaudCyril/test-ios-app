@@ -66,7 +66,7 @@ class VerificationVM{
 			let failure = FailureAPI(message: error, code: code)
             CommonFunctions.handleErrors(caller: "walletCreateWithdrawalRequest",code: code, error: error, controller: controller, previousController: previousController, arguments: ["asset": data["asset"] as? String ?? "usdc", "network": data["network"] as? String ?? "", "minimumWithdraw": minimumWithdraw])
 			onFailure(failure)
-        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user", integrity: true)
     }
     
     func userCloseAccountRequest(otp: String, onSuccess: @escaping ( (SuccessAPI?) -> Void ),onFailure: @escaping((FailureAPI?) -> Void) = {_ in }){
@@ -78,7 +78,7 @@ class VerificationVM{
             let failure = FailureAPI(message: error, code: code)
             CommonFunctions.handleErrors(caller: "userCloseAccountRequest", code: code, error: error)
             onFailure(failure)
-        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user")
+        }, method: .PATCHWithJSON, img: nil, imageParameter: nil, headerType: "user", integrity: true)
         
     }
 	

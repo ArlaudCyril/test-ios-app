@@ -187,6 +187,8 @@ extension AllAssetsVC: UITableViewDelegate , UITableViewDataSource, UIScrollView
 				let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 				vc.strategyType = .singleCoin
 				vc.asset = toAsset
+                vc.fromAssetId = "eur"
+                vc.toAssetId = toAsset.id
 				self.navigationController?.pushViewController(vc, animated: true)
 			}else{
 				if(CommonFunctions.getBalance(id: "usdc") != nil){

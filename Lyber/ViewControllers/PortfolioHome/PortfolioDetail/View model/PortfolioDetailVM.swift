@@ -42,7 +42,7 @@ class PortfolioDetailVM{
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "getAssetsNewsApi",code: code, error: error)
             completion(nil)
-        }, method: .GET, img: nil, imageParameter: nil, headerType: "user", integrity: true)
+        }, method: .GET, img: nil, imageParameter: nil, headerType: "user")
     }
 	
 	func OrderGetOrderApi(orderId : String,completion: @escaping ( (OrderAPI?) -> Void )){

@@ -163,19 +163,21 @@ extension AddressAddedPopUpVC{
     }
     
     @objc func useRibBtnAct(){
-        self.dismiss(animated: true, completion: nil)
-        if(self.ribSelected?.ribStatus == "VALIDATED"){
-            let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
-            vc.strategyType = .withdrawEuro
-            vc.minimumWithdrawal = 10
-            vc.fromAssetId = "usdc"
-            vc.numberOfDecimals = 2
-            vc.indexRibSelected = self.indexSelected
-            self.controller?.navigationController?.pushViewController(vc, animated: true)
-        }else if(self.ribSelected?.ribStatus == "CANCELED"){
-            CommonFunctions.toster(CommonFunctions.localisation(key: "RIB_BEEN_REFUSED"))
-        }else{
-            CommonFunctions.toster(CommonFunctions.localisation(key: "CURRENTLY_VALIDATING_RIB"))
+        self.dismiss(animated: true){
+            if(self.ribSelected?.ribStatus == "VALIDATED"){
+                let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
+                vc.strategyType = .withdrawEuro
+                vc.minimumWithdrawal = 10
+                vc.fromAssetId = "usdc"
+                vc.toAssetId = "eur"
+                vc.numberOfDecimals = 2
+                vc.indexRibSelected = self.indexSelected
+                self.controller?.navigationController?.pushViewController(vc, animated: true)
+            }else if(self.ribSelected?.ribStatus == "CANCELED"){
+                CommonFunctions.toster(CommonFunctions.localisation(key: "RIB_BEEN_REFUSED"))
+            }else{
+                CommonFunctions.toster(CommonFunctions.localisation(key: "CURRENTLY_VALIDATING_RIB"))
+            }
         }
     }
 	
@@ -391,7 +393,7 @@ extension AddressAddedPopUpVC{
             CommonUI.setUpButton(btn: self.deleteBtn, text: CommonFunctions.localisation(key: "DELETE"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpButton(btn: self.editBtn, text: CommonFunctions.localisation(key: "EDIT"), textcolor: UIColor.ThirdTextColor, backgroundColor: UIColor.greyColor, cornerRadius: 12, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
-            self.useRibBtn.setTitle("Use this RIB", for: .normal)
+            self.useRibBtn.setTitle(CommonFunctions.localisation(key: "USE_RIB"), for: .normal)
             
             self.useRibVw.isHidden = false
             self.toView.isHidden = true

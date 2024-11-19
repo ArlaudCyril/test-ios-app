@@ -36,7 +36,9 @@ extension NoAssetsTVC{
 			let toAsset = PriceServiceResume(id: "usdc", priceServiceResumeData: response?.data ?? PriceServiceResumeData())
 			let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 			vc.strategyType = .singleCoin
-			vc.asset = toAsset
+            vc.asset = toAsset
+			vc.fromAssetId = "eur"
+            vc.toAssetId = toAsset.id
 			self.controller?.navigationController?.pushViewController(vc, animated: true)
 		})
 	}

@@ -135,7 +135,6 @@
 		0A7586CC286C7C9600DC889E /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586CB286C7C9600DC889E /* LoginVM.swift */; };
 		0A7586CF286C7CD900DC889E /* EnterPhoneVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586CE286C7CD900DC889E /* EnterPhoneVM.swift */; };
 		0A7586D1286C7D8C00DC889E /* EnterPhoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7586D0286C7D8C00DC889E /* EnterPhoneModel.swift */; };
-		0A759D3F2852021C00E59580 /* InvestMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A759D3E2852021C00E59580 /* InvestMoneyVC.swift */; };
 		0A759D412852029600E59580 /* InvestStrategy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A759D402852029600E59580 /* InvestStrategy.storyboard */; };
 		0A76840C2876DFBA00A5BC7C /* KycWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76840B2876DFBA00A5BC7C /* KycWebVC.swift */; };
 		0A769FDB28C2082900F15C00 /* portfolio.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A769FDA28C2082900F15C00 /* portfolio.json */; };
@@ -146,7 +145,6 @@
 		0A791DFA28646E6F0084B104 /* AddPaymentMethodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791DF928646E6F0084B104 /* AddPaymentMethodVC.swift */; };
 		0A791DFC28646E8E0084B104 /* AddPaymentMethodTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791DFB28646E8E0084B104 /* AddPaymentMethodTVC.swift */; };
 		0A791E01286480420084B104 /* AddCreditCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791E00286480420084B104 /* AddCreditCardVC.swift */; };
-		0A791E032864981A0084B104 /* ExchAnotherWalletTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791E022864981A0084B104 /* ExchAnotherWalletTVC.swift */; };
 		0A793B1B28A3C50F003BCD45 /* ConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A793B1A28A3C50F003BCD45 /* ConfirmationVC.swift */; };
 		0A7A3BE9285C8C2E00646337 /* BalanceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A3BE8285C8C2E00646337 /* BalanceVC.swift */; };
 		0A7A3BEB285C8EA200646337 /* balanceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A3BEA285C8EA200646337 /* balanceTVC.swift */; };
@@ -227,7 +225,6 @@
 		0AC5B5FA2840A8D700533ED3 /* EducationStrategyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5F92840A8D700533ED3 /* EducationStrategyVC.swift */; };
 		0AC5B5FC2840AA4B00533ED3 /* EductaionStrategyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5FB2840AA4B00533ED3 /* EductaionStrategyCVC.swift */; };
 		0AC5B5FE2840ACA500533ED3 /* EducationStrategyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC5B5FD2840ACA500533ED3 /* EducationStrategyModel.swift */; };
-		0AC721A328521CD7003E7FD9 /* InvestMoneyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC721A228521CD7003E7FD9 /* InvestMoneyCVC.swift */; };
 		0ACC70262893A96500C96679 /* BalanceVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACC70252893A96500C96679 /* BalanceVM.swift */; };
 		0ACE98DA28C2281F00D63025 /* Boat_Loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ACE98D928C2281F00D63025 /* Boat_Loader.json */; };
 		0AD0985E28979EDA00C0551F /* StrongAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0985D28979EDA00C0551F /* StrongAuthVC.swift */; };
@@ -401,7 +398,6 @@
 		1FF380F32AFD297600CCF1A6 /* ResourcesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E6B285B6235001ABD6A /* ResourcesCVC.swift */; };
 		1FF380F42AFD297600CCF1A6 /* AddressAddedPopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5A61B2A97B79800C47AAE /* AddressAddedPopUpModel.swift */; };
 		1FF380F52AFD297600CCF1A6 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD2190F2AF3B101000F6FC5 /* ChangePasswordVC.swift */; };
-		1FF380F62AFD297600CCF1A6 /* ExchAnotherWalletTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A791E022864981A0084B104 /* ExchAnotherWalletTVC.swift */; };
 		1FF380F72AFD297600CCF1A6 /* InvestmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67C0612A6A7DE9007BB2E1 /* InvestmentModel.swift */; };
 		1FF380F82AFD297600CCF1A6 /* ContactFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B43BC2ACAF57A00A13733 /* ContactFormVC.swift */; };
 		1FF380F92AFD297600CCF1A6 /* ProfilePaymentTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72190028632574009F42C5 /* ProfilePaymentTVC.swift */; };
@@ -510,7 +506,6 @@
 		1FF381612AFD297600CCF1A6 /* QrCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D541429F047200078267F /* QrCodeVC.swift */; };
 		1FF381622AFD297600CCF1A6 /* ConfirmInvestmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AAB17285378EE00D2E25D /* ConfirmInvestmentVC.swift */; };
 		1FF381632AFD297600CCF1A6 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DCC6329D3264500C3B374 /* LanguageModel.swift */; };
-		1FF381642AFD297600CCF1A6 /* InvestMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A759D3E2852021C00E59580 /* InvestMoneyVC.swift */; };
 		1FF381652AFD297600CCF1A6 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7218FA286324BC009F42C5 /* ProfileVC.swift */; };
 		1FF381662AFD297600CCF1A6 /* ConfirmPinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71B8E1283FA3BD007CE9B2 /* ConfirmPinCVC.swift */; };
 		1FF381672AFD297600CCF1A6 /* MyBalanceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A907E61285B5849001ABD6A /* MyBalanceTVC.swift */; };
@@ -518,7 +513,6 @@
 		1FF381692AFD297600CCF1A6 /* TransactionHeaderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72191228634590009F42C5 /* TransactionHeaderTVC.swift */; };
 		1FF3816A2AFD297600CCF1A6 /* InvestmentStrategyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8AE892284A2A800090A354 /* InvestmentStrategyCVC.swift */; };
 		1FF3816B2AFD297600CCF1A6 /* AllocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A272BCF2851C6E8005CA57F /* AllocationVC.swift */; };
-		1FF3816C2AFD297600CCF1A6 /* InvestMoneyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC721A228521CD7003E7FD9 /* InvestMoneyCVC.swift */; };
 		1FF3816D2AFD297600CCF1A6 /* AllCoinCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A750210285A01E600D68BAB /* AllCoinCVC.swift */; };
 		1FF3816E2AFD297600CCF1A6 /* AnalyticsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502072859F71D00D68BAB /* AnalyticsTVC.swift */; };
 		1FF3816F2AFD297600CCF1A6 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DA4382A7D489A00BE8C61 /* ResetPasswordVC.swift */; };
@@ -635,6 +629,10 @@
 		C8859A372B596E7300225697 /* ConfirmExecutionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */; };
 		C89CF6852CB5785E00DEA2E5 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89CF6842CB5785E00DEA2E5 /* QRCodeScannerViewController.swift */; };
 		C89CF6862CB5793B00DEA2E5 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89CF6842CB5785E00DEA2E5 /* QRCodeScannerViewController.swift */; };
+		C8A0BAF92CDBD40C00218D3E /* InvestMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A0BAF82CDBD40C00218D3E /* InvestMoneyVC.swift */; };
+		C8A0BAFA2CDBD40C00218D3E /* InvestMoneyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A0BAF82CDBD40C00218D3E /* InvestMoneyVC.swift */; };
+		C8A0BAFC2CDBD44B00218D3E /* InvestMoneyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A0BAFB2CDBD44A00218D3E /* InvestMoneyCVC.swift */; };
+		C8A0BAFD2CDBD44B00218D3E /* InvestMoneyCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A0BAFB2CDBD44A00218D3E /* InvestMoneyCVC.swift */; };
 		C8A6AA182CAEE9BB004DDD30 /* ApiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */; };
 		C8A6AA192CAEE9BB004DDD30 /* ApiVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */; };
 		C8AC1E1D2B6CF7AF0069C2FA /* KycSigningPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C855BCCA2B6BD72C00D46EDA /* KycSigningPopupVC.swift */; };
@@ -780,7 +778,6 @@
 		0A7586CB286C7C9600DC889E /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		0A7586CE286C7CD900DC889E /* EnterPhoneVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneVM.swift; sourceTree = "<group>"; };
 		0A7586D0286C7D8C00DC889E /* EnterPhoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneModel.swift; sourceTree = "<group>"; };
-		0A759D3E2852021C00E59580 /* InvestMoneyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestMoneyVC.swift; sourceTree = "<group>"; };
 		0A759D402852029600E59580 /* InvestStrategy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InvestStrategy.storyboard; sourceTree = "<group>"; };
 		0A76840B2876DFBA00A5BC7C /* KycWebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KycWebVC.swift; sourceTree = "<group>"; };
 		0A769FDA28C2082900F15C00 /* portfolio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = portfolio.json; sourceTree = "<group>"; };
@@ -791,7 +788,6 @@
 		0A791DF928646E6F0084B104 /* AddPaymentMethodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodVC.swift; sourceTree = "<group>"; };
 		0A791DFB28646E8E0084B104 /* AddPaymentMethodTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodTVC.swift; sourceTree = "<group>"; };
 		0A791E00286480420084B104 /* AddCreditCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardVC.swift; sourceTree = "<group>"; };
-		0A791E022864981A0084B104 /* ExchAnotherWalletTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchAnotherWalletTVC.swift; sourceTree = "<group>"; };
 		0A793B1A28A3C50F003BCD45 /* ConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationVC.swift; sourceTree = "<group>"; };
 		0A7A3BE8285C8C2E00646337 /* BalanceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceVC.swift; sourceTree = "<group>"; };
 		0A7A3BEA285C8EA200646337 /* balanceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = balanceTVC.swift; sourceTree = "<group>"; };
@@ -873,7 +869,6 @@
 		0AC5B5F92840A8D700533ED3 /* EducationStrategyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationStrategyVC.swift; sourceTree = "<group>"; };
 		0AC5B5FB2840AA4B00533ED3 /* EductaionStrategyCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EductaionStrategyCVC.swift; sourceTree = "<group>"; };
 		0AC5B5FD2840ACA500533ED3 /* EducationStrategyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationStrategyModel.swift; sourceTree = "<group>"; };
-		0AC721A228521CD7003E7FD9 /* InvestMoneyCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestMoneyCVC.swift; sourceTree = "<group>"; };
 		0ACC70252893A96500C96679 /* BalanceVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceVM.swift; sourceTree = "<group>"; };
 		0ACE98D928C2281F00D63025 /* Boat_Loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Boat_Loader.json; sourceTree = "<group>"; };
 		0AD0985D28979EDA00C0551F /* StrongAuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongAuthVC.swift; sourceTree = "<group>"; };
@@ -977,6 +972,8 @@
 		C87F07A02BA1FE37006E125F /* AddNewRIBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVC.swift; sourceTree = "<group>"; };
 		C8859A352B596D1E00225697 /* ConfirmExecutionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmExecutionVM.swift; sourceTree = "<group>"; };
 		C89CF6842CB5785E00DEA2E5 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
+		C8A0BAF82CDBD40C00218D3E /* InvestMoneyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvestMoneyVC.swift; path = ../InvestMoneyVC.swift; sourceTree = "<group>"; };
+		C8A0BAFB2CDBD44A00218D3E /* InvestMoneyCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvestMoneyCVC.swift; path = "../../Documents/Code/Lyber/IOS/ios-app-master copie/Lyber/ViewControllers/Invest /investMoney/View/InvestMoneyCVC.swift"; sourceTree = "<group>"; };
 		C8A6AA172CAEE9BB004DDD30 /* ApiVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiVM.swift; sourceTree = "<group>"; };
 		C8C448D92BA330C40013A468 /* AddNewRIBVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRIBVM.swift; sourceTree = "<group>"; };
 		C8D233B02BD9426F00856A05 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -1735,22 +1732,13 @@
 			children = (
 				1F6B1DBC2AA9D0CF00A11A5C /* ConfirmExecution */,
 				1F86FBBB2A696799001A9D64 /* OneTimeInvestment */,
-				0AE67F3F285301CE00F13D2E /* investMoney */,
 				0AE67F40285301DD00F13D2E /* InvestInMyStrategy */,
+				C8A0BAF62CDBD3F200218D3E /* investMoney */,
 				0A7AAB15285378A700D2E25D /* ConfirmInvestment */,
 				0A7445792857408000BF05EF /* DepositeOrBuy */,
 				0A7445822857621200BF05EF /* Frequency */,
 			);
 			path = "Invest ";
-			sourceTree = "<group>";
-		};
-		0A759D3B2852001C00E59580 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0A759D3E2852021C00E59580 /* InvestMoneyVC.swift */,
-				0AC721A228521CD7003E7FD9 /* InvestMoneyCVC.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		0A7684092876DF7900A5BC7C /* KYCWebView */ = {
@@ -2010,7 +1998,6 @@
 			children = (
 				0A7C37912860992B00E238D8 /* ExchangeFromVC.swift */,
 				0A7C379328609A6600E238D8 /* ExchangeFromTVC.swift */,
-				0A791E022864981A0084B104 /* ExchAnotherWalletTVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2604,14 +2591,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0AE67F3F285301CE00F13D2E /* investMoney */ = {
-			isa = PBXGroup;
-			children = (
-				0A759D3B2852001C00E59580 /* View */,
-			);
-			path = investMoney;
-			sourceTree = "<group>";
-		};
 		0AE67F40285301DD00F13D2E /* InvestInMyStrategy */ = {
 			isa = PBXGroup;
 			children = (
@@ -3187,6 +3166,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C8A0BAF62CDBD3F200218D3E /* investMoney */ = {
+			isa = PBXGroup;
+			children = (
+				C8A0BAF72CDBD40000218D3E /* View */,
+			);
+			name = investMoney;
+			path = ../../../../../../../../.Trash/investMoney;
+			sourceTree = "<group>";
+		};
+		C8A0BAF72CDBD40000218D3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8A0BAF82CDBD40C00218D3E /* InvestMoneyVC.swift */,
+				C8A0BAFB2CDBD44A00218D3E /* InvestMoneyCVC.swift */,
+			);
+			name = View;
+			path = ../View;
+			sourceTree = "<group>";
+		};
 		C8C448D82BA330B60013A468 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3711,12 +3709,12 @@
 				1FB5A61C2A97B79800C47AAE /* AddressAddedPopUpModel.swift in Sources */,
 				1FD219102AF3B101000F6FC5 /* ChangePasswordVC.swift in Sources */,
 				C857F4462B7E269000D0275E /* MaintenanceModel.swift in Sources */,
-				0A791E032864981A0084B104 /* ExchAnotherWalletTVC.swift in Sources */,
 				1F67C0622A6A7DE9007BB2E1 /* InvestmentModel.swift in Sources */,
 				1F9B43BD2ACAF57A00A13733 /* ContactFormVC.swift in Sources */,
 				0A72190128632574009F42C5 /* ProfilePaymentTVC.swift in Sources */,
 				0A75020A2859F74700D68BAB /* RecurringTVC.swift in Sources */,
 				0AA95B5028EFEA3300BB48FB /* GIF.swift in Sources */,
+				C8A0BAF92CDBD40C00218D3E /* InvestMoneyVC.swift in Sources */,
 				0A1A95B72845EE32001224C6 /* addressCVC.swift in Sources */,
 				0A9059212848863B003F6198 /* StringExtension.swift in Sources */,
 				0A6A9EFE289A4E4D001BB63E /* CryptoDepositeVC.swift in Sources */,
@@ -3805,6 +3803,7 @@
 				0A90592428488884003F6198 /* Constants.swift in Sources */,
 				C8A6AA182CAEE9BB004DDD30 /* ApiVM.swift in Sources */,
 				0A7013D6286DC12000BB63C5 /* PersonalDataModel.swift in Sources */,
+				C8A0BAFC2CDBD44B00218D3E /* InvestMoneyCVC.swift in Sources */,
 				1886C7E82959BFE000D28828 /* WebSocket.swift in Sources */,
 				0A791DFC28646E8E0084B104 /* AddPaymentMethodTVC.swift in Sources */,
 				0A70730A2850B466001B48D9 /* InvestmentStrategyModel.swift in Sources */,
@@ -3833,7 +3832,6 @@
 				1F2D541529F047200078267F /* QrCodeVC.swift in Sources */,
 				0A7AAB18285378EE00D2E25D /* ConfirmInvestmentVC.swift in Sources */,
 				1F4DCC6429D3264500C3B374 /* LanguageModel.swift in Sources */,
-				0A759D3F2852021C00E59580 /* InvestMoneyVC.swift in Sources */,
 				0A7218FB286324BC009F42C5 /* ProfileVC.swift in Sources */,
 				0A71B8E2283FA3BD007CE9B2 /* ConfirmPinCVC.swift in Sources */,
 				0A907E62285B5849001ABD6A /* MyBalanceTVC.swift in Sources */,
@@ -3842,7 +3840,6 @@
 				0A8AE893284A2A800090A354 /* InvestmentStrategyCVC.swift in Sources */,
 				0A272BD02851C6E8005CA57F /* AllocationVC.swift in Sources */,
 				1FB03D002B15013F00AE153C /* MaintenanceVC.swift in Sources */,
-				0AC721A328521CD7003E7FD9 /* InvestMoneyCVC.swift in Sources */,
 				0A750211285A01E600D68BAB /* AllCoinCVC.swift in Sources */,
 				0A7502082859F71D00D68BAB /* AnalyticsTVC.swift in Sources */,
 				1F1DA4392A7D489A00BE8C61 /* ResetPasswordVC.swift in Sources */,
@@ -3966,13 +3963,13 @@
 				1FF380F42AFD297600CCF1A6 /* AddressAddedPopUpModel.swift in Sources */,
 				1FF380F52AFD297600CCF1A6 /* ChangePasswordVC.swift in Sources */,
 				C857F4472B7E270900D0275E /* MaintenanceModel.swift in Sources */,
-				1FF380F62AFD297600CCF1A6 /* ExchAnotherWalletTVC.swift in Sources */,
 				C80DFA502BA4603600BDA41B /* WithdrawRibTVC.swift in Sources */,
 				1FF380F72AFD297600CCF1A6 /* InvestmentModel.swift in Sources */,
 				1FF380F82AFD297600CCF1A6 /* ContactFormVC.swift in Sources */,
 				1FF380F92AFD297600CCF1A6 /* ProfilePaymentTVC.swift in Sources */,
 				1FF380FA2AFD297600CCF1A6 /* RecurringTVC.swift in Sources */,
 				1FF380FB2AFD297600CCF1A6 /* GIF.swift in Sources */,
+				C8A0BAFA2CDBD40C00218D3E /* InvestMoneyVC.swift in Sources */,
 				1FF380FC2AFD297600CCF1A6 /* addressCVC.swift in Sources */,
 				1FF380FD2AFD297600CCF1A6 /* StringExtension.swift in Sources */,
 				1FF380FE2AFD297600CCF1A6 /* CryptoDepositeVC.swift in Sources */,
@@ -4061,6 +4058,7 @@
 				1FF381472AFD297600CCF1A6 /* Constants.swift in Sources */,
 				C8A6AA192CAEE9BB004DDD30 /* ApiVM.swift in Sources */,
 				1FF381482AFD297600CCF1A6 /* PersonalDataModel.swift in Sources */,
+				C8A0BAFD2CDBD44B00218D3E /* InvestMoneyCVC.swift in Sources */,
 				1FF381492AFD297600CCF1A6 /* WebSocket.swift in Sources */,
 				1FF3814A2AFD297600CCF1A6 /* AddPaymentMethodTVC.swift in Sources */,
 				1FF3814B2AFD297600CCF1A6 /* InvestmentStrategyModel.swift in Sources */,
@@ -4089,7 +4087,6 @@
 				1FF381612AFD297600CCF1A6 /* QrCodeVC.swift in Sources */,
 				1FF381622AFD297600CCF1A6 /* ConfirmInvestmentVC.swift in Sources */,
 				1FF381632AFD297600CCF1A6 /* LanguageModel.swift in Sources */,
-				1FF381642AFD297600CCF1A6 /* InvestMoneyVC.swift in Sources */,
 				1FF381652AFD297600CCF1A6 /* ProfileVC.swift in Sources */,
 				1FF381662AFD297600CCF1A6 /* ConfirmPinCVC.swift in Sources */,
 				1FF381672AFD297600CCF1A6 /* MyBalanceTVC.swift in Sources */,
@@ -4098,7 +4095,6 @@
 				1FF3816A2AFD297600CCF1A6 /* InvestmentStrategyCVC.swift in Sources */,
 				1FF3816B2AFD297600CCF1A6 /* AllocationVC.swift in Sources */,
 				1FCE6BCB2B15E272004A8A31 /* MaintenanceVC.swift in Sources */,
-				1FF3816C2AFD297600CCF1A6 /* InvestMoneyCVC.swift in Sources */,
 				1FF3816D2AFD297600CCF1A6 /* AllCoinCVC.swift in Sources */,
 				1FF3816E2AFD297600CCF1A6 /* AnalyticsTVC.swift in Sources */,
 				1FF3816F2AFD297600CCF1A6 /* ResetPasswordVC.swift in Sources */,
@@ -4394,7 +4390,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lyber/LyberDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4446,7 +4442,7 @@
 				CODE_SIGN_ENTITLEMENTS = Lyber/Lyber.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 28;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = LBHZQ28V9P;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (

@@ -58,7 +58,7 @@ class DepositeOrBuyVC: ViewController {
     var popupType  : bottomPopUp = .DepositeBuy
     var depositeCallback : ((_ index : Int)->())?
     var accountSelectedCallback : ((buyDepositeModel, Int)->())?
-    var controller : InvestMoneyVC?, portfolioHomeController : PortfolioHomeVC?,allAssetsController : AllAssetsVC?,portfolioDetailController : PortfolioDetailVC?,investStrategyController : InvestInMyStrategyVC?, investmentStrategyController : InvestmentStrategyVC?
+    var controller : ViewController?, portfolioHomeController : PortfolioHomeVC?,allAssetsController : AllAssetsVC?,portfolioDetailController : PortfolioDetailVC?,investStrategyController : InvestInMyStrategyVC?, investmentStrategyController : InvestmentStrategyVC?
 	//PortfolioDetailVC
 	var idAsset : String = ""
 	var asset: PriceServiceResume?
@@ -232,6 +232,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				vc.strategyData = self.strategy
 				vc.strategyType = .oneTimeInvestment
                 vc.fromAssetId = "usdc"
+                vc.toAssetId = "eur"
 				self.dismiss(animated: true, completion: nil)
 				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
@@ -239,6 +240,8 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                 vc.strategyData = self.strategy
                 vc.strategyType = .editActiveStrategy
+                vc.fromAssetId = "usdc"
+                vc.toAssetId = "eur"
                 self.dismiss(animated: true, completion: nil)
                 self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
@@ -257,6 +260,7 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 				vc.strategyData = self.strategy
 				vc.strategyType = .oneTimeInvestment
                 vc.fromAssetId = "usdc"
+                vc.toAssetId = "eur"
 				self.dismiss(animated: true, completion: nil)
 				self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
@@ -264,6 +268,8 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
                 let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                 vc.strategyData = self.strategy
                 vc.strategyType = .activateStrategy
+                vc.fromAssetId = "usdc"
+                vc.toAssetId = "eur"
                 self.dismiss(animated: true, completion: nil)
                 self.investmentStrategyController?.navigationController?.pushViewController(vc, animated: true)
                 
@@ -329,6 +335,8 @@ extension DepositeOrBuyVC : UITableViewDelegate, UITableViewDataSource{
 							let vc = InvestInMyStrategyVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
 							vc.strategyType = .singleCoin
 							vc.asset = toAsset
+                            vc.fromAssetId = "eur"
+                            vc.toAssetId = toAsset.id
 							self.portfolioDetailController?.navigationController?.pushViewController(vc, animated: true)
 						}else{
 							if(CommonFunctions.getBalance(id: "usdc") != nil){

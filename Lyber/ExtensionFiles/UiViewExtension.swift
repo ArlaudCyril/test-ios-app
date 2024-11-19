@@ -23,4 +23,12 @@ extension UIView{
         layer.shadowOffset = CGSize(width: 0 , height: 1)
         
     }
+    func shake() {
+        let shakeAnimation = CAKeyframeAnimation(keyPath: "position.x")
+        shakeAnimation.values = [0, 10, -10, 10, 0]
+        shakeAnimation.keyTimes = [0, 0.25, 0.5, 0.75, 1]
+        shakeAnimation.duration = 0.3
+        shakeAnimation.isAdditive = true
+        layer.add(shakeAnimation, forKey: "shake")
+    }
 }

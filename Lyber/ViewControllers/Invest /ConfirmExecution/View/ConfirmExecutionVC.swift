@@ -184,7 +184,7 @@ class ConfirmExecutionVC: ViewController {
             
             let finalAmount = Decimal(string: self.amountTo ?? "0") ?? 0
             
-            self.toAmountExecution.text = "\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: self.coinToPrice)) \(self.exchangeTo.uppercased())"
+            self.toAmountExecution.text = "\(CommonFunctions.formattedAssetBinance(value: finalAmount.description, numberOfDecimals: CommonFunctions.getDecimal(id: self.exchangeTo))) \(self.exchangeTo.uppercased())"
             
             //timerExchange
             if let validTimeStamp = self.timeLimit {

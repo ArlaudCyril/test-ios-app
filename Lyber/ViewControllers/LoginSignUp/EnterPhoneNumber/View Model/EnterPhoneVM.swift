@@ -47,7 +47,7 @@ class EnterPhoneVM {
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "SignUpApi",code: code, error: error)
 			completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "signature")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "signature", integrity: true)
     }
     
     func enterOTPApi(otp: String, controller: ViewController, completion: @escaping ( (OTPAPI?) -> Void )){
@@ -97,11 +97,10 @@ class EnterPhoneVM {
         ApiHandler.callApiWithParameters(url: Constants.ApiUrlKeys.userLogin, withParameters: param, ofType: LogInAPI.self, onSuccess: { response in
             completion(response)
             CommonFunctions.hideLoader()
-            ApiHandler.getKeyId()
         }, onFailure: { reload, error, code in
 			CommonFunctions.handleErrors(caller: "logInApi",code: code, error: error)
             completion(nil)
-        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user")
+        }, method: .PostWithJSON, img: nil, imageParameter: nil, headerType: "user", integrity: true)
     }
     
     func sendDeviceTokenToServer(deviceToken: String){

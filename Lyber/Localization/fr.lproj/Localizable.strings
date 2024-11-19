@@ -545,6 +545,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "LOGIN_PHONE" = "Connection par téléphone";
 "DELETE" = "Supprimer";
 "EDIT" = "Editer";
+"USE_RIB" = "Utiliser ce RIB";
 "CONFIRM" = "Confirmer";
 "SELECT_PROFILE_PICTURE" = "Sélectionner une photo de profil";
 "SELECTED_PROFILE_PICTURE" = "Photo de profil sélectionnée";
@@ -786,7 +787,7 @@ Notre équipe de support se mobilisera dans les meilleurs délais pour effectuer
 "ERROR_CODE_18" = "Ce code de vérification a déjà été utilisé.";
 "ERROR_CODE_20" = "Le 2FA n'est pas actif sur votre compte.";
 "ERROR_CODE_24" = "Le code que vous avez saisi est incorrect.";
-"ERROR_CODE_26" = "Nous n'avons pas trouvé votre compte, si vous avez besoin d'aide, veuillez contacter le support.";
+"ERROR_CODE_26" = "Ce compte est introuvable, si vous avez besoin d'aide, veuillez contacter le support.";
 "ERROR_CODE_27" = "Impossible de créer un compte car certaines informations sont manquantes, veuillez réessayer.";
 "ERROR_CODE_28_29_30" = "Un problème est survenu, veuillez essayer de vous connecter à nouveau.";
 "ERROR_CODE_34" = "Un problème est survenu, veuillez réessayer.";

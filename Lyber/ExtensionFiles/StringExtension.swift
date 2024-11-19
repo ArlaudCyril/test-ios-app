@@ -170,6 +170,14 @@ extension String{
         return nil
     }
     
+    var symboleTranslation: String{
+        if self == "eur" {
+            return "€"
+        }
+        
+        return self
+    }
+    
     var decoderKycStatus: VerificationIndicator {
         switch self {
         case "OK":

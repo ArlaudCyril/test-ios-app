@@ -122,7 +122,9 @@ class ConfirmationVC: ViewController {
             self.confirmationLbl.text = CommonFunctions.localisation(key: "CONFIRMATION_CONGRATS_TITLE")
 			
 			self.headingLbl.text = CommonFunctions.localisation(key: "CONFIRMATION_CONGRATS_MAIN_PARAGRAPH")
+            self.headingLbl.textAlignment = .center
 			self.subHeadingLbl.text = CommonFunctions.localisation(key: "CONFIRMATION_SECONDARY_PARAGRAPH")
+            self.subHeadingLbl.textAlignment = .center
 		}
 	}
 }
@@ -141,7 +143,7 @@ extension ConfirmationVC{
 		}else if(confirmationType == .buyFailure){
 			self.dismiss(animated: false)
 			self.previousViewController?.navigationController?.popToPortfolioHomeOrPortfolioDetail()
-		}else if(confirmationType == .Withdraw){
+        }else if(confirmationType == .Withdraw || confirmationType == .Congratulations){
             self.dismiss(animated: false)
             CommonFunctions.goPortfolioHome()
         }else if(confirmationType == .WithdrawEuro){

@@ -15,7 +15,7 @@ class ConfirmInvestmentVC: ViewController {
     //MARK: - Variables
     var confirmInvestmentVM = ConfirmInvestmentVM()
     var assetData : Trending?,strategyData : Strategy?
-    var totalCoinsInvested = Decimal(),totalEuroInvested = Double(),fromAssetId = String()
+    var totalCoinsInvested = Decimal(),totalEuroInvested = Double(),assetId = String()
     var frequency = String()
     var InvestmentType : InvestStrategyModel = .activateStrategy
     var coinsData : [InvestmentStrategyAsset] = []
@@ -168,13 +168,15 @@ class ConfirmInvestmentVC: ViewController {
 			self.confirmInvestmentLbl.text = CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL")
 			self.confirmInvestmentBtn.setTitle(CommonFunctions.localisation(key: "CONFIRM_WITHDRAWAL"), for: .normal)
 			
-			self.noOfEuroInvested.text = "\(self.totalCoinsInvested) \(self.fromAssetId.uppercased())"
+            let amountInvestedFormated = "\(CommonFunctions.formattedAssetBinance(value: self.totalCoinsInvested.description, numberOfDecimals: CommonFunctions.getDecimal(id: self.assetId))) \(self.assetId.symboleTranslation.uppercased())"
+            
+            self.noOfEuroInvested.text = amountInvestedFormated
 			
 			self.coinPriceVw.isHidden = true
 			
 			let finalAmount = self.totalCoinsInvested - Decimal(self.fees ?? 0.0)
             self.amountLbl.text = CommonFunctions.localisation(key: "AMOUNT")
-			self.euroAmountLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: finalAmount, price: Decimal(self.coinPrice ?? 0.0))) \(fromAssetId.uppercased())"
+            self.euroAmountLbl.text = "~\(CommonFunctions.formattedAssetBinance(value: finalAmount.description, numberOfDecimals: CommonFunctions.getDecimal(id: assetId))) \(assetId.uppercased())"
 			
             self.frequencyLbl.text = CommonFunctions.localisation(key: "ADDRESS")
 			
@@ -185,9 +187,9 @@ class ConfirmInvestmentVC: ViewController {
 			CommonUI.setUpLbl(lbl: self.networkLbl, text: self.network?.fullName, textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
 		
 			self.lyberFeeLbl.text = CommonFunctions.localisation(key: "FEES")
-			self.euroLyberFeeLBl.text = "~\(CommonFunctions.formattedAssetPennies(from: self.fees, price: self.coinPrice)) \(fromAssetId.uppercased())"
+            self.euroLyberFeeLBl.text = "~\(CommonFunctions.formattedAssetBinance(value: self.fees?.description ?? "", numberOfDecimals: CommonFunctions.getDecimal(id: self.assetId))) \(assetId.uppercased())"
 			
-			self.totalEuroLbl.text = "\(totalCoinsInvested) \(fromAssetId.uppercased())"
+			self.totalEuroLbl.text = amountInvestedFormated
 
 			self.allocationView.isHidden = true
             self.progressView.isHidden = true
@@ -213,7 +215,7 @@ class ConfirmInvestmentVC: ViewController {
             self.paymentVw.isHidden = false
             
             self.paymentLbl.text = CommonFunctions.localisation(key: "SELL")
-            CommonUI.setUpLbl(lbl: self.paymentNameLbl, text: "\(self.totalCoinsInvested.description) \(fromAssetId.uppercased())", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.paymentNameLbl, text: "\(self.totalCoinsInvested.description) \(assetId.uppercased())", textColor: UIColor.grey36323C, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
             self.networkVw.isHidden = false
             
@@ -243,8 +245,8 @@ class ConfirmInvestmentVC: ViewController {
             self.euroAmountLbl.text = self.friendInfo?.firstName
 
             //Third Row
-            self.lyberFeeLbl.text = CommonFunctions.localisation(key: "CONFIRM_INVESTMENT_TOTAL_ASSET", parameter: [self.fromAssetId.uppercased()])
-            self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAssetBinance(value: self.totalCoinsInvested.description, numberOfDecimals: numberOfDecimals ?? 0)) \(self.fromAssetId.uppercased())"
+            self.lyberFeeLbl.text = CommonFunctions.localisation(key: "CONFIRM_INVESTMENT_TOTAL_ASSET", parameter: [self.assetId.uppercased()])
+            self.euroLyberFeeLBl.text = "\(CommonFunctions.formattedAssetBinance(value: self.totalCoinsInvested.description, numberOfDecimals: numberOfDecimals ?? 0)) \(self.assetId.uppercased())"
             
             //Total row
             self.totalEuroLbl.text = "\(totalEuroInvested.description.euroFormat ?? "0") €"
@@ -328,14 +330,14 @@ extension ConfirmInvestmentVC{
             var dataWithdrawalRequest = [:] as [String : Any]
             if(InvestmentType == .withdraw){
                 dataGetOtp = [
-                    "asset": self.fromAssetId,
+                    "asset": self.assetId,
                     "network": self.network?.id ?? "",
                     "amount": self.totalCoinsInvested,
                     "destination": self.address ?? ""
                 ]
                 
                 dataWithdrawalRequest = [
-                    "asset": self.fromAssetId,
+                    "asset": self.assetId,
                     "network": self.network?.id ?? "",
                     "amount": self.totalCoinsInvested,
                     "destination": self.address ?? ""
@@ -399,10 +401,10 @@ extension ConfirmInvestmentVC{
                 }, onFailure: {[]response in})
 			}
         }else if(InvestmentType == .Send){
-            self.confirmInvestmentVM.transferToFriendApi(asset: self.fromAssetId, amount: Decimal(string: CommonFunctions.formattedAssetBinance(value: self.totalCoinsInvested.description, numberOfDecimals: numberOfDecimals ?? 0)) ?? 0, phone: self.friendInfo?.phoneNo ?? "", completion: {response in
+            self.confirmInvestmentVM.transferToFriendApi(asset: self.assetId, amount: Decimal(string: CommonFunctions.formattedAssetBinance(value: self.totalCoinsInvested.description, numberOfDecimals: numberOfDecimals ?? 0)) ?? 0, phone: self.friendInfo?.phoneNo ?? "", completion: {response in
                 if response != nil{
                     let vc = ConfirmationVC.instantiateFromAppStoryboard(appStoryboard: .SwapWithdraw)
-                    vc.confirmationType = .LinkSent
+                    vc.confirmationType = .Congratulations
                     vc.previousViewController = self
                     self.present(vc, animated: true)
                 }

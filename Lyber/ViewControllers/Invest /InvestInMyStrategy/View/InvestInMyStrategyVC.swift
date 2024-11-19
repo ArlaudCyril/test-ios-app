@@ -21,7 +21,7 @@ class InvestInMyStrategyVC: ViewController {
     var addressSelected = false
     var exchangeCoinToEuro = false
     var minimumWithdrawal : Double?
-    var feeWithdrawal : Double?
+    var feeWithdrawal : Double = 0
     var coinWithdrawPrice : Decimal = 0.0
     var maxAmountWithdraw : Decimal = 0.0
     
@@ -68,6 +68,8 @@ class InvestInMyStrategyVC: ViewController {
     @IBOutlet var cancelBtn: UIButton!
     @IBOutlet var investInMyStrategyLbl: UILabel!
     @IBOutlet var coinsLbl: UILabel!
+    @IBOutlet var stackViewPrices: UIStackView!
+    @IBOutlet var bottomPrices: UIView!
     @IBOutlet var amountTF: UITextField!
     @IBOutlet var noOfCoinVw: UIView!
     @IBOutlet var noOfCoinLbl: UILabel!
@@ -134,12 +136,13 @@ class InvestInMyStrategyVC: ViewController {
             self.toCurrency = CommonFunctions.getCurrency(id: self.toAssetId ?? "")
         }
         
+        
         if strategyType == .Exchange{
             self.exchangeData = exchangeFromModel(exchangeFromCoinId: self.fromAssetId ?? "", exchangeFromCoinImg: self.fromCurrency?.imageUrl ?? "", exchangeFromCoinPrice: Double(self.fromAssetPrice ?? "") ?? 0, exchangeFromCoinBalance: fromBalance ?? Balance(), exchangeToCoinId: self.toAssetId ?? "", exchangeToCoinPrice: Double(self.toAssetPrice ?? "") ?? 0, exchangeToCoinImg: self.toCurrency?.imageUrl ?? "")
             
             self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
             
-            CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAssetPennies(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAssetBinance(value: self.minAmountExchange?.description ?? "", numberOfDecimals: CommonFunctions.getDecimal(id: self.exchangeData?.exchangeFromCoinId ?? ""))) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
             
                 self.exchangeAlertLbl.isHidden = false
             
@@ -208,11 +211,8 @@ class InvestInMyStrategyVC: ViewController {
         CommonUI.setUpLbl(lbl: self.balanceLbl, text: "\(CommonFunctions.localisation(key: "BALANCE")): ", textColor: UIColor.Grey423D33, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
         CommonUI.setUpLbl(lbl: self.totalBalanceLbl, text: "\(fromBalanceTotal ?? "0") €", textColor: UIColor.Grey423D33, font: UIFont.MabryPro(Size.Large.sizeValue()))
         self.BalanceView.isHidden = true
-        
+        amountTF.text = "0€"
         amountTF.font = UIFont.AtypDisplayMedium(60.0)
-        amountTF.delegate = self
-        
-        self.amountTF.addTarget(self, action: #selector(editChange(_:)), for: .editingChanged)
         amountTF.textColor = UIColor.PurpleColor
         
         
@@ -347,7 +347,7 @@ class InvestInMyStrategyVC: ViewController {
             CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.ToCoinNameLbl.text ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             CommonUI.setUpLbl(lbl: self.feesLbl, text: "~0.00 €", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
-            self.amountTF.placeholder = "0 \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
+            self.amountTF.text = "0 \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
             self.fromView.layer.cornerRadius = 16
             self.ToView.layer.cornerRadius = 16
             self.exchangeBtn.layer.cornerRadius = 8
@@ -361,7 +361,7 @@ class InvestInMyStrategyVC: ViewController {
                 }
             })
                     
-        }else if strategyType == .withdraw{
+        }else if strategyType == .withdraw || strategyType == .withdrawEuro{
             self.noOfCoinVw.isHidden = false
             self.addressVw.isHidden = false
             self.maximumBtn.isHidden = false
@@ -370,41 +370,22 @@ class InvestInMyStrategyVC: ViewController {
             self.coinsLbl.isHidden = false
             self.minimumWithdrawVw.isHidden = false
             
+            
             self.coinWithdrawPrice =  Decimal((Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
-            self.maxAmountWithdraw = Decimal((Double(self.fromBalance?.balanceData.balance ?? "") ?? 0.0) - (self.feeWithdrawal ?? 0.0))
+            self.maxAmountWithdraw = Decimal((Double(self.toBalance?.balanceData.balance ?? "") ?? 0.0))
+            
             
             self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
-            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) \(fromAssetId?.uppercased() ?? "")"
+            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) \(toAssetId?.uppercased() ?? "")"
             
-            CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0) \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0) \(self.toAssetId?.symboleTranslation.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
-            CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAssetBinance(value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-            CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetBinance(value: self.feeWithdrawal?.description ?? "0", numberOfDecimals: self.numberOfDecimals))  \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAssetBinance(value: toBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "0.0 \(self.fromAssetId?.symboleTranslation.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetBinance(value: self.feeWithdrawal.description, numberOfDecimals: self.numberOfDecimals))  \(toAssetId?.symboleTranslation.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
             
             self.switchPriceAssetBtn.layer.cornerRadius = 8
             
-        } else if strategyType == .withdrawEuro{
-            self.noOfCoinVw.isHidden = false
-            self.addressVw.isHidden = false
-            self.maximumBtn.isHidden = false
-            self.switchPriceAssetBtn.isHidden = false
-            self.coinsLbl.isHidden = false
-            self.minimumWithdrawVw.isHidden = false
-            
-            self.coinWithdrawPrice =  Decimal((Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
-            self.maxAmountWithdraw = Decimal((Double(self.fromBalance?.balanceData.balance ?? "") ?? 0.0) - (self.feeWithdrawal ?? 0.0))
-            
-            self.previewMyInvest.setTitle(CommonFunctions.localisation(key: "NEXT"), for: .normal)
-            self.investInMyStrategyLbl.text = "\(CommonFunctions.localisation(key: "WITHDRAW")) \(fromAssetId?.uppercased() ?? "")"
-            
-            CommonUI.setUpLbl(lbl: self.minimumWithdrawLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_WITHDRAWAL")) : \(self.minimumWithdrawal ?? 0.0)€", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            
-            CommonUI.setUpLbl(lbl: self.coinsLbl, text: "\(CommonFunctions.formattedAssetBinance(value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)) \(CommonFunctions.localisation(key: "AVAILABLE"))", textColor: UIColor.grey877E95, font: UIFont.MabryPro(Size.Small.sizeValue()))
-            CommonUI.setUpLbl(lbl: self.noOfCoinLbl, text: "~0.0 \(self.fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            CommonUI.setUpLbl(lbl: self.feesLbl, text: "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetPennies(from: self.feeWithdrawal ?? 0.0, price: NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue)) \(fromAssetId?.uppercased() ?? "")", textColor: UIColor.grey877E95, font: UIFont.MabryProMedium(Size.Large.sizeValue()))
-            
-            self.switchPriceAssetBtn.layer.cornerRadius = 8
         }else if strategyType == .anotherWallet{
             self.amountTF.placeholder = "0"
         }else if strategyType == .sell{
@@ -523,22 +504,19 @@ extension InvestInMyStrategyVC {
     
     @objc func keyTyped(sender : UIButton){
         switch sender.tag{
-        case 1,2,3,4,5,6,7,8,9,0:
-            print("typed ",sender.tag)
-            if enteredText.count == 0{
-                enteredText = "\(enteredText)\(sender.tag)"
-                updateValues(value: enteredText)
-                
-                
-            }else{
-                enteredText = handleNewText(text: "\(enteredText)\(sender.tag)")
-                updateValues(value: enteredText)
+        case 0: // "0" key
+            if enteredText == "0" {
+                break // Do nothing if the current text is already "0"
             }
-                
-            if enteredText != ""{
-                handlePreviewInvestButton(value: enteredText)
+            enteredText += "0" // Append "0" to the current text
+            updateValues(value: enteredText)
+        case 1, 2, 3, 4, 5, 6, 7, 8, 9: // Numbers 1 to 9
+            if enteredText == "0" {
+                enteredText = "\(sender.tag)" // Replace "0" with the tapped digit
+            } else {
+                enteredText += "\(sender.tag)" // Append the tapped digit
             }
-            break
+            updateValues(value: enteredText)
         case 10:
             if isFloatTyped == false{
                 if enteredText.count != 0{
@@ -564,7 +542,6 @@ extension InvestInMyStrategyVC {
                         isFloatTyped = false
                     }
                 }
-                self.handlePreviewInvestButton(value: enteredText)
             }
             break
         default:
@@ -575,7 +552,7 @@ extension InvestInMyStrategyVC {
     
     
     @objc func exchangeBtnAction(){
-        if(toBalance?.id != ""){
+        if(toBalance != nil){
             self.enteredText = ""
             exchangeCoin1ToCoin2 = !exchangeCoin1ToCoin2
             
@@ -599,7 +576,7 @@ extension InvestInMyStrategyVC {
             }
             self.minAmountExchange = self.minPriceExchange / (exchangeData?.exchangeFromCoinPrice ?? 1)
             
-            CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAssetPennies(from: self.minAmountExchange, price: exchangeData?.exchangeFromCoinPrice, rounding: .up)) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
+            CommonUI.setUpLbl(lbl: self.exchangeAlertLbl, text: "\(CommonFunctions.localisation(key: "MINIMUM_AMOUNT_EXCHANGE")) \(CommonFunctions.formattedAssetBinance(value: self.minAmountExchange?.description ?? "", numberOfDecimals: CommonFunctions.getDecimal(id: exchangeData?.exchangeFromCoinId ?? ""))) \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")", textColor: UIColor.Red_500, font: UIFont.MabryPro(Size.Small.sizeValue()))
             
             self.maxCoinExchange = NSDecimalNumber(string: exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0")
             self.fromBalanceTotal = String((Double(exchangeData?.exchangeFromCoinBalance.balanceData.euroBalance ?? "0") ?? 0))
@@ -619,9 +596,10 @@ extension InvestInMyStrategyVC {
             //update numbers printed
             self.noOfCoinLbl.text = "~ 0 \(exchangeData?.exchangeToCoinId.uppercased() ?? "")"
             amountTF.text = "0 \(exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
+            let fromAssetId = self.fromAssetId
+            self.fromAssetId = self.toAssetId
+            self.toAssetId = fromAssetId
             
-            handlePreviewInvestButton(value: amountTF.text ?? "0")
-
         }else{
             CommonFunctions.toster(CommonFunctions.localisation(key: "CANT_EXCHANGE_ASSET_DONT_HAVE"))
         }
@@ -631,58 +609,67 @@ extension InvestInMyStrategyVC {
         self.enteredText = ""
         self.isFloatTyped = false
         exchangeCoinToEuro = !exchangeCoinToEuro
+        
+        let fromAssetId = self.fromAssetId
+        
+        self.fromAssetId = self.toAssetId
+        self.toAssetId = fromAssetId
+        
         let noOfCoinText = self.noOfCoinLbl.text
         if(amountTF.text == "" || Int(noOfCoinText?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined() ?? "") == 0){
-            self.noOfCoinLbl.text = "~ 0 \(fromAssetId?.uppercased() ?? "")"
+            self.noOfCoinLbl.text = "0 \(fromAssetId?.symboleTranslation.uppercased() ?? "")"
         }else{
-            self.noOfCoinLbl.text = "~\(amountTF.text ?? "")"
+            self.noOfCoinLbl.text = "\(amountTF.text ?? "")"
         }
-        let amountText = noOfCoinText?.dropFirst(1)
-        if(exchangeCoinToEuro == false){
-            let amountTextEuro = amountText?.dropLast(1)
-            let amountTextEuroFinal = amountTextEuro.map { String($0) }
-            amountTF.text = "\(CommonFunctions.getFormatedPrice(number: Double(amountTextEuroFinal ?? "") ?? 0.0))€"
-        }else{
-            amountTF.text = amountText.map { String($0) }
-        }
+        let amountText = noOfCoinText
+        amountTF.text = amountText
     }
     
     @objc func maximumBtnAct(){
-        if strategyType == .withdraw || strategyType == .withdrawEuro{
-            let maxAmountWithdrawableString = CommonFunctions.formattedAssetBinance(value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)
-            var enteredSubText = ""
-            
-            self.maxAmountWithdraw = Decimal(string:maxAmountWithdrawableString) ?? 0.0
-            let maxEuroWithdraw = maxAmountWithdraw * self.coinWithdrawPrice
-            
-            if exchangeCoinToEuro == false{
-                enteredText = CommonFunctions.getFormatedPrice(number: NSDecimalNumber(decimal: maxEuroWithdraw).doubleValue)
-                enteredSubText = CommonFunctions.formattedAssetDecimal(from: maxAmountWithdraw, price: self.coinWithdrawPrice)
-            }else{
-                enteredText = CommonFunctions.formattedAssetBinance(value: maxAmountWithdraw.description, numberOfDecimals: self.numberOfDecimals)
-                enteredSubText = CommonFunctions.getFormatedPrice(number: NSDecimalNumber(decimal: maxEuroWithdraw).doubleValue)
-            }
-            noOfCoins(value: enteredText, subValue: enteredSubText)
-            
-        }else if strategyType == .Exchange{
-            enteredText = CommonFunctions.formattedAssetBinance(value: exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0", numberOfDecimals: fromCurrency?.decimals ?? 0)
-            noOfCoins(value: enteredText)
-        }else if strategyType == .oneTimeInvestment{
-            enteredText = fromBalance?.balanceData.balance.euroFormat ?? ""
-            noOfCoins(value: enteredText)
-        }else if strategyType == .Send{
-            if exchangeCoinToEuro == false{
-                enteredText = fromBalance?.balanceData.euroBalance.euroFormat ?? ""
-            }else{
-                enteredText = CommonFunctions.formattedAssetBinance(value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)
-            }
-            noOfCoins(value: enteredText)
+        var value = toBalance?.balanceData.balance
+        if(strategyType == .Exchange){
+            value = fromBalance?.balanceData.balance
+            noOfCoins(value: value ?? "", max: true)
+        }else{
+            noOfCoins(value: value ?? "", max: true)
         }
+        self.handlePreviewInvestButton(value: value ?? "")
         
-        if enteredText.contains("."){
-            self.isFloatTyped = true
-        }
-        self.handlePreviewInvestButton(value: enteredText)
+//        if strategyType == .withdraw || strategyType == .withdrawEuro{
+//            let maxAmountWithdrawableString = CommonFunctions.formattedAssetBinance(value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)
+//            var enteredSubText = ""
+//            
+//            self.maxAmountWithdraw = Decimal(string:maxAmountWithdrawableString) ?? 0.0
+//            let maxEuroWithdraw = maxAmountWithdraw * self.coinWithdrawPrice
+//            
+//            if exchangeCoinToEuro == false{
+//                enteredText = CommonFunctions.getFormatedPrice(number: NSDecimalNumber(decimal: maxEuroWithdraw).doubleValue)
+//                enteredSubText = CommonFunctions.formattedAssetDecimal(from: maxAmountWithdraw, price: self.coinWithdrawPrice)
+//            }else{
+//                enteredText = CommonFunctions.formattedAssetBinance(value: maxAmountWithdraw.description, numberOfDecimals: self.numberOfDecimals)
+//                enteredSubText = CommonFunctions.getFormatedPrice(number: NSDecimalNumber(decimal: maxEuroWithdraw).doubleValue)
+//            }
+//            noOfCoins(value: enteredText, subValue: enteredSubText)
+//            
+//        }else if strategyType == .Exchange{
+//            enteredText = CommonFunctions.formattedAssetBinance(value: exchangeData?.exchangeFromCoinBalance.balanceData.balance ?? "0", numberOfDecimals: fromCurrency?.decimals ?? 0)
+//            noOfCoins(value: enteredText)
+//        }else if strategyType == .oneTimeInvestment{
+//            enteredText = fromBalance?.balanceData.balance.euroFormat ?? ""
+//            noOfCoins(value: enteredText)
+//        }else if strategyType == .Send{
+//            if exchangeCoinToEuro == false{
+//                enteredText = fromBalance?.balanceData.euroBalance.euroFormat ?? ""
+//            }else{
+//                enteredText = CommonFunctions.formattedAssetBinance(value: fromBalance?.balanceData.balance ?? "", numberOfDecimals: self.numberOfDecimals)
+//            }
+//            noOfCoins(value: enteredText)
+//        }
+        
+//        if enteredText.contains("."){
+//            self.isFloatTyped = true
+//        }
+        
     }
     
     
@@ -719,105 +706,97 @@ extension InvestInMyStrategyVC {
 //MARK: - Other functions
 extension InvestInMyStrategyVC {
     
-    func noOfCoins(value: String, subValue: String = ""){
-        let cleanedValue = value.replacingOccurrences(of: ",", with: "")
-        let cleanedSubValue = subValue.replacingOccurrences(of: ",", with: "")
+    func noOfCoins(value: String, max: Bool = false, completion: @escaping (() -> Void) = {}){
+        let valueDouble = Double(value) ?? 0
+        
         if strategyType == .Exchange{
-            let coinFromPrice = exchangeData?.exchangeFromCoinPrice ?? 0
-            let coinToPrice = exchangeData?.exchangeToCoinPrice ?? 0
+            getValueConvertedExchange(value: valueDouble, completion: {
+                completion()
+            })
             
-            amountTF.text = "\(CommonFunctions.formattedAssetBinance(value: cleanedValue, numberOfDecimals: self.fromCurrency?.decimals ?? 0)) \(self.exchangeData?.exchangeFromCoinId.uppercased() ?? "")"
-            
-            totalEuroInvested = NSDecimalNumber(string: cleanedValue)
-            
-            totalNoOfCoinsInvest = NSDecimalNumber(string: fromBalance?.balanceData.balance ?? "0")
-            
-            self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetBinance(value: (totalEuroInvested.decimalValue * Decimal(coinFromPrice/coinToPrice)).description, numberOfDecimals: self.toCurrency?.decimals ?? 0)) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
-            
-            self.feesLbl.text = "~\(CommonFunctions.getTwoDecimalValueDecimal(number: totalEuroInvested.decimalValue * Decimal(coinFromPrice))) €"
-            
-        }else if (strategyType == .withdraw || strategyType == .withdrawEuro){
-            
-            
-            if exchangeCoinToEuro == false{
-                totalEuroInvested = NSDecimalNumber(string: cleanedValue)
-                totalNoOfCoinsInvest = NSDecimalNumber(string:cleanedSubValue)
-                
-                amountTF.text = "\(cleanedValue)€"
-                self.noOfCoinLbl.text = "~\(totalNoOfCoinsInvest) \(self.fromAssetId?.uppercased() ?? "")"
-                
-                if (strategyType == .withdraw){
-                    self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetBinance(value: self.feeWithdrawal?.description ?? "0", numberOfDecimals: self.numberOfDecimals)) \(fromAssetId?.uppercased() ?? "")"
-                }
-            }else{
-                totalNoOfCoinsInvest = NSDecimalNumber(string:cleanedValue)
-                totalEuroInvested = NSDecimalNumber(string: subValue)
-                
-                amountTF.text = "\(cleanedValue) \(fromAssetId?.uppercased() ?? "")"
-                self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: totalEuroInvested.doubleValue))€"
-                
-                if (strategyType == .withdraw){
-                    self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
-                }
-                
-            }
-        }else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence || strategyType == .Send){
-            if exchangeCoinToEuro == false{
-                amountTF.text = "\(cleanedValue)€"
-                let coinPrice = NSDecimalNumber(string: asset?.priceServiceResumeData.lastPrice ?? "0")
-                totalEuroInvested = NSDecimalNumber(string: cleanedValue)
-                totalNoOfCoinsInvest = (totalEuroInvested.decimalValue/coinPrice.decimalValue) as NSDecimalNumber
-                self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: totalNoOfCoinsInvest.decimalValue, price: coinPrice.decimalValue)) \(self.asset?.id.uppercased() ?? "")"
-            }else{
-                self.amountTF.text = "\(cleanedValue) \(self.asset?.id.uppercased() ?? "")"
-                let coinPrice = Decimal(string: asset?.priceServiceResumeData.lastPrice ?? "0") ?? 0
-                totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
-                totalEuroInvested = CommonFunctions.getTwoDecimalValueDecimal(number: totalNoOfCoinsInvest.decimalValue * coinPrice) as NSDecimalNumber
-                self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from:  totalEuroInvested.doubleValue))€"
-            }
-            
-        }else if(strategyType == .oneTimeInvestment){
-            
-            let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
-            totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
-            totalEuroInvested = (totalNoOfCoinsInvest.decimalValue * Decimal(coinPrice)) as NSDecimalNumber
-            
-            amountTF.text = "\(cleanedValue) USDC"
-            self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValueDecimal(number: totalEuroInvested.decimalValue)) €"
         }else{
-            if exchangeCoin1ToCoin2 == false{
-                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDC"
-                let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
-                totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
-                totalEuroInvested = (totalEuroInvested.decimalValue / Decimal(coinPrice)) as NSDecimalNumber
-                    
-                self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValue(number: totalNoOfCoinsInvest.doubleValue)) \(self.fromAssetId?.uppercased() ?? "")"
-            }else{
-                amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) \(self.assetsData?.symbol?.uppercased() ?? (self.exchangeData?.exchangeFromCoinId ?? ""))"
-                let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
-                totalEuroInvested = NSDecimalNumber(value: CommonFunctions.getTwoDecimalValue(number: ((Double(cleanedValue) ?? 0.0)*(coinPrice))))
-                
-                totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
-                self.noOfCoinLbl.text = "~\(totalEuroInvested)€"
-            }
+            getValueConverted(value: valueDouble, isEuro: !exchangeCoinToEuro, max: max, completion: {
+                completion()
+            })
         }
+        
+        
+        //TODO: continue here
+//        let cleanedValue = value.replacingOccurrences(of: ",", with: "")
+        
+        
+//        else if (strategyType == .withdraw || strategyType == .withdrawEuro){
+//
+//            
+//            if exchangeCoinToEuro == false{
+//                totalEuroInvested = NSDecimalNumber(string: cleanedValue)
+//                totalNoOfCoinsInvest = NSDecimalNumber(string:cleanedSubValue)
+//                
+//                amountTF.text = "\(cleanedValue)€"
+//                self.noOfCoinLbl.text = "~\(totalNoOfCoinsInvest) \(self.fromAssetId?.uppercased() ?? "")"
+//                
+//                if (strategyType == .withdraw){
+//                    self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetBinance(value: self.feeWithdrawal?.description ?? "0", numberOfDecimals: self.numberOfDecimals)) \(fromAssetId?.uppercased() ?? "")"
+//                }
+//            }else{
+//                totalNoOfCoinsInvest = NSDecimalNumber(string:cleanedValue)
+//                totalEuroInvested = NSDecimalNumber(string: subValue)
+//                
+//                amountTF.text = "\(cleanedValue) \(fromAssetId?.uppercased() ?? "")"
+//                self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from: totalEuroInvested.doubleValue))€"
+//                
+//                if (strategyType == .withdraw){
+//                    self.feesLbl.text = "\(CommonFunctions.localisation(key: "FEES")) : \(CommonFunctions.formattedAssetDecimal(from: Decimal(self.feeWithdrawal ?? 0), price: self.coinWithdrawPrice)) \(fromAssetId?.uppercased() ?? "")"
+//                }
+//                
+//            }
+//        }else if(strategyType == .singleCoin || strategyType == .singleCoinWithFrequence || strategyType == .Send){
+//            if exchangeCoinToEuro == false{
+//                amountTF.text = "\(cleanedValue)€"
+//                let coinPrice = NSDecimalNumber(string: asset?.priceServiceResumeData.lastPrice ?? "0")
+//                totalEuroInvested = NSDecimalNumber(string: cleanedValue)
+//                totalNoOfCoinsInvest = (totalEuroInvested.decimalValue/coinPrice.decimalValue) as NSDecimalNumber
+//                self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetDecimal(from: totalNoOfCoinsInvest.decimalValue, price: coinPrice.decimalValue)) \(self.asset?.id.uppercased() ?? "")"
+//            }else{
+//                self.amountTF.text = "\(cleanedValue) \(self.asset?.id.uppercased() ?? "")"
+//                let coinPrice = Decimal(string: asset?.priceServiceResumeData.lastPrice ?? "0") ?? 0
+//                totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
+//                totalEuroInvested = CommonFunctions.getTwoDecimalValueDecimal(number: totalNoOfCoinsInvest.decimalValue * coinPrice) as NSDecimalNumber
+//                self.noOfCoinLbl.text = "~\(CommonFunctions.formattedCurrency(from:  totalEuroInvested.doubleValue))€"
+//            }
+//            
+//        }else if(strategyType == .oneTimeInvestment){
+//            
+//            let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
+//            totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
+//            totalEuroInvested = (totalNoOfCoinsInvest.decimalValue * Decimal(coinPrice)) as NSDecimalNumber
+//            
+//            amountTF.text = "\(cleanedValue) USDC"
+//            self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValueDecimal(number: totalEuroInvested.decimalValue)) €"
+//        }else{
+//            if exchangeCoin1ToCoin2 == false{
+//                    amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) USDC"
+//                let coinPrice = CommonFunctions.getTwoDecimalValue(number: (Double(fromBalance?.balanceData.euroBalance ?? "") ?? 0.0) / (Double(fromBalance?.balanceData.balance ?? "") ?? 0.0))
+//                totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
+//                totalEuroInvested = (totalEuroInvested.decimalValue / Decimal(coinPrice)) as NSDecimalNumber
+//                    
+//                self.noOfCoinLbl.text = "~\(CommonFunctions.getTwoDecimalValue(number: totalNoOfCoinsInvest.doubleValue)) \(self.fromAssetId?.uppercased() ?? "")"
+//            }else{
+//                amountTF.text = "\(CommonFunctions.numberFormat(from: Double(cleanedValue))) \(self.assetsData?.symbol?.uppercased() ?? (self.exchangeData?.exchangeFromCoinId ?? ""))"
+//                let coinPrice = CommonFunctions.getTwoDecimalValue(number: (self.assetsData?.currentPrice ?? 0.0))
+//                totalEuroInvested = NSDecimalNumber(value: CommonFunctions.getTwoDecimalValue(number: ((Double(cleanedValue) ?? 0.0)*(coinPrice))))
+//                
+//                totalNoOfCoinsInvest = NSDecimalNumber(string: cleanedValue)
+//                self.noOfCoinLbl.text = "~\(totalEuroInvested)€"
+//            }
+//        }
     }
     
     func updateValues(value: String){
-        if(strategyType == .withdraw || strategyType == .withdrawEuro){
-            var enteredSubText = ""
-            if exchangeCoinToEuro == false{
-                //coin
-                enteredSubText = CommonFunctions.formattedAssetDecimal(from: (Decimal(string: value) ?? 0.0) / self.coinWithdrawPrice, price: self.coinWithdrawPrice)
-            }else{
-                //euro
-                enteredSubText = CommonFunctions.getFormatedPriceDecimal(number: (Decimal(string: value) ?? 0.0) * self.coinWithdrawPrice)
-            }
-            noOfCoins(value: enteredText, subValue: enteredSubText)
-            
-        }else{
-            noOfCoins(value: value)
-        }
+        noOfCoins(value: value, completion: {
+            self.amountNotTooHigh()
+            self.handlePreviewInvestButton(value: value)
+        })
     }
             
             
@@ -877,7 +856,7 @@ extension InvestInMyStrategyVC {
             let vc = ConfirmExecutionVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
             self.previewMyInvest.showLoading()
                 
-            InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalEuroInvested.decimalValue, controller: self, completion: {response in
+            InvestInMyStrategyVM().ordersGetQuoteApi(fromAssetId: self.exchangeData?.exchangeFromCoinId ?? "", toAssetId: self.exchangeData?.exchangeToCoinId ?? "", exchangeFromAmount: self.totalNoOfCoinsInvest.decimalValue, controller: self, completion: {response in
                 self.previewMyInvest.hideLoading()
                 if( response != nil){
                     vc.InvestmentType = .Exchange
@@ -904,8 +883,8 @@ extension InvestInMyStrategyVC {
             vc.minimumWithdraw = self.minimumWithdrawal
             vc.address = self.addressLbl.text
             vc.network = self.network
-            vc.fees = (self.feeWithdrawal ?? 0)
-            vc.fromAssetId = self.fromAssetId ?? ""
+            vc.fees = (self.feeWithdrawal)
+            vc.assetId = self.toAssetId ?? ""
             vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
             self.navigationController?.pushViewController(vc, animated: true)
 
@@ -916,7 +895,7 @@ extension InvestInMyStrategyVC {
             vc.totalCoinsInvested = totalNoOfCoinsInvest.decimalValue
             vc.minimumWithdraw = self.minimumWithdrawal
             vc.ribSelected = self.ribSelected
-            vc.fromAssetId = self.fromAssetId ?? ""
+            vc.assetId = self.fromAssetId ?? ""
             vc.coinPrice = NSDecimalNumber(decimal: self.coinWithdrawPrice).doubleValue
             self.navigationController?.pushViewController(vc, animated: true)
 
@@ -969,7 +948,7 @@ extension InvestInMyStrategyVC {
                         if response != nil{
                             let vc = ConfirmInvestmentVC.instantiateFromAppStoryboard(appStoryboard: .InvestStrategy)
                             vc.InvestmentType = .Send
-                            vc.fromAssetId = self?.asset?.id ?? ""
+                            vc.assetId = self?.asset?.id ?? ""
                             vc.totalCoinsInvested = (self?.totalNoOfCoinsInvest ?? 0)as Decimal
                             vc.totalEuroInvested = Double(truncating: self?.totalEuroInvested ?? 0)
                             vc.friendInfo = response?.data
@@ -987,8 +966,7 @@ extension InvestInMyStrategyVC {
     func handlePreviewInvestButton(value: String){
         if(self.strategyType == .Exchange)
         {
-            let cleanedString = value.replacingOccurrences(of: ",", with: "")
-            if(Double(cleanedString) ?? 0 >= self.minAmountExchange ?? 0){
+            if(Double(value) ?? 0 >= self.minAmountExchange ?? 0){
                 self.previewMyInvest.backgroundColor = UIColor.PurpleColor
                 self.previewMyInvest.isUserInteractionEnabled = true
                 self.exchangeAlertLbl.isHidden = true
@@ -1070,26 +1048,132 @@ extension InvestInMyStrategyVC {
         
     }
     
-    private func handleNewText(text: String) -> String {
-        var newText = text
+    private func getValueConverted(value: Double, isEuro: Bool = false, max: Bool = false, completion: @escaping (() -> Void)) {
+        let idCoin = (self.fromAssetId == "eur" ? self.toAssetId : self.fromAssetId) ?? ""
+
+        let viewToLoad = (isEuro && max ? self.stackViewPrices : self.noOfCoinLbl) ?? UIView()
+        let valueFormated = CommonFunctions.formattedAssetBinance(value: value.description, numberOfDecimals: CommonFunctions.getDecimal(id: self.fromAssetId ?? ""))
+        let valueFormatedDouble = Double(valueFormated) ?? 0
         
-        if(self.strategyType == .Exchange || self.strategyType == .singleCoin || (self.strategyType == .withdraw && exchangeCoinToEuro == true)){
-            newText = CommonFunctions.formattedAssetBinance(value: text, numberOfDecimals: self.numberOfDecimals)
+        if(isEuro && max){
+            CommonFunctions.showLoaderCalculation(viewToLoad, width: 50)
+        }else{
+            self.enteredText = valueFormated
+            self.amountTF.text = "\(valueFormated) \(self.fromAssetId!.symboleTranslation.uppercased())"
+                
+            CommonFunctions.showLoaderCalculation(viewToLoad)
         }
-        return newText
-    }
-}
-
-
-extension InvestInMyStrategyVC : UITextFieldDelegate{
-    @objc func editChange(_:UITextField){
-        print(amountTF.text ?? "")
-    }
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        if let selectedRange = amountTF.selectedTextRange {
-            cursorPosition = amountTF.offset(from: amountTF.beginningOfDocument, to: selectedRange.start)
-            print("cursor position -----\(cursorPosition)")
+       
+        
+        InvestInMyStrategyVM().getLastPriceApi(assetId: idCoin) { response in
+            CommonFunctions.hideLoaderCalculation(viewToLoad)
+            guard let priceString = response?.data.price, let price = Double(priceString) else {
+                print("Error - getValueConverted") // Handle error if response is invalid
+                return
+            }
+            
+           
+            if isEuro && !max {
+                let resultOperation = valueFormatedDouble / price
+                
+                self.noOfCoinLbl.text = "\(CommonFunctions.formattedAssetBinance(value: resultOperation.description, numberOfDecimals: CommonFunctions.getDecimal(id: idCoin))) \(idCoin.uppercased())"
+                self.totalEuroInvested = NSDecimalNumber(value: value)
+                self.totalNoOfCoinsInvest = NSDecimalNumber(value: resultOperation)
+                
+            } else {
+                let resultOperation = valueFormatedDouble * price
+                var noOfCoinLblText = resultOperation.description
+                let resultOperationFormated = CommonFunctions.formattedAssetBinance(value: resultOperation.description, numberOfDecimals: CommonFunctions.getDecimal(id: self.fromAssetId ?? ""))
+                let resultOperationFormatedDouble = Double(resultOperationFormated) ?? 0
+                
+                if(isEuro && max){
+                    self.enteredText = resultOperationFormated
+                    self.amountTF.text = "\(resultOperationFormated) \(self.fromAssetId!.symboleTranslation.uppercased())"
+                    
+                    noOfCoinLblText = value.description
+                }
+                
+                self.noOfCoinLbl.text = "\(CommonFunctions.formattedAssetBinance(value: noOfCoinLblText.description, numberOfDecimals: CommonFunctions.getDecimal(id: self.toAssetId ?? ""))) \(self.toAssetId!.symboleTranslation.uppercased())"
+                
+                self.totalEuroInvested = NSDecimalNumber(value: resultOperationFormatedDouble)
+                self.totalNoOfCoinsInvest = NSDecimalNumber(value: valueFormatedDouble)
+            }
+            completion()
         }
     }
     
+    private func getValueConvertedExchange(value: Double, completion: @escaping (() -> Void)) {
+        // TODO: Fetch prices for both assets in parallel to get exact conversion; display a loader
+        let viewToLoad = self.bottomPrices ?? UIView()
+        CommonFunctions.showLoaderCalculation(viewToLoad, width: 50)
+        
+        let dispatchGroup = DispatchGroup()
+        var coinFromPrice: Double?
+        var coinToPrice: Double?
+        
+        // Fetch price for "from" asset
+        dispatchGroup.enter()
+        InvestInMyStrategyVM().getLastPriceApi(assetId: self.fromAssetId ?? "") { response in
+            defer { dispatchGroup.leave() } // Ensure dispatchGroup.leave is called
+            guard let priceString = response?.data.price, let price = Double(priceString) else {
+                print("Error - getValueConverted (from asset)") // Handle error
+                return
+            }
+            coinFromPrice = price
+        }
+        
+        // Fetch price for "to" asset
+        dispatchGroup.enter()
+        InvestInMyStrategyVM().getLastPriceApi(assetId: self.toAssetId ?? "") { response in
+            defer { dispatchGroup.leave() } // Ensure dispatchGroup.leave is called
+            guard let priceString = response?.data.price, let price = Double(priceString) else {
+                print("Error - getValueConverted (to asset)") // Handle error
+                return
+            }
+            coinToPrice = price
+        }
+        
+        // When both API calls are complete
+        dispatchGroup.notify(queue: .main) {
+            CommonFunctions.hideLoaderCalculation(viewToLoad)
+            
+            guard let fromPrice = coinFromPrice, let toPrice = coinToPrice else {
+                print("Error - Missing prices for conversion")
+                return
+            }
+            
+            let valueFormated = CommonFunctions.formattedAssetBinance(value: value.description, numberOfDecimals: self.fromCurrency?.decimals ?? 0)
+            self.enteredText = valueFormated
+            self.amountTF.text = "\(valueFormated) \(self.exchangeData?.exchangeFromCoinId.symboleTranslation.uppercased() ?? "")"
+            
+            let euroInvested = (Double(valueFormated) ?? 0) * fromPrice
+            self.totalEuroInvested = NSDecimalNumber(value: euroInvested)
+            
+            self.totalNoOfCoinsInvest = NSDecimalNumber(string: valueFormated)
+            
+            self.noOfCoinLbl.text = "~\(CommonFunctions.formattedAssetBinance(value: (self.totalNoOfCoinsInvest.decimalValue * Decimal(fromPrice / toPrice)).description, numberOfDecimals: self.toCurrency?.decimals ?? 0)) \(self.exchangeData?.exchangeToCoinId.uppercased() ?? "")"
+            
+            let resultEuro = value * fromPrice
+            self.feesLbl.text = "\(CommonFunctions.formattedAssetBinance(value: resultEuro.description, numberOfDecimals: 2)) €"
+            
+            completion()
+        }
+    }
+    
+    private func amountNotTooHigh(){
+        let enteredAmount = totalNoOfCoinsInvest
+       
+        let balance = fromBalance == nil ? self.toBalance?.balanceData.balance : self.fromBalance?.balanceData.balance
+        if enteredAmount.decimalValue > Decimal(string: balance ?? "") ?? 0 {
+            amountTF.shake()
+            
+            // Vibration
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            feedbackGenerator.impactOccurred()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { self.maximumBtnAct() }
+        }
+    }
 }
+
+
